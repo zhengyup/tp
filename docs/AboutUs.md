@@ -11,6 +11,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
+
 ### Tham You Wei
 
 <img src="images/tyouwei.png" width="200px">
@@ -19,3 +20,34 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[portfolio](team/tyouwei.md)]
 
 * Role: Developer
+* Responsibilities: Logic and Model
+
+### Timothy Putra Prasetio
+
+<img src="images/tim-pipi.png" width="200px">
+
+[[github](https://github.com/tim-pipi)]
+[[portfolio](team/tim-pipi.md)]
+
+* Role: Developer
+* Responsibilities: UI
+
+### Aprup Kale
+
+<img src="images/aprupkale.png" width="200px">
+
+[[github](http://github.com/aprupkale)]
+[[portfolio](team/aprupkale.md)]
+
+* Role: Developer
+* Responsibilities: Logic and Model
+
+### Zhi Sheng
+
+<img src="images/zsh_eng.jpg" width="200px">
+
+[[github](https://github.com/zsh-eng)]
+[[portfolio](team/zsh_eng.md)]
+
+* Role: Developer
+* Responsibilities: Testing
