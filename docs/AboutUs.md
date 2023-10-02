@@ -22,6 +22,12 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: Logic and Model
 
+### Zheng Yu
+
+<img src="images/zhengyup.png" width="200px">
+
+[[github](http://github.com/zhengyup)] [[portfolio](team/zhengyup.md)]
+
 ### Timothy Putra Prasetio
 
 <img src="images/tim-pipi.png" width="200px">
