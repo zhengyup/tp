@@ -11,25 +11,16 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
-### John Doe
 
-<img src="images/johndoe.png" width="200px">
+### Tham You Wei
 
-[[homepage](http://www.comp.nus.edu.sg/~damithch)]
-[[github](https://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+<img src="images/tyouwei.png" width="200px">
 
-* Role: Project Advisor
+[[github](https://github.com/tyouwei)]
+[[portfolio](team/tyouwei.md)]
 
-### Jane Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
-
-* Role: Team Lead
-* Responsibilities: UI
+* Role: Developer
+* Responsibilities: Logic and Model
 
 ### Zheng Yu
 
@@ -37,25 +28,32 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 [[github](http://github.com/zhengyup)] [[portfolio](team/zhengyup.md)]
 
-* Role: Developer
-* Responsibilities: Data
+### Timothy Putra Prasetio
 
-### Jean Doe
+<img src="images/tim-pipi.png" width="200px">
 
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
-
-* Role: Developer
-* Responsibilities: Dev Ops + Threading
-
-### James Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](https://github.com/tim-pipi)]
+[[portfolio](team/tim-pipi.md)]
 
 * Role: Developer
 * Responsibilities: UI
+
+### Aprup Kale
+
+<img src="images/aprupkale.png" width="200px">
+
+[[github](http://github.com/aprupkale)]
+[[portfolio](team/aprupkale.md)]
+
+* Role: Developer
+* Responsibilities: Logic and Model
+
+### Zhi Sheng
+
+<img src="images/zsh_eng.jpg" width="200px">
+
+[[github](https://github.com/zsh-eng)]
+[[portfolio](team/zsh_eng.md)]
+
+* Role: Developer
+* Responsibilities: Testing
