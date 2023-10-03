@@ -13,4 +13,3 @@
 * This app is designed to help students to track their job applications amidst the heavy job-hunting season.
 * For the detailed documentation of this project, read our **[User Guide](docs/UserGuide.md)**.
 * This project is based on the AddressBook-Level3 project created by the [SE-EDU initiative](https://se-education.org).
-* 
