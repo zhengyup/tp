@@ -282,14 +282,13 @@ _{Explain here how the data archiving feature will be implemented}_
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                 | So that I can…​                                                        |
-|----------|--------------------------------------------|------------------------------|------------------------------------------------------------------------|
-| `* * *`  | new user                                   | see usage instructions       | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person             |                                                                        |
-| `* * *`  | user                                       | delete a person              | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name        | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name         | locate a person easily                                                 |
+| Priority | As a …​                        | I want to …​                               | So that I can…​                                                               |
+|----------|--------------------------------|--------------------------------------------|-------------------------------------------------------------------------------|
+| `* *`    | user with many applications    | quickly search for a application           | efficiently find the entry I am looking for                                   |
+| `* *`    | user with diverse applications | categorize companies by industry           | organise my applications better                                               |
+| `* *`    | user with many options         | sort by priority level for my applications | allocate my time and resources efficiently                                    |                                 |
+| `* *`    | conscientious user             | attach notes to each application           | I can jot down important information about the company or application process |
+| `* *`    | organised user                 | sort my applications                       | I can easily get an organised view of my applications                         |
 
 *{More to be added}*
 
@@ -297,14 +296,62 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 (For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Delete a person**
+**UC6: Search for an application**
 
 **MSS**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1.  User provides the search criteria and requests for a search
+2.  LetsGetHired shows a list of matching applications
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The command format is incorrect.
+
+    * 1a1. LetsGetHired shows an error message, guiding users on the correct command format
+      Use case resumes at step 1.
+
+
+**UC7: Edit the details of an application**
+
+**MSS**
+
+1.  User requests to list applications or <ins>searches for applications (UC6)</ins>
+2.  LetsGetHired shows a list of applications
+3.  User provides new information to update the chosen application
+4.  LetsGetHired updates the application
+5.  LetsGetHired displays the updated application
+
+       Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 3a. The given index is invalid.
+
+    * 3a1. LetsGetHired shows an error message and shows number of current applications.
+
+      Use case resumes at step 2.
+  
+* 3b. The command format is incorrect.
+
+    * 3b1. LetsGetHired shows an error message, guiding users on the correct command format
+
+      Use case resumes at step 2.
+
+**UC8: Add a note to an application**
+
+**MSS**
+
+1.  User requests to list applications or <ins>searches for applications (UC6)</ins>
+2.  LetsGetHired shows a list of applications
+3.  User provides note to add to specific application
+4.  LetsGetHired adds the note to the application
+5.  LetsGetHired displays the application with the added note
 
     Use case ends.
 
@@ -316,11 +363,100 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 3a. The given index is invalid.
 
-    * 3a1. AddressBook shows an error message.
+    * 3a1. LetsGetHired shows an error message and shows number of current applications.
 
       Use case resumes at step 2.
 
-*{More to be added}*
+* 3b. The command format is incorrect.
+
+    * 3b1. AddressBook shows an error message, guiding users on the correct command format
+
+      Use case resumes at step 2.
+
+**UC9: Delete a note on an application**
+
+**MSS**
+
+1.  User requests to list applications or <ins>searches for applications (UC6)</ins>
+2.  LetsGetHired shows a list of applications
+3.  User requests to view a specific application
+4.  User requests to delete a specific note from a specific application
+5.  LetsGetHired deletes the note from the application
+6.  LetsGetHired displays the application with the updated list of notes
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 3a. The given application index is invalid.
+
+    * 3a1. LetsGetHired shows an error message and shows number of current applications.
+
+      Use case resumes at step 2.
+
+* 3b. The application has no notes. 
+
+    Use case ends.
+  
+* 4a. The given note index is invalid. 
+
+   * 4a1. LetsGetHired shows an error message and shows number of current notes attached to the application.
+
+    Use case resumes at step 3.
+
+* 4b.The command format is incorrect.
+
+    * 4b1. LetsGetHired shows an error message, guiding users on the correct command format.
+
+      Use case resumes at step 3.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 3a. The given application index is invalid.
+
+    * 3a1. LetsGetHired shows an error message and shows number of current applications.
+
+      Use case resumes at step 2.
+
+* 3b. The application has no notes.
+
+  Use case ends.
+
+* 4a. The given note index is invalid.
+
+    * 4a1. LetsGetHired shows an error message and shows number of current notes attached to the application.
+
+  Use case resumes at step 3.
+
+* 4b.The command format is incorrect.
+
+    * 4b1. LetsGetHired shows an error message, guiding users on the correct command format.
+
+      Use case resumes at step 3.
+
+**UC10: Sort Applications**
+
+**MSS**
+
+1.  User requests to sort the applications by provided category and order
+2.  LetsGetHired sorts and displays the sorted applications
+3.  LetsGetHired displays category applications are sorted in
+
+       Use case ends.
+
+**Extensions**
+
+* 1a. Provided category or order is invalid 
+  * 1a1 LetsGetHired shows an error message and shows the valid categories and orders to choose from 
+
 
 ### Non-Functional Requirements
 
