@@ -296,7 +296,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 (For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
 
-**UC1: Search for an application**
+**UC6: Search for an application**
 
 **MSS**
 
@@ -313,11 +313,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case resumes at step 1.
 
 
-**UC2: Edit the details of an application**
+**UC7: Edit the details of an application**
 
 **MSS**
 
-1.  User requests to list applications or <ins>searches for applications (UC1)</ins>
+1.  User requests to list applications or <ins>searches for applications (UC6)</ins>
 2.  LetsGetHired shows a list of applications
 3.  User provides new information to update the chosen application
 4.  LetsGetHired updates the application
@@ -343,11 +343,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
-**UC3: Add a note to an application**
+**UC8: Add a note to an application**
 
 **MSS**
 
-1.  User requests to list applications or <ins>searches for applications (UC1)</ins>
+1.  User requests to list applications or <ins>searches for applications (UC6)</ins>
 2.  LetsGetHired shows a list of applications
 3.  User provides note to add to specific application
 4.  LetsGetHired adds the note to the application
@@ -373,11 +373,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
-**UC4: Delete a note on an application**
+**UC9: Delete a note on an application**
 
 **MSS**
 
-1.  User requests to list applications or <ins>searches for applications (UC1)</ins>
+1.  User requests to list applications or <ins>searches for applications (UC6)</ins>
 2.  LetsGetHired shows a list of applications
 3.  User requests to view a specific application
 4.  User requests to delete a specific note from a specific application
@@ -442,7 +442,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 3.
 
-**UC5: Sort Applications**
+**UC10: Sort Applications**
 
 **MSS**
 
