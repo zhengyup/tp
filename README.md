@@ -11,5 +11,6 @@
 * As a group of Year 2 Computing Students, school takes too much of our attention and there is a possibility of 
   forgetting about job application follow-ups and interviews that we may have.
 * This app is designed to help students to track their job applications amidst the heavy job-hunting season.
-* For the detailed documentation of this project, read our **[User Guide](docs/UserGuide.md)**.
+* For the detailed user documentation of this project, read our **[User Guide](docs/UserGuide.md)**.
+* For the detailed user documentation of this project, read our **[Developer Guide](docs/DeveloperGuide.md)**.
 * This project is based on the AddressBook-Level3 project created by the [SE-EDU initiative](https://se-education.org).
