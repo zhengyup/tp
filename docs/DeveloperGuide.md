@@ -269,32 +269,175 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* has a need to manage a significant number of contacts
+* CS undergraduate
+* is looking for tech internships
+* needs something to organise their internship applications
 * prefer desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
-
+**Value proposition**: provides a fast and organized way to see internships and its progress, optimized for users who prefer a CLI
 
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                        | I want to …​                               | So that I can…​                                                               |
-|----------|--------------------------------|--------------------------------------------|-------------------------------------------------------------------------------|
-| `* *`    | user with many applications    | quickly search for a application           | efficiently find the entry I am looking for                                   |
-| `* *`    | user with diverse applications | categorize companies by industry           | organise my applications better                                               |
-| `* *`    | user with many options         | sort by priority level for my applications | allocate my time and resources efficiently                                    |                                 |
-| `* *`    | conscientious user             | attach notes to each application           | I can jot down important information about the company or application process |
-| `* *`    | organised user                 | sort my applications                       | I can easily get an organised view of my applications                         |
+| Priority | As a …​                     | I want to …​                                                 | So that I can…​                                                    |
+|----------|-----------------------------|--------------------------------------------------------------|--------------------------------------------------------------------|
+| `* * *`  | user                           | log the status of my internship applications                 | keep a record of my internship application                                    |
+| `* * *`  | user                           | see a list of internships that I have applied for            | keep track of all companies/roles I have applied for                          |
+| `* * *`  | user                           | view a specific internship application                       | easily access specific internship applications                                |
+| `* * *`  | user                           | delete an internship application                             | remove internship applications I do not want to track anymore                 |
+| `* * *`  | user                           | update the status of the internships that I have applied for | keep track of the progress of the roles I have applied for                    |
+| `* * *`  | user                           | open the app with a click of a button or an exe/batch file   | save time and easily access the internship tracker                            |
+| `* *`    | diligent user                  | write notes to include background information on the company | easily refresh myself on what the company does before an interview            |
+| `*`      | user with many applications    | include contact details in the internship details            | find who to contact for further updates/information                           |
+| `* *`    | user with many applications    | quickly search for a application                             | efficiently find the entry I am looking for                                   |
+| `* *`    | user with diverse applications | categorize companies by industry                             | organise my applications better                                               |
+| `* *`    | user with many options         | sort by priority level for my applications                   | allocate my time and resources efficiently                                    |                        
+| `* *`    | conscientious user             | attach notes to each application                             | I can jot down important information about the company or application process |
+| `* *`    | organised user                 | sort my applications                                         | I can easily get an organised view of my applications                         |
 
 *{More to be added}*
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is the `LetsGetHired` and the **Actor** is the `User`, unless specified otherwise)
+
+**UC1: Add an internship application**
+
+**MSS**
+
+1.  User enters the details of the internship to be added
+2.  LetsGetHired adds the internship to the list of internships
+3.  LetsGetHired displays the current number of internship applications
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The command format is incorrect
+
+    * 1a1. AddressBook shows an error message, guiding users on the correct format.
+
+      Use case ends.
+
+* 1b. The entered cycle is not acceptable
+
+    * 1e1. AddressBook shows an error message, guiding users on acceptable cycle values.
+
+      Use case ends
+
+* 1c. The entered status is not acceptable
+
+    * 1c1. AddressBook shows an error message, guiding users on acceptable status values.
+
+      Use case ends
+
+**UC2: View the list of internship applications**
+
+**MSS**
+
+1.  User requests to list all internship applications
+2.  LetsGetHired displays all the internship applications
+
+    Use case ends.
+
+**UC3: View an internship application**
+
+**MSS**
+
+1.  User requests to list all internship applications (UC2)
+2.  LetsGetHired displays all the internship applications
+3.  User requests to view a specific internship application
+4.  LetsGetHired displays the required internship application
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty
+
+    Use case ends.
+
+* 3a. The command format is incorrect
+
+    * 3a1. AddressBook shows an error message, guiding users on the correct format.
+
+      Use case ends.
+
+* 3b. The index of internship application entered is incorrect
+
+    * 3b1. AddressBook shows an error message.
+
+      Use case ends.
+
+**UC4: Delete an internship applications**
+
+**MSS**
+
+1.  User requests to list all internship applications (UC2)
+2.  LetsGetHired displays all the internship applications
+3.  User requests to delete a specific internship application
+4.  LetsGetHired deletes the required internship application
+5.  LetsGetHired displays the current number of internship applications
+
+Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty
+      
+  Use case ends.
+
+* 3a. The command format is incorrect
+
+    * 3a1. AddressBook shows an error message, guiding users on the correct format.
+
+      Use case ends.
+
+* 3b. The index of internship application entered is incorrect
+
+    * 3b1. AddressBook shows an error message.
+
+      Use case ends.
+
+**UC5: Update the status of an internship applications**
+
+**MSS**
+
+1.  User requests to list all internship applications (UC2)
+2.  LetsGetHired displays all the internship applications
+3.  User requests to update the status of a specific internship application
+4.  LetsGetHired updates the required internship application
+5.  LetsGetHired displays the updated internship application
+
+Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty
+
+  Use case ends.
+
+* 3a. The command format is incorrect
+
+    * 3a1. AddressBook shows an error message, guiding users on the correct format.
+
+      Use case ends.
+
+* 3b. The index of internship application entered is incorrect
+
+    * 3b1. AddressBook shows an error message.
+
+      Use case ends.  
+
+* 3c. The entered status is not acceptable
+
+    * 3c1. AddressBook shows an error message, guiding users on acceptable status values.
+
+      Use case ends
 
 **UC6: Search for an application**
 
@@ -303,15 +446,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 1.  User provides the search criteria and requests for a search
 2.  LetsGetHired shows a list of matching applications
 
-    Use case ends.
-
-**Extensions**
-
 * 1a. The command format is incorrect.
 
     * 1a1. LetsGetHired shows an error message, guiding users on the correct command format
+      
       Use case resumes at step 1.
-
 
 **UC7: Edit the details of an application**
 
@@ -331,12 +470,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
-* 3a. The given index is invalid.
+* 3a. The given index is invalid
 
     * 3a1. LetsGetHired shows an error message and shows number of current applications.
 
       Use case resumes at step 2.
-  
+
 * 3b. The command format is incorrect.
 
     * 3b1. LetsGetHired shows an error message, guiding users on the correct command format
@@ -398,34 +537,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
-* 3b. The application has no notes. 
-
-    Use case ends.
-  
-* 4a. The given note index is invalid. 
-
-   * 4a1. LetsGetHired shows an error message and shows number of current notes attached to the application.
-
-    Use case resumes at step 3.
-
-* 4b.The command format is incorrect.
-
-    * 4b1. LetsGetHired shows an error message, guiding users on the correct command format.
-
-      Use case resumes at step 3.
-
-**Extensions**
-
-* 2a. The list is empty.
-
-  Use case ends.
-
-* 3a. The given application index is invalid.
-
-    * 3a1. LetsGetHired shows an error message and shows number of current applications.
-
-      Use case resumes at step 2.
-
 * 3b. The application has no notes.
 
   Use case ends.
@@ -434,7 +545,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     * 4a1. LetsGetHired shows an error message and shows number of current notes attached to the application.
 
-  Use case resumes at step 3.
+      Use case resumes at step 3.
 
 * 4b.The command format is incorrect.
 
@@ -450,12 +561,15 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 2.  LetsGetHired sorts and displays the sorted applications
 3.  LetsGetHired displays category applications are sorted in
 
-       Use case ends.
+    Use case ends.
 
 **Extensions**
 
 * 1a. Provided category or order is invalid 
+  
   * 1a1 LetsGetHired shows an error message and shows the valid categories and orders to choose from 
+
+    Use case ends.
 
 
 ### Non-Functional Requirements
