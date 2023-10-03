@@ -346,7 +346,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 1.  User requests to list all internship applications (UC2)
 2.  LetsGetHired displays all the internship applications
-3.  User requests to view a specific internship application, by index value
+3.  User requests to view a specific internship application
 4.  LetsGetHired displays the required internship application
 
 Use case ends.
@@ -375,7 +375,7 @@ Use case ends.
 
 1.  User requests to list all internship applications (UC2)
 2.  LetsGetHired displays all the internship applications
-3.  User requests to delete a specific internship application, by index value
+3.  User requests to delete a specific internship application
 4.  LetsGetHired deletes the required internship application
 5.  LetsGetHired displays the current number of internship applications
 
@@ -405,7 +405,7 @@ Use case ends.
 
 1.  User requests to list all internship applications (UC2)
 2.  LetsGetHired displays all the internship applications
-3.  User requests to update the status of a specific internship application, by index value
+3.  User requests to update the status of a specific internship application
 4.  LetsGetHired updates the required internship application
 5.  LetsGetHired displays the updated internship application
 
