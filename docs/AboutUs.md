@@ -53,7 +53,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 <img src="images/zsh_eng.jpg" width="200px">
 
 [[github](https://github.com/zsh-eng)]
-[[portfolio](team/zsh_eng.md)]
+[[portfolio](team/zsh-eng.md)]
 
 * Role: Developer
 * Responsibilities: Testing
