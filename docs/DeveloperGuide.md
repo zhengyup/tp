@@ -269,56 +269,171 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* has a need to manage a significant number of contacts
+* CS undergraduate
+* is looking for tech internships
+* needs something to organise their internship applications
 * prefer desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
-
+**Value proposition**: provides a fast and organized way to see internships and its progress, optimized for users who prefer a CLI
 
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                 | So that I can…​                                                        |
-|----------|--------------------------------------------|------------------------------|------------------------------------------------------------------------|
-| `* * *`  | new user                                   | see usage instructions       | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person             |                                                                        |
-| `* * *`  | user                                       | delete a person              | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name        | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name         | locate a person easily                                                 |
+| Priority | As a …​                     | I want to …​                                                 | So that I can…​                                                    |
+|----------|-----------------------------|--------------------------------------------------------------|--------------------------------------------------------------------|
+| `* * *`  | user                        | log the status of my internship applications                 | keep a record of my internship application                         |
+| `* * *`  | user                        | see a list of internships that I have applied for            | keep track of all companies/roles I have applied for               |
+| `* * *`  | user                        | view a specific internship application                       | easily access specific internship applications                     |
+| `* * *`  | user                        | delete an internship application                             | remove internship applications I do not want to track anymore      |
+| `* * *`  | user                        | update the status of the internships that I have applied for | keep track of the progress of the roles I have applied for         |
+| `* * *`  | user                        | open the app with a click of a button or an exe/batch file   | save time and easily access the internship tracker                 |
+| `* *`    | diligent user               | write notes to include background information on the company | easily refresh myself on what the company does before an interview |
+| `*`      | user with many applications | include contact details in the internship details            | find who to contact for further updates/information                |
 
 *{More to be added}*
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is the `LetsGetHired` and the **Actor** is the `User`, unless specified otherwise)
 
-**Use case: Delete a person**
+**UC1: Add an internship application**
 
 **MSS**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1.  User enters the details of the internship to be added
+2.  LetsGetHired adds the internship to the list of internships
+3.  LetsGetHired displays the current number of internship applications
 
     Use case ends.
 
 **Extensions**
 
-* 2a. The list is empty.
+* 1a. The command format is incorrect
+
+    * 1a1. AddressBook shows an error message, guiding users on the correct format.
+
+      Use case ends.
+
+* 1b. The entered cycle is not acceptable
+
+    * 1e1. AddressBook shows an error message, guiding users on acceptable cycle values.
+
+      Use case ends
+
+* 1c. The entered status is not acceptable
+
+    * 1c1. AddressBook shows an error message, guiding users on acceptable status values.
+
+      Use case ends
+
+**UC2: View the list of internship applications**
+
+**MSS**
+
+1.  User requests to list all internship applications
+2.  LetsGetHired displays all the internship applications
+
+    Use case ends.
+
+
+**UC3: View an internship application**
+
+**MSS**
+
+1.  User requests to list all internship applications (UC2)
+2.  LetsGetHired displays all the internship applications
+3.  User requests to view a specific internship application, by index value
+4.  LetsGetHired displays the required internship application
+
+Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty
+
+    Use case ends.
+
+* 3a. The command format is incorrect
+
+    * 3a1. AddressBook shows an error message, guiding users on the correct format.
+
+      Use case ends.
+
+* 3b. The index of internship application entered is incorrect
+
+    * 3b1. AddressBook shows an error message.
+
+      Use case ends.
+
+**UC4: Delete an internship applications**
+
+**MSS**
+
+1.  User requests to list all internship applications (UC2)
+2.  LetsGetHired displays all the internship applications
+3.  User requests to delete a specific internship application, by index value
+4.  LetsGetHired deletes the required internship application
+5.  LetsGetHired displays the current number of internship applications
+
+Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty
 
   Use case ends.
 
-* 3a. The given index is invalid.
+* 3a. The command format is incorrect
 
-    * 3a1. AddressBook shows an error message.
+    * 3a1. AddressBook shows an error message, guiding users on the correct format.
 
-      Use case resumes at step 2.
+      Use case ends.
+
+* 3b. The index of internship application entered is incorrect
+
+    * 3b1. AddressBook shows an error message.
+
+      Use case ends.
+
+**UC5: Update the status of an internship applications**
+
+**MSS**
+
+1.  User requests to list all internship applications (UC2)
+2.  LetsGetHired displays all the internship applications
+3.  User requests to update the status of a specific internship application, by index value
+4.  LetsGetHired updates the required internship application
+5.  LetsGetHired displays the updated internship application
+
+Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty
+
+  Use case ends.
+
+* 3a. The command format is incorrect
+
+    * 3a1. AddressBook shows an error message, guiding users on the correct format.
+
+      Use case ends.
+
+* 3b. The index of internship application entered is incorrect
+
+    * 3b1. AddressBook shows an error message.
+
+      Use case ends.
+
+* 3c. The entered status is not acceptable
+
+    * 3c1. AddressBook shows an error message, guiding users on acceptable status values.
+
+      Use case ends
 
 *{More to be added}*
 
