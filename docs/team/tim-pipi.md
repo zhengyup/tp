@@ -21,7 +21,7 @@ To be added
 
 * Documentation:
     * User Guide:
-        * To be added
+        * Updated the User Guide for `v1.1`
     * Developer Guide:
         * To be added
 
