@@ -285,14 +285,19 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 | Priority | As a …​                     | I want to …​                                                 | So that I can…​                                                    |
 |----------|-----------------------------|--------------------------------------------------------------|--------------------------------------------------------------------|
-| `* * *`  | user                        | log the status of my internship applications                 | keep a record of my internship application                         |
-| `* * *`  | user                        | see a list of internships that I have applied for            | keep track of all companies/roles I have applied for               |
-| `* * *`  | user                        | view a specific internship application                       | easily access specific internship applications                     |
-| `* * *`  | user                        | delete an internship application                             | remove internship applications I do not want to track anymore      |
-| `* * *`  | user                        | update the status of the internships that I have applied for | keep track of the progress of the roles I have applied for         |
-| `* * *`  | user                        | open the app with a click of a button or an exe/batch file   | save time and easily access the internship tracker                 |
-| `* *`    | diligent user               | write notes to include background information on the company | easily refresh myself on what the company does before an interview |
-| `*`      | user with many applications | include contact details in the internship details            | find who to contact for further updates/information                |
+| `* * *`  | user                           | log the status of my internship applications                 | keep a record of my internship application                                    |
+| `* * *`  | user                           | see a list of internships that I have applied for            | keep track of all companies/roles I have applied for                          |
+| `* * *`  | user                           | view a specific internship application                       | easily access specific internship applications                                |
+| `* * *`  | user                           | delete an internship application                             | remove internship applications I do not want to track anymore                 |
+| `* * *`  | user                           | update the status of the internships that I have applied for | keep track of the progress of the roles I have applied for                    |
+| `* * *`  | user                           | open the app with a click of a button or an exe/batch file   | save time and easily access the internship tracker                            |
+| `* *`    | diligent user                  | write notes to include background information on the company | easily refresh myself on what the company does before an interview            |
+| `*`      | user with many applications    | include contact details in the internship details            | find who to contact for further updates/information                           |
+| `* *`    | user with many applications    | quickly search for a application                             | efficiently find the entry I am looking for                                   |
+| `* *`    | user with diverse applications | categorize companies by industry                             | organise my applications better                                               |
+| `* *`    | user with many options         | sort by priority level for my applications                   | allocate my time and resources efficiently                                    |                        
+| `* *`    | conscientious user             | attach notes to each application                             | I can jot down important information about the company or application process |
+| `* *`    | organised user                 | sort my applications                                         | I can easily get an organised view of my applications                         |
 
 *{More to be added}*
 
@@ -339,7 +344,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     Use case ends.
 
-
 **UC3: View an internship application**
 
 **MSS**
@@ -349,7 +353,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 3.  User requests to view a specific internship application
 4.  LetsGetHired displays the required internship application
 
-Use case ends.
+    Use case ends.
 
 **Extensions**
 
@@ -384,7 +388,7 @@ Use case ends.
 **Extensions**
 
 * 2a. The list is empty
-
+      
   Use case ends.
 
 * 3a. The command format is incorrect
@@ -427,7 +431,7 @@ Use case ends.
 
     * 3b1. AddressBook shows an error message.
 
-      Use case ends.
+      Use case ends.  
 
 * 3c. The entered status is not acceptable
 
@@ -435,20 +439,169 @@ Use case ends.
 
       Use case ends
 
-*{More to be added}*
+**UC6: Search for an application**
+
+**MSS**
+
+1.  User provides the search criteria and requests for a search
+2.  LetsGetHired shows a list of matching applications
+
+* 1a. The command format is incorrect.
+
+    * 1a1. LetsGetHired shows an error message, guiding users on the correct command format
+      
+      Use case resumes at step 1.
+
+**UC7: Edit the details of an application**
+
+**MSS**
+
+1.  User requests to list applications or <ins>searches for applications (UC6)</ins>
+2.  LetsGetHired shows a list of applications
+3.  User provides new information to update the chosen application
+4.  LetsGetHired updates the application
+5.  LetsGetHired displays the updated application
+
+       Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 3a. The given index is invalid
+
+    * 3a1. LetsGetHired shows an error message and shows number of current applications.
+
+      Use case resumes at step 2.
+
+* 3b. The command format is incorrect.
+
+    * 3b1. LetsGetHired shows an error message, guiding users on the correct command format
+
+      Use case resumes at step 2.
+
+**UC8: Add a note to an application**
+
+**MSS**
+
+1.  User requests to list applications or <ins>searches for applications (UC6)</ins>
+2.  LetsGetHired shows a list of applications
+3.  User provides note to add to specific application
+4.  LetsGetHired adds the note to the application
+5.  LetsGetHired displays the application with the added note
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 3a. The given index is invalid.
+
+    * 3a1. LetsGetHired shows an error message and shows number of current applications.
+
+      Use case resumes at step 2.
+
+* 3b. The command format is incorrect.
+
+    * 3b1. AddressBook shows an error message, guiding users on the correct command format
+
+      Use case resumes at step 2.
+
+**UC9: Delete a note on an application**
+
+**MSS**
+
+1.  User requests to list applications or <ins>searches for applications (UC6)</ins>
+2.  LetsGetHired shows a list of applications
+3.  User requests to view a specific application
+4.  User requests to delete a specific note from a specific application
+5.  LetsGetHired deletes the note from the application
+6.  LetsGetHired displays the application with the updated list of notes
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 3a. The given application index is invalid.
+
+    * 3a1. LetsGetHired shows an error message and shows number of current applications.
+
+      Use case resumes at step 2.
+
+* 3b. The application has no notes.
+
+  Use case ends.
+
+* 4a. The given note index is invalid.
+
+    * 4a1. LetsGetHired shows an error message and shows number of current notes attached to the application.
+
+      Use case resumes at step 3.
+
+* 4b.The command format is incorrect.
+
+    * 4b1. LetsGetHired shows an error message, guiding users on the correct command format.
+
+      Use case resumes at step 3.
+
+**UC10: Sort Applications**
+
+**MSS**
+
+1.  User requests to sort the applications by provided category and order
+2.  LetsGetHired sorts and displays the sorted applications
+3.  LetsGetHired displays category applications are sorted in
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. Provided category or order is invalid 
+  
+  * 1a1 LetsGetHired shows an error message and shows the valid categories and orders to choose from 
+
+    Use case ends.
+
 
 ### Non-Functional Requirements
 
-1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
-2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
-3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+#### Technical
+
+* Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
+* The system should not require an internet connection to operate.
+
+#### Performance
+
+* Should be able to hold up to 1000 internships without a noticeable sluggishness in performance for typical usage.
+* The system should respond to user interactions within 1 second for normal operations (e.g. adding an internship, searching for an internship) for a smooth user experience.
+
+#### Usability
+
+* A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+* Users should be able to use shortcuts for frequently performed tasks to save time.
+
+#### Privacy
+
+* A user's application info should be stored offline, and not uploaded to any form of cloud storage.
+
 
 *{More to be added}*
 
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
-* **Private contact detail**: A contact detail that is not meant to be shared with others
+* **Internship Entry:** A record or entry in the system that represents information about an internship opportunity. It includes details such as company name, application status, deadlines, and notes.
+* **Application Status:** The current stage or status of an internship application.
+* **Sample Data:** Pre-populated data used for demonstration purposes, enabling new users to see how the application functions with realistic examples.
 
 --------------------------------------------------------------------------------------------------------------------
 
