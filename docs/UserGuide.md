@@ -22,7 +22,7 @@ optimised for users who prefer a Command Line Interface (CLI) while still having
 
 1. Copy the file to the folder you want to use as the _home folder_ for your LetsGetHired application.
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar addressbook.jar` command to run the application.<br>
+1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar letsgethired.jar` command to run the application.<br>
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/Ui.png)
 
@@ -182,7 +182,7 @@ LetsGetHired data are saved in the hard disk automatically after any command tha
 
 ### Editing the data file
 
-AddressBook data are saved automatically as a JSON file `[JAR file location]/data/letsgethired.json`. Advanced users are welcome to update data directly by editing that data file.
+LetsGetHired data are saved automatically as a JSON file `[JAR file location]/data/letsgethired.json`. Advanced users are welcome to update data directly by editing that data file.
 
 <box type="warning" seamless>
 
@@ -207,11 +207,11 @@ If your changes to the data file makes its format invalid, LetsGetHired will dis
 
 ## Command summary
 
-| Action     | Format, Examples                                                                                                                |
-|------------|---------------------------------------------------------------------------------------------------------------------------------|
-| **Add**    | `add c/CYCLE r/PHONE_NUMBER n/COMPANY_NAME [s/STATUS]` <br> e.g., `add c/Summer r/Full Stack Developer n/John street s/Applied` |
-| **View**   | `view INDEX`<br> e.g., `view 3`                                                                                                 |
-| **Tag**    | `tag INDEX`<br> e.g.,`tag 2 s/Applied`                                                                                          |
-| **Delete** | `delete INDEX`<br> e.g., `delete 1`                                                                                             |
-| **List**   | `list`                                                                                                                          |
-| **Help**   | `help`                                                                                                                          |
+| Action     | Format, Examples                                                                                                        |
+|------------|-------------------------------------------------------------------------------------------------------------------------|
+| **Add**    | `add c/CYCLE r/ROLE n/COMPANY_NAME [s/STATUS]` <br> e.g., `add c/Summer r/Full Stack Developer n/John street s/Applied` |
+| **View**   | `view INDEX`<br> e.g., `view 3`                                                                                         |
+| **Tag**    | `tag INDEX`<br> e.g.,`tag 2 s/Applied`                                                                                  |
+| **Delete** | `delete INDEX`<br> e.g., `delete 1`                                                                                     |
+| **List**   | `list`                                                                                                                  |
+| **Help**   | `help`                                                                                                                  |
