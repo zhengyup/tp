@@ -50,7 +50,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Zhi Sheng
 
-<img src="images/zsh_eng.jpg" width="200px">
+<img src="images/zsh-eng.png" width="200px">
 
 [[github](https://github.com/zsh-eng)]
 [[portfolio](team/zsh_eng.md)]
