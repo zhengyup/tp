@@ -9,7 +9,7 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.internApplication.InternApplication;
+import seedu.address.model.application.InternApplication;
 
 /**
  * Deletes a person identified using it's displayed index from the address book.
@@ -42,7 +42,8 @@ public class DeleteCommand extends Command {
 
         InternApplication internApplicationToDelete = lastShownList.get(targetIndex.getZeroBased());
         model.deletePerson(internApplicationToDelete);
-        return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, Messages.format(internApplicationToDelete)));
+        return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS,
+                Messages.format(internApplicationToDelete)));
     }
 
     @Override

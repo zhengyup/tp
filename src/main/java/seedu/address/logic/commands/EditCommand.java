@@ -21,11 +21,11 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.internApplication.Address;
-import seedu.address.model.internApplication.Email;
-import seedu.address.model.internApplication.InternApplication;
-import seedu.address.model.internApplication.Name;
-import seedu.address.model.internApplication.Phone;
+import seedu.address.model.application.Address;
+import seedu.address.model.application.Email;
+import seedu.address.model.application.InternApplication;
+import seedu.address.model.application.Name;
+import seedu.address.model.application.Phone;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -79,7 +79,8 @@ public class EditCommand extends Command {
         InternApplication internApplicationToEdit = lastShownList.get(index.getZeroBased());
         InternApplication editedInternApplication = createEditedPerson(internApplicationToEdit, editPersonDescriptor);
 
-        if (!internApplicationToEdit.isSameApplication(editedInternApplication) && model.hasPerson(editedInternApplication)) {
+        if (!internApplicationToEdit.isSameApplication(editedInternApplication)
+                && model.hasPerson(editedInternApplication)) {
             throw new CommandException(MESSAGE_DUPLICATE_PERSON);
         }
 
@@ -92,7 +93,8 @@ public class EditCommand extends Command {
      * Creates and returns a {@code Person} with the details of {@code personToEdit}
      * edited with {@code editPersonDescriptor}.
      */
-    private static InternApplication createEditedPerson(InternApplication internApplicationToEdit, EditPersonDescriptor editPersonDescriptor) {
+    private static InternApplication createEditedPerson(InternApplication internApplicationToEdit,
+                                                        EditPersonDescriptor editPersonDescriptor) {
         assert internApplicationToEdit != null;
 
         Name updatedName = editPersonDescriptor.getName().orElse(internApplicationToEdit.getName());

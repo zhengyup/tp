@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import seedu.address.logic.parser.Prefix;
-import seedu.address.model.internApplication.InternApplication;
+import seedu.address.model.application.InternApplication;
 
 /**
  * Container for user visible messages.

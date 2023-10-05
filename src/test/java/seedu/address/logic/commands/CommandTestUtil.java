@@ -17,8 +17,8 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.InternTracker;
 import seedu.address.model.Model;
-import seedu.address.model.internApplication.NameContainsKeywordsPredicate;
-import seedu.address.model.internApplication.InternApplication;
+import seedu.address.model.application.InternApplication;
+import seedu.address.model.application.NameContainsKeywordsPredicate;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 
 /**

@@ -1,4 +1,4 @@
-package seedu.address.model.internApplication.exceptions;
+package seedu.address.model.application.exceptions;
 
 /**
  * Signals that the operation will result in duplicate InternApplications (InternApplications are considered

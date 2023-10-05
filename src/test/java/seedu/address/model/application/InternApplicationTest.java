@@ -1,4 +1,4 @@
-package seedu.address.model.internApplication;
+package seedu.address.model.application;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -33,7 +33,8 @@ public class InternApplicationTest {
         assertFalse(ALICE.isSameApplication(null));
 
         // same name, all other attributes different -> returns true
-        InternApplication editedAlice = new InternApplicationBuilder(ALICE).withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB)
+        InternApplication editedAlice = new InternApplicationBuilder(ALICE).withPhone(VALID_PHONE_BOB)
+                .withEmail(VALID_EMAIL_BOB)
                 .withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND).build();
         assertTrue(ALICE.isSameApplication(editedAlice));
 
@@ -92,8 +93,10 @@ public class InternApplicationTest {
 
     @Test
     public void toStringMethod() {
-        String expected = InternApplication.class.getCanonicalName() + "{name=" + ALICE.getName() + ", phone=" + ALICE.getPhone()
-                + ", email=" + ALICE.getEmail() + ", address=" + ALICE.getAddress() + ", tags=" + ALICE.getTags() + "}";
+        String expected = InternApplication.class.getCanonicalName() + "{name=" + ALICE.getName()
+                + ", phone=" + ALICE.getPhone()
+                + ", email=" + ALICE.getEmail() + ", address=" + ALICE.getAddress() + ", tags="
+                + ALICE.getTags() + "}";
         assertEquals(expected, ALICE.toString());
     }
 }

@@ -11,13 +11,13 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.InternTracker;
 import seedu.address.model.ReadOnlyAddressBook;
-import seedu.address.model.internApplication.InternApplication;
+import seedu.address.model.application.InternApplication;
 
 /**
- * An Immutable AddressBook that is serializable to JSON format.
+ * An Immutable InternTracker that is serializable to JSON format.
  */
-@JsonRootName(value = "addressbook")
-class JsonSerializableAddressBook {
+@JsonRootName(value = "internTracker")
+class JsonSerializableInternTracker {
 
     public static final String MESSAGE_DUPLICATE_PERSON = "Persons list contains duplicate person(s).";
 
@@ -27,21 +27,22 @@ class JsonSerializableAddressBook {
      * Constructs a {@code JsonSerializableAddressBook} with the given persons.
      */
     @JsonCreator
-    public JsonSerializableAddressBook(@JsonProperty("persons") List<JsonAdaptedInternApplication> persons) {
+    public JsonSerializableInternTracker(@JsonProperty("persons") List<JsonAdaptedInternApplication> persons) {
         this.persons.addAll(persons);
     }
 
     /**
      * Converts a given {@code ReadOnlyAddressBook} into this class for Jackson use.
      *
-     * @param source future changes to this will not affect the created {@code JsonSerializableAddressBook}.
+     * @param source future changes to this will not affect the created {@code JsonSerializableInternTracker}.
      */
-    public JsonSerializableAddressBook(ReadOnlyAddressBook source) {
-        persons.addAll(source.getApplicationList().stream().map(JsonAdaptedInternApplication::new).collect(Collectors.toList()));
+    public JsonSerializableInternTracker(ReadOnlyAddressBook source) {
+        persons.addAll(source.getApplicationList().stream().map(JsonAdaptedInternApplication::new)
+                .collect(Collectors.toList()));
     }
 
     /**
-     * Converts this address book into the model's {@code AddressBook} object.
+     * Converts this intern tracker into the model's {@code InternTracker} object.
      *
      * @throws IllegalValueException if there were any data constraints violated.
      */
@@ -56,5 +57,4 @@ class JsonSerializableAddressBook {
         }
         return internTracker;
     }
-
 }

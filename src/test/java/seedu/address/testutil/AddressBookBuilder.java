@@ -1,7 +1,7 @@
 package seedu.address.testutil;
 
 import seedu.address.model.InternTracker;
-import seedu.address.model.internApplication.InternApplication;
+import seedu.address.model.application.InternApplication;
 
 /**
  * A utility class to help with building Addressbook objects.

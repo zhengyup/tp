@@ -22,7 +22,7 @@ import seedu.address.model.InternTracker;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
-import seedu.address.model.internApplication.InternApplication;
+import seedu.address.model.application.InternApplication;
 import seedu.address.testutil.InternApplicationBuilder;
 
 public class AddCommandTest {

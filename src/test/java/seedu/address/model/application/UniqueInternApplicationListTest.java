@@ -1,4 +1,4 @@
-package seedu.address.model.internApplication;
+package seedu.address.model.application;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -15,8 +15,8 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.model.internApplication.exceptions.DuplicateApplicationException;
-import seedu.address.model.internApplication.exceptions.ApplicationNotFoundException;
+import seedu.address.model.application.exceptions.ApplicationNotFoundException;
+import seedu.address.model.application.exceptions.DuplicateApplicationException;
 import seedu.address.testutil.InternApplicationBuilder;
 
 public class UniqueInternApplicationListTest {
@@ -42,7 +42,8 @@ public class UniqueInternApplicationListTest {
     @Test
     public void contains_personWithSameIdentityFieldsInList_returnsTrue() {
         uniqueApplicationList.add(ALICE);
-        InternApplication editedAlice = new InternApplicationBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
+        InternApplication editedAlice = new InternApplicationBuilder(ALICE)
+                .withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
                 .build();
         assertTrue(uniqueApplicationList.contains(editedAlice));
     }
@@ -65,7 +66,8 @@ public class UniqueInternApplicationListTest {
 
     @Test
     public void setPerson_nullEditedPerson_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> uniqueApplicationList.setApplication(ALICE, null));
+        assertThrows(NullPointerException.class, () -> uniqueApplicationList.setApplication(ALICE,
+                null));
     }
 
     @Test
@@ -85,7 +87,8 @@ public class UniqueInternApplicationListTest {
     @Test
     public void setPerson_editedPersonHasSameIdentity_success() {
         uniqueApplicationList.add(ALICE);
-        InternApplication editedAlice = new InternApplicationBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
+        InternApplication editedAlice = new InternApplicationBuilder(ALICE).withAddress(VALID_ADDRESS_BOB)
+                .withTags(VALID_TAG_HUSBAND)
                 .build();
         uniqueApplicationList.setApplication(ALICE, editedAlice);
         UniqueApplicationList expectedUniqueApplicationList = new UniqueApplicationList();
@@ -129,7 +132,8 @@ public class UniqueInternApplicationListTest {
 
     @Test
     public void setPersons_nullUniquePersonList_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> uniqueApplicationList.setApplications((UniqueApplicationList) null));
+        assertThrows(NullPointerException.class, () -> uniqueApplicationList
+                .setApplications((UniqueApplicationList) null));
     }
 
     @Test
@@ -143,7 +147,8 @@ public class UniqueInternApplicationListTest {
 
     @Test
     public void setPersons_nullList_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> uniqueApplicationList.setApplications((List<InternApplication>) null));
+        assertThrows(NullPointerException.class, () -> uniqueApplicationList
+                .setApplications((List<InternApplication>) null));
     }
 
     @Test
@@ -159,7 +164,8 @@ public class UniqueInternApplicationListTest {
     @Test
     public void setPersons_listWithDuplicatePersons_throwsDuplicatePersonException() {
         List<InternApplication> listWithDuplicateInternApplications = Arrays.asList(ALICE, ALICE);
-        assertThrows(DuplicateApplicationException.class, () -> uniqueApplicationList.setApplications(listWithDuplicateInternApplications));
+        assertThrows(DuplicateApplicationException.class, () -> uniqueApplicationList
+                .setApplications(listWithDuplicateInternApplications));
     }
 
     @Test
@@ -170,6 +176,7 @@ public class UniqueInternApplicationListTest {
 
     @Test
     public void toStringMethod() {
-        assertEquals(uniqueApplicationList.asUnmodifiableObservableList().toString(), uniqueApplicationList.toString());
+        assertEquals(uniqueApplicationList.asUnmodifiableObservableList().toString(),
+                uniqueApplicationList.toString());
     }
 }

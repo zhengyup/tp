@@ -17,7 +17,7 @@ import seedu.address.logic.Messages;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
-import seedu.address.model.internApplication.InternApplication;
+import seedu.address.model.application.InternApplication;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for
@@ -29,7 +29,8 @@ public class DeleteCommandTest {
 
     @Test
     public void execute_validIndexUnfilteredList_success() {
-        InternApplication internApplicationToDelete = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
+        InternApplication internApplicationToDelete = model.getFilteredPersonList().get(INDEX_FIRST_PERSON
+                .getZeroBased());
         DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_PERSON);
 
         String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS,
@@ -53,7 +54,8 @@ public class DeleteCommandTest {
     public void execute_validIndexFilteredList_success() {
         showPersonAtIndex(model, INDEX_FIRST_PERSON);
 
-        InternApplication internApplicationToDelete = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
+        InternApplication internApplicationToDelete = model.getFilteredPersonList().get(INDEX_FIRST_PERSON
+                .getZeroBased());
         DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_PERSON);
 
         String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS,

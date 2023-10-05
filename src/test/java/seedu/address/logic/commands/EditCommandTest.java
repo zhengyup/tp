@@ -24,7 +24,7 @@ import seedu.address.model.InternTracker;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
-import seedu.address.model.internApplication.InternApplication;
+import seedu.address.model.application.InternApplication;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 import seedu.address.testutil.InternApplicationBuilder;
 
@@ -41,7 +41,8 @@ public class EditCommandTest {
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder(editedInternApplication).build();
         EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON, descriptor);
 
-        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedInternApplication));
+        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, Messages
+                .format(editedInternApplication));
 
         Model expectedModel = new ModelManager(new InternTracker(model.getAddressBook()), new UserPrefs());
         expectedModel.setPerson(model.getFilteredPersonList().get(0), editedInternApplication);
@@ -52,17 +53,20 @@ public class EditCommandTest {
     @Test
     public void execute_someFieldsSpecifiedUnfilteredList_success() {
         Index indexLastPerson = Index.fromOneBased(model.getFilteredPersonList().size());
-        InternApplication lastInternApplication = model.getFilteredPersonList().get(indexLastPerson.getZeroBased());
+        InternApplication lastInternApplication = model.getFilteredPersonList()
+                .get(indexLastPerson.getZeroBased());
 
         InternApplicationBuilder personInList = new InternApplicationBuilder(lastInternApplication);
-        InternApplication editedInternApplication = personInList.withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB)
+        InternApplication editedInternApplication = personInList.withName(VALID_NAME_BOB)
+                .withPhone(VALID_PHONE_BOB)
                 .withTags(VALID_TAG_HUSBAND).build();
 
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB)
                 .withPhone(VALID_PHONE_BOB).withTags(VALID_TAG_HUSBAND).build();
         EditCommand editCommand = new EditCommand(indexLastPerson, descriptor);
 
-        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedInternApplication));
+        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS,
+                Messages.format(editedInternApplication));
 
         Model expectedModel = new ModelManager(new InternTracker(model.getAddressBook()), new UserPrefs());
         expectedModel.setPerson(lastInternApplication, editedInternApplication);
@@ -73,9 +77,11 @@ public class EditCommandTest {
     @Test
     public void execute_noFieldSpecifiedUnfilteredList_success() {
         EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON, new EditPersonDescriptor());
-        InternApplication editedInternApplication = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
+        InternApplication editedInternApplication = model.getFilteredPersonList()
+                .get(INDEX_FIRST_PERSON.getZeroBased());
 
-        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedInternApplication));
+        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, Messages
+                .format(editedInternApplication));
 
         Model expectedModel = new ModelManager(new InternTracker(model.getAddressBook()), new UserPrefs());
 
@@ -86,12 +92,15 @@ public class EditCommandTest {
     public void execute_filteredList_success() {
         showPersonAtIndex(model, INDEX_FIRST_PERSON);
 
-        InternApplication internApplicationInFilteredList = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
-        InternApplication editedInternApplication = new InternApplicationBuilder(internApplicationInFilteredList).withName(VALID_NAME_BOB).build();
+        InternApplication internApplicationInFilteredList = model.getFilteredPersonList()
+                .get(INDEX_FIRST_PERSON.getZeroBased());
+        InternApplication editedInternApplication = new InternApplicationBuilder(internApplicationInFilteredList)
+                .withName(VALID_NAME_BOB).build();
         EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON,
                 new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB).build());
 
-        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedInternApplication));
+        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS,
+                Messages.format(editedInternApplication));
 
         Model expectedModel = new ModelManager(new InternTracker(model.getAddressBook()), new UserPrefs());
         expectedModel.setPerson(model.getFilteredPersonList().get(0), editedInternApplication);
@@ -101,7 +110,8 @@ public class EditCommandTest {
 
     @Test
     public void execute_duplicatePersonUnfilteredList_failure() {
-        InternApplication firstInternApplication = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
+        InternApplication firstInternApplication = model.getFilteredPersonList()
+                .get(INDEX_FIRST_PERSON.getZeroBased());
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder(firstInternApplication).build();
         EditCommand editCommand = new EditCommand(INDEX_SECOND_PERSON, descriptor);
 
@@ -113,7 +123,8 @@ public class EditCommandTest {
         showPersonAtIndex(model, INDEX_FIRST_PERSON);
 
         // edit person in filtered list into a duplicate in address book
-        InternApplication internApplicationInList = model.getAddressBook().getApplicationList().get(INDEX_SECOND_PERSON.getZeroBased());
+        InternApplication internApplicationInList = model.getAddressBook().getApplicationList()
+                .get(INDEX_SECOND_PERSON.getZeroBased());
         EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON,
                 new EditPersonDescriptorBuilder(internApplicationInList).build());
 

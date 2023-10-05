@@ -6,11 +6,11 @@ import java.util.stream.Collectors;
 
 import seedu.address.model.InternTracker;
 import seedu.address.model.ReadOnlyAddressBook;
-import seedu.address.model.internApplication.Address;
-import seedu.address.model.internApplication.Email;
-import seedu.address.model.internApplication.InternApplication;
-import seedu.address.model.internApplication.Name;
-import seedu.address.model.internApplication.Phone;
+import seedu.address.model.application.Address;
+import seedu.address.model.application.Email;
+import seedu.address.model.application.InternApplication;
+import seedu.address.model.application.Name;
+import seedu.address.model.application.Phone;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -25,7 +25,8 @@ public class SampleDataUtil {
             new InternApplication(new Name("Bernice Yu"), new Phone("99272758"), new Email("berniceyu@example.com"),
                 new Address("Blk 30 Lorong 3 Serangoon Gardens, #07-18"),
                 getTagSet("colleagues", "friends")),
-            new InternApplication(new Name("Charlotte Oliveiro"), new Phone("93210283"), new Email("charlotte@example.com"),
+            new InternApplication(new Name("Charlotte Oliveiro"), new Phone("93210283"),
+                    new Email("charlotte@example.com"),
                 new Address("Blk 11 Ang Mo Kio Street 74, #11-04"),
                 getTagSet("neighbours")),
             new InternApplication(new Name("David Li"), new Phone("91031282"), new Email("lidavid@example.com"),

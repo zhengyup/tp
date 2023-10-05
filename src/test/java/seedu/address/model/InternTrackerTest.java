@@ -18,8 +18,8 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.model.internApplication.InternApplication;
-import seedu.address.model.internApplication.exceptions.DuplicateApplicationException;
+import seedu.address.model.application.InternApplication;
+import seedu.address.model.application.exceptions.DuplicateApplicationException;
 import seedu.address.testutil.InternApplicationBuilder;
 
 public class InternTrackerTest {
@@ -46,7 +46,8 @@ public class InternTrackerTest {
     @Test
     public void resetData_withDuplicatePersons_throwsDuplicatePersonException() {
         // Two persons with the same identity fields
-        InternApplication editedAlice = new InternApplicationBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
+        InternApplication editedAlice = new InternApplicationBuilder(ALICE).withAddress(VALID_ADDRESS_BOB)
+                .withTags(VALID_TAG_HUSBAND)
                 .build();
         List<InternApplication> newInternApplications = Arrays.asList(ALICE, editedAlice);
         AddressBookStub newData = new AddressBookStub(newInternApplications);
@@ -73,7 +74,8 @@ public class InternTrackerTest {
     @Test
     public void hasPerson_personWithSameIdentityFieldsInAddressBook_returnsTrue() {
         internTracker.addApplication(ALICE);
-        InternApplication editedAlice = new InternApplicationBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
+        InternApplication editedAlice = new InternApplicationBuilder(ALICE).withAddress(VALID_ADDRESS_BOB)
+                .withTags(VALID_TAG_HUSBAND)
                 .build();
         assertTrue(internTracker.hasApplication(editedAlice));
     }
@@ -85,7 +87,8 @@ public class InternTrackerTest {
 
     @Test
     public void toStringMethod() {
-        String expected = InternTracker.class.getCanonicalName() + "{persons=" + internTracker.getApplicationList() + "}";
+        String expected = InternTracker.class.getCanonicalName() + "{persons=" + internTracker
+                .getApplicationList() + "}";
         assertEquals(expected, internTracker.toString());
     }
 

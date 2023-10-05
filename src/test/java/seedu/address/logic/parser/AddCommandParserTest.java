@@ -37,11 +37,11 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.AddCommand;
-import seedu.address.model.internApplication.Address;
-import seedu.address.model.internApplication.Email;
-import seedu.address.model.internApplication.InternApplication;
-import seedu.address.model.internApplication.Name;
-import seedu.address.model.internApplication.Phone;
+import seedu.address.model.application.Address;
+import seedu.address.model.application.Email;
+import seedu.address.model.application.InternApplication;
+import seedu.address.model.application.Name;
+import seedu.address.model.application.Phone;
 import seedu.address.model.tag.Tag;
 import seedu.address.testutil.InternApplicationBuilder;
 
@@ -50,7 +50,8 @@ public class AddCommandParserTest {
 
     @Test
     public void parse_allFieldsPresent_success() {
-        InternApplication expectedInternApplication = new InternApplicationBuilder(BOB).withTags(VALID_TAG_FRIEND).build();
+        InternApplication expectedInternApplication = new InternApplicationBuilder(BOB).withTags(VALID_TAG_FRIEND)
+                .build();
 
         // whitespace only preamble
         assertParseSuccess(parser, PREAMBLE_WHITESPACE + NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
@@ -58,10 +59,12 @@ public class AddCommandParserTest {
 
 
         // multiple tags - all accepted
-        InternApplication expectedInternApplicationMultipleTags = new InternApplicationBuilder(BOB).withTags(VALID_TAG_FRIEND, VALID_TAG_HUSBAND)
+        InternApplication expectedInternApplicationMultipleTags = new InternApplicationBuilder(BOB)
+                .withTags(VALID_TAG_FRIEND, VALID_TAG_HUSBAND)
                 .build();
         assertParseSuccess(parser,
-                NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB + TAG_DESC_HUSBAND + TAG_DESC_FRIEND,
+                NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB + TAG_DESC_HUSBAND
+                        + TAG_DESC_FRIEND,
                 new AddCommand(expectedInternApplicationMultipleTags));
     }
 

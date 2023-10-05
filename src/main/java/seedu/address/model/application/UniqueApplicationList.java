@@ -1,4 +1,4 @@
-package seedu.address.model.internApplication;
+package seedu.address.model.application;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
@@ -8,8 +8,9 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.model.internApplication.exceptions.DuplicateApplicationException;
-import seedu.address.model.internApplication.exceptions.ApplicationNotFoundException;
+import seedu.address.model.application.exceptions.ApplicationNotFoundException;
+import seedu.address.model.application.exceptions.DuplicateApplicationException;
+
 
 /**
  * A list of applications that enforces uniqueness between its elements and does not allow nulls.
