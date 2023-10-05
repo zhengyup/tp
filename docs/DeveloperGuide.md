@@ -283,21 +283,21 @@ _{Explain here how the data archiving feature will be implemented}_
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                     | I want to …​                                                 | So that I can…​                                                    |
-|----------|-----------------------------|--------------------------------------------------------------|--------------------------------------------------------------------|
-| `* * *`  | user                           | log the status of my internship applications                 | keep a record of my internship application                                    |
-| `* * *`  | user                           | see a list of internships that I have applied for            | keep track of all companies/roles I have applied for                          |
-| `* * *`  | user                           | view a specific internship application                       | easily access specific internship applications                                |
-| `* * *`  | user                           | delete an internship application                             | remove internship applications I do not want to track anymore                 |
-| `* * *`  | user                           | update the status of the internships that I have applied for | keep track of the progress of the roles I have applied for                    |
-| `* * *`  | user                           | open the app with a click of a button or an exe/batch file   | save time and easily access the internship tracker                            |
-| `* *`    | diligent user                  | write notes to include background information on the company | easily refresh myself on what the company does before an interview            |
-| `*`      | user with many applications    | include contact details in the internship details            | find who to contact for further updates/information                           |
-| `* *`    | user with many applications    | quickly search for a application                             | efficiently find the entry I am looking for                                   |
-| `* *`    | user with diverse applications | categorize companies by industry                             | organise my applications better                                               |
-| `* *`    | user with many options         | sort by priority level for my applications                   | allocate my time and resources efficiently                                    |                        
-| `* *`    | conscientious user             | attach notes to each application                             | I can jot down important information about the company or application process |
-| `* *`    | organised user                 | sort my applications                                         | I can easily get an organised view of my applications                         |
+| Priority | As a …​                        | I want to …​                                                 | So that I can…​                                                                 |
+|----------|--------------------------------|--------------------------------------------------------------|---------------------------------------------------------------------------------|
+| `* * *`  | user                           | log the status of my internship applications                 | keep a record of my internship application                                      |
+| `* * *`  | user                           | see a list of internships that I have applied for            | keep track of all companies/roles I have applied for                            |
+| `* * *`  | user                           | view a specific internship application                       | easily access specific internship applications                                  |
+| `* * *`  | user                           | delete an internship application                             | remove internship applications I do not want to track anymore                   |
+| `* * *`  | user                           | update the status of the internships that I have applied for | keep track of the progress of the roles I have applied for                      |
+| `* * *`  | user                           | open the app with a click of a button or an exe/batch file   | save time and easily access the internship tracker                              |
+| `* *`    | diligent user                  | write notes to include background information on the company | easily refresh myself on what the company does before an interview              |
+| `*`      | user with many applications    | include contact details in the internship details            | find who to contact for further updates/information                             |
+| `* *`    | user with many applications    | quickly search for a application                             | efficiently find the entry I am looking for                                     |
+| `* *`    | user with diverse applications | categorize companies by industry                             | organise my applications better                                                 |
+| `* *`    | user with many options         | sort by priority level for my applications                   | allocate my time and resources efficiently                                      |                        
+| `* *`    | conscientious user             | attach notes to each application                             | I can jot down important information about the company or application process   |
+| `* *`    | organised user                 | sort my applications                                         | I can easily get an organised view of my applications                           |
 
 *{More to be added}*
 
@@ -348,7 +348,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User requests to list all internship applications (UC2)
+1.  User requests to <ins>list all internship applications (UC2)</ins>
 2.  LetsGetHired displays all the internship applications
 3.  User requests to view a specific internship application
 4.  LetsGetHired displays the required internship application
@@ -373,11 +373,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-**UC4: Delete an internship applications**
+**UC4: Delete an internship application**
 
 **MSS**
 
-1.  User requests to list all internship applications (UC2)
+1.  User requests to <ins>list all internship applications (UC2)</ins>
 2.  LetsGetHired displays all the internship applications
 3.  User requests to delete a specific internship application
 4.  LetsGetHired deletes the required internship application
@@ -407,7 +407,7 @@ Use case ends.
 
 **MSS**
 
-1.  User requests to list all internship applications (UC2)
+1.  User requests to <ins>list all internship applications (UC2)</ins>
 2.  LetsGetHired displays all the internship applications
 3.  User requests to update the status of a specific internship application
 4.  LetsGetHired updates the required internship application
@@ -456,7 +456,7 @@ Use case ends.
 
 **MSS**
 
-1.  User requests to list applications or <ins>searches for applications (UC6)</ins>
+1.  User requests to <ins>list all internship applications (UC2)</ins>
 2.  LetsGetHired shows a list of applications
 3.  User provides new information to update the chosen application
 4.  LetsGetHired updates the application
@@ -486,7 +486,7 @@ Use case ends.
 
 **MSS**
 
-1.  User requests to list applications or <ins>searches for applications (UC6)</ins>
+1.  User requests to <ins>list all internship applications (UC2)</ins>
 2.  LetsGetHired shows a list of applications
 3.  User provides note to add to specific application
 4.  LetsGetHired adds the note to the application
@@ -516,42 +516,31 @@ Use case ends.
 
 **MSS**
 
-1.  User requests to list applications or <ins>searches for applications (UC6)</ins>
-2.  LetsGetHired shows a list of applications
-3.  User requests to view a specific application
-4.  User requests to delete a specific note from a specific application
-5.  LetsGetHired deletes the note from the application
-6.  LetsGetHired displays the application with the updated list of notes
+1.  User requests to <ins>view a specific application (UC3)</ins>
+2.  User requests to delete a specific note from the application
+3.  LetsGetHired deletes the note from the application 
+4.  LetsGetHired displays the application with the updated list of notes
 
     Use case ends.
 
 **Extensions**
 
-* 2a. The list is empty.
+
+* 1a. The application has no notes.
 
   Use case ends.
 
-* 3a. The given application index is invalid.
+* 2a. The given note index is invalid.
 
-    * 3a1. LetsGetHired shows an error message and shows number of current applications.
-
-      Use case resumes at step 2.
-
-* 3b. The application has no notes.
-
-  Use case ends.
-
-* 4a. The given note index is invalid.
-
-    * 4a1. LetsGetHired shows an error message and shows number of current notes attached to the application.
+    * 2a1. LetsGetHired shows an error message and shows number of current notes attached to the application.
 
       Use case resumes at step 3.
 
-* 4b.The command format is incorrect.
+* 2b.The command format is incorrect.
 
-    * 4b1. LetsGetHired shows an error message, guiding users on the correct command format.
+    * 2b1. LetsGetHired shows an error message, guiding users on the correct command format.
 
-      Use case resumes at step 3.
+      Use case resumes at step 1.
 
 **UC10: Sort Applications**
 
