@@ -26,7 +26,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.internApplication.InternApplication;
 import seedu.address.model.internApplication.NameContainsKeywordsPredicate;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
-import seedu.address.testutil.PersonBuilder;
+import seedu.address.testutil.InternApplicationBuilder;
 import seedu.address.testutil.PersonUtil;
 
 public class InternTrackerParserTest {
@@ -35,7 +35,7 @@ public class InternTrackerParserTest {
 
     @Test
     public void parseCommand_add() throws Exception {
-        InternApplication internApplication = new PersonBuilder().build();
+        InternApplication internApplication = new InternApplicationBuilder().build();
         AddCommand command = (AddCommand) parser.parseCommand(PersonUtil.getAddCommand(internApplication));
         assertEquals(new AddCommand(internApplication), command);
     }
@@ -55,7 +55,7 @@ public class InternTrackerParserTest {
 
     @Test
     public void parseCommand_edit() throws Exception {
-        InternApplication internApplication = new PersonBuilder().build();
+        InternApplication internApplication = new InternApplicationBuilder().build();
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder(internApplication).build();
         EditCommand command = (EditCommand) parser.parseCommand(EditCommand.COMMAND_WORD + " "
                 + INDEX_FIRST_PERSON.getOneBased() + " " + PersonUtil.getEditPersonDescriptorDetails(descriptor));

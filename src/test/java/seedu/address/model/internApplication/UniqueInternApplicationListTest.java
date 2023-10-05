@@ -1,4 +1,4 @@
-package seedu.address.model.person;
+package seedu.address.model.internApplication;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -6,8 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalPersons.ALICE;
-import static seedu.address.testutil.TypicalPersons.BOB;
+import static seedu.address.testutil.TypicalInternApplications.ALICE;
+import static seedu.address.testutil.TypicalInternApplications.BOB;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -15,11 +15,9 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.model.internApplication.InternApplication;
-import seedu.address.model.internApplication.UniqueApplicationList;
 import seedu.address.model.internApplication.exceptions.DuplicateApplicationException;
 import seedu.address.model.internApplication.exceptions.ApplicationNotFoundException;
-import seedu.address.testutil.PersonBuilder;
+import seedu.address.testutil.InternApplicationBuilder;
 
 public class UniqueInternApplicationListTest {
 
@@ -44,7 +42,7 @@ public class UniqueInternApplicationListTest {
     @Test
     public void contains_personWithSameIdentityFieldsInList_returnsTrue() {
         uniqueApplicationList.add(ALICE);
-        InternApplication editedAlice = new PersonBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
+        InternApplication editedAlice = new InternApplicationBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
                 .build();
         assertTrue(uniqueApplicationList.contains(editedAlice));
     }
@@ -87,7 +85,7 @@ public class UniqueInternApplicationListTest {
     @Test
     public void setPerson_editedPersonHasSameIdentity_success() {
         uniqueApplicationList.add(ALICE);
-        InternApplication editedAlice = new PersonBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
+        InternApplication editedAlice = new InternApplicationBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
                 .build();
         uniqueApplicationList.setApplication(ALICE, editedAlice);
         UniqueApplicationList expectedUniqueApplicationList = new UniqueApplicationList();

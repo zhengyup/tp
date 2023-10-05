@@ -21,13 +21,13 @@ class JsonSerializableAddressBook {
 
     public static final String MESSAGE_DUPLICATE_PERSON = "Persons list contains duplicate person(s).";
 
-    private final List<JsonAdaptedPerson> persons = new ArrayList<>();
+    private final List<JsonAdaptedInternApplication> persons = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonSerializableAddressBook} with the given persons.
      */
     @JsonCreator
-    public JsonSerializableAddressBook(@JsonProperty("persons") List<JsonAdaptedPerson> persons) {
+    public JsonSerializableAddressBook(@JsonProperty("persons") List<JsonAdaptedInternApplication> persons) {
         this.persons.addAll(persons);
     }
 
@@ -37,7 +37,7 @@ class JsonSerializableAddressBook {
      * @param source future changes to this will not affect the created {@code JsonSerializableAddressBook}.
      */
     public JsonSerializableAddressBook(ReadOnlyAddressBook source) {
-        persons.addAll(source.getApplicationList().stream().map(JsonAdaptedPerson::new).collect(Collectors.toList()));
+        persons.addAll(source.getApplicationList().stream().map(JsonAdaptedInternApplication::new).collect(Collectors.toList()));
     }
 
     /**
@@ -47,7 +47,7 @@ class JsonSerializableAddressBook {
      */
     public InternTracker toModelType() throws IllegalValueException {
         InternTracker internTracker = new InternTracker();
-        for (JsonAdaptedPerson jsonAdaptedPerson : persons) {
+        for (JsonAdaptedInternApplication jsonAdaptedPerson : persons) {
             InternApplication internApplication = jsonAdaptedPerson.toModelType();
             if (internTracker.hasApplication(internApplication)) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_PERSON);

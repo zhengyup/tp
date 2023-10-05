@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.JsonUtil;
 import seedu.address.model.InternTracker;
-import seedu.address.testutil.TypicalPersons;
+import seedu.address.testutil.TypicalInternApplications;
 
 public class JsonSerializableInternTrackerTest {
 
@@ -25,7 +25,7 @@ public class JsonSerializableInternTrackerTest {
         JsonSerializableAddressBook dataFromFile = JsonUtil.readJsonFile(TYPICAL_PERSONS_FILE,
                 JsonSerializableAddressBook.class).get();
         InternTracker internTrackerFromFile = dataFromFile.toModelType();
-        InternTracker typicalPersonsInternTracker = TypicalPersons.getTypicalAddressBook();
+        InternTracker typicalPersonsInternTracker = TypicalInternApplications.getTypicalInternTracker();
         assertEquals(internTrackerFromFile, typicalPersonsInternTracker);
     }
 

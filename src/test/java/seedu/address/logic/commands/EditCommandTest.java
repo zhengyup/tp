@@ -13,7 +13,7 @@ import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showPersonAtIndex;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
-import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
+import static seedu.address.testutil.TypicalInternApplications.getTypicalInternTracker;
 
 import org.junit.jupiter.api.Test;
 
@@ -26,18 +26,18 @@ import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.internApplication.InternApplication;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
-import seedu.address.testutil.PersonBuilder;
+import seedu.address.testutil.InternApplicationBuilder;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for EditCommand.
  */
 public class EditCommandTest {
 
-    private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+    private Model model = new ModelManager(getTypicalInternTracker(), new UserPrefs());
 
     @Test
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
-        InternApplication editedInternApplication = new PersonBuilder().build();
+        InternApplication editedInternApplication = new InternApplicationBuilder().build();
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder(editedInternApplication).build();
         EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON, descriptor);
 
@@ -54,7 +54,7 @@ public class EditCommandTest {
         Index indexLastPerson = Index.fromOneBased(model.getFilteredPersonList().size());
         InternApplication lastInternApplication = model.getFilteredPersonList().get(indexLastPerson.getZeroBased());
 
-        PersonBuilder personInList = new PersonBuilder(lastInternApplication);
+        InternApplicationBuilder personInList = new InternApplicationBuilder(lastInternApplication);
         InternApplication editedInternApplication = personInList.withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB)
                 .withTags(VALID_TAG_HUSBAND).build();
 
@@ -87,7 +87,7 @@ public class EditCommandTest {
         showPersonAtIndex(model, INDEX_FIRST_PERSON);
 
         InternApplication internApplicationInFilteredList = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
-        InternApplication editedInternApplication = new PersonBuilder(internApplicationInFilteredList).withName(VALID_NAME_BOB).build();
+        InternApplication editedInternApplication = new InternApplicationBuilder(internApplicationInFilteredList).withName(VALID_NAME_BOB).build();
         EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON,
                 new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB).build());
 

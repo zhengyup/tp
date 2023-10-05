@@ -6,8 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalPersons.ALICE;
-import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
+import static seedu.address.testutil.TypicalInternApplications.ALICE;
+import static seedu.address.testutil.TypicalInternApplications.getTypicalInternTracker;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -20,7 +20,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.internApplication.InternApplication;
 import seedu.address.model.internApplication.exceptions.DuplicateApplicationException;
-import seedu.address.testutil.PersonBuilder;
+import seedu.address.testutil.InternApplicationBuilder;
 
 public class InternTrackerTest {
 
@@ -38,7 +38,7 @@ public class InternTrackerTest {
 
     @Test
     public void resetData_withValidReadOnlyAddressBook_replacesData() {
-        InternTracker newData = getTypicalAddressBook();
+        InternTracker newData = getTypicalInternTracker();
         internTracker.resetData(newData);
         assertEquals(newData, internTracker);
     }
@@ -46,7 +46,7 @@ public class InternTrackerTest {
     @Test
     public void resetData_withDuplicatePersons_throwsDuplicatePersonException() {
         // Two persons with the same identity fields
-        InternApplication editedAlice = new PersonBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
+        InternApplication editedAlice = new InternApplicationBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
                 .build();
         List<InternApplication> newInternApplications = Arrays.asList(ALICE, editedAlice);
         AddressBookStub newData = new AddressBookStub(newInternApplications);
@@ -73,7 +73,7 @@ public class InternTrackerTest {
     @Test
     public void hasPerson_personWithSameIdentityFieldsInAddressBook_returnsTrue() {
         internTracker.addApplication(ALICE);
-        InternApplication editedAlice = new PersonBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
+        InternApplication editedAlice = new InternApplicationBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
                 .build();
         assertTrue(internTracker.hasApplication(editedAlice));
     }
