@@ -10,7 +10,7 @@ public class Role {
 
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Roles should only contain alphanumeric characters and spaces, and it should not be blank";
+            "Role should only contain alphanumeric characters and spaces, and it should not be blank";
 
     /*
      * The first character of the role must not be a whitespace,
@@ -26,6 +26,7 @@ public class Role {
      */
     public Role(String role) {
         requireNonNull(role);
+        checkArgument(isValidRole(role), MESSAGE_CONSTRAINTS);
         value = role;
     }
 
