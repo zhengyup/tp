@@ -29,7 +29,7 @@ public class CycleTest {
         assertFalse(Cycle.isValidCycle(" ")); // spaces only
 
         // Invalid CYCLE values that violate the pattern
-        assertFalse(Cycle.isValidCycle("-Invalid Cycle"));  // Starts with a hyphen.
+        assertFalse(Cycle.isValidCycle("-Invalid Cycle")); // Starts with a hyphen.
         assertFalse(Cycle.isValidCycle("Invalid#Cycle")); // Contains a '#' symbol.
         assertFalse(Cycle.isValidCycle("Invalid Cycle!")); // Contains '!' symbol.
         assertFalse(Cycle.isValidCycle("Invalid-Cycle@2023")); // Contains '@' symbol and numbers.
