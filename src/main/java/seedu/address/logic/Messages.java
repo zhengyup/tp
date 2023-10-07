@@ -39,8 +39,8 @@ public class Messages {
         builder.append(internApplication.getName())
                 .append("; Phone: ")
                 .append(internApplication.getPhone())
-                .append("; Email: ")
-                .append(internApplication.getEmail())
+                .append("; Cycle: ")
+                .append(internApplication.getCycle())
                 .append("; Address: ")
                 .append(internApplication.getAddress())
                 .append("; Tags: ");

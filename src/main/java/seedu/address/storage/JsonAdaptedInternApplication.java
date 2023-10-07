@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.application.Address;
-import seedu.address.model.application.Email;
+import seedu.address.model.application.Cycle;
 import seedu.address.model.application.InternApplication;
 import seedu.address.model.application.Name;
 import seedu.address.model.application.Phone;
@@ -54,7 +54,7 @@ class JsonAdaptedInternApplication {
     public JsonAdaptedInternApplication(InternApplication source) {
         name = source.getName().fullName;
         phone = source.getPhone().value;
-        email = source.getEmail().value;
+        email = source.getCycle().value;
         address = source.getAddress().value;
         tags.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
@@ -89,12 +89,12 @@ class JsonAdaptedInternApplication {
         final Phone modelPhone = new Phone(phone);
 
         if (email == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Email.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Cycle.class.getSimpleName()));
         }
-        if (!Email.isValidEmail(email)) {
-            throw new IllegalValueException(Email.MESSAGE_CONSTRAINTS);
+        if (!Cycle.isValidCycle(email)) {
+            throw new IllegalValueException(Cycle.MESSAGE_CONSTRAINTS);
         }
-        final Email modelEmail = new Email(email);
+        final Cycle modelCycle = new Cycle(email);
 
         if (address == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Address.class.getSimpleName()));
@@ -105,6 +105,6 @@ class JsonAdaptedInternApplication {
         final Address modelAddress = new Address(address);
 
         final Set<Tag> modelTags = new HashSet<>(applicationTags);
-        return new InternApplication(modelName, modelPhone, modelEmail, modelAddress, modelTags);
+        return new InternApplication(modelName, modelPhone, modelCycle, modelAddress, modelTags);
     }
 }

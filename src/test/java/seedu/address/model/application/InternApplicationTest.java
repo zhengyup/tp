@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_CYCLE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
@@ -34,7 +34,7 @@ public class InternApplicationTest {
 
         // same name, all other attributes different -> returns true
         InternApplication editedAlice = new InternApplicationBuilder(ALICE).withPhone(VALID_PHONE_BOB)
-                .withEmail(VALID_EMAIL_BOB)
+                .withEmail(VALID_CYCLE_BOB)
                 .withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND).build();
         assertTrue(ALICE.isSameApplication(editedAlice));
 
@@ -79,7 +79,7 @@ public class InternApplicationTest {
         assertFalse(ALICE.equals(editedAlice));
 
         // different email -> returns false
-        editedAlice = new InternApplicationBuilder(ALICE).withEmail(VALID_EMAIL_BOB).build();
+        editedAlice = new InternApplicationBuilder(ALICE).withEmail(VALID_CYCLE_BOB).build();
         assertFalse(ALICE.equals(editedAlice));
 
         // different address -> returns false
@@ -95,7 +95,7 @@ public class InternApplicationTest {
     public void toStringMethod() {
         String expected = InternApplication.class.getCanonicalName() + "{name=" + ALICE.getName()
                 + ", phone=" + ALICE.getPhone()
-                + ", email=" + ALICE.getEmail() + ", address=" + ALICE.getAddress() + ", tags="
+                + ", email=" + ALICE.getCycle() + ", address=" + ALICE.getAddress() + ", tags="
                 + ALICE.getTags() + "}";
         assertEquals(expected, ALICE.toString());
     }

@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.application.Address;
-import seedu.address.model.application.Email;
+import seedu.address.model.application.Cycle;
 import seedu.address.model.application.Name;
 import seedu.address.model.application.Phone;
 
@@ -26,7 +26,7 @@ public class JsonAdaptedInternApplicationTest {
 
     private static final String VALID_NAME = BENSON.getName().toString();
     private static final String VALID_PHONE = BENSON.getPhone().toString();
-    private static final String VALID_EMAIL = BENSON.getEmail().toString();
+    private static final String VALID_EMAIL = BENSON.getCycle().toString();
     private static final String VALID_ADDRESS = BENSON.getAddress().toString();
     private static final List<JsonAdaptedTag> VALID_TAGS = BENSON.getTags().stream()
             .map(JsonAdaptedTag::new)
@@ -74,7 +74,7 @@ public class JsonAdaptedInternApplicationTest {
     public void toModelType_invalidEmail_throwsIllegalValueException() {
         JsonAdaptedInternApplication application =
                 new JsonAdaptedInternApplication(VALID_NAME, VALID_PHONE, INVALID_EMAIL, VALID_ADDRESS, VALID_TAGS);
-        String expectedMessage = Email.MESSAGE_CONSTRAINTS;
+        String expectedMessage = Cycle.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, application::toModelType);
     }
 
@@ -82,7 +82,7 @@ public class JsonAdaptedInternApplicationTest {
     public void toModelType_nullEmail_throwsIllegalValueException() {
         JsonAdaptedInternApplication application = new JsonAdaptedInternApplication(VALID_NAME, VALID_PHONE,
                 null, VALID_ADDRESS, VALID_TAGS);
-        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Email.class.getSimpleName());
+        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Cycle.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, application::toModelType);
     }
 

@@ -6,7 +6,7 @@ import java.util.stream.Stream;
 
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
 import seedu.address.model.application.Address;
-import seedu.address.model.application.Email;
+import seedu.address.model.application.Cycle;
 import seedu.address.model.application.InternApplication;
 import seedu.address.model.application.Name;
 import seedu.address.model.application.Phone;
@@ -34,7 +34,7 @@ public class EditPersonDescriptorBuilder {
         descriptor = new EditPersonDescriptor();
         descriptor.setName(internApplication.getName());
         descriptor.setPhone(internApplication.getPhone());
-        descriptor.setEmail(internApplication.getEmail());
+        descriptor.setCycle(internApplication.getCycle());
         descriptor.setAddress(internApplication.getAddress());
         descriptor.setTags(internApplication.getTags());
     }
@@ -56,10 +56,10 @@ public class EditPersonDescriptorBuilder {
     }
 
     /**
-     * Sets the {@code Email} of the {@code EditPersonDescriptor} that we are building.
+     * Sets the {@code Cycle} of the {@code EditPersonDescriptor} that we are building.
      */
-    public EditPersonDescriptorBuilder withEmail(String email) {
-        descriptor.setEmail(new Email(email));
+    public EditPersonDescriptorBuilder withCycle(String cycle) {
+        descriptor.setCycle(new Cycle(cycle));
         return this;
     }
 

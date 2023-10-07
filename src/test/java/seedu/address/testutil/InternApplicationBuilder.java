@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import seedu.address.model.application.Address;
-import seedu.address.model.application.Email;
+import seedu.address.model.application.Cycle;
 import seedu.address.model.application.InternApplication;
 import seedu.address.model.application.Name;
 import seedu.address.model.application.Phone;
@@ -23,7 +23,7 @@ public class InternApplicationBuilder {
 
     private Name name;
     private Phone phone;
-    private Email email;
+    private Cycle cycle;
     private Address address;
     private Set<Tag> tags;
 
@@ -33,7 +33,7 @@ public class InternApplicationBuilder {
     public InternApplicationBuilder() {
         name = new Name(DEFAULT_NAME);
         phone = new Phone(DEFAULT_PHONE);
-        email = new Email(DEFAULT_EMAIL);
+        cycle = new Cycle(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
         tags = new HashSet<>();
     }
@@ -44,7 +44,7 @@ public class InternApplicationBuilder {
     public InternApplicationBuilder(InternApplication internApplicationToCopy) {
         name = internApplicationToCopy.getName();
         phone = internApplicationToCopy.getPhone();
-        email = internApplicationToCopy.getEmail();
+        cycle = internApplicationToCopy.getCycle();
         address = internApplicationToCopy.getAddress();
         tags = new HashSet<>(internApplicationToCopy.getTags());
     }
@@ -85,12 +85,12 @@ public class InternApplicationBuilder {
      * Sets the {@code Email} of the {@code InternApplication} that we are building.
      */
     public InternApplicationBuilder withEmail(String email) {
-        this.email = new Email(email);
+        this.cycle = new Cycle(email);
         return this;
     }
 
     public InternApplication build() {
-        return new InternApplication(name, phone, email, address, tags);
+        return new InternApplication(name, phone, cycle, address, tags);
     }
 
 }

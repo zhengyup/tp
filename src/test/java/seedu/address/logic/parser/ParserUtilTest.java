@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.application.Address;
-import seedu.address.model.application.Email;
+import seedu.address.model.application.Cycle;
 import seedu.address.model.application.Name;
 import seedu.address.model.application.Phone;
 import seedu.address.model.tag.Tag;
@@ -127,25 +127,25 @@ public class ParserUtilTest {
 
     @Test
     public void parseEmail_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> ParserUtil.parseEmail((String) null));
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseCycle((String) null));
     }
 
     @Test
     public void parseEmail_invalidValue_throwsParseException() {
-        assertThrows(ParseException.class, () -> ParserUtil.parseEmail(INVALID_EMAIL));
+        assertThrows(ParseException.class, () -> ParserUtil.parseCycle(INVALID_EMAIL));
     }
 
     @Test
     public void parseEmail_validValueWithoutWhitespace_returnsEmail() throws Exception {
-        Email expectedEmail = new Email(VALID_EMAIL);
-        assertEquals(expectedEmail, ParserUtil.parseEmail(VALID_EMAIL));
+        Cycle expectedCycle = new Cycle(VALID_EMAIL);
+        assertEquals(expectedCycle, ParserUtil.parseCycle(VALID_EMAIL));
     }
 
     @Test
     public void parseEmail_validValueWithWhitespace_returnsTrimmedEmail() throws Exception {
         String emailWithWhitespace = WHITESPACE + VALID_EMAIL + WHITESPACE;
-        Email expectedEmail = new Email(VALID_EMAIL);
-        assertEquals(expectedEmail, ParserUtil.parseEmail(emailWithWhitespace));
+        Cycle expectedCycle = new Cycle(VALID_EMAIL);
+        assertEquals(expectedCycle, ParserUtil.parseCycle(emailWithWhitespace));
     }
 
     @Test

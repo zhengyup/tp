@@ -19,7 +19,7 @@ public class InternApplication {
     // Identity fields
     private final Name name;
     private final Phone phone;
-    private final Email email;
+    private final Cycle cycle;
 
     // Data fields
     private final Address address;
@@ -28,11 +28,11 @@ public class InternApplication {
     /**
      * Every field must be present and not null.
      */
-    public InternApplication(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
-        requireAllNonNull(name, phone, email, address, tags);
+    public InternApplication(Name name, Phone phone, Cycle cycle, Address address, Set<Tag> tags) {
+        requireAllNonNull(name, phone, cycle, address, tags);
         this.name = name;
         this.phone = phone;
-        this.email = email;
+        this.cycle = cycle;
         this.address = address;
         this.tags.addAll(tags);
     }
@@ -45,8 +45,8 @@ public class InternApplication {
         return phone;
     }
 
-    public Email getEmail() {
-        return email;
+    public Cycle getCycle() {
+        return cycle;
     }
 
     public Address getAddress() {
@@ -92,7 +92,7 @@ public class InternApplication {
         InternApplication otherInternApplication = (InternApplication) other;
         return name.equals(otherInternApplication.name)
                 && phone.equals(otherInternApplication.phone)
-                && email.equals(otherInternApplication.email)
+                && cycle.equals(otherInternApplication.cycle)
                 && address.equals(otherInternApplication.address)
                 && tags.equals(otherInternApplication.tags);
     }
@@ -100,7 +100,7 @@ public class InternApplication {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags);
+        return Objects.hash(name, phone, cycle, address, tags);
     }
 
     @Override
@@ -108,7 +108,7 @@ public class InternApplication {
         return new ToStringBuilder(this)
                 .add("name", name)
                 .add("phone", phone)
-                .add("email", email)
+                .add("cycle", cycle)
                 .add("address", address)
                 .add("tags", tags)
                 .toString();
