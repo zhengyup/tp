@@ -7,7 +7,7 @@ import seedu.address.model.application.Address;
 import seedu.address.model.application.Email;
 import seedu.address.model.application.InternApplication;
 import seedu.address.model.application.Name;
-import seedu.address.model.application.Phone;
+import seedu.address.model.application.Role;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
 
@@ -22,7 +22,7 @@ public class InternApplicationBuilder {
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
 
     private Name name;
-    private Phone phone;
+    private Role phone;
     private Email email;
     private Address address;
     private Set<Tag> tags;
@@ -32,7 +32,7 @@ public class InternApplicationBuilder {
      */
     public InternApplicationBuilder() {
         name = new Name(DEFAULT_NAME);
-        phone = new Phone(DEFAULT_PHONE);
+        phone = new Role(DEFAULT_PHONE);
         email = new Email(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
         tags = new HashSet<>();
@@ -77,7 +77,7 @@ public class InternApplicationBuilder {
      * Sets the {@code Phone} of the {@code InternApplication} that we are building.
      */
     public InternApplicationBuilder withPhone(String phone) {
-        this.phone = new Phone(phone);
+        this.phone = new Role(phone);
         return this;
     }
 

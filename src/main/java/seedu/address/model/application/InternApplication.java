@@ -18,7 +18,7 @@ public class InternApplication {
 
     // Identity fields
     private final Name name;
-    private final Phone phone;
+    private final Role phone;
     private final Email email;
 
     // Data fields
@@ -28,7 +28,7 @@ public class InternApplication {
     /**
      * Every field must be present and not null.
      */
-    public InternApplication(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
+    public InternApplication(Name name, Role phone, Email email, Address address, Set<Tag> tags) {
         requireAllNonNull(name, phone, email, address, tags);
         this.name = name;
         this.phone = phone;
@@ -41,7 +41,7 @@ public class InternApplication {
         return name;
     }
 
-    public Phone getPhone() {
+    public Role getPhone() {
         return phone;
     }
 

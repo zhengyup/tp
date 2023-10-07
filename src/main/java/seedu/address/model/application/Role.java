@@ -4,10 +4,9 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents an InternApplication's phone number in the address book.
- * Guarantees: immutable; is valid as declared in {@link #isValidPhone(String)}
+ * Represents an InternApplication's role in the InternTracker.
  */
-public class Phone {
+public class Role {
 
 
     public static final String MESSAGE_CONSTRAINTS =
@@ -20,7 +19,7 @@ public class Phone {
      *
      * @param phone A valid phone number.
      */
-    public Phone(String phone) {
+    public Role(String phone) {
         requireNonNull(phone);
         checkArgument(isValidPhone(phone), MESSAGE_CONSTRAINTS);
         value = phone;
@@ -45,11 +44,11 @@ public class Phone {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof Phone)) {
+        if (!(other instanceof Role)) {
             return false;
         }
 
-        Phone otherPhone = (Phone) other;
+        Role otherPhone = (Role) other;
         return value.equals(otherPhone.value);
     }
 

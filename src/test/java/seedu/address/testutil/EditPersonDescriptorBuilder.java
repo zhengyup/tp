@@ -9,7 +9,7 @@ import seedu.address.model.application.Address;
 import seedu.address.model.application.Email;
 import seedu.address.model.application.InternApplication;
 import seedu.address.model.application.Name;
-import seedu.address.model.application.Phone;
+import seedu.address.model.application.Role;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -51,7 +51,7 @@ public class EditPersonDescriptorBuilder {
      * Sets the {@code Phone} of the {@code EditPersonDescriptor} that we are building.
      */
     public EditPersonDescriptorBuilder withPhone(String phone) {
-        descriptor.setPhone(new Phone(phone));
+        descriptor.setPhone(new Role(phone));
         return this;
     }
 

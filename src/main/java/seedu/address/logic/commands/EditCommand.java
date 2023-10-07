@@ -25,7 +25,7 @@ import seedu.address.model.application.Address;
 import seedu.address.model.application.Email;
 import seedu.address.model.application.InternApplication;
 import seedu.address.model.application.Name;
-import seedu.address.model.application.Phone;
+import seedu.address.model.application.Role;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -98,7 +98,7 @@ public class EditCommand extends Command {
         assert internApplicationToEdit != null;
 
         Name updatedName = editPersonDescriptor.getName().orElse(internApplicationToEdit.getName());
-        Phone updatedPhone = editPersonDescriptor.getPhone().orElse(internApplicationToEdit.getPhone());
+        Role updatedPhone = editPersonDescriptor.getPhone().orElse(internApplicationToEdit.getPhone());
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(internApplicationToEdit.getEmail());
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(internApplicationToEdit.getAddress());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(internApplicationToEdit.getTags());
@@ -136,7 +136,7 @@ public class EditCommand extends Command {
      */
     public static class EditPersonDescriptor {
         private Name name;
-        private Phone phone;
+        private Role phone;
         private Email email;
         private Address address;
         private Set<Tag> tags;
@@ -170,11 +170,11 @@ public class EditCommand extends Command {
             return Optional.ofNullable(name);
         }
 
-        public void setPhone(Phone phone) {
+        public void setPhone(Role phone) {
             this.phone = phone;
         }
 
-        public Optional<Phone> getPhone() {
+        public Optional<Role> getPhone() {
             return Optional.ofNullable(phone);
         }
 
