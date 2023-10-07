@@ -165,7 +165,7 @@ Deletes the specified internship application entry from the internship list.
   * `INDEX` must be a positive integer, such as, `1`, `2`, `3`, etc.
 
 Examples:
-* `delete 1` deletes the first person in the address book.
+* `delete 1` deletes the first internApplication in the address book.
 
 **Expected Output**:
 * Success

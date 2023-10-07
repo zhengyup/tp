@@ -21,11 +21,11 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
-import seedu.address.model.person.Person;
-import seedu.address.model.person.Phone;
+import seedu.address.model.application.Address;
+import seedu.address.model.application.Email;
+import seedu.address.model.application.InternApplication;
+import seedu.address.model.application.Name;
+import seedu.address.model.application.Phone;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -70,38 +70,40 @@ public class EditCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        List<Person> lastShownList = model.getFilteredPersonList();
+        List<InternApplication> lastShownList = model.getFilteredPersonList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
 
-        Person personToEdit = lastShownList.get(index.getZeroBased());
-        Person editedPerson = createEditedPerson(personToEdit, editPersonDescriptor);
+        InternApplication internApplicationToEdit = lastShownList.get(index.getZeroBased());
+        InternApplication editedInternApplication = createEditedPerson(internApplicationToEdit, editPersonDescriptor);
 
-        if (!personToEdit.isSamePerson(editedPerson) && model.hasPerson(editedPerson)) {
+        if (!internApplicationToEdit.isSameApplication(editedInternApplication)
+                && model.hasPerson(editedInternApplication)) {
             throw new CommandException(MESSAGE_DUPLICATE_PERSON);
         }
 
-        model.setPerson(personToEdit, editedPerson);
+        model.setPerson(internApplicationToEdit, editedInternApplication);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-        return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedPerson)));
+        return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedInternApplication)));
     }
 
     /**
      * Creates and returns a {@code Person} with the details of {@code personToEdit}
      * edited with {@code editPersonDescriptor}.
      */
-    private static Person createEditedPerson(Person personToEdit, EditPersonDescriptor editPersonDescriptor) {
-        assert personToEdit != null;
+    private static InternApplication createEditedPerson(InternApplication internApplicationToEdit,
+                                                        EditPersonDescriptor editPersonDescriptor) {
+        assert internApplicationToEdit != null;
 
-        Name updatedName = editPersonDescriptor.getName().orElse(personToEdit.getName());
-        Phone updatedPhone = editPersonDescriptor.getPhone().orElse(personToEdit.getPhone());
-        Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
-        Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
-        Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
+        Name updatedName = editPersonDescriptor.getName().orElse(internApplicationToEdit.getName());
+        Phone updatedPhone = editPersonDescriptor.getPhone().orElse(internApplicationToEdit.getPhone());
+        Email updatedEmail = editPersonDescriptor.getEmail().orElse(internApplicationToEdit.getEmail());
+        Address updatedAddress = editPersonDescriptor.getAddress().orElse(internApplicationToEdit.getAddress());
+        Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(internApplicationToEdit.getTags());
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags);
+        return new InternApplication(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags);
     }
 
     @Override
