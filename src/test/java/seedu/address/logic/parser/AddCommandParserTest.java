@@ -81,7 +81,7 @@ public class AddCommandParserTest {
         assertParseFailure(parser, PHONE_DESC_AMY + validExpectedPersonString,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_PHONE));
 
-        // multiple emails
+        // multiple cycles
         assertParseFailure(parser, CYCLE_DESC_AMY + validExpectedPersonString,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_CYCLE));
 
@@ -101,7 +101,7 @@ public class AddCommandParserTest {
         assertParseFailure(parser, INVALID_NAME_DESC + validExpectedPersonString,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_NAME));
 
-        // invalid email
+        // invalid cycle
         assertParseFailure(parser, INVALID_CYCLE_DESC + validExpectedPersonString,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_CYCLE));
 
@@ -119,7 +119,7 @@ public class AddCommandParserTest {
         assertParseFailure(parser, validExpectedPersonString + INVALID_NAME_DESC,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_NAME));
 
-        // invalid email
+        // invalid cycle
         assertParseFailure(parser, validExpectedPersonString + INVALID_CYCLE_DESC,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_CYCLE));
 
@@ -152,7 +152,7 @@ public class AddCommandParserTest {
         assertParseFailure(parser, NAME_DESC_BOB + VALID_PHONE_BOB + CYCLE_DESC_BOB + ADDRESS_DESC_BOB,
                 expectedMessage);
 
-        // missing email prefix
+        // missing cycle prefix
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + VALID_CYCLE_BOB + ADDRESS_DESC_BOB,
                 expectedMessage);
 
@@ -175,7 +175,7 @@ public class AddCommandParserTest {
         assertParseFailure(parser, NAME_DESC_BOB + INVALID_PHONE_DESC + CYCLE_DESC_BOB + ADDRESS_DESC_BOB
                 + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, Phone.MESSAGE_CONSTRAINTS);
 
-        // invalid email
+        // invalid cycle
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + INVALID_CYCLE_DESC + ADDRESS_DESC_BOB
                 + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, Cycle.MESSAGE_CONSTRAINTS);
 

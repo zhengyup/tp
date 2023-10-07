@@ -18,7 +18,7 @@ public class InternApplicationBuilder {
 
     public static final String DEFAULT_NAME = "Amy Bee";
     public static final String DEFAULT_PHONE = "85355255";
-    public static final String DEFAULT_EMAIL = "amy@gmail.com";
+    public static final String DEFAULT_CYCLE = "Summer 2021";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
 
     private Name name;
@@ -33,7 +33,7 @@ public class InternApplicationBuilder {
     public InternApplicationBuilder() {
         name = new Name(DEFAULT_NAME);
         phone = new Phone(DEFAULT_PHONE);
-        cycle = new Cycle(DEFAULT_EMAIL);
+        cycle = new Cycle(DEFAULT_CYCLE);
         address = new Address(DEFAULT_ADDRESS);
         tags = new HashSet<>();
     }
@@ -84,7 +84,7 @@ public class InternApplicationBuilder {
     /**
      * Sets the {@code Email} of the {@code InternApplication} that we are building.
      */
-    public InternApplicationBuilder withEmail(String email) {
+    public InternApplicationBuilder withCycle(String email) {
         this.cycle = new Cycle(email);
         return this;
     }

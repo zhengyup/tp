@@ -68,10 +68,10 @@ public class CycleTest {
 
     @Test
     public void equals() {
-        Cycle cycle = new Cycle("valid@email");
+        Cycle cycle = new Cycle("Summer 2024");
 
         // same values -> returns true
-        assertTrue(cycle.equals(new Cycle("valid@email")));
+        assertTrue(cycle.equals(new Cycle("Summer 2024")));
 
         // same object -> returns true
         assertTrue(cycle.equals(cycle));
@@ -83,6 +83,6 @@ public class CycleTest {
         assertFalse(cycle.equals(5.0f));
 
         // different values -> returns false
-        assertFalse(cycle.equals(new Cycle("other.valid@email")));
+        assertFalse(cycle.equals(new Cycle("Summer 2023")));
     }
 }
