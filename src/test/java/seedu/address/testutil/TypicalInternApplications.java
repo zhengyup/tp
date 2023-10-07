@@ -36,7 +36,7 @@ public class TypicalInternApplications {
             .withCycle("Summer 2021").withAddress("wall street").build();
     public static final InternApplication DANIEL = new InternApplicationBuilder().withName("Daniel Meier")
             .withPhone("87652533")
-            .withCycle("Summer 2021").withAddress("10th street").withTags("friends").build();
+            .withCycle("Off-cycle 2020").withAddress("10th street").withTags("friends").build();
     public static final InternApplication ELLE = new InternApplicationBuilder().withName("Elle Meyer")
             .withPhone("9482224")
             .withCycle("Summer 2021").withAddress("michegan ave").build();
