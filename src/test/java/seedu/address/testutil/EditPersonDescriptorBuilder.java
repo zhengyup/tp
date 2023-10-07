@@ -33,7 +33,7 @@ public class EditPersonDescriptorBuilder {
     public EditPersonDescriptorBuilder(InternApplication internApplication) {
         descriptor = new EditPersonDescriptor();
         descriptor.setName(internApplication.getName());
-        descriptor.setPhone(internApplication.getPhone());
+        descriptor.setRole(internApplication.getRole());
         descriptor.setEmail(internApplication.getEmail());
         descriptor.setAddress(internApplication.getAddress());
         descriptor.setTags(internApplication.getTags());
@@ -48,10 +48,10 @@ public class EditPersonDescriptorBuilder {
     }
 
     /**
-     * Sets the {@code Phone} of the {@code EditPersonDescriptor} that we are building.
+     * Sets the {@code Role} of the {@code EditPersonDescriptor} that we are building.
      */
-    public EditPersonDescriptorBuilder withPhone(String phone) {
-        descriptor.setPhone(new Role(phone));
+    public EditPersonDescriptorBuilder withRole(String role) {
+        descriptor.setRole(new Role(role));
         return this;
     }
 

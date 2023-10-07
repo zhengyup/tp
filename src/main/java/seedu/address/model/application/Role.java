@@ -10,25 +10,29 @@ public class Role {
 
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Phone numbers should only contain numbers, and it should be at least 3 digits long";
-    public static final String VALIDATION_REGEX = "\\d{3,}";
+            "Roles should only contain alphanumeric characters and spaces, and it should not be blank";
+
+    /*
+     * The first character of the role must not be a whitespace,
+     * otherwise " " (a blank string) becomes a valid input.
+     */
+    public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
     public final String value;
 
     /**
-     * Constructs a {@code Phone}.
+     * Constructs a {@code Role}.
      *
-     * @param phone A valid phone number.
+     * @param role A valid role.
      */
-    public Role(String phone) {
-        requireNonNull(phone);
-        checkArgument(isValidPhone(phone), MESSAGE_CONSTRAINTS);
-        value = phone;
+    public Role(String role) {
+        requireNonNull(role);
+        value = role;
     }
 
     /**
      * Returns true if a given string is a valid phone number.
      */
-    public static boolean isValidPhone(String test) {
+    public static boolean isValidRole(String test) {
         return test.matches(VALIDATION_REGEX);
     }
 
@@ -48,8 +52,8 @@ public class Role {
             return false;
         }
 
-        Role otherPhone = (Role) other;
-        return value.equals(otherPhone.value);
+        Role otherRole = (Role) other;
+        return value.equals(otherRole.value);
     }
 
     @Override
