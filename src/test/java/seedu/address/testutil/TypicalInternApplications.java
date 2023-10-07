@@ -25,26 +25,26 @@ public class TypicalInternApplications {
 
     public static final InternApplication ALICE = new InternApplicationBuilder().withName("Alice Pauline")
             .withAddress("123, Jurong West Ave 6, #08-111").withEmail("alice@example.com")
-            .withRole("94351253")
+            .withRole("SWE Intern")
             .withTags("friends").build();
     public static final InternApplication BENSON = new InternApplicationBuilder().withName("Benson Meier")
             .withAddress("311, Clementi Ave 2, #02-25")
-            .withEmail("johnd@example.com").withRole("98765432")
+            .withEmail("johnd@example.com").withRole("Data Engineering Intern")
             .withTags("owesMoney", "friends").build();
     public static final InternApplication CARL = new InternApplicationBuilder().withName("Carl Kurz")
-            .withRole("95352563")
+            .withRole("Full Stack Intern")
             .withEmail("heinz@example.com").withAddress("wall street").build();
     public static final InternApplication DANIEL = new InternApplicationBuilder().withName("Daniel Meier")
-            .withRole("87652533")
+            .withRole("Back End Intern")
             .withEmail("cornelia@example.com").withAddress("10th street").withTags("friends").build();
     public static final InternApplication ELLE = new InternApplicationBuilder().withName("Elle Meyer")
-            .withRole("9482224")
+            .withRole("Front End Intern")
             .withEmail("werner@example.com").withAddress("michegan ave").build();
     public static final InternApplication FIONA = new InternApplicationBuilder().withName("Fiona Kunz")
-            .withRole("9482427")
+            .withRole("Web Dev Intern")
             .withEmail("lydia@example.com").withAddress("little tokyo").build();
     public static final InternApplication GEORGE = new InternApplicationBuilder().withName("George Best")
-            .withRole("9482442")
+            .withRole("DevOps Intern")
             .withEmail("anna@example.com").withAddress("4th street").build();
 
     // Manually added

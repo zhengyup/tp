@@ -74,7 +74,7 @@ public class InternApplicationTest {
         InternApplication editedAlice = new InternApplicationBuilder(ALICE).withName(VALID_NAME_BOB).build();
         assertFalse(ALICE.equals(editedAlice));
 
-        // different phone -> returns false
+        // different role -> returns false
         editedAlice = new InternApplicationBuilder(ALICE).withRole(VALID_ROLE_BOB).build();
         assertFalse(ALICE.equals(editedAlice));
 
@@ -94,7 +94,7 @@ public class InternApplicationTest {
     @Test
     public void toStringMethod() {
         String expected = InternApplication.class.getCanonicalName() + "{name=" + ALICE.getName()
-                + ", phone=" + ALICE.getRole()
+                + ", role=" + ALICE.getRole()
                 + ", email=" + ALICE.getEmail() + ", address=" + ALICE.getAddress() + ", tags="
                 + ALICE.getTags() + "}";
         assertEquals(expected, ALICE.toString());

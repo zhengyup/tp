@@ -90,7 +90,7 @@ public class EditCommandParserTest {
         assertParseFailure(parser, "1" + INVALID_TAG_DESC, Tag.MESSAGE_CONSTRAINTS); // invalid tag
 
         // invalid role followed by valid email
-        assertParseFailure(parser, " " + INVALID_ROLE_DESC + EMAIL_DESC_AMY, Role.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + INVALID_ROLE_DESC + EMAIL_DESC_AMY, Role.MESSAGE_CONSTRAINTS);
 
         // while parsing {@code PREFIX_TAG} alone will reset the tags of the {@code Person} being edited,
         // parsing it together with a valid tag results in error
