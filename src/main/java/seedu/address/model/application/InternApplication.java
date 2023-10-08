@@ -18,7 +18,7 @@ public class InternApplication {
 
     // Identity fields
     private final Name name;
-    private final Phone phone;
+    private final Role role;
     private final Email email;
 
     // Data fields
@@ -28,10 +28,10 @@ public class InternApplication {
     /**
      * Every field must be present and not null.
      */
-    public InternApplication(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
-        requireAllNonNull(name, phone, email, address, tags);
+    public InternApplication(Name name, Role role, Email email, Address address, Set<Tag> tags) {
+        requireAllNonNull(name, role, email, address, tags);
         this.name = name;
-        this.phone = phone;
+        this.role = role;
         this.email = email;
         this.address = address;
         this.tags.addAll(tags);
@@ -41,8 +41,8 @@ public class InternApplication {
         return name;
     }
 
-    public Phone getPhone() {
-        return phone;
+    public Role getRole() {
+        return role;
     }
 
     public Email getEmail() {
@@ -91,7 +91,7 @@ public class InternApplication {
 
         InternApplication otherInternApplication = (InternApplication) other;
         return name.equals(otherInternApplication.name)
-                && phone.equals(otherInternApplication.phone)
+                && role.equals(otherInternApplication.role)
                 && email.equals(otherInternApplication.email)
                 && address.equals(otherInternApplication.address)
                 && tags.equals(otherInternApplication.tags);
@@ -100,14 +100,14 @@ public class InternApplication {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags);
+        return Objects.hash(name, role, email, address, tags);
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
                 .add("name", name)
-                .add("phone", phone)
+                .add("role", role)
                 .add("email", email)
                 .add("address", address)
                 .add("tags", tags)
