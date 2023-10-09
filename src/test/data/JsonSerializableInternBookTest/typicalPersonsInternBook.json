@@ -1,0 +1,46 @@
+{
+  "_comment": "InternBook save file which contains the same Person values as in TypicalPersons#getTypicalInternBook()",
+  "persons" : [ {
+    "name" : "Alice Pauline",
+    "role" : "SWE Intern",
+    "email" : "alice@example.com",
+    "status" : "Pending",
+    "tags" : [ "friends" ]
+  }, {
+    "name" : "Benson Meier",
+    "role" : "Data Engineering Intern",
+    "email" : "johnd@example.com",
+    "status" : "Pending",
+    "tags" : [ "owesMoney", "friends" ]
+  }, {
+    "name" : "Carl Kurz",
+    "role" : "Full Stack Intern",
+    "email" : "heinz@example.com",
+    "status" : "Pending",
+    "tags" : [ ]
+  }, {
+    "name" : "Daniel Meier",
+    "role" : "Back End Intern",
+    "email" : "cornelia@example.com",
+    "status" : "Pending",
+    "tags" : [ "friends" ]
+  }, {
+    "name" : "Elle Meyer",
+    "role" : "Front End Intern",
+    "email" : "werner@example.com",
+    "status" : "Pending",
+    "tags" : [ ]
+  }, {
+    "name" : "Fiona Kunz",
+    "role" : "Web Dev Intern",
+    "email" : "lydia@example.com",
+    "status" : "Pending",
+    "tags" : [ ]
+  }, {
+    "name" : "George Best",
+    "role" : "DevOps Intern",
+    "email" : "anna@example.com",
+    "status" : "Pending",
+    "tags" : [ ]
+  } ]
+}
