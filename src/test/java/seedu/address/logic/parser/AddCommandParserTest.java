@@ -10,8 +10,8 @@ import static seedu.address.logic.commands.CommandTestUtil.INVALID_EMAIL_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_ROLE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_JANE_STREET;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_GOOGLE;
+import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_JANE_STREET;
 import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_NON_EMPTY;
 import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;
 import static seedu.address.logic.commands.CommandTestUtil.ROLE_DESC_AMY;
@@ -25,8 +25,8 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_ROLE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
@@ -37,8 +37,11 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.AddCommand;
-import seedu.address.model.application.*;
+import seedu.address.model.application.Address;
 import seedu.address.model.application.Company;
+import seedu.address.model.application.Email;
+import seedu.address.model.application.InternApplication;
+import seedu.address.model.application.Role;
 import seedu.address.model.tag.Tag;
 import seedu.address.testutil.InternApplicationBuilder;
 
@@ -88,9 +91,10 @@ public class AddCommandParserTest {
 
         // multiple fields repeated
         assertParseFailure(parser,
-                validExpectedPersonString + ROLE_DESC_AMY + EMAIL_DESC_AMY + NAME_DESC_JANE_STREET + ADDRESS_DESC_AMY
-                        + validExpectedPersonString,
-                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_COMPANY, PREFIX_ADDRESS, PREFIX_EMAIL, PREFIX_ROLE));
+                validExpectedPersonString + ROLE_DESC_AMY + EMAIL_DESC_AMY
+                        + NAME_DESC_JANE_STREET + ADDRESS_DESC_AMY + validExpectedPersonString,
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_COMPANY, PREFIX_ADDRESS,
+                        PREFIX_EMAIL, PREFIX_ROLE));
 
         // invalid value followed by valid value
 

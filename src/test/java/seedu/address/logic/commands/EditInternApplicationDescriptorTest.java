@@ -37,7 +37,8 @@ public class EditInternApplicationDescriptorTest {
         assertFalse(DESC_AMY.equals(DESC_BOB));
 
         // different name -> returns false
-        EditPersonDescriptor editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withCompany(VALID_NAME_GOOGLE).build();
+        EditPersonDescriptor editedAmy = new EditPersonDescriptorBuilder(DESC_AMY)
+                .withCompany(VALID_NAME_GOOGLE).build();
         assertFalse(DESC_AMY.equals(editedAmy));
 
         // different role -> returns false

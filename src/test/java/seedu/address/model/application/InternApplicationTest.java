@@ -43,7 +43,8 @@ public class InternApplicationTest {
         assertFalse(ALICE.isSameApplication(editedAlice));
 
         // name differs in case, all other attributes same -> returns false
-        InternApplication editedBob = new InternApplicationBuilder(BOB).withCompany(VALID_NAME_GOOGLE.toLowerCase()).build();
+        InternApplication editedBob = new InternApplicationBuilder(BOB)
+                .withCompany(VALID_NAME_GOOGLE.toLowerCase()).build();
         assertFalse(BOB.isSameApplication(editedBob));
 
         // name has trailing spaces, all other attributes same -> returns false
