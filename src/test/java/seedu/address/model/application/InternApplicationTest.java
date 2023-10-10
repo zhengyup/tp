@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_GOOGLE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ROLE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.testutil.Assert.assertThrows;
@@ -39,16 +39,16 @@ public class InternApplicationTest {
         assertTrue(ALICE.isSameApplication(editedAlice));
 
         // different name, all other attributes same -> returns false
-        editedAlice = new InternApplicationBuilder(ALICE).withName(VALID_NAME_BOB).build();
+        editedAlice = new InternApplicationBuilder(ALICE).withCompany(VALID_NAME_GOOGLE).build();
         assertFalse(ALICE.isSameApplication(editedAlice));
 
         // name differs in case, all other attributes same -> returns false
-        InternApplication editedBob = new InternApplicationBuilder(BOB).withName(VALID_NAME_BOB.toLowerCase()).build();
+        InternApplication editedBob = new InternApplicationBuilder(BOB).withCompany(VALID_NAME_GOOGLE.toLowerCase()).build();
         assertFalse(BOB.isSameApplication(editedBob));
 
         // name has trailing spaces, all other attributes same -> returns false
-        String nameWithTrailingSpaces = VALID_NAME_BOB + " ";
-        editedBob = new InternApplicationBuilder(BOB).withName(nameWithTrailingSpaces).build();
+        String nameWithTrailingSpaces = VALID_NAME_GOOGLE + " ";
+        editedBob = new InternApplicationBuilder(BOB).withCompany(nameWithTrailingSpaces).build();
         assertFalse(BOB.isSameApplication(editedBob));
     }
 
@@ -71,7 +71,7 @@ public class InternApplicationTest {
         assertFalse(ALICE.equals(BOB));
 
         // different name -> returns false
-        InternApplication editedAlice = new InternApplicationBuilder(ALICE).withName(VALID_NAME_BOB).build();
+        InternApplication editedAlice = new InternApplicationBuilder(ALICE).withCompany(VALID_NAME_GOOGLE).build();
         assertFalse(ALICE.equals(editedAlice));
 
         // different role -> returns false
@@ -93,7 +93,7 @@ public class InternApplicationTest {
 
     @Test
     public void toStringMethod() {
-        String expected = InternApplication.class.getCanonicalName() + "{name=" + ALICE.getName()
+        String expected = InternApplication.class.getCanonicalName() + "{name=" + ALICE.getCompany()
                 + ", role=" + ALICE.getRole()
                 + ", email=" + ALICE.getEmail() + ", address=" + ALICE.getAddress() + ", tags="
                 + ALICE.getTags() + "}";

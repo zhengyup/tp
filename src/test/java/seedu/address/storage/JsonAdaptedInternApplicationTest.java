@@ -14,17 +14,17 @@ import org.junit.jupiter.api.Test;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.application.Address;
 import seedu.address.model.application.Email;
-import seedu.address.model.application.Name;
+import seedu.address.model.application.Company;
 import seedu.address.model.application.Role;
 
 public class JsonAdaptedInternApplicationTest {
-    private static final String INVALID_NAME = "R@chel";
+    private static final String INVALID_NAME = "J@ne";
     private static final String INVALID_ROLE = " ";
     private static final String INVALID_ADDRESS = " ";
     private static final String INVALID_EMAIL = "example.com";
     private static final String INVALID_TAG = "#friend";
 
-    private static final String VALID_NAME = BENSON.getName().toString();
+    private static final String VALID_NAME = BENSON.getCompany().toString();
     private static final String VALID_ROLE = BENSON.getRole().toString();
     private static final String VALID_EMAIL = BENSON.getEmail().toString();
     private static final String VALID_ADDRESS = BENSON.getAddress().toString();
@@ -42,7 +42,7 @@ public class JsonAdaptedInternApplicationTest {
     public void toModelType_invalidName_throwsIllegalValueException() {
         JsonAdaptedInternApplication application =
                 new JsonAdaptedInternApplication(INVALID_NAME, VALID_ROLE, VALID_EMAIL, VALID_ADDRESS, VALID_TAGS);
-        String expectedMessage = Name.MESSAGE_CONSTRAINTS;
+        String expectedMessage = Company.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, application::toModelType);
     }
 
@@ -50,7 +50,7 @@ public class JsonAdaptedInternApplicationTest {
     public void toModelType_nullName_throwsIllegalValueException() {
         JsonAdaptedInternApplication application = new JsonAdaptedInternApplication(null, VALID_ROLE,
                 VALID_EMAIL, VALID_ADDRESS, VALID_TAGS);
-        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName());
+        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Company.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, application::toModelType);
     }
 

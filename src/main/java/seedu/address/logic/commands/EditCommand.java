@@ -3,7 +3,7 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
@@ -24,7 +24,7 @@ import seedu.address.model.Model;
 import seedu.address.model.application.Address;
 import seedu.address.model.application.Email;
 import seedu.address.model.application.InternApplication;
-import seedu.address.model.application.Name;
+import seedu.address.model.application.Company;
 import seedu.address.model.application.Role;
 import seedu.address.model.tag.Tag;
 
@@ -39,7 +39,7 @@ public class EditCommand extends Command {
             + "by the index number used in the displayed person list. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + "[" + PREFIX_NAME + "NAME] "
+            + "[" + PREFIX_COMPANY + "COMPANY] "
             + "[" + PREFIX_ROLE + "ROLE] "
             + "[" + PREFIX_EMAIL + "EMAIL] "
             + "[" + PREFIX_ADDRESS + "ADDRESS] "
@@ -97,13 +97,13 @@ public class EditCommand extends Command {
                                                         EditPersonDescriptor editPersonDescriptor) {
         assert internApplicationToEdit != null;
 
-        Name updatedName = editPersonDescriptor.getName().orElse(internApplicationToEdit.getName());
+        Company updatedCompany = editPersonDescriptor.getCompany().orElse(internApplicationToEdit.getCompany());
         Role updatedRole = editPersonDescriptor.getRole().orElse(internApplicationToEdit.getRole());
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(internApplicationToEdit.getEmail());
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(internApplicationToEdit.getAddress());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(internApplicationToEdit.getTags());
 
-        return new InternApplication(updatedName, updatedRole, updatedEmail, updatedAddress, updatedTags);
+        return new InternApplication(updatedCompany, updatedRole, updatedEmail, updatedAddress, updatedTags);
     }
 
     @Override
@@ -135,7 +135,7 @@ public class EditCommand extends Command {
      * corresponding field value of the person.
      */
     public static class EditPersonDescriptor {
-        private Name name;
+        private Company company;
         private Role role;
         private Email email;
         private Address address;
@@ -148,7 +148,7 @@ public class EditCommand extends Command {
          * A defensive copy of {@code tags} is used internally.
          */
         public EditPersonDescriptor(EditPersonDescriptor toCopy) {
-            setName(toCopy.name);
+            setCompany(toCopy.company);
             setRole(toCopy.role);
             setEmail(toCopy.email);
             setAddress(toCopy.address);
@@ -159,15 +159,15 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, role, email, address, tags);
+            return CollectionUtil.isAnyNonNull(company, role, email, address, tags);
         }
 
-        public void setName(Name name) {
-            this.name = name;
+        public void setCompany(Company company) {
+            this.company = company;
         }
 
-        public Optional<Name> getName() {
-            return Optional.ofNullable(name);
+        public Optional<Company> getCompany() {
+            return Optional.ofNullable(company);
         }
 
         public void setRole(Role role) {
@@ -223,7 +223,7 @@ public class EditCommand extends Command {
             }
 
             EditPersonDescriptor otherEditPersonDescriptor = (EditPersonDescriptor) other;
-            return Objects.equals(name, otherEditPersonDescriptor.name)
+            return Objects.equals(company, otherEditPersonDescriptor.company)
                     && Objects.equals(role, otherEditPersonDescriptor.role)
                     && Objects.equals(email, otherEditPersonDescriptor.email)
                     && Objects.equals(address, otherEditPersonDescriptor.address)
@@ -233,7 +233,7 @@ public class EditCommand extends Command {
         @Override
         public String toString() {
             return new ToStringBuilder(this)
-                    .add("name", name)
+                    .add("company", company)
                     .add("role", role)
                     .add("email", email)
                     .add("address", address)

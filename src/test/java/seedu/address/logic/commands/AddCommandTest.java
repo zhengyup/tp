@@ -55,8 +55,8 @@ public class AddCommandTest {
 
     @Test
     public void equals() {
-        InternApplication alice = new InternApplicationBuilder().withName("Alice").build();
-        InternApplication bob = new InternApplicationBuilder().withName("Bob").build();
+        InternApplication alice = new InternApplicationBuilder().withCompany("Alice").build();
+        InternApplication bob = new InternApplicationBuilder().withCompany("Bob").build();
         AddCommand addAliceCommand = new AddCommand(alice);
         AddCommand addBobCommand = new AddCommand(bob);
 

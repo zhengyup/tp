@@ -2,7 +2,7 @@ package seedu.address.testutil;
 
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
@@ -30,7 +30,7 @@ public class PersonUtil {
      */
     public static String getPersonDetails(InternApplication internApplication) {
         StringBuilder sb = new StringBuilder();
-        sb.append(PREFIX_NAME + internApplication.getName().fullName + " ");
+        sb.append(PREFIX_COMPANY + internApplication.getCompany().companyName + " ");
         sb.append(PREFIX_ROLE + internApplication.getRole().value + " ");
         sb.append(PREFIX_EMAIL + internApplication.getEmail().value + " ");
         sb.append(PREFIX_ADDRESS + internApplication.getAddress().value + " ");
@@ -45,7 +45,7 @@ public class PersonUtil {
      */
     public static String getEditPersonDescriptorDetails(EditPersonDescriptor descriptor) {
         StringBuilder sb = new StringBuilder();
-        descriptor.getName().ifPresent(name -> sb.append(PREFIX_NAME).append(name.fullName).append(" "));
+        descriptor.getCompany().ifPresent(name -> sb.append(PREFIX_COMPANY).append(name.companyName).append(" "));
         descriptor.getRole().ifPresent(role -> sb.append(PREFIX_ROLE).append(role.value).append(" "));
         descriptor.getEmail().ifPresent(email -> sb.append(PREFIX_EMAIL).append(email.value).append(" "));
         descriptor.getAddress().ifPresent(address -> sb.append(PREFIX_ADDRESS).append(address.value).append(" "));

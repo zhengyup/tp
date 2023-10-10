@@ -17,7 +17,7 @@ import seedu.address.model.tag.Tag;
 public class InternApplication {
 
     // Identity fields
-    private final Name name;
+    private final Company company;
     private final Role role;
     private final Email email;
 
@@ -28,17 +28,17 @@ public class InternApplication {
     /**
      * Every field must be present and not null.
      */
-    public InternApplication(Name name, Role role, Email email, Address address, Set<Tag> tags) {
-        requireAllNonNull(name, role, email, address, tags);
-        this.name = name;
+    public InternApplication(Company company, Role role, Email email, Address address, Set<Tag> tags) {
+        requireAllNonNull(company, role, email, address, tags);
+        this.company = company;
         this.role = role;
         this.email = email;
         this.address = address;
         this.tags.addAll(tags);
     }
 
-    public Name getName() {
-        return name;
+    public Company getCompany() {
+        return company;
     }
 
     public Role getRole() {
@@ -71,7 +71,7 @@ public class InternApplication {
         }
 
         return otherInternApplication != null
-                && otherInternApplication.getName().equals(getName());
+                && otherInternApplication.getCompany().equals(getCompany());
     }
 
     /**
@@ -90,7 +90,7 @@ public class InternApplication {
         }
 
         InternApplication otherInternApplication = (InternApplication) other;
-        return name.equals(otherInternApplication.name)
+        return company.equals(otherInternApplication.company)
                 && role.equals(otherInternApplication.role)
                 && email.equals(otherInternApplication.email)
                 && address.equals(otherInternApplication.address)
@@ -100,13 +100,13 @@ public class InternApplication {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, role, email, address, tags);
+        return Objects.hash(company, role, email, address, tags);
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .add("name", name)
+                .add("company", company)
                 .add("role", role)
                 .add("email", email)
                 .add("address", address)

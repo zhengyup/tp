@@ -10,11 +10,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.application.Address;
-import seedu.address.model.application.Email;
-import seedu.address.model.application.InternApplication;
-import seedu.address.model.application.Name;
-import seedu.address.model.application.Role;
+import seedu.address.model.application.*;
+import seedu.address.model.application.Company;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -24,7 +21,7 @@ class JsonAdaptedInternApplication {
 
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Person's %s field is missing!";
 
-    private final String name;
+    private final String company;
     private final String role;
     private final String email;
     private final String address;
@@ -34,12 +31,12 @@ class JsonAdaptedInternApplication {
      * Constructs a {@code JsonAdaptedInternApplication} with the given person details.
      */
     @JsonCreator
-    public JsonAdaptedInternApplication(@JsonProperty("name") String name,
+    public JsonAdaptedInternApplication(@JsonProperty("company") String company,
                                         @JsonProperty("role") String role,
                                         @JsonProperty("email") String email,
                                         @JsonProperty("address") String address,
                                         @JsonProperty("tags") List<JsonAdaptedTag> tags) {
-        this.name = name;
+        this.company = company;
         this.role = role;
         this.email = email;
         this.address = address;
@@ -52,7 +49,7 @@ class JsonAdaptedInternApplication {
      * Converts a given {@code InternApplication} into this class for Jackson use.
      */
     public JsonAdaptedInternApplication(InternApplication source) {
-        name = source.getName().fullName;
+        company = source.getCompany().companyName;
         role = source.getRole().value;
         email = source.getEmail().value;
         address = source.getAddress().value;
@@ -72,13 +69,13 @@ class JsonAdaptedInternApplication {
             applicationTags.add(tag.toModelType());
         }
 
-        if (name == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
+        if (company == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Company.class.getSimpleName()));
         }
-        if (!Name.isValidName(name)) {
-            throw new IllegalValueException(Name.MESSAGE_CONSTRAINTS);
+        if (!Company.isValidName(company)) {
+            throw new IllegalValueException(Company.MESSAGE_CONSTRAINTS);
         }
-        final Name modelName = new Name(name);
+        final Company modelCompany = new Company(company);
 
         if (role == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Role.class.getSimpleName()));
@@ -105,6 +102,6 @@ class JsonAdaptedInternApplication {
         final Address modelAddress = new Address(address);
 
         final Set<Tag> modelTags = new HashSet<>(applicationTags);
-        return new InternApplication(modelName, modelRole, modelEmail, modelAddress, modelTags);
+        return new InternApplication(modelCompany, modelRole, modelEmail, modelAddress, modelTags);
     }
 }

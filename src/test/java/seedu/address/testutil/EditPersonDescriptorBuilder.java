@@ -5,11 +5,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
-import seedu.address.model.application.Address;
-import seedu.address.model.application.Email;
-import seedu.address.model.application.InternApplication;
-import seedu.address.model.application.Name;
-import seedu.address.model.application.Role;
+import seedu.address.model.application.*;
+import seedu.address.model.application.Company;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -32,7 +29,7 @@ public class EditPersonDescriptorBuilder {
      */
     public EditPersonDescriptorBuilder(InternApplication internApplication) {
         descriptor = new EditPersonDescriptor();
-        descriptor.setName(internApplication.getName());
+        descriptor.setCompany(internApplication.getCompany());
         descriptor.setRole(internApplication.getRole());
         descriptor.setEmail(internApplication.getEmail());
         descriptor.setAddress(internApplication.getAddress());
@@ -42,8 +39,8 @@ public class EditPersonDescriptorBuilder {
     /**
      * Sets the {@code Name} of the {@code EditPersonDescriptor} that we are building.
      */
-    public EditPersonDescriptorBuilder withName(String name) {
-        descriptor.setName(new Name(name));
+    public EditPersonDescriptorBuilder withCompany(String name) {
+        descriptor.setCompany(new Company(name));
         return this;
     }
 

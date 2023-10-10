@@ -104,7 +104,7 @@ In `src/test/data/`, data meant for testing purposes are stored. While keeping t
 ```json
 {
   "internApplications": [ {
-    "name": "Person with invalid name field: Ha!ns Mu@ster",
+    "company": "Person with invalid company field: J@ne Str3et",
     "phone": "9482424",
     "email": "hans@example.com",
     "address": "4th street"
