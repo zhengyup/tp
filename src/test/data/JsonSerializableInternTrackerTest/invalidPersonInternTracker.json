@@ -1,0 +1,8 @@
+{
+  "persons": [ {
+    "name": "Hans Muster",
+    "role": "Intern",
+    "email": "invalid@email!3e",
+    "status" : "Pending"
+  } ]
+}

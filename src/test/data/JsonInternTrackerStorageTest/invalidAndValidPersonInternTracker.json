@@ -1,0 +1,13 @@
+{
+  "persons": [ {
+    "name": "Valid Person",
+    "role": "Intern",
+    "email": "hans@example.com",
+    "status": "Pending"
+  }, {
+    "name": "Person With Invalid Role Field",
+    "role": " ",
+    "email": "hans@example.com",
+    "status": "Pending"
+  } ]
+}

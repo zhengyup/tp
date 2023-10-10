@@ -1,0 +1,14 @@
+{
+  "persons": [ {
+    "name": "Alice Pauline",
+    "role": "Intern",
+    "email": "alice@example.com",
+    "status" : "Pending",
+    "tags": [ "friends" ]
+  }, {
+    "name": "Alice Pauline",
+    "role": "Intern",
+    "email": "pauline@example.com",
+    "status" : "Pending"
+  } ]
+}
