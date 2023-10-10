@@ -19,7 +19,7 @@ public class InternApplication {
     // Identity fields
     private final Name name;
     private final Role role;
-    private final Email email;
+    private final Cycle cycle;
 
     // Data fields
     private final Address address;
@@ -28,11 +28,12 @@ public class InternApplication {
     /**
      * Every field must be present and not null.
      */
-    public InternApplication(Name name, Role role, Email email, Address address, Set<Tag> tags) {
-        requireAllNonNull(name, role, email, address, tags);
+
+    public InternApplication(Name name, Role role, Cycle cycle, Address address, Set<Tag> tags) {
+        requireAllNonNull(name, role, cycle, address, tags);
         this.name = name;
         this.role = role;
-        this.email = email;
+        this.cycle = cycle;
         this.address = address;
         this.tags.addAll(tags);
     }
@@ -45,8 +46,8 @@ public class InternApplication {
         return role;
     }
 
-    public Email getEmail() {
-        return email;
+    public Cycle getCycle() {
+        return cycle;
     }
 
     public Address getAddress() {
@@ -70,8 +71,7 @@ public class InternApplication {
             return true;
         }
 
-        return otherInternApplication != null
-                && otherInternApplication.getName().equals(getName());
+        return otherInternApplication != null && otherInternApplication.getName().equals(getName());
     }
 
     /**
@@ -90,28 +90,21 @@ public class InternApplication {
         }
 
         InternApplication otherInternApplication = (InternApplication) other;
-        return name.equals(otherInternApplication.name)
-                && role.equals(otherInternApplication.role)
-                && email.equals(otherInternApplication.email)
-                && address.equals(otherInternApplication.address)
-                && tags.equals(otherInternApplication.tags);
+        return name.equals(otherInternApplication.name) && role.equals(otherInternApplication.role) && cycle.equals(
+                otherInternApplication.cycle) && address.equals(otherInternApplication.address) && tags.equals(
+                otherInternApplication.tags);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, role, email, address, tags);
+        return Objects.hash(name, role, cycle, address, tags);
     }
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this)
-                .add("name", name)
-                .add("role", role)
-                .add("email", email)
-                .add("address", address)
-                .add("tags", tags)
-                .toString();
+        return new ToStringBuilder(this).add("name", name).add("role", role).add("cycle", cycle).add("address", address)
+                .add("tags", tags).toString();
     }
 
 }

@@ -1,45 +1,45 @@
 {
-  "_comment": "AddressBook save file which contains the same Person values as in TypicalPersons#getTypicalAddressBook()",
+  "_comment": "InternTracker save file which contains the same InternApplication values as in TypicalPersons#getTypicalInternApplications()",
   "persons" : [ {
     "name" : "Alice Pauline",
+    "cycle" : "Summer 2024",
     "role" : "SWE Intern",
-    "email" : "alice@example.com",
     "address" : "123, Jurong West Ave 6, #08-111",
     "tags" : [ "friends" ]
   }, {
     "name" : "Benson Meier",
+    "cycle" : "Summer 2023",
     "role" : "Data Engineering Intern",
-    "email" : "johnd@example.com",
     "address" : "311, Clementi Ave 2, #02-25",
     "tags" : [ "owesMoney", "friends" ]
   }, {
     "name" : "Carl Kurz",
+    "cycle" : "Summer 2021",
     "role" : "Full Stack Intern",
-    "email" : "heinz@example.com",
     "address" : "wall street",
     "tags" : [ ]
   }, {
     "name" : "Daniel Meier",
+    "cycle" : "Off-cycle 2020",
     "role" : "Back End Intern",
-    "email" : "cornelia@example.com",
     "address" : "10th street",
     "tags" : [ "friends" ]
   }, {
     "name" : "Elle Meyer",
+    "cycle" : "Summer 2021",
     "role" : "Front End Intern",
-    "email" : "werner@example.com",
     "address" : "michegan ave",
     "tags" : [ ]
   }, {
     "name" : "Fiona Kunz",
+    "cycle" : "Summer 2021",
     "role" : "Web Dev Intern",
-    "email" : "lydia@example.com",
     "address" : "little tokyo",
     "tags" : [ ]
   }, {
     "name" : "George Best",
+    "cycle" : "Summer 2021",
     "role" : "DevOps Intern",
-    "email" : "anna@example.com",
     "address" : "4th street",
     "tags" : [ ]
   } ]

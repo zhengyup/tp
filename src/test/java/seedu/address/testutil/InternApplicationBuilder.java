@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import seedu.address.model.application.Address;
-import seedu.address.model.application.Email;
+import seedu.address.model.application.Cycle;
 import seedu.address.model.application.InternApplication;
 import seedu.address.model.application.Name;
 import seedu.address.model.application.Role;
@@ -18,12 +18,12 @@ public class InternApplicationBuilder {
 
     public static final String DEFAULT_NAME = "Amy Bee";
     public static final String DEFAULT_ROLE = "Intern";
-    public static final String DEFAULT_EMAIL = "amy@gmail.com";
+    public static final String DEFAULT_CYCLE = "Summer 2021";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
 
     private Name name;
     private Role role;
-    private Email email;
+    private Cycle cycle;
     private Address address;
     private Set<Tag> tags;
 
@@ -33,7 +33,7 @@ public class InternApplicationBuilder {
     public InternApplicationBuilder() {
         name = new Name(DEFAULT_NAME);
         role = new Role(DEFAULT_ROLE);
-        email = new Email(DEFAULT_EMAIL);
+        cycle = new Cycle(DEFAULT_CYCLE);
         address = new Address(DEFAULT_ADDRESS);
         tags = new HashSet<>();
     }
@@ -44,7 +44,7 @@ public class InternApplicationBuilder {
     public InternApplicationBuilder(InternApplication internApplicationToCopy) {
         name = internApplicationToCopy.getName();
         role = internApplicationToCopy.getRole();
-        email = internApplicationToCopy.getEmail();
+        cycle = internApplicationToCopy.getCycle();
         address = internApplicationToCopy.getAddress();
         tags = new HashSet<>(internApplicationToCopy.getTags());
     }
@@ -84,13 +84,13 @@ public class InternApplicationBuilder {
     /**
      * Sets the {@code Email} of the {@code InternApplication} that we are building.
      */
-    public InternApplicationBuilder withEmail(String email) {
-        this.email = new Email(email);
+    public InternApplicationBuilder withCycle(String email) {
+        this.cycle = new Cycle(email);
         return this;
     }
 
     public InternApplication build() {
-        return new InternApplication(name, role, email, address, tags);
+        return new InternApplication(name, role, cycle, address, tags);
     }
 
 }
