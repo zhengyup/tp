@@ -1,13 +1,14 @@
 package seedu.address.storage;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.application.Address;
 import seedu.address.model.application.Cycle;
@@ -33,10 +34,8 @@ class JsonAdaptedInternApplication {
      * Constructs a {@code JsonAdaptedInternApplication} with the given person details.
      */
     @JsonCreator
-    public JsonAdaptedInternApplication(@JsonProperty("name") String name,
-                                        @JsonProperty("role") String role,
-                                        @JsonProperty("cycle") String cycle,
-                                        @JsonProperty("address") String address,
+    public JsonAdaptedInternApplication(@JsonProperty("name") String name, @JsonProperty("role") String role,
+                                        @JsonProperty("cycle") String cycle, @JsonProperty("address") String address,
                                         @JsonProperty("tags") List<JsonAdaptedTag> tags) {
         this.name = name;
         this.role = role;
@@ -55,9 +54,7 @@ class JsonAdaptedInternApplication {
         role = source.getRole().value;
         cycle = source.getCycle().value;
         address = source.getAddress().value;
-        tags.addAll(source.getTags().stream()
-                .map(JsonAdaptedTag::new)
-                .collect(Collectors.toList()));
+        tags.addAll(source.getTags().stream().map(JsonAdaptedTag::new).collect(Collectors.toList()));
     }
 
     /**

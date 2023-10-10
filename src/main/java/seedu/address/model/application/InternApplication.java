@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.tag.Tag;
 
@@ -70,8 +71,7 @@ public class InternApplication {
             return true;
         }
 
-        return otherInternApplication != null
-                && otherInternApplication.getName().equals(getName());
+        return otherInternApplication != null && otherInternApplication.getName().equals(getName());
     }
 
     /**
@@ -90,11 +90,9 @@ public class InternApplication {
         }
 
         InternApplication otherInternApplication = (InternApplication) other;
-        return name.equals(otherInternApplication.name)
-                && role.equals(otherInternApplication.role)
-                && cycle.equals(otherInternApplication.cycle)
-                && address.equals(otherInternApplication.address)
-                && tags.equals(otherInternApplication.tags);
+        return name.equals(otherInternApplication.name) && role.equals(otherInternApplication.role) && cycle.equals(
+                otherInternApplication.cycle) && address.equals(otherInternApplication.address) && tags.equals(
+                otherInternApplication.tags);
     }
 
     @Override
@@ -105,13 +103,8 @@ public class InternApplication {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this)
-                .add("name", name)
-                .add("role", role)
-                .add("cycle", cycle)
-                .add("address", address)
-                .add("tags", tags)
-                .toString();
+        return new ToStringBuilder(this).add("name", name).add("role", role).add("cycle", cycle).add("address", address)
+                .add("tags", tags).toString();
     }
 
 }

@@ -14,6 +14,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 import seedu.address.model.InternTracker;
 import seedu.address.model.application.InternApplication;
 
@@ -30,8 +31,9 @@ public class TypicalInternApplications {
             new InternApplicationBuilder().withName("Benson Meier").withAddress("311, Clementi Ave 2, #02-25")
                     .withCycle("Summer 2023").withRole("Data Engineering Intern").withTags("owesMoney", "friends")
                     .build();
-    public static final InternApplication CARL = new InternApplicationBuilder().withName("Carl Kurz")
-            .withRole("Full Stack Intern").withCycle("Summer 2021").withAddress("wall street").build();
+    public static final InternApplication CARL =
+            new InternApplicationBuilder().withName("Carl Kurz").withRole("Full Stack Intern").withCycle("Summer 2021")
+                    .withAddress("wall street").build();
     public static final InternApplication DANIEL =
             new InternApplicationBuilder().withName("Daniel Meier").withRole("Back End Intern")
                     .withCycle("Off-cycle 2020").withAddress("10th street").withTags("friends").build();
