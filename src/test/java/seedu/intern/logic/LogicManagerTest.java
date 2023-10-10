@@ -3,10 +3,10 @@ package seedu.intern.logic;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.intern.logic.Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
 import static seedu.intern.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
-import static seedu.intern.logic.commands.CommandTestUtil.STATUS_DESC_AMY;
 import static seedu.intern.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
 import static seedu.intern.logic.commands.CommandTestUtil.NAME_DESC_AMY;
 import static seedu.intern.logic.commands.CommandTestUtil.ROLE_DESC_AMY;
+import static seedu.intern.logic.commands.CommandTestUtil.STATUS_DESC_AMY;
 import static seedu.intern.testutil.Assert.assertThrows;
 import static seedu.intern.testutil.TypicalInternApplications.AMY;
 

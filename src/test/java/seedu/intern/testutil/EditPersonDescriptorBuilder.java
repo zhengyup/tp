@@ -5,7 +5,10 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import seedu.intern.logic.commands.EditCommand.EditPersonDescriptor;
-import seedu.intern.model.application.*;
+import seedu.intern.model.application.Email;
+import seedu.intern.model.application.InternApplication;
+import seedu.intern.model.application.Name;
+import seedu.intern.model.application.Role;
 import seedu.intern.model.application.Status;
 import seedu.intern.model.tag.Tag;
 

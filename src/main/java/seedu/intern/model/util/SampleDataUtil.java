@@ -6,11 +6,11 @@ import java.util.stream.Collectors;
 
 import seedu.intern.model.InternTracker;
 import seedu.intern.model.ReadOnlyInternBook;
-import seedu.intern.model.application.Status;
 import seedu.intern.model.application.Email;
 import seedu.intern.model.application.InternApplication;
 import seedu.intern.model.application.Name;
 import seedu.intern.model.application.Role;
+import seedu.intern.model.application.Status;
 import seedu.intern.model.tag.Tag;
 
 /**

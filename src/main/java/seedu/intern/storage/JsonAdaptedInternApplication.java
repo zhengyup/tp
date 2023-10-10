@@ -10,7 +10,10 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.intern.commons.exceptions.IllegalValueException;
-import seedu.intern.model.application.*;
+import seedu.intern.model.application.Email;
+import seedu.intern.model.application.InternApplication;
+import seedu.intern.model.application.Name;
+import seedu.intern.model.application.Role;
 import seedu.intern.model.application.Status;
 import seedu.intern.model.tag.Tag;
 

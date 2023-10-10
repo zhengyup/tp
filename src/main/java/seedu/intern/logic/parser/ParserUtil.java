@@ -9,10 +9,10 @@ import java.util.Set;
 import seedu.intern.commons.core.index.Index;
 import seedu.intern.commons.util.StringUtil;
 import seedu.intern.logic.parser.exceptions.ParseException;
-import seedu.intern.model.application.Status;
 import seedu.intern.model.application.Email;
 import seedu.intern.model.application.Name;
 import seedu.intern.model.application.Role;
+import seedu.intern.model.application.Status;
 import seedu.intern.model.tag.Tag;
 
 /**

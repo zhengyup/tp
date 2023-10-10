@@ -2,10 +2,10 @@ package seedu.intern.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.intern.logic.parser.CliSyntax.PREFIX_STATUS;
 import static seedu.intern.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.intern.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.intern.logic.parser.CliSyntax.PREFIX_ROLE;
+import static seedu.intern.logic.parser.CliSyntax.PREFIX_STATUS;
 import static seedu.intern.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.intern.testutil.Assert.assertThrows;
 
@@ -32,8 +32,8 @@ public class CommandTestUtil {
     public static final String VALID_ROLE_BOB = "Intern";
     public static final String VALID_EMAIL_AMY = "amy@example.com";
     public static final String VALID_EMAIL_BOB = "bob@example.com";
-    public static final String VALID_STATUS_AMY = "Block 312, Amy Street 1";
-    public static final String VALID_STATUS_BOB = "Block 123, Bobby Street 3";
+    public static final String VALID_STATUS_AMY = "Pending";
+    public static final String VALID_STATUS_BOB = "Rejected";
     public static final String VALID_TAG_HUSBAND = "husband";
     public static final String VALID_TAG_FRIEND = "friend";
 

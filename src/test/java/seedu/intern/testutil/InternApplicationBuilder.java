@@ -3,7 +3,10 @@ package seedu.intern.testutil;
 import java.util.HashSet;
 import java.util.Set;
 
-import seedu.intern.model.application.*;
+import seedu.intern.model.application.Email;
+import seedu.intern.model.application.InternApplication;
+import seedu.intern.model.application.Name;
+import seedu.intern.model.application.Role;
 import seedu.intern.model.application.Status;
 import seedu.intern.model.tag.Tag;
 import seedu.intern.model.util.SampleDataUtil;
@@ -16,7 +19,7 @@ public class InternApplicationBuilder {
     public static final String DEFAULT_NAME = "Amy Bee";
     public static final String DEFAULT_ROLE = "Intern";
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
-    public static final String DEFAULT_STATUS = "123, Jurong West Ave 6, #08-111";
+    public static final String DEFAULT_STATUS = "Pending";
 
     private Name name;
     private Role role;

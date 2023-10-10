@@ -1,13 +1,13 @@
 package seedu.intern.testutil;
 
-import static seedu.intern.logic.commands.CommandTestUtil.VALID_STATUS_AMY;
-import static seedu.intern.logic.commands.CommandTestUtil.VALID_STATUS_BOB;
 import static seedu.intern.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;
 import static seedu.intern.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
 import static seedu.intern.logic.commands.CommandTestUtil.VALID_NAME_AMY;
 import static seedu.intern.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.intern.logic.commands.CommandTestUtil.VALID_ROLE_AMY;
 import static seedu.intern.logic.commands.CommandTestUtil.VALID_ROLE_BOB;
+import static seedu.intern.logic.commands.CommandTestUtil.VALID_STATUS_AMY;
+import static seedu.intern.logic.commands.CommandTestUtil.VALID_STATUS_BOB;
 import static seedu.intern.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
 import static seedu.intern.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 
@@ -24,28 +24,28 @@ import seedu.intern.model.application.InternApplication;
 public class TypicalInternApplications {
 
     public static final InternApplication ALICE = new InternApplicationBuilder().withName("Alice Pauline")
-            .withStatus("123, Jurong West Ave 6, #08-111").withEmail("alice@example.com")
+            .withStatus("Pending").withEmail("alice@example.com")
             .withRole("SWE Intern")
             .withTags("friends").build();
     public static final InternApplication BENSON = new InternApplicationBuilder().withName("Benson Meier")
-            .withStatus("311, Clementi Ave 2, #02-25")
+            .withStatus("Pending")
             .withEmail("johnd@example.com").withRole("Data Engineering Intern")
             .withTags("owesMoney", "friends").build();
     public static final InternApplication CARL = new InternApplicationBuilder().withName("Carl Kurz")
             .withRole("Full Stack Intern")
-            .withEmail("heinz@example.com").withStatus("wall street").build();
+            .withEmail("heinz@example.com").withStatus("Pending").build();
     public static final InternApplication DANIEL = new InternApplicationBuilder().withName("Daniel Meier")
             .withRole("Back End Intern")
-            .withEmail("cornelia@example.com").withStatus("10th street").withTags("friends").build();
+            .withEmail("cornelia@example.com").withStatus("Pending").withTags("friends").build();
     public static final InternApplication ELLE = new InternApplicationBuilder().withName("Elle Meyer")
             .withRole("Front End Intern")
-            .withEmail("werner@example.com").withStatus("michegan ave").build();
+            .withEmail("werner@example.com").withStatus("Pending").build();
     public static final InternApplication FIONA = new InternApplicationBuilder().withName("Fiona Kunz")
             .withRole("Web Dev Intern")
-            .withEmail("lydia@example.com").withStatus("little tokyo").build();
+            .withEmail("lydia@example.com").withStatus("Pending").build();
     public static final InternApplication GEORGE = new InternApplicationBuilder().withName("George Best")
             .withRole("DevOps Intern")
-            .withEmail("anna@example.com").withStatus("4th street").build();
+            .withEmail("anna@example.com").withStatus("Pending").build();
 
     // Manually added
     public static final InternApplication HOON = new InternApplicationBuilder().withName("Hoon Meier")
