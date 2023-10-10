@@ -1,4 +1,4 @@
-package seedu.address.storage;
+package seedu.intern.storage;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.intern.commons.exceptions.IllegalValueException;
-import seedu.intern.model.application.Email;
+import seedu.intern.model.application.Cycle;
 import seedu.intern.model.application.InternApplication;
 import seedu.intern.model.application.Name;
 import seedu.intern.model.application.Role;

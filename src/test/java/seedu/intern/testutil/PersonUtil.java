@@ -1,6 +1,6 @@
 package seedu.intern.testutil;
 
-import static seedu.intern.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.intern.logic.parser.CliSyntax.PREFIX_CYCLE;
 import static seedu.intern.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.intern.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.intern.logic.parser.CliSyntax.PREFIX_STATUS;

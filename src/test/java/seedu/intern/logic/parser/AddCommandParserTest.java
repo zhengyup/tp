@@ -1,9 +1,9 @@
-package seedu.address.logic.parser;
+package seedu.intern.logic.parser;
 
 import static seedu.intern.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.intern.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
-import static seedu.intern.logic.commands.CommandTestUtil.EMAIL_DESC_BOB;
-import static seedu.intern.logic.commands.CommandTestUtil.INVALID_EMAIL_DESC;
+import static seedu.intern.logic.commands.CommandTestUtil.CYCLE_DESC_AMY;
+import static seedu.intern.logic.commands.CommandTestUtil.CYCLE_DESC_BOB;
+import static seedu.intern.logic.commands.CommandTestUtil.INVALID_CYCLE_DESC;
 import static seedu.intern.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
 import static seedu.intern.logic.commands.CommandTestUtil.INVALID_ROLE_DESC;
 import static seedu.intern.logic.commands.CommandTestUtil.INVALID_STATUS_DESC;
@@ -18,13 +18,13 @@ import static seedu.intern.logic.commands.CommandTestUtil.STATUS_DESC_AMY;
 import static seedu.intern.logic.commands.CommandTestUtil.STATUS_DESC_BOB;
 import static seedu.intern.logic.commands.CommandTestUtil.TAG_DESC_FRIEND;
 import static seedu.intern.logic.commands.CommandTestUtil.TAG_DESC_HUSBAND;
-import static seedu.intern.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
+import static seedu.intern.logic.commands.CommandTestUtil.VALID_CYCLE_BOB;
 import static seedu.intern.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.intern.logic.commands.CommandTestUtil.VALID_ROLE_BOB;
 import static seedu.intern.logic.commands.CommandTestUtil.VALID_STATUS_BOB;
 import static seedu.intern.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
 import static seedu.intern.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
-import static seedu.intern.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.intern.logic.parser.CliSyntax.PREFIX_CYCLE;
 import static seedu.intern.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.intern.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.intern.logic.parser.CliSyntax.PREFIX_STATUS;
@@ -37,7 +37,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.intern.logic.Messages;
 import seedu.intern.logic.commands.AddCommand;
-import seedu.intern.model.application.Email;
+import seedu.intern.model.application.Cycle;
 import seedu.intern.model.application.InternApplication;
 import seedu.intern.model.application.Name;
 import seedu.intern.model.application.Role;
@@ -93,7 +93,7 @@ public class AddCommandParserTest {
         assertParseFailure(parser,
                 validExpectedPersonString + ROLE_DESC_AMY + CYCLE_DESC_AMY + NAME_DESC_AMY + STATUS_DESC_AMY
                         + validExpectedPersonString,
-                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_NAME, PREFIX_STATUS, PREFIX_CYCLE, PREFIX_ROLE));
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_NAME, PREFIX_CYCLE, PREFIX_STATUS, PREFIX_ROLE));
 
         // invalid value followed by valid value
 

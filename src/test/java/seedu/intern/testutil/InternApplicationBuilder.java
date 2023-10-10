@@ -1,9 +1,9 @@
-package seedu.address.testutil;
+package seedu.intern.testutil;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import seedu.intern.model.application.Email;
+import seedu.intern.model.application.Cycle;
 import seedu.intern.model.application.InternApplication;
 import seedu.intern.model.application.Name;
 import seedu.intern.model.application.Role;

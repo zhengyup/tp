@@ -1,10 +1,10 @@
-package seedu.address.model.application;
+package seedu.intern.model.application;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.util.AppUtil.checkArgument;
+import static seedu.intern.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents an InternApplication's cycle in the address book.
+ * Represents an InternApplication's cycle in the intern book.
  * Guarantees: immutable; is valid as declared in {@link #isValidCycle(String)}
  */
 public class Cycle {

@@ -1,7 +1,7 @@
-package seedu.address.testutil;
+package seedu.intern.testutil;
 
-import static seedu.intern.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;
-import static seedu.intern.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
+import static seedu.intern.logic.commands.CommandTestUtil.VALID_CYCLE_AMY;
+import static seedu.intern.logic.commands.CommandTestUtil.VALID_CYCLE_BOB;
 import static seedu.intern.logic.commands.CommandTestUtil.VALID_NAME_AMY;
 import static seedu.intern.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.intern.logic.commands.CommandTestUtil.VALID_ROLE_AMY;

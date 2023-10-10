@@ -1,9 +1,9 @@
-package seedu.address.logic;
+package seedu.intern.logic;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.intern.logic.Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
 import static seedu.intern.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
-import static seedu.intern.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
+import static seedu.intern.logic.commands.CommandTestUtil.CYCLE_DESC_AMY;
 import static seedu.intern.logic.commands.CommandTestUtil.NAME_DESC_AMY;
 import static seedu.intern.logic.commands.CommandTestUtil.ROLE_DESC_AMY;
 import static seedu.intern.logic.commands.CommandTestUtil.STATUS_DESC_AMY;
@@ -46,7 +46,7 @@ public class LogicManagerTest {
     @BeforeEach
     public void setUp() {
         JsonInternTrackerStorage internTrackerStorage =
-                new JsonInternTrackerStorage(temporaryFolder.resolve("internBook.json"));
+                new JsonInternTrackerStorage(temporaryFolder.resolve("letsgethired.json"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.resolve("userPrefs.json"));
         StorageManager storage = new StorageManager(internTrackerStorage, userPrefsStorage);
         logic = new LogicManager(model, storage);
@@ -164,7 +164,7 @@ public class LogicManagerTest {
 
         JsonUserPrefsStorage userPrefsStorage =
                 new JsonUserPrefsStorage(temporaryFolder.resolve("ExceptionUserPrefs.json"));
-        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage);
+        StorageManager storage = new StorageManager(internBookStorage, userPrefsStorage);
 
         logic = new LogicManager(model, storage);
 

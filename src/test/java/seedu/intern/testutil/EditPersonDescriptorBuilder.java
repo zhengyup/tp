@@ -1,11 +1,11 @@
-package seedu.address.testutil;
+package seedu.intern.testutil;
 
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import seedu.intern.logic.commands.EditCommand.EditPersonDescriptor;
-import seedu.intern.model.application.Email;
+import seedu.intern.model.application.Cycle;
 import seedu.intern.model.application.InternApplication;
 import seedu.intern.model.application.Name;
 import seedu.intern.model.application.Role;

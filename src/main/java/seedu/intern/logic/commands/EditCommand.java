@@ -1,7 +1,7 @@
-package seedu.address.logic.commands;
+package seedu.intern.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.intern.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.intern.logic.parser.CliSyntax.PREFIX_CYCLE;
 import static seedu.intern.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.intern.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.intern.logic.parser.CliSyntax.PREFIX_STATUS;
@@ -21,7 +21,7 @@ import seedu.intern.commons.util.ToStringBuilder;
 import seedu.intern.logic.Messages;
 import seedu.intern.logic.commands.exceptions.CommandException;
 import seedu.intern.model.Model;
-import seedu.intern.model.application.Email;
+import seedu.intern.model.application.Cycle;
 import seedu.intern.model.application.InternApplication;
 import seedu.intern.model.application.Name;
 import seedu.intern.model.application.Role;
