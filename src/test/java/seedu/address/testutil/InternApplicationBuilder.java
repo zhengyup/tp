@@ -7,7 +7,7 @@ import seedu.address.model.application.Address;
 import seedu.address.model.application.Cycle;
 import seedu.address.model.application.InternApplication;
 import seedu.address.model.application.Name;
-import seedu.address.model.application.Phone;
+import seedu.address.model.application.Role;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
 
@@ -17,12 +17,12 @@ import seedu.address.model.util.SampleDataUtil;
 public class InternApplicationBuilder {
 
     public static final String DEFAULT_NAME = "Amy Bee";
-    public static final String DEFAULT_PHONE = "85355255";
+    public static final String DEFAULT_ROLE = "Intern";
     public static final String DEFAULT_CYCLE = "Summer 2021";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
 
     private Name name;
-    private Phone phone;
+    private Role role;
     private Cycle cycle;
     private Address address;
     private Set<Tag> tags;
@@ -32,7 +32,7 @@ public class InternApplicationBuilder {
      */
     public InternApplicationBuilder() {
         name = new Name(DEFAULT_NAME);
-        phone = new Phone(DEFAULT_PHONE);
+        role = new Role(DEFAULT_ROLE);
         cycle = new Cycle(DEFAULT_CYCLE);
         address = new Address(DEFAULT_ADDRESS);
         tags = new HashSet<>();
@@ -43,7 +43,7 @@ public class InternApplicationBuilder {
      */
     public InternApplicationBuilder(InternApplication internApplicationToCopy) {
         name = internApplicationToCopy.getName();
-        phone = internApplicationToCopy.getPhone();
+        role = internApplicationToCopy.getRole();
         cycle = internApplicationToCopy.getCycle();
         address = internApplicationToCopy.getAddress();
         tags = new HashSet<>(internApplicationToCopy.getTags());
@@ -74,10 +74,10 @@ public class InternApplicationBuilder {
     }
 
     /**
-     * Sets the {@code Phone} of the {@code InternApplication} that we are building.
+     * Sets the {@code Role} of the {@code InternApplication} that we are building.
      */
-    public InternApplicationBuilder withPhone(String phone) {
-        this.phone = new Phone(phone);
+    public InternApplicationBuilder withRole(String role) {
+        this.role = new Role(role);
         return this;
     }
 
@@ -90,7 +90,7 @@ public class InternApplicationBuilder {
     }
 
     public InternApplication build() {
-        return new InternApplication(name, phone, cycle, address, tags);
+        return new InternApplication(name, role, cycle, address, tags);
     }
 
 }

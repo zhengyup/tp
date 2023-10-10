@@ -5,27 +5,26 @@ import static seedu.address.storage.JsonAdaptedInternApplication.MISSING_FIELD_M
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalInternApplications.BENSON;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import org.junit.jupiter.api.Test;
-
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.application.Address;
 import seedu.address.model.application.Cycle;
 import seedu.address.model.application.Name;
-import seedu.address.model.application.Phone;
+import seedu.address.model.application.Role;
 
 public class JsonAdaptedInternApplicationTest {
     private static final String INVALID_NAME = "R@chel";
-    private static final String INVALID_PHONE = "+651234";
+    private static final String INVALID_ROLE = " ";
     private static final String INVALID_ADDRESS = " ";
     private static final String INVALID_EMAIL = "example.com";
     private static final String INVALID_TAG = "#friend";
 
     private static final String VALID_NAME = BENSON.getName().toString();
-    private static final String VALID_PHONE = BENSON.getPhone().toString();
+    private static final String VALID_ROLE = BENSON.getRole().toString();
     private static final String VALID_EMAIL = BENSON.getCycle().toString();
     private static final String VALID_ADDRESS = BENSON.getAddress().toString();
     private static final List<JsonAdaptedTag> VALID_TAGS = BENSON.getTags().stream()
@@ -41,46 +40,46 @@ public class JsonAdaptedInternApplicationTest {
     @Test
     public void toModelType_invalidName_throwsIllegalValueException() {
         JsonAdaptedInternApplication application =
-                new JsonAdaptedInternApplication(INVALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS, VALID_TAGS);
+                new JsonAdaptedInternApplication(INVALID_NAME, VALID_ROLE, VALID_EMAIL, VALID_ADDRESS, VALID_TAGS);
         String expectedMessage = Name.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, application::toModelType);
     }
 
     @Test
     public void toModelType_nullName_throwsIllegalValueException() {
-        JsonAdaptedInternApplication application = new JsonAdaptedInternApplication(null, VALID_PHONE,
+        JsonAdaptedInternApplication application = new JsonAdaptedInternApplication(null, VALID_ROLE,
                 VALID_EMAIL, VALID_ADDRESS, VALID_TAGS);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, application::toModelType);
     }
 
     @Test
-    public void toModelType_invalidPhone_throwsIllegalValueException() {
+    public void toModelType_invalidRole_throwsIllegalValueException() {
         JsonAdaptedInternApplication application =
-                new JsonAdaptedInternApplication(VALID_NAME, INVALID_PHONE, VALID_EMAIL, VALID_ADDRESS, VALID_TAGS);
-        String expectedMessage = Phone.MESSAGE_CONSTRAINTS;
+                new JsonAdaptedInternApplication(VALID_NAME, INVALID_ROLE, VALID_EMAIL, VALID_ADDRESS, VALID_TAGS);
+        String expectedMessage = Role.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, application::toModelType);
     }
 
     @Test
-    public void toModelType_nullPhone_throwsIllegalValueException() {
+    public void toModelType_nullRole_throwsIllegalValueException() {
         JsonAdaptedInternApplication application = new JsonAdaptedInternApplication(VALID_NAME, null,
                 VALID_EMAIL, VALID_ADDRESS, VALID_TAGS);
-        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Phone.class.getSimpleName());
+        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Role.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, application::toModelType);
     }
 
     @Test
     public void toModelType_invalidEmail_throwsIllegalValueException() {
         JsonAdaptedInternApplication application =
-                new JsonAdaptedInternApplication(VALID_NAME, VALID_PHONE, INVALID_EMAIL, VALID_ADDRESS, VALID_TAGS);
+                new JsonAdaptedInternApplication(VALID_NAME, VALID_ROLE, INVALID_EMAIL, VALID_ADDRESS, VALID_TAGS);
         String expectedMessage = Cycle.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, application::toModelType);
     }
 
     @Test
     public void toModelType_nullEmail_throwsIllegalValueException() {
-        JsonAdaptedInternApplication application = new JsonAdaptedInternApplication(VALID_NAME, VALID_PHONE,
+        JsonAdaptedInternApplication application = new JsonAdaptedInternApplication(VALID_NAME, VALID_ROLE,
                 null, VALID_ADDRESS, VALID_TAGS);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Cycle.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, application::toModelType);
@@ -89,14 +88,14 @@ public class JsonAdaptedInternApplicationTest {
     @Test
     public void toModelType_invalidAddress_throwsIllegalValueException() {
         JsonAdaptedInternApplication application =
-                new JsonAdaptedInternApplication(VALID_NAME, VALID_PHONE, VALID_EMAIL, INVALID_ADDRESS, VALID_TAGS);
+                new JsonAdaptedInternApplication(VALID_NAME, VALID_ROLE, VALID_EMAIL, INVALID_ADDRESS, VALID_TAGS);
         String expectedMessage = Address.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, application::toModelType);
     }
 
     @Test
     public void toModelType_nullAddress_throwsIllegalValueException() {
-        JsonAdaptedInternApplication application = new JsonAdaptedInternApplication(VALID_NAME, VALID_PHONE,
+        JsonAdaptedInternApplication application = new JsonAdaptedInternApplication(VALID_NAME, VALID_ROLE,
                 VALID_EMAIL, null, VALID_TAGS);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Address.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, application::toModelType);
@@ -107,7 +106,7 @@ public class JsonAdaptedInternApplicationTest {
         List<JsonAdaptedTag> invalidTags = new ArrayList<>(VALID_TAGS);
         invalidTags.add(new JsonAdaptedTag(INVALID_TAG));
         JsonAdaptedInternApplication application =
-                new JsonAdaptedInternApplication(VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS, invalidTags);
+                new JsonAdaptedInternApplication(VALID_NAME, VALID_ROLE, VALID_EMAIL, VALID_ADDRESS, invalidTags);
         assertThrows(IllegalValueException.class, application::toModelType);
     }
 

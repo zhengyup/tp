@@ -33,7 +33,7 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label id;
     @FXML
-    private Label phone;
+    private Label role;
     @FXML
     private Label address;
     @FXML
@@ -49,7 +49,7 @@ public class PersonCard extends UiPart<Region> {
         this.internApplication = internApplication;
         id.setText(displayedIndex + ". ");
         name.setText(internApplication.getName().fullName);
-        phone.setText(internApplication.getPhone().value);
+        role.setText(internApplication.getRole().value);
         address.setText(internApplication.getAddress().value);
         cycle.setText(internApplication.getCycle().value);
         internApplication.getTags().stream()

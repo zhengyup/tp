@@ -6,7 +6,6 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
-
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.tag.Tag;
 
@@ -18,7 +17,7 @@ public class InternApplication {
 
     // Identity fields
     private final Name name;
-    private final Phone phone;
+    private final Role role;
     private final Cycle cycle;
 
     // Data fields
@@ -28,10 +27,11 @@ public class InternApplication {
     /**
      * Every field must be present and not null.
      */
-    public InternApplication(Name name, Phone phone, Cycle cycle, Address address, Set<Tag> tags) {
-        requireAllNonNull(name, phone, cycle, address, tags);
+
+    public InternApplication(Name name, Role role, Cycle cycle, Address address, Set<Tag> tags) {
+        requireAllNonNull(name, role, cycle, address, tags);
         this.name = name;
-        this.phone = phone;
+        this.role = role;
         this.cycle = cycle;
         this.address = address;
         this.tags.addAll(tags);
@@ -41,8 +41,8 @@ public class InternApplication {
         return name;
     }
 
-    public Phone getPhone() {
-        return phone;
+    public Role getRole() {
+        return role;
     }
 
     public Cycle getCycle() {
@@ -91,7 +91,7 @@ public class InternApplication {
 
         InternApplication otherInternApplication = (InternApplication) other;
         return name.equals(otherInternApplication.name)
-                && phone.equals(otherInternApplication.phone)
+                && role.equals(otherInternApplication.role)
                 && cycle.equals(otherInternApplication.cycle)
                 && address.equals(otherInternApplication.address)
                 && tags.equals(otherInternApplication.tags);
@@ -100,14 +100,14 @@ public class InternApplication {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, cycle, address, tags);
+        return Objects.hash(name, role, cycle, address, tags);
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
                 .add("name", name)
-                .add("phone", phone)
+                .add("role", role)
                 .add("cycle", cycle)
                 .add("address", address)
                 .add("tags", tags)

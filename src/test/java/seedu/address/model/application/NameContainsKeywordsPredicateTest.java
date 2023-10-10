@@ -4,12 +4,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-
-import org.junit.jupiter.api.Test;
-
 import seedu.address.testutil.InternApplicationBuilder;
 
 public class NameContainsKeywordsPredicateTest {
@@ -70,7 +69,7 @@ public class NameContainsKeywordsPredicateTest {
 
         // Keywords match phone, cycle and address, but does not match name
         predicate = new NameContainsKeywordsPredicate(Arrays.asList("12345", "Summer", "Main", "Street"));
-        assertFalse(predicate.test(new InternApplicationBuilder().withName("Alice").withPhone("12345")
+        assertFalse(predicate.test(new InternApplicationBuilder().withName("Alice").withRole("12345")
                 .withCycle("Summer").withAddress("Main Street").build()));
     }
 
