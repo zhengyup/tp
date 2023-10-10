@@ -1,0 +1,15 @@
+{
+  "persons": [ {
+    "name": "Alice Pauline",
+    "cycle": "Summer 2024",
+    "role": "Intern",
+    "status" : "Pending",
+    "tags": [ "friends" ]
+  }, {
+    "name": "Alice Pauline",
+    "phone": "94351253",
+    "cycle": "Summer 2024",
+    "role": "Intern",
+    "status" : "Pending"
+  } ]
+}

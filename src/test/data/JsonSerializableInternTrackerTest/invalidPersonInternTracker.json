@@ -1,0 +1,8 @@
+{
+  "persons": [ {
+    "name": "Hans Muster",
+    "cycle": "Summer!2021",
+    "role": "Intern",
+    "status" : "Pending"
+  } ]
+}
