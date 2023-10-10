@@ -1,4 +1,4 @@
-package seedu.intern.logic.commands;
+package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -30,8 +30,8 @@ public class CommandTestUtil {
     public static final String VALID_NAME_BOB = "Bob Choo";
     public static final String VALID_ROLE_AMY = "InternAmy";
     public static final String VALID_ROLE_BOB = "Intern";
-    public static final String VALID_EMAIL_AMY = "amy@example.com";
-    public static final String VALID_EMAIL_BOB = "bob@example.com";
+    public static final String VALID_CYCLE_AMY = "Summer 2024";
+    public static final String VALID_CYCLE_BOB = "Summer 2023";
     public static final String VALID_STATUS_AMY = "Pending";
     public static final String VALID_STATUS_BOB = "Rejected";
     public static final String VALID_TAG_HUSBAND = "husband";
@@ -41,8 +41,8 @@ public class CommandTestUtil {
     public static final String NAME_DESC_BOB = " " + PREFIX_NAME + VALID_NAME_BOB;
     public static final String ROLE_DESC_AMY = " " + PREFIX_ROLE + VALID_ROLE_AMY;
     public static final String ROLE_DESC_BOB = " " + PREFIX_ROLE + VALID_ROLE_BOB;
-    public static final String EMAIL_DESC_AMY = " " + PREFIX_EMAIL + VALID_EMAIL_AMY;
-    public static final String EMAIL_DESC_BOB = " " + PREFIX_EMAIL + VALID_EMAIL_BOB;
+    public static final String CYCLE_DESC_AMY = " " + PREFIX_CYCLE + VALID_CYCLE_AMY;
+    public static final String CYCLE_DESC_BOB = " " + PREFIX_CYCLE + VALID_CYCLE_BOB;
     public static final String STATUS_DESC_AMY = " " + PREFIX_STATUS + VALID_STATUS_AMY;
     public static final String STATUS_DESC_BOB = " " + PREFIX_STATUS + VALID_STATUS_BOB;
     public static final String TAG_DESC_FRIEND = " " + PREFIX_TAG + VALID_TAG_FRIEND;
@@ -50,7 +50,7 @@ public class CommandTestUtil {
 
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_ROLE_DESC = " " + PREFIX_ROLE + " "; // Blank is not allowed in roles
-    public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "bob!yahoo"; // missing '@' symbol
+    public static final String INVALID_CYCLE_DESC = " " + PREFIX_CYCLE + "summer!2023"; // '!' not allowed in cycles
     public static final String INVALID_STATUS_DESC = " " + PREFIX_STATUS; // empty string not allowed for status
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "hubby*"; // '*' not allowed in tags
 
@@ -61,12 +61,11 @@ public class CommandTestUtil {
     public static final EditCommand.EditPersonDescriptor DESC_BOB;
 
     static {
-        DESC_AMY = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY)
-                .withRole(VALID_ROLE_AMY).withEmail(VALID_EMAIL_AMY).withStatus(VALID_STATUS_AMY)
-                .withTags(VALID_TAG_FRIEND).build();
-        DESC_BOB = new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB)
-                .withRole(VALID_ROLE_BOB).withEmail(VALID_EMAIL_BOB).withStatus(VALID_STATUS_BOB)
-                .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
+        DESC_AMY = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY).withRole(VALID_ROLE_AMY)
+                .withCycle(VALID_CYCLE_AMY).withStatus(VALID_STATUS_AMY).withTags(VALID_TAG_FRIEND).build();
+        DESC_BOB = new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB).withRole(VALID_ROLE_BOB)
+                .withCycle(VALID_CYCLE_BOB).withStatus(VALID_STATUS_BOB).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
+                .build();
     }
 
     /**
@@ -75,7 +74,7 @@ public class CommandTestUtil {
      * - the {@code actualModel} matches {@code expectedModel}
      */
     public static void assertCommandSuccess(Command command, Model actualModel, CommandResult expectedCommandResult,
-            Model expectedModel) {
+                                            Model expectedModel) {
         try {
             CommandResult result = command.execute(actualModel);
             assertEquals(expectedCommandResult, result);
@@ -90,7 +89,7 @@ public class CommandTestUtil {
      * that takes a string {@code expectedMessage}.
      */
     public static void assertCommandSuccess(Command command, Model actualModel, String expectedMessage,
-            Model expectedModel) {
+                                            Model expectedModel) {
         CommandResult expectedCommandResult = new CommandResult(expectedMessage);
         assertCommandSuccess(command, actualModel, expectedCommandResult, expectedModel);
     }
@@ -111,6 +110,7 @@ public class CommandTestUtil {
         assertEquals(expectedInternTracker, actualModel.getInternTracker());
         assertEquals(expectedFilteredList, actualModel.getFilteredPersonList());
     }
+
     /**
      * Updates {@code model}'s filtered list to show only the person at the given {@code targetIndex} in the
      * {@code model}'s intern tracker.

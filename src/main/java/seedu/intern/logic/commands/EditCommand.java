@@ -1,4 +1,4 @@
-package seedu.intern.logic.commands;
+package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.intern.logic.parser.CliSyntax.PREFIX_EMAIL;
@@ -41,12 +41,12 @@ public class EditCommand extends Command {
             + "Parameters: INDEX (must be a positive integer) "
             + "[" + PREFIX_NAME + "NAME] "
             + "[" + PREFIX_ROLE + "ROLE] "
-            + "[" + PREFIX_EMAIL + "EMAIL] "
+            + "[" + PREFIX_CYCLE + "CYCLE] "
             + "[" + PREFIX_STATUS + "STATUS] "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_ROLE + "91234567 "
-            + PREFIX_EMAIL + "johndoe@example.com";
+            + PREFIX_CYCLE + "Summer 2024";
 
     public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Person: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
@@ -99,11 +99,11 @@ public class EditCommand extends Command {
 
         Name updatedName = editPersonDescriptor.getName().orElse(internApplicationToEdit.getName());
         Role updatedRole = editPersonDescriptor.getRole().orElse(internApplicationToEdit.getRole());
-        Email updatedEmail = editPersonDescriptor.getEmail().orElse(internApplicationToEdit.getEmail());
+        Cycle updatedCycle = editPersonDescriptor.getCycle().orElse(internApplicationToEdit.getCycle());
         Status updatedStatus = editPersonDescriptor.getStatus().orElse(internApplicationToEdit.getStatus());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(internApplicationToEdit.getTags());
 
-        return new InternApplication(updatedName, updatedRole, updatedEmail, updatedStatus, updatedTags);
+        return new InternApplication(updatedName, updatedRole, updatedCycle, updatedStatus, updatedTags);
     }
 
     @Override
@@ -137,7 +137,7 @@ public class EditCommand extends Command {
     public static class EditPersonDescriptor {
         private Name name;
         private Role role;
-        private Email email;
+        private Cycle cycle;
         private Status status;
         private Set<Tag> tags;
 
@@ -150,7 +150,7 @@ public class EditCommand extends Command {
         public EditPersonDescriptor(EditPersonDescriptor toCopy) {
             setName(toCopy.name);
             setRole(toCopy.role);
-            setEmail(toCopy.email);
+            setCycle(toCopy.cycle);
             setStatus(toCopy.status);
             setTags(toCopy.tags);
         }
@@ -159,7 +159,7 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, role, email, status, tags);
+            return CollectionUtil.isAnyNonNull(name, role, cycle, status, tags);
         }
 
         public void setName(Name name) {
@@ -178,12 +178,12 @@ public class EditCommand extends Command {
             return Optional.ofNullable(role);
         }
 
-        public void setEmail(Email email) {
-            this.email = email;
+        public void setCycle(Cycle cycle) {
+            this.cycle = cycle;
         }
 
-        public Optional<Email> getEmail() {
-            return Optional.ofNullable(email);
+        public Optional<Cycle> getCycle() {
+            return Optional.ofNullable(cycle);
         }
 
         public void setStatus(Status status) {
@@ -225,7 +225,7 @@ public class EditCommand extends Command {
             EditPersonDescriptor otherEditPersonDescriptor = (EditPersonDescriptor) other;
             return Objects.equals(name, otherEditPersonDescriptor.name)
                     && Objects.equals(role, otherEditPersonDescriptor.role)
-                    && Objects.equals(email, otherEditPersonDescriptor.email)
+                    && Objects.equals(cycle, otherEditPersonDescriptor.cycle)
                     && Objects.equals(status, otherEditPersonDescriptor.status)
                     && Objects.equals(tags, otherEditPersonDescriptor.tags);
         }
@@ -235,7 +235,7 @@ public class EditCommand extends Command {
             return new ToStringBuilder(this)
                     .add("name", name)
                     .add("role", role)
-                    .add("email", email)
+                    .add("cycle", cycle)
                     .add("status", status)
                     .add("tags", tags)
                     .toString();

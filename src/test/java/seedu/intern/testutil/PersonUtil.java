@@ -32,10 +32,10 @@ public class PersonUtil {
         StringBuilder sb = new StringBuilder();
         sb.append(PREFIX_NAME + internApplication.getName().fullName + " ");
         sb.append(PREFIX_ROLE + internApplication.getRole().value + " ");
-        sb.append(PREFIX_EMAIL + internApplication.getEmail().value + " ");
+        sb.append(PREFIX_CYCLE + internApplication.getCycle().value + " ");
         sb.append(PREFIX_STATUS + internApplication.getStatus().value + " ");
         internApplication.getTags().stream().forEach(
-            s -> sb.append(PREFIX_TAG + s.tagName + " ")
+                s -> sb.append(PREFIX_TAG + s.tagName + " ")
         );
         return sb.toString();
     }
@@ -47,7 +47,7 @@ public class PersonUtil {
         StringBuilder sb = new StringBuilder();
         descriptor.getName().ifPresent(name -> sb.append(PREFIX_NAME).append(name.fullName).append(" "));
         descriptor.getRole().ifPresent(role -> sb.append(PREFIX_ROLE).append(role.value).append(" "));
-        descriptor.getEmail().ifPresent(email -> sb.append(PREFIX_EMAIL).append(email.value).append(" "));
+        descriptor.getCycle().ifPresent(cycle -> sb.append(PREFIX_CYCLE).append(cycle.value).append(" "));
         descriptor.getStatus().ifPresent(status -> sb.append(PREFIX_STATUS).append(status.value).append(" "));
         if (descriptor.getTags().isPresent()) {
             Set<Tag> tags = descriptor.getTags().get();

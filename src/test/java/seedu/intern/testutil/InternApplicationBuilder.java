@@ -1,4 +1,4 @@
-package seedu.intern.testutil;
+package seedu.address.testutil;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -18,12 +18,12 @@ public class InternApplicationBuilder {
 
     public static final String DEFAULT_NAME = "Amy Bee";
     public static final String DEFAULT_ROLE = "Intern";
-    public static final String DEFAULT_EMAIL = "amy@gmail.com";
+    public static final String DEFAULT_CYCLE = "Summer 2021";
     public static final String DEFAULT_STATUS = "Pending";
 
     private Name name;
     private Role role;
-    private Email email;
+    private Cycle cycle;
     private Status status;
     private Set<Tag> tags;
 
@@ -33,7 +33,7 @@ public class InternApplicationBuilder {
     public InternApplicationBuilder() {
         name = new Name(DEFAULT_NAME);
         role = new Role(DEFAULT_ROLE);
-        email = new Email(DEFAULT_EMAIL);
+        cycle = new Cycle(DEFAULT_CYCLE);
         status = new Status(DEFAULT_STATUS);
         tags = new HashSet<>();
     }
@@ -44,7 +44,7 @@ public class InternApplicationBuilder {
     public InternApplicationBuilder(InternApplication internApplicationToCopy) {
         name = internApplicationToCopy.getName();
         role = internApplicationToCopy.getRole();
-        email = internApplicationToCopy.getEmail();
+        cycle = internApplicationToCopy.getCycle();
         status = internApplicationToCopy.getStatus();
         tags = new HashSet<>(internApplicationToCopy.getTags());
     }
@@ -84,13 +84,13 @@ public class InternApplicationBuilder {
     /**
      * Sets the {@code Email} of the {@code InternApplication} that we are building.
      */
-    public InternApplicationBuilder withEmail(String email) {
-        this.email = new Email(email);
+    public InternApplicationBuilder withCycle(String email) {
+        this.cycle = new Cycle(email);
         return this;
     }
 
     public InternApplication build() {
-        return new InternApplication(name, role, email, status, tags);
+        return new InternApplication(name, role, cycle, status, tags);
     }
 
 }

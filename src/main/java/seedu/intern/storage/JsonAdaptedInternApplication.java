@@ -1,4 +1,4 @@
-package seedu.intern.storage;
+package seedu.address.storage;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -26,7 +26,7 @@ class JsonAdaptedInternApplication {
 
     private final String name;
     private final String role;
-    private final String email;
+    private final String cycle;
     private final String status;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
 
@@ -34,14 +34,12 @@ class JsonAdaptedInternApplication {
      * Constructs a {@code JsonAdaptedInternApplication} with the given person details.
      */
     @JsonCreator
-    public JsonAdaptedInternApplication(@JsonProperty("name") String name,
-                                        @JsonProperty("role") String role,
-                                        @JsonProperty("email") String email,
-                                        @JsonProperty("status") String status,
+    public JsonAdaptedInternApplication(@JsonProperty("name") String name, @JsonProperty("role") String role,
+                                        @JsonProperty("cycle") String cycle, @JsonProperty("status") String status,
                                         @JsonProperty("tags") List<JsonAdaptedTag> tags) {
         this.name = name;
         this.role = role;
-        this.email = email;
+        this.cycle = cycle;
         this.status = status;
         if (tags != null) {
             this.tags.addAll(tags);
@@ -54,11 +52,9 @@ class JsonAdaptedInternApplication {
     public JsonAdaptedInternApplication(InternApplication source) {
         name = source.getName().fullName;
         role = source.getRole().value;
-        email = source.getEmail().value;
+        cycle = source.getCycle().value;
         status = source.getStatus().value;
-        tags.addAll(source.getTags().stream()
-                .map(JsonAdaptedTag::new)
-                .collect(Collectors.toList()));
+        tags.addAll(source.getTags().stream().map(JsonAdaptedTag::new).collect(Collectors.toList()));
     }
 
     /**
@@ -88,13 +84,13 @@ class JsonAdaptedInternApplication {
         }
         final Role modelRole = new Role(role);
 
-        if (email == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Email.class.getSimpleName()));
+        if (cycle == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Cycle.class.getSimpleName()));
         }
-        if (!Email.isValidEmail(email)) {
-            throw new IllegalValueException(Email.MESSAGE_CONSTRAINTS);
+        if (!Cycle.isValidCycle(cycle)) {
+            throw new IllegalValueException(Cycle.MESSAGE_CONSTRAINTS);
         }
-        final Email modelEmail = new Email(email);
+        final Cycle modelCycle = new Cycle(cycle);
 
         if (status == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Status.class.getSimpleName()));
@@ -105,6 +101,6 @@ class JsonAdaptedInternApplication {
         final Status modelStatus = new Status(status);
 
         final Set<Tag> modelTags = new HashSet<>(applicationTags);
-        return new InternApplication(modelName, modelRole, modelEmail, modelStatus, modelTags);
+        return new InternApplication(modelName, modelRole, modelCycle, modelStatus, modelTags);
     }
 }

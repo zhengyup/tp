@@ -39,8 +39,8 @@ public class Messages {
         builder.append(internApplication.getName())
                 .append("; Role: ")
                 .append(internApplication.getRole())
-                .append("; Email: ")
-                .append(internApplication.getEmail())
+                .append("; Cycle: ")
+                .append(internApplication.getCycle())
                 .append("; Status: ")
                 .append(internApplication.getStatus())
                 .append("; Tags: ");

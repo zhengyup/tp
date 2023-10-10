@@ -1,4 +1,4 @@
-package seedu.intern.logic.parser;
+package seedu.address.logic.parser;
 
 import static seedu.intern.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.intern.logic.parser.CliSyntax.PREFIX_EMAIL;
@@ -31,21 +31,21 @@ public class AddCommandParser implements Parser<AddCommand> {
      */
     public AddCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_ROLE, PREFIX_EMAIL, PREFIX_STATUS, PREFIX_TAG);
+                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_ROLE, PREFIX_CYCLE, PREFIX_STATUS, PREFIX_TAG);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_STATUS, PREFIX_ROLE, PREFIX_EMAIL)
+        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_STATUS, PREFIX_ROLE, PREFIX_CYCLE)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
 
-        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_ROLE, PREFIX_EMAIL, PREFIX_STATUS);
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_ROLE, PREFIX_CYCLE, PREFIX_STATUS);
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
         Role role = ParserUtil.parseRole(argMultimap.getValue(PREFIX_ROLE).get());
-        Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
+        Cycle cycle = ParserUtil.parseCycle(argMultimap.getValue(PREFIX_CYCLE).get());
         Status status = ParserUtil.parseStatus(argMultimap.getValue(PREFIX_STATUS).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
-        InternApplication internApplication = new InternApplication(name, role, email, status, tagList);
+        InternApplication internApplication = new InternApplication(name, role, cycle, status, tagList);
 
         return new AddCommand(internApplication);
     }

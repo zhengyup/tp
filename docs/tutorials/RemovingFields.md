@@ -87,7 +87,7 @@ private Label status;
 ...
 <Label fx:id="phone" styleClass="cell_small_label" text="\$phone" />
 <Label fx:id="status" styleClass="cell_small_label" text="\$status" />
-<Label fx:id="email" styleClass="cell_small_label" text="\$email" />
+<Label fx:id="cycle" styleClass="cell_small_label" text="\$cycle" />
 ...
 ```
 
@@ -106,7 +106,7 @@ In `src/test/data/`, data meant for testing purposes are stored. While keeping t
   "internApplications": [ {
     "name": "Person with invalid name field: Ha!ns Mu@ster",
     "phone": "9482424",
-    "email": "hans@example.com",
+    "cycle": "hans@example.com",
     "status": "4th street"
   } ]
 }

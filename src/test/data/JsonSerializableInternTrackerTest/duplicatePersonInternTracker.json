@@ -1,14 +1,16 @@
 {
   "persons": [ {
     "name": "Alice Pauline",
+    "cycle": "Summer 2024",
     "role": "Intern",
-    "email": "alice@example.com",
+    "address": "123, Jurong West Ave 6, #08-111",
     "status" : "Pending",
     "tags": [ "friends" ]
   }, {
     "name": "Alice Pauline",
+    "phone": "94351253",
+    "cycle": "Summer 2024",
     "role": "Intern",
-    "email": "pauline@example.com",
     "status" : "Pending"
   } ]
 }

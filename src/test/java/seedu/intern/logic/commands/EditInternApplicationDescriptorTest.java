@@ -1,4 +1,4 @@
-package seedu.intern.logic.commands;
+package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -45,7 +45,7 @@ public class EditInternApplicationDescriptorTest {
         assertFalse(DESC_AMY.equals(editedAmy));
 
         // different email -> returns false
-        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withEmail(VALID_EMAIL_BOB).build();
+        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withCycle(VALID_CYCLE_BOB).build();
         assertFalse(DESC_AMY.equals(editedAmy));
 
         // different status -> returns false
@@ -62,8 +62,8 @@ public class EditInternApplicationDescriptorTest {
         EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
         String expected = EditPersonDescriptor.class.getCanonicalName() + "{name="
                 + editPersonDescriptor.getName().orElse(null) + ", role="
-                + editPersonDescriptor.getRole().orElse(null) + ", email="
-                + editPersonDescriptor.getEmail().orElse(null) + ", status="
+                + editPersonDescriptor.getRole().orElse(null) + ", cycle="
+                + editPersonDescriptor.getCycle().orElse(null) + ", status="
                 + editPersonDescriptor.getStatus().orElse(null) + ", tags="
                 + editPersonDescriptor.getTags().orElse(null) + "}";
         assertEquals(expected, editPersonDescriptor.toString());

@@ -1,4 +1,4 @@
-package seedu.intern.logic.commands;
+package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.intern.logic.parser.CliSyntax.PREFIX_EMAIL;
@@ -24,13 +24,13 @@ public class AddCommand extends Command {
             + "Parameters: "
             + PREFIX_NAME + "NAME "
             + PREFIX_ROLE + "ROLE "
-            + PREFIX_EMAIL + "EMAIL "
+            + PREFIX_CYCLE + "CYCLE "
             + PREFIX_STATUS + "ADDRESS "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "John Doe "
             + PREFIX_ROLE + "98765432 "
-            + PREFIX_EMAIL + "johnd@example.com "
+            + PREFIX_CYCLE + "Summer 2024"
             + PREFIX_STATUS + "311, Clementi Ave 2, #02-25 "
             + PREFIX_TAG + "friends "
             + PREFIX_TAG + "owesMoney";
