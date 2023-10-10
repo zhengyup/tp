@@ -48,7 +48,7 @@ public class MainApp extends Application {
 
     @Override
     public void init() throws Exception {
-        logger.info("=============================[ Initializing InternTracker ]===========================");
+        logger.info("=============================[ Initializing LetsGetHired ]===========================");
         super.init();
 
         AppParameters appParameters = AppParameters.parse(getParameters());
@@ -57,8 +57,8 @@ public class MainApp extends Application {
 
         UserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(config.getUserPrefsFilePath());
         UserPrefs userPrefs = initPrefs(userPrefsStorage);
-        InternTrackerStorage internBookStorage = new JsonInternTrackerStorage(userPrefs.getInternTrackerFilePath());
-        storage = new StorageManager(internBookStorage, userPrefsStorage);
+        InternTrackerStorage dataStorage = new JsonInternTrackerStorage(userPrefs.getInternTrackerFilePath());
+        storage = new StorageManager(dataStorage, userPrefsStorage);
 
         model = initModelManager(storage, userPrefs);
 
@@ -75,15 +75,15 @@ public class MainApp extends Application {
     private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
         logger.info("Using data file : " + storage.getInternTrackerFilePath());
 
-        Optional<ReadOnlyInternTracker> internBookOptional;
+        Optional<ReadOnlyInternTracker> dataOptional;
         ReadOnlyInternTracker initialData;
         try {
-            internBookOptional = storage.readInternTracker();
-            if (!internBookOptional.isPresent()) {
+            dataOptional = storage.readInternTracker();
+            if (!dataOptional.isPresent()) {
                 logger.info("Creating a new data file " + storage.getInternTrackerFilePath()
                         + " populated with a sample InternTracker.");
             }
-            initialData = internBookOptional.orElseGet(SampleDataUtil::getSampleInternTracker);
+            initialData = dataOptional.orElseGet(SampleDataUtil::getSampleInternTracker);
         } catch (DataLoadingException e) {
             logger.warning("Data file at " + storage.getInternTrackerFilePath() + " could not be loaded."
                     + " Will be starting with an empty InternTracker.");
@@ -170,7 +170,7 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        logger.info("Starting InternTracker " + MainApp.VERSION);
+        logger.info("Starting LetsGetHired " + MainApp.VERSION);
         ui.start(primaryStage);
     }
 

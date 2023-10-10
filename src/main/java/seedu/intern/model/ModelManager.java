@@ -24,14 +24,14 @@ public class ModelManager implements Model {
     private final FilteredList<InternApplication> filteredInternApplications;
 
     /**
-     * Initializes a ModelManager with the given internBook and userPrefs.
+     * Initializes a ModelManager with the given internTracker and userPrefs.
      */
-    public ModelManager(ReadOnlyInternTracker internBook, ReadOnlyUserPrefs userPrefs) {
-        requireAllNonNull(internBook, userPrefs);
+    public ModelManager(ReadOnlyInternTracker internTracker, ReadOnlyUserPrefs userPrefs) {
+        requireAllNonNull(internTracker, userPrefs);
 
-        logger.fine("Initializing with intern tracker: " + internBook + " and user prefs " + userPrefs);
+        logger.fine("Initializing with intern tracker: " + internTracker + " and user prefs " + userPrefs);
 
-        this.internTracker = new InternTracker(internBook);
+        this.internTracker = new InternTracker(internTracker);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredInternApplications = new FilteredList<>(this.internTracker.getApplicationList());
     }
@@ -70,15 +70,15 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void setInternTrackerFilePath(Path internBookFilePath) {
-        requireNonNull(internBookFilePath);
-        userPrefs.setInternTrackerFilePath(internBookFilePath);
+    public void setInternTrackerFilePath(Path dataFilePath) {
+        requireNonNull(dataFilePath);
+        userPrefs.setInternTrackerFilePath(dataFilePath);
     }
 
     //=========== InternTracker ================================================================================
     @Override
-    public void setInternTracker(ReadOnlyInternTracker internBook) {
-        this.internTracker.resetData(internBook);
+    public void setInternTracker(ReadOnlyInternTracker internTracker) {
+        this.internTracker.resetData(internTracker);
     }
 
     @Override

@@ -73,7 +73,7 @@ public class JsonUserPrefsStorageTest {
     private UserPrefs getTypicalUserPrefs() {
         UserPrefs userPrefs = new UserPrefs();
         userPrefs.setGuiSettings(new GuiSettings(1000, 500, 300, 100));
-        userPrefs.setInternTrackerFilePath(Paths.get("interntracker.json"));
+        userPrefs.setInternTrackerFilePath(Paths.get("letsgethired.json"));
         return userPrefs;
     }
 

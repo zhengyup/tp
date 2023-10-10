@@ -42,12 +42,12 @@ public interface Model {
     /**
      * Sets the user prefs' intern tracker file path.
      */
-    void setInternTrackerFilePath(Path internBookFilePath);
+    void setInternTrackerFilePath(Path dataFilePath);
 
     /**
-     * Replaces intern tracker data with the data in {@code internBookBook}.
+     * Replaces intern tracker data with the data in {@code InternTracker}.
      */
-    void setInternTracker(ReadOnlyInternTracker internBookBook);
+    void setInternTracker(ReadOnlyInternTracker internTracker);
 
     /** Returns the InternTracker */
     ReadOnlyInternTracker getInternTracker();

@@ -17,14 +17,14 @@ import seedu.intern.model.UserPrefs;
 public class StorageManager implements Storage {
 
     private static final Logger logger = LogsCenter.getLogger(StorageManager.class);
-    private InternTrackerStorage internBookStorageBookStorage;
+    private InternTrackerStorage internTrackerStorage;
     private UserPrefsStorage userPrefsStorage;
 
     /**
      * Creates a {@code StorageManager} with the given {@code InternTrackerStorage} and {@code UserPrefStorage}.
      */
-    public StorageManager(InternTrackerStorage internBookStorageBookStorage, UserPrefsStorage userPrefsStorage) {
-        this.internBookStorageBookStorage = internBookStorageBookStorage;
+    public StorageManager(InternTrackerStorage internTrackerStorage, UserPrefsStorage userPrefsStorage) {
+        this.internTrackerStorage = internTrackerStorage;
         this.userPrefsStorage = userPrefsStorage;
     }
 
@@ -50,29 +50,29 @@ public class StorageManager implements Storage {
 
     @Override
     public Path getInternTrackerFilePath() {
-        return internBookStorageBookStorage.getInternTrackerFilePath();
+        return internTrackerStorage.getInternTrackerFilePath();
     }
 
     @Override
     public Optional<ReadOnlyInternTracker> readInternTracker() throws DataLoadingException {
-        return readInternTracker(internBookStorageBookStorage.getInternTrackerFilePath());
+        return readInternTracker(internTrackerStorage.getInternTrackerFilePath());
     }
 
     @Override
     public Optional<ReadOnlyInternTracker> readInternTracker(Path filePath) throws DataLoadingException {
         logger.fine("Attempting to read data from file: " + filePath);
-        return internBookStorageBookStorage.readInternTracker(filePath);
+        return internTrackerStorage.readInternTracker(filePath);
     }
 
     @Override
     public void saveInternTracker(ReadOnlyInternTracker internTracker) throws IOException {
-        saveInternTracker(internTracker, internBookStorageBookStorage.getInternTrackerFilePath());
+        saveInternTracker(internTracker, internTrackerStorage.getInternTrackerFilePath());
     }
 
     @Override
-    public void saveInternTracker(ReadOnlyInternTracker internBookBook, Path filePath) throws IOException {
+    public void saveInternTracker(ReadOnlyInternTracker internTracker, Path filePath) throws IOException {
         logger.fine("Attempting to write to data file: " + filePath);
-        internBookStorageBookStorage.saveInternTracker(internBookBook, filePath);
+        internTrackerStorage.saveInternTracker(internTracker, filePath);
     }
 
 }

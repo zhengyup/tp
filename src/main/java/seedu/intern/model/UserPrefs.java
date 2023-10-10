@@ -14,7 +14,7 @@ import seedu.intern.commons.core.GuiSettings;
 public class UserPrefs implements ReadOnlyUserPrefs {
 
     private GuiSettings guiSettings = new GuiSettings();
-    private Path internBookFilePath = Paths.get("data" , "interntracker.json");
+    private Path dataFilePath = Paths.get("data" , "letsgethired.json");
 
     /**
      * Creates a {@code UserPrefs} with default values.
@@ -48,12 +48,12 @@ public class UserPrefs implements ReadOnlyUserPrefs {
     }
 
     public Path getInternTrackerFilePath() {
-        return internBookFilePath;
+        return dataFilePath;
     }
 
-    public void setInternTrackerFilePath(Path internBookFilePath) {
-        requireNonNull(internBookFilePath);
-        this.internBookFilePath = internBookFilePath;
+    public void setInternTrackerFilePath(Path dataFilePath) {
+        requireNonNull(dataFilePath);
+        this.dataFilePath = dataFilePath;
     }
 
     @Override
@@ -69,19 +69,19 @@ public class UserPrefs implements ReadOnlyUserPrefs {
 
         UserPrefs otherUserPrefs = (UserPrefs) other;
         return guiSettings.equals(otherUserPrefs.guiSettings)
-                && internBookFilePath.equals(otherUserPrefs.internBookFilePath);
+                && dataFilePath.equals(otherUserPrefs.dataFilePath);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(guiSettings, internBookFilePath);
+        return Objects.hash(guiSettings, dataFilePath);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Gui Settings : " + guiSettings);
-        sb.append("\nLocal data file location : " + internBookFilePath);
+        sb.append("\nLocal data file location : " + dataFilePath);
         return sb.toString();
     }
 
