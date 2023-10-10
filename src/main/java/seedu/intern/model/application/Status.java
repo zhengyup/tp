@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.intern.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents an InternApplication's status in the book.
+ * Represents an InternApplication's status in the tracker.
  * Guarantees: immutable; is valid as declared in {@link #isValidStatus(String)}
  */
 public class Status {

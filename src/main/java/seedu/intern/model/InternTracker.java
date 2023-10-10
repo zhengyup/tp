@@ -10,7 +10,7 @@ import seedu.intern.model.application.InternApplication;
 import seedu.intern.model.application.UniqueApplicationList;
 
 /**
- * Wraps all data at the intern-book level
+ * Wraps all data at the intern-tracker level
  * Duplicates are not allowed (by .isSameApplication comparison)
  */
 public class InternTracker implements ReadOnlyInternTracker {
@@ -62,7 +62,7 @@ public class InternTracker implements ReadOnlyInternTracker {
     /**
      * Returns true if an application with the same identity as {@code internApplication} exists in the
      * intern
-     * book.
+     * tracker.
      */
     public boolean hasApplication(InternApplication internApplication) {
         requireNonNull(internApplication);

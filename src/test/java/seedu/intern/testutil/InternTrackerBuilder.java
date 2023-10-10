@@ -4,7 +4,7 @@ import seedu.intern.model.InternTracker;
 import seedu.intern.model.application.InternApplication;
 
 /**
- * A utility class to help with building Internbook objects.
+ * A utility class to help with building Interntracker objects.
  * Example usage: <br>
  *     {@code InternTracker ab = new InternTrackerBuilder().withPerson("John", "Doe").build();}
  */
