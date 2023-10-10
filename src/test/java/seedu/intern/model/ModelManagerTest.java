@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.intern.commons.core.GuiSettings;
 import seedu.intern.model.application.NameContainsKeywordsPredicate;
-import seedu.intern.testutil.InternBookBuilder;
+import seedu.intern.testutil.InternTrackerBuilder;
 
 public class ModelManagerTest {
 
@@ -26,7 +26,7 @@ public class ModelManagerTest {
     public void constructor() {
         assertEquals(new UserPrefs(), modelManager.getUserPrefs());
         assertEquals(new GuiSettings(), modelManager.getGuiSettings());
-        assertEquals(new InternTracker(), new InternTracker(modelManager.getInternBook()));
+        assertEquals(new InternTracker(), new InternTracker(modelManager.getInternTracker()));
     }
 
     @Test
@@ -37,14 +37,14 @@ public class ModelManagerTest {
     @Test
     public void setUserPrefs_validUserPrefs_copiesUserPrefs() {
         UserPrefs userPrefs = new UserPrefs();
-        userPrefs.setInternBookFilePath(Paths.get("intern/book/file/path"));
+        userPrefs.setInternTrackerFilePath(Paths.get("intern/book/file/path"));
         userPrefs.setGuiSettings(new GuiSettings(1, 2, 3, 4));
         modelManager.setUserPrefs(userPrefs);
         assertEquals(userPrefs, modelManager.getUserPrefs());
 
         // Modifying userPrefs should not modify modelManager's userPrefs
         UserPrefs oldUserPrefs = new UserPrefs(userPrefs);
-        userPrefs.setInternBookFilePath(Paths.get("new/intern/book/file/path"));
+        userPrefs.setInternTrackerFilePath(Paths.get("new/intern/book/file/path"));
         assertEquals(oldUserPrefs, modelManager.getUserPrefs());
     }
 
@@ -61,15 +61,15 @@ public class ModelManagerTest {
     }
 
     @Test
-    public void setInternBookFilePath_nullPath_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> modelManager.setInternBookFilePath(null));
+    public void setInternTrackerFilePath_nullPath_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> modelManager.setInternTrackerFilePath(null));
     }
 
     @Test
-    public void setInternBookFilePath_validPath_setsInternBookFilePath() {
+    public void setInternTrackerFilePath_validPath_setsInternTrackerFilePath() {
         Path path = Paths.get("intern/book/file/path");
-        modelManager.setInternBookFilePath(path);
-        assertEquals(path, modelManager.getInternBookFilePath());
+        modelManager.setInternTrackerFilePath(path);
+        assertEquals(path, modelManager.getInternTrackerFilePath());
     }
 
     @Test
@@ -78,12 +78,12 @@ public class ModelManagerTest {
     }
 
     @Test
-    public void hasPerson_personNotInInternBook_returnsFalse() {
+    public void hasPerson_personNotInInternTracker_returnsFalse() {
         assertFalse(modelManager.hasPerson(ALICE));
     }
 
     @Test
-    public void hasPerson_personInInternBook_returnsTrue() {
+    public void hasPerson_personInInternTracker_returnsTrue() {
         modelManager.addPerson(ALICE);
         assertTrue(modelManager.hasPerson(ALICE));
     }
@@ -95,7 +95,7 @@ public class ModelManagerTest {
 
     @Test
     public void equals() {
-        InternTracker internTracker = new InternBookBuilder().withPerson(ALICE).withPerson(BENSON).build();
+        InternTracker internTracker = new InternTrackerBuilder().withPerson(ALICE).withPerson(BENSON).build();
         InternTracker differentInternTracker = new InternTracker();
         UserPrefs userPrefs = new UserPrefs();
 
@@ -126,7 +126,7 @@ public class ModelManagerTest {
 
         // different userPrefs -> returns false
         UserPrefs differentUserPrefs = new UserPrefs();
-        differentUserPrefs.setInternBookFilePath(Paths.get("differentFilePath"));
+        differentUserPrefs.setInternTrackerFilePath(Paths.get("differentFilePath"));
         assertFalse(modelManager.equals(new ModelManager(internTracker, differentUserPrefs)));
     }
 }

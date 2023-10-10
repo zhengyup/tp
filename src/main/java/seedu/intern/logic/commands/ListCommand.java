@@ -6,7 +6,7 @@ import static seedu.intern.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 import seedu.intern.model.Model;
 
 /**
- * Lists all persons in the intern book to the user.
+ * Lists all persons in the intern tracker to the user.
  */
 public class ListCommand extends Command {
 

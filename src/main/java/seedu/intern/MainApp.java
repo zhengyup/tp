@@ -18,7 +18,7 @@ import seedu.intern.logic.LogicManager;
 import seedu.intern.model.InternTracker;
 import seedu.intern.model.Model;
 import seedu.intern.model.ModelManager;
-import seedu.intern.model.ReadOnlyInternBook;
+import seedu.intern.model.ReadOnlyInternTracker;
 import seedu.intern.model.ReadOnlyUserPrefs;
 import seedu.intern.model.UserPrefs;
 import seedu.intern.model.util.SampleDataUtil;
@@ -48,7 +48,7 @@ public class MainApp extends Application {
 
     @Override
     public void init() throws Exception {
-        logger.info("=============================[ Initializing InternBook ]===========================");
+        logger.info("=============================[ Initializing InternTracker ]===========================");
         super.init();
 
         AppParameters appParameters = AppParameters.parse(getParameters());
@@ -57,7 +57,7 @@ public class MainApp extends Application {
 
         UserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(config.getUserPrefsFilePath());
         UserPrefs userPrefs = initPrefs(userPrefsStorage);
-        InternTrackerStorage internBookStorage = new JsonInternTrackerStorage(userPrefs.getInternBookFilePath());
+        InternTrackerStorage internBookStorage = new JsonInternTrackerStorage(userPrefs.getInternTrackerFilePath());
         storage = new StorageManager(internBookStorage, userPrefsStorage);
 
         model = initModelManager(storage, userPrefs);
@@ -68,25 +68,25 @@ public class MainApp extends Application {
     }
 
     /**
-     * Returns a {@code ModelManager} with the data from {@code storage}'s intern book and {@code userPrefs}. <br>
-     * The data from the sample intern book will be used instead if {@code storage}'s intern book is not found,
-     * or an empty intern book will be used instead if errors occur when reading {@code storage}'s intern book.
+     * Returns a {@code ModelManager} with the data from {@code storage}'s intern tracker and {@code userPrefs}. <br>
+     * The data from the sample intern tracker will be used instead if {@code storage}'s intern tracker is not found,
+     * or an empty intern tracker will be used instead if errors occur when reading {@code storage}'s intern tracker.
      */
     private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
         logger.info("Using data file : " + storage.getInternTrackerFilePath());
 
-        Optional<ReadOnlyInternBook> internBookOptional;
-        ReadOnlyInternBook initialData;
+        Optional<ReadOnlyInternTracker> internBookOptional;
+        ReadOnlyInternTracker initialData;
         try {
             internBookOptional = storage.readInternTracker();
             if (!internBookOptional.isPresent()) {
                 logger.info("Creating a new data file " + storage.getInternTrackerFilePath()
-                        + " populated with a sample InternBook.");
+                        + " populated with a sample InternTracker.");
             }
-            initialData = internBookOptional.orElseGet(SampleDataUtil::getSampleInternBook);
+            initialData = internBookOptional.orElseGet(SampleDataUtil::getSampleInternTracker);
         } catch (DataLoadingException e) {
             logger.warning("Data file at " + storage.getInternTrackerFilePath() + " could not be loaded."
-                    + " Will be starting with an empty InternBook.");
+                    + " Will be starting with an empty InternTracker.");
             initialData = new InternTracker();
         }
 
@@ -170,13 +170,13 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        logger.info("Starting InternBook " + MainApp.VERSION);
+        logger.info("Starting InternTracker " + MainApp.VERSION);
         ui.start(primaryStage);
     }
 
     @Override
     public void stop() {
-        logger.info("============================ [ Stopping Intern Book ] =============================");
+        logger.info("============================ [ Stopping Intern Tracker ] =============================");
         try {
             storage.saveUserPrefs(model.getUserPrefs());
         } catch (IOException e) {

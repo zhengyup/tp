@@ -6,7 +6,7 @@ import seedu.intern.model.InternTracker;
 import seedu.intern.model.Model;
 
 /**
- * Clears the intern book.
+ * Clears the intern tracker.
  */
 public class ClearCommand extends Command {
 
@@ -17,7 +17,7 @@ public class ClearCommand extends Command {
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
-        model.setInternBook(new InternTracker());
+        model.setInternTracker(new InternTracker());
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }

@@ -12,7 +12,7 @@ import seedu.intern.commons.exceptions.DataLoadingException;
 import seedu.intern.commons.exceptions.IllegalValueException;
 import seedu.intern.commons.util.FileUtil;
 import seedu.intern.commons.util.JsonUtil;
-import seedu.intern.model.ReadOnlyInternBook;
+import seedu.intern.model.ReadOnlyInternTracker;
 
 /**
  * A class to access InternTracker data stored as a json file on the hard disk.
@@ -32,7 +32,7 @@ public class JsonInternTrackerStorage implements InternTrackerStorage {
     }
 
     @Override
-    public Optional<ReadOnlyInternBook> readInternTracker() throws DataLoadingException {
+    public Optional<ReadOnlyInternTracker> readInternTracker() throws DataLoadingException {
         return readInternTracker(filePath);
     }
 
@@ -42,17 +42,17 @@ public class JsonInternTrackerStorage implements InternTrackerStorage {
      * @param filePath location of the data. Cannot be null.
      * @throws DataLoadingException if loading the data from storage failed.
      */
-    public Optional<ReadOnlyInternBook> readInternTracker(Path filePath) throws DataLoadingException {
+    public Optional<ReadOnlyInternTracker> readInternTracker(Path filePath) throws DataLoadingException {
         requireNonNull(filePath);
 
-        Optional<JsonSerializableInternTracker> jsonInternBook = JsonUtil.readJsonFile(
+        Optional<JsonSerializableInternTracker> jsonInternTracker = JsonUtil.readJsonFile(
                 filePath, JsonSerializableInternTracker.class);
-        if (!jsonInternBook.isPresent()) {
+        if (!jsonInternTracker.isPresent()) {
             return Optional.empty();
         }
 
         try {
-            return Optional.of(jsonInternBook.get().toModelType());
+            return Optional.of(jsonInternTracker.get().toModelType());
         } catch (IllegalValueException ive) {
             logger.info("Illegal values found in " + filePath + ": " + ive.getMessage());
             throw new DataLoadingException(ive);
@@ -60,16 +60,16 @@ public class JsonInternTrackerStorage implements InternTrackerStorage {
     }
 
     @Override
-    public void saveInternTracker(ReadOnlyInternBook internTracker) throws IOException {
+    public void saveInternTracker(ReadOnlyInternTracker internTracker) throws IOException {
         saveInternTracker(internTracker, filePath);
     }
 
     /**
-     * Similar to {@link #saveInternTracker(ReadOnlyInternBook)}.
+     * Similar to {@link #saveInternTracker(ReadOnlyInternTracker)}.
      *
      * @param filePath location of the data. Cannot be null.
      */
-    public void saveInternTracker(ReadOnlyInternBook internTracker, Path filePath) throws IOException {
+    public void saveInternTracker(ReadOnlyInternTracker internTracker, Path filePath) throws IOException {
         requireNonNull(internTracker);
         requireNonNull(filePath);
 

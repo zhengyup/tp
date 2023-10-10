@@ -35,44 +35,44 @@ public interface Model {
     void setGuiSettings(GuiSettings guiSettings);
 
     /**
-     * Returns the user prefs' intern book file path.
+     * Returns the user prefs' intern tracker file path.
      */
-    Path getInternBookFilePath();
+    Path getInternTrackerFilePath();
 
     /**
-     * Sets the user prefs' intern book file path.
+     * Sets the user prefs' intern tracker file path.
      */
-    void setInternBookFilePath(Path internBookFilePath);
+    void setInternTrackerFilePath(Path internBookFilePath);
 
     /**
-     * Replaces intern book data with the data in {@code internBookBook}.
+     * Replaces intern tracker data with the data in {@code internBookBook}.
      */
-    void setInternBook(ReadOnlyInternBook internBookBook);
+    void setInternTracker(ReadOnlyInternTracker internBookBook);
 
-    /** Returns the InternBook */
-    ReadOnlyInternBook getInternBook();
+    /** Returns the InternTracker */
+    ReadOnlyInternTracker getInternTracker();
 
     /**
-     * Returns true if a person with the same identity as {@code person} exists in the intern book.
+     * Returns true if a person with the same identity as {@code person} exists in the intern tracker.
      */
     boolean hasPerson(InternApplication internApplication);
 
     /**
      * Deletes the given person.
-     * The person must exist in the intern book.
+     * The person must exist in the intern tracker.
      */
     void deletePerson(InternApplication target);
 
     /**
      * Adds the given person.
-     * {@code person} must not already exist in the intern book.
+     * {@code person} must not already exist in the intern tracker.
      */
     void addPerson(InternApplication internApplication);
 
     /**
      * Replaces the given person {@code target} with {@code editedPerson}.
-     * {@code target} must exist in the intern book.
-     * The person identity of {@code editedPerson} must not be the same as another existing person in the intern book.
+     * {@code target} must exist in the intern tracker.
+     * The person {@code editedPerson} must not be the same as another existing person in the intern tracker.
      */
     void setPerson(InternApplication target, InternApplication editedInternApplication);
 

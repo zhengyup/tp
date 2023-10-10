@@ -14,13 +14,13 @@ import seedu.intern.model.Model;
 import seedu.intern.model.application.InternApplication;
 
 /**
- * Adds a person to the intern book.
+ * Adds a person to the intern tracker.
  */
 public class AddCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a application to the intern book. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a application to the intern tracker. "
             + "Parameters: "
             + PREFIX_NAME + "NAME "
             + PREFIX_ROLE + "ROLE "
@@ -36,7 +36,7 @@ public class AddCommand extends Command {
             + PREFIX_TAG + "owesMoney";
 
     public static final String MESSAGE_SUCCESS = "New person added: %1$s";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This application already exists in the intern book";
+    public static final String MESSAGE_DUPLICATE_PERSON = "This application already exists in the intern tracker";
 
     private final InternApplication toAdd;
 

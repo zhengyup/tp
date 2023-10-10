@@ -12,7 +12,7 @@ import seedu.intern.model.Model;
 import seedu.intern.model.application.InternApplication;
 
 /**
- * Deletes a person identified using it's displayed index from the intern book.
+ * Deletes a person identified using it's displayed index from the intern tracker.
  */
 public class DeleteCommand extends Command {
 

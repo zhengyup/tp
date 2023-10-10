@@ -7,7 +7,7 @@ import seedu.intern.commons.core.GuiSettings;
 import seedu.intern.logic.commands.CommandResult;
 import seedu.intern.logic.commands.exceptions.CommandException;
 import seedu.intern.logic.parser.exceptions.ParseException;
-import seedu.intern.model.ReadOnlyInternBook;
+import seedu.intern.model.ReadOnlyInternTracker;
 import seedu.intern.model.application.InternApplication;
 
 /**
@@ -24,19 +24,19 @@ public interface Logic {
     CommandResult execute(String commandText) throws CommandException, ParseException;
 
     /**
-     * Returns the InternBook.
+     * Returns the InternTracker.
      *
-     * @see seedu.intern.model.Model#getInternBook()
+     * @see seedu.intern.model.Model#getInternTracker()
      */
-    ReadOnlyInternBook getInternBook();
+    ReadOnlyInternTracker getInternTracker();
 
     /** Returns an unmodifiable view of the filtered list of persons */
     ObservableList<InternApplication> getFilteredPersonList();
 
     /**
-     * Returns the user prefs' intern book file path.
+     * Returns the user prefs' intern tracker file path.
      */
-    Path getInternBookFilePath();
+    Path getInternTrackerFilePath();
 
     /**
      * Returns the user prefs' GUI settings.

@@ -50,7 +50,7 @@ public class InternTrackerTest {
                 .withTags(VALID_TAG_HUSBAND)
                 .build();
         List<InternApplication> newInternApplications = Arrays.asList(ALICE, editedAlice);
-        InternBookStub newData = new InternBookStub(newInternApplications);
+        InternTrackerStub newData = new InternTrackerStub(newInternApplications);
 
         assertThrows(DuplicateApplicationException.class, () -> internTracker.resetData(newData));
     }
@@ -61,18 +61,18 @@ public class InternTrackerTest {
     }
 
     @Test
-    public void hasPerson_personNotInInternBook_returnsFalse() {
+    public void hasPerson_personNotInInternTracker_returnsFalse() {
         assertFalse(internTracker.hasApplication(ALICE));
     }
 
     @Test
-    public void hasPerson_personInInternBook_returnsTrue() {
+    public void hasPerson_personInInternTracker_returnsTrue() {
         internTracker.addApplication(ALICE);
         assertTrue(internTracker.hasApplication(ALICE));
     }
 
     @Test
-    public void hasPerson_personWithSameIdentityFieldsInInternBook_returnsTrue() {
+    public void hasPerson_personWithSameIdentityFieldsInInternTracker_returnsTrue() {
         internTracker.addApplication(ALICE);
         InternApplication editedAlice = new InternApplicationBuilder(ALICE).withStatus(VALID_STATUS_BOB)
                 .withTags(VALID_TAG_HUSBAND)
@@ -93,12 +93,12 @@ public class InternTrackerTest {
     }
 
     /**
-     * A stub ReadOnlyInternBook whose persons list can violate interface constraints.
+     * A stub ReadOnlyInternTracker whose persons list can violate interface constraints.
      */
-    private static class InternBookStub implements ReadOnlyInternBook {
+    private static class InternTrackerStub implements ReadOnlyInternTracker {
         private final ObservableList<InternApplication> internApplications = FXCollections.observableArrayList();
 
-        InternBookStub(Collection<InternApplication> internApplications) {
+        InternTrackerStub(Collection<InternApplication> internApplications) {
             this.internApplications.setAll(internApplications);
         }
 

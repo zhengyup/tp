@@ -14,7 +14,7 @@ import seedu.intern.logic.commands.exceptions.CommandException;
 import seedu.intern.logic.parser.InternTrackerParser;
 import seedu.intern.logic.parser.exceptions.ParseException;
 import seedu.intern.model.Model;
-import seedu.intern.model.ReadOnlyInternBook;
+import seedu.intern.model.ReadOnlyInternTracker;
 import seedu.intern.model.application.InternApplication;
 import seedu.intern.storage.Storage;
 
@@ -51,7 +51,7 @@ public class LogicManager implements Logic {
         commandResult = command.execute(model);
 
         try {
-            storage.saveInternTracker(model.getInternBook());
+            storage.saveInternTracker(model.getInternTracker());
         } catch (AccessDeniedException e) {
             throw new CommandException(String.format(FILE_OPS_PERMISSION_ERROR_FORMAT, e.getMessage()), e);
         } catch (IOException ioe) {
@@ -62,8 +62,8 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public ReadOnlyInternBook getInternBook() {
-        return model.getInternBook();
+    public ReadOnlyInternTracker getInternTracker() {
+        return model.getInternTracker();
     }
 
     @Override
@@ -72,8 +72,8 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public Path getInternBookFilePath() {
-        return model.getInternBookFilePath();
+    public Path getInternTrackerFilePath() {
+        return model.getInternTrackerFilePath();
     }
 
     @Override

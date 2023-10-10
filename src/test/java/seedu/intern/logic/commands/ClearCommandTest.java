@@ -13,7 +13,7 @@ import seedu.intern.model.UserPrefs;
 public class ClearCommandTest {
 
     @Test
-    public void execute_emptyInternBook_success() {
+    public void execute_emptyInternTracker_success() {
         Model model = new ModelManager();
         Model expectedModel = new ModelManager();
 
@@ -21,10 +21,10 @@ public class ClearCommandTest {
     }
 
     @Test
-    public void execute_nonEmptyInternBook_success() {
+    public void execute_nonEmptyInternTracker_success() {
         Model model = new ModelManager(getTypicalInternTracker(), new UserPrefs());
         Model expectedModel = new ModelManager(getTypicalInternTracker(), new UserPrefs());
-        expectedModel.setInternBook(new InternTracker());
+        expectedModel.setInternTracker(new InternTracker());
 
         assertCommandSuccess(new ClearCommand(), model, ClearCommand.MESSAGE_SUCCESS, expectedModel);
     }

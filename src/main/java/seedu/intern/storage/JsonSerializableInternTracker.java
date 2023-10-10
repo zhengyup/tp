@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 
 import seedu.intern.commons.exceptions.IllegalValueException;
 import seedu.intern.model.InternTracker;
-import seedu.intern.model.ReadOnlyInternBook;
+import seedu.intern.model.ReadOnlyInternTracker;
 import seedu.intern.model.application.InternApplication;
 
 /**
@@ -24,7 +24,7 @@ class JsonSerializableInternTracker {
     private final List<JsonAdaptedInternApplication> persons = new ArrayList<>();
 
     /**
-     * Constructs a {@code JsonSerializableInternBook} with the given persons.
+     * Constructs a {@code JsonSerializableInternTracker} with the given persons.
      */
     @JsonCreator
     public JsonSerializableInternTracker(@JsonProperty("persons") List<JsonAdaptedInternApplication> persons) {
@@ -32,11 +32,11 @@ class JsonSerializableInternTracker {
     }
 
     /**
-     * Converts a given {@code ReadOnlyInternBook} into this class for Jackson use.
+     * Converts a given {@code ReadOnlyInternTracker} into this class for Jackson use.
      *
      * @param source future changes to this will not affect the created {@code JsonSerializableInternTracker}.
      */
-    public JsonSerializableInternTracker(ReadOnlyInternBook source) {
+    public JsonSerializableInternTracker(ReadOnlyInternTracker source) {
         persons.addAll(source.getApplicationList().stream().map(JsonAdaptedInternApplication::new)
                 .collect(Collectors.toList()));
     }

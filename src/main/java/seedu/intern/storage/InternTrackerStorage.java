@@ -6,7 +6,7 @@ import java.util.Optional;
 
 import seedu.intern.commons.exceptions.DataLoadingException;
 import seedu.intern.model.InternTracker;
-import seedu.intern.model.ReadOnlyInternBook;
+import seedu.intern.model.ReadOnlyInternTracker;
 
 /**
  * Represents a storage for {@link InternTracker}.
@@ -19,28 +19,28 @@ public interface InternTrackerStorage {
     Path getInternTrackerFilePath();
 
     /**
-     * Returns InternTracker data as a {@link ReadOnlyInternBook}.
+     * Returns InternTracker data as a {@link ReadOnlyInternTracker}.
      * Returns {@code Optional.empty()} if storage file is not found.
      *
      * @throws DataLoadingException if loading the data from storage failed.
      */
-    Optional<ReadOnlyInternBook> readInternTracker() throws DataLoadingException;
+    Optional<ReadOnlyInternTracker> readInternTracker() throws DataLoadingException;
 
     /**
      * @see #getInternTrackerFilePath()
      */
-    Optional<ReadOnlyInternBook> readInternTracker(Path filePath) throws DataLoadingException;
+    Optional<ReadOnlyInternTracker> readInternTracker(Path filePath) throws DataLoadingException;
 
     /**
-     * Saves the given {@link ReadOnlyInternBook} to the storage.
+     * Saves the given {@link ReadOnlyInternTracker} to the storage.
      * @param internTracker cannot be null.
      * @throws IOException if there was any problem writing to the file.
      */
-    void saveInternTracker(ReadOnlyInternBook internTracker) throws IOException;
+    void saveInternTracker(ReadOnlyInternTracker internTracker) throws IOException;
 
     /**
-     * @see #saveInternTracker(ReadOnlyInternBook)
+     * @see #saveInternTracker(ReadOnlyInternTracker)
      */
-    void saveInternTracker(ReadOnlyInternBook internTracker, Path filePath) throws IOException;
+    void saveInternTracker(ReadOnlyInternTracker internTracker, Path filePath) throws IOException;
 
 }

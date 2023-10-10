@@ -44,7 +44,7 @@ public class EditCommandTest {
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, Messages
                 .format(editedInternApplication));
 
-        Model expectedModel = new ModelManager(new InternTracker(model.getInternBook()), new UserPrefs());
+        Model expectedModel = new ModelManager(new InternTracker(model.getInternTracker()), new UserPrefs());
         expectedModel.setPerson(model.getFilteredPersonList().get(0), editedInternApplication);
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
@@ -68,7 +68,7 @@ public class EditCommandTest {
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS,
                 Messages.format(editedInternApplication));
 
-        Model expectedModel = new ModelManager(new InternTracker(model.getInternBook()), new UserPrefs());
+        Model expectedModel = new ModelManager(new InternTracker(model.getInternTracker()), new UserPrefs());
         expectedModel.setPerson(lastInternApplication, editedInternApplication);
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
@@ -83,7 +83,7 @@ public class EditCommandTest {
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, Messages
                 .format(editedInternApplication));
 
-        Model expectedModel = new ModelManager(new InternTracker(model.getInternBook()), new UserPrefs());
+        Model expectedModel = new ModelManager(new InternTracker(model.getInternTracker()), new UserPrefs());
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
     }
@@ -102,7 +102,7 @@ public class EditCommandTest {
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS,
                 Messages.format(editedInternApplication));
 
-        Model expectedModel = new ModelManager(new InternTracker(model.getInternBook()), new UserPrefs());
+        Model expectedModel = new ModelManager(new InternTracker(model.getInternTracker()), new UserPrefs());
         expectedModel.setPerson(model.getFilteredPersonList().get(0), editedInternApplication);
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
@@ -122,8 +122,8 @@ public class EditCommandTest {
     public void execute_duplicatePersonFilteredList_failure() {
         showPersonAtIndex(model, INDEX_FIRST_PERSON);
 
-        // edit person in filtered list into a duplicate in intern book
-        InternApplication internApplicationInList = model.getInternBook().getApplicationList()
+        // edit person in filtered list into a duplicate in intern tracker
+        InternApplication internApplicationInList = model.getInternTracker().getApplicationList()
                 .get(INDEX_SECOND_PERSON.getZeroBased());
         EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON,
                 new EditPersonDescriptorBuilder(internApplicationInList).build());
@@ -142,14 +142,14 @@ public class EditCommandTest {
 
     /**
      * Edit filtered list where index is larger than size of filtered list,
-     * but smaller than size of intern book
+     * but smaller than size of intern tracker
      */
     @Test
     public void execute_invalidPersonIndexFilteredList_failure() {
         showPersonAtIndex(model, INDEX_FIRST_PERSON);
         Index outOfBoundIndex = INDEX_SECOND_PERSON;
-        // ensures that outOfBoundIndex is still in bounds of intern book list
-        assertTrue(outOfBoundIndex.getZeroBased() < model.getInternBook().getApplicationList().size());
+        // ensures that outOfBoundIndex is still in bounds of intern tracker list
+        assertTrue(outOfBoundIndex.getZeroBased() < model.getInternTracker().getApplicationList().size());
 
         EditCommand editCommand = new EditCommand(outOfBoundIndex,
                 new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB).build());

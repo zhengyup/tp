@@ -5,7 +5,7 @@ import java.nio.file.Path;
 import java.util.Optional;
 
 import seedu.intern.commons.exceptions.DataLoadingException;
-import seedu.intern.model.ReadOnlyInternBook;
+import seedu.intern.model.ReadOnlyInternTracker;
 import seedu.intern.model.ReadOnlyUserPrefs;
 import seedu.intern.model.UserPrefs;
 
@@ -24,9 +24,9 @@ public interface Storage extends InternTrackerStorage, UserPrefsStorage {
     Path getInternTrackerFilePath();
 
     @Override
-    Optional<ReadOnlyInternBook> readInternTracker() throws DataLoadingException;
+    Optional<ReadOnlyInternTracker> readInternTracker() throws DataLoadingException;
 
     @Override
-    void saveInternTracker(ReadOnlyInternBook internTracker) throws IOException;
+    void saveInternTracker(ReadOnlyInternTracker internTracker) throws IOException;
 
 }

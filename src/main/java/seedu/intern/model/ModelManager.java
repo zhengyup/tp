@@ -14,7 +14,7 @@ import seedu.intern.commons.core.LogsCenter;
 import seedu.intern.model.application.InternApplication;
 
 /**
- * Represents the in-memory model of the intern book data.
+ * Represents the in-memory model of the intern tracker data.
  */
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
@@ -26,10 +26,10 @@ public class ModelManager implements Model {
     /**
      * Initializes a ModelManager with the given internBook and userPrefs.
      */
-    public ModelManager(ReadOnlyInternBook internBook, ReadOnlyUserPrefs userPrefs) {
+    public ModelManager(ReadOnlyInternTracker internBook, ReadOnlyUserPrefs userPrefs) {
         requireAllNonNull(internBook, userPrefs);
 
-        logger.fine("Initializing with intern book: " + internBook + " and user prefs " + userPrefs);
+        logger.fine("Initializing with intern tracker: " + internBook + " and user prefs " + userPrefs);
 
         this.internTracker = new InternTracker(internBook);
         this.userPrefs = new UserPrefs(userPrefs);
@@ -65,24 +65,24 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public Path getInternBookFilePath() {
-        return userPrefs.getInternBookFilePath();
+    public Path getInternTrackerFilePath() {
+        return userPrefs.getInternTrackerFilePath();
     }
 
     @Override
-    public void setInternBookFilePath(Path internBookFilePath) {
+    public void setInternTrackerFilePath(Path internBookFilePath) {
         requireNonNull(internBookFilePath);
-        userPrefs.setInternBookFilePath(internBookFilePath);
+        userPrefs.setInternTrackerFilePath(internBookFilePath);
     }
 
-    //=========== InternBook ================================================================================
+    //=========== InternTracker ================================================================================
     @Override
-    public void setInternBook(ReadOnlyInternBook internBook) {
+    public void setInternTracker(ReadOnlyInternTracker internBook) {
         this.internTracker.resetData(internBook);
     }
 
     @Override
-    public ReadOnlyInternBook getInternBook() {
+    public ReadOnlyInternTracker getInternTracker() {
         return internTracker;
     }
 
@@ -114,7 +114,7 @@ public class ModelManager implements Model {
 
     /**
      * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
-     * {@code versionedInternBook}
+     * {@code versionedInternTracker}
      */
     @Override
     public ObservableList<InternApplication> getFilteredPersonList() {

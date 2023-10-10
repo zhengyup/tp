@@ -20,7 +20,7 @@ import seedu.intern.logic.Messages;
 import seedu.intern.logic.commands.exceptions.CommandException;
 import seedu.intern.model.InternTracker;
 import seedu.intern.model.Model;
-import seedu.intern.model.ReadOnlyInternBook;
+import seedu.intern.model.ReadOnlyInternTracker;
 import seedu.intern.model.ReadOnlyUserPrefs;
 import seedu.intern.model.application.InternApplication;
 import seedu.intern.testutil.InternApplicationBuilder;
@@ -109,12 +109,12 @@ public class AddCommandTest {
         }
 
         @Override
-        public Path getInternBookFilePath() {
+        public Path getInternTrackerFilePath() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void setInternBookFilePath(Path internBookFilePath) {
+        public void setInternTrackerFilePath(Path internBookFilePath) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -124,12 +124,12 @@ public class AddCommandTest {
         }
 
         @Override
-        public void setInternBook(ReadOnlyInternBook newData) {
+        public void setInternTracker(ReadOnlyInternTracker newData) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public ReadOnlyInternBook getInternBook() {
+        public ReadOnlyInternTracker getInternTracker() {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -196,7 +196,7 @@ public class AddCommandTest {
         }
 
         @Override
-        public ReadOnlyInternBook getInternBook() {
+        public ReadOnlyInternTracker getInternTracker() {
             return new InternTracker();
         }
     }

@@ -12,7 +12,7 @@ import org.junit.jupiter.api.io.TempDir;
 
 import seedu.intern.commons.core.GuiSettings;
 import seedu.intern.model.InternTracker;
-import seedu.intern.model.ReadOnlyInternBook;
+import seedu.intern.model.ReadOnlyInternTracker;
 import seedu.intern.model.UserPrefs;
 
 public class StorageManagerTest {
@@ -51,17 +51,17 @@ public class StorageManagerTest {
     public void internBookReadSave() throws Exception {
         /*
          * Note: This is an integration test that verifies the StorageManager is properly wired to the
-         * {@link JsonInternBookStorage} class.
-         * More extensive testing of UserPref saving/reading is done in {@link JsonInternBookStorageTest} class.
+         * {@link JsonInternTrackerStorage} class.
+         * More extensive testing of UserPref saving/reading is done in {@link JsonInternTrackerStorageTest} class.
          */
         InternTracker original = getTypicalInternTracker();
         storageManager.saveInternTracker(original);
-        ReadOnlyInternBook retrieved = storageManager.readInternTracker().get();
+        ReadOnlyInternTracker retrieved = storageManager.readInternTracker().get();
         assertEquals(original, new InternTracker(retrieved));
     }
 
     @Test
-    public void getInternBookFilePath() {
+    public void getInternTrackerFilePath() {
         assertNotNull(storageManager.getInternTrackerFilePath());
     }
 

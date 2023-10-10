@@ -30,7 +30,7 @@ public class AddCommandIntegrationTest {
     public void execute_newPerson_success() {
         InternApplication validInternApplication = new InternApplicationBuilder().build();
 
-        Model expectedModel = new ModelManager(model.getInternBook(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getInternTracker(), new UserPrefs());
         expectedModel.addPerson(validInternApplication);
 
         assertCommandSuccess(new AddCommand(validInternApplication), model,
@@ -40,7 +40,7 @@ public class AddCommandIntegrationTest {
 
     @Test
     public void execute_duplicatePerson_throwsCommandException() {
-        InternApplication internApplicationInList = model.getInternBook().getApplicationList().get(0);
+        InternApplication internApplicationInList = model.getInternTracker().getApplicationList().get(0);
         assertCommandFailure(new AddCommand(internApplicationInList), model,
                 AddCommand.MESSAGE_DUPLICATE_PERSON);
     }

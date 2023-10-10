@@ -14,7 +14,7 @@ import seedu.intern.commons.core.GuiSettings;
 public class UserPrefs implements ReadOnlyUserPrefs {
 
     private GuiSettings guiSettings = new GuiSettings();
-    private Path internBookFilePath = Paths.get("data" , "internbook.json");
+    private Path internBookFilePath = Paths.get("data" , "interntracker.json");
 
     /**
      * Creates a {@code UserPrefs} with default values.
@@ -35,7 +35,7 @@ public class UserPrefs implements ReadOnlyUserPrefs {
     public void resetData(ReadOnlyUserPrefs newUserPrefs) {
         requireNonNull(newUserPrefs);
         setGuiSettings(newUserPrefs.getGuiSettings());
-        setInternBookFilePath(newUserPrefs.getInternBookFilePath());
+        setInternTrackerFilePath(newUserPrefs.getInternTrackerFilePath());
     }
 
     public GuiSettings getGuiSettings() {
@@ -47,11 +47,11 @@ public class UserPrefs implements ReadOnlyUserPrefs {
         this.guiSettings = guiSettings;
     }
 
-    public Path getInternBookFilePath() {
+    public Path getInternTrackerFilePath() {
         return internBookFilePath;
     }
 
-    public void setInternBookFilePath(Path internBookFilePath) {
+    public void setInternTrackerFilePath(Path internBookFilePath) {
         requireNonNull(internBookFilePath);
         this.internBookFilePath = internBookFilePath;
     }

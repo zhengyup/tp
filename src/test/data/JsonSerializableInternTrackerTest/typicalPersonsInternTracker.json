@@ -1,5 +1,5 @@
 {
-  "_comment": "InternBook save file which contains the same Person values as in TypicalPersons#getTypicalInternBook()",
+  "_comment": "InternTracker save file which contains the same Person values as in TypicalPersons#getTypicalInternTracker()",
   "persons" : [ {
     "name" : "Alice Pauline",
     "role" : "SWE Intern",

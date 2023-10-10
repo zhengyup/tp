@@ -36,7 +36,7 @@ public class DeleteCommandTest {
         String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS,
                 Messages.format(internApplicationToDelete));
 
-        ModelManager expectedModel = new ModelManager(model.getInternBook(), new UserPrefs());
+        ModelManager expectedModel = new ModelManager(model.getInternTracker(), new UserPrefs());
         expectedModel.deletePerson(internApplicationToDelete);
 
         assertCommandSuccess(deleteCommand, model, expectedMessage, expectedModel);
@@ -61,7 +61,7 @@ public class DeleteCommandTest {
         String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS,
                 Messages.format(internApplicationToDelete));
 
-        Model expectedModel = new ModelManager(model.getInternBook(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getInternTracker(), new UserPrefs());
         expectedModel.deletePerson(internApplicationToDelete);
         showNoPerson(expectedModel);
 
@@ -73,8 +73,8 @@ public class DeleteCommandTest {
         showPersonAtIndex(model, INDEX_FIRST_PERSON);
 
         Index outOfBoundIndex = INDEX_SECOND_PERSON;
-        // ensures that outOfBoundIndex is still in bounds of intern book list
-        assertTrue(outOfBoundIndex.getZeroBased() < model.getInternBook().getApplicationList().size());
+        // ensures that outOfBoundIndex is still in bounds of intern tracker list
+        assertTrue(outOfBoundIndex.getZeroBased() < model.getInternTracker().getApplicationList().size());
 
         DeleteCommand deleteCommand = new DeleteCommand(outOfBoundIndex);
 

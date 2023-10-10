@@ -5,7 +5,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import seedu.intern.model.InternTracker;
-import seedu.intern.model.ReadOnlyInternBook;
+import seedu.intern.model.ReadOnlyInternTracker;
 import seedu.intern.model.application.Email;
 import seedu.intern.model.application.InternApplication;
 import seedu.intern.model.application.Name;
@@ -14,7 +14,7 @@ import seedu.intern.model.application.Status;
 import seedu.intern.model.tag.Tag;
 
 /**
- * Contains utility methods for populating {@code InternBook} with sample data.
+ * Contains utility methods for populating {@code InternTracker} with sample data.
  */
 public class SampleDataUtil {
     public static InternApplication[] getSamplePersons() {
@@ -41,7 +41,7 @@ public class SampleDataUtil {
         };
     }
 
-    public static ReadOnlyInternBook getSampleInternBook() {
+    public static ReadOnlyInternTracker getSampleInternTracker() {
         InternTracker sampleAb = new InternTracker();
         for (InternApplication sampleInternApplication : getSamplePersons()) {
             sampleAb.addApplication(sampleInternApplication);

@@ -13,7 +13,7 @@ import seedu.intern.model.application.UniqueApplicationList;
  * Wraps all data at the intern-book level
  * Duplicates are not allowed (by .isSameApplication comparison)
  */
-public class InternTracker implements ReadOnlyInternBook {
+public class InternTracker implements ReadOnlyInternTracker {
 
     private final UniqueApplicationList internApplications;
 
@@ -31,9 +31,9 @@ public class InternTracker implements ReadOnlyInternBook {
     public InternTracker() {}
 
     /**
-     * Creates an InternBook using the InternApplications in the {@code toBeCopied}
+     * Creates an InternTracker using the InternApplications in the {@code toBeCopied}
      */
-    public InternTracker(ReadOnlyInternBook toBeCopied) {
+    public InternTracker(ReadOnlyInternTracker toBeCopied) {
         this();
         resetData(toBeCopied);
     }
@@ -49,9 +49,9 @@ public class InternTracker implements ReadOnlyInternBook {
     }
 
     /**
-     * Resets the existing data of this {@code InternBook} with {@code newData}.
+     * Resets the existing data of this {@code InternTracker} with {@code newData}.
      */
-    public void resetData(ReadOnlyInternBook newData) {
+    public void resetData(ReadOnlyInternTracker newData) {
         requireNonNull(newData);
 
         setInternApplications(newData.getApplicationList());
@@ -70,8 +70,8 @@ public class InternTracker implements ReadOnlyInternBook {
     }
 
     /**
-     * Adds an application to the intern book.
-     * The application must not already exist in the intern book.
+     * Adds an application to the intern tracker.
+     * The application must not already exist in the intern tracker.
      */
     public void addApplication(InternApplication a) {
         internApplications.add(a);
@@ -79,11 +79,11 @@ public class InternTracker implements ReadOnlyInternBook {
 
     /**
      * Replaces the given application {@code target} in the list with {@code editedInternApplication}.
-     * {@code target} must exist in the intern book.
+     * {@code target} must exist in the intern tracker.
      * The application identity of {@code editedInternApplication} must not be the same as another existing
      * application in
      * the
-     * intern book.
+     * intern tracker.
      */
     public void setApplication(InternApplication target, InternApplication editedInternApplication) {
         requireNonNull(editedInternApplication);
@@ -92,8 +92,8 @@ public class InternTracker implements ReadOnlyInternBook {
     }
 
     /**
-     * Removes {@code key} from this {@code InternBook}.
-     * {@code key} must exist in the intern book.
+     * Removes {@code key} from this {@code InternTracker}.
+     * {@code key} must exist in the intern tracker.
      */
     public void removeApplication(InternApplication key) {
         internApplications.remove(key);

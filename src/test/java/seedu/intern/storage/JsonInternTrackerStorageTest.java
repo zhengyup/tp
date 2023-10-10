@@ -17,21 +17,21 @@ import org.junit.jupiter.api.io.TempDir;
 
 import seedu.intern.commons.exceptions.DataLoadingException;
 import seedu.intern.model.InternTracker;
-import seedu.intern.model.ReadOnlyInternBook;
+import seedu.intern.model.ReadOnlyInternTracker;
 
 public class JsonInternTrackerStorageTest {
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data",
-            "JsonInternBookStorageTest");
+            "JsonInternTrackerStorageTest");
 
     @TempDir
     public Path testFolder;
 
     @Test
-    public void readInternBook_nullFilePath_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> readInternBook(null));
+    public void readInternTracker_nullFilePath_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> readInternTracker(null));
     }
 
-    private java.util.Optional<ReadOnlyInternBook> readInternBook(String filePath) throws Exception {
+    private java.util.Optional<ReadOnlyInternTracker> readInternTracker(String filePath) throws Exception {
         return new JsonInternTrackerStorage(Paths.get(filePath))
                 .readInternTracker(addToTestDataPathIfNotNull(filePath));
     }
@@ -44,33 +44,33 @@ public class JsonInternTrackerStorageTest {
 
     @Test
     public void read_missingFile_emptyResult() throws Exception {
-        assertFalse(readInternBook("NonExistentFile.json").isPresent());
+        assertFalse(readInternTracker("NonExistentFile.json").isPresent());
     }
 
     @Test
     public void read_notJsonFormat_exceptionThrown() {
-        assertThrows(DataLoadingException.class, () -> readInternBook("notJsonFormatInternBook.json"));
+        assertThrows(DataLoadingException.class, () -> readInternTracker("notJsonFormatInternTracker.json"));
     }
 
     @Test
-    public void readInternBook_invalidPersonInternBook_throwDataLoadingException() {
-        assertThrows(DataLoadingException.class, () -> readInternBook("invalidPersonInternBook.json"));
+    public void readInternTracker_invalidPersonInternTracker_throwDataLoadingException() {
+        assertThrows(DataLoadingException.class, () -> readInternTracker("invalidPersonInternTracker.json"));
     }
 
     @Test
-    public void readInternBook_invalidAndValidPersonInternBook_throwDataLoadingException() {
-        assertThrows(DataLoadingException.class, () -> readInternBook("invalidAndValidPersonInternBook.json"));
+    public void readInternTracker_invalidAndValidPersonInternTracker_throwDataLoadingException() {
+        assertThrows(DataLoadingException.class, () -> readInternTracker("invalidAndValidPersonInternTracker.json"));
     }
 
     @Test
-    public void readAndSaveInternBook_allInOrder_success() throws Exception {
-        Path filePath = testFolder.resolve("TempInternBook.json");
+    public void readAndSaveInternTracker_allInOrder_success() throws Exception {
+        Path filePath = testFolder.resolve("TempInternTracker.json");
         InternTracker original = getTypicalInternTracker();
         JsonInternTrackerStorage jsonInternTrackerStorage = new JsonInternTrackerStorage(filePath);
 
         // Save in new file and read back
         jsonInternTrackerStorage.saveInternTracker(original, filePath);
-        ReadOnlyInternBook readBack = jsonInternTrackerStorage.readInternTracker(filePath).get();
+        ReadOnlyInternTracker readBack = jsonInternTrackerStorage.readInternTracker(filePath).get();
         assertEquals(original, new InternTracker(readBack));
 
         // Modify data, overwrite exiting file, and read back
@@ -89,14 +89,14 @@ public class JsonInternTrackerStorageTest {
     }
 
     @Test
-    public void saveInternBook_nullInternBook_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> saveInternBook(null, "SomeFile.json"));
+    public void saveInternTracker_nullInternTracker_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> saveInternTracker(null, "SomeFile.json"));
     }
 
     /**
      * Saves {@code internBook} at the specified {@code filePath}.
      */
-    private void saveInternBook(ReadOnlyInternBook internBook, String filePath) {
+    private void saveInternTracker(ReadOnlyInternTracker internBook, String filePath) {
         try {
             new JsonInternTrackerStorage(Paths.get(filePath))
                     .saveInternTracker(internBook, addToTestDataPathIfNotNull(filePath));
@@ -106,7 +106,7 @@ public class JsonInternTrackerStorageTest {
     }
 
     @Test
-    public void saveInternBook_nullFilePath_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> saveInternBook(new InternTracker(), null));
+    public void saveInternTracker_nullFilePath_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> saveInternTracker(new InternTracker(), null));
     }
 }

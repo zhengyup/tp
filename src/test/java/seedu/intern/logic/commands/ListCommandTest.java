@@ -23,7 +23,7 @@ public class ListCommandTest {
     @BeforeEach
     public void setUp() {
         model = new ModelManager(getTypicalInternTracker(), new UserPrefs());
-        expectedModel = new ModelManager(model.getInternBook(), new UserPrefs());
+        expectedModel = new ModelManager(model.getInternTracker(), new UserPrefs());
     }
 
     @Test

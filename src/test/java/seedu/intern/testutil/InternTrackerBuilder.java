@@ -6,24 +6,24 @@ import seedu.intern.model.application.InternApplication;
 /**
  * A utility class to help with building Internbook objects.
  * Example usage: <br>
- *     {@code InternBook ab = new InternBookBuilder().withPerson("John", "Doe").build();}
+ *     {@code InternTracker ab = new InternTrackerBuilder().withPerson("John", "Doe").build();}
  */
-public class InternBookBuilder {
+public class InternTrackerBuilder {
 
     private InternTracker internTracker;
 
-    public InternBookBuilder() {
+    public InternTrackerBuilder() {
         internTracker = new InternTracker();
     }
 
-    public InternBookBuilder(InternTracker internTracker) {
+    public InternTrackerBuilder(InternTracker internTracker) {
         this.internTracker = internTracker;
     }
 
     /**
-     * Adds a new {@code Person} to the {@code InternBook} that we are building.
+     * Adds a new {@code Person} to the {@code InternTracker} that we are building.
      */
-    public InternBookBuilder withPerson(InternApplication internApplication) {
+    public InternTrackerBuilder withPerson(InternApplication internApplication) {
         internTracker.addApplication(internApplication);
         return this;
     }

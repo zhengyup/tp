@@ -25,7 +25,7 @@ import seedu.intern.logic.commands.exceptions.CommandException;
 import seedu.intern.logic.parser.exceptions.ParseException;
 import seedu.intern.model.Model;
 import seedu.intern.model.ModelManager;
-import seedu.intern.model.ReadOnlyInternBook;
+import seedu.intern.model.ReadOnlyInternTracker;
 import seedu.intern.model.UserPrefs;
 import seedu.intern.model.application.InternApplication;
 import seedu.intern.storage.JsonInternTrackerStorage;
@@ -123,7 +123,7 @@ public class LogicManagerTest {
      */
     private void assertCommandFailure(String inputCommand, Class<? extends Throwable> expectedException,
             String expectedMessage) {
-        Model expectedModel = new ModelManager(model.getInternBook(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getInternTracker(), new UserPrefs());
         assertCommandFailure(inputCommand, expectedException, expectedMessage, expectedModel);
     }
 
@@ -149,10 +149,10 @@ public class LogicManagerTest {
     private void assertCommandFailureForExceptionFromStorage(IOException e, String expectedMessage) {
         Path prefPath = temporaryFolder.resolve("ExceptionUserPrefs.json");
 
-        // Inject LogicManager with an InternBookStorage that throws the IOException e when saving
+        // Inject LogicManager with an InternTrackerStorage that throws the IOException e when saving
         JsonInternTrackerStorage internBookStorage = new JsonInternTrackerStorage(prefPath) {
             @Override
-            public void saveInternTracker(ReadOnlyInternBook internTracker, Path filePath)
+            public void saveInternTracker(ReadOnlyInternTracker internTracker, Path filePath)
                     throws IOException {
                 throw e;
             }
@@ -164,7 +164,7 @@ public class LogicManagerTest {
 
         logic = new LogicManager(model, storage);
 
-        // Triggers the saveInternBook method by executing an add command
+        // Triggers the saveInternTracker method by executing an add command
         String addCommand = AddCommand.COMMAND_WORD + NAME_DESC_AMY + ROLE_DESC_AMY
                 + EMAIL_DESC_AMY + STATUS_DESC_AMY;
         InternApplication expectedInternApplication = new InternApplicationBuilder(AMY).withTags().build();
