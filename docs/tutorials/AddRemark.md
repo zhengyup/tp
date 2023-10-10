@@ -346,7 +346,7 @@ save it with `Model#setPerson()`.
 
         Person internApplicationToEdit = lastShownList.get(index.getZeroBased());
         Person editedInternApplication = new Person(
-                internApplicationToEdit.getName(), internApplicationToEdit.getPhone(), internApplicationToEdit.getEmail(),
+                internApplicationToEdit.getName(), internApplicationToEdit.getPhone(), internApplicationToEdit.getCycle(),
                 internApplicationToEdit.getAddress(), remark, internApplicationToEdit.getTags());
 
         model.setPerson(internApplicationToEdit, editedInternApplication);
