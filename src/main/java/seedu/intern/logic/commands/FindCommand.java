@@ -5,7 +5,7 @@ import static java.util.Objects.requireNonNull;
 import seedu.intern.commons.util.ToStringBuilder;
 import seedu.intern.logic.Messages;
 import seedu.intern.model.Model;
-import seedu.intern.model.application.NameContainsKeywordsPredicate;
+import seedu.intern.model.application.CompanyContainsKeywordsPredicate;
 
 /**
  * Finds and lists all applications in intern tracker whose name contains any of the argument keywords.
@@ -20,9 +20,9 @@ public class FindCommand extends Command {
             + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
             + "Example: " + COMMAND_WORD + " alice bob charlie";
 
-    private final NameContainsKeywordsPredicate predicate;
+    private final CompanyContainsKeywordsPredicate predicate;
 
-    public FindCommand(NameContainsKeywordsPredicate predicate) {
+    public FindCommand(CompanyContainsKeywordsPredicate predicate) {
         this.predicate = predicate;
     }
 

@@ -17,7 +17,7 @@ import seedu.intern.model.tag.Tag;
 public class InternApplication {
 
     // Identity fields
-    private final Name name;
+    private final Company company;
     private final Role role;
     private final Cycle cycle;
 
@@ -28,18 +28,17 @@ public class InternApplication {
     /**
      * Every field must be present and not null.
      */
-
-    public InternApplication(Name name, Role role, Cycle cycle, Status status, Set<Tag> tags) {
-        requireAllNonNull(name, role, cycle, status, tags);
-        this.name = name;
+    public InternApplication(Company company, Role role, Cycle cycle, Status status, Set<Tag> tags) {
+        requireAllNonNull(company, role, cycle, status, tags);
+        this.company = company;
         this.role = role;
         this.cycle = cycle;
         this.status = status;
         this.tags.addAll(tags);
     }
 
-    public Name getName() {
-        return name;
+    public Company getCompany() {
+        return company;
     }
 
     public Role getRole() {
@@ -71,7 +70,8 @@ public class InternApplication {
             return true;
         }
 
-        return otherInternApplication != null && otherInternApplication.getName().equals(getName());
+        return otherInternApplication != null
+                && otherInternApplication.getCompany().equals(getCompany());
     }
 
     /**
@@ -90,21 +90,28 @@ public class InternApplication {
         }
 
         InternApplication otherInternApplication = (InternApplication) other;
-        return name.equals(otherInternApplication.name) && role.equals(otherInternApplication.role) && cycle.equals(
-                otherInternApplication.cycle) && status.equals(otherInternApplication.status) && tags.equals(
-                otherInternApplication.tags);
+        return company.equals(otherInternApplication.company)
+                && role.equals(otherInternApplication.role)
+                && cycle.equals(otherInternApplication.cycle)
+                && status.equals(otherInternApplication.status)
+                && tags.equals(otherInternApplication.tags);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, role, cycle, status, tags);
+        return Objects.hash(company, role, cycle, status, tags);
     }
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this).add("name", name).add("role", role).add("cycle", cycle).add("status", status)
-                .add("tags", tags).toString();
+        return new ToStringBuilder(this)
+                .add("company", company)
+                .add("role", role)
+                .add("cycle", cycle)
+                .add("status", status)
+                .add("tags", tags)
+                .toString();
     }
 
 }

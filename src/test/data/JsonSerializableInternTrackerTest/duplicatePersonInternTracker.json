@@ -1,13 +1,11 @@
 {
   "persons": [ {
-    "name": "Alice Pauline",
+    "company": "Jane Street",
     "cycle": "Summer 2024",
     "role": "Intern",
-    "status" : "Pending",
-    "tags": [ "friends" ]
+    "status" : "Pending"
   }, {
-    "name": "Alice Pauline",
-    "phone": "94351253",
+    "company": "Jane Street",
     "cycle": "Summer 2024",
     "role": "Intern",
     "status" : "Pending"

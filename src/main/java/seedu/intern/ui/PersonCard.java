@@ -29,7 +29,7 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private HBox cardPane;
     @FXML
-    private Label name;
+    private Label company;
     @FXML
     private Label id;
     @FXML
@@ -48,7 +48,7 @@ public class PersonCard extends UiPart<Region> {
         super(FXML);
         this.internApplication = internApplication;
         id.setText(displayedIndex + ". ");
-        name.setText(internApplication.getName().fullName);
+        company.setText(internApplication.getCompany().companyName);
         role.setText(internApplication.getRole().value);
         status.setText(internApplication.getStatus().value);
         cycle.setText(internApplication.getCycle().value);

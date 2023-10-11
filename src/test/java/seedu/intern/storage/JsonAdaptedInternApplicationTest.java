@@ -3,7 +3,7 @@ package seedu.intern.storage;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.intern.storage.JsonAdaptedInternApplication.MISSING_FIELD_MESSAGE_FORMAT;
 import static seedu.intern.testutil.Assert.assertThrows;
-import static seedu.intern.testutil.TypicalInternApplications.BENSON;
+import static seedu.intern.testutil.TypicalInternApplications.OPTIVER;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,36 +12,36 @@ import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 
 import seedu.intern.commons.exceptions.IllegalValueException;
+import seedu.intern.model.application.Company;
 import seedu.intern.model.application.Cycle;
-import seedu.intern.model.application.Name;
 import seedu.intern.model.application.Role;
 import seedu.intern.model.application.Status;
 
 public class JsonAdaptedInternApplicationTest {
-    private static final String INVALID_NAME = "R@chel";
+    private static final String INVALID_NAME = "J@ne";
     private static final String INVALID_ROLE = " ";
     private static final String INVALID_STATUS = " ";
     private static final String INVALID_CYCLE = "example.com";
     private static final String INVALID_TAG = "#friend";
 
-    private static final String VALID_NAME = BENSON.getName().toString();
-    private static final String VALID_ROLE = BENSON.getRole().toString();
-    private static final String VALID_CYCLE = BENSON.getCycle().toString();
-    private static final String VALID_STATUS = BENSON.getStatus().toString();
+    private static final String VALID_NAME = OPTIVER.getCompany().toString();
+    private static final String VALID_ROLE = OPTIVER.getRole().toString();
+    private static final String VALID_CYCLE = OPTIVER.getCycle().toString();
+    private static final String VALID_STATUS = OPTIVER.getStatus().toString();
     private static final List<JsonAdaptedTag> VALID_TAGS =
-            BENSON.getTags().stream().map(JsonAdaptedTag::new).collect(Collectors.toList());
+            OPTIVER.getTags().stream().map(JsonAdaptedTag::new).collect(Collectors.toList());
 
     @Test
     public void toModelType_validInternApplicationDetails_returnsInternApplication() throws Exception {
-        JsonAdaptedInternApplication application = new JsonAdaptedInternApplication(BENSON);
-        assertEquals(BENSON, application.toModelType());
+        JsonAdaptedInternApplication application = new JsonAdaptedInternApplication(OPTIVER);
+        assertEquals(OPTIVER, application.toModelType());
     }
 
     @Test
     public void toModelType_invalidName_throwsIllegalValueException() {
         JsonAdaptedInternApplication application =
                 new JsonAdaptedInternApplication(INVALID_NAME, VALID_ROLE, VALID_CYCLE, VALID_STATUS, VALID_TAGS);
-        String expectedMessage = Name.MESSAGE_CONSTRAINTS;
+        String expectedMessage = Company.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, application::toModelType);
     }
 
@@ -49,7 +49,7 @@ public class JsonAdaptedInternApplicationTest {
     public void toModelType_nullName_throwsIllegalValueException() {
         JsonAdaptedInternApplication application =
                 new JsonAdaptedInternApplication(null, VALID_ROLE, VALID_CYCLE, VALID_STATUS, VALID_TAGS);
-        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName());
+        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Company.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, application::toModelType);
     }
 

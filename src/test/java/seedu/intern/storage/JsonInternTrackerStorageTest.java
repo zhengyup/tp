@@ -3,9 +3,9 @@ package seedu.intern.storage;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static seedu.intern.testutil.Assert.assertThrows;
-import static seedu.intern.testutil.TypicalInternApplications.ALICE;
 import static seedu.intern.testutil.TypicalInternApplications.HOON;
 import static seedu.intern.testutil.TypicalInternApplications.IDA;
+import static seedu.intern.testutil.TypicalInternApplications.JANE_STREET;
 import static seedu.intern.testutil.TypicalInternApplications.getTypicalInternTracker;
 
 import java.io.IOException;
@@ -75,7 +75,7 @@ public class JsonInternTrackerStorageTest {
 
         // Modify data, overwrite exiting file, and read back
         original.addApplication(HOON);
-        original.removeApplication(ALICE);
+        original.removeApplication(JANE_STREET);
         jsonInternTrackerStorage.saveInternTracker(original, filePath);
         readBack = jsonInternTrackerStorage.readInternTracker(filePath).get();
         assertEquals(original, new InternTracker(readBack));

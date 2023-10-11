@@ -18,14 +18,14 @@ import static seedu.intern.logic.commands.CommandTestUtil.STATUS_DESC_AMY;
 import static seedu.intern.logic.commands.CommandTestUtil.STATUS_DESC_BOB;
 import static seedu.intern.logic.commands.CommandTestUtil.TAG_DESC_FRIEND;
 import static seedu.intern.logic.commands.CommandTestUtil.TAG_DESC_HUSBAND;
+import static seedu.intern.logic.commands.CommandTestUtil.VALID_COMPANY_BOB;
 import static seedu.intern.logic.commands.CommandTestUtil.VALID_CYCLE_BOB;
-import static seedu.intern.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.intern.logic.commands.CommandTestUtil.VALID_ROLE_BOB;
 import static seedu.intern.logic.commands.CommandTestUtil.VALID_STATUS_BOB;
 import static seedu.intern.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
 import static seedu.intern.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
+import static seedu.intern.logic.parser.CliSyntax.PREFIX_COMPANY;
 import static seedu.intern.logic.parser.CliSyntax.PREFIX_CYCLE;
-import static seedu.intern.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.intern.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.intern.logic.parser.CliSyntax.PREFIX_STATUS;
 import static seedu.intern.logic.parser.CommandParserTestUtil.assertParseFailure;
@@ -37,9 +37,9 @@ import org.junit.jupiter.api.Test;
 
 import seedu.intern.logic.Messages;
 import seedu.intern.logic.commands.AddCommand;
+import seedu.intern.model.application.Company;
 import seedu.intern.model.application.Cycle;
 import seedu.intern.model.application.InternApplication;
-import seedu.intern.model.application.Name;
 import seedu.intern.model.application.Role;
 import seedu.intern.model.application.Status;
 import seedu.intern.model.tag.Tag;
@@ -75,7 +75,7 @@ public class AddCommandParserTest {
 
         // multiple names
         assertParseFailure(parser, NAME_DESC_AMY + validExpectedPersonString,
-                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_NAME));
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_COMPANY));
 
         // multiple role
         assertParseFailure(parser, ROLE_DESC_AMY + validExpectedPersonString,
@@ -93,13 +93,13 @@ public class AddCommandParserTest {
         assertParseFailure(parser,
                 validExpectedPersonString + ROLE_DESC_AMY + CYCLE_DESC_AMY + NAME_DESC_AMY + STATUS_DESC_AMY
                         + validExpectedPersonString,
-                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_NAME, PREFIX_CYCLE, PREFIX_STATUS, PREFIX_ROLE));
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_COMPANY, PREFIX_CYCLE, PREFIX_STATUS, PREFIX_ROLE));
 
         // invalid value followed by valid value
 
         // invalid name
         assertParseFailure(parser, INVALID_NAME_DESC + validExpectedPersonString,
-                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_NAME));
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_COMPANY));
 
         // invalid cycle
         assertParseFailure(parser, INVALID_CYCLE_DESC + validExpectedPersonString,
@@ -117,7 +117,7 @@ public class AddCommandParserTest {
 
         // invalid name
         assertParseFailure(parser, validExpectedPersonString + INVALID_NAME_DESC,
-                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_NAME));
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_COMPANY));
 
         // invalid cycle
         assertParseFailure(parser, validExpectedPersonString + INVALID_CYCLE_DESC,
@@ -145,7 +145,7 @@ public class AddCommandParserTest {
         String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE);
 
         // missing role prefix
-        assertParseFailure(parser, VALID_NAME_BOB + ROLE_DESC_BOB + CYCLE_DESC_BOB + STATUS_DESC_BOB,
+        assertParseFailure(parser, VALID_COMPANY_BOB + ROLE_DESC_BOB + CYCLE_DESC_BOB + STATUS_DESC_BOB,
                 expectedMessage);
 
         // missing role prefix
@@ -161,15 +161,15 @@ public class AddCommandParserTest {
                 expectedMessage);
 
         // all prefixes missing
-        assertParseFailure(parser, VALID_NAME_BOB + VALID_ROLE_BOB + VALID_CYCLE_BOB + VALID_STATUS_BOB,
+        assertParseFailure(parser, VALID_COMPANY_BOB + VALID_ROLE_BOB + VALID_CYCLE_BOB + VALID_STATUS_BOB,
                 expectedMessage);
     }
 
     @Test
     public void parse_invalidValue_failure() {
-        // invalid name
+        // invalid company
         assertParseFailure(parser, INVALID_NAME_DESC + ROLE_DESC_BOB + CYCLE_DESC_BOB + STATUS_DESC_BOB
-                + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, Name.MESSAGE_CONSTRAINTS);
+                + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, Company.MESSAGE_CONSTRAINTS);
 
         // invalid role
         assertParseFailure(parser, NAME_DESC_BOB + INVALID_ROLE_DESC + CYCLE_DESC_BOB + STATUS_DESC_BOB
@@ -189,7 +189,7 @@ public class AddCommandParserTest {
 
         // two invalid values, only first invalid value reported
         assertParseFailure(parser, INVALID_NAME_DESC + ROLE_DESC_BOB + CYCLE_DESC_BOB + INVALID_STATUS_DESC,
-                Name.MESSAGE_CONSTRAINTS);
+                Company.MESSAGE_CONSTRAINTS);
 
         // non-empty preamble
         assertParseFailure(parser, PREAMBLE_NON_EMPTY + NAME_DESC_BOB + ROLE_DESC_BOB + CYCLE_DESC_BOB

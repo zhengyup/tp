@@ -3,9 +3,9 @@ package seedu.intern.testutil;
 import java.util.HashSet;
 import java.util.Set;
 
+import seedu.intern.model.application.Company;
 import seedu.intern.model.application.Cycle;
 import seedu.intern.model.application.InternApplication;
-import seedu.intern.model.application.Name;
 import seedu.intern.model.application.Role;
 import seedu.intern.model.application.Status;
 import seedu.intern.model.tag.Tag;
@@ -16,12 +16,12 @@ import seedu.intern.model.util.SampleDataUtil;
  */
 public class InternApplicationBuilder {
 
-    public static final String DEFAULT_NAME = "Amy Bee";
+    public static final String DEFAULT_COMPANY = "Amy Bee";
     public static final String DEFAULT_ROLE = "Intern";
     public static final String DEFAULT_CYCLE = "Summer 2021";
     public static final String DEFAULT_STATUS = "Pending";
 
-    private Name name;
+    private Company company;
     private Role role;
     private Cycle cycle;
     private Status status;
@@ -31,7 +31,7 @@ public class InternApplicationBuilder {
      * Creates a {@code InternApplicationBuilder} with the default details.
      */
     public InternApplicationBuilder() {
-        name = new Name(DEFAULT_NAME);
+        company = new Company(DEFAULT_COMPANY);
         role = new Role(DEFAULT_ROLE);
         cycle = new Cycle(DEFAULT_CYCLE);
         status = new Status(DEFAULT_STATUS);
@@ -42,7 +42,7 @@ public class InternApplicationBuilder {
      * Initializes the InternApplicationBuilder with the data of {@code internApplicationToCopy}.
      */
     public InternApplicationBuilder(InternApplication internApplicationToCopy) {
-        name = internApplicationToCopy.getName();
+        company = internApplicationToCopy.getCompany();
         role = internApplicationToCopy.getRole();
         cycle = internApplicationToCopy.getCycle();
         status = internApplicationToCopy.getStatus();
@@ -52,8 +52,8 @@ public class InternApplicationBuilder {
     /**
      * Sets the {@code Name} of the {@code InternApplication} that we are building.
      */
-    public InternApplicationBuilder withName(String name) {
-        this.name = new Name(name);
+    public InternApplicationBuilder withCompany(String name) {
+        this.company = new Company(name);
         return this;
     }
 
@@ -90,7 +90,7 @@ public class InternApplicationBuilder {
     }
 
     public InternApplication build() {
-        return new InternApplication(name, role, cycle, status, tags);
+        return new InternApplication(company, role, cycle, status, tags);
     }
 
 }

@@ -1,8 +1,8 @@
 package seedu.intern.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.intern.logic.parser.CliSyntax.PREFIX_COMPANY;
 import static seedu.intern.logic.parser.CliSyntax.PREFIX_CYCLE;
-import static seedu.intern.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.intern.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.intern.logic.parser.CliSyntax.PREFIX_STATUS;
 import static seedu.intern.logic.parser.CliSyntax.PREFIX_TAG;
@@ -21,9 +21,9 @@ import seedu.intern.commons.util.ToStringBuilder;
 import seedu.intern.logic.Messages;
 import seedu.intern.logic.commands.exceptions.CommandException;
 import seedu.intern.model.Model;
+import seedu.intern.model.application.Company;
 import seedu.intern.model.application.Cycle;
 import seedu.intern.model.application.InternApplication;
-import seedu.intern.model.application.Name;
 import seedu.intern.model.application.Role;
 import seedu.intern.model.application.Status;
 import seedu.intern.model.tag.Tag;
@@ -39,7 +39,7 @@ public class EditCommand extends Command {
             + "by the index number used in the displayed person list. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + "[" + PREFIX_NAME + "NAME] "
+            + "[" + PREFIX_COMPANY + "COMPANY] "
             + "[" + PREFIX_ROLE + "ROLE] "
             + "[" + PREFIX_CYCLE + "CYCLE] "
             + "[" + PREFIX_STATUS + "STATUS] "
@@ -97,13 +97,13 @@ public class EditCommand extends Command {
                                                         EditPersonDescriptor editPersonDescriptor) {
         assert internApplicationToEdit != null;
 
-        Name updatedName = editPersonDescriptor.getName().orElse(internApplicationToEdit.getName());
+        Company updatedCompany = editPersonDescriptor.getCompany().orElse(internApplicationToEdit.getCompany());
         Role updatedRole = editPersonDescriptor.getRole().orElse(internApplicationToEdit.getRole());
         Cycle updatedCycle = editPersonDescriptor.getCycle().orElse(internApplicationToEdit.getCycle());
         Status updatedStatus = editPersonDescriptor.getStatus().orElse(internApplicationToEdit.getStatus());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(internApplicationToEdit.getTags());
 
-        return new InternApplication(updatedName, updatedRole, updatedCycle, updatedStatus, updatedTags);
+        return new InternApplication(updatedCompany, updatedRole, updatedCycle, updatedStatus, updatedTags);
     }
 
     @Override
@@ -135,7 +135,7 @@ public class EditCommand extends Command {
      * corresponding field value of the person.
      */
     public static class EditPersonDescriptor {
-        private Name name;
+        private Company company;
         private Role role;
         private Cycle cycle;
         private Status status;
@@ -148,7 +148,7 @@ public class EditCommand extends Command {
          * A defensive copy of {@code tags} is used internally.
          */
         public EditPersonDescriptor(EditPersonDescriptor toCopy) {
-            setName(toCopy.name);
+            setCompany(toCopy.company);
             setRole(toCopy.role);
             setCycle(toCopy.cycle);
             setStatus(toCopy.status);
@@ -159,15 +159,15 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, role, cycle, status, tags);
+            return CollectionUtil.isAnyNonNull(company, role, cycle, status, tags);
         }
 
-        public void setName(Name name) {
-            this.name = name;
+        public void setCompany(Company company) {
+            this.company = company;
         }
 
-        public Optional<Name> getName() {
-            return Optional.ofNullable(name);
+        public Optional<Company> getCompany() {
+            return Optional.ofNullable(company);
         }
 
         public void setRole(Role role) {
@@ -223,7 +223,7 @@ public class EditCommand extends Command {
             }
 
             EditPersonDescriptor otherEditPersonDescriptor = (EditPersonDescriptor) other;
-            return Objects.equals(name, otherEditPersonDescriptor.name)
+            return Objects.equals(company, otherEditPersonDescriptor.company)
                     && Objects.equals(role, otherEditPersonDescriptor.role)
                     && Objects.equals(cycle, otherEditPersonDescriptor.cycle)
                     && Objects.equals(status, otherEditPersonDescriptor.status)
@@ -233,7 +233,7 @@ public class EditCommand extends Command {
         @Override
         public String toString() {
             return new ToStringBuilder(this)
-                    .add("name", name)
+                    .add("company", company)
                     .add("role", role)
                     .add("cycle", cycle)
                     .add("status", status)

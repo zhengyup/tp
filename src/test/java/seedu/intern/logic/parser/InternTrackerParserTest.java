@@ -23,8 +23,8 @@ import seedu.intern.logic.commands.FindCommand;
 import seedu.intern.logic.commands.HelpCommand;
 import seedu.intern.logic.commands.ListCommand;
 import seedu.intern.logic.parser.exceptions.ParseException;
+import seedu.intern.model.application.CompanyContainsKeywordsPredicate;
 import seedu.intern.model.application.InternApplication;
-import seedu.intern.model.application.NameContainsKeywordsPredicate;
 import seedu.intern.testutil.EditPersonDescriptorBuilder;
 import seedu.intern.testutil.InternApplicationBuilder;
 import seedu.intern.testutil.PersonUtil;
@@ -73,7 +73,7 @@ public class InternTrackerParserTest {
         List<String> keywords = Arrays.asList("foo", "bar", "baz");
         FindCommand command = (FindCommand) parser.parseCommand(
                 FindCommand.COMMAND_WORD + " " + keywords.stream().collect(Collectors.joining(" ")));
-        assertEquals(new FindCommand(new NameContainsKeywordsPredicate(keywords)), command);
+        assertEquals(new FindCommand(new CompanyContainsKeywordsPredicate(keywords)), command);
     }
 
     @Test

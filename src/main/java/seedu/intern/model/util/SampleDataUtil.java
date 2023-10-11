@@ -6,9 +6,9 @@ import java.util.stream.Collectors;
 
 import seedu.intern.model.InternTracker;
 import seedu.intern.model.ReadOnlyInternTracker;
+import seedu.intern.model.application.Company;
 import seedu.intern.model.application.Cycle;
 import seedu.intern.model.application.InternApplication;
-import seedu.intern.model.application.Name;
 import seedu.intern.model.application.Role;
 import seedu.intern.model.application.Status;
 import seedu.intern.model.tag.Tag;
@@ -19,18 +19,18 @@ import seedu.intern.model.tag.Tag;
 public class SampleDataUtil {
     public static InternApplication[] getSamplePersons() {
         return new InternApplication[] {
-            new InternApplication(new Name("Alex Yeoh"), new Role("DevOps"), new Cycle("Summer 2024"),
+            new InternApplication(new Company("Alex Yeoh"), new Role("DevOps"), new Cycle("Summer 2024"),
                     new Status("Pending"), getTagSet("friends")),
-            new InternApplication(new Name("Bernice Yu"), new Role("Systems Integrator"), new Cycle("Summer 2023"),
+            new InternApplication(new Company("Bernice Yu"), new Role("Systems Integrator"), new Cycle("Summer 2023"),
                     new Status("Rejected"), getTagSet("colleagues", "friends")),
-            new InternApplication(new Name("Charlotte Oliveiro"), new Role("Jobless"),
+            new InternApplication(new Company("Charlotte Oliveiro"), new Role("Jobless"),
                     new Cycle("Summer 2103"), new Status("Pending"),
                     getTagSet("neighbours")),
-            new InternApplication(new Name("David Li"), new Role("SWE"), new Cycle("Off-cycle 2024"),
+            new InternApplication(new Company("David Li"), new Role("SWE"), new Cycle("Off-cycle 2024"),
                     new Status("Rejected"), getTagSet("family")),
-            new InternApplication(new Name("Irfan Ibrahim"), new Role("SWE"), new Cycle("Winter 2021"),
+            new InternApplication(new Company("Irfan Ibrahim"), new Role("SWE"), new Cycle("Winter 2021"),
                     new Status("Pending"), getTagSet("classmates")),
-            new InternApplication(new Name("Roy Balakrishnan"), new Role("Economist"), new Cycle("Summer 2022"),
+            new InternApplication(new Company("Roy Balakrishnan"), new Role("Economist"), new Cycle("Summer 2022"),
                     new Status("Pending"), getTagSet("colleagues"))};
     }
 

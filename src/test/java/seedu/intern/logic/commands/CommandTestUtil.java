@@ -2,8 +2,8 @@ package seedu.intern.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.intern.logic.parser.CliSyntax.PREFIX_COMPANY;
 import static seedu.intern.logic.parser.CliSyntax.PREFIX_CYCLE;
-import static seedu.intern.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.intern.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.intern.logic.parser.CliSyntax.PREFIX_STATUS;
 import static seedu.intern.logic.parser.CliSyntax.PREFIX_TAG;
@@ -17,8 +17,8 @@ import seedu.intern.commons.core.index.Index;
 import seedu.intern.logic.commands.exceptions.CommandException;
 import seedu.intern.model.InternTracker;
 import seedu.intern.model.Model;
+import seedu.intern.model.application.CompanyContainsKeywordsPredicate;
 import seedu.intern.model.application.InternApplication;
-import seedu.intern.model.application.NameContainsKeywordsPredicate;
 import seedu.intern.testutil.EditPersonDescriptorBuilder;
 
 /**
@@ -26,8 +26,8 @@ import seedu.intern.testutil.EditPersonDescriptorBuilder;
  */
 public class CommandTestUtil {
 
-    public static final String VALID_NAME_AMY = "Amy Bee";
-    public static final String VALID_NAME_BOB = "Bob Choo";
+    public static final String VALID_COMPANY_AMY = "Citadel";
+    public static final String VALID_COMPANY_BOB = "Accenture";
     public static final String VALID_ROLE_AMY = "InternAmy";
     public static final String VALID_ROLE_BOB = "Intern";
     public static final String VALID_CYCLE_AMY = "Summer 2024";
@@ -37,8 +37,8 @@ public class CommandTestUtil {
     public static final String VALID_TAG_HUSBAND = "husband";
     public static final String VALID_TAG_FRIEND = "friend";
 
-    public static final String NAME_DESC_AMY = " " + PREFIX_NAME + VALID_NAME_AMY;
-    public static final String NAME_DESC_BOB = " " + PREFIX_NAME + VALID_NAME_BOB;
+    public static final String NAME_DESC_AMY = " " + PREFIX_COMPANY + VALID_COMPANY_AMY;
+    public static final String NAME_DESC_BOB = " " + PREFIX_COMPANY + VALID_COMPANY_BOB;
     public static final String ROLE_DESC_AMY = " " + PREFIX_ROLE + VALID_ROLE_AMY;
     public static final String ROLE_DESC_BOB = " " + PREFIX_ROLE + VALID_ROLE_BOB;
     public static final String CYCLE_DESC_AMY = " " + PREFIX_CYCLE + VALID_CYCLE_AMY;
@@ -48,7 +48,7 @@ public class CommandTestUtil {
     public static final String TAG_DESC_FRIEND = " " + PREFIX_TAG + VALID_TAG_FRIEND;
     public static final String TAG_DESC_HUSBAND = " " + PREFIX_TAG + VALID_TAG_HUSBAND;
 
-    public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
+    public static final String INVALID_NAME_DESC = " " + PREFIX_COMPANY + "James&"; // '&' not allowed in names
     public static final String INVALID_ROLE_DESC = " " + PREFIX_ROLE + " "; // Blank is not allowed in roles
     public static final String INVALID_CYCLE_DESC = " " + PREFIX_CYCLE + "summer!2023"; // '!' not allowed in cycles
     public static final String INVALID_STATUS_DESC = " " + PREFIX_STATUS; // empty string not allowed for status
@@ -61,9 +61,9 @@ public class CommandTestUtil {
     public static final EditCommand.EditPersonDescriptor DESC_BOB;
 
     static {
-        DESC_AMY = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY).withRole(VALID_ROLE_AMY)
+        DESC_AMY = new EditPersonDescriptorBuilder().withCompany(VALID_COMPANY_AMY).withRole(VALID_ROLE_AMY)
                 .withCycle(VALID_CYCLE_AMY).withStatus(VALID_STATUS_AMY).withTags(VALID_TAG_FRIEND).build();
-        DESC_BOB = new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB).withRole(VALID_ROLE_BOB)
+        DESC_BOB = new EditPersonDescriptorBuilder().withCompany(VALID_COMPANY_BOB).withRole(VALID_ROLE_BOB)
                 .withCycle(VALID_CYCLE_BOB).withStatus(VALID_STATUS_BOB).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
                 .build();
     }
@@ -119,8 +119,8 @@ public class CommandTestUtil {
         assertTrue(targetIndex.getZeroBased() < model.getFilteredPersonList().size());
 
         InternApplication internApplication = model.getFilteredPersonList().get(targetIndex.getZeroBased());
-        final String[] splitName = internApplication.getName().fullName.split("\\s+");
-        model.updateFilteredPersonList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
+        final String[] splitName = internApplication.getCompany().companyName.split("\\s+");
+        model.updateFilteredPersonList(new CompanyContainsKeywordsPredicate(Arrays.asList(splitName[0])));
 
         assertEquals(1, model.getFilteredPersonList().size());
     }

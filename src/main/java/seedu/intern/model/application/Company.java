@@ -7,7 +7,7 @@ import static seedu.intern.commons.util.AppUtil.checkArgument;
  * Represents an InternApplication's name in the intern tracker.
  * Guarantees: immutable; is valid as declared in {@link #isValidName(String)}
  */
-public class Name {
+public class Company {
 
     public static final String MESSAGE_CONSTRAINTS =
             "Names should only contain alphanumeric characters and spaces, and it should not be blank";
@@ -18,17 +18,17 @@ public class Name {
      */
     public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
 
-    public final String fullName;
+    public final String companyName;
 
     /**
      * Constructs a {@code Name}.
      *
      * @param name A valid name.
      */
-    public Name(String name) {
+    public Company(String name) {
         requireNonNull(name);
         checkArgument(isValidName(name), MESSAGE_CONSTRAINTS);
-        fullName = name;
+        companyName = name;
     }
 
     /**
@@ -41,7 +41,7 @@ public class Name {
 
     @Override
     public String toString() {
-        return fullName;
+        return companyName;
     }
 
     @Override
@@ -51,17 +51,17 @@ public class Name {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof Name)) {
+        if (!(other instanceof Company)) {
             return false;
         }
 
-        Name otherName = (Name) other;
-        return fullName.equals(otherName.fullName);
+        Company otherCompany = (Company) other;
+        return companyName.equals(otherCompany.companyName);
     }
 
     @Override
     public int hashCode() {
-        return fullName.hashCode();
+        return companyName.hashCode();
     }
 
 }

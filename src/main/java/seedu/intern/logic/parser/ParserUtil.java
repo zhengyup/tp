@@ -9,8 +9,8 @@ import java.util.Set;
 import seedu.intern.commons.core.index.Index;
 import seedu.intern.commons.util.StringUtil;
 import seedu.intern.logic.parser.exceptions.ParseException;
+import seedu.intern.model.application.Company;
 import seedu.intern.model.application.Cycle;
-import seedu.intern.model.application.Name;
 import seedu.intern.model.application.Role;
 import seedu.intern.model.application.Status;
 import seedu.intern.model.tag.Tag;
@@ -36,18 +36,18 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String name} into a {@code Name}.
+     * Parses a {@code String companyName} into a {@code Company}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code name} is invalid.
+     * @throws ParseException if the given {@code companyName} is invalid.
      */
-    public static Name parseName(String name) throws ParseException {
-        requireNonNull(name);
-        String trimmedName = name.trim();
-        if (!Name.isValidName(trimmedName)) {
-            throw new ParseException(Name.MESSAGE_CONSTRAINTS);
+    public static Company parseCompany(String companyName) throws ParseException {
+        requireNonNull(companyName);
+        String trimmedName = companyName.trim();
+        if (!Company.isValidName(trimmedName)) {
+            throw new ParseException(Company.MESSAGE_CONSTRAINTS);
         }
-        return new Name(trimmedName);
+        return new Company(trimmedName);
     }
 
     /**

@@ -2,8 +2,8 @@ package seedu.intern.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.intern.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.intern.logic.parser.CliSyntax.PREFIX_COMPANY;
 import static seedu.intern.logic.parser.CliSyntax.PREFIX_CYCLE;
-import static seedu.intern.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.intern.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.intern.logic.parser.CliSyntax.PREFIX_STATUS;
 import static seedu.intern.logic.parser.CliSyntax.PREFIX_TAG;
@@ -32,7 +32,7 @@ public class EditCommandParser implements Parser<EditCommand> {
     public EditCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_ROLE, PREFIX_CYCLE, PREFIX_STATUS, PREFIX_TAG);
+                ArgumentTokenizer.tokenize(args, PREFIX_COMPANY, PREFIX_ROLE, PREFIX_CYCLE, PREFIX_STATUS, PREFIX_TAG);
 
         Index index;
 
@@ -42,12 +42,12 @@ public class EditCommandParser implements Parser<EditCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE), pe);
         }
 
-        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_ROLE, PREFIX_CYCLE, PREFIX_STATUS);
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_COMPANY, PREFIX_ROLE, PREFIX_CYCLE, PREFIX_STATUS);
 
         EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
 
-        if (argMultimap.getValue(PREFIX_NAME).isPresent()) {
-            editPersonDescriptor.setName(ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get()));
+        if (argMultimap.getValue(PREFIX_COMPANY).isPresent()) {
+            editPersonDescriptor.setCompany(ParserUtil.parseCompany(argMultimap.getValue(PREFIX_COMPANY).get()));
         }
         if (argMultimap.getValue(PREFIX_ROLE).isPresent()) {
             editPersonDescriptor.setRole(ParserUtil.parseRole(argMultimap.getValue(PREFIX_ROLE).get()));
