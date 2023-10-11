@@ -1,8 +1,0 @@
-{
-  "persons": [ {
-    "company": "Jane Street",
-    "role": "Intern",
-    "email": "invalid@email!3e",
-    "address": "4th street"
-  } ]
-}
