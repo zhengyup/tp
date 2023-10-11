@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.intern.logic.commands.CommandTestUtil.DESC_AMY;
 import static seedu.intern.logic.commands.CommandTestUtil.DESC_BOB;
+import static seedu.intern.logic.commands.CommandTestUtil.VALID_COMPANY_BOB;
 import static seedu.intern.logic.commands.CommandTestUtil.VALID_CYCLE_BOB;
-import static seedu.intern.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.intern.logic.commands.CommandTestUtil.VALID_ROLE_BOB;
 import static seedu.intern.logic.commands.CommandTestUtil.VALID_STATUS_BOB;
 import static seedu.intern.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
@@ -38,7 +38,7 @@ public class EditInternApplicationDescriptorTest {
 
         // different name -> returns false
         EditPersonDescriptor editedAmy = new EditPersonDescriptorBuilder(DESC_AMY)
-                .withCompany(VALID_NAME_BOB).build();
+                .withCompany(VALID_COMPANY_BOB).build();
         assertFalse(DESC_AMY.equals(editedAmy));
 
         // different role -> returns false

@@ -15,8 +15,8 @@ import static seedu.intern.logic.commands.CommandTestUtil.STATUS_DESC_AMY;
 import static seedu.intern.logic.commands.CommandTestUtil.STATUS_DESC_BOB;
 import static seedu.intern.logic.commands.CommandTestUtil.TAG_DESC_FRIEND;
 import static seedu.intern.logic.commands.CommandTestUtil.TAG_DESC_HUSBAND;
+import static seedu.intern.logic.commands.CommandTestUtil.VALID_COMPANY_AMY;
 import static seedu.intern.logic.commands.CommandTestUtil.VALID_CYCLE_AMY;
-import static seedu.intern.logic.commands.CommandTestUtil.VALID_NAME_AMY;
 import static seedu.intern.logic.commands.CommandTestUtil.VALID_ROLE_AMY;
 import static seedu.intern.logic.commands.CommandTestUtil.VALID_ROLE_BOB;
 import static seedu.intern.logic.commands.CommandTestUtil.VALID_STATUS_AMY;
@@ -57,7 +57,7 @@ public class EditCommandParserTest {
     @Test
     public void parse_missingParts_failure() {
         // no index specified
-        assertParseFailure(parser, VALID_NAME_AMY, MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, VALID_COMPANY_AMY, MESSAGE_INVALID_FORMAT);
 
         // no field specified
         assertParseFailure(parser, "1", EditCommand.MESSAGE_NOT_EDITED);
@@ -112,7 +112,7 @@ public class EditCommandParserTest {
         String userInput = targetIndex.getOneBased() + ROLE_DESC_BOB + TAG_DESC_HUSBAND
                 + CYCLE_DESC_AMY + STATUS_DESC_AMY + NAME_DESC_AMY + TAG_DESC_FRIEND;
 
-        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withCompany(VALID_NAME_AMY)
+        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withCompany(VALID_COMPANY_AMY)
                 .withRole(VALID_ROLE_BOB).withCycle(VALID_CYCLE_AMY).withStatus(VALID_STATUS_AMY)
                 .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
@@ -137,7 +137,7 @@ public class EditCommandParserTest {
         // name
         Index targetIndex = INDEX_THIRD_PERSON;
         String userInput = targetIndex.getOneBased() + NAME_DESC_AMY;
-        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withCompany(VALID_NAME_AMY).build();
+        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withCompany(VALID_COMPANY_AMY).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 

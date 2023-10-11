@@ -18,8 +18,8 @@ import static seedu.intern.logic.commands.CommandTestUtil.STATUS_DESC_AMY;
 import static seedu.intern.logic.commands.CommandTestUtil.STATUS_DESC_BOB;
 import static seedu.intern.logic.commands.CommandTestUtil.TAG_DESC_FRIEND;
 import static seedu.intern.logic.commands.CommandTestUtil.TAG_DESC_HUSBAND;
+import static seedu.intern.logic.commands.CommandTestUtil.VALID_COMPANY_BOB;
 import static seedu.intern.logic.commands.CommandTestUtil.VALID_CYCLE_BOB;
-import static seedu.intern.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.intern.logic.commands.CommandTestUtil.VALID_ROLE_BOB;
 import static seedu.intern.logic.commands.CommandTestUtil.VALID_STATUS_BOB;
 import static seedu.intern.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
@@ -145,7 +145,7 @@ public class AddCommandParserTest {
         String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE);
 
         // missing role prefix
-        assertParseFailure(parser, VALID_NAME_BOB + ROLE_DESC_BOB + CYCLE_DESC_BOB + STATUS_DESC_BOB,
+        assertParseFailure(parser, VALID_COMPANY_BOB + ROLE_DESC_BOB + CYCLE_DESC_BOB + STATUS_DESC_BOB,
                 expectedMessage);
 
         // missing role prefix
@@ -161,7 +161,7 @@ public class AddCommandParserTest {
                 expectedMessage);
 
         // all prefixes missing
-        assertParseFailure(parser, VALID_NAME_BOB + VALID_ROLE_BOB + VALID_CYCLE_BOB + VALID_STATUS_BOB,
+        assertParseFailure(parser, VALID_COMPANY_BOB + VALID_ROLE_BOB + VALID_CYCLE_BOB + VALID_STATUS_BOB,
                 expectedMessage);
     }
 

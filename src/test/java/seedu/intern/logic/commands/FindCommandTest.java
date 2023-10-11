@@ -5,9 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.intern.logic.Messages.MESSAGE_PERSONS_LISTED_OVERVIEW;
 import static seedu.intern.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.intern.testutil.TypicalInternApplications.CARL;
-import static seedu.intern.testutil.TypicalInternApplications.ELLE;
-import static seedu.intern.testutil.TypicalInternApplications.FIONA;
+import static seedu.intern.testutil.TypicalInternApplications.BYTEDANCE;
+import static seedu.intern.testutil.TypicalInternApplications.GOOGLE;
+import static seedu.intern.testutil.TypicalInternApplications.GRAB;
 import static seedu.intern.testutil.TypicalInternApplications.getTypicalInternTracker;
 
 import java.util.Arrays;
@@ -67,11 +67,11 @@ public class FindCommandTest {
     @Test
     public void execute_multipleKeywords_multiplePersonsFound() {
         String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 3);
-        CompanyContainsKeywordsPredicate predicate = preparePredicate("Kurz Elle Kunz");
+        CompanyContainsKeywordsPredicate predicate = preparePredicate("Bytedance Google Grab");
         FindCommand command = new FindCommand(predicate);
         expectedModel.updateFilteredPersonList(predicate);
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
-        assertEquals(Arrays.asList(CARL, ELLE, FIONA), model.getFilteredPersonList());
+        assertEquals(Arrays.asList(GOOGLE, BYTEDANCE, GRAB), model.getFilteredPersonList());
     }
 
     @Test

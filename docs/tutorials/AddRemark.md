@@ -226,7 +226,7 @@ If you are stuck, check out the sample
 
 ## Add `Remark` to the model
 
-Now that we have all the information that we need, let’s lay the groundwork for propagating the remarks added into the in-memory storage of internApplication data. We achieve that by working with the `Person` model. Each field in a Person is implemented as a separate class (e.g. a `Name` object represents the internApplication’s company). That means we should add a `Remark` class so that we can use a `Remark` object to represent a remark given to a internApplication.
+Now that we have all the information that we need, let’s lay the groundwork for propagating the remarks added into the in-memory storage of internApplication data. We achieve that by working with the `Person` model. Each field in a Person is implemented as a separate class (e.g. a `Company` object represents the internApplication’s company). That means we should add a `Remark` class so that we can use a `Remark` object to represent a remark given to a internApplication.
 
 ### Add a new `Remark` class
 

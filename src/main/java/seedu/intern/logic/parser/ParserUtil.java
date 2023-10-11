@@ -36,14 +36,14 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String name} into a {@code Company}.
+     * Parses a {@code String companyName} into a {@code Company}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code name} is invalid.
+     * @throws ParseException if the given {@code companyName} is invalid.
      */
-    public static Company parseCompany(String name) throws ParseException {
-        requireNonNull(name);
-        String trimmedName = name.trim();
+    public static Company parseCompany(String companyName) throws ParseException {
+        requireNonNull(companyName);
+        String trimmedName = companyName.trim();
         if (!Company.isValidName(trimmedName)) {
             throw new ParseException(Company.MESSAGE_CONSTRAINTS);
         }
