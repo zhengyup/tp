@@ -1,8 +1,8 @@
 package seedu.intern.logic.parser;
 
 import static seedu.intern.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.intern.logic.parser.CliSyntax.PREFIX_CYCLE;
 import static seedu.intern.logic.parser.CliSyntax.PREFIX_COMPANY;
+import static seedu.intern.logic.parser.CliSyntax.PREFIX_CYCLE;
 import static seedu.intern.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.intern.logic.parser.CliSyntax.PREFIX_STATUS;
 import static seedu.intern.logic.parser.CliSyntax.PREFIX_TAG;
@@ -10,12 +10,11 @@ import static seedu.intern.logic.parser.CliSyntax.PREFIX_TAG;
 import java.util.Set;
 import java.util.stream.Stream;
 
-
 import seedu.intern.logic.commands.AddCommand;
 import seedu.intern.logic.parser.exceptions.ParseException;
+import seedu.intern.model.application.Company;
 import seedu.intern.model.application.Cycle;
 import seedu.intern.model.application.InternApplication;
-import seedu.intern.model.application.Company;
 import seedu.intern.model.application.Role;
 import seedu.intern.model.application.Status;
 import seedu.intern.model.tag.Tag;

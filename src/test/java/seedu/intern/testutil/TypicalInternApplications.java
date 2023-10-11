@@ -25,18 +25,16 @@ public class TypicalInternApplications {
 
     public static final InternApplication ALICE = new InternApplicationBuilder().withCompany("Alice Pauline")
             .withStatus("Pending").withCycle("Summer 2024")
-            .withRole("SWE Intern")
-            .withTags("friends").build();
+            .withRole("SWE Intern").build();
     public static final InternApplication BENSON = new InternApplicationBuilder().withCompany("Benson Meier")
             .withStatus("Pending")
-            .withCycle("Summer 2023").withRole("Data Engineering Intern")
-            .withTags("owesMoney", "friends").build();
-    public static final InternApplication CARL = new InternApplicationBuilder().withCompany("Google")
+            .withCycle("Summer 2023").withRole("Data Engineering Intern").build();
+    public static final InternApplication CARL = new InternApplicationBuilder().withCompany("Carl Kurz")
             .withRole("Full Stack Intern")
             .withCycle("Summer 2021").withStatus("Pending").build();
     public static final InternApplication DANIEL = new InternApplicationBuilder().withCompany("Daniel Meier")
             .withRole("Back End Intern")
-            .withCycle("Off-cycle 2020").withStatus("Pending").withTags("friends").build();
+            .withCycle("Off-cycle 2020").withStatus("Pending").build();
     public static final InternApplication ELLE = new InternApplicationBuilder().withCompany("Elle Meyer")
             .withRole("Front End Intern")
             .withCycle("Summer 2021").withStatus("Pending").build();

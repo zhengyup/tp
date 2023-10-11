@@ -3,7 +3,6 @@ package seedu.intern.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import static seedu.intern.logic.commands.CommandTestUtil.DESC_AMY;
 import static seedu.intern.logic.commands.CommandTestUtil.DESC_BOB;
 import static seedu.intern.logic.commands.CommandTestUtil.VALID_NAME_BOB;

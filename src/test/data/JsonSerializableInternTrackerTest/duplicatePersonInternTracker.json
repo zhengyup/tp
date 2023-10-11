@@ -3,11 +3,9 @@
     "company": "Jane Street",
     "cycle": "Summer 2024",
     "role": "Intern",
-    "status" : "Pending",
-    "tags": [ "friends" ]
+    "status" : "Pending"
   }, {
     "company": "Jane Street",
-    "phone": "94351253",
     "cycle": "Summer 2024",
     "role": "Intern",
     "status" : "Pending"

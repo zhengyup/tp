@@ -108,8 +108,8 @@ public class InternApplication {
         return new ToStringBuilder(this)
                 .add("company", company)
                 .add("role", role)
-                .add("email", cycle)
-                .add("address", status)
+                .add("cycle", cycle)
+                .add("status", status)
                 .add("tags", tags)
                 .toString();
     }

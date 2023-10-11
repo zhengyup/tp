@@ -16,7 +16,7 @@ import seedu.intern.model.util.SampleDataUtil;
  */
 public class InternApplicationBuilder {
 
-    public static final String DEFAULT_COMPANY = "Jane Street";
+    public static final String DEFAULT_COMPANY = "Amy Bee";
     public static final String DEFAULT_ROLE = "Intern";
     public static final String DEFAULT_CYCLE = "Summer 2021";
     public static final String DEFAULT_STATUS = "Pending";

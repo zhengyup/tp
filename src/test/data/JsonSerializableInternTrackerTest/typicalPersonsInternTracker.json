@@ -1,46 +1,46 @@
 {
   "_comment": "InternTracker save file which contains the same Person values as in TypicalPersons#getTypicalInternTracker()",
   "persons" : [ {
-    "company" : "Jane Street",
+    "company" : "Alice Pauline",
     "cycle" : "Summer 2024",
     "role" : "SWE Intern",
     "status" : "Pending",
-    "tags" : [ "friends" ]
+    "tags" : [  ]
   }, {
-    "company" : "Optiver",
+    "company" : "Benson Meier",
     "cycle" : "Summer 2023",
     "role" : "Data Engineering Intern",
     "status" : "Pending",
-    "tags" : [ "owesMoney", "friends" ]
+    "tags" : [  ]
   }, {
-    "company" : "Google",
+    "company" : "Carl Kurz",
     "cycle" : "Summer 2021",
     "role" : "Full Stack Intern",
     "status" : "Pending",
-    "tags" : [ ]
+    "tags" : [  ]
   }, {
-    "company" : "Meta",
+    "company" : "Daniel Meier",
     "cycle" : "Off-cycle 2020",
     "role" : "Back End Intern",
     "status" : "Pending",
-    "tags" : [ "friends" ]
+    "tags" : [  ]
   }, {
-    "company" : "Bytedance",
+    "company" : "Elle Meyer",
     "cycle" : "Summer 2021",
     "role" : "Front End Intern",
     "status" : "Pending",
-    "tags" : [ ]
+    "tags" : [  ]
   }, {
-    "company" : "Grab",
+    "company" : "Fiona Kunz",
     "cycle" : "Summer 2021",
     "role" : "Web Dev Intern",
     "status" : "Pending",
-    "tags" : [ ]
+    "tags" : [  ]
   }, {
-    "company" : "Stripe",
+    "company" : "George Best",
     "cycle" : "Summer 2021",
     "role" : "DevOps Intern",
     "status" : "Pending",
-    "tags" : [ ]
+    "tags" : [  ]
   } ]
 }

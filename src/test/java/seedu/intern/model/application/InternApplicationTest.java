@@ -94,7 +94,7 @@ public class InternApplicationTest {
 
     @Test
     public void toStringMethod() {
-        String expected = InternApplication.class.getCanonicalName() + "{name=" + ALICE.getCompany()
+        String expected = InternApplication.class.getCanonicalName() + "{company=" + ALICE.getCompany()
                 + ", role=" + ALICE.getRole()
                 + ", cycle=" + ALICE.getCycle() + ", status=" + ALICE.getStatus() + ", tags="
                 + ALICE.getTags() + "}";

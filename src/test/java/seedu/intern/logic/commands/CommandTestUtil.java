@@ -26,8 +26,8 @@ import seedu.intern.testutil.EditPersonDescriptorBuilder;
  */
 public class CommandTestUtil {
 
-    public static final String VALID_NAME_AMY = "Jane Street";
-    public static final String VALID_NAME_BOB = "Google";
+    public static final String VALID_NAME_AMY = "Amy Bee";
+    public static final String VALID_NAME_BOB = "Bob Choo";
     public static final String VALID_ROLE_AMY = "InternAmy";
     public static final String VALID_ROLE_BOB = "Intern";
     public static final String VALID_CYCLE_AMY = "Summer 2024";
