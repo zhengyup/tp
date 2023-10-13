@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.intern.logic.commands.CommandTestUtil.DESC_AMY;
 import static seedu.intern.logic.commands.CommandTestUtil.DESC_BOB;
-import static seedu.intern.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
-import static seedu.intern.logic.commands.CommandTestUtil.VALID_NAME_BOB;
+import static seedu.intern.logic.commands.CommandTestUtil.VALID_COMPANY_BOB;
+import static seedu.intern.logic.commands.CommandTestUtil.VALID_CYCLE_BOB;
 import static seedu.intern.logic.commands.CommandTestUtil.VALID_ROLE_BOB;
 import static seedu.intern.logic.commands.CommandTestUtil.VALID_STATUS_BOB;
 import static seedu.intern.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
@@ -37,7 +37,8 @@ public class EditInternApplicationDescriptorTest {
         assertFalse(DESC_AMY.equals(DESC_BOB));
 
         // different name -> returns false
-        EditPersonDescriptor editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withName(VALID_NAME_BOB).build();
+        EditPersonDescriptor editedAmy = new EditPersonDescriptorBuilder(DESC_AMY)
+                .withCompany(VALID_COMPANY_BOB).build();
         assertFalse(DESC_AMY.equals(editedAmy));
 
         // different role -> returns false
@@ -45,7 +46,7 @@ public class EditInternApplicationDescriptorTest {
         assertFalse(DESC_AMY.equals(editedAmy));
 
         // different email -> returns false
-        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withEmail(VALID_EMAIL_BOB).build();
+        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withCycle(VALID_CYCLE_BOB).build();
         assertFalse(DESC_AMY.equals(editedAmy));
 
         // different status -> returns false
@@ -60,10 +61,10 @@ public class EditInternApplicationDescriptorTest {
     @Test
     public void toStringMethod() {
         EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
-        String expected = EditPersonDescriptor.class.getCanonicalName() + "{name="
-                + editPersonDescriptor.getName().orElse(null) + ", role="
-                + editPersonDescriptor.getRole().orElse(null) + ", email="
-                + editPersonDescriptor.getEmail().orElse(null) + ", status="
+        String expected = EditPersonDescriptor.class.getCanonicalName() + "{company="
+                + editPersonDescriptor.getCompany().orElse(null) + ", role="
+                + editPersonDescriptor.getRole().orElse(null) + ", cycle="
+                + editPersonDescriptor.getCycle().orElse(null) + ", status="
                 + editPersonDescriptor.getStatus().orElse(null) + ", tags="
                 + editPersonDescriptor.getTags().orElse(null) + "}";
         assertEquals(expected, editPersonDescriptor.toString());

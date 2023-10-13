@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.intern.testutil.Assert.assertThrows;
-import static seedu.intern.testutil.TypicalInternApplications.ALICE;
+import static seedu.intern.testutil.TypicalInternApplications.JANE_STREET;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -55,8 +55,8 @@ public class AddCommandTest {
 
     @Test
     public void equals() {
-        InternApplication alice = new InternApplicationBuilder().withName("Alice").build();
-        InternApplication bob = new InternApplicationBuilder().withName("Bob").build();
+        InternApplication alice = new InternApplicationBuilder().withCompany("Alice").build();
+        InternApplication bob = new InternApplicationBuilder().withCompany("Bob").build();
         AddCommand addAliceCommand = new AddCommand(alice);
         AddCommand addBobCommand = new AddCommand(bob);
 
@@ -79,8 +79,8 @@ public class AddCommandTest {
 
     @Test
     public void toStringMethod() {
-        AddCommand addCommand = new AddCommand(ALICE);
-        String expected = AddCommand.class.getCanonicalName() + "{toAdd=" + ALICE + "}";
+        AddCommand addCommand = new AddCommand(JANE_STREET);
+        String expected = AddCommand.class.getCanonicalName() + "{toAdd=" + JANE_STREET + "}";
         assertEquals(expected, addCommand.toString());
     }
 

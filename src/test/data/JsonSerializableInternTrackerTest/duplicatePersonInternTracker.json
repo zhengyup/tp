@@ -1,14 +1,13 @@
 {
   "persons": [ {
-    "name": "Alice Pauline",
+    "company": "Jane Street",
+    "cycle": "Summer 2024",
     "role": "Intern",
-    "email": "alice@example.com",
-    "status" : "Pending",
-    "tags": [ "friends" ]
+    "status" : "Pending"
   }, {
-    "name": "Alice Pauline",
+    "company": "Jane Street",
+    "cycle": "Summer 2024",
     "role": "Intern",
-    "email": "pauline@example.com",
     "status" : "Pending"
   } ]
 }

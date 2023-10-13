@@ -5,9 +5,9 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import seedu.intern.logic.commands.EditCommand.EditPersonDescriptor;
-import seedu.intern.model.application.Email;
+import seedu.intern.model.application.Company;
+import seedu.intern.model.application.Cycle;
 import seedu.intern.model.application.InternApplication;
-import seedu.intern.model.application.Name;
 import seedu.intern.model.application.Role;
 import seedu.intern.model.application.Status;
 import seedu.intern.model.tag.Tag;
@@ -32,9 +32,9 @@ public class EditPersonDescriptorBuilder {
      */
     public EditPersonDescriptorBuilder(InternApplication internApplication) {
         descriptor = new EditPersonDescriptor();
-        descriptor.setName(internApplication.getName());
+        descriptor.setCompany(internApplication.getCompany());
         descriptor.setRole(internApplication.getRole());
-        descriptor.setEmail(internApplication.getEmail());
+        descriptor.setCycle(internApplication.getCycle());
         descriptor.setStatus(internApplication.getStatus());
         descriptor.setTags(internApplication.getTags());
     }
@@ -42,8 +42,8 @@ public class EditPersonDescriptorBuilder {
     /**
      * Sets the {@code Name} of the {@code EditPersonDescriptor} that we are building.
      */
-    public EditPersonDescriptorBuilder withName(String name) {
-        descriptor.setName(new Name(name));
+    public EditPersonDescriptorBuilder withCompany(String name) {
+        descriptor.setCompany(new Company(name));
         return this;
     }
 
@@ -56,10 +56,10 @@ public class EditPersonDescriptorBuilder {
     }
 
     /**
-     * Sets the {@code Email} of the {@code EditPersonDescriptor} that we are building.
+     * Sets the {@code Cycle} of the {@code EditPersonDescriptor} that we are building.
      */
-    public EditPersonDescriptorBuilder withEmail(String email) {
-        descriptor.setEmail(new Email(email));
+    public EditPersonDescriptorBuilder withCycle(String cycle) {
+        descriptor.setCycle(new Cycle(cycle));
         return this;
     }
 

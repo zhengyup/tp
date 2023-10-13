@@ -1,13 +1,13 @@
 {
   "persons": [ {
-    "name": "Valid Person",
+    "company": "Valid Person",
     "role": "Intern",
-    "email": "hans@example.com",
+    "cycle": "Summer 2024",
     "status": "Pending"
   }, {
-    "name": "Person With Invalid Role Field",
+    "company": "Internship Application With Invalid Company Field",
     "role": " ",
-    "email": "hans@example.com",
+    "cycle": "Summer 2024",
     "status": "Pending"
   } ]
 }

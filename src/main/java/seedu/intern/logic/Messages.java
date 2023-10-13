@@ -36,11 +36,11 @@ public class Messages {
      */
     public static String format(InternApplication internApplication) {
         final StringBuilder builder = new StringBuilder();
-        builder.append(internApplication.getName())
+        builder.append(internApplication.getCompany())
                 .append("; Role: ")
                 .append(internApplication.getRole())
-                .append("; Email: ")
-                .append(internApplication.getEmail())
+                .append("; Cycle: ")
+                .append(internApplication.getCycle())
                 .append("; Status: ")
                 .append(internApplication.getStatus())
                 .append("; Tags: ");

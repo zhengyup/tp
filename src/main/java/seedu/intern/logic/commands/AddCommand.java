@@ -1,8 +1,8 @@
 package seedu.intern.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.intern.logic.parser.CliSyntax.PREFIX_EMAIL;
-import static seedu.intern.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.intern.logic.parser.CliSyntax.PREFIX_COMPANY;
+import static seedu.intern.logic.parser.CliSyntax.PREFIX_CYCLE;
 import static seedu.intern.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.intern.logic.parser.CliSyntax.PREFIX_STATUS;
 import static seedu.intern.logic.parser.CliSyntax.PREFIX_TAG;
@@ -22,15 +22,15 @@ public class AddCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a application to the intern tracker. "
             + "Parameters: "
-            + PREFIX_NAME + "NAME "
+            + PREFIX_COMPANY + "COMPANY "
             + PREFIX_ROLE + "ROLE "
-            + PREFIX_EMAIL + "EMAIL "
+            + PREFIX_CYCLE + "CYCLE "
             + PREFIX_STATUS + "ADDRESS "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_NAME + "John Doe "
+            + PREFIX_COMPANY + "Jane Street "
             + PREFIX_ROLE + "98765432 "
-            + PREFIX_EMAIL + "johnd@example.com "
+            + PREFIX_CYCLE + "Summer 2024"
             + PREFIX_STATUS + "311, Clementi Ave 2, #02-25 "
             + PREFIX_TAG + "friends "
             + PREFIX_TAG + "owesMoney";

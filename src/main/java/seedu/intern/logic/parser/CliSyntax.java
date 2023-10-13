@@ -6,9 +6,9 @@ package seedu.intern.logic.parser;
 public class CliSyntax {
 
     /* Prefix definitions */
-    public static final Prefix PREFIX_NAME = new Prefix("n/");
+    public static final Prefix PREFIX_COMPANY = new Prefix("n/");
     public static final Prefix PREFIX_ROLE = new Prefix("r/");
-    public static final Prefix PREFIX_EMAIL = new Prefix("e/");
+    public static final Prefix PREFIX_CYCLE = new Prefix("c/");
     public static final Prefix PREFIX_STATUS = new Prefix("s/");
     public static final Prefix PREFIX_TAG = new Prefix("t/");
 

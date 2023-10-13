@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.intern.logic.commands.CommandTestUtil.VALID_STATUS_BOB;
 import static seedu.intern.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.intern.testutil.Assert.assertThrows;
-import static seedu.intern.testutil.TypicalInternApplications.ALICE;
+import static seedu.intern.testutil.TypicalInternApplications.JANE_STREET;
 import static seedu.intern.testutil.TypicalInternApplications.getTypicalInternTracker;
 
 import java.util.Arrays;
@@ -46,10 +46,10 @@ public class InternTrackerTest {
     @Test
     public void resetData_withDuplicatePersons_throwsDuplicatePersonException() {
         // Two persons with the same identity fields
-        InternApplication editedAlice = new InternApplicationBuilder(ALICE).withStatus(VALID_STATUS_BOB)
+        InternApplication editedAlice = new InternApplicationBuilder(JANE_STREET).withStatus(VALID_STATUS_BOB)
                 .withTags(VALID_TAG_HUSBAND)
                 .build();
-        List<InternApplication> newInternApplications = Arrays.asList(ALICE, editedAlice);
+        List<InternApplication> newInternApplications = Arrays.asList(JANE_STREET, editedAlice);
         InternTrackerStub newData = new InternTrackerStub(newInternApplications);
 
         assertThrows(DuplicateApplicationException.class, () -> internTracker.resetData(newData));
@@ -62,19 +62,19 @@ public class InternTrackerTest {
 
     @Test
     public void hasPerson_personNotInInternTracker_returnsFalse() {
-        assertFalse(internTracker.hasApplication(ALICE));
+        assertFalse(internTracker.hasApplication(JANE_STREET));
     }
 
     @Test
     public void hasPerson_personInInternTracker_returnsTrue() {
-        internTracker.addApplication(ALICE);
-        assertTrue(internTracker.hasApplication(ALICE));
+        internTracker.addApplication(JANE_STREET);
+        assertTrue(internTracker.hasApplication(JANE_STREET));
     }
 
     @Test
     public void hasPerson_personWithSameIdentityFieldsInInternTracker_returnsTrue() {
-        internTracker.addApplication(ALICE);
-        InternApplication editedAlice = new InternApplicationBuilder(ALICE).withStatus(VALID_STATUS_BOB)
+        internTracker.addApplication(JANE_STREET);
+        InternApplication editedAlice = new InternApplicationBuilder(JANE_STREET).withStatus(VALID_STATUS_BOB)
                 .withTags(VALID_TAG_HUSBAND)
                 .build();
         assertTrue(internTracker.hasApplication(editedAlice));

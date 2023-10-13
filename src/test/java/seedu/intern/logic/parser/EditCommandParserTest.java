@@ -1,9 +1,9 @@
 package seedu.intern.logic.parser;
 
 import static seedu.intern.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.intern.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
-import static seedu.intern.logic.commands.CommandTestUtil.EMAIL_DESC_BOB;
-import static seedu.intern.logic.commands.CommandTestUtil.INVALID_EMAIL_DESC;
+import static seedu.intern.logic.commands.CommandTestUtil.CYCLE_DESC_AMY;
+import static seedu.intern.logic.commands.CommandTestUtil.CYCLE_DESC_BOB;
+import static seedu.intern.logic.commands.CommandTestUtil.INVALID_CYCLE_DESC;
 import static seedu.intern.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
 import static seedu.intern.logic.commands.CommandTestUtil.INVALID_ROLE_DESC;
 import static seedu.intern.logic.commands.CommandTestUtil.INVALID_STATUS_DESC;
@@ -15,14 +15,14 @@ import static seedu.intern.logic.commands.CommandTestUtil.STATUS_DESC_AMY;
 import static seedu.intern.logic.commands.CommandTestUtil.STATUS_DESC_BOB;
 import static seedu.intern.logic.commands.CommandTestUtil.TAG_DESC_FRIEND;
 import static seedu.intern.logic.commands.CommandTestUtil.TAG_DESC_HUSBAND;
-import static seedu.intern.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;
-import static seedu.intern.logic.commands.CommandTestUtil.VALID_NAME_AMY;
+import static seedu.intern.logic.commands.CommandTestUtil.VALID_COMPANY_AMY;
+import static seedu.intern.logic.commands.CommandTestUtil.VALID_CYCLE_AMY;
 import static seedu.intern.logic.commands.CommandTestUtil.VALID_ROLE_AMY;
 import static seedu.intern.logic.commands.CommandTestUtil.VALID_ROLE_BOB;
 import static seedu.intern.logic.commands.CommandTestUtil.VALID_STATUS_AMY;
 import static seedu.intern.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
 import static seedu.intern.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
-import static seedu.intern.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.intern.logic.parser.CliSyntax.PREFIX_CYCLE;
 import static seedu.intern.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.intern.logic.parser.CliSyntax.PREFIX_STATUS;
 import static seedu.intern.logic.parser.CliSyntax.PREFIX_TAG;
@@ -38,8 +38,8 @@ import seedu.intern.commons.core.index.Index;
 import seedu.intern.logic.Messages;
 import seedu.intern.logic.commands.EditCommand;
 import seedu.intern.logic.commands.EditCommand.EditPersonDescriptor;
-import seedu.intern.model.application.Email;
-import seedu.intern.model.application.Name;
+import seedu.intern.model.application.Company;
+import seedu.intern.model.application.Cycle;
 import seedu.intern.model.application.Role;
 import seedu.intern.model.application.Status;
 import seedu.intern.model.tag.Tag;
@@ -57,7 +57,7 @@ public class EditCommandParserTest {
     @Test
     public void parse_missingParts_failure() {
         // no index specified
-        assertParseFailure(parser, VALID_NAME_AMY, MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, VALID_COMPANY_AMY, MESSAGE_INVALID_FORMAT);
 
         // no field specified
         assertParseFailure(parser, "1", EditCommand.MESSAGE_NOT_EDITED);
@@ -83,34 +83,37 @@ public class EditCommandParserTest {
 
     @Test
     public void parse_invalidValue_failure() {
-        assertParseFailure(parser, "1" + INVALID_NAME_DESC, Name.MESSAGE_CONSTRAINTS); // invalid name
-        assertParseFailure(parser, "1" + INVALID_ROLE_DESC, Role.MESSAGE_CONSTRAINTS); // invalid role
-        assertParseFailure(parser, "1" + INVALID_EMAIL_DESC, Email.MESSAGE_CONSTRAINTS); // invalid email
+        assertParseFailure(parser, "1" + INVALID_NAME_DESC, Company.MESSAGE_CONSTRAINTS); // invalid name
+        assertParseFailure(parser, "1" + INVALID_ROLE_DESC, Role.MESSAGE_CONSTRAINTS); // invalid phone
+        assertParseFailure(parser, "1" + INVALID_CYCLE_DESC, Cycle.MESSAGE_CONSTRAINTS); // invalid cycle
         assertParseFailure(parser, "1" + INVALID_STATUS_DESC, Status.MESSAGE_CONSTRAINTS); // invalid status
         assertParseFailure(parser, "1" + INVALID_TAG_DESC, Tag.MESSAGE_CONSTRAINTS); // invalid tag
 
-        // invalid role followed by valid email
-        assertParseFailure(parser, "1" + INVALID_ROLE_DESC + EMAIL_DESC_AMY, Role.MESSAGE_CONSTRAINTS);
+        // invalid role followed by valid cycle
+        assertParseFailure(parser, "1" + INVALID_ROLE_DESC + CYCLE_DESC_AMY, Role.MESSAGE_CONSTRAINTS);
 
         // while parsing {@code PREFIX_TAG} alone will reset the tags of the {@code Person} being edited,
         // parsing it together with a valid tag results in error
-        assertParseFailure(parser, "1" + TAG_DESC_FRIEND + TAG_DESC_HUSBAND + TAG_EMPTY, Tag.MESSAGE_CONSTRAINTS);
-        assertParseFailure(parser, "1" + TAG_DESC_FRIEND + TAG_EMPTY + TAG_DESC_HUSBAND, Tag.MESSAGE_CONSTRAINTS);
-        assertParseFailure(parser, "1" + TAG_EMPTY + TAG_DESC_FRIEND + TAG_DESC_HUSBAND, Tag.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + TAG_DESC_FRIEND + TAG_DESC_HUSBAND + TAG_EMPTY,
+                Tag.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + TAG_DESC_FRIEND + TAG_EMPTY + TAG_DESC_HUSBAND,
+                Tag.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + TAG_EMPTY + TAG_DESC_FRIEND + TAG_DESC_HUSBAND,
+                Tag.MESSAGE_CONSTRAINTS);
 
         // multiple invalid values, but only the first invalid value is captured
-        assertParseFailure(parser, "1" + INVALID_NAME_DESC + INVALID_EMAIL_DESC + VALID_STATUS_AMY + VALID_ROLE_AMY,
-                Name.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + INVALID_NAME_DESC + INVALID_CYCLE_DESC
+                        + VALID_STATUS_AMY + VALID_ROLE_AMY, Company.MESSAGE_CONSTRAINTS);
     }
 
     @Test
     public void parse_allFieldsSpecified_success() {
         Index targetIndex = INDEX_SECOND_PERSON;
         String userInput = targetIndex.getOneBased() + ROLE_DESC_BOB + TAG_DESC_HUSBAND
-                + EMAIL_DESC_AMY + STATUS_DESC_AMY + NAME_DESC_AMY + TAG_DESC_FRIEND;
+                + CYCLE_DESC_AMY + STATUS_DESC_AMY + NAME_DESC_AMY + TAG_DESC_FRIEND;
 
-        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY)
-                .withRole(VALID_ROLE_BOB).withEmail(VALID_EMAIL_AMY).withStatus(VALID_STATUS_AMY)
+        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withCompany(VALID_COMPANY_AMY)
+                .withRole(VALID_ROLE_BOB).withCycle(VALID_CYCLE_AMY).withStatus(VALID_STATUS_AMY)
                 .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
@@ -120,10 +123,10 @@ public class EditCommandParserTest {
     @Test
     public void parse_someFieldsSpecified_success() {
         Index targetIndex = INDEX_FIRST_PERSON;
-        String userInput = targetIndex.getOneBased() + ROLE_DESC_BOB + EMAIL_DESC_AMY;
+        String userInput = targetIndex.getOneBased() + ROLE_DESC_BOB + CYCLE_DESC_AMY;
 
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withRole(VALID_ROLE_BOB)
-                .withEmail(VALID_EMAIL_AMY).build();
+                .withCycle(VALID_CYCLE_AMY).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
         assertParseSuccess(parser, userInput, expectedCommand);
@@ -134,7 +137,7 @@ public class EditCommandParserTest {
         // name
         Index targetIndex = INDEX_THIRD_PERSON;
         String userInput = targetIndex.getOneBased() + NAME_DESC_AMY;
-        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY).build();
+        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withCompany(VALID_COMPANY_AMY).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
@@ -144,9 +147,9 @@ public class EditCommandParserTest {
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
-        // email
-        userInput = targetIndex.getOneBased() + EMAIL_DESC_AMY;
-        descriptor = new EditPersonDescriptorBuilder().withEmail(VALID_EMAIL_AMY).build();
+        // cycle
+        userInput = targetIndex.getOneBased() + CYCLE_DESC_AMY;
+        descriptor = new EditPersonDescriptorBuilder().withCycle(VALID_CYCLE_AMY).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
@@ -180,19 +183,19 @@ public class EditCommandParserTest {
         assertParseFailure(parser, userInput, Messages.getErrorMessageForDuplicatePrefixes(PREFIX_ROLE));
 
         // mulltiple valid fields repeated
-        userInput = targetIndex.getOneBased() + ROLE_DESC_AMY + STATUS_DESC_AMY + EMAIL_DESC_AMY
-                + TAG_DESC_FRIEND + ROLE_DESC_AMY + STATUS_DESC_AMY + EMAIL_DESC_AMY + TAG_DESC_FRIEND
-                + ROLE_DESC_BOB + STATUS_DESC_BOB + EMAIL_DESC_BOB + TAG_DESC_HUSBAND;
+        userInput = targetIndex.getOneBased() + ROLE_DESC_AMY + STATUS_DESC_AMY + CYCLE_DESC_AMY
+                + TAG_DESC_FRIEND + ROLE_DESC_AMY + STATUS_DESC_AMY + CYCLE_DESC_AMY + TAG_DESC_FRIEND
+                + ROLE_DESC_BOB + STATUS_DESC_BOB + CYCLE_DESC_BOB + TAG_DESC_HUSBAND;
 
         assertParseFailure(parser, userInput,
-                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_ROLE, PREFIX_EMAIL, PREFIX_STATUS));
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_ROLE, PREFIX_CYCLE, PREFIX_STATUS));
 
         // multiple invalid values
-        userInput = targetIndex.getOneBased() + INVALID_ROLE_DESC + INVALID_STATUS_DESC + INVALID_EMAIL_DESC
-                + INVALID_ROLE_DESC + INVALID_STATUS_DESC + INVALID_EMAIL_DESC;
+        userInput = targetIndex.getOneBased() + INVALID_ROLE_DESC + INVALID_STATUS_DESC + INVALID_CYCLE_DESC
+                + INVALID_ROLE_DESC + INVALID_STATUS_DESC + INVALID_CYCLE_DESC;
 
         assertParseFailure(parser, userInput,
-                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_ROLE, PREFIX_EMAIL, PREFIX_STATUS));
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_ROLE, PREFIX_CYCLE, PREFIX_STATUS));
     }
 
     @Test

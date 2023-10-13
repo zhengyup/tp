@@ -34,6 +34,7 @@ public class Role {
      * Returns true if a given string is a valid phone number.
      */
     public static boolean isValidRole(String test) {
+        boolean t = test.matches(VALIDATION_REGEX);
         return test.matches(VALIDATION_REGEX);
     }
 

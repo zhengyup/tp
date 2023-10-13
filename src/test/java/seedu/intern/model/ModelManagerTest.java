@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.intern.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 import static seedu.intern.testutil.Assert.assertThrows;
-import static seedu.intern.testutil.TypicalInternApplications.ALICE;
-import static seedu.intern.testutil.TypicalInternApplications.BENSON;
+import static seedu.intern.testutil.TypicalInternApplications.JANE_STREET;
+import static seedu.intern.testutil.TypicalInternApplications.OPTIVER;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -15,7 +15,7 @@ import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 import seedu.intern.commons.core.GuiSettings;
-import seedu.intern.model.application.NameContainsKeywordsPredicate;
+import seedu.intern.model.application.CompanyContainsKeywordsPredicate;
 import seedu.intern.testutil.InternTrackerBuilder;
 
 public class ModelManagerTest {
@@ -79,13 +79,13 @@ public class ModelManagerTest {
 
     @Test
     public void hasPerson_personNotInInternTracker_returnsFalse() {
-        assertFalse(modelManager.hasPerson(ALICE));
+        assertFalse(modelManager.hasPerson(JANE_STREET));
     }
 
     @Test
     public void hasPerson_personInInternTracker_returnsTrue() {
-        modelManager.addPerson(ALICE);
-        assertTrue(modelManager.hasPerson(ALICE));
+        modelManager.addPerson(JANE_STREET);
+        assertTrue(modelManager.hasPerson(JANE_STREET));
     }
 
     @Test
@@ -95,7 +95,7 @@ public class ModelManagerTest {
 
     @Test
     public void equals() {
-        InternTracker internTracker = new InternTrackerBuilder().withPerson(ALICE).withPerson(BENSON).build();
+        InternTracker internTracker = new InternTrackerBuilder().withPerson(JANE_STREET).withPerson(OPTIVER).build();
         InternTracker differentInternTracker = new InternTracker();
         UserPrefs userPrefs = new UserPrefs();
 
@@ -117,8 +117,8 @@ public class ModelManagerTest {
         assertFalse(modelManager.equals(new ModelManager(differentInternTracker, userPrefs)));
 
         // different filteredList -> returns false
-        String[] keywords = ALICE.getName().fullName.split("\\s+");
-        modelManager.updateFilteredPersonList(new NameContainsKeywordsPredicate(Arrays.asList(keywords)));
+        String[] keywords = JANE_STREET.getCompany().companyName.split("\\s+");
+        modelManager.updateFilteredPersonList(new CompanyContainsKeywordsPredicate(Arrays.asList(keywords)));
         assertFalse(modelManager.equals(new ModelManager(internTracker, userPrefs)));
 
         // resets modelManager to initial state for upcoming tests

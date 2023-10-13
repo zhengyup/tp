@@ -1,9 +1,9 @@
 package seedu.intern.testutil;
 
-import static seedu.intern.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;
-import static seedu.intern.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
-import static seedu.intern.logic.commands.CommandTestUtil.VALID_NAME_AMY;
-import static seedu.intern.logic.commands.CommandTestUtil.VALID_NAME_BOB;
+import static seedu.intern.logic.commands.CommandTestUtil.VALID_COMPANY_AMY;
+import static seedu.intern.logic.commands.CommandTestUtil.VALID_COMPANY_BOB;
+import static seedu.intern.logic.commands.CommandTestUtil.VALID_CYCLE_AMY;
+import static seedu.intern.logic.commands.CommandTestUtil.VALID_CYCLE_BOB;
 import static seedu.intern.logic.commands.CommandTestUtil.VALID_ROLE_AMY;
 import static seedu.intern.logic.commands.CommandTestUtil.VALID_ROLE_BOB;
 import static seedu.intern.logic.commands.CommandTestUtil.VALID_STATUS_AMY;
@@ -23,50 +23,49 @@ import seedu.intern.model.application.InternApplication;
  */
 public class TypicalInternApplications {
 
-    public static final InternApplication ALICE = new InternApplicationBuilder().withName("Alice Pauline")
-            .withStatus("Pending").withEmail("alice@example.com")
-            .withRole("SWE Intern")
-            .withTags("friends").build();
-    public static final InternApplication BENSON = new InternApplicationBuilder().withName("Benson Meier")
+    public static final InternApplication JANE_STREET = new InternApplicationBuilder().withCompany("Jane Street")
+            .withStatus("Pending").withCycle("Summer 2024")
+            .withRole("SWE Intern").build();
+    public static final InternApplication OPTIVER = new InternApplicationBuilder().withCompany("Optiver")
             .withStatus("Pending")
-            .withEmail("johnd@example.com").withRole("Data Engineering Intern")
-            .withTags("owesMoney", "friends").build();
-    public static final InternApplication CARL = new InternApplicationBuilder().withName("Carl Kurz")
+            .withCycle("Summer 2023").withRole("Data Engineering Intern").build();
+    public static final InternApplication GOOGLE = new InternApplicationBuilder().withCompany("Google")
             .withRole("Full Stack Intern")
-            .withEmail("heinz@example.com").withStatus("Pending").build();
-    public static final InternApplication DANIEL = new InternApplicationBuilder().withName("Daniel Meier")
+            .withCycle("Summer 2021").withStatus("Pending").build();
+    public static final InternApplication META = new InternApplicationBuilder().withCompany("Meta")
             .withRole("Back End Intern")
-            .withEmail("cornelia@example.com").withStatus("Pending").withTags("friends").build();
-    public static final InternApplication ELLE = new InternApplicationBuilder().withName("Elle Meyer")
+            .withCycle("Off-cycle 2020").withStatus("Pending").build();
+    public static final InternApplication BYTEDANCE = new InternApplicationBuilder().withCompany("Bytedance")
             .withRole("Front End Intern")
-            .withEmail("werner@example.com").withStatus("Pending").build();
-    public static final InternApplication FIONA = new InternApplicationBuilder().withName("Fiona Kunz")
+            .withCycle("Summer 2021").withStatus("Pending").build();
+    public static final InternApplication GRAB = new InternApplicationBuilder().withCompany("Grab")
             .withRole("Web Dev Intern")
-            .withEmail("lydia@example.com").withStatus("Pending").build();
-    public static final InternApplication GEORGE = new InternApplicationBuilder().withName("George Best")
+            .withCycle("Summer 2021").withStatus("Pending").build();
+    public static final InternApplication STRIPE = new InternApplicationBuilder().withCompany("Stripe")
             .withRole("DevOps Intern")
-            .withEmail("anna@example.com").withStatus("Pending").build();
+            .withCycle("Summer 2021").withStatus("Pending").build();
 
     // Manually added
-    public static final InternApplication HOON = new InternApplicationBuilder().withName("Hoon Meier")
+    public static final InternApplication HOON = new InternApplicationBuilder().withCompany("Hoon Meier")
             .withRole("8482424")
-            .withEmail("stefan@example.com").withStatus("little india").build();
-    public static final InternApplication IDA = new InternApplicationBuilder().withName("Ida Mueller")
+            .withCycle("Summer 2021").withStatus("little india").build();
+    public static final InternApplication IDA = new InternApplicationBuilder().withCompany("Ida Mueller")
             .withRole("8482131")
-            .withEmail("hans@example.com").withStatus("chicago ave").build();
+            .withCycle("Summer 2021").withStatus("chicago ave").build();
 
     // Manually added - Person's details found in {@code CommandTestUtil}
-    public static final InternApplication AMY = new InternApplicationBuilder().withName(VALID_NAME_AMY)
+    public static final InternApplication AMY = new InternApplicationBuilder().withCompany(VALID_COMPANY_AMY)
             .withRole(VALID_ROLE_AMY)
-            .withEmail(VALID_EMAIL_AMY).withStatus(VALID_STATUS_AMY).withTags(VALID_TAG_FRIEND).build();
-    public static final InternApplication BOB = new InternApplicationBuilder().withName(VALID_NAME_BOB)
+            .withCycle(VALID_CYCLE_AMY).withStatus(VALID_STATUS_AMY).withTags(VALID_TAG_FRIEND).build();
+    public static final InternApplication BOB = new InternApplicationBuilder().withCompany(VALID_COMPANY_BOB)
             .withRole(VALID_ROLE_BOB)
-            .withEmail(VALID_EMAIL_BOB).withStatus(VALID_STATUS_BOB).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
+            .withCycle(VALID_CYCLE_BOB).withStatus(VALID_STATUS_BOB).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
             .build();
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
 
-    private TypicalInternApplications() {} // prevents instantiation
+    private TypicalInternApplications() {
+    } // prevents instantiation
 
     /**
      * Returns an {@code InternTracker} with all the typical persons.
@@ -80,6 +79,6 @@ public class TypicalInternApplications {
     }
 
     public static List<InternApplication> getTypicalInternApplications() {
-        return new ArrayList<>(Arrays.asList(ALICE, BENSON, CARL, DANIEL, ELLE, FIONA, GEORGE));
+        return new ArrayList<>(Arrays.asList(JANE_STREET, OPTIVER, GOOGLE, META, BYTEDANCE, GRAB, STRIPE));
     }
 }
