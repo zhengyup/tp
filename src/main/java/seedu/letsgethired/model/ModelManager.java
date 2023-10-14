@@ -110,7 +110,7 @@ public class ModelManager implements Model {
         internTracker.setApplication(target, editedInternApplication);
     }
 
-    //=========== Filtered Intern Application List Accessors =============================================================
+    //=========== Filtered Intern Application List Accessors =========================================================
 
     /**
      * Returns an unmodifiable view of the list of {@code InternApplication} backed by the internal list of

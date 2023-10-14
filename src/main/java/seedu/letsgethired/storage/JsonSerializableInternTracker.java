@@ -19,7 +19,8 @@ import seedu.letsgethired.model.application.InternApplication;
 @JsonRootName(value = "internTracker")
 class JsonSerializableInternTracker {
 
-    public static final String MESSAGE_DUPLICATE_INTERN_APPLICATION = "Intern Application list contains duplicate intern application(s).";
+    public static final String MESSAGE_DUPLICATE_INTERN_APPLICATION =
+            "Intern Application list contains duplicate intern application(s).";
 
     private final List<JsonAdaptedInternApplication> applications = new ArrayList<>();
 
@@ -27,7 +28,8 @@ class JsonSerializableInternTracker {
      * Constructs a {@code JsonSerializableInternTracker} with the given intern applications.
      */
     @JsonCreator
-    public JsonSerializableInternTracker(@JsonProperty("applications") List<JsonAdaptedInternApplication> applications) {
+    public JsonSerializableInternTracker(
+            @JsonProperty("applications") List<JsonAdaptedInternApplication> applications) {
         this.applications.addAll(applications);
     }
 

@@ -53,7 +53,8 @@ public interface Model {
     ReadOnlyInternTracker getInternTracker();
 
     /**
-     * Returns true if an intern application with the same identity as {@code InternApplication} exists in the intern tracker.
+     * Returns true if an intern application with the same identity
+     * as {@code InternApplication} exists in the intern tracker.
      */
     boolean hasInternApplication(InternApplication internApplication);
 
@@ -72,7 +73,8 @@ public interface Model {
     /**
      * Replaces the given intern application {@code target} with {@code editedInternApplication}.
      * {@code target} must exist in the intern tracker.
-     * The intern application {@code editedInternApplication} must not be the same as another existing intern application in the intern tracker.
+     * The intern application {@code editedInternApplication} must not be the same
+     * as another existing intern application in the intern tracker.
      */
     void setInternApplication(InternApplication target, InternApplication editedInternApplication);
 

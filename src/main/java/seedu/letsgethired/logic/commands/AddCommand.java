@@ -36,7 +36,8 @@ public class AddCommand extends Command {
             + PREFIX_TAG + "owesMoney";
 
     public static final String MESSAGE_SUCCESS = "New intern application added: %1$s";
-    public static final String MESSAGE_DUPLICATE_INTERN_APPLICATION = "This application already exists in the intern tracker";
+    public static final String MESSAGE_DUPLICATE_INTERN_APPLICATION =
+            "This application already exists in the intern tracker";
 
     private final InternApplication toAdd;
 

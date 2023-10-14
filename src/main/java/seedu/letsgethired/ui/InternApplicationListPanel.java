@@ -30,7 +30,8 @@ public class InternApplicationListPanel extends UiPart<Region> {
     }
 
     /**
-     * Custom {@code ListCell} that displays the graphics of a {@code InternApplication} using a {@code InternApplicationCard}.
+     * Custom {@code ListCell} that displays the graphics of
+     * a {@code InternApplication} using a {@code InternApplicationCard}.
      */
     class InternApplicationListViewCell extends ListCell<InternApplication> {
         @Override

@@ -47,16 +47,20 @@ public class EditCommandParser implements Parser<EditCommand> {
         EditInternApplicationDescriptor editInternApplicationDescriptor = new EditInternApplicationDescriptor();
 
         if (argMultimap.getValue(PREFIX_COMPANY).isPresent()) {
-            editInternApplicationDescriptor.setCompany(ParserUtil.parseCompany(argMultimap.getValue(PREFIX_COMPANY).get()));
+            editInternApplicationDescriptor
+                    .setCompany(ParserUtil.parseCompany(argMultimap.getValue(PREFIX_COMPANY).get()));
         }
         if (argMultimap.getValue(PREFIX_ROLE).isPresent()) {
-            editInternApplicationDescriptor.setRole(ParserUtil.parseRole(argMultimap.getValue(PREFIX_ROLE).get()));
+            editInternApplicationDescriptor
+                    .setRole(ParserUtil.parseRole(argMultimap.getValue(PREFIX_ROLE).get()));
         }
         if (argMultimap.getValue(PREFIX_CYCLE).isPresent()) {
-            editInternApplicationDescriptor.setCycle(ParserUtil.parseCycle(argMultimap.getValue(PREFIX_CYCLE).get()));
+            editInternApplicationDescriptor
+                    .setCycle(ParserUtil.parseCycle(argMultimap.getValue(PREFIX_CYCLE).get()));
         }
         if (argMultimap.getValue(PREFIX_STATUS).isPresent()) {
-            editInternApplicationDescriptor.setStatus(ParserUtil.parseStatus(argMultimap.getValue(PREFIX_STATUS).get()));
+            editInternApplicationDescriptor
+                    .setStatus(ParserUtil.parseStatus(argMultimap.getValue(PREFIX_STATUS).get()));
         }
         parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editInternApplicationDescriptor::setTags);
 
