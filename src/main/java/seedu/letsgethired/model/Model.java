@@ -12,7 +12,7 @@ import seedu.letsgethired.model.application.InternApplication;
  */
 public interface Model {
     /** {@code Predicate} that always evaluate to true */
-    Predicate<InternApplication> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
+    Predicate<InternApplication> PREDICATE_SHOW_ALL_APPLICATIONS = unused -> true;
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
@@ -53,35 +53,35 @@ public interface Model {
     ReadOnlyInternTracker getInternTracker();
 
     /**
-     * Returns true if a person with the same identity as {@code person} exists in the intern tracker.
+     * Returns true if an intern application with the same identity as {@code InternApplication} exists in the intern tracker.
      */
-    boolean hasPerson(InternApplication internApplication);
+    boolean hasInternApplication(InternApplication internApplication);
 
     /**
-     * Deletes the given person.
-     * The person must exist in the intern tracker.
+     * Deletes the given intern application.
+     * The intern application must exist in the intern tracker.
      */
-    void deletePerson(InternApplication target);
+    void deleteInternApplication(InternApplication target);
 
     /**
-     * Adds the given person.
-     * {@code person} must not already exist in the intern tracker.
+     * Adds the given intern application.
+     * {@code InternApplication} must not already exist in the intern tracker.
      */
-    void addPerson(InternApplication internApplication);
+    void addInternApplication(InternApplication internApplication);
 
     /**
-     * Replaces the given person {@code target} with {@code editedPerson}.
+     * Replaces the given intern application {@code target} with {@code editedInternApplication}.
      * {@code target} must exist in the intern tracker.
-     * The person {@code editedPerson} must not be the same as another existing person in the intern tracker.
+     * The intern application {@code editedInternApplication} must not be the same as another existing intern application in the intern tracker.
      */
-    void setPerson(InternApplication target, InternApplication editedInternApplication);
+    void setInternApplication(InternApplication target, InternApplication editedInternApplication);
 
-    /** Returns an unmodifiable view of the filtered person list */
-    ObservableList<InternApplication> getFilteredPersonList();
+    /** Returns an unmodifiable view of the filtered intern application list */
+    ObservableList<InternApplication> getFilteredInternApplicationList();
 
     /**
-     * Updates the filter of the filtered person list to filter by the given {@code predicate}.
+     * Updates the filter of the filtered intern application list to filter by the given {@code predicate}.
      * @throws NullPointerException if {@code predicate} is null.
      */
-    void updateFilteredPersonList(Predicate<InternApplication> predicate);
+    void updateFilteredInternApplicationList(Predicate<InternApplication> predicate);
 }

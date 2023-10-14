@@ -11,8 +11,8 @@ import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_TAG_HUSBAN
 import static seedu.letsgethired.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.showPersonAtIndex;
-import static seedu.letsgethired.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
-import static seedu.letsgethired.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
+import static seedu.letsgethired.testutil.TypicalIndexes.INDEX_FIRST_APPLICATION;
+import static seedu.letsgethired.testutil.TypicalIndexes.INDEX_SECOND_APPLICATION;
 import static seedu.letsgethired.testutil.TypicalInternApplications.getTypicalInternTracker;
 
 import org.junit.jupiter.api.Test;
@@ -39,21 +39,21 @@ public class EditCommandTest {
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
         InternApplication editedInternApplication = new InternApplicationBuilder().build();
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder(editedInternApplication).build();
-        EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON, descriptor);
+        EditCommand editCommand = new EditCommand(INDEX_FIRST_APPLICATION, descriptor);
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, Messages
                 .format(editedInternApplication));
 
         Model expectedModel = new ModelManager(new InternTracker(model.getInternTracker()), new UserPrefs());
-        expectedModel.setPerson(model.getFilteredPersonList().get(0), editedInternApplication);
+        expectedModel.setInternApplication(model.getFilteredInternApplicationList().get(0), editedInternApplication);
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
     }
 
     @Test
     public void execute_someFieldsSpecifiedUnfilteredList_success() {
-        Index indexLastPerson = Index.fromOneBased(model.getFilteredPersonList().size());
-        InternApplication lastInternApplication = model.getFilteredPersonList()
+        Index indexLastPerson = Index.fromOneBased(model.getFilteredInternApplicationList().size());
+        InternApplication lastInternApplication = model.getFilteredInternApplicationList()
                 .get(indexLastPerson.getZeroBased());
 
         InternApplicationBuilder personInList = new InternApplicationBuilder(lastInternApplication);
@@ -69,16 +69,16 @@ public class EditCommandTest {
                 Messages.format(editedInternApplication));
 
         Model expectedModel = new ModelManager(new InternTracker(model.getInternTracker()), new UserPrefs());
-        expectedModel.setPerson(lastInternApplication, editedInternApplication);
+        expectedModel.setInternApplication(lastInternApplication, editedInternApplication);
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
     }
 
     @Test
     public void execute_noFieldSpecifiedUnfilteredList_success() {
-        EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON, new EditPersonDescriptor());
-        InternApplication editedInternApplication = model.getFilteredPersonList()
-                .get(INDEX_FIRST_PERSON.getZeroBased());
+        EditCommand editCommand = new EditCommand(INDEX_FIRST_APPLICATION, new EditPersonDescriptor());
+        InternApplication editedInternApplication = model.getFilteredInternApplicationList()
+                .get(INDEX_FIRST_APPLICATION.getZeroBased());
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, Messages
                 .format(editedInternApplication));
@@ -90,42 +90,42 @@ public class EditCommandTest {
 
     @Test
     public void execute_filteredList_success() {
-        showPersonAtIndex(model, INDEX_FIRST_PERSON);
+        showPersonAtIndex(model, INDEX_FIRST_APPLICATION);
 
-        InternApplication internApplicationInFilteredList = model.getFilteredPersonList()
-                .get(INDEX_FIRST_PERSON.getZeroBased());
+        InternApplication internApplicationInFilteredList = model.getFilteredInternApplicationList()
+                .get(INDEX_FIRST_APPLICATION.getZeroBased());
         InternApplication editedInternApplication = new InternApplicationBuilder(internApplicationInFilteredList)
                 .withCompany(VALID_COMPANY_B).build();
-        EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON,
+        EditCommand editCommand = new EditCommand(INDEX_FIRST_APPLICATION,
                 new EditPersonDescriptorBuilder().withCompany(VALID_COMPANY_B).build());
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS,
                 Messages.format(editedInternApplication));
 
         Model expectedModel = new ModelManager(new InternTracker(model.getInternTracker()), new UserPrefs());
-        expectedModel.setPerson(model.getFilteredPersonList().get(0), editedInternApplication);
+        expectedModel.setInternApplication(model.getFilteredInternApplicationList().get(0), editedInternApplication);
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
     }
 
     @Test
     public void execute_duplicatePersonUnfilteredList_failure() {
-        InternApplication firstInternApplication = model.getFilteredPersonList()
-                .get(INDEX_FIRST_PERSON.getZeroBased());
+        InternApplication firstInternApplication = model.getFilteredInternApplicationList()
+                .get(INDEX_FIRST_APPLICATION.getZeroBased());
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder(firstInternApplication).build();
-        EditCommand editCommand = new EditCommand(INDEX_SECOND_PERSON, descriptor);
+        EditCommand editCommand = new EditCommand(INDEX_SECOND_APPLICATION, descriptor);
 
         assertCommandFailure(editCommand, model, EditCommand.MESSAGE_DUPLICATE_PERSON);
     }
 
     @Test
     public void execute_duplicatePersonFilteredList_failure() {
-        showPersonAtIndex(model, INDEX_FIRST_PERSON);
+        showPersonAtIndex(model, INDEX_FIRST_APPLICATION);
 
         // edit person in filtered list into a duplicate in intern tracker
         InternApplication internApplicationInList = model.getInternTracker().getApplicationList()
-                .get(INDEX_SECOND_PERSON.getZeroBased());
-        EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON,
+                .get(INDEX_SECOND_APPLICATION.getZeroBased());
+        EditCommand editCommand = new EditCommand(INDEX_FIRST_APPLICATION,
                 new EditPersonDescriptorBuilder(internApplicationInList).build());
 
         assertCommandFailure(editCommand, model, EditCommand.MESSAGE_DUPLICATE_PERSON);
@@ -133,7 +133,7 @@ public class EditCommandTest {
 
     @Test
     public void execute_invalidPersonIndexUnfilteredList_failure() {
-        Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
+        Index outOfBoundIndex = Index.fromOneBased(model.getFilteredInternApplicationList().size() + 1);
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withCompany(VALID_COMPANY_B).build();
         EditCommand editCommand = new EditCommand(outOfBoundIndex, descriptor);
 
@@ -146,8 +146,8 @@ public class EditCommandTest {
      */
     @Test
     public void execute_invalidPersonIndexFilteredList_failure() {
-        showPersonAtIndex(model, INDEX_FIRST_PERSON);
-        Index outOfBoundIndex = INDEX_SECOND_PERSON;
+        showPersonAtIndex(model, INDEX_FIRST_APPLICATION);
+        Index outOfBoundIndex = INDEX_SECOND_APPLICATION;
         // ensures that outOfBoundIndex is still in bounds of intern tracker list
         assertTrue(outOfBoundIndex.getZeroBased() < model.getInternTracker().getApplicationList().size());
 
@@ -159,11 +159,11 @@ public class EditCommandTest {
 
     @Test
     public void equals() {
-        final EditCommand standardCommand = new EditCommand(INDEX_FIRST_PERSON, DESC_A);
+        final EditCommand standardCommand = new EditCommand(INDEX_FIRST_APPLICATION, DESC_A);
 
         // same values -> returns true
         EditPersonDescriptor copyDescriptor = new EditPersonDescriptor(DESC_A);
-        EditCommand commandWithSameValues = new EditCommand(INDEX_FIRST_PERSON, copyDescriptor);
+        EditCommand commandWithSameValues = new EditCommand(INDEX_FIRST_APPLICATION, copyDescriptor);
         assertTrue(standardCommand.equals(commandWithSameValues));
 
         // same object -> returns true
@@ -176,10 +176,10 @@ public class EditCommandTest {
         assertFalse(standardCommand.equals(new ClearCommand()));
 
         // different index -> returns false
-        assertFalse(standardCommand.equals(new EditCommand(INDEX_SECOND_PERSON, DESC_A)));
+        assertFalse(standardCommand.equals(new EditCommand(INDEX_SECOND_APPLICATION, DESC_A)));
 
         // different descriptor -> returns false
-        assertFalse(standardCommand.equals(new EditCommand(INDEX_FIRST_PERSON, DESC_B)));
+        assertFalse(standardCommand.equals(new EditCommand(INDEX_FIRST_APPLICATION, DESC_B)));
     }
 
     @Test

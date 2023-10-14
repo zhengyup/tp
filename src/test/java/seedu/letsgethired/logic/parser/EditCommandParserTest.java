@@ -28,9 +28,9 @@ import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_STATUS;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.letsgethired.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.letsgethired.logic.parser.CommandParserTestUtil.assertParseSuccess;
-import static seedu.letsgethired.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
-import static seedu.letsgethired.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
-import static seedu.letsgethired.testutil.TypicalIndexes.INDEX_THIRD_PERSON;
+import static seedu.letsgethired.testutil.TypicalIndexes.INDEX_FIRST_APPLICATION;
+import static seedu.letsgethired.testutil.TypicalIndexes.INDEX_SECOND_APPLICATION;
+import static seedu.letsgethired.testutil.TypicalIndexes.INDEX_THIRD_APPLICATION;
 
 import org.junit.jupiter.api.Test;
 
@@ -108,7 +108,7 @@ public class EditCommandParserTest {
 
     @Test
     public void parse_allFieldsSpecified_success() {
-        Index targetIndex = INDEX_SECOND_PERSON;
+        Index targetIndex = INDEX_SECOND_APPLICATION;
         String userInput = targetIndex.getOneBased() + ROLE_DESC_B + TAG_DESC_HUSBAND
                 + CYCLE_DESC_A + STATUS_DESC_A + COMPANY_DESC_A + TAG_DESC_FRIEND;
 
@@ -122,7 +122,7 @@ public class EditCommandParserTest {
 
     @Test
     public void parse_someFieldsSpecified_success() {
-        Index targetIndex = INDEX_FIRST_PERSON;
+        Index targetIndex = INDEX_FIRST_APPLICATION;
         String userInput = targetIndex.getOneBased() + ROLE_DESC_B + CYCLE_DESC_A;
 
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withRole(VALID_ROLE_B)
@@ -135,7 +135,7 @@ public class EditCommandParserTest {
     @Test
     public void parse_oneFieldSpecified_success() {
         // name
-        Index targetIndex = INDEX_THIRD_PERSON;
+        Index targetIndex = INDEX_THIRD_APPLICATION;
         String userInput = targetIndex.getOneBased() + COMPANY_DESC_A;
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withCompany(VALID_COMPANY_A).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
@@ -172,7 +172,7 @@ public class EditCommandParserTest {
         // AddCommandParserTest#parse_repeatedNonTagValue_failure()
 
         // valid followed by invalid
-        Index targetIndex = INDEX_FIRST_PERSON;
+        Index targetIndex = INDEX_FIRST_APPLICATION;
         String userInput = targetIndex.getOneBased() + INVALID_ROLE_DESC + ROLE_DESC_B;
 
         assertParseFailure(parser, userInput, Messages.getErrorMessageForDuplicatePrefixes(PREFIX_ROLE));
@@ -200,7 +200,7 @@ public class EditCommandParserTest {
 
     @Test
     public void parse_resetTags_success() {
-        Index targetIndex = INDEX_THIRD_PERSON;
+        Index targetIndex = INDEX_THIRD_APPLICATION;
         String userInput = targetIndex.getOneBased() + TAG_EMPTY;
 
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withTags().build();

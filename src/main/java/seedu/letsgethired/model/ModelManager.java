@@ -87,24 +87,24 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public boolean hasPerson(InternApplication internApplication) {
+    public boolean hasInternApplication(InternApplication internApplication) {
         requireNonNull(internApplication);
         return internTracker.hasApplication(internApplication);
     }
 
     @Override
-    public void deletePerson(InternApplication target) {
+    public void deleteInternApplication(InternApplication target) {
         internTracker.removeApplication(target);
     }
 
     @Override
-    public void addPerson(InternApplication internApplication) {
+    public void addInternApplication(InternApplication internApplication) {
         internTracker.addApplication(internApplication);
-        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        updateFilteredInternApplicationList(PREDICATE_SHOW_ALL_APPLICATIONS);
     }
 
     @Override
-    public void setPerson(InternApplication target, InternApplication editedInternApplication) {
+    public void setInternApplication(InternApplication target, InternApplication editedInternApplication) {
         requireAllNonNull(target, editedInternApplication);
 
         internTracker.setApplication(target, editedInternApplication);
@@ -117,12 +117,12 @@ public class ModelManager implements Model {
      * {@code versionedInternTracker}
      */
     @Override
-    public ObservableList<InternApplication> getFilteredPersonList() {
+    public ObservableList<InternApplication> getFilteredInternApplicationList() {
         return filteredInternApplications;
     }
 
     @Override
-    public void updateFilteredPersonList(Predicate<InternApplication> predicate) {
+    public void updateFilteredInternApplicationList(Predicate<InternApplication> predicate) {
         requireNonNull(predicate);
         filteredInternApplications.setPredicate(predicate);
     }

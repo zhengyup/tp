@@ -40,7 +40,7 @@ public class JsonSerializableInternTrackerTest {
     public void toModelType_duplicatePersons_throwsIllegalValueException() throws Exception {
         JsonSerializableInternTracker dataFromFile = JsonUtil.readJsonFile(DUPLICATE_PERSON_FILE,
                 JsonSerializableInternTracker.class).get();
-        assertThrows(IllegalValueException.class, JsonSerializableInternTracker.MESSAGE_DUPLICATE_PERSON,
+        assertThrows(IllegalValueException.class, JsonSerializableInternTracker.MESSAGE_DUPLICATE_INTERN_APPLICATION,
                 dataFromFile::toModelType);
     }
 

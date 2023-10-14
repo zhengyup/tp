@@ -103,11 +103,11 @@ public class CommandTestUtil {
         // we are unable to defensively copy the model for comparison later, so we can
         // only do so by copying its components.
         InternTracker expectedInternTracker = new InternTracker(actualModel.getInternTracker());
-        List<InternApplication> expectedFilteredList = new ArrayList<>(actualModel.getFilteredPersonList());
+        List<InternApplication> expectedFilteredList = new ArrayList<>(actualModel.getFilteredInternApplicationList());
 
         assertThrows(CommandException.class, expectedMessage, () -> command.execute(actualModel));
         assertEquals(expectedInternTracker, actualModel.getInternTracker());
-        assertEquals(expectedFilteredList, actualModel.getFilteredPersonList());
+        assertEquals(expectedFilteredList, actualModel.getFilteredInternApplicationList());
     }
 
     /**
@@ -115,13 +115,13 @@ public class CommandTestUtil {
      * {@code model}'s intern tracker.
      */
     public static void showPersonAtIndex(Model model, Index targetIndex) {
-        assertTrue(targetIndex.getZeroBased() < model.getFilteredPersonList().size());
+        assertTrue(targetIndex.getZeroBased() < model.getFilteredInternApplicationList().size());
 
-        InternApplication internApplication = model.getFilteredPersonList().get(targetIndex.getZeroBased());
+        InternApplication internApplication = model.getFilteredInternApplicationList().get(targetIndex.getZeroBased());
         final String[] splitName = internApplication.getCompany().companyName.split("\\s+");
-        model.updateFilteredPersonList(new CompanyContainsKeywordsPredicate(Arrays.asList(splitName[0])));
+        model.updateFilteredInternApplicationList(new CompanyContainsKeywordsPredicate(Arrays.asList(splitName[0])));
 
-        assertEquals(1, model.getFilteredPersonList().size());
+        assertEquals(1, model.getFilteredInternApplicationList().size());
     }
 
 }

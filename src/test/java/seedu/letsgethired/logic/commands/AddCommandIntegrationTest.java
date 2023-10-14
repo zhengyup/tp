@@ -31,7 +31,7 @@ public class AddCommandIntegrationTest {
         InternApplication validInternApplication = new InternApplicationBuilder().build();
 
         Model expectedModel = new ModelManager(model.getInternTracker(), new UserPrefs());
-        expectedModel.addPerson(validInternApplication);
+        expectedModel.addInternApplication(validInternApplication);
 
         assertCommandSuccess(new AddCommand(validInternApplication), model,
                 String.format(AddCommand.MESSAGE_SUCCESS, Messages.format(validInternApplication)),

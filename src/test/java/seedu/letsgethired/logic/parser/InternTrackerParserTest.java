@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.letsgethired.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.letsgethired.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.letsgethired.testutil.Assert.assertThrows;
-import static seedu.letsgethired.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
+import static seedu.letsgethired.testutil.TypicalIndexes.INDEX_FIRST_APPLICATION;
 
 import java.util.Arrays;
 import java.util.List;
@@ -49,8 +49,8 @@ public class InternTrackerParserTest {
     @Test
     public void parseCommand_delete() throws Exception {
         DeleteCommand command = (DeleteCommand) parser.parseCommand(
-                DeleteCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
-        assertEquals(new DeleteCommand(INDEX_FIRST_PERSON), command);
+                DeleteCommand.COMMAND_WORD + " " + INDEX_FIRST_APPLICATION.getOneBased());
+        assertEquals(new DeleteCommand(INDEX_FIRST_APPLICATION), command);
     }
 
     @Test
@@ -58,8 +58,8 @@ public class InternTrackerParserTest {
         InternApplication internApplication = new InternApplicationBuilder().build();
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder(internApplication).build();
         EditCommand command = (EditCommand) parser.parseCommand(EditCommand.COMMAND_WORD + " "
-                + INDEX_FIRST_PERSON.getOneBased() + " " + PersonUtil.getEditPersonDescriptorDetails(descriptor));
-        assertEquals(new EditCommand(INDEX_FIRST_PERSON, descriptor), command);
+                + INDEX_FIRST_APPLICATION.getOneBased() + " " + PersonUtil.getEditPersonDescriptorDetails(descriptor));
+        assertEquals(new EditCommand(INDEX_FIRST_APPLICATION, descriptor), command);
     }
 
     @Test

@@ -10,7 +10,7 @@ public interface ReadOnlyInternTracker {
 
     /**
      * Returns an unmodifiable view of the intern application list.
-     * This list will not contain any duplicate persons.
+     * This list will not contain any duplicate intern applications.
      */
     ObservableList<InternApplication> getApplicationList();
 

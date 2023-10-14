@@ -3,7 +3,7 @@ package seedu.letsgethired.model;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.letsgethired.model.Model.PREDICATE_SHOW_ALL_PERSONS;
+import static seedu.letsgethired.model.Model.PREDICATE_SHOW_ALL_APPLICATIONS;
 import static seedu.letsgethired.testutil.Assert.assertThrows;
 import static seedu.letsgethired.testutil.TypicalInternApplications.JANE_STREET;
 import static seedu.letsgethired.testutil.TypicalInternApplications.OPTIVER;
@@ -74,23 +74,23 @@ public class ModelManagerTest {
 
     @Test
     public void hasPerson_nullPerson_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> modelManager.hasPerson(null));
+        assertThrows(NullPointerException.class, () -> modelManager.hasInternApplication(null));
     }
 
     @Test
     public void hasPerson_personNotInInternTracker_returnsFalse() {
-        assertFalse(modelManager.hasPerson(JANE_STREET));
+        assertFalse(modelManager.hasInternApplication(JANE_STREET));
     }
 
     @Test
     public void hasPerson_personInInternTracker_returnsTrue() {
-        modelManager.addPerson(JANE_STREET);
-        assertTrue(modelManager.hasPerson(JANE_STREET));
+        modelManager.addInternApplication(JANE_STREET);
+        assertTrue(modelManager.hasInternApplication(JANE_STREET));
     }
 
     @Test
     public void getFilteredPersonList_modifyList_throwsUnsupportedOperationException() {
-        assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredPersonList().remove(0));
+        assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredInternApplicationList().remove(0));
     }
 
     @Test
@@ -118,11 +118,11 @@ public class ModelManagerTest {
 
         // different filteredList -> returns false
         String[] keywords = JANE_STREET.getCompany().companyName.split("\\s+");
-        modelManager.updateFilteredPersonList(new CompanyContainsKeywordsPredicate(Arrays.asList(keywords)));
+        modelManager.updateFilteredInternApplicationList(new CompanyContainsKeywordsPredicate(Arrays.asList(keywords)));
         assertFalse(modelManager.equals(new ModelManager(internTracker, userPrefs)));
 
         // resets modelManager to initial state for upcoming tests
-        modelManager.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        modelManager.updateFilteredInternApplicationList(PREDICATE_SHOW_ALL_APPLICATIONS);
 
         // different userPrefs -> returns false
         UserPrefs differentUserPrefs = new UserPrefs();

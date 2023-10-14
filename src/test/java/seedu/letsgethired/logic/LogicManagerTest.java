@@ -172,7 +172,7 @@ public class LogicManagerTest {
         String addCommand = AddCommand.COMMAND_WORD + COMPANY_DESC_A + ROLE_DESC_A + CYCLE_DESC_A + STATUS_DESC_A;
         InternApplication expectedInternApplication = new InternApplicationBuilder(AMY).withTags().build();
         ModelManager expectedModel = new ModelManager();
-        expectedModel.addPerson(expectedInternApplication);
+        expectedModel.addInternApplication(expectedInternApplication);
         assertCommandFailure(addCommand, CommandException.class, expectedMessage, expectedModel);
     }
 }

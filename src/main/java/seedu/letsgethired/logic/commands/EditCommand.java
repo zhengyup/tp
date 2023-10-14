@@ -6,7 +6,7 @@ import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_CYCLE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_STATUS;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_TAG;
-import static seedu.letsgethired.model.Model.PREDICATE_SHOW_ALL_PERSONS;
+import static seedu.letsgethired.model.Model.PREDICATE_SHOW_ALL_APPLICATIONS;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -70,7 +70,7 @@ public class EditCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        List<InternApplication> lastShownList = model.getFilteredPersonList();
+        List<InternApplication> lastShownList = model.getFilteredInternApplicationList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
@@ -80,12 +80,12 @@ public class EditCommand extends Command {
         InternApplication editedInternApplication = createEditedPerson(internApplicationToEdit, editPersonDescriptor);
 
         if (!internApplicationToEdit.isSameApplication(editedInternApplication)
-                && model.hasPerson(editedInternApplication)) {
+                && model.hasInternApplication(editedInternApplication)) {
             throw new CommandException(MESSAGE_DUPLICATE_PERSON);
         }
 
-        model.setPerson(internApplicationToEdit, editedInternApplication);
-        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        model.setInternApplication(internApplicationToEdit, editedInternApplication);
+        model.updateFilteredInternApplicationList(PREDICATE_SHOW_ALL_APPLICATIONS);
         return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedInternApplication)));
     }
 

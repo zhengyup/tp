@@ -19,16 +19,16 @@ import seedu.letsgethired.model.application.InternApplication;
 @JsonRootName(value = "internTracker")
 class JsonSerializableInternTracker {
 
-    public static final String MESSAGE_DUPLICATE_PERSON = "Persons list contains duplicate person(s).";
+    public static final String MESSAGE_DUPLICATE_INTERN_APPLICATION = "Intern Application list contains duplicate intern application(s).";
 
-    private final List<JsonAdaptedInternApplication> persons = new ArrayList<>();
+    private final List<JsonAdaptedInternApplication> internApplications = new ArrayList<>();
 
     /**
-     * Constructs a {@code JsonSerializableInternTracker} with the given persons.
+     * Constructs a {@code JsonSerializableInternTracker} with the given intern applications.
      */
     @JsonCreator
-    public JsonSerializableInternTracker(@JsonProperty("persons") List<JsonAdaptedInternApplication> persons) {
-        this.persons.addAll(persons);
+    public JsonSerializableInternTracker(@JsonProperty("applications") List<JsonAdaptedInternApplication> internApplications) {
+        this.internApplications.addAll(internApplications);
     }
 
     /**
@@ -37,7 +37,7 @@ class JsonSerializableInternTracker {
      * @param source future changes to this will not affect the created {@code JsonSerializableInternTracker}.
      */
     public JsonSerializableInternTracker(ReadOnlyInternTracker source) {
-        persons.addAll(source.getApplicationList().stream().map(JsonAdaptedInternApplication::new)
+        internApplications.addAll(source.getApplicationList().stream().map(JsonAdaptedInternApplication::new)
                 .collect(Collectors.toList()));
     }
 
@@ -48,10 +48,10 @@ class JsonSerializableInternTracker {
      */
     public InternTracker toModelType() throws IllegalValueException {
         InternTracker internTracker = new InternTracker();
-        for (JsonAdaptedInternApplication jsonAdaptedPerson : persons) {
+        for (JsonAdaptedInternApplication jsonAdaptedPerson : internApplications) {
             InternApplication internApplication = jsonAdaptedPerson.toModelType();
             if (internTracker.hasApplication(internApplication)) {
-                throw new IllegalValueException(MESSAGE_DUPLICATE_PERSON);
+                throw new IllegalValueException(MESSAGE_DUPLICATE_INTERN_APPLICATION);
             }
             internTracker.addApplication(internApplication);
         }

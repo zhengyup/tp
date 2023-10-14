@@ -119,7 +119,7 @@ public class AddCommandTest {
         }
 
         @Override
-        public void addPerson(InternApplication internApplication) {
+        public void addInternApplication(InternApplication internApplication) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -134,27 +134,27 @@ public class AddCommandTest {
         }
 
         @Override
-        public boolean hasPerson(InternApplication internApplication) {
+        public boolean hasInternApplication(InternApplication internApplication) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void deletePerson(InternApplication target) {
+        public void deleteInternApplication(InternApplication target) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void setPerson(InternApplication target, InternApplication editedInternApplication) {
+        public void setInternApplication(InternApplication target, InternApplication editedInternApplication) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public ObservableList<InternApplication> getFilteredPersonList() {
+        public ObservableList<InternApplication> getFilteredInternApplicationList() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void updateFilteredPersonList(Predicate<InternApplication> predicate) {
+        public void updateFilteredInternApplicationList(Predicate<InternApplication> predicate) {
             throw new AssertionError("This method should not be called.");
         }
     }
@@ -171,7 +171,7 @@ public class AddCommandTest {
         }
 
         @Override
-        public boolean hasPerson(InternApplication internApplication) {
+        public boolean hasInternApplication(InternApplication internApplication) {
             requireNonNull(internApplication);
             return this.internApplication.isSameApplication(internApplication);
         }
@@ -184,13 +184,13 @@ public class AddCommandTest {
         final ArrayList<InternApplication> personsAdded = new ArrayList<>();
 
         @Override
-        public boolean hasPerson(InternApplication internApplication) {
+        public boolean hasInternApplication(InternApplication internApplication) {
             requireNonNull(internApplication);
             return personsAdded.stream().anyMatch(internApplication::isSameApplication);
         }
 
         @Override
-        public void addPerson(InternApplication internApplication) {
+        public void addInternApplication(InternApplication internApplication) {
             requireNonNull(internApplication);
             personsAdded.add(internApplication);
         }
