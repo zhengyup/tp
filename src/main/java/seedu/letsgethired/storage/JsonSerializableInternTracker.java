@@ -48,8 +48,8 @@ class JsonSerializableInternTracker {
      */
     public InternTracker toModelType() throws IllegalValueException {
         InternTracker internTracker = new InternTracker();
-        for (JsonAdaptedInternApplication jsonAdaptedPerson : applications) {
-            InternApplication internApplication = jsonAdaptedPerson.toModelType();
+        for (JsonAdaptedInternApplication jsonAdaptedInternApplication : applications) {
+            InternApplication internApplication = jsonAdaptedInternApplication.toModelType();
             if (internTracker.hasApplication(internApplication)) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_INTERN_APPLICATION);
             }

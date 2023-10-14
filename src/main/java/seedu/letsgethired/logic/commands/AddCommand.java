@@ -14,7 +14,7 @@ import seedu.letsgethired.model.Model;
 import seedu.letsgethired.model.application.InternApplication;
 
 /**
- * Adds a person to the intern tracker.
+ * Adds an intern application to the intern tracker.
  */
 public class AddCommand extends Command {
 
@@ -35,13 +35,13 @@ public class AddCommand extends Command {
             + PREFIX_TAG + "friends "
             + PREFIX_TAG + "owesMoney";
 
-    public static final String MESSAGE_SUCCESS = "New person added: %1$s";
+    public static final String MESSAGE_SUCCESS = "New intern application added: %1$s";
     public static final String MESSAGE_DUPLICATE_INTERN_APPLICATION = "This application already exists in the intern tracker";
 
     private final InternApplication toAdd;
 
     /**
-     * Creates an AddCommand to add the specified {@code Person}
+     * Creates an AddCommand to add the specified {@code InternApplication}
      */
     public AddCommand(InternApplication internApplication) {
         requireNonNull(internApplication);

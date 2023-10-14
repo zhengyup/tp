@@ -70,65 +70,65 @@ public class AddCommandParserTest {
 
     @Test
     public void parse_repeatedNonTagValue_failure() {
-        String validExpectedPersonString = COMPANY_DESC_B + ROLE_DESC_B + CYCLE_DESC_B
+        String validExpectedInternApplicationString = COMPANY_DESC_B + ROLE_DESC_B + CYCLE_DESC_B
                 + STATUS_DESC_B + TAG_DESC_FRIEND;
 
         // multiple names
-        assertParseFailure(parser, COMPANY_DESC_A + validExpectedPersonString,
+        assertParseFailure(parser, COMPANY_DESC_A + validExpectedInternApplicationString,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_COMPANY));
 
         // multiple role
-        assertParseFailure(parser, ROLE_DESC_A + validExpectedPersonString,
+        assertParseFailure(parser, ROLE_DESC_A + validExpectedInternApplicationString,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_ROLE));
 
         // multiple cycles
-        assertParseFailure(parser, CYCLE_DESC_A + validExpectedPersonString,
+        assertParseFailure(parser, CYCLE_DESC_A + validExpectedInternApplicationString,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_CYCLE));
 
         // multiple statuses
-        assertParseFailure(parser, STATUS_DESC_A + validExpectedPersonString,
+        assertParseFailure(parser, STATUS_DESC_A + validExpectedInternApplicationString,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_STATUS));
 
         // multiple fields repeated
         assertParseFailure(parser,
-                validExpectedPersonString + ROLE_DESC_A + CYCLE_DESC_A + COMPANY_DESC_A + STATUS_DESC_A
-                        + validExpectedPersonString,
+                validExpectedInternApplicationString + ROLE_DESC_A + CYCLE_DESC_A + COMPANY_DESC_A + STATUS_DESC_A
+                        + validExpectedInternApplicationString,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_COMPANY, PREFIX_CYCLE, PREFIX_STATUS, PREFIX_ROLE));
 
         // invalid value followed by valid value
 
         // invalid name
-        assertParseFailure(parser, INVALID_COMPANY_DESC + validExpectedPersonString,
+        assertParseFailure(parser, INVALID_COMPANY_DESC + validExpectedInternApplicationString,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_COMPANY));
 
         // invalid cycle
-        assertParseFailure(parser, INVALID_CYCLE_DESC + validExpectedPersonString,
+        assertParseFailure(parser, INVALID_CYCLE_DESC + validExpectedInternApplicationString,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_CYCLE));
 
         // invalid role
-        assertParseFailure(parser, INVALID_ROLE_DESC + validExpectedPersonString,
+        assertParseFailure(parser, INVALID_ROLE_DESC + validExpectedInternApplicationString,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_ROLE));
 
         // invalid status
-        assertParseFailure(parser, INVALID_STATUS_DESC + validExpectedPersonString,
+        assertParseFailure(parser, INVALID_STATUS_DESC + validExpectedInternApplicationString,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_STATUS));
 
         // valid value followed by invalid value
 
         // invalid name
-        assertParseFailure(parser, validExpectedPersonString + INVALID_COMPANY_DESC,
+        assertParseFailure(parser, validExpectedInternApplicationString + INVALID_COMPANY_DESC,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_COMPANY));
 
         // invalid cycle
-        assertParseFailure(parser, validExpectedPersonString + INVALID_CYCLE_DESC,
+        assertParseFailure(parser, validExpectedInternApplicationString + INVALID_CYCLE_DESC,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_CYCLE));
 
         // invalid role
-        assertParseFailure(parser, validExpectedPersonString + INVALID_ROLE_DESC,
+        assertParseFailure(parser, validExpectedInternApplicationString + INVALID_ROLE_DESC,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_ROLE));
 
         // invalid status
-        assertParseFailure(parser, validExpectedPersonString + INVALID_STATUS_DESC,
+        assertParseFailure(parser, validExpectedInternApplicationString + INVALID_STATUS_DESC,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_STATUS));
     }
 

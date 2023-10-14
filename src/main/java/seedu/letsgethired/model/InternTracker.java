@@ -57,7 +57,7 @@ public class InternTracker implements ReadOnlyInternTracker {
         setInternApplications(newData.getApplicationList());
     }
 
-    //// person-level operations
+    //// intern application-level operations
 
     /**
      * Returns true if an application with the same identity as {@code internApplication} exists in the

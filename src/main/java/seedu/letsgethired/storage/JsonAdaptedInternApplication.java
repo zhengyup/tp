@@ -31,7 +31,7 @@ class JsonAdaptedInternApplication {
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
 
     /**
-     * Constructs a {@code JsonAdaptedInternApplication} with the given person details.
+     * Constructs a {@code JsonAdaptedInternApplication} with the given intern application details.
      */
     @JsonCreator
     public JsonAdaptedInternApplication(@JsonProperty("company") String company,
@@ -60,9 +60,9 @@ class JsonAdaptedInternApplication {
     }
 
     /**
-     * Converts this Jackson-friendly adapted person object into the model's {@code InternApplication} object.
+     * Converts this Jackson-friendly adapted intern application object into the model's {@code InternApplication} object.
      *
-     * @throws IllegalValueException if there were any data constraints violated in the adapted person.
+     * @throws IllegalValueException if there were any data constraints violated in the adapted intern application.
      */
     public InternApplication toModelType() throws IllegalValueException {
         final List<Tag> applicationTags = new ArrayList<>();

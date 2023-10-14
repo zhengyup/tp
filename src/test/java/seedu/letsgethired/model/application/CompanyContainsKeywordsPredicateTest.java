@@ -38,7 +38,7 @@ public class CompanyContainsKeywordsPredicateTest {
         // null -> returns false
         assertFalse(firstPredicate.equals(null));
 
-        // different person -> returns false
+        // different intern application -> returns false
         assertFalse(firstPredicate.equals(secondPredicate));
     }
 
