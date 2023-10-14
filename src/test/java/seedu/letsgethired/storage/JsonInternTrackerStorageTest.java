@@ -54,12 +54,12 @@ public class JsonInternTrackerStorageTest {
 
     @Test
     public void readInternTracker_invalidPersonInternTracker_throwDataLoadingException() {
-        assertThrows(DataLoadingException.class, () -> readInternTracker("invalidPersonInternTracker.json"));
+        assertThrows(DataLoadingException.class, () -> readInternTracker("invalidInternApplicationInternTracker.json"));
     }
 
     @Test
     public void readInternTracker_invalidAndValidPersonInternTracker_throwDataLoadingException() {
-        assertThrows(DataLoadingException.class, () -> readInternTracker("invalidAndValidPersonInternTracker.json"));
+        assertThrows(DataLoadingException.class, () -> readInternTracker("invalidAndValidInternApplicationInternTracker.json"));
     }
 
     @Test

@@ -1,6 +1,6 @@
 {
-  "persons": [ {
-    "company": "Valid Person",
+  "applications": [ {
+    "company": "Valid Company",
     "role": "Intern",
     "cycle": "Summer 2024",
     "status": "Pending"
