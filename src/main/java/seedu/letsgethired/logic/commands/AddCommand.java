@@ -20,7 +20,7 @@ public class AddCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a application to the intern tracker. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a application to the intern tracker.\n"
             + "Parameters: "
             + PREFIX_COMPANY + "COMPANY "
             + PREFIX_ROLE + "ROLE "
@@ -29,9 +29,9 @@ public class AddCommand extends Command {
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_COMPANY + "Jane Street "
-            + PREFIX_ROLE + "98765432 "
+            + PREFIX_ROLE + "Software Engineering Intern "
             + PREFIX_CYCLE + "Summer 2024"
-            + PREFIX_STATUS + "311, Clementi Ave 2, #02-25 "
+            + PREFIX_STATUS + "Accepted"
             + PREFIX_TAG + "friends "
             + PREFIX_TAG + "owesMoney";
 
