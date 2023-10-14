@@ -1,14 +1,14 @@
 package seedu.letsgethired.logic.parser;
 
 import static seedu.letsgethired.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.COMPANY_DESC_A;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.CYCLE_DESC_A;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.CYCLE_DESC_B;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.INVALID_CYCLE_DESC;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.INVALID_COMPANY_DESC;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.INVALID_CYCLE_DESC;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.INVALID_ROLE_DESC;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.INVALID_STATUS_DESC;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.COMPANY_DESC_A;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.ROLE_DESC_A;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.ROLE_DESC_B;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.STATUS_DESC_A;
@@ -112,7 +112,8 @@ public class EditCommandParserTest {
         String userInput = targetIndex.getOneBased() + ROLE_DESC_B + TAG_DESC_HUSBAND
                 + CYCLE_DESC_A + STATUS_DESC_A + COMPANY_DESC_A + TAG_DESC_FRIEND;
 
-        EditInternApplicationDescriptor descriptor = new EditInternApplicationDescriptorBuilder().withCompany(VALID_COMPANY_A)
+        EditInternApplicationDescriptor descriptor = new EditInternApplicationDescriptorBuilder()
+                .withCompany(VALID_COMPANY_A)
                 .withRole(VALID_ROLE_B).withCycle(VALID_CYCLE_A).withStatus(VALID_STATUS_A)
                 .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
@@ -137,7 +138,8 @@ public class EditCommandParserTest {
         // name
         Index targetIndex = INDEX_THIRD_APPLICATION;
         String userInput = targetIndex.getOneBased() + COMPANY_DESC_A;
-        EditInternApplicationDescriptor descriptor = new EditInternApplicationDescriptorBuilder().withCompany(VALID_COMPANY_A).build();
+        EditInternApplicationDescriptor descriptor = new EditInternApplicationDescriptorBuilder()
+                .withCompany(VALID_COMPANY_A).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 

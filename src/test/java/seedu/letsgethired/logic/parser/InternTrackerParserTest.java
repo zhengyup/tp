@@ -56,9 +56,11 @@ public class InternTrackerParserTest {
     @Test
     public void parseCommand_edit() throws Exception {
         InternApplication internApplication = new InternApplicationBuilder().build();
-        EditInternApplicationDescriptor descriptor = new EditInternApplicationDescriptorBuilder(internApplication).build();
+        EditInternApplicationDescriptor descriptor =
+                new EditInternApplicationDescriptorBuilder(internApplication).build();
         EditCommand command = (EditCommand) parser.parseCommand(EditCommand.COMMAND_WORD + " "
-                + INDEX_FIRST_APPLICATION.getOneBased() + " " + InternApplicationUtil.getEditInternApplicationDescriptorDetails(descriptor));
+                + INDEX_FIRST_APPLICATION.getOneBased() + " "
+                + InternApplicationUtil.getEditInternApplicationDescriptorDetails(descriptor));
         assertEquals(new EditCommand(INDEX_FIRST_APPLICATION, descriptor), command);
     }
 

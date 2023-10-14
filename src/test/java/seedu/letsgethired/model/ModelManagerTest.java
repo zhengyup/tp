@@ -90,12 +90,16 @@ public class ModelManagerTest {
 
     @Test
     public void getFilteredInternApplicationList_modifyList_throwsUnsupportedOperationException() {
-        assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredInternApplicationList().remove(0));
+        assertThrows(UnsupportedOperationException.class, () ->
+                modelManager.getFilteredInternApplicationList().remove(0));
     }
 
     @Test
     public void equals() {
-        InternTracker internTracker = new InternTrackerBuilder().withInternApplication(JANE_STREET).withInternApplication(OPTIVER).build();
+        InternTracker internTracker = new InternTrackerBuilder()
+                .withInternApplication(JANE_STREET)
+                .withInternApplication(OPTIVER)
+                .build();
         InternTracker differentInternTracker = new InternTracker();
         UserPrefs userPrefs = new UserPrefs();
 

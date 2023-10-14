@@ -107,7 +107,7 @@ public class UniqueInternApplicationListTest {
     }
 
     @Test
-    public void setInternApplication_editedInternApplicationHasNonUniqueIdentity_throwsDuplicateInternApplicationException() {
+    public void setInternApplication_editedApplicationHasNonUniqueIdentity_throwsDuplicateInternApplicationException() {
         uniqueApplicationList.add(JANE_STREET);
         uniqueApplicationList.add(B);
         assertThrows(DuplicateApplicationException.class, () -> uniqueApplicationList.setApplication(JANE_STREET, B));
@@ -138,7 +138,7 @@ public class UniqueInternApplicationListTest {
     }
 
     @Test
-    public void setInternApplications_uniqueInternApplicationList_replacesOwnListWithProvidedUniqueInternApplicationList() {
+    public void setInternApplications_uniqueApplicationList_replacesOwnListWithProvidedUniqueInternApplicationList() {
         uniqueApplicationList.add(JANE_STREET);
         UniqueApplicationList expectedUniqueApplicationList = new UniqueApplicationList();
         expectedUniqueApplicationList.add(B);

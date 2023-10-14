@@ -16,9 +16,12 @@ import seedu.letsgethired.testutil.TypicalInternApplications;
 public class JsonSerializableInternTrackerTest {
 
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonSerializableInternTrackerTest");
-    private static final Path TYPICAL_INTERN_APPLICATIONS_FILE = TEST_DATA_FOLDER.resolve("typicalInternApplicationInternTracker.json");
-    private static final Path INVALID_INTERN_APPLICATION_FILE = TEST_DATA_FOLDER.resolve("invalidInternApplicationInternTracker.json");
-    private static final Path DUPLICATE_INTERN_APPLICATION_FILE = TEST_DATA_FOLDER.resolve("duplicateInternApplicationInternTracker.json");
+    private static final Path TYPICAL_INTERN_APPLICATIONS_FILE =
+            TEST_DATA_FOLDER.resolve("typicalInternApplicationInternTracker.json");
+    private static final Path INVALID_INTERN_APPLICATION_FILE =
+            TEST_DATA_FOLDER.resolve("invalidInternApplicationInternTracker.json");
+    private static final Path DUPLICATE_INTERN_APPLICATION_FILE =
+            TEST_DATA_FOLDER.resolve("duplicateInternApplicationInternTracker.json");
 
     @Test
     public void toModelType_typicalInternApplicationsFile_success() throws Exception {

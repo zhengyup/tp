@@ -38,7 +38,8 @@ public class EditCommandTest {
     @Test
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
         InternApplication editedInternApplication = new InternApplicationBuilder().build();
-        EditInternApplicationDescriptor descriptor = new EditInternApplicationDescriptorBuilder(editedInternApplication).build();
+        EditInternApplicationDescriptor descriptor =
+                new EditInternApplicationDescriptorBuilder(editedInternApplication).build();
         EditCommand editCommand = new EditCommand(INDEX_FIRST_APPLICATION, descriptor);
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_INTERN_APPLICATION_SUCCESS, Messages
@@ -61,7 +62,8 @@ public class EditCommandTest {
                 .withRole(VALID_ROLE_B)
                 .withTags(VALID_TAG_HUSBAND).build();
 
-        EditInternApplicationDescriptor descriptor = new EditInternApplicationDescriptorBuilder().withCompany(VALID_COMPANY_B)
+        EditInternApplicationDescriptor descriptor = new EditInternApplicationDescriptorBuilder()
+                .withCompany(VALID_COMPANY_B)
                 .withRole(VALID_ROLE_B).withTags(VALID_TAG_HUSBAND).build();
         EditCommand editCommand = new EditCommand(indexLastInternApplication, descriptor);
 
@@ -112,7 +114,8 @@ public class EditCommandTest {
     public void execute_duplicateInternApplicationUnfilteredList_failure() {
         InternApplication firstInternApplication = model.getFilteredInternApplicationList()
                 .get(INDEX_FIRST_APPLICATION.getZeroBased());
-        EditInternApplicationDescriptor descriptor = new EditInternApplicationDescriptorBuilder(firstInternApplication).build();
+        EditInternApplicationDescriptor descriptor =
+                new EditInternApplicationDescriptorBuilder(firstInternApplication).build();
         EditCommand editCommand = new EditCommand(INDEX_SECOND_APPLICATION, descriptor);
 
         assertCommandFailure(editCommand, model, EditCommand.MESSAGE_DUPLICATE_INTERN_APPLICATION);
@@ -134,7 +137,8 @@ public class EditCommandTest {
     @Test
     public void execute_invalidInternApplicationIndexUnfilteredList_failure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredInternApplicationList().size() + 1);
-        EditInternApplicationDescriptor descriptor = new EditInternApplicationDescriptorBuilder().withCompany(VALID_COMPANY_B).build();
+        EditInternApplicationDescriptor descriptor = new EditInternApplicationDescriptorBuilder()
+                .withCompany(VALID_COMPANY_B).build();
         EditCommand editCommand = new EditCommand(outOfBoundIndex, descriptor);
 
         assertCommandFailure(editCommand, model, Messages.MESSAGE_INVALID_INTERN_APPLICATION_DISPLAYED_INDEX);
@@ -187,7 +191,8 @@ public class EditCommandTest {
         Index index = Index.fromOneBased(1);
         EditInternApplicationDescriptor editInternApplicationDescriptor = new EditInternApplicationDescriptor();
         EditCommand editCommand = new EditCommand(index, editInternApplicationDescriptor);
-        String expected = EditCommand.class.getCanonicalName() + "{index=" + index + ", editInternApplicationDescriptor="
+        String expected = EditCommand.class.getCanonicalName()
+                + "{index=" + index + ", editInternApplicationDescriptor="
                 + editInternApplicationDescriptor + "}";
         assertEquals(expected, editCommand.toString());
     }

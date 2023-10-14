@@ -50,7 +50,8 @@ public class AddCommandTest {
         AddCommand addCommand = new AddCommand(validInternApplication);
         ModelStub modelStub = new ModelStubWithInternApplication(validInternApplication);
 
-        assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_INTERN_APPLICATION, () -> addCommand.execute(modelStub));
+        assertThrows(CommandException.class,
+                AddCommand.MESSAGE_DUPLICATE_INTERN_APPLICATION, () -> addCommand.execute(modelStub));
     }
 
     @Test

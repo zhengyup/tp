@@ -1,15 +1,15 @@
 package seedu.letsgethired.logic.parser;
 
 import static seedu.letsgethired.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.COMPANY_DESC_A;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.COMPANY_DESC_B;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.CYCLE_DESC_A;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.CYCLE_DESC_B;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.INVALID_CYCLE_DESC;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.INVALID_COMPANY_DESC;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.INVALID_CYCLE_DESC;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.INVALID_ROLE_DESC;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.INVALID_STATUS_DESC;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.COMPANY_DESC_A;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.COMPANY_DESC_B;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.PREAMBLE_NON_EMPTY;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.ROLE_DESC_A;
