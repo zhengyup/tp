@@ -3,10 +3,10 @@ package seedu.letsgethired.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.DESC_AMY;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.DESC_BOB;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_COMPANY_BOB;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_ROLE_BOB;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.DESC_A;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.DESC_B;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_COMPANY_B;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_ROLE_B;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.assertCommandSuccess;
@@ -57,12 +57,12 @@ public class EditCommandTest {
                 .get(indexLastPerson.getZeroBased());
 
         InternApplicationBuilder personInList = new InternApplicationBuilder(lastInternApplication);
-        InternApplication editedInternApplication = personInList.withCompany(VALID_COMPANY_BOB)
-                .withRole(VALID_ROLE_BOB)
+        InternApplication editedInternApplication = personInList.withCompany(VALID_COMPANY_B)
+                .withRole(VALID_ROLE_B)
                 .withTags(VALID_TAG_HUSBAND).build();
 
-        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withCompany(VALID_COMPANY_BOB)
-                .withRole(VALID_ROLE_BOB).withTags(VALID_TAG_HUSBAND).build();
+        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withCompany(VALID_COMPANY_B)
+                .withRole(VALID_ROLE_B).withTags(VALID_TAG_HUSBAND).build();
         EditCommand editCommand = new EditCommand(indexLastPerson, descriptor);
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS,
@@ -95,9 +95,9 @@ public class EditCommandTest {
         InternApplication internApplicationInFilteredList = model.getFilteredPersonList()
                 .get(INDEX_FIRST_PERSON.getZeroBased());
         InternApplication editedInternApplication = new InternApplicationBuilder(internApplicationInFilteredList)
-                .withCompany(VALID_COMPANY_BOB).build();
+                .withCompany(VALID_COMPANY_B).build();
         EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON,
-                new EditPersonDescriptorBuilder().withCompany(VALID_COMPANY_BOB).build());
+                new EditPersonDescriptorBuilder().withCompany(VALID_COMPANY_B).build());
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS,
                 Messages.format(editedInternApplication));
@@ -134,7 +134,7 @@ public class EditCommandTest {
     @Test
     public void execute_invalidPersonIndexUnfilteredList_failure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
-        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withCompany(VALID_COMPANY_BOB).build();
+        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withCompany(VALID_COMPANY_B).build();
         EditCommand editCommand = new EditCommand(outOfBoundIndex, descriptor);
 
         assertCommandFailure(editCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
@@ -152,17 +152,17 @@ public class EditCommandTest {
         assertTrue(outOfBoundIndex.getZeroBased() < model.getInternTracker().getApplicationList().size());
 
         EditCommand editCommand = new EditCommand(outOfBoundIndex,
-                new EditPersonDescriptorBuilder().withCompany(VALID_COMPANY_BOB).build());
+                new EditPersonDescriptorBuilder().withCompany(VALID_COMPANY_B).build());
 
         assertCommandFailure(editCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
     }
 
     @Test
     public void equals() {
-        final EditCommand standardCommand = new EditCommand(INDEX_FIRST_PERSON, DESC_AMY);
+        final EditCommand standardCommand = new EditCommand(INDEX_FIRST_PERSON, DESC_A);
 
         // same values -> returns true
-        EditPersonDescriptor copyDescriptor = new EditPersonDescriptor(DESC_AMY);
+        EditPersonDescriptor copyDescriptor = new EditPersonDescriptor(DESC_A);
         EditCommand commandWithSameValues = new EditCommand(INDEX_FIRST_PERSON, copyDescriptor);
         assertTrue(standardCommand.equals(commandWithSameValues));
 
@@ -176,10 +176,10 @@ public class EditCommandTest {
         assertFalse(standardCommand.equals(new ClearCommand()));
 
         // different index -> returns false
-        assertFalse(standardCommand.equals(new EditCommand(INDEX_SECOND_PERSON, DESC_AMY)));
+        assertFalse(standardCommand.equals(new EditCommand(INDEX_SECOND_PERSON, DESC_A)));
 
         // different descriptor -> returns false
-        assertFalse(standardCommand.equals(new EditCommand(INDEX_FIRST_PERSON, DESC_BOB)));
+        assertFalse(standardCommand.equals(new EditCommand(INDEX_FIRST_PERSON, DESC_B)));
     }
 
     @Test

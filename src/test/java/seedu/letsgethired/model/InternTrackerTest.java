@@ -3,7 +3,7 @@ package seedu.letsgethired.model;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_STATUS_BOB;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_STATUS_B;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.letsgethired.testutil.Assert.assertThrows;
 import static seedu.letsgethired.testutil.TypicalInternApplications.JANE_STREET;
@@ -37,16 +37,16 @@ public class InternTrackerTest {
     }
 
     @Test
-    public void resetData_withValidReadOnlyStatusBook_replacesData() {
+    public void resetData_withValidReadOnlyInternTracker_replacesData() {
         InternTracker newData = getTypicalInternTracker();
         internTracker.resetData(newData);
         assertEquals(newData, internTracker);
     }
 
     @Test
-    public void resetData_withDuplicatePersons_throwsDuplicatePersonException() {
-        // Two persons with the same identity fields
-        InternApplication editedAlice = new InternApplicationBuilder(JANE_STREET).withStatus(VALID_STATUS_BOB)
+    public void resetData_withDuplicateInternApplication_throwsDuplicateApplicationException() {
+        // Two applications with the same identity fields
+        InternApplication editedAlice = new InternApplicationBuilder(JANE_STREET).withStatus(VALID_STATUS_B)
                 .withTags(VALID_TAG_HUSBAND)
                 .build();
         List<InternApplication> newInternApplications = Arrays.asList(JANE_STREET, editedAlice);
@@ -74,7 +74,7 @@ public class InternTrackerTest {
     @Test
     public void hasPerson_personWithSameIdentityFieldsInInternTracker_returnsTrue() {
         internTracker.addApplication(JANE_STREET);
-        InternApplication editedAlice = new InternApplicationBuilder(JANE_STREET).withStatus(VALID_STATUS_BOB)
+        InternApplication editedAlice = new InternApplicationBuilder(JANE_STREET).withStatus(VALID_STATUS_B)
                 .withTags(VALID_TAG_HUSBAND)
                 .build();
         assertTrue(internTracker.hasApplication(editedAlice));
@@ -87,7 +87,7 @@ public class InternTrackerTest {
 
     @Test
     public void toStringMethod() {
-        String expected = InternTracker.class.getCanonicalName() + "{persons=" + internTracker
+        String expected = InternTracker.class.getCanonicalName() + "{applications=" + internTracker
                 .getApplicationList() + "}";
         assertEquals(expected, internTracker.toString());
     }

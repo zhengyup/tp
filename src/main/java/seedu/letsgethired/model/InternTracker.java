@@ -61,8 +61,7 @@ public class InternTracker implements ReadOnlyInternTracker {
 
     /**
      * Returns true if an application with the same identity as {@code internApplication} exists in the
-     * intern
-     * tracker.
+     * intern tracker.
      */
     public boolean hasApplication(InternApplication internApplication) {
         requireNonNull(internApplication);
@@ -81,9 +80,7 @@ public class InternTracker implements ReadOnlyInternTracker {
      * Replaces the given application {@code target} in the list with {@code editedInternApplication}.
      * {@code target} must exist in the intern tracker.
      * The application identity of {@code editedInternApplication} must not be the same as another existing
-     * application in
-     * the
-     * intern tracker.
+     * application in the intern tracker.
      */
     public void setApplication(InternApplication target, InternApplication editedInternApplication) {
         requireNonNull(editedInternApplication);
@@ -104,7 +101,7 @@ public class InternTracker implements ReadOnlyInternTracker {
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .add("persons", internApplications)
+                .add("applications", internApplications)
                 .toString();
     }
 

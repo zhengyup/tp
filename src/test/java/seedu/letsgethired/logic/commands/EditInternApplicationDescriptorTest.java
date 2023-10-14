@@ -3,12 +3,12 @@ package seedu.letsgethired.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.DESC_AMY;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.DESC_BOB;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_COMPANY_BOB;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_CYCLE_BOB;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_ROLE_BOB;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_STATUS_BOB;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.DESC_A;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.DESC_B;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_COMPANY_B;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_CYCLE_B;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_ROLE_B;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_STATUS_B;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 
 import org.junit.jupiter.api.Test;
@@ -21,41 +21,41 @@ public class EditInternApplicationDescriptorTest {
     @Test
     public void equals() {
         // same values -> returns true
-        EditPersonDescriptor descriptorWithSameValues = new EditPersonDescriptor(DESC_AMY);
-        assertTrue(DESC_AMY.equals(descriptorWithSameValues));
+        EditPersonDescriptor descriptorWithSameValues = new EditPersonDescriptor(DESC_A);
+        assertTrue(DESC_A.equals(descriptorWithSameValues));
 
         // same object -> returns true
-        assertTrue(DESC_AMY.equals(DESC_AMY));
+        assertTrue(DESC_A.equals(DESC_A));
 
         // null -> returns false
-        assertFalse(DESC_AMY.equals(null));
+        assertFalse(DESC_A.equals(null));
 
         // different types -> returns false
-        assertFalse(DESC_AMY.equals(5));
+        assertFalse(DESC_A.equals(5));
 
         // different values -> returns false
-        assertFalse(DESC_AMY.equals(DESC_BOB));
+        assertFalse(DESC_A.equals(DESC_B));
 
         // different name -> returns false
-        EditPersonDescriptor editedAmy = new EditPersonDescriptorBuilder(DESC_AMY)
-                .withCompany(VALID_COMPANY_BOB).build();
-        assertFalse(DESC_AMY.equals(editedAmy));
+        EditPersonDescriptor editedAmy = new EditPersonDescriptorBuilder(DESC_A)
+                .withCompany(VALID_COMPANY_B).build();
+        assertFalse(DESC_A.equals(editedAmy));
 
         // different role -> returns false
-        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withRole(VALID_ROLE_BOB).build();
-        assertFalse(DESC_AMY.equals(editedAmy));
+        editedAmy = new EditPersonDescriptorBuilder(DESC_A).withRole(VALID_ROLE_B).build();
+        assertFalse(DESC_A.equals(editedAmy));
 
         // different email -> returns false
-        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withCycle(VALID_CYCLE_BOB).build();
-        assertFalse(DESC_AMY.equals(editedAmy));
+        editedAmy = new EditPersonDescriptorBuilder(DESC_A).withCycle(VALID_CYCLE_B).build();
+        assertFalse(DESC_A.equals(editedAmy));
 
         // different status -> returns false
-        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withStatus(VALID_STATUS_BOB).build();
-        assertFalse(DESC_AMY.equals(editedAmy));
+        editedAmy = new EditPersonDescriptorBuilder(DESC_A).withStatus(VALID_STATUS_B).build();
+        assertFalse(DESC_A.equals(editedAmy));
 
         // different tags -> returns false
-        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withTags(VALID_TAG_HUSBAND).build();
-        assertFalse(DESC_AMY.equals(editedAmy));
+        editedAmy = new EditPersonDescriptorBuilder(DESC_A).withTags(VALID_TAG_HUSBAND).build();
+        assertFalse(DESC_A.equals(editedAmy));
     }
 
     @Test

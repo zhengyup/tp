@@ -1,13 +1,13 @@
 package seedu.letsgethired.testutil;
 
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_COMPANY_AMY;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_COMPANY_BOB;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_CYCLE_AMY;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_CYCLE_BOB;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_ROLE_AMY;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_ROLE_BOB;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_STATUS_AMY;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_STATUS_BOB;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_COMPANY_A;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_COMPANY_B;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_CYCLE_A;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_CYCLE_B;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_ROLE_A;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_ROLE_B;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_STATUS_A;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_STATUS_B;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 
@@ -54,12 +54,12 @@ public class TypicalInternApplications {
             .withCycle("Summer 2021").withStatus("chicago ave").build();
 
     // Manually added - Person's details found in {@code CommandTestUtil}
-    public static final InternApplication AMY = new InternApplicationBuilder().withCompany(VALID_COMPANY_AMY)
-            .withRole(VALID_ROLE_AMY)
-            .withCycle(VALID_CYCLE_AMY).withStatus(VALID_STATUS_AMY).withTags(VALID_TAG_FRIEND).build();
-    public static final InternApplication BOB = new InternApplicationBuilder().withCompany(VALID_COMPANY_BOB)
-            .withRole(VALID_ROLE_BOB)
-            .withCycle(VALID_CYCLE_BOB).withStatus(VALID_STATUS_BOB).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
+    public static final InternApplication AMY = new InternApplicationBuilder().withCompany(VALID_COMPANY_A)
+            .withRole(VALID_ROLE_A)
+            .withCycle(VALID_CYCLE_A).withStatus(VALID_STATUS_A).withTags(VALID_TAG_FRIEND).build();
+    public static final InternApplication BOB = new InternApplicationBuilder().withCompany(VALID_COMPANY_B)
+            .withRole(VALID_ROLE_B)
+            .withCycle(VALID_CYCLE_B).withStatus(VALID_STATUS_B).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
             .build();
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER

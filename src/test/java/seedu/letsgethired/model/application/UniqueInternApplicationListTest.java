@@ -3,7 +3,7 @@ package seedu.letsgethired.model.application;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_STATUS_BOB;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_STATUS_B;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.letsgethired.testutil.Assert.assertThrows;
 import static seedu.letsgethired.testutil.TypicalInternApplications.BOB;
@@ -43,7 +43,7 @@ public class UniqueInternApplicationListTest {
     public void contains_personWithSameIdentityFieldsInList_returnsTrue() {
         uniqueApplicationList.add(JANE_STREET);
         InternApplication editedAlice = new InternApplicationBuilder(JANE_STREET)
-                .withStatus(VALID_STATUS_BOB).withTags(VALID_TAG_HUSBAND)
+                .withStatus(VALID_STATUS_B).withTags(VALID_TAG_HUSBAND)
                 .build();
         assertTrue(uniqueApplicationList.contains(editedAlice));
     }
@@ -88,7 +88,7 @@ public class UniqueInternApplicationListTest {
     @Test
     public void setPerson_editedPersonHasSameIdentity_success() {
         uniqueApplicationList.add(JANE_STREET);
-        InternApplication editedAlice = new InternApplicationBuilder(JANE_STREET).withStatus(VALID_STATUS_BOB)
+        InternApplication editedAlice = new InternApplicationBuilder(JANE_STREET).withStatus(VALID_STATUS_B)
                 .withTags(VALID_TAG_HUSBAND)
                 .build();
         uniqueApplicationList.setApplication(JANE_STREET, editedAlice);

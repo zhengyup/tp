@@ -3,10 +3,10 @@ package seedu.letsgethired.model.application;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_COMPANY_BOB;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_CYCLE_BOB;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_ROLE_BOB;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_STATUS_BOB;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_COMPANY_B;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_CYCLE_B;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_ROLE_B;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_STATUS_B;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.letsgethired.testutil.Assert.assertThrows;
 import static seedu.letsgethired.testutil.TypicalInternApplications.BOB;
@@ -33,22 +33,22 @@ public class InternApplicationTest {
         assertFalse(JANE_STREET.isSameApplication(null));
 
         // same name, all other attributes different -> returns true
-        InternApplication editedAlice = new InternApplicationBuilder(JANE_STREET).withRole(VALID_ROLE_BOB)
-                .withCycle(VALID_CYCLE_BOB)
-                .withStatus(VALID_STATUS_BOB).withTags(VALID_TAG_HUSBAND).build();
+        InternApplication editedAlice = new InternApplicationBuilder(JANE_STREET).withRole(VALID_ROLE_B)
+                .withCycle(VALID_CYCLE_B)
+                .withStatus(VALID_STATUS_B).withTags(VALID_TAG_HUSBAND).build();
         assertTrue(JANE_STREET.isSameApplication(editedAlice));
 
         // different name, all other attributes same -> returns false
-        editedAlice = new InternApplicationBuilder(JANE_STREET).withCompany(VALID_COMPANY_BOB).build();
+        editedAlice = new InternApplicationBuilder(JANE_STREET).withCompany(VALID_COMPANY_B).build();
         assertFalse(JANE_STREET.isSameApplication(editedAlice));
 
         // name differs in case, all other attributes same -> returns false
         InternApplication editedBob = new InternApplicationBuilder(BOB)
-                .withCompany(VALID_COMPANY_BOB.toLowerCase()).build();
+                .withCompany(VALID_COMPANY_B.toLowerCase()).build();
         assertFalse(BOB.isSameApplication(editedBob));
 
         // name has trailing spaces, all other attributes same -> returns false
-        String nameWithTrailingSpaces = VALID_COMPANY_BOB + " ";
+        String nameWithTrailingSpaces = VALID_COMPANY_B + " ";
         editedBob = new InternApplicationBuilder(BOB).withCompany(nameWithTrailingSpaces).build();
         assertFalse(BOB.isSameApplication(editedBob));
     }
@@ -72,20 +72,20 @@ public class InternApplicationTest {
         assertFalse(JANE_STREET.equals(BOB));
 
         // different name -> returns false
-        InternApplication editedAlice = new InternApplicationBuilder(JANE_STREET).withCompany(VALID_COMPANY_BOB)
+        InternApplication editedAlice = new InternApplicationBuilder(JANE_STREET).withCompany(VALID_COMPANY_B)
                 .build();
         assertFalse(JANE_STREET.equals(editedAlice));
 
         // different role -> returns false
-        editedAlice = new InternApplicationBuilder(JANE_STREET).withRole(VALID_ROLE_BOB).build();
+        editedAlice = new InternApplicationBuilder(JANE_STREET).withRole(VALID_ROLE_B).build();
         assertFalse(JANE_STREET.equals(editedAlice));
 
         // different email -> returns false
-        editedAlice = new InternApplicationBuilder(JANE_STREET).withCycle(VALID_CYCLE_BOB).build();
+        editedAlice = new InternApplicationBuilder(JANE_STREET).withCycle(VALID_CYCLE_B).build();
         assertFalse(JANE_STREET.equals(editedAlice));
 
         // different status -> returns false
-        editedAlice = new InternApplicationBuilder(JANE_STREET).withStatus(VALID_STATUS_BOB).build();
+        editedAlice = new InternApplicationBuilder(JANE_STREET).withStatus(VALID_STATUS_B).build();
         assertFalse(JANE_STREET.equals(editedAlice));
 
         // different tags -> returns false

@@ -4,9 +4,9 @@ import seedu.letsgethired.model.InternTracker;
 import seedu.letsgethired.model.application.InternApplication;
 
 /**
- * A utility class to help with building Interntracker objects.
+ * A utility class to help with building InternTracker objects.
  * Example usage: <br>
- *     {@code InternTracker ab = new InternTrackerBuilder().withPerson("John", "Doe").build();}
+ *     {@code InternTracker ab = new InternTrackerBuilder().withInternApplication(internApplication).build();}
  */
 public class InternTrackerBuilder {
 
@@ -21,9 +21,9 @@ public class InternTrackerBuilder {
     }
 
     /**
-     * Adds a new {@code Person} to the {@code InternTracker} that we are building.
+     * Adds a new {@code InternApplication} to the {@code InternTracker} that we are building.
      */
-    public InternTrackerBuilder withPerson(InternApplication internApplication) {
+    public InternTrackerBuilder withInternApplication(InternApplication internApplication) {
         internTracker.addApplication(internApplication);
         return this;
     }

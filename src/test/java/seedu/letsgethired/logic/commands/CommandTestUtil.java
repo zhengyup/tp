@@ -26,45 +26,44 @@ import seedu.letsgethired.testutil.EditPersonDescriptorBuilder;
  */
 public class CommandTestUtil {
 
-    public static final String VALID_COMPANY_AMY = "Citadel";
-    public static final String VALID_COMPANY_BOB = "Accenture";
-    public static final String VALID_ROLE_AMY = "InternAmy";
-    public static final String VALID_ROLE_BOB = "Intern";
-    public static final String VALID_CYCLE_AMY = "Summer 2024";
-    public static final String VALID_CYCLE_BOB = "Summer 2023";
-    public static final String VALID_STATUS_AMY = "Pending";
-    public static final String VALID_STATUS_BOB = "Rejected";
+    public static final String VALID_COMPANY_A = "Citadel";
+    public static final String VALID_COMPANY_B = "Accenture";
+    public static final String VALID_ROLE_A = "Intern A";
+    public static final String VALID_ROLE_B = "Intern B";
+    public static final String VALID_CYCLE_A = "Summer 2024";
+    public static final String VALID_CYCLE_B = "Winter 2023";
+    public static final String VALID_STATUS_A = "Pending";
+    public static final String VALID_STATUS_B = "Rejected";
     public static final String VALID_TAG_HUSBAND = "husband";
     public static final String VALID_TAG_FRIEND = "friend";
-
-    public static final String NAME_DESC_AMY = " " + PREFIX_COMPANY + VALID_COMPANY_AMY;
-    public static final String NAME_DESC_BOB = " " + PREFIX_COMPANY + VALID_COMPANY_BOB;
-    public static final String ROLE_DESC_AMY = " " + PREFIX_ROLE + VALID_ROLE_AMY;
-    public static final String ROLE_DESC_BOB = " " + PREFIX_ROLE + VALID_ROLE_BOB;
-    public static final String CYCLE_DESC_AMY = " " + PREFIX_CYCLE + VALID_CYCLE_AMY;
-    public static final String CYCLE_DESC_BOB = " " + PREFIX_CYCLE + VALID_CYCLE_BOB;
-    public static final String STATUS_DESC_AMY = " " + PREFIX_STATUS + VALID_STATUS_AMY;
-    public static final String STATUS_DESC_BOB = " " + PREFIX_STATUS + VALID_STATUS_BOB;
+    public static final String COMPANY_DESC_A = " " + PREFIX_COMPANY + VALID_COMPANY_A;
+    public static final String COMPANY_DESC_B = " " + PREFIX_COMPANY + VALID_COMPANY_B;
+    public static final String ROLE_DESC_A = " " + PREFIX_ROLE + VALID_ROLE_A;
+    public static final String ROLE_DESC_B = " " + PREFIX_ROLE + VALID_ROLE_B;
+    public static final String CYCLE_DESC_A = " " + PREFIX_CYCLE + VALID_CYCLE_A;
+    public static final String CYCLE_DESC_B = " " + PREFIX_CYCLE + VALID_CYCLE_B;
+    public static final String STATUS_DESC_A = " " + PREFIX_STATUS + VALID_STATUS_A;
+    public static final String STATUS_DESC_B = " " + PREFIX_STATUS + VALID_STATUS_B;
     public static final String TAG_DESC_FRIEND = " " + PREFIX_TAG + VALID_TAG_FRIEND;
     public static final String TAG_DESC_HUSBAND = " " + PREFIX_TAG + VALID_TAG_HUSBAND;
 
-    public static final String INVALID_NAME_DESC = " " + PREFIX_COMPANY + "James&"; // '&' not allowed in names
-    public static final String INVALID_ROLE_DESC = " " + PREFIX_ROLE + " "; // Blank is not allowed in roles
+    public static final String INVALID_COMPANY_DESC = " " + PREFIX_COMPANY + "Jane Street&"; // '&' not allowed in company names
+    public static final String INVALID_ROLE_DESC = " " + PREFIX_ROLE + " "; // empty string is not allowed in roles
     public static final String INVALID_CYCLE_DESC = " " + PREFIX_CYCLE + "summer!2023"; // '!' not allowed in cycles
-    public static final String INVALID_STATUS_DESC = " " + PREFIX_STATUS; // empty string not allowed for status
+    public static final String INVALID_STATUS_DESC = " " + PREFIX_STATUS; // empty string not allowed in status
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "hubby*"; // '*' not allowed in tags
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
 
-    public static final EditCommand.EditPersonDescriptor DESC_AMY;
-    public static final EditCommand.EditPersonDescriptor DESC_BOB;
+    public static final EditCommand.EditPersonDescriptor DESC_A;
+    public static final EditCommand.EditPersonDescriptor DESC_B;
 
     static {
-        DESC_AMY = new EditPersonDescriptorBuilder().withCompany(VALID_COMPANY_AMY).withRole(VALID_ROLE_AMY)
-                .withCycle(VALID_CYCLE_AMY).withStatus(VALID_STATUS_AMY).withTags(VALID_TAG_FRIEND).build();
-        DESC_BOB = new EditPersonDescriptorBuilder().withCompany(VALID_COMPANY_BOB).withRole(VALID_ROLE_BOB)
-                .withCycle(VALID_CYCLE_BOB).withStatus(VALID_STATUS_BOB).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
+        DESC_A = new EditPersonDescriptorBuilder().withCompany(VALID_COMPANY_A).withRole(VALID_ROLE_A)
+                .withCycle(VALID_CYCLE_A).withStatus(VALID_STATUS_A).withTags(VALID_TAG_FRIEND).build();
+        DESC_B = new EditPersonDescriptorBuilder().withCompany(VALID_COMPANY_B).withRole(VALID_ROLE_B)
+                .withCycle(VALID_CYCLE_B).withStatus(VALID_STATUS_B).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
                 .build();
     }
 

@@ -95,7 +95,7 @@ public class ModelManagerTest {
 
     @Test
     public void equals() {
-        InternTracker internTracker = new InternTrackerBuilder().withPerson(JANE_STREET).withPerson(OPTIVER).build();
+        InternTracker internTracker = new InternTrackerBuilder().withInternApplication(JANE_STREET).withInternApplication(OPTIVER).build();
         InternTracker differentInternTracker = new InternTracker();
         UserPrefs userPrefs = new UserPrefs();
 
