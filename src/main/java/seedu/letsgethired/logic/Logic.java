@@ -30,8 +30,8 @@ public interface Logic {
      */
     ReadOnlyInternTracker getInternTracker();
 
-    /** Returns an unmodifiable view of the filtered list of persons */
-    ObservableList<InternApplication> getFilteredPersonList();
+    /** Returns an unmodifiable view of the filtered list of intern applications */
+    ObservableList<InternApplication> getFilteredInternApplicationList();
 
     /**
      * Returns the user prefs' intern tracker file path.

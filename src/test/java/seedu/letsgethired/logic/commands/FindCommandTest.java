@@ -3,7 +3,7 @@ package seedu.letsgethired.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.letsgethired.logic.Messages.MESSAGE_PERSONS_LISTED_OVERVIEW;
+import static seedu.letsgethired.logic.Messages.MESSAGE_INTERN_APPLICATIONS_LISTED_OVERVIEW;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.letsgethired.testutil.TypicalInternApplications.BYTEDANCE;
 import static seedu.letsgethired.testutil.TypicalInternApplications.GOOGLE;
@@ -50,13 +50,13 @@ public class FindCommandTest {
         // null -> returns false
         assertFalse(findFirstCommand.equals(null));
 
-        // different person -> returns false
+        // different intern application -> returns false
         assertFalse(findFirstCommand.equals(findSecondCommand));
     }
 
     @Test
-    public void execute_zeroKeywords_noPersonFound() {
-        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 0);
+    public void execute_zeroKeywords_noInternApplicationFound() {
+        String expectedMessage = String.format(MESSAGE_INTERN_APPLICATIONS_LISTED_OVERVIEW, 0);
         CompanyContainsKeywordsPredicate predicate = preparePredicate(" ");
         FindCommand command = new FindCommand(predicate);
         expectedModel.updateFilteredInternApplicationList(predicate);
@@ -65,8 +65,8 @@ public class FindCommandTest {
     }
 
     @Test
-    public void execute_multipleKeywords_multiplePersonsFound() {
-        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 3);
+    public void execute_multipleKeywords_multipleInternApplicationsFound() {
+        String expectedMessage = String.format(MESSAGE_INTERN_APPLICATIONS_LISTED_OVERVIEW, 3);
         CompanyContainsKeywordsPredicate predicate = preparePredicate("Bytedance Google Grab");
         FindCommand command = new FindCommand(predicate);
         expectedModel.updateFilteredInternApplicationList(predicate);

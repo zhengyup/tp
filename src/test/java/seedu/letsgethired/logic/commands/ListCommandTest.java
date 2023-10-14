@@ -1,7 +1,7 @@
 package seedu.letsgethired.logic.commands;
 
 import static seedu.letsgethired.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.showPersonAtIndex;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.showInternApplicationAtIndex;
 import static seedu.letsgethired.testutil.TypicalIndexes.INDEX_FIRST_APPLICATION;
 import static seedu.letsgethired.testutil.TypicalInternApplications.getTypicalInternTracker;
 
@@ -33,7 +33,7 @@ public class ListCommandTest {
 
     @Test
     public void execute_listIsFiltered_showsEverything() {
-        showPersonAtIndex(model, INDEX_FIRST_APPLICATION);
+        showInternApplicationAtIndex(model, INDEX_FIRST_APPLICATION);
         assertCommandSuccess(new ListCommand(), model, ListCommand.MESSAGE_SUCCESS, expectedModel);
     }
 }

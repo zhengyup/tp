@@ -10,7 +10,7 @@ import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_ROLE_B;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.showPersonAtIndex;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.showInternApplicationAtIndex;
 import static seedu.letsgethired.testutil.TypicalIndexes.INDEX_FIRST_APPLICATION;
 import static seedu.letsgethired.testutil.TypicalIndexes.INDEX_SECOND_APPLICATION;
 import static seedu.letsgethired.testutil.TypicalInternApplications.getTypicalInternTracker;
@@ -52,18 +52,18 @@ public class EditCommandTest {
 
     @Test
     public void execute_someFieldsSpecifiedUnfilteredList_success() {
-        Index indexLastPerson = Index.fromOneBased(model.getFilteredInternApplicationList().size());
+        Index indexLastInternApplication = Index.fromOneBased(model.getFilteredInternApplicationList().size());
         InternApplication lastInternApplication = model.getFilteredInternApplicationList()
-                .get(indexLastPerson.getZeroBased());
+                .get(indexLastInternApplication.getZeroBased());
 
-        InternApplicationBuilder personInList = new InternApplicationBuilder(lastInternApplication);
-        InternApplication editedInternApplication = personInList.withCompany(VALID_COMPANY_B)
+        InternApplicationBuilder internApplicationInList = new InternApplicationBuilder(lastInternApplication);
+        InternApplication editedInternApplication = internApplicationInList.withCompany(VALID_COMPANY_B)
                 .withRole(VALID_ROLE_B)
                 .withTags(VALID_TAG_HUSBAND).build();
 
         EditInternApplicationDescriptor descriptor = new EditInternApplicationDescriptorBuilder().withCompany(VALID_COMPANY_B)
                 .withRole(VALID_ROLE_B).withTags(VALID_TAG_HUSBAND).build();
-        EditCommand editCommand = new EditCommand(indexLastPerson, descriptor);
+        EditCommand editCommand = new EditCommand(indexLastInternApplication, descriptor);
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_INTERN_APPLICATION_SUCCESS,
                 Messages.format(editedInternApplication));
@@ -90,7 +90,7 @@ public class EditCommandTest {
 
     @Test
     public void execute_filteredList_success() {
-        showPersonAtIndex(model, INDEX_FIRST_APPLICATION);
+        showInternApplicationAtIndex(model, INDEX_FIRST_APPLICATION);
 
         InternApplication internApplicationInFilteredList = model.getFilteredInternApplicationList()
                 .get(INDEX_FIRST_APPLICATION.getZeroBased());
@@ -109,7 +109,7 @@ public class EditCommandTest {
     }
 
     @Test
-    public void execute_duplicatePersonUnfilteredList_failure() {
+    public void execute_duplicateInternApplicationUnfilteredList_failure() {
         InternApplication firstInternApplication = model.getFilteredInternApplicationList()
                 .get(INDEX_FIRST_APPLICATION.getZeroBased());
         EditInternApplicationDescriptor descriptor = new EditInternApplicationDescriptorBuilder(firstInternApplication).build();
@@ -119,10 +119,10 @@ public class EditCommandTest {
     }
 
     @Test
-    public void execute_duplicatePersonFilteredList_failure() {
-        showPersonAtIndex(model, INDEX_FIRST_APPLICATION);
+    public void execute_duplicateInternApplicationFilteredList_failure() {
+        showInternApplicationAtIndex(model, INDEX_FIRST_APPLICATION);
 
-        // edit person in filtered list into a duplicate in intern tracker
+        // edit intern application in filtered list into a duplicate in intern tracker
         InternApplication internApplicationInList = model.getInternTracker().getApplicationList()
                 .get(INDEX_SECOND_APPLICATION.getZeroBased());
         EditCommand editCommand = new EditCommand(INDEX_FIRST_APPLICATION,
@@ -132,7 +132,7 @@ public class EditCommandTest {
     }
 
     @Test
-    public void execute_invalidPersonIndexUnfilteredList_failure() {
+    public void execute_invalidInternApplicationIndexUnfilteredList_failure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredInternApplicationList().size() + 1);
         EditInternApplicationDescriptor descriptor = new EditInternApplicationDescriptorBuilder().withCompany(VALID_COMPANY_B).build();
         EditCommand editCommand = new EditCommand(outOfBoundIndex, descriptor);
@@ -145,8 +145,8 @@ public class EditCommandTest {
      * but smaller than size of intern tracker
      */
     @Test
-    public void execute_invalidPersonIndexFilteredList_failure() {
-        showPersonAtIndex(model, INDEX_FIRST_APPLICATION);
+    public void execute_invalidInternApplicationIndexFilteredList_failure() {
+        showInternApplicationAtIndex(model, INDEX_FIRST_APPLICATION);
         Index outOfBoundIndex = INDEX_SECOND_APPLICATION;
         // ensures that outOfBoundIndex is still in bounds of intern tracker list
         assertTrue(outOfBoundIndex.getZeroBased() < model.getInternTracker().getApplicationList().size());

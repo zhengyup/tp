@@ -25,7 +25,7 @@ public class InternApplicationTest {
     }
 
     @Test
-    public void isSamePerson() {
+    public void isSameInternApplication() {
         // same object -> returns true
         assertTrue(JANE_STREET.isSameApplication(JANE_STREET));
 
@@ -68,7 +68,7 @@ public class InternApplicationTest {
         // different type -> returns false
         assertFalse(JANE_STREET.equals(5));
 
-        // different person -> returns false
+        // different intern application -> returns false
         assertFalse(JANE_STREET.equals(B));
 
         // different name -> returns false

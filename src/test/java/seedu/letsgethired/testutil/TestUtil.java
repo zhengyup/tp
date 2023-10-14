@@ -33,23 +33,23 @@ public class TestUtil {
     }
 
     /**
-     * Returns the middle index of the person in the {@code model}'s person list.
+     * Returns the middle index of the intern application in the {@code model}'s intern application list.
      */
     public static Index getMidIndex(Model model) {
         return Index.fromOneBased(model.getFilteredInternApplicationList().size() / 2);
     }
 
     /**
-     * Returns the last index of the person in the {@code model}'s person list.
+     * Returns the last index of the intern application in the {@code model}'s intern application list.
      */
     public static Index getLastIndex(Model model) {
         return Index.fromOneBased(model.getFilteredInternApplicationList().size());
     }
 
     /**
-     * Returns the person in the {@code model}'s person list at {@code index}.
+     * Returns the intern application in the {@code model}'s intern application list at {@code index}.
      */
-    public static InternApplication getPerson(Model model, Index index) {
+    public static InternApplication getInternApplication(Model model, Index index) {
         return model.getFilteredInternApplicationList().get(index.getZeroBased());
     }
 }

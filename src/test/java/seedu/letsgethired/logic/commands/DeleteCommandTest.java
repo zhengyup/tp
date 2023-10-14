@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.showPersonAtIndex;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.showInternApplicationAtIndex;
 import static seedu.letsgethired.testutil.TypicalIndexes.INDEX_FIRST_APPLICATION;
 import static seedu.letsgethired.testutil.TypicalIndexes.INDEX_SECOND_APPLICATION;
 import static seedu.letsgethired.testutil.TypicalInternApplications.getTypicalInternTracker;
@@ -33,7 +33,7 @@ public class DeleteCommandTest {
                 .getZeroBased());
         DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_APPLICATION);
 
-        String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS,
+        String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_INTERN_APPLICATION_SUCCESS,
                 Messages.format(internApplicationToDelete));
 
         ModelManager expectedModel = new ModelManager(model.getInternTracker(), new UserPrefs());
@@ -52,25 +52,25 @@ public class DeleteCommandTest {
 
     @Test
     public void execute_validIndexFilteredList_success() {
-        showPersonAtIndex(model, INDEX_FIRST_APPLICATION);
+        showInternApplicationAtIndex(model, INDEX_FIRST_APPLICATION);
 
         InternApplication internApplicationToDelete = model.getFilteredInternApplicationList().get(INDEX_FIRST_APPLICATION
                 .getZeroBased());
         DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_APPLICATION);
 
-        String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS,
+        String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_INTERN_APPLICATION_SUCCESS,
                 Messages.format(internApplicationToDelete));
 
         Model expectedModel = new ModelManager(model.getInternTracker(), new UserPrefs());
         expectedModel.deleteInternApplication(internApplicationToDelete);
-        showNoPerson(expectedModel);
+        showNoInternApplication(expectedModel);
 
         assertCommandSuccess(deleteCommand, model, expectedMessage, expectedModel);
     }
 
     @Test
     public void execute_invalidIndexFilteredList_throwsCommandException() {
-        showPersonAtIndex(model, INDEX_FIRST_APPLICATION);
+        showInternApplicationAtIndex(model, INDEX_FIRST_APPLICATION);
 
         Index outOfBoundIndex = INDEX_SECOND_APPLICATION;
         // ensures that outOfBoundIndex is still in bounds of intern tracker list
@@ -99,7 +99,7 @@ public class DeleteCommandTest {
         // null -> returns false
         assertFalse(deleteFirstCommand.equals(null));
 
-        // different person -> returns false
+        // different intern application -> returns false
         assertFalse(deleteFirstCommand.equals(deleteSecondCommand));
     }
 
@@ -114,7 +114,7 @@ public class DeleteCommandTest {
     /**
      * Updates {@code model}'s filtered list to show no one.
      */
-    private void showNoPerson(Model model) {
+    private void showNoInternApplication(Model model) {
         model.updateFilteredInternApplicationList(p -> false);
 
         assertTrue(model.getFilteredInternApplicationList().isEmpty());

@@ -24,23 +24,23 @@ public class UniqueInternApplicationListTest {
     private final UniqueApplicationList uniqueApplicationList = new UniqueApplicationList();
 
     @Test
-    public void contains_nullPerson_throwsNullPointerException() {
+    public void contains_nullInternApplication_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> uniqueApplicationList.contains(null));
     }
 
     @Test
-    public void contains_personNotInList_returnsFalse() {
+    public void contains_internApplicationNotInList_returnsFalse() {
         assertFalse(uniqueApplicationList.contains(JANE_STREET));
     }
 
     @Test
-    public void contains_personInList_returnsTrue() {
+    public void contains_internApplicationInList_returnsTrue() {
         uniqueApplicationList.add(JANE_STREET);
         assertTrue(uniqueApplicationList.contains(JANE_STREET));
     }
 
     @Test
-    public void contains_personWithSameIdentityFieldsInList_returnsTrue() {
+    public void contains_internApplicationWithSameIdentityFieldsInList_returnsTrue() {
         uniqueApplicationList.add(JANE_STREET);
         InternApplication editedAlice = new InternApplicationBuilder(JANE_STREET)
                 .withStatus(VALID_STATUS_B).withTags(VALID_TAG_HUSBAND)
@@ -49,35 +49,35 @@ public class UniqueInternApplicationListTest {
     }
 
     @Test
-    public void add_nullPerson_throwsNullPointerException() {
+    public void add_nullInternApplication_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> uniqueApplicationList.add(null));
     }
 
     @Test
-    public void add_duplicatePerson_throwsDuplicatePersonException() {
+    public void add_duplicateInternApplication_throwsDuplicateInternApplicationException() {
         uniqueApplicationList.add(JANE_STREET);
         assertThrows(DuplicateApplicationException.class, () -> uniqueApplicationList.add(JANE_STREET));
     }
 
     @Test
-    public void setPerson_nullTargetPerson_throwsNullPointerException() {
+    public void setInternApplication_nullTargetInternApplication_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> uniqueApplicationList.setApplication(null, JANE_STREET));
     }
 
     @Test
-    public void setPerson_nullEditedPerson_throwsNullPointerException() {
+    public void setInternApplication_nullEditedInternApplication_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> uniqueApplicationList.setApplication(JANE_STREET,
                 null));
     }
 
     @Test
-    public void setPerson_targetPersonNotInList_throwsPersonNotFoundException() {
+    public void setInternApplication_targetInternApplicationNotInList_throwsInternApplicationNotFoundException() {
         assertThrows(ApplicationNotFoundException.class, () -> uniqueApplicationList
                 .setApplication(JANE_STREET, JANE_STREET));
     }
 
     @Test
-    public void setPerson_editedPersonIsSamePerson_success() {
+    public void setInternApplication_editedInternApplicationIsSameInternApplication_success() {
         uniqueApplicationList.add(JANE_STREET);
         uniqueApplicationList.setApplication(JANE_STREET, JANE_STREET);
         UniqueApplicationList expectedUniqueApplicationList = new UniqueApplicationList();
@@ -86,7 +86,7 @@ public class UniqueInternApplicationListTest {
     }
 
     @Test
-    public void setPerson_editedPersonHasSameIdentity_success() {
+    public void setInternApplication_editedInternApplicationHasSameIdentity_success() {
         uniqueApplicationList.add(JANE_STREET);
         InternApplication editedAlice = new InternApplicationBuilder(JANE_STREET).withStatus(VALID_STATUS_B)
                 .withTags(VALID_TAG_HUSBAND)
@@ -98,7 +98,7 @@ public class UniqueInternApplicationListTest {
     }
 
     @Test
-    public void setPerson_editedPersonHasDifferentIdentity_success() {
+    public void setInternApplication_editedInternApplicationHasDifferentIdentity_success() {
         uniqueApplicationList.add(JANE_STREET);
         uniqueApplicationList.setApplication(JANE_STREET, B);
         UniqueApplicationList expectedUniqueApplicationList = new UniqueApplicationList();
@@ -107,24 +107,24 @@ public class UniqueInternApplicationListTest {
     }
 
     @Test
-    public void setPerson_editedPersonHasNonUniqueIdentity_throwsDuplicatePersonException() {
+    public void setInternApplication_editedInternApplicationHasNonUniqueIdentity_throwsDuplicateInternApplicationException() {
         uniqueApplicationList.add(JANE_STREET);
         uniqueApplicationList.add(B);
         assertThrows(DuplicateApplicationException.class, () -> uniqueApplicationList.setApplication(JANE_STREET, B));
     }
 
     @Test
-    public void remove_nullPerson_throwsNullPointerException() {
+    public void remove_nullInternApplication_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> uniqueApplicationList.remove(null));
     }
 
     @Test
-    public void remove_personDoesNotExist_throwsPersonNotFoundException() {
+    public void remove_internApplicationDoesNotExist_throwsInternApplicationNotFoundException() {
         assertThrows(ApplicationNotFoundException.class, () -> uniqueApplicationList.remove(JANE_STREET));
     }
 
     @Test
-    public void remove_existingPerson_removesPerson() {
+    public void remove_existingInternApplication_removesInternApplication() {
         uniqueApplicationList.add(JANE_STREET);
         uniqueApplicationList.remove(JANE_STREET);
         UniqueApplicationList expectedUniqueApplicationList = new UniqueApplicationList();
@@ -132,13 +132,13 @@ public class UniqueInternApplicationListTest {
     }
 
     @Test
-    public void setPersons_nullUniquePersonList_throwsNullPointerException() {
+    public void setInternApplications_nullUniqueInternApplicationList_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> uniqueApplicationList
                 .setApplications((UniqueApplicationList) null));
     }
 
     @Test
-    public void setPersons_uniquePersonList_replacesOwnListWithProvidedUniquePersonList() {
+    public void setInternApplications_uniqueInternApplicationList_replacesOwnListWithProvidedUniqueInternApplicationList() {
         uniqueApplicationList.add(JANE_STREET);
         UniqueApplicationList expectedUniqueApplicationList = new UniqueApplicationList();
         expectedUniqueApplicationList.add(B);
@@ -147,13 +147,13 @@ public class UniqueInternApplicationListTest {
     }
 
     @Test
-    public void setPersons_nullList_throwsNullPointerException() {
+    public void setInternApplications_nullList_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> uniqueApplicationList
                 .setApplications((List<InternApplication>) null));
     }
 
     @Test
-    public void setPersons_list_replacesOwnListWithProvidedList() {
+    public void setInternApplications_list_replacesOwnListWithProvidedList() {
         uniqueApplicationList.add(JANE_STREET);
         List<InternApplication> internApplicationList = Collections.singletonList(B);
         uniqueApplicationList.setApplications(internApplicationList);
@@ -163,7 +163,7 @@ public class UniqueInternApplicationListTest {
     }
 
     @Test
-    public void setPersons_listWithDuplicatePersons_throwsDuplicatePersonException() {
+    public void setInternApplications_listWithDuplicateInternApplications_throwsDuplicateInternApplicationException() {
         List<InternApplication> listWithDuplicateInternApplications = Arrays.asList(JANE_STREET, JANE_STREET);
         assertThrows(DuplicateApplicationException.class, () -> uniqueApplicationList
                 .setApplications(listWithDuplicateInternApplications));

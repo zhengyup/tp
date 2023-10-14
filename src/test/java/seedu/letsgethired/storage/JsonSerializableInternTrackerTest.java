@@ -16,29 +16,29 @@ import seedu.letsgethired.testutil.TypicalInternApplications;
 public class JsonSerializableInternTrackerTest {
 
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonSerializableInternTrackerTest");
-    private static final Path TYPICAL_PERSONS_FILE = TEST_DATA_FOLDER.resolve("typicalInternApplicationInternTracker.json");
-    private static final Path INVALID_PERSON_FILE = TEST_DATA_FOLDER.resolve("invalidInternApplicationInternTracker.json");
-    private static final Path DUPLICATE_PERSON_FILE = TEST_DATA_FOLDER.resolve("duplicateInternApplicationInternTracker.json");
+    private static final Path TYPICAL_INTERN_APPLICATIONS_FILE = TEST_DATA_FOLDER.resolve("typicalInternApplicationInternTracker.json");
+    private static final Path INVALID_INTERN_APPLICATION_FILE = TEST_DATA_FOLDER.resolve("invalidInternApplicationInternTracker.json");
+    private static final Path DUPLICATE_INTERN_APPLICATION_FILE = TEST_DATA_FOLDER.resolve("duplicateInternApplicationInternTracker.json");
 
     @Test
-    public void toModelType_typicalPersonsFile_success() throws Exception {
-        JsonSerializableInternTracker dataFromFile = JsonUtil.readJsonFile(TYPICAL_PERSONS_FILE,
+    public void toModelType_typicalInternApplicationsFile_success() throws Exception {
+        JsonSerializableInternTracker dataFromFile = JsonUtil.readJsonFile(TYPICAL_INTERN_APPLICATIONS_FILE,
                 JsonSerializableInternTracker.class).get();
         InternTracker internTrackerFromFile = dataFromFile.toModelType();
-        InternTracker typicalPersonsInternTracker = TypicalInternApplications.getTypicalInternTracker();
-        assertEquals(internTrackerFromFile, typicalPersonsInternTracker);
+        InternTracker typicalInternApplicationsInternTracker = TypicalInternApplications.getTypicalInternTracker();
+        assertEquals(internTrackerFromFile, typicalInternApplicationsInternTracker);
     }
 
     @Test
-    public void toModelType_invalidPersonFile_throwsIllegalValueException() throws Exception {
-        JsonSerializableInternTracker dataFromFile = JsonUtil.readJsonFile(INVALID_PERSON_FILE,
+    public void toModelType_invalidInternApplicationFile_throwsIllegalValueException() throws Exception {
+        JsonSerializableInternTracker dataFromFile = JsonUtil.readJsonFile(INVALID_INTERN_APPLICATION_FILE,
                 JsonSerializableInternTracker.class).get();
         assertThrows(IllegalValueException.class, dataFromFile::toModelType);
     }
 
     @Test
-    public void toModelType_duplicatePersons_throwsIllegalValueException() throws Exception {
-        JsonSerializableInternTracker dataFromFile = JsonUtil.readJsonFile(DUPLICATE_PERSON_FILE,
+    public void toModelType_duplicateInternApplications_throwsIllegalValueException() throws Exception {
+        JsonSerializableInternTracker dataFromFile = JsonUtil.readJsonFile(DUPLICATE_INTERN_APPLICATION_FILE,
                 JsonSerializableInternTracker.class).get();
         assertThrows(IllegalValueException.class, JsonSerializableInternTracker.MESSAGE_DUPLICATE_INTERN_APPLICATION,
                 dataFromFile::toModelType);

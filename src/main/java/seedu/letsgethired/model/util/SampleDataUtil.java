@@ -17,26 +17,26 @@ import seedu.letsgethired.model.tag.Tag;
  * Contains utility methods for populating {@code InternTracker} with sample data.
  */
 public class SampleDataUtil {
-    public static InternApplication[] getSamplePersons() {
+    public static InternApplication[] getSampleInternApplications() {
         return new InternApplication[] {
-            new InternApplication(new Company("Alex Yeoh"), new Role("DevOps"), new Cycle("Summer 2024"),
+            new InternApplication(new Company("Apple"), new Role("DevOps"), new Cycle("Summer 2024"),
                     new Status("Pending"), getTagSet("friends")),
-            new InternApplication(new Company("Bernice Yu"), new Role("Systems Integrator"), new Cycle("Summer 2023"),
+            new InternApplication(new Company("Bytedance"), new Role("Systems Integrator"), new Cycle("Summer 2023"),
                     new Status("Rejected"), getTagSet("colleagues", "friends")),
-            new InternApplication(new Company("Charlotte Oliveiro"), new Role("Jobless"),
+            new InternApplication(new Company("Grab"), new Role("Data intern"),
                     new Cycle("Summer 2103"), new Status("Pending"),
                     getTagSet("neighbours")),
-            new InternApplication(new Company("David Li"), new Role("SWE"), new Cycle("Off-cycle 2024"),
+            new InternApplication(new Company("Shoppee"), new Role("SWE"), new Cycle("Off-cycle 2024"),
                     new Status("Rejected"), getTagSet("family")),
-            new InternApplication(new Company("Irfan Ibrahim"), new Role("SWE"), new Cycle("Winter 2021"),
+            new InternApplication(new Company("Stripe"), new Role("SWE"), new Cycle("Winter 2021"),
                     new Status("Pending"), getTagSet("classmates")),
-            new InternApplication(new Company("Roy Balakrishnan"), new Role("Economist"), new Cycle("Summer 2022"),
+            new InternApplication(new Company("Jane Street"), new Role("Economist"), new Cycle("Summer 2022"),
                     new Status("Pending"), getTagSet("colleagues"))};
     }
 
     public static ReadOnlyInternTracker getSampleInternTracker() {
         InternTracker sampleAb = new InternTracker();
-        for (InternApplication sampleInternApplication : getSamplePersons()) {
+        for (InternApplication sampleInternApplication : getSampleInternApplications()) {
             sampleAb.addApplication(sampleInternApplication);
         }
         return sampleAb;

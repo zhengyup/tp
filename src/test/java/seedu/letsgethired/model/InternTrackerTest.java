@@ -56,23 +56,23 @@ public class InternTrackerTest {
     }
 
     @Test
-    public void hasPerson_nullPerson_throwsNullPointerException() {
+    public void hasInternApplication_nullInternApplication_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> internTracker.hasApplication(null));
     }
 
     @Test
-    public void hasPerson_personNotInInternTracker_returnsFalse() {
+    public void hasInternApplication_internApplicationNotInInternTracker_returnsFalse() {
         assertFalse(internTracker.hasApplication(JANE_STREET));
     }
 
     @Test
-    public void hasPerson_personInInternTracker_returnsTrue() {
+    public void hasInternApplication_internApplicationInInternTracker_returnsTrue() {
         internTracker.addApplication(JANE_STREET);
         assertTrue(internTracker.hasApplication(JANE_STREET));
     }
 
     @Test
-    public void hasPerson_personWithSameIdentityFieldsInInternTracker_returnsTrue() {
+    public void hasInternApplication_internApplicationWithSameIdentityFieldsInInternTracker_returnsTrue() {
         internTracker.addApplication(JANE_STREET);
         InternApplication editedAlice = new InternApplicationBuilder(JANE_STREET).withStatus(VALID_STATUS_B)
                 .withTags(VALID_TAG_HUSBAND)
@@ -81,7 +81,7 @@ public class InternTrackerTest {
     }
 
     @Test
-    public void getPersonList_modifyList_throwsUnsupportedOperationException() {
+    public void getInternApplicationList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, () -> internTracker.getApplicationList().remove(0));
     }
 
@@ -93,7 +93,7 @@ public class InternTrackerTest {
     }
 
     /**
-     * A stub ReadOnlyInternTracker whose persons list can violate interface constraints.
+     * A stub ReadOnlyInternTracker whose intern applications list can violate interface constraints.
      */
     private static class InternTrackerStub implements ReadOnlyInternTracker {
         private final ObservableList<InternApplication> internApplications = FXCollections.observableArrayList();

@@ -6,13 +6,13 @@ import static seedu.letsgethired.model.Model.PREDICATE_SHOW_ALL_APPLICATIONS;
 import seedu.letsgethired.model.Model;
 
 /**
- * Lists all persons in the intern tracker to the user.
+ * Lists all intern applications in the intern tracker to the user.
  */
 public class ListCommand extends Command {
 
     public static final String COMMAND_WORD = "list";
 
-    public static final String MESSAGE_SUCCESS = "Listed all persons";
+    public static final String MESSAGE_SUCCESS = "Listed all intern applications";
 
 
     @Override

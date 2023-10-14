@@ -73,23 +73,23 @@ public class ModelManagerTest {
     }
 
     @Test
-    public void hasPerson_nullPerson_throwsNullPointerException() {
+    public void hasInternApplication_nullInternApplication_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> modelManager.hasInternApplication(null));
     }
 
     @Test
-    public void hasPerson_personNotInInternTracker_returnsFalse() {
+    public void hasInternApplication_internApplicationNotInInternTracker_returnsFalse() {
         assertFalse(modelManager.hasInternApplication(JANE_STREET));
     }
 
     @Test
-    public void hasPerson_personInInternTracker_returnsTrue() {
+    public void hasInternApplication_internApplicationInInternTracker_returnsTrue() {
         modelManager.addInternApplication(JANE_STREET);
         assertTrue(modelManager.hasInternApplication(JANE_STREET));
     }
 
     @Test
-    public void getFilteredPersonList_modifyList_throwsUnsupportedOperationException() {
+    public void getFilteredInternApplicationList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredInternApplicationList().remove(0));
     }
 

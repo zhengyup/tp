@@ -27,7 +27,7 @@ public class AddCommandIntegrationTest {
     }
 
     @Test
-    public void execute_newPerson_success() {
+    public void execute_newInternApplication_success() {
         InternApplication validInternApplication = new InternApplicationBuilder().build();
 
         Model expectedModel = new ModelManager(model.getInternTracker(), new UserPrefs());
@@ -39,7 +39,7 @@ public class AddCommandIntegrationTest {
     }
 
     @Test
-    public void execute_duplicatePerson_throwsCommandException() {
+    public void execute_duplicateInternApplication_throwsCommandException() {
         InternApplication internApplicationInList = model.getInternTracker().getApplicationList().get(0);
         assertCommandFailure(new AddCommand(internApplicationInList), model,
                 AddCommand.MESSAGE_DUPLICATE_INTERN_APPLICATION);
