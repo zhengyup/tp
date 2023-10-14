@@ -8,7 +8,7 @@ import static seedu.letsgethired.logic.commands.CommandTestUtil.COMPANY_DESC_A;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.ROLE_DESC_A;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.STATUS_DESC_A;
 import static seedu.letsgethired.testutil.Assert.assertThrows;
-import static seedu.letsgethired.testutil.TypicalInternApplications.AMY;
+import static seedu.letsgethired.testutil.TypicalInternApplications.A;
 
 import java.io.IOException;
 import java.nio.file.AccessDeniedException;
@@ -170,7 +170,7 @@ public class LogicManagerTest {
 
         // Triggers the saveInternTracker method by executing an add command
         String addCommand = AddCommand.COMMAND_WORD + COMPANY_DESC_A + ROLE_DESC_A + CYCLE_DESC_A + STATUS_DESC_A;
-        InternApplication expectedInternApplication = new InternApplicationBuilder(AMY).withTags().build();
+        InternApplication expectedInternApplication = new InternApplicationBuilder(A).withTags().build();
         ModelManager expectedModel = new ModelManager();
         expectedModel.addInternApplication(expectedInternApplication);
         assertCommandFailure(addCommand, CommandException.class, expectedMessage, expectedModel);

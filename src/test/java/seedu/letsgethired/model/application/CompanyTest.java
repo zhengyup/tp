@@ -14,36 +14,36 @@ public class CompanyTest {
     }
 
     @Test
-    public void constructor_invalidName_throwsIllegalArgumentException() {
-        String invalidName = "";
-        assertThrows(IllegalArgumentException.class, () -> new Company(invalidName));
+    public void constructor_invalidCompany_throwsIllegalArgumentException() {
+        String invalidCompany = "";
+        assertThrows(IllegalArgumentException.class, () -> new Company(invalidCompany));
     }
 
     @Test
-    public void isValidName() {
-        // null name
-        assertThrows(NullPointerException.class, () -> Company.isValidName(null));
+    public void isValidCompany() {
+        // null company
+        assertThrows(NullPointerException.class, () -> Company.isValidCompany(null));
 
-        // invalid name
-        assertFalse(Company.isValidName("")); // empty string
-        assertFalse(Company.isValidName(" ")); // spaces only
-        assertFalse(Company.isValidName("^")); // only non-alphanumeric characters
-        assertFalse(Company.isValidName("peter*")); // contains non-alphanumeric characters
+        // invalid company
+        assertFalse(Company.isValidCompany("")); // empty string
+        assertFalse(Company.isValidCompany(" ")); // spaces only
+        assertFalse(Company.isValidCompany("^")); // only non-alphanumeric characters
+        assertFalse(Company.isValidCompany("peter*")); // contains non-alphanumeric characters
 
-        // valid name
-        assertTrue(Company.isValidName("peter jack")); // alphabets only
-        assertTrue(Company.isValidName("12345")); // numbers only
-        assertTrue(Company.isValidName("peter the 2nd")); // alphanumeric characters
-        assertTrue(Company.isValidName("Capital Tan")); // with capital letters
-        assertTrue(Company.isValidName("David Roger Jackson Ray Jr 2nd")); // long names
+        // valid company
+        assertTrue(Company.isValidCompany("big company")); // alphabets only
+        assertTrue(Company.isValidCompany("12345")); // numbers only
+        assertTrue(Company.isValidCompany("big company the 2nd")); // alphanumeric characters
+        assertTrue(Company.isValidCompany("Big Company")); // with capital letters
+        assertTrue(Company.isValidCompany("This is a very Big Company the 2nd")); // long company name
     }
 
     @Test
     public void equals() {
-        Company company = new Company("Valid Name");
+        Company company = new Company("Valid Company");
 
         // same values -> returns true
-        assertTrue(company.equals(new Company("Valid Name")));
+        assertTrue(company.equals(new Company("Valid Company")));
 
         // same object -> returns true
         assertTrue(company.equals(company));
@@ -55,6 +55,6 @@ public class CompanyTest {
         assertFalse(company.equals(5.0f));
 
         // different values -> returns false
-        assertFalse(company.equals(new Company("Other Valid Name")));
+        assertFalse(company.equals(new Company("Other Valid Company")));
     }
 }

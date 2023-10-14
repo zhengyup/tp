@@ -7,7 +7,7 @@ import seedu.letsgethired.commons.util.StringUtil;
 import seedu.letsgethired.commons.util.ToStringBuilder;
 
 /**
- * Tests that a {@code InternApplication}'s {@code Name} matches any of the keywords given.
+ * Tests that a {@code InternApplication}'s {@code Company} matches any of the keywords given.
  */
 public class CompanyContainsKeywordsPredicate implements Predicate<InternApplication> {
     private final List<String> keywords;

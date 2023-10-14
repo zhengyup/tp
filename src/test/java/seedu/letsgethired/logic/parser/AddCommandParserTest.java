@@ -30,8 +30,8 @@ import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_STATUS;
 import static seedu.letsgethired.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.letsgethired.logic.parser.CommandParserTestUtil.assertParseSuccess;
-import static seedu.letsgethired.testutil.TypicalInternApplications.AMY;
-import static seedu.letsgethired.testutil.TypicalInternApplications.BOB;
+import static seedu.letsgethired.testutil.TypicalInternApplications.A;
+import static seedu.letsgethired.testutil.TypicalInternApplications.B;
 
 import org.junit.jupiter.api.Test;
 
@@ -50,7 +50,7 @@ public class AddCommandParserTest {
 
     @Test
     public void parse_allFieldsPresent_success() {
-        InternApplication expectedInternApplication = new InternApplicationBuilder(BOB).withTags(VALID_TAG_FRIEND)
+        InternApplication expectedInternApplication = new InternApplicationBuilder(B).withTags(VALID_TAG_FRIEND)
                 .build();
 
         // whitespace only preamble
@@ -59,7 +59,7 @@ public class AddCommandParserTest {
 
 
         // multiple tags - all accepted
-        InternApplication expectedInternApplicationMultipleTags = new InternApplicationBuilder(BOB)
+        InternApplication expectedInternApplicationMultipleTags = new InternApplicationBuilder(B)
                 .withTags(VALID_TAG_FRIEND, VALID_TAG_HUSBAND)
                 .build();
         assertParseSuccess(parser,
@@ -135,7 +135,7 @@ public class AddCommandParserTest {
     @Test
     public void parse_optionalFieldsMissing_success() {
         // zero tags
-        InternApplication expectedInternApplication = new InternApplicationBuilder(AMY).withTags().build();
+        InternApplication expectedInternApplication = new InternApplicationBuilder(A).withTags().build();
         assertParseSuccess(parser, COMPANY_DESC_A + ROLE_DESC_A + CYCLE_DESC_A + STATUS_DESC_A,
                 new AddCommand(expectedInternApplication));
     }

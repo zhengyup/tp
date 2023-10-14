@@ -4,13 +4,13 @@ import static java.util.Objects.requireNonNull;
 import static seedu.letsgethired.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents an InternApplication's name in the intern tracker.
- * Guarantees: immutable; is valid as declared in {@link #isValidName(String)}
+ * Represents an InternApplication's company in the intern tracker.
+ * Guarantees: immutable; is valid as declared in {@link #isValidCompany(String)}
  */
 public class Company {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Names should only contain alphanumeric characters and spaces, and it should not be blank";
+            "Company should only contain alphanumeric characters and spaces, and it should not be blank";
 
     /*
      * The first character of the status must not be a whitespace,
@@ -21,20 +21,20 @@ public class Company {
     public final String value;
 
     /**
-     * Constructs a {@code Name}.
+     * Constructs a {@code Company}.
      *
-     * @param name A valid name.
+     * @param name A valid company.
      */
     public Company(String name) {
         requireNonNull(name);
-        checkArgument(isValidName(name), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidCompany(name), MESSAGE_CONSTRAINTS);
         value = name;
     }
 
     /**
-     * Returns true if a given string is a valid name.
+     * Returns true if a given string is a valid company.
      */
-    public static boolean isValidName(String test) {
+    public static boolean isValidCompany(String test) {
         return test.matches(VALIDATION_REGEX);
     }
 

@@ -9,7 +9,7 @@ import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_ROLE_B;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_STATUS_B;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.letsgethired.testutil.Assert.assertThrows;
-import static seedu.letsgethired.testutil.TypicalInternApplications.BOB;
+import static seedu.letsgethired.testutil.TypicalInternApplications.B;
 import static seedu.letsgethired.testutil.TypicalInternApplications.JANE_STREET;
 
 import org.junit.jupiter.api.Test;
@@ -43,14 +43,14 @@ public class InternApplicationTest {
         assertFalse(JANE_STREET.isSameApplication(editedAlice));
 
         // name differs in case, all other attributes same -> returns false
-        InternApplication editedBob = new InternApplicationBuilder(BOB)
+        InternApplication editedBob = new InternApplicationBuilder(B)
                 .withCompany(VALID_COMPANY_B.toLowerCase()).build();
-        assertFalse(BOB.isSameApplication(editedBob));
+        assertFalse(B.isSameApplication(editedBob));
 
         // name has trailing spaces, all other attributes same -> returns false
         String nameWithTrailingSpaces = VALID_COMPANY_B + " ";
-        editedBob = new InternApplicationBuilder(BOB).withCompany(nameWithTrailingSpaces).build();
-        assertFalse(BOB.isSameApplication(editedBob));
+        editedBob = new InternApplicationBuilder(B).withCompany(nameWithTrailingSpaces).build();
+        assertFalse(B.isSameApplication(editedBob));
     }
 
     @Test
@@ -69,7 +69,7 @@ public class InternApplicationTest {
         assertFalse(JANE_STREET.equals(5));
 
         // different person -> returns false
-        assertFalse(JANE_STREET.equals(BOB));
+        assertFalse(JANE_STREET.equals(B));
 
         // different name -> returns false
         InternApplication editedAlice = new InternApplicationBuilder(JANE_STREET).withCompany(VALID_COMPANY_B)

@@ -43,7 +43,7 @@ public class CompanyContainsKeywordsPredicateTest {
     }
 
     @Test
-    public void test_nameContainsKeywords_returnsTrue() {
+    public void test_companyContainsKeywords_returnsTrue() {
         // One keyword
         CompanyContainsKeywordsPredicate predicate =
                 new CompanyContainsKeywordsPredicate(Collections.singletonList("Alice"));
@@ -63,7 +63,7 @@ public class CompanyContainsKeywordsPredicateTest {
     }
 
     @Test
-    public void test_nameDoesNotContainKeywords_returnsFalse() {
+    public void test_companyDoesNotContainKeywords_returnsFalse() {
         // Zero keywords
         CompanyContainsKeywordsPredicate predicate = new CompanyContainsKeywordsPredicate(Collections.emptyList());
         assertFalse(predicate.test(new InternApplicationBuilder().withCompany("Alice").build()));
@@ -72,10 +72,10 @@ public class CompanyContainsKeywordsPredicateTest {
         predicate = new CompanyContainsKeywordsPredicate(Arrays.asList("Carol"));
         assertFalse(predicate.test(new InternApplicationBuilder().withCompany("Alice Bob").build()));
 
-        // Keywords match phone, email and status, but does not match name
-        predicate = new CompanyContainsKeywordsPredicate(Arrays.asList("12345", "alice@email.com", "Main", "Street"));
-        assertFalse(predicate.test(new InternApplicationBuilder().withCompany("Alice").withRole("12345")
-                .withCycle("Summer").withStatus("Main Street").build()));
+        // Keywords match role, cycle and status, but does not match company
+        predicate = new CompanyContainsKeywordsPredicate(Arrays.asList("SWE", "Intern", "Summer", "Accepted"));
+        assertFalse(predicate.test(new InternApplicationBuilder().withCompany("Alice").withRole("SWE Intern")
+                .withCycle("Summer").withStatus("Accepted").build()));
     }
 
     @Test

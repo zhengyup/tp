@@ -44,7 +44,7 @@ public class ParserUtil {
     public static Company parseCompany(String companyName) throws ParseException {
         requireNonNull(companyName);
         String trimmedName = companyName.trim();
-        if (!Company.isValidName(trimmedName)) {
+        if (!Company.isValidCompany(trimmedName)) {
             throw new ParseException(Company.MESSAGE_CONSTRAINTS);
         }
         return new Company(trimmedName);

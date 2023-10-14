@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_STATUS_B;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.letsgethired.testutil.Assert.assertThrows;
-import static seedu.letsgethired.testutil.TypicalInternApplications.BOB;
+import static seedu.letsgethired.testutil.TypicalInternApplications.B;
 import static seedu.letsgethired.testutil.TypicalInternApplications.JANE_STREET;
 
 import java.util.Arrays;
@@ -100,17 +100,17 @@ public class UniqueInternApplicationListTest {
     @Test
     public void setPerson_editedPersonHasDifferentIdentity_success() {
         uniqueApplicationList.add(JANE_STREET);
-        uniqueApplicationList.setApplication(JANE_STREET, BOB);
+        uniqueApplicationList.setApplication(JANE_STREET, B);
         UniqueApplicationList expectedUniqueApplicationList = new UniqueApplicationList();
-        expectedUniqueApplicationList.add(BOB);
+        expectedUniqueApplicationList.add(B);
         assertEquals(expectedUniqueApplicationList, uniqueApplicationList);
     }
 
     @Test
     public void setPerson_editedPersonHasNonUniqueIdentity_throwsDuplicatePersonException() {
         uniqueApplicationList.add(JANE_STREET);
-        uniqueApplicationList.add(BOB);
-        assertThrows(DuplicateApplicationException.class, () -> uniqueApplicationList.setApplication(JANE_STREET, BOB));
+        uniqueApplicationList.add(B);
+        assertThrows(DuplicateApplicationException.class, () -> uniqueApplicationList.setApplication(JANE_STREET, B));
     }
 
     @Test
@@ -141,7 +141,7 @@ public class UniqueInternApplicationListTest {
     public void setPersons_uniquePersonList_replacesOwnListWithProvidedUniquePersonList() {
         uniqueApplicationList.add(JANE_STREET);
         UniqueApplicationList expectedUniqueApplicationList = new UniqueApplicationList();
-        expectedUniqueApplicationList.add(BOB);
+        expectedUniqueApplicationList.add(B);
         uniqueApplicationList.setApplications(expectedUniqueApplicationList);
         assertEquals(expectedUniqueApplicationList, uniqueApplicationList);
     }
@@ -155,10 +155,10 @@ public class UniqueInternApplicationListTest {
     @Test
     public void setPersons_list_replacesOwnListWithProvidedList() {
         uniqueApplicationList.add(JANE_STREET);
-        List<InternApplication> internApplicationList = Collections.singletonList(BOB);
+        List<InternApplication> internApplicationList = Collections.singletonList(B);
         uniqueApplicationList.setApplications(internApplicationList);
         UniqueApplicationList expectedUniqueApplicationList = new UniqueApplicationList();
-        expectedUniqueApplicationList.add(BOB);
+        expectedUniqueApplicationList.add(B);
         assertEquals(expectedUniqueApplicationList, uniqueApplicationList);
     }
 

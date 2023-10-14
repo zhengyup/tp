@@ -53,11 +53,11 @@ public class TypicalInternApplications {
             .withRole("8482131")
             .withCycle("Summer 2021").withStatus("chicago ave").build();
 
-    // Manually added - Person's details found in {@code CommandTestUtil}
-    public static final InternApplication AMY = new InternApplicationBuilder().withCompany(VALID_COMPANY_A)
+    // Manually added - Intern Application's details found in {@code CommandTestUtil}
+    public static final InternApplication A = new InternApplicationBuilder().withCompany(VALID_COMPANY_A)
             .withRole(VALID_ROLE_A)
             .withCycle(VALID_CYCLE_A).withStatus(VALID_STATUS_A).withTags(VALID_TAG_FRIEND).build();
-    public static final InternApplication BOB = new InternApplicationBuilder().withCompany(VALID_COMPANY_B)
+    public static final InternApplication B = new InternApplicationBuilder().withCompany(VALID_COMPANY_B)
             .withRole(VALID_ROLE_B)
             .withCycle(VALID_CYCLE_B).withStatus(VALID_STATUS_B).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
             .build();
@@ -68,7 +68,7 @@ public class TypicalInternApplications {
     } // prevents instantiation
 
     /**
-     * Returns an {@code InternTracker} with all the typical persons.
+     * Returns an {@code InternTracker} with all the typical intern applications.
      */
     public static InternTracker getTypicalInternTracker() {
         InternTracker ab = new InternTracker();
