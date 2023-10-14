@@ -19,13 +19,13 @@ import org.junit.jupiter.api.Test;
 
 import seedu.letsgethired.commons.core.index.Index;
 import seedu.letsgethired.logic.Messages;
-import seedu.letsgethired.logic.commands.EditCommand.EditPersonDescriptor;
+import seedu.letsgethired.logic.commands.EditCommand.EditInternApplicationDescriptor;
 import seedu.letsgethired.model.InternTracker;
 import seedu.letsgethired.model.Model;
 import seedu.letsgethired.model.ModelManager;
 import seedu.letsgethired.model.UserPrefs;
 import seedu.letsgethired.model.application.InternApplication;
-import seedu.letsgethired.testutil.EditPersonDescriptorBuilder;
+import seedu.letsgethired.testutil.EditInternApplicationDescriptorBuilder;
 import seedu.letsgethired.testutil.InternApplicationBuilder;
 
 /**
@@ -38,10 +38,10 @@ public class EditCommandTest {
     @Test
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
         InternApplication editedInternApplication = new InternApplicationBuilder().build();
-        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder(editedInternApplication).build();
+        EditInternApplicationDescriptor descriptor = new EditInternApplicationDescriptorBuilder(editedInternApplication).build();
         EditCommand editCommand = new EditCommand(INDEX_FIRST_APPLICATION, descriptor);
 
-        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, Messages
+        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_INTERN_APPLICATION_SUCCESS, Messages
                 .format(editedInternApplication));
 
         Model expectedModel = new ModelManager(new InternTracker(model.getInternTracker()), new UserPrefs());
@@ -61,11 +61,11 @@ public class EditCommandTest {
                 .withRole(VALID_ROLE_B)
                 .withTags(VALID_TAG_HUSBAND).build();
 
-        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withCompany(VALID_COMPANY_B)
+        EditInternApplicationDescriptor descriptor = new EditInternApplicationDescriptorBuilder().withCompany(VALID_COMPANY_B)
                 .withRole(VALID_ROLE_B).withTags(VALID_TAG_HUSBAND).build();
         EditCommand editCommand = new EditCommand(indexLastPerson, descriptor);
 
-        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS,
+        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_INTERN_APPLICATION_SUCCESS,
                 Messages.format(editedInternApplication));
 
         Model expectedModel = new ModelManager(new InternTracker(model.getInternTracker()), new UserPrefs());
@@ -76,11 +76,11 @@ public class EditCommandTest {
 
     @Test
     public void execute_noFieldSpecifiedUnfilteredList_success() {
-        EditCommand editCommand = new EditCommand(INDEX_FIRST_APPLICATION, new EditPersonDescriptor());
+        EditCommand editCommand = new EditCommand(INDEX_FIRST_APPLICATION, new EditInternApplicationDescriptor());
         InternApplication editedInternApplication = model.getFilteredInternApplicationList()
                 .get(INDEX_FIRST_APPLICATION.getZeroBased());
 
-        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, Messages
+        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_INTERN_APPLICATION_SUCCESS, Messages
                 .format(editedInternApplication));
 
         Model expectedModel = new ModelManager(new InternTracker(model.getInternTracker()), new UserPrefs());
@@ -97,9 +97,9 @@ public class EditCommandTest {
         InternApplication editedInternApplication = new InternApplicationBuilder(internApplicationInFilteredList)
                 .withCompany(VALID_COMPANY_B).build();
         EditCommand editCommand = new EditCommand(INDEX_FIRST_APPLICATION,
-                new EditPersonDescriptorBuilder().withCompany(VALID_COMPANY_B).build());
+                new EditInternApplicationDescriptorBuilder().withCompany(VALID_COMPANY_B).build());
 
-        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS,
+        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_INTERN_APPLICATION_SUCCESS,
                 Messages.format(editedInternApplication));
 
         Model expectedModel = new ModelManager(new InternTracker(model.getInternTracker()), new UserPrefs());
@@ -112,10 +112,10 @@ public class EditCommandTest {
     public void execute_duplicatePersonUnfilteredList_failure() {
         InternApplication firstInternApplication = model.getFilteredInternApplicationList()
                 .get(INDEX_FIRST_APPLICATION.getZeroBased());
-        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder(firstInternApplication).build();
+        EditInternApplicationDescriptor descriptor = new EditInternApplicationDescriptorBuilder(firstInternApplication).build();
         EditCommand editCommand = new EditCommand(INDEX_SECOND_APPLICATION, descriptor);
 
-        assertCommandFailure(editCommand, model, EditCommand.MESSAGE_DUPLICATE_PERSON);
+        assertCommandFailure(editCommand, model, EditCommand.MESSAGE_DUPLICATE_INTERN_APPLICATION);
     }
 
     @Test
@@ -126,18 +126,18 @@ public class EditCommandTest {
         InternApplication internApplicationInList = model.getInternTracker().getApplicationList()
                 .get(INDEX_SECOND_APPLICATION.getZeroBased());
         EditCommand editCommand = new EditCommand(INDEX_FIRST_APPLICATION,
-                new EditPersonDescriptorBuilder(internApplicationInList).build());
+                new EditInternApplicationDescriptorBuilder(internApplicationInList).build());
 
-        assertCommandFailure(editCommand, model, EditCommand.MESSAGE_DUPLICATE_PERSON);
+        assertCommandFailure(editCommand, model, EditCommand.MESSAGE_DUPLICATE_INTERN_APPLICATION);
     }
 
     @Test
     public void execute_invalidPersonIndexUnfilteredList_failure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredInternApplicationList().size() + 1);
-        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withCompany(VALID_COMPANY_B).build();
+        EditInternApplicationDescriptor descriptor = new EditInternApplicationDescriptorBuilder().withCompany(VALID_COMPANY_B).build();
         EditCommand editCommand = new EditCommand(outOfBoundIndex, descriptor);
 
-        assertCommandFailure(editCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        assertCommandFailure(editCommand, model, Messages.MESSAGE_INVALID_INTERN_APPLICATION_DISPLAYED_INDEX);
     }
 
     /**
@@ -152,9 +152,9 @@ public class EditCommandTest {
         assertTrue(outOfBoundIndex.getZeroBased() < model.getInternTracker().getApplicationList().size());
 
         EditCommand editCommand = new EditCommand(outOfBoundIndex,
-                new EditPersonDescriptorBuilder().withCompany(VALID_COMPANY_B).build());
+                new EditInternApplicationDescriptorBuilder().withCompany(VALID_COMPANY_B).build());
 
-        assertCommandFailure(editCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        assertCommandFailure(editCommand, model, Messages.MESSAGE_INVALID_INTERN_APPLICATION_DISPLAYED_INDEX);
     }
 
     @Test
@@ -162,7 +162,7 @@ public class EditCommandTest {
         final EditCommand standardCommand = new EditCommand(INDEX_FIRST_APPLICATION, DESC_A);
 
         // same values -> returns true
-        EditPersonDescriptor copyDescriptor = new EditPersonDescriptor(DESC_A);
+        EditInternApplicationDescriptor copyDescriptor = new EditInternApplicationDescriptor(DESC_A);
         EditCommand commandWithSameValues = new EditCommand(INDEX_FIRST_APPLICATION, copyDescriptor);
         assertTrue(standardCommand.equals(commandWithSameValues));
 
@@ -185,10 +185,10 @@ public class EditCommandTest {
     @Test
     public void toStringMethod() {
         Index index = Index.fromOneBased(1);
-        EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
-        EditCommand editCommand = new EditCommand(index, editPersonDescriptor);
+        EditInternApplicationDescriptor editInternApplicationDescriptor = new EditInternApplicationDescriptor();
+        EditCommand editCommand = new EditCommand(index, editInternApplicationDescriptor);
         String expected = EditCommand.class.getCanonicalName() + "{index=" + index + ", editPersonDescriptor="
-                + editPersonDescriptor + "}";
+                + editInternApplicationDescriptor + "}";
         assertEquals(expected, editCommand.toString());
     }
 

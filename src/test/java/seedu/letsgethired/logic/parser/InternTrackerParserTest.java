@@ -17,7 +17,7 @@ import seedu.letsgethired.logic.commands.AddCommand;
 import seedu.letsgethired.logic.commands.ClearCommand;
 import seedu.letsgethired.logic.commands.DeleteCommand;
 import seedu.letsgethired.logic.commands.EditCommand;
-import seedu.letsgethired.logic.commands.EditCommand.EditPersonDescriptor;
+import seedu.letsgethired.logic.commands.EditCommand.EditInternApplicationDescriptor;
 import seedu.letsgethired.logic.commands.ExitCommand;
 import seedu.letsgethired.logic.commands.FindCommand;
 import seedu.letsgethired.logic.commands.HelpCommand;
@@ -25,9 +25,9 @@ import seedu.letsgethired.logic.commands.ListCommand;
 import seedu.letsgethired.logic.parser.exceptions.ParseException;
 import seedu.letsgethired.model.application.CompanyContainsKeywordsPredicate;
 import seedu.letsgethired.model.application.InternApplication;
-import seedu.letsgethired.testutil.EditPersonDescriptorBuilder;
+import seedu.letsgethired.testutil.EditInternApplicationDescriptorBuilder;
 import seedu.letsgethired.testutil.InternApplicationBuilder;
-import seedu.letsgethired.testutil.PersonUtil;
+import seedu.letsgethired.testutil.InternApplicationUtil;
 
 public class InternTrackerParserTest {
 
@@ -36,7 +36,7 @@ public class InternTrackerParserTest {
     @Test
     public void parseCommand_add() throws Exception {
         InternApplication internApplication = new InternApplicationBuilder().build();
-        AddCommand command = (AddCommand) parser.parseCommand(PersonUtil.getAddCommand(internApplication));
+        AddCommand command = (AddCommand) parser.parseCommand(InternApplicationUtil.getAddCommand(internApplication));
         assertEquals(new AddCommand(internApplication), command);
     }
 
@@ -56,9 +56,9 @@ public class InternTrackerParserTest {
     @Test
     public void parseCommand_edit() throws Exception {
         InternApplication internApplication = new InternApplicationBuilder().build();
-        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder(internApplication).build();
+        EditInternApplicationDescriptor descriptor = new EditInternApplicationDescriptorBuilder(internApplication).build();
         EditCommand command = (EditCommand) parser.parseCommand(EditCommand.COMMAND_WORD + " "
-                + INDEX_FIRST_APPLICATION.getOneBased() + " " + PersonUtil.getEditPersonDescriptorDetails(descriptor));
+                + INDEX_FIRST_APPLICATION.getOneBased() + " " + InternApplicationUtil.getEditInternApplicationDescriptorDetails(descriptor));
         assertEquals(new EditCommand(INDEX_FIRST_APPLICATION, descriptor), command);
     }
 

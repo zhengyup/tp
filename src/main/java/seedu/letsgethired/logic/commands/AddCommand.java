@@ -36,7 +36,7 @@ public class AddCommand extends Command {
             + PREFIX_TAG + "owesMoney";
 
     public static final String MESSAGE_SUCCESS = "New person added: %1$s";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This application already exists in the intern tracker";
+    public static final String MESSAGE_DUPLICATE_INTERN_APPLICATION = "This application already exists in the intern tracker";
 
     private final InternApplication toAdd;
 
@@ -53,7 +53,7 @@ public class AddCommand extends Command {
         requireNonNull(model);
 
         if (model.hasInternApplication(toAdd)) {
-            throw new CommandException(MESSAGE_DUPLICATE_PERSON);
+            throw new CommandException(MESSAGE_DUPLICATE_INTERN_APPLICATION);
         }
 
         model.addInternApplication(toAdd);

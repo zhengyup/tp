@@ -28,53 +28,53 @@ import seedu.letsgethired.testutil.InternApplicationBuilder;
 public class AddCommandTest {
 
     @Test
-    public void constructor_nullPerson_throwsNullPointerException() {
+    public void constructor_nullInternApplication_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> new AddCommand(null));
     }
 
     @Test
-    public void execute_personAcceptedByModel_addSuccessful() throws Exception {
-        ModelStubAcceptingPersonAdded modelStub = new ModelStubAcceptingPersonAdded();
+    public void execute_internApplicationAcceptedByModel_addSuccessful() throws Exception {
+        ModelStubAcceptingInternApplicationAdded modelStub = new ModelStubAcceptingInternApplicationAdded();
         InternApplication validInternApplication = new InternApplicationBuilder().build();
 
         CommandResult commandResult = new AddCommand(validInternApplication).execute(modelStub);
 
         assertEquals(String.format(AddCommand.MESSAGE_SUCCESS, Messages.format(validInternApplication)),
                 commandResult.getFeedbackToUser());
-        assertEquals(Arrays.asList(validInternApplication), modelStub.personsAdded);
+        assertEquals(Arrays.asList(validInternApplication), modelStub.internApplicationAdded);
     }
 
     @Test
-    public void execute_duplicatePerson_throwsCommandException() {
+    public void execute_duplicateInternApplication_throwsCommandException() {
         InternApplication validInternApplication = new InternApplicationBuilder().build();
         AddCommand addCommand = new AddCommand(validInternApplication);
-        ModelStub modelStub = new ModelStubWithPerson(validInternApplication);
+        ModelStub modelStub = new ModelStubWithInternApplication(validInternApplication);
 
-        assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_PERSON, () -> addCommand.execute(modelStub));
+        assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_INTERN_APPLICATION, () -> addCommand.execute(modelStub));
     }
 
     @Test
     public void equals() {
-        InternApplication alice = new InternApplicationBuilder().withCompany("Alice").build();
-        InternApplication bob = new InternApplicationBuilder().withCompany("Bob").build();
-        AddCommand addAliceCommand = new AddCommand(alice);
-        AddCommand addBobCommand = new AddCommand(bob);
+        InternApplication a = new InternApplicationBuilder().withCompany("A").build();
+        InternApplication b = new InternApplicationBuilder().withCompany("B").build();
+        AddCommand addACommand = new AddCommand(a);
+        AddCommand addBCommand = new AddCommand(b);
 
         // same object -> returns true
-        assertTrue(addAliceCommand.equals(addAliceCommand));
+        assertTrue(addACommand.equals(addACommand));
 
         // same values -> returns true
-        AddCommand addAliceCommandCopy = new AddCommand(alice);
-        assertTrue(addAliceCommand.equals(addAliceCommandCopy));
+        AddCommand addACommandCopy = new AddCommand(a);
+        assertTrue(addACommand.equals(addACommandCopy));
 
         // different types -> returns false
-        assertFalse(addAliceCommand.equals(1));
+        assertFalse(addACommand.equals(1));
 
         // null -> returns false
-        assertFalse(addAliceCommand.equals(null));
+        assertFalse(addACommand.equals(null));
 
-        // different person -> returns false
-        assertFalse(addAliceCommand.equals(addBobCommand));
+        // different intern application -> returns false
+        assertFalse(addACommand.equals(addBCommand));
     }
 
     @Test
@@ -160,12 +160,12 @@ public class AddCommandTest {
     }
 
     /**
-     * A Model stub that contains a single person.
+     * A Model stub that contains a single intern application.
      */
-    private class ModelStubWithPerson extends ModelStub {
+    private class ModelStubWithInternApplication extends ModelStub {
         private final InternApplication internApplication;
 
-        ModelStubWithPerson(InternApplication internApplication) {
+        ModelStubWithInternApplication(InternApplication internApplication) {
             requireNonNull(internApplication);
             this.internApplication = internApplication;
         }
@@ -178,21 +178,21 @@ public class AddCommandTest {
     }
 
     /**
-     * A Model stub that always accept the person being added.
+     * A Model stub that always accept the intern application being added.
      */
-    private class ModelStubAcceptingPersonAdded extends ModelStub {
-        final ArrayList<InternApplication> personsAdded = new ArrayList<>();
+    private class ModelStubAcceptingInternApplicationAdded extends ModelStub {
+        final ArrayList<InternApplication> internApplicationAdded = new ArrayList<>();
 
         @Override
         public boolean hasInternApplication(InternApplication internApplication) {
             requireNonNull(internApplication);
-            return personsAdded.stream().anyMatch(internApplication::isSameApplication);
+            return internApplicationAdded.stream().anyMatch(internApplication::isSameApplication);
         }
 
         @Override
         public void addInternApplication(InternApplication internApplication) {
             requireNonNull(internApplication);
-            personsAdded.add(internApplication);
+            internApplicationAdded.add(internApplication);
         }
 
         @Override

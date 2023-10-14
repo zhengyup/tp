@@ -15,7 +15,7 @@ import java.util.Set;
 
 import seedu.letsgethired.commons.core.index.Index;
 import seedu.letsgethired.logic.commands.EditCommand;
-import seedu.letsgethired.logic.commands.EditCommand.EditPersonDescriptor;
+import seedu.letsgethired.logic.commands.EditCommand.EditInternApplicationDescriptor;
 import seedu.letsgethired.logic.parser.exceptions.ParseException;
 import seedu.letsgethired.model.tag.Tag;
 
@@ -44,27 +44,27 @@ public class EditCommandParser implements Parser<EditCommand> {
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_COMPANY, PREFIX_ROLE, PREFIX_CYCLE, PREFIX_STATUS);
 
-        EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
+        EditInternApplicationDescriptor editInternApplicationDescriptor = new EditInternApplicationDescriptor();
 
         if (argMultimap.getValue(PREFIX_COMPANY).isPresent()) {
-            editPersonDescriptor.setCompany(ParserUtil.parseCompany(argMultimap.getValue(PREFIX_COMPANY).get()));
+            editInternApplicationDescriptor.setCompany(ParserUtil.parseCompany(argMultimap.getValue(PREFIX_COMPANY).get()));
         }
         if (argMultimap.getValue(PREFIX_ROLE).isPresent()) {
-            editPersonDescriptor.setRole(ParserUtil.parseRole(argMultimap.getValue(PREFIX_ROLE).get()));
+            editInternApplicationDescriptor.setRole(ParserUtil.parseRole(argMultimap.getValue(PREFIX_ROLE).get()));
         }
         if (argMultimap.getValue(PREFIX_CYCLE).isPresent()) {
-            editPersonDescriptor.setCycle(ParserUtil.parseCycle(argMultimap.getValue(PREFIX_CYCLE).get()));
+            editInternApplicationDescriptor.setCycle(ParserUtil.parseCycle(argMultimap.getValue(PREFIX_CYCLE).get()));
         }
         if (argMultimap.getValue(PREFIX_STATUS).isPresent()) {
-            editPersonDescriptor.setStatus(ParserUtil.parseStatus(argMultimap.getValue(PREFIX_STATUS).get()));
+            editInternApplicationDescriptor.setStatus(ParserUtil.parseStatus(argMultimap.getValue(PREFIX_STATUS).get()));
         }
-        parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editPersonDescriptor::setTags);
+        parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editInternApplicationDescriptor::setTags);
 
-        if (!editPersonDescriptor.isAnyFieldEdited()) {
+        if (!editInternApplicationDescriptor.isAnyFieldEdited()) {
             throw new ParseException(EditCommand.MESSAGE_NOT_EDITED);
         }
 
-        return new EditCommand(index, editPersonDescriptor);
+        return new EditCommand(index, editInternApplicationDescriptor);
     }
 
     /**

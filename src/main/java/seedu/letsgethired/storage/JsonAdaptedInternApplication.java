@@ -52,7 +52,7 @@ class JsonAdaptedInternApplication {
      * Converts a given {@code InternApplication} into this class for Jackson use.
      */
     public JsonAdaptedInternApplication(InternApplication source) {
-        company = source.getCompany().companyName;
+        company = source.getCompany().value;
         role = source.getRole().value;
         cycle = source.getCycle().value;
         status = source.getStatus().value;

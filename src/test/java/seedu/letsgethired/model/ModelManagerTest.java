@@ -117,7 +117,7 @@ public class ModelManagerTest {
         assertFalse(modelManager.equals(new ModelManager(differentInternTracker, userPrefs)));
 
         // different filteredList -> returns false
-        String[] keywords = JANE_STREET.getCompany().companyName.split("\\s+");
+        String[] keywords = JANE_STREET.getCompany().value.split("\\s+");
         modelManager.updateFilteredInternApplicationList(new CompanyContainsKeywordsPredicate(Arrays.asList(keywords)));
         assertFalse(modelManager.equals(new ModelManager(internTracker, userPrefs)));
 

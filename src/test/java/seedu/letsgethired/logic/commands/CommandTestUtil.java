@@ -19,7 +19,7 @@ import seedu.letsgethired.model.InternTracker;
 import seedu.letsgethired.model.Model;
 import seedu.letsgethired.model.application.CompanyContainsKeywordsPredicate;
 import seedu.letsgethired.model.application.InternApplication;
-import seedu.letsgethired.testutil.EditPersonDescriptorBuilder;
+import seedu.letsgethired.testutil.EditInternApplicationDescriptorBuilder;
 
 /**
  * Contains helper methods for testing commands.
@@ -56,13 +56,13 @@ public class CommandTestUtil {
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
 
-    public static final EditCommand.EditPersonDescriptor DESC_A;
-    public static final EditCommand.EditPersonDescriptor DESC_B;
+    public static final EditCommand.EditInternApplicationDescriptor DESC_A;
+    public static final EditCommand.EditInternApplicationDescriptor DESC_B;
 
     static {
-        DESC_A = new EditPersonDescriptorBuilder().withCompany(VALID_COMPANY_A).withRole(VALID_ROLE_A)
+        DESC_A = new EditInternApplicationDescriptorBuilder().withCompany(VALID_COMPANY_A).withRole(VALID_ROLE_A)
                 .withCycle(VALID_CYCLE_A).withStatus(VALID_STATUS_A).withTags(VALID_TAG_FRIEND).build();
-        DESC_B = new EditPersonDescriptorBuilder().withCompany(VALID_COMPANY_B).withRole(VALID_ROLE_B)
+        DESC_B = new EditInternApplicationDescriptorBuilder().withCompany(VALID_COMPANY_B).withRole(VALID_ROLE_B)
                 .withCycle(VALID_CYCLE_B).withStatus(VALID_STATUS_B).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
                 .build();
     }
@@ -118,7 +118,7 @@ public class CommandTestUtil {
         assertTrue(targetIndex.getZeroBased() < model.getFilteredInternApplicationList().size());
 
         InternApplication internApplication = model.getFilteredInternApplicationList().get(targetIndex.getZeroBased());
-        final String[] splitName = internApplication.getCompany().companyName.split("\\s+");
+        final String[] splitName = internApplication.getCompany().value.split("\\s+");
         model.updateFilteredInternApplicationList(new CompanyContainsKeywordsPredicate(Arrays.asList(splitName[0])));
 
         assertEquals(1, model.getFilteredInternApplicationList().size());

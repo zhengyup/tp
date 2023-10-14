@@ -13,15 +13,15 @@ import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_TAG_HUSBAN
 
 import org.junit.jupiter.api.Test;
 
-import seedu.letsgethired.logic.commands.EditCommand.EditPersonDescriptor;
-import seedu.letsgethired.testutil.EditPersonDescriptorBuilder;
+import seedu.letsgethired.logic.commands.EditCommand.EditInternApplicationDescriptor;
+import seedu.letsgethired.testutil.EditInternApplicationDescriptorBuilder;
 
 public class EditInternApplicationDescriptorTest {
 
     @Test
     public void equals() {
         // same values -> returns true
-        EditPersonDescriptor descriptorWithSameValues = new EditPersonDescriptor(DESC_A);
+        EditInternApplicationDescriptor descriptorWithSameValues = new EditInternApplicationDescriptor(DESC_A);
         assertTrue(DESC_A.equals(descriptorWithSameValues));
 
         // same object -> returns true
@@ -37,36 +37,36 @@ public class EditInternApplicationDescriptorTest {
         assertFalse(DESC_A.equals(DESC_B));
 
         // different name -> returns false
-        EditPersonDescriptor editedAmy = new EditPersonDescriptorBuilder(DESC_A)
+        EditInternApplicationDescriptor editedAmy = new EditInternApplicationDescriptorBuilder(DESC_A)
                 .withCompany(VALID_COMPANY_B).build();
         assertFalse(DESC_A.equals(editedAmy));
 
         // different role -> returns false
-        editedAmy = new EditPersonDescriptorBuilder(DESC_A).withRole(VALID_ROLE_B).build();
+        editedAmy = new EditInternApplicationDescriptorBuilder(DESC_A).withRole(VALID_ROLE_B).build();
         assertFalse(DESC_A.equals(editedAmy));
 
         // different email -> returns false
-        editedAmy = new EditPersonDescriptorBuilder(DESC_A).withCycle(VALID_CYCLE_B).build();
+        editedAmy = new EditInternApplicationDescriptorBuilder(DESC_A).withCycle(VALID_CYCLE_B).build();
         assertFalse(DESC_A.equals(editedAmy));
 
         // different status -> returns false
-        editedAmy = new EditPersonDescriptorBuilder(DESC_A).withStatus(VALID_STATUS_B).build();
+        editedAmy = new EditInternApplicationDescriptorBuilder(DESC_A).withStatus(VALID_STATUS_B).build();
         assertFalse(DESC_A.equals(editedAmy));
 
         // different tags -> returns false
-        editedAmy = new EditPersonDescriptorBuilder(DESC_A).withTags(VALID_TAG_HUSBAND).build();
+        editedAmy = new EditInternApplicationDescriptorBuilder(DESC_A).withTags(VALID_TAG_HUSBAND).build();
         assertFalse(DESC_A.equals(editedAmy));
     }
 
     @Test
     public void toStringMethod() {
-        EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
-        String expected = EditPersonDescriptor.class.getCanonicalName() + "{company="
-                + editPersonDescriptor.getCompany().orElse(null) + ", role="
-                + editPersonDescriptor.getRole().orElse(null) + ", cycle="
-                + editPersonDescriptor.getCycle().orElse(null) + ", status="
-                + editPersonDescriptor.getStatus().orElse(null) + ", tags="
-                + editPersonDescriptor.getTags().orElse(null) + "}";
-        assertEquals(expected, editPersonDescriptor.toString());
+        EditInternApplicationDescriptor editInternApplicationDescriptor = new EditInternApplicationDescriptor();
+        String expected = EditInternApplicationDescriptor.class.getCanonicalName() + "{company="
+                + editInternApplicationDescriptor.getCompany().orElse(null) + ", role="
+                + editInternApplicationDescriptor.getRole().orElse(null) + ", cycle="
+                + editInternApplicationDescriptor.getCycle().orElse(null) + ", status="
+                + editInternApplicationDescriptor.getStatus().orElse(null) + ", tags="
+                + editInternApplicationDescriptor.getTags().orElse(null) + "}";
+        assertEquals(expected, editInternApplicationDescriptor.toString());
     }
 }

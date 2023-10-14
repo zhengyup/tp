@@ -9,28 +9,28 @@ import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_TAG;
 import java.util.Set;
 
 import seedu.letsgethired.logic.commands.AddCommand;
-import seedu.letsgethired.logic.commands.EditCommand.EditPersonDescriptor;
+import seedu.letsgethired.logic.commands.EditCommand.EditInternApplicationDescriptor;
 import seedu.letsgethired.model.application.InternApplication;
 import seedu.letsgethired.model.tag.Tag;
 
 /**
- * A utility class for Person.
+ * A utility class for Intern Application.
  */
-public class PersonUtil {
+public class InternApplicationUtil {
 
     /**
-     * Returns an add command string for adding the {@code person}.
+     * Returns an add command string for adding the {@code internApplication}.
      */
     public static String getAddCommand(InternApplication internApplication) {
-        return AddCommand.COMMAND_WORD + " " + getPersonDetails(internApplication);
+        return AddCommand.COMMAND_WORD + " " + getInternApplicationDetails(internApplication);
     }
 
     /**
-     * Returns the part of command string for the given {@code person}'s details.
+     * Returns the part of command string for the given {@code internApplication}'s details.
      */
-    public static String getPersonDetails(InternApplication internApplication) {
+    public static String getInternApplicationDetails(InternApplication internApplication) {
         StringBuilder sb = new StringBuilder();
-        sb.append(PREFIX_COMPANY + internApplication.getCompany().companyName + " ");
+        sb.append(PREFIX_COMPANY + internApplication.getCompany().value + " ");
         sb.append(PREFIX_ROLE + internApplication.getRole().value + " ");
         sb.append(PREFIX_CYCLE + internApplication.getCycle().value + " ");
         sb.append(PREFIX_STATUS + internApplication.getStatus().value + " ");
@@ -41,11 +41,11 @@ public class PersonUtil {
     }
 
     /**
-     * Returns the part of command string for the given {@code EditPersonDescriptor}'s details.
+     * Returns the part of command string for the given {@code EditInternApplicationDescriptor}'s details.
      */
-    public static String getEditPersonDescriptorDetails(EditPersonDescriptor descriptor) {
+    public static String getEditInternApplicationDescriptorDetails(EditInternApplicationDescriptor descriptor) {
         StringBuilder sb = new StringBuilder();
-        descriptor.getCompany().ifPresent(name -> sb.append(PREFIX_COMPANY).append(name.companyName).append(" "));
+        descriptor.getCompany().ifPresent(name -> sb.append(PREFIX_COMPANY).append(name.value).append(" "));
         descriptor.getRole().ifPresent(role -> sb.append(PREFIX_ROLE).append(role.value).append(" "));
         descriptor.getCycle().ifPresent(cycle -> sb.append(PREFIX_CYCLE).append(cycle.value).append(" "));
         descriptor.getStatus().ifPresent(status -> sb.append(PREFIX_STATUS).append(status.value).append(" "));

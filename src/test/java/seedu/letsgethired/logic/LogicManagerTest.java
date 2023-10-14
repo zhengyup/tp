@@ -1,7 +1,7 @@
 package seedu.letsgethired.logic;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static seedu.letsgethired.logic.Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
+import static seedu.letsgethired.logic.Messages.MESSAGE_INVALID_INTERN_APPLICATION_DISPLAYED_INDEX;
 import static seedu.letsgethired.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.CYCLE_DESC_A;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.COMPANY_DESC_A;
@@ -61,7 +61,7 @@ public class LogicManagerTest {
     @Test
     public void execute_commandExecutionError_throwsCommandException() {
         String deleteCommand = "delete 9";
-        assertCommandException(deleteCommand, MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        assertCommandException(deleteCommand, MESSAGE_INVALID_INTERN_APPLICATION_DISPLAYED_INDEX);
     }
 
     @Test

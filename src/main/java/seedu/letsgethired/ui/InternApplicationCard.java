@@ -10,11 +10,11 @@ import javafx.scene.layout.Region;
 import seedu.letsgethired.model.application.InternApplication;
 
 /**
- * An UI component that displays information of a {@code Person}.
+ * An UI component that displays information of a {@code InternApplication}.
  */
-public class PersonCard extends UiPart<Region> {
+public class InternApplicationCard extends UiPart<Region> {
 
-    private static final String FXML = "PersonListCard.fxml";
+    private static final String FXML = "InternApplicationListCard.fxml";
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -42,13 +42,13 @@ public class PersonCard extends UiPart<Region> {
     private FlowPane tags;
 
     /**
-     * Creates a {@code PersonCode} with the given {@code Person} and index to display.
+     * Creates a {@code InternApplicationCard} with the given {@code internApplication} and index to display.
      */
-    public PersonCard(InternApplication internApplication, int displayedIndex) {
+    public InternApplicationCard(InternApplication internApplication, int displayedIndex) {
         super(FXML);
         this.internApplication = internApplication;
         id.setText(displayedIndex + ". ");
-        company.setText(internApplication.getCompany().companyName);
+        company.setText(internApplication.getCompany().value);
         role.setText(internApplication.getRole().value);
         status.setText(internApplication.getStatus().value);
         cycle.setText(internApplication.getCycle().value);

@@ -42,7 +42,7 @@ public class AddCommandIntegrationTest {
     public void execute_duplicatePerson_throwsCommandException() {
         InternApplication internApplicationInList = model.getInternTracker().getApplicationList().get(0);
         assertCommandFailure(new AddCommand(internApplicationInList), model,
-                AddCommand.MESSAGE_DUPLICATE_PERSON);
+                AddCommand.MESSAGE_DUPLICATE_INTERN_APPLICATION);
     }
 
 }

@@ -29,14 +29,14 @@ import seedu.letsgethired.model.application.Status;
 import seedu.letsgethired.model.tag.Tag;
 
 /**
- * Edits the details of an existing person in the interntracker.
+ * Edits the details of an existing intern application in the interntracker.
  */
 public class EditCommand extends Command {
 
     public static final String COMMAND_WORD = "edit";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the person identified "
-            + "by the index number used in the displayed person list. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the intern application identified "
+            + "by the index number used in the displayed intern application list. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
             + "[" + PREFIX_COMPANY + "COMPANY] "
@@ -48,23 +48,23 @@ public class EditCommand extends Command {
             + PREFIX_ROLE + "91234567 "
             + PREFIX_CYCLE + "Summer 2024";
 
-    public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Person: %1$s";
+    public static final String MESSAGE_EDIT_INTERN_APPLICATION_SUCCESS = "Edited Intern Application: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the intern tracker.";
+    public static final String MESSAGE_DUPLICATE_INTERN_APPLICATION = "This intern application already exists in the intern tracker.";
 
     private final Index index;
-    private final EditPersonDescriptor editPersonDescriptor;
+    private final EditInternApplicationDescriptor editInternApplicationDescriptor;
 
     /**
-     * @param index of the person in the filtered person list to edit
-     * @param editPersonDescriptor details to edit the person with
+     * @param index of the intern application in the filtered intern application list to edit
+     * @param editInternApplicationDescriptor details to edit the intern application with
      */
-    public EditCommand(Index index, EditPersonDescriptor editPersonDescriptor) {
+    public EditCommand(Index index, EditInternApplicationDescriptor editInternApplicationDescriptor) {
         requireNonNull(index);
-        requireNonNull(editPersonDescriptor);
+        requireNonNull(editInternApplicationDescriptor);
 
         this.index = index;
-        this.editPersonDescriptor = new EditPersonDescriptor(editPersonDescriptor);
+        this.editInternApplicationDescriptor = new EditInternApplicationDescriptor(editInternApplicationDescriptor);
     }
 
     @Override
@@ -73,35 +73,35 @@ public class EditCommand extends Command {
         List<InternApplication> lastShownList = model.getFilteredInternApplicationList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INVALID_INTERN_APPLICATION_DISPLAYED_INDEX);
         }
 
         InternApplication internApplicationToEdit = lastShownList.get(index.getZeroBased());
-        InternApplication editedInternApplication = createEditedPerson(internApplicationToEdit, editPersonDescriptor);
+        InternApplication editedInternApplication = createEditedInternApplication(internApplicationToEdit, editInternApplicationDescriptor);
 
         if (!internApplicationToEdit.isSameApplication(editedInternApplication)
                 && model.hasInternApplication(editedInternApplication)) {
-            throw new CommandException(MESSAGE_DUPLICATE_PERSON);
+            throw new CommandException(MESSAGE_DUPLICATE_INTERN_APPLICATION);
         }
 
         model.setInternApplication(internApplicationToEdit, editedInternApplication);
         model.updateFilteredInternApplicationList(PREDICATE_SHOW_ALL_APPLICATIONS);
-        return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedInternApplication)));
+        return new CommandResult(String.format(MESSAGE_EDIT_INTERN_APPLICATION_SUCCESS, Messages.format(editedInternApplication)));
     }
 
     /**
-     * Creates and returns a {@code Person} with the details of {@code personToEdit}
-     * edited with {@code editPersonDescriptor}.
+     * Creates and returns a {@code InternApplication} with the details of {@code internApplicationToEdit}
+     * edited with {@code editInternApplicationDescriptor}.
      */
-    private static InternApplication createEditedPerson(InternApplication internApplicationToEdit,
-                                                        EditPersonDescriptor editPersonDescriptor) {
+    private static InternApplication createEditedInternApplication(InternApplication internApplicationToEdit,
+                                                                   EditInternApplicationDescriptor editInternApplicationDescriptor) {
         assert internApplicationToEdit != null;
 
-        Company updatedCompany = editPersonDescriptor.getCompany().orElse(internApplicationToEdit.getCompany());
-        Role updatedRole = editPersonDescriptor.getRole().orElse(internApplicationToEdit.getRole());
-        Cycle updatedCycle = editPersonDescriptor.getCycle().orElse(internApplicationToEdit.getCycle());
-        Status updatedStatus = editPersonDescriptor.getStatus().orElse(internApplicationToEdit.getStatus());
-        Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(internApplicationToEdit.getTags());
+        Company updatedCompany = editInternApplicationDescriptor.getCompany().orElse(internApplicationToEdit.getCompany());
+        Role updatedRole = editInternApplicationDescriptor.getRole().orElse(internApplicationToEdit.getRole());
+        Cycle updatedCycle = editInternApplicationDescriptor.getCycle().orElse(internApplicationToEdit.getCycle());
+        Status updatedStatus = editInternApplicationDescriptor.getStatus().orElse(internApplicationToEdit.getStatus());
+        Set<Tag> updatedTags = editInternApplicationDescriptor.getTags().orElse(internApplicationToEdit.getTags());
 
         return new InternApplication(updatedCompany, updatedRole, updatedCycle, updatedStatus, updatedTags);
     }
@@ -119,35 +119,35 @@ public class EditCommand extends Command {
 
         EditCommand otherEditCommand = (EditCommand) other;
         return index.equals(otherEditCommand.index)
-                && editPersonDescriptor.equals(otherEditCommand.editPersonDescriptor);
+                && editInternApplicationDescriptor.equals(otherEditCommand.editInternApplicationDescriptor);
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
                 .add("index", index)
-                .add("editPersonDescriptor", editPersonDescriptor)
+                .add("editInternApplicationDescriptor", editInternApplicationDescriptor)
                 .toString();
     }
 
     /**
-     * Stores the details to edit the person with. Each non-empty field value will replace the
-     * corresponding field value of the person.
+     * Stores the details to edit the intern application with. Each non-empty field value will replace the
+     * corresponding field value of the intern application.
      */
-    public static class EditPersonDescriptor {
+    public static class EditInternApplicationDescriptor {
         private Company company;
         private Role role;
         private Cycle cycle;
         private Status status;
         private Set<Tag> tags;
 
-        public EditPersonDescriptor() {}
+        public EditInternApplicationDescriptor() {}
 
         /**
          * Copy constructor.
          * A defensive copy of {@code tags} is used internally.
          */
-        public EditPersonDescriptor(EditPersonDescriptor toCopy) {
+        public EditInternApplicationDescriptor(EditInternApplicationDescriptor toCopy) {
             setCompany(toCopy.company);
             setRole(toCopy.role);
             setCycle(toCopy.cycle);
@@ -218,16 +218,16 @@ public class EditCommand extends Command {
             }
 
             // instanceof handles nulls
-            if (!(other instanceof EditPersonDescriptor)) {
+            if (!(other instanceof EditInternApplicationDescriptor)) {
                 return false;
             }
 
-            EditPersonDescriptor otherEditPersonDescriptor = (EditPersonDescriptor) other;
-            return Objects.equals(company, otherEditPersonDescriptor.company)
-                    && Objects.equals(role, otherEditPersonDescriptor.role)
-                    && Objects.equals(cycle, otherEditPersonDescriptor.cycle)
-                    && Objects.equals(status, otherEditPersonDescriptor.status)
-                    && Objects.equals(tags, otherEditPersonDescriptor.tags);
+            EditInternApplicationDescriptor otherEditInternApplicationDescriptor = (EditInternApplicationDescriptor) other;
+            return Objects.equals(company, otherEditInternApplicationDescriptor.company)
+                    && Objects.equals(role, otherEditInternApplicationDescriptor.role)
+                    && Objects.equals(cycle, otherEditInternApplicationDescriptor.cycle)
+                    && Objects.equals(status, otherEditInternApplicationDescriptor.status)
+                    && Objects.equals(tags, otherEditInternApplicationDescriptor.tags);
         }
 
         @Override

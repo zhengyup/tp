@@ -37,13 +37,13 @@ import org.junit.jupiter.api.Test;
 import seedu.letsgethired.commons.core.index.Index;
 import seedu.letsgethired.logic.Messages;
 import seedu.letsgethired.logic.commands.EditCommand;
-import seedu.letsgethired.logic.commands.EditCommand.EditPersonDescriptor;
+import seedu.letsgethired.logic.commands.EditCommand.EditInternApplicationDescriptor;
 import seedu.letsgethired.model.application.Company;
 import seedu.letsgethired.model.application.Cycle;
 import seedu.letsgethired.model.application.Role;
 import seedu.letsgethired.model.application.Status;
 import seedu.letsgethired.model.tag.Tag;
-import seedu.letsgethired.testutil.EditPersonDescriptorBuilder;
+import seedu.letsgethired.testutil.EditInternApplicationDescriptorBuilder;
 
 public class EditCommandParserTest {
 
@@ -112,7 +112,7 @@ public class EditCommandParserTest {
         String userInput = targetIndex.getOneBased() + ROLE_DESC_B + TAG_DESC_HUSBAND
                 + CYCLE_DESC_A + STATUS_DESC_A + COMPANY_DESC_A + TAG_DESC_FRIEND;
 
-        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withCompany(VALID_COMPANY_A)
+        EditInternApplicationDescriptor descriptor = new EditInternApplicationDescriptorBuilder().withCompany(VALID_COMPANY_A)
                 .withRole(VALID_ROLE_B).withCycle(VALID_CYCLE_A).withStatus(VALID_STATUS_A)
                 .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
@@ -125,7 +125,7 @@ public class EditCommandParserTest {
         Index targetIndex = INDEX_FIRST_APPLICATION;
         String userInput = targetIndex.getOneBased() + ROLE_DESC_B + CYCLE_DESC_A;
 
-        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withRole(VALID_ROLE_B)
+        EditInternApplicationDescriptor descriptor = new EditInternApplicationDescriptorBuilder().withRole(VALID_ROLE_B)
                 .withCycle(VALID_CYCLE_A).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
@@ -137,31 +137,31 @@ public class EditCommandParserTest {
         // name
         Index targetIndex = INDEX_THIRD_APPLICATION;
         String userInput = targetIndex.getOneBased() + COMPANY_DESC_A;
-        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withCompany(VALID_COMPANY_A).build();
+        EditInternApplicationDescriptor descriptor = new EditInternApplicationDescriptorBuilder().withCompany(VALID_COMPANY_A).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // role
         userInput = targetIndex.getOneBased() + ROLE_DESC_A;
-        descriptor = new EditPersonDescriptorBuilder().withRole(VALID_ROLE_A).build();
+        descriptor = new EditInternApplicationDescriptorBuilder().withRole(VALID_ROLE_A).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // cycle
         userInput = targetIndex.getOneBased() + CYCLE_DESC_A;
-        descriptor = new EditPersonDescriptorBuilder().withCycle(VALID_CYCLE_A).build();
+        descriptor = new EditInternApplicationDescriptorBuilder().withCycle(VALID_CYCLE_A).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // status
         userInput = targetIndex.getOneBased() + STATUS_DESC_A;
-        descriptor = new EditPersonDescriptorBuilder().withStatus(VALID_STATUS_A).build();
+        descriptor = new EditInternApplicationDescriptorBuilder().withStatus(VALID_STATUS_A).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // tags
         userInput = targetIndex.getOneBased() + TAG_DESC_FRIEND;
-        descriptor = new EditPersonDescriptorBuilder().withTags(VALID_TAG_FRIEND).build();
+        descriptor = new EditInternApplicationDescriptorBuilder().withTags(VALID_TAG_FRIEND).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
     }
@@ -203,7 +203,7 @@ public class EditCommandParserTest {
         Index targetIndex = INDEX_THIRD_APPLICATION;
         String userInput = targetIndex.getOneBased() + TAG_EMPTY;
 
-        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withTags().build();
+        EditInternApplicationDescriptor descriptor = new EditInternApplicationDescriptorBuilder().withTags().build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
         assertParseSuccess(parser, userInput, expectedCommand);
