@@ -13,7 +13,7 @@ public class Cycle {
             "Cycle should only contain alphanumeric characters and spaces, and it should not be blank";
 
     /*
-     * The first character of the status must not be a whitespace,
+     * The first character of the cycle must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
     public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum}- ]*";
@@ -23,7 +23,7 @@ public class Cycle {
     /**
      * Constructs an {@code Cycle}.
      *
-     * @param cycle A valid cycle status.
+     * @param cycle A valid cycle.
      */
     public Cycle(String cycle) {
         requireNonNull(cycle);

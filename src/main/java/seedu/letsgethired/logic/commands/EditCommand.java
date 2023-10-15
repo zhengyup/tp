@@ -45,7 +45,7 @@ public class EditCommand extends Command {
             + "[" + PREFIX_STATUS + "STATUS] "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_ROLE + "91234567 "
+            + PREFIX_ROLE + "Software Engineering Intern "
             + PREFIX_CYCLE + "Summer 2024";
 
     public static final String MESSAGE_EDIT_INTERN_APPLICATION_SUCCESS = "Edited Intern Application: %1$s";

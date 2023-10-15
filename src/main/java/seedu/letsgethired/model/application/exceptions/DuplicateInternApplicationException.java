@@ -6,8 +6,8 @@ package seedu.letsgethired.model.application.exceptions;
  * if they have the same
  * identity).
  */
-public class DuplicateApplicationException extends RuntimeException {
-    public DuplicateApplicationException() {
-        super("Operation would result in duplicate applications");
+public class DuplicateInternApplicationException extends RuntimeException {
+    public DuplicateInternApplicationException() {
+        super("Operation would result in duplicate intern applications");
     }
 }

@@ -15,8 +15,8 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.letsgethired.model.application.exceptions.ApplicationNotFoundException;
-import seedu.letsgethired.model.application.exceptions.DuplicateApplicationException;
+import seedu.letsgethired.model.application.exceptions.DuplicateInternApplicationException;
+import seedu.letsgethired.model.application.exceptions.InternApplicationNotFoundException;
 import seedu.letsgethired.testutil.InternApplicationBuilder;
 
 public class UniqueInternApplicationListTest {
@@ -56,7 +56,7 @@ public class UniqueInternApplicationListTest {
     @Test
     public void add_duplicateInternApplication_throwsDuplicateInternApplicationException() {
         uniqueApplicationList.add(JANE_STREET);
-        assertThrows(DuplicateApplicationException.class, () -> uniqueApplicationList.add(JANE_STREET));
+        assertThrows(DuplicateInternApplicationException.class, () -> uniqueApplicationList.add(JANE_STREET));
     }
 
     @Test
@@ -72,7 +72,7 @@ public class UniqueInternApplicationListTest {
 
     @Test
     public void setInternApplication_targetInternApplicationNotInList_throwsInternApplicationNotFoundException() {
-        assertThrows(ApplicationNotFoundException.class, () -> uniqueApplicationList
+        assertThrows(InternApplicationNotFoundException.class, () -> uniqueApplicationList
                 .setApplication(JANE_STREET, JANE_STREET));
     }
 
@@ -110,7 +110,7 @@ public class UniqueInternApplicationListTest {
     public void setInternApplication_editedApplicationHasNonUniqueIdentity_throwsDuplicateInternApplicationException() {
         uniqueApplicationList.add(JANE_STREET);
         uniqueApplicationList.add(B);
-        assertThrows(DuplicateApplicationException.class, () -> uniqueApplicationList.setApplication(JANE_STREET, B));
+        assertThrows(DuplicateInternApplicationException.class, () -> uniqueApplicationList.setApplication(JANE_STREET, B));
     }
 
     @Test
@@ -120,7 +120,7 @@ public class UniqueInternApplicationListTest {
 
     @Test
     public void remove_internApplicationDoesNotExist_throwsInternApplicationNotFoundException() {
-        assertThrows(ApplicationNotFoundException.class, () -> uniqueApplicationList.remove(JANE_STREET));
+        assertThrows(InternApplicationNotFoundException.class, () -> uniqueApplicationList.remove(JANE_STREET));
     }
 
     @Test
@@ -165,7 +165,7 @@ public class UniqueInternApplicationListTest {
     @Test
     public void setInternApplications_listWithDuplicateInternApplications_throwsDuplicateInternApplicationException() {
         List<InternApplication> listWithDuplicateInternApplications = Arrays.asList(JANE_STREET, JANE_STREET);
-        assertThrows(DuplicateApplicationException.class, () -> uniqueApplicationList
+        assertThrows(DuplicateInternApplicationException.class, () -> uniqueApplicationList
                 .setApplications(listWithDuplicateInternApplications));
     }
 

@@ -23,12 +23,12 @@ public class Company {
     /**
      * Constructs a {@code Company}.
      *
-     * @param name A valid company.
+     * @param company A valid company.
      */
-    public Company(String name) {
-        requireNonNull(name);
-        checkArgument(isValidCompany(name), MESSAGE_CONSTRAINTS);
-        value = name;
+    public Company(String company) {
+        requireNonNull(company);
+        checkArgument(isValidCompany(company), MESSAGE_CONSTRAINTS);
+        value = company;
     }
 
     /**

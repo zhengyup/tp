@@ -8,8 +8,8 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.letsgethired.model.application.exceptions.ApplicationNotFoundException;
-import seedu.letsgethired.model.application.exceptions.DuplicateApplicationException;
+import seedu.letsgethired.model.application.exceptions.DuplicateInternApplicationException;
+import seedu.letsgethired.model.application.exceptions.InternApplicationNotFoundException;
 
 
 /**
@@ -51,7 +51,7 @@ public class UniqueApplicationList implements Iterable<InternApplication> {
     public void add(InternApplication toAdd) {
         requireNonNull(toAdd);
         if (contains(toAdd)) {
-            throw new DuplicateApplicationException();
+            throw new DuplicateInternApplicationException();
         }
         internalList.add(toAdd);
     }
@@ -68,11 +68,11 @@ public class UniqueApplicationList implements Iterable<InternApplication> {
 
         int index = internalList.indexOf(target);
         if (index == -1) {
-            throw new ApplicationNotFoundException();
+            throw new InternApplicationNotFoundException();
         }
 
         if (!target.isSameApplication(editedInternApplication) && contains(editedInternApplication)) {
-            throw new DuplicateApplicationException();
+            throw new DuplicateInternApplicationException();
         }
 
         internalList.set(index, editedInternApplication);
@@ -85,7 +85,7 @@ public class UniqueApplicationList implements Iterable<InternApplication> {
     public void remove(InternApplication toRemove) {
         requireNonNull(toRemove);
         if (!internalList.remove(toRemove)) {
-            throw new ApplicationNotFoundException();
+            throw new InternApplicationNotFoundException();
         }
     }
 
@@ -101,7 +101,7 @@ public class UniqueApplicationList implements Iterable<InternApplication> {
     public void setApplications(List<InternApplication> internApplications) {
         requireAllNonNull(internApplications);
         if (!applicationsAreUnique(internApplications)) {
-            throw new DuplicateApplicationException();
+            throw new DuplicateInternApplicationException();
         }
 
         internalList.setAll(internApplications);

@@ -19,7 +19,7 @@ import org.junit.jupiter.api.Test;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.letsgethired.model.application.InternApplication;
-import seedu.letsgethired.model.application.exceptions.DuplicateApplicationException;
+import seedu.letsgethired.model.application.exceptions.DuplicateInternApplicationException;
 import seedu.letsgethired.testutil.InternApplicationBuilder;
 
 public class InternTrackerTest {
@@ -52,7 +52,7 @@ public class InternTrackerTest {
         List<InternApplication> newInternApplications = Arrays.asList(JANE_STREET, editedAlice);
         InternTrackerStub newData = new InternTrackerStub(newInternApplications);
 
-        assertThrows(DuplicateApplicationException.class, () -> internTracker.resetData(newData));
+        assertThrows(DuplicateInternApplicationException.class, () -> internTracker.resetData(newData));
     }
 
     @Test
