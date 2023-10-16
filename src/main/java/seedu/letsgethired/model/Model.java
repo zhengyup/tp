@@ -91,5 +91,10 @@ public interface Model {
      * Sets the selected application to {@code target}.
      * {@code target} must exist in the intern tracker or be Null.
      */
-    void updateCurrentApplication(InternApplication target);
+    void setCurrentInternApplication(InternApplication target);
+
+    /**
+     * Retrieves the current internApplication being tracked
+     */
+    InternApplication getCurrentInternApplication();
 }

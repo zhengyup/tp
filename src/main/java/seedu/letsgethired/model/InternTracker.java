@@ -96,6 +96,9 @@ public class InternTracker implements ReadOnlyInternTracker {
      */
     public void removeApplication(InternApplication key) {
         internApplications.remove(key);
+        if (!hasApplication(currentApplication)) {
+            currentApplication = null;
+        }
     }
 
     //// util methods
@@ -113,7 +116,9 @@ public class InternTracker implements ReadOnlyInternTracker {
     }
 
     public void setCurrentApplication(InternApplication currentApplication) {
-        this.currentApplication = currentApplication;
+        if (hasApplication(currentApplication)) {
+            this.currentApplication = currentApplication;
+        }
     }
 
     public InternApplication getCurrentApplication() {

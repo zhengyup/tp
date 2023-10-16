@@ -43,7 +43,7 @@ public class ViewCommand extends Command {
         }
 
         InternApplication internApplicationToView = lastShownList.get(targetIndex.getZeroBased());
-        model.updateCurrentApplication(internApplicationToView);
+        model.setCurrentInternApplication(internApplicationToView);
         return new CommandResult(String.format(MESSAGE_VIEW_INTERN_APPLICATION_SUCCESS,
                 Messages.format(internApplicationToView)));
     }

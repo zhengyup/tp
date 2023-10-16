@@ -6,10 +6,12 @@ import seedu.letsgethired.commons.core.index.Index;
 import seedu.letsgethired.logic.commands.ViewCommand;
 import seedu.letsgethired.logic.parser.exceptions.ParseException;
 
+import javax.swing.text.View;
+
 /**
  * Parses input arguments and creates a new ViewCommand object
  */
-public class ViewCommandParser {
+public class ViewCommandParser implements Parser<ViewCommand>{
     /**
      * Parses the given {@code String} of arguments in the context of the ViewCommand
      * and returns a ViewCommand object for execution.

@@ -131,8 +131,16 @@ public class ModelManager implements Model {
      * Updates the internTracker to track the current selected application {@code target}
      */
     @Override
-    public void updateCurrentApplication(InternApplication target) {
+    public void setCurrentInternApplication(InternApplication target) {
         internTracker.setCurrentApplication(target);
+    }
+
+    /**
+     * Gets the current application the internTracker is tracking
+     */
+    @Override
+    public InternApplication getCurrentInternApplication() {
+        return internTracker.getCurrentApplication();
     }
 
     @Override

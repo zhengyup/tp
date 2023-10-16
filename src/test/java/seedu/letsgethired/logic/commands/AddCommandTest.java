@@ -160,7 +160,11 @@ public class AddCommandTest {
         }
 
         @Override
-        public void updateCurrentApplication(InternApplication target) {
+        public void setCurrentInternApplication(InternApplication target) {
+            throw new AssertionError("This method should not be called.");
+        }
+        @Override
+        public InternApplication getCurrentInternApplication() {
             throw new AssertionError("This method should not be called.");
         }
     }
