@@ -84,4 +84,10 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredPersonList(Predicate<InternApplication> predicate);
+
+    /**
+     * Sets the selected application to {@code target}.
+     * {@code target} must exist in the intern tracker or be Null.
+     */
+    void updateCurrentApplication(InternApplication target);
 }

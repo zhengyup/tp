@@ -17,7 +17,10 @@ import seedu.intern.logic.commands.ExitCommand;
 import seedu.intern.logic.commands.FindCommand;
 import seedu.intern.logic.commands.HelpCommand;
 import seedu.intern.logic.commands.ListCommand;
+import seedu.intern.logic.commands.ViewCommand;
 import seedu.intern.logic.parser.exceptions.ParseException;
+
+import javax.swing.text.View;
 
 /**
  * Parses user input.
@@ -61,6 +64,9 @@ public class InternTrackerParser {
 
         case DeleteCommand.COMMAND_WORD:
             return new DeleteCommandParser().parse(arguments);
+
+        case ViewCommand.COMMAND_WORD:
+            return new ViewCommandParser().parse(arguments);
 
         case ClearCommand.COMMAND_WORD:
             return new ClearCommand();
