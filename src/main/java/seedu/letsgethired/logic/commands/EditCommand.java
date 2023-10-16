@@ -145,7 +145,6 @@ public class EditCommand extends Command {
 
         /**
          * Copy constructor.
-         * A defensive copy of {@code tags} is used internally.
          */
         public EditInternApplicationDescriptor(EditInternApplicationDescriptor toCopy) {
             setCompany(toCopy.company);

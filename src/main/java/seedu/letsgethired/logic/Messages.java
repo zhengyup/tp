@@ -43,9 +43,7 @@ public class Messages {
                 .append("; Cycle: ")
                 .append(internApplication.getCycle())
                 .append("; Status: ")
-                .append(internApplication.getStatus())
-                .append("; Tags: ");
-        internApplication.getTags().forEach(builder::append);
+                .append(internApplication.getStatus());
         return builder.toString();
     }
 
