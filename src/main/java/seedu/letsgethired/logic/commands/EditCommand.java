@@ -20,6 +20,7 @@ import seedu.letsgethired.model.Model;
 import seedu.letsgethired.model.application.Company;
 import seedu.letsgethired.model.application.Cycle;
 import seedu.letsgethired.model.application.InternApplication;
+import seedu.letsgethired.model.application.Note;
 import seedu.letsgethired.model.application.Role;
 import seedu.letsgethired.model.application.Status;
 
@@ -103,10 +104,12 @@ public class EditCommand extends Command {
                 .orElse(internApplicationToEdit.getRole());
         Cycle updatedCycle = editInternApplicationDescriptor.getCycle()
                 .orElse(internApplicationToEdit.getCycle());
+        Note updatedNote = editInternApplicationDescriptor.getNote()
+                .orElse(internApplicationToEdit.getNote());
         Status updatedStatus = editInternApplicationDescriptor.getStatus()
                 .orElse(internApplicationToEdit.getStatus());
 
-        return new InternApplication(updatedCompany, updatedRole, updatedCycle, updatedStatus);
+        return new InternApplication(updatedCompany, updatedRole, updatedCycle, updatedNote, updatedStatus);
     }
 
     @Override
@@ -141,6 +144,7 @@ public class EditCommand extends Command {
         private Company company;
         private Role role;
         private Cycle cycle;
+        private Note note;
         private Status status;
 
         public EditInternApplicationDescriptor() {}
@@ -152,6 +156,7 @@ public class EditCommand extends Command {
             setCompany(toCopy.company);
             setRole(toCopy.role);
             setCycle(toCopy.cycle);
+            setNote(toCopy.note);
             setStatus(toCopy.status);
         }
 
@@ -184,6 +189,14 @@ public class EditCommand extends Command {
 
         public Optional<Cycle> getCycle() {
             return Optional.ofNullable(cycle);
+        }
+
+        public void setNote(Note note) {
+            this.note = note;
+        }
+
+        public Optional<Note> getNote() {
+            return Optional.ofNullable(note);
         }
 
         public void setStatus(Status status) {

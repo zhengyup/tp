@@ -10,10 +10,11 @@ import org.junit.jupiter.api.Test;
 
 import seedu.letsgethired.commons.core.index.Index;
 import seedu.letsgethired.logic.commands.NoteCommand;
+import seedu.letsgethired.model.application.Note;
 
 public class NoteCommandParserTest {
     private NoteCommandParser parser = new NoteCommandParser();
-    private final String nonEmptyNote = "Some note.";
+    private final Note nonEmptyNote = new Note("Some note.");
 
     @Test
     public void parse_indexSpecified_success() {
@@ -25,7 +26,7 @@ public class NoteCommandParserTest {
 
         // no note
         userInput = targetIndex.getOneBased() + " " + PREFIX_NOTE;
-        expectedCommand = new NoteCommand(INDEX_FIRST_APPLICATION, "");
+        expectedCommand = new NoteCommand(INDEX_FIRST_APPLICATION, new Note(""));
         assertParseSuccess(parser, userInput, expectedCommand);
     }
 

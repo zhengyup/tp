@@ -6,11 +6,12 @@ import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE;
 import seedu.letsgethired.commons.core.index.Index;
 import seedu.letsgethired.logic.commands.exceptions.CommandException;
 import seedu.letsgethired.model.Model;
+import seedu.letsgethired.model.application.Note;
 
 public class NoteCommand extends Command {
 
     private final Index index;
-    private final String remark;
+    private final Note note;
 
     public static final String COMMAND_WORD = "note";
 
@@ -22,19 +23,19 @@ public class NoteCommand extends Command {
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_NOTE + "John Street is the leading market maker in the APAC region";
 
-    public static final String MESSAGE_ARGUMENTS = "Index: %1$d, Remark: %2$s";
+    public static final String MESSAGE_ARGUMENTS = "Index: %1$d, Note: %2$s";
 
-    public NoteCommand(Index index, String remark) {
-        requireAllNonNull(index, remark);
+    public NoteCommand(Index index, Note note) {
+        requireAllNonNull(index, note);
 
         this.index = index;
-        this.remark = remark;
+        this.note = note;
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
         throw new CommandException(
-                String.format(MESSAGE_ARGUMENTS, index.getOneBased(), remark));
+                String.format(MESSAGE_ARGUMENTS, index.getOneBased(), note));
     }
 
     @Override
@@ -50,6 +51,6 @@ public class NoteCommand extends Command {
 
         NoteCommand e = (NoteCommand) other;
         return index.equals(e.index)
-                && remark.equals(e.remark);
+                && note.equals(e.note);
     }
 }

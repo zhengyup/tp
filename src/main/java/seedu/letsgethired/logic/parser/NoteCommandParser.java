@@ -3,10 +3,12 @@ package seedu.letsgethired.logic.parser;
 import static java.util.Objects.requireNonNull;
 import static seedu.letsgethired.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE;
+
 import seedu.letsgethired.commons.core.index.Index;
 import seedu.letsgethired.commons.exceptions.IllegalValueException;
 import seedu.letsgethired.logic.commands.NoteCommand;
 import seedu.letsgethired.logic.parser.exceptions.ParseException;
+import seedu.letsgethired.model.application.Note;
 
 /**
  * Parses input arguments and creates a new {@code NoteCommand} object
@@ -30,6 +32,6 @@ public class NoteCommandParser implements Parser<NoteCommand> {
 
         String note = argMultimap.getValue(PREFIX_NOTE).orElse("");
 
-        return new NoteCommand(index, note);
+        return new NoteCommand(index, new Note(note));
     }
 }

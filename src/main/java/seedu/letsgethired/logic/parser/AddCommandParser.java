@@ -10,11 +10,7 @@ import java.util.stream.Stream;
 
 import seedu.letsgethired.logic.commands.AddCommand;
 import seedu.letsgethired.logic.parser.exceptions.ParseException;
-import seedu.letsgethired.model.application.Company;
-import seedu.letsgethired.model.application.Cycle;
-import seedu.letsgethired.model.application.InternApplication;
-import seedu.letsgethired.model.application.Role;
-import seedu.letsgethired.model.application.Status;
+import seedu.letsgethired.model.application.*;
 
 /**
  * Parses input arguments and creates a new AddCommand object
@@ -40,8 +36,9 @@ public class AddCommandParser implements Parser<AddCommand> {
         Role role = ParserUtil.parseRole(argMultimap.getValue(PREFIX_ROLE).get());
         Cycle cycle = ParserUtil.parseCycle(argMultimap.getValue(PREFIX_CYCLE).get());
         Status status = ParserUtil.parseStatus(argMultimap.getValue(PREFIX_STATUS).get());
+        Note note = new Note("");
 
-        InternApplication internApplication = new InternApplication(company, role, cycle, status);
+        InternApplication internApplication = new InternApplication(company, role, cycle, note, status);
 
         return new AddCommand(internApplication);
     }

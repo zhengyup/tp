@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Test;
 import seedu.letsgethired.model.Model;
 import seedu.letsgethired.model.ModelManager;
 import seedu.letsgethired.model.UserPrefs;
+import seedu.letsgethired.model.application.Note;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for NoteCommand.
@@ -24,7 +25,7 @@ public class NoteCommandTest {
 
     @Test
     public void execute() {
-        final String note = "Some note";
+        final Note note = new Note("Some note");
 
         assertCommandFailure(new NoteCommand(INDEX_FIRST_APPLICATION, note), model,
                 String.format(MESSAGE_ARGUMENTS, INDEX_FIRST_APPLICATION.getOneBased(), note));
@@ -32,10 +33,12 @@ public class NoteCommandTest {
 
     @Test
     public void equals() {
-        final NoteCommand standardCommand = new NoteCommand(INDEX_FIRST_APPLICATION, VALID_NOTE_JANE_STREET);
+        final NoteCommand standardCommand = new NoteCommand(INDEX_FIRST_APPLICATION,
+                new Note(VALID_NOTE_JANE_STREET));
 
         // same values -> returns true
-        NoteCommand commandWithSameValues = new NoteCommand(INDEX_FIRST_APPLICATION, VALID_NOTE_JANE_STREET);
+        NoteCommand commandWithSameValues = new NoteCommand(INDEX_FIRST_APPLICATION,
+                new Note(VALID_NOTE_JANE_STREET));
         assertTrue(standardCommand.equals(commandWithSameValues));
 
         // same object -> returns true
@@ -48,9 +51,11 @@ public class NoteCommandTest {
         assertFalse(standardCommand.equals(new ClearCommand()));
 
         // different index -> returns false
-        assertFalse(standardCommand.equals(new NoteCommand(INDEX_SECOND_APPLICATION, VALID_NOTE_JANE_STREET)));
+        assertFalse(standardCommand.equals(new NoteCommand(INDEX_SECOND_APPLICATION,
+                new Note(VALID_NOTE_JANE_STREET))));
 
         // different note -> returns false
-        assertFalse(standardCommand.equals(new NoteCommand(INDEX_FIRST_APPLICATION, VALID_COMPANY_BYTEDANCE)));
+        assertFalse(standardCommand.equals(new NoteCommand(INDEX_FIRST_APPLICATION,
+                new Note(VALID_NOTE_BYTEDANCE))));
     }
 }

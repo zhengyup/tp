@@ -4,11 +4,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.letsgethired.commons.exceptions.IllegalValueException;
-import seedu.letsgethired.model.application.Company;
-import seedu.letsgethired.model.application.Cycle;
-import seedu.letsgethired.model.application.InternApplication;
-import seedu.letsgethired.model.application.Role;
-import seedu.letsgethired.model.application.Status;
+import seedu.letsgethired.model.Model;
+import seedu.letsgethired.model.application.*;
 
 /**
  * Jackson-friendly version of {@link InternApplication}.
@@ -84,6 +81,8 @@ class JsonAdaptedInternApplication {
         }
         final Status modelStatus = new Status(status);
 
-        return new InternApplication(modelCompany, modelRole, modelCycle, modelStatus);
+        final Note modelNote = new Note("");
+
+        return new InternApplication(modelCompany, modelRole, modelCycle, modelNote, modelStatus);
     }
 }

@@ -34,6 +34,8 @@ public class InternApplicationCard extends UiPart<Region> {
     @FXML
     private Label status;
     @FXML
+    private Label note;
+    @FXML
     private Label cycle;
 
     /**
