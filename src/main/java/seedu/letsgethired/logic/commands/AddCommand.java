@@ -25,7 +25,7 @@ public class AddCommand extends Command {
             + PREFIX_COMPANY + "COMPANY "
             + PREFIX_ROLE + "ROLE "
             + PREFIX_CYCLE + "CYCLE "
-            + PREFIX_STATUS + "ADDRESS "
+            + PREFIX_STATUS + "STATUS "
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_COMPANY + "Jane Street "
             + PREFIX_ROLE + "Software Engineering Intern "
