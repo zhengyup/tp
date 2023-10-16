@@ -85,11 +85,29 @@ public class InternTrackerTest {
     }
 
     @Test
+    public void updateCurrentApplication_modifyList_throwsUnsupportedOperationException() {
+        assertThrows(UnsupportedOperationException.class, () -> internTracker.getApplicationList().remove(0));
+    }
+
+    @Test
     public void toStringMethod() {
         String expected = InternTracker.class.getCanonicalName() + "{applications=" + internTracker
                 .getApplicationList() + "}";
         assertEquals(expected, internTracker.toString());
     }
+
+    @Test
+    public void setCurrentApplication_validInternApplication_success() {
+        internTracker.addApplication(JANE_STREET);
+        internTracker.setSelectedApplication(JANE_STREET);
+        assertTrue(internTracker.getSelectedApplication() == JANE_STREET);
+    }
+
+    @Test
+    public void getCurrentApplication_noExistingCurrentApplication_success() {
+        assertTrue(internTracker.getSelectedApplication() == null);
+    }
+
 
     /**
      * A stub ReadOnlyInternTracker whose intern applications list can violate interface constraints.

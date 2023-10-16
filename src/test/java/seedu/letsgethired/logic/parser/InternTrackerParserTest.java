@@ -16,9 +16,15 @@ import org.junit.jupiter.api.Test;
 
 import seedu.letsgethired.logic.commands.*;
 import seedu.letsgethired.logic.commands.EditCommand.EditInternApplicationDescriptor;
+import seedu.letsgethired.logic.commands.ExitCommand;
+import seedu.letsgethired.logic.commands.FindCommand;
+import seedu.letsgethired.logic.commands.HelpCommand;
+import seedu.letsgethired.logic.commands.ListCommand;
+import seedu.letsgethired.logic.commands.ViewCommand;
 import seedu.letsgethired.logic.parser.exceptions.ParseException;
 import seedu.letsgethired.model.application.CompanyContainsKeywordsPredicate;
 import seedu.letsgethired.model.application.InternApplication;
+import seedu.letsgethired.model.application.Note;
 import seedu.letsgethired.testutil.EditInternApplicationDescriptorBuilder;
 import seedu.letsgethired.testutil.InternApplicationBuilder;
 import seedu.letsgethired.testutil.InternApplicationUtil;
@@ -86,10 +92,16 @@ public class InternTrackerParserTest {
 
     @Test
     public void parseCommand_note() throws Exception {
-        final String note = "Some note.";
+        final Note note = new Note("Some note.");
         NoteCommand command = (NoteCommand) parser.parseCommand(NoteCommand.COMMAND_WORD + " "
                 + INDEX_FIRST_APPLICATION.getOneBased() + " " + PREFIX_NOTE + note);
         assertEquals(new NoteCommand(INDEX_FIRST_APPLICATION, note), command);
+    }
+
+    @Test
+    public void parseCommand_view() throws Exception {
+        assertTrue(parser.parseCommand(ViewCommand.COMMAND_WORD + " "
+                + INDEX_FIRST_APPLICATION.getOneBased()) instanceof ViewCommand);
     }
 
     @Test

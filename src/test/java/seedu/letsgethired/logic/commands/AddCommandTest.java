@@ -158,6 +158,15 @@ public class AddCommandTest {
         public void updateFilteredInternApplicationList(Predicate<InternApplication> predicate) {
             throw new AssertionError("This method should not be called.");
         }
+
+        @Override
+        public void setCurrentInternApplication(InternApplication target) {
+            throw new AssertionError("This method should not be called.");
+        }
+        @Override
+        public InternApplication getCurrentInternApplication() {
+            throw new AssertionError("This method should not be called.");
+        }
     }
 
     /**
