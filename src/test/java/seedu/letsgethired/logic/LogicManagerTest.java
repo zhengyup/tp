@@ -3,10 +3,10 @@ package seedu.letsgethired.logic;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.letsgethired.logic.Messages.MESSAGE_INVALID_INTERN_APPLICATION_DISPLAYED_INDEX;
 import static seedu.letsgethired.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.COMPANY_DESC_A;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.CYCLE_DESC_A;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.ROLE_DESC_A;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.STATUS_DESC_A;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.COMPANY_DESC_JANE_STREET;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.CYCLE_DESC_SUMMER;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.ROLE_DESC_FULL_STACK;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.STATUS_DESC_ACCEPTED;
 import static seedu.letsgethired.testutil.Assert.assertThrows;
 import static seedu.letsgethired.testutil.TypicalInternApplications.A;
 
@@ -169,7 +169,11 @@ public class LogicManagerTest {
         logic = new LogicManager(model, storage);
 
         // Triggers the saveInternTracker method by executing an add command
-        String addCommand = AddCommand.COMMAND_WORD + COMPANY_DESC_A + ROLE_DESC_A + CYCLE_DESC_A + STATUS_DESC_A;
+        String addCommand = AddCommand.COMMAND_WORD
+                + COMPANY_DESC_JANE_STREET
+                + ROLE_DESC_FULL_STACK
+                + CYCLE_DESC_SUMMER
+                + STATUS_DESC_ACCEPTED;
         InternApplication expectedInternApplication = new InternApplicationBuilder(A).build();
         ModelManager expectedModel = new ModelManager();
         expectedModel.addInternApplication(expectedInternApplication);

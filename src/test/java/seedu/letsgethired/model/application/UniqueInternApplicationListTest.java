@@ -3,7 +3,7 @@ package seedu.letsgethired.model.application;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_STATUS_B;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_STATUS_REJECTED;
 import static seedu.letsgethired.testutil.Assert.assertThrows;
 import static seedu.letsgethired.testutil.TypicalInternApplications.B;
 import static seedu.letsgethired.testutil.TypicalInternApplications.JANE_STREET;
@@ -42,7 +42,7 @@ public class UniqueInternApplicationListTest {
     public void contains_internApplicationWithSameIdentityFieldsInList_returnsTrue() {
         uniqueApplicationList.add(JANE_STREET);
         InternApplication editedAlice = new InternApplicationBuilder(JANE_STREET)
-                .withStatus(VALID_STATUS_B)
+                .withStatus(VALID_STATUS_REJECTED)
                 .build();
         assertTrue(uniqueApplicationList.contains(editedAlice));
     }
@@ -88,7 +88,7 @@ public class UniqueInternApplicationListTest {
     public void setInternApplication_editedInternApplicationHasSameIdentity_success() {
         uniqueApplicationList.add(JANE_STREET);
         InternApplication editedAlice = new InternApplicationBuilder(JANE_STREET)
-                .withStatus(VALID_STATUS_B)
+                .withStatus(VALID_STATUS_REJECTED)
                 .build();
         uniqueApplicationList.setApplication(JANE_STREET, editedAlice);
         UniqueApplicationList expectedUniqueApplicationList = new UniqueApplicationList();

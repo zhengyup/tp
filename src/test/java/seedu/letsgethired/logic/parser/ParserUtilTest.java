@@ -18,10 +18,9 @@ public class ParserUtilTest {
     private static final String INVALID_ROLE = " ";
     private static final String INVALID_STATUS = " ";
     private static final String INVALID_CYCLE = "Summer!2024";
-
     private static final String VALID_COMPANY = "Jane Street";
-    private static final String VALID_ROLE = "Intern";
-    private static final String VALID_STATUS = "123 Main Street #0505";
+    private static final String VALID_ROLE = "Full Stack Developer";
+    private static final String VALID_STATUS = "Accepted";
     private static final String VALID_CYCLE = "Summer 2024";
 
     private static final String WHITESPACE = " \t\r\n";

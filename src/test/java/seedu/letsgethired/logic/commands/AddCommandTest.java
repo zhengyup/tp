@@ -56,16 +56,16 @@ public class AddCommandTest {
 
     @Test
     public void equals() {
-        InternApplication a = new InternApplicationBuilder().withCompany("A").build();
-        InternApplication b = new InternApplicationBuilder().withCompany("B").build();
-        AddCommand addACommand = new AddCommand(a);
-        AddCommand addBCommand = new AddCommand(b);
+        InternApplication janeStreet = new InternApplicationBuilder().withCompany("Jane Street").build();
+        InternApplication byteDance = new InternApplicationBuilder().withCompany("ByteDance").build();
+        AddCommand addACommand = new AddCommand(janeStreet);
+        AddCommand addBCommand = new AddCommand(byteDance);
 
         // same object -> returns true
         assertTrue(addACommand.equals(addACommand));
 
         // same values -> returns true
-        AddCommand addACommandCopy = new AddCommand(a);
+        AddCommand addACommandCopy = new AddCommand(janeStreet);
         assertTrue(addACommand.equals(addACommandCopy));
 
         // different types -> returns false
@@ -86,7 +86,7 @@ public class AddCommandTest {
     }
 
     /**
-     * A default model stub that have all of the methods failing.
+     * A default model stub that have all the methods failing.
      */
     private class ModelStub implements Model {
         @Override

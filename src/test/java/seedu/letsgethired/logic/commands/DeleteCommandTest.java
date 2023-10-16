@@ -30,7 +30,8 @@ public class DeleteCommandTest {
     @Test
     public void execute_validIndexUnfilteredList_success() {
         InternApplication internApplicationToDelete = model
-                .getFilteredInternApplicationList().get(INDEX_FIRST_APPLICATION
+                .getFilteredInternApplicationList()
+                .get(INDEX_FIRST_APPLICATION
                 .getZeroBased());
         DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_APPLICATION);
 

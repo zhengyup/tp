@@ -3,10 +3,10 @@ package seedu.letsgethired.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.DESC_A;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.DESC_B;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_COMPANY_B;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_ROLE_B;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.DESC_BYTEDANCE;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.DESC_JANE_STREET;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_COMPANY_BYTEDANCE;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_ROLE_BACK_END;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.showInternApplicationAtIndex;
@@ -58,12 +58,12 @@ public class EditCommandTest {
 
         InternApplicationBuilder internApplicationInList = new InternApplicationBuilder(lastInternApplication);
         InternApplication editedInternApplication = internApplicationInList
-                .withCompany(VALID_COMPANY_B)
-                .withRole(VALID_ROLE_B).build();
+                .withCompany(VALID_COMPANY_BYTEDANCE)
+                .withRole(VALID_ROLE_BACK_END).build();
 
         EditInternApplicationDescriptor descriptor = new EditInternApplicationDescriptorBuilder()
-                .withCompany(VALID_COMPANY_B)
-                .withRole(VALID_ROLE_B)
+                .withCompany(VALID_COMPANY_BYTEDANCE)
+                .withRole(VALID_ROLE_BACK_END)
                 .build();
         EditCommand editCommand = new EditCommand(indexLastInternApplication, descriptor);
 
@@ -97,9 +97,9 @@ public class EditCommandTest {
         InternApplication internApplicationInFilteredList = model.getFilteredInternApplicationList()
                 .get(INDEX_FIRST_APPLICATION.getZeroBased());
         InternApplication editedInternApplication = new InternApplicationBuilder(internApplicationInFilteredList)
-                .withCompany(VALID_COMPANY_B).build();
+                .withCompany(VALID_COMPANY_BYTEDANCE).build();
         EditCommand editCommand = new EditCommand(INDEX_FIRST_APPLICATION,
-                new EditInternApplicationDescriptorBuilder().withCompany(VALID_COMPANY_B).build());
+                new EditInternApplicationDescriptorBuilder().withCompany(VALID_COMPANY_BYTEDANCE).build());
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_INTERN_APPLICATION_SUCCESS,
                 Messages.format(editedInternApplication));
@@ -138,7 +138,7 @@ public class EditCommandTest {
     public void execute_invalidInternApplicationIndexUnfilteredList_failure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredInternApplicationList().size() + 1);
         EditInternApplicationDescriptor descriptor = new EditInternApplicationDescriptorBuilder()
-                .withCompany(VALID_COMPANY_B).build();
+                .withCompany(VALID_COMPANY_BYTEDANCE).build();
         EditCommand editCommand = new EditCommand(outOfBoundIndex, descriptor);
 
         assertCommandFailure(editCommand, model, Messages.MESSAGE_INVALID_INTERN_APPLICATION_DISPLAYED_INDEX);
@@ -156,17 +156,17 @@ public class EditCommandTest {
         assertTrue(outOfBoundIndex.getZeroBased() < model.getInternTracker().getApplicationList().size());
 
         EditCommand editCommand = new EditCommand(outOfBoundIndex,
-                new EditInternApplicationDescriptorBuilder().withCompany(VALID_COMPANY_B).build());
+                new EditInternApplicationDescriptorBuilder().withCompany(VALID_COMPANY_BYTEDANCE).build());
 
         assertCommandFailure(editCommand, model, Messages.MESSAGE_INVALID_INTERN_APPLICATION_DISPLAYED_INDEX);
     }
 
     @Test
     public void equals() {
-        final EditCommand standardCommand = new EditCommand(INDEX_FIRST_APPLICATION, DESC_A);
+        final EditCommand standardCommand = new EditCommand(INDEX_FIRST_APPLICATION, DESC_JANE_STREET);
 
         // same values -> returns true
-        EditInternApplicationDescriptor copyDescriptor = new EditInternApplicationDescriptor(DESC_A);
+        EditInternApplicationDescriptor copyDescriptor = new EditInternApplicationDescriptor(DESC_JANE_STREET);
         EditCommand commandWithSameValues = new EditCommand(INDEX_FIRST_APPLICATION, copyDescriptor);
         assertTrue(standardCommand.equals(commandWithSameValues));
 
@@ -180,10 +180,10 @@ public class EditCommandTest {
         assertFalse(standardCommand.equals(new ClearCommand()));
 
         // different index -> returns false
-        assertFalse(standardCommand.equals(new EditCommand(INDEX_SECOND_APPLICATION, DESC_A)));
+        assertFalse(standardCommand.equals(new EditCommand(INDEX_SECOND_APPLICATION, DESC_JANE_STREET)));
 
         // different descriptor -> returns false
-        assertFalse(standardCommand.equals(new EditCommand(INDEX_FIRST_APPLICATION, DESC_B)));
+        assertFalse(standardCommand.equals(new EditCommand(INDEX_FIRST_APPLICATION, DESC_BYTEDANCE)));
     }
 
     @Test

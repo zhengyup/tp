@@ -25,40 +25,48 @@ import seedu.letsgethired.testutil.EditInternApplicationDescriptorBuilder;
  */
 public class CommandTestUtil {
 
-    public static final String VALID_COMPANY_A = "Citadel";
-    public static final String VALID_COMPANY_B = "Accenture";
-    public static final String VALID_ROLE_A = "Intern A";
-    public static final String VALID_ROLE_B = "Intern B";
-    public static final String VALID_CYCLE_A = "Summer 2024";
-    public static final String VALID_CYCLE_B = "Winter 2023";
-    public static final String VALID_STATUS_A = "Pending";
-    public static final String VALID_STATUS_B = "Rejected";
-    public static final String COMPANY_DESC_A = " " + PREFIX_COMPANY + VALID_COMPANY_A;
-    public static final String COMPANY_DESC_B = " " + PREFIX_COMPANY + VALID_COMPANY_B;
-    public static final String ROLE_DESC_A = " " + PREFIX_ROLE + VALID_ROLE_A;
-    public static final String ROLE_DESC_B = " " + PREFIX_ROLE + VALID_ROLE_B;
-    public static final String CYCLE_DESC_A = " " + PREFIX_CYCLE + VALID_CYCLE_A;
-    public static final String CYCLE_DESC_B = " " + PREFIX_CYCLE + VALID_CYCLE_B;
-    public static final String STATUS_DESC_A = " " + PREFIX_STATUS + VALID_STATUS_A;
-    public static final String STATUS_DESC_B = " " + PREFIX_STATUS + VALID_STATUS_B;
+    public static final String VALID_COMPANY_JANE_STREET = "Jane Street";
+    public static final String VALID_COMPANY_BYTEDANCE = "ByteDance";
+    public static final String VALID_ROLE_FULL_STACK = "Full Stack Developer";
+    public static final String VALID_ROLE_BACK_END = "Back End Developer";
+    public static final String VALID_CYCLE_SUMMER = "Summer 2024";
+    public static final String VALID_CYCLE_WINTER = "Winter 2023";
+    public static final String VALID_STATUS_ACCEPTED = "Accepted";
+    public static final String VALID_STATUS_REJECTED = "Rejected";
+    public static final String COMPANY_DESC_JANE_STREET = " " + PREFIX_COMPANY + VALID_COMPANY_JANE_STREET;
+    public static final String COMPANY_DESC_BYTEDANCE = " " + PREFIX_COMPANY + VALID_COMPANY_BYTEDANCE;
+    public static final String ROLE_DESC_FULL_STACK = " " + PREFIX_ROLE + VALID_ROLE_FULL_STACK;
+    public static final String ROLE_DESC_BACK_END = " " + PREFIX_ROLE + VALID_ROLE_BACK_END;
+    public static final String CYCLE_DESC_SUMMER = " " + PREFIX_CYCLE + VALID_CYCLE_SUMMER;
+    public static final String CYCLE_DESC_WINTER = " " + PREFIX_CYCLE + VALID_CYCLE_WINTER;
+    public static final String STATUS_DESC_ACCEPTED = " " + PREFIX_STATUS + VALID_STATUS_ACCEPTED;
+    public static final String STATUS_DESC_REJECTED = " " + PREFIX_STATUS + VALID_STATUS_REJECTED;
 
     public static final String INVALID_COMPANY_DESC =
             " " + PREFIX_COMPANY + "Jane Street&"; // '&' not allowed in company names
     public static final String INVALID_ROLE_DESC = " " + PREFIX_ROLE + " "; // empty string is not allowed in roles
-    public static final String INVALID_CYCLE_DESC = " " + PREFIX_CYCLE + "summer!2023"; // '!' not allowed in cycles
+    public static final String INVALID_CYCLE_DESC = " " + PREFIX_CYCLE + "Summer!2023"; // '!' not allowed in cycles
     public static final String INVALID_STATUS_DESC = " " + PREFIX_STATUS; // empty string not allowed in status
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
 
-    public static final EditCommand.EditInternApplicationDescriptor DESC_A;
-    public static final EditCommand.EditInternApplicationDescriptor DESC_B;
+    public static final EditCommand.EditInternApplicationDescriptor DESC_JANE_STREET;
+    public static final EditCommand.EditInternApplicationDescriptor DESC_BYTEDANCE;
 
     static {
-        DESC_A = new EditInternApplicationDescriptorBuilder().withCompany(VALID_COMPANY_A).withRole(VALID_ROLE_A)
-                .withCycle(VALID_CYCLE_A).withStatus(VALID_STATUS_A).build();
-        DESC_B = new EditInternApplicationDescriptorBuilder().withCompany(VALID_COMPANY_B).withRole(VALID_ROLE_B)
-                .withCycle(VALID_CYCLE_B).withStatus(VALID_STATUS_B).build();
+        DESC_JANE_STREET = new EditInternApplicationDescriptorBuilder()
+                .withCompany(VALID_COMPANY_JANE_STREET)
+                .withRole(VALID_ROLE_FULL_STACK)
+                .withCycle(VALID_CYCLE_SUMMER)
+                .withStatus(VALID_STATUS_ACCEPTED)
+                .build();
+        DESC_BYTEDANCE = new EditInternApplicationDescriptorBuilder()
+                .withCompany(VALID_COMPANY_BYTEDANCE)
+                .withRole(VALID_ROLE_BACK_END)
+                .withCycle(VALID_CYCLE_WINTER)
+                .withStatus(VALID_STATUS_REJECTED)
+                .build();
     }
 
     /**

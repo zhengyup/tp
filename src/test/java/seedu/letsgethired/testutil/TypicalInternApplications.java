@@ -1,13 +1,13 @@
 package seedu.letsgethired.testutil;
 
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_COMPANY_A;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_COMPANY_B;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_CYCLE_A;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_CYCLE_B;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_ROLE_A;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_ROLE_B;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_STATUS_A;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_STATUS_B;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_COMPANY_BYTEDANCE;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_COMPANY_JANE_STREET;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_CYCLE_SUMMER;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_CYCLE_WINTER;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_ROLE_BACK_END;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_ROLE_FULL_STACK;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_STATUS_ACCEPTED;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_STATUS_REJECTED;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -52,14 +52,14 @@ public class TypicalInternApplications {
             .withCycle("Summer 2021").withStatus("chicago ave").build();
 
     // Manually added - Intern Application's details found in {@code CommandTestUtil}
-    public static final InternApplication A = new InternApplicationBuilder().withCompany(VALID_COMPANY_A)
-            .withRole(VALID_ROLE_A)
-            .withCycle(VALID_CYCLE_A)
-            .withStatus(VALID_STATUS_A)
+    public static final InternApplication A = new InternApplicationBuilder().withCompany(VALID_COMPANY_JANE_STREET)
+            .withRole(VALID_ROLE_FULL_STACK)
+            .withCycle(VALID_CYCLE_SUMMER)
+            .withStatus(VALID_STATUS_ACCEPTED)
             .build();
-    public static final InternApplication B = new InternApplicationBuilder().withCompany(VALID_COMPANY_B)
-            .withRole(VALID_ROLE_B)
-            .withCycle(VALID_CYCLE_B).withStatus(VALID_STATUS_B)
+    public static final InternApplication B = new InternApplicationBuilder().withCompany(VALID_COMPANY_BYTEDANCE)
+            .withRole(VALID_ROLE_BACK_END)
+            .withCycle(VALID_CYCLE_WINTER).withStatus(VALID_STATUS_REJECTED)
             .build();
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER

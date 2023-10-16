@@ -1,22 +1,22 @@
 package seedu.letsgethired.logic.parser;
 
 import static seedu.letsgethired.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.COMPANY_DESC_A;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.CYCLE_DESC_A;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.CYCLE_DESC_B;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.COMPANY_DESC_JANE_STREET;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.CYCLE_DESC_SUMMER;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.CYCLE_DESC_WINTER;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.INVALID_COMPANY_DESC;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.INVALID_CYCLE_DESC;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.INVALID_ROLE_DESC;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.INVALID_STATUS_DESC;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.ROLE_DESC_A;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.ROLE_DESC_B;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.STATUS_DESC_A;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.STATUS_DESC_B;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_COMPANY_A;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_CYCLE_A;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_ROLE_A;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_ROLE_B;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_STATUS_A;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.ROLE_DESC_BACK_END;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.ROLE_DESC_FULL_STACK;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.STATUS_DESC_ACCEPTED;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.STATUS_DESC_REJECTED;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_COMPANY_JANE_STREET;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_CYCLE_SUMMER;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_ROLE_BACK_END;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_ROLE_FULL_STACK;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_STATUS_ACCEPTED;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_CYCLE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_STATUS;
@@ -48,7 +48,7 @@ public class EditCommandParserTest {
     @Test
     public void parse_missingParts_failure() {
         // no index specified
-        assertParseFailure(parser, VALID_COMPANY_A, MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, VALID_COMPANY_JANE_STREET, MESSAGE_INVALID_FORMAT);
 
         // no field specified
         assertParseFailure(parser, "1", EditCommand.MESSAGE_NOT_EDITED);
@@ -60,10 +60,10 @@ public class EditCommandParserTest {
     @Test
     public void parse_invalidPreamble_failure() {
         // negative index
-        assertParseFailure(parser, "-5" + COMPANY_DESC_A, MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, "-5" + COMPANY_DESC_JANE_STREET, MESSAGE_INVALID_FORMAT);
 
         // zero index
-        assertParseFailure(parser, "0" + COMPANY_DESC_A, MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, "0" + COMPANY_DESC_JANE_STREET, MESSAGE_INVALID_FORMAT);
 
         // invalid arguments being parsed as preamble
         assertParseFailure(parser, "1 some random string", MESSAGE_INVALID_FORMAT);
@@ -80,26 +80,26 @@ public class EditCommandParserTest {
         assertParseFailure(parser, "1" + INVALID_STATUS_DESC, Status.MESSAGE_CONSTRAINTS); // invalid status
 
         // invalid role followed by valid cycle
-        assertParseFailure(parser, "1" + INVALID_ROLE_DESC + CYCLE_DESC_A, Role.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + INVALID_ROLE_DESC + CYCLE_DESC_SUMMER, Role.MESSAGE_CONSTRAINTS);
 
         // multiple invalid values, but only the first invalid value is captured
         assertParseFailure(parser, "1" + INVALID_COMPANY_DESC + INVALID_CYCLE_DESC
-                        + VALID_STATUS_A + VALID_ROLE_A, Company.MESSAGE_CONSTRAINTS);
+                        + VALID_STATUS_ACCEPTED + VALID_ROLE_FULL_STACK, Company.MESSAGE_CONSTRAINTS);
     }
 
     @Test
     public void parse_allFieldsSpecified_success() {
         Index targetIndex = INDEX_SECOND_APPLICATION;
         String userInput = targetIndex.getOneBased()
-                + ROLE_DESC_B
-                + CYCLE_DESC_A
-                + STATUS_DESC_A
-                + COMPANY_DESC_A;
+                + ROLE_DESC_BACK_END
+                + CYCLE_DESC_SUMMER
+                + STATUS_DESC_ACCEPTED
+                + COMPANY_DESC_JANE_STREET;
 
         EditInternApplicationDescriptor descriptor = new EditInternApplicationDescriptorBuilder()
-                .withCompany(VALID_COMPANY_A)
-                .withRole(VALID_ROLE_B).withCycle(VALID_CYCLE_A)
-                .withStatus(VALID_STATUS_A)
+                .withCompany(VALID_COMPANY_JANE_STREET)
+                .withRole(VALID_ROLE_BACK_END).withCycle(VALID_CYCLE_SUMMER)
+                .withStatus(VALID_STATUS_ACCEPTED)
                 .build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
@@ -109,10 +109,11 @@ public class EditCommandParserTest {
     @Test
     public void parse_someFieldsSpecified_success() {
         Index targetIndex = INDEX_FIRST_APPLICATION;
-        String userInput = targetIndex.getOneBased() + ROLE_DESC_B + CYCLE_DESC_A;
+        String userInput = targetIndex.getOneBased() + ROLE_DESC_BACK_END + CYCLE_DESC_SUMMER;
 
-        EditInternApplicationDescriptor descriptor = new EditInternApplicationDescriptorBuilder().withRole(VALID_ROLE_B)
-                .withCycle(VALID_CYCLE_A).build();
+        EditInternApplicationDescriptor descriptor = new EditInternApplicationDescriptorBuilder()
+                .withRole(VALID_ROLE_BACK_END)
+                .withCycle(VALID_CYCLE_SUMMER).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
         assertParseSuccess(parser, userInput, expectedCommand);
@@ -122,27 +123,27 @@ public class EditCommandParserTest {
     public void parse_oneFieldSpecified_success() {
         // name
         Index targetIndex = INDEX_THIRD_APPLICATION;
-        String userInput = targetIndex.getOneBased() + COMPANY_DESC_A;
+        String userInput = targetIndex.getOneBased() + COMPANY_DESC_JANE_STREET;
         EditInternApplicationDescriptor descriptor = new EditInternApplicationDescriptorBuilder()
-                .withCompany(VALID_COMPANY_A).build();
+                .withCompany(VALID_COMPANY_JANE_STREET).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // role
-        userInput = targetIndex.getOneBased() + ROLE_DESC_A;
-        descriptor = new EditInternApplicationDescriptorBuilder().withRole(VALID_ROLE_A).build();
+        userInput = targetIndex.getOneBased() + ROLE_DESC_FULL_STACK;
+        descriptor = new EditInternApplicationDescriptorBuilder().withRole(VALID_ROLE_FULL_STACK).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // cycle
-        userInput = targetIndex.getOneBased() + CYCLE_DESC_A;
-        descriptor = new EditInternApplicationDescriptorBuilder().withCycle(VALID_CYCLE_A).build();
+        userInput = targetIndex.getOneBased() + CYCLE_DESC_SUMMER;
+        descriptor = new EditInternApplicationDescriptorBuilder().withCycle(VALID_CYCLE_SUMMER).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // status
-        userInput = targetIndex.getOneBased() + STATUS_DESC_A;
-        descriptor = new EditInternApplicationDescriptorBuilder().withStatus(VALID_STATUS_A).build();
+        userInput = targetIndex.getOneBased() + STATUS_DESC_ACCEPTED;
+        descriptor = new EditInternApplicationDescriptorBuilder().withStatus(VALID_STATUS_ACCEPTED).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
     }
@@ -153,19 +154,19 @@ public class EditCommandParserTest {
 
         // valid followed by invalid
         Index targetIndex = INDEX_FIRST_APPLICATION;
-        String userInput = targetIndex.getOneBased() + INVALID_ROLE_DESC + ROLE_DESC_B;
+        String userInput = targetIndex.getOneBased() + INVALID_ROLE_DESC + ROLE_DESC_BACK_END;
 
         assertParseFailure(parser, userInput, Messages.getErrorMessageForDuplicatePrefixes(PREFIX_ROLE));
 
         // invalid followed by valid
-        userInput = targetIndex.getOneBased() + ROLE_DESC_B + INVALID_ROLE_DESC;
+        userInput = targetIndex.getOneBased() + ROLE_DESC_BACK_END + INVALID_ROLE_DESC;
 
         assertParseFailure(parser, userInput, Messages.getErrorMessageForDuplicatePrefixes(PREFIX_ROLE));
 
         // mulltiple valid fields repeated
-        userInput = targetIndex.getOneBased() + ROLE_DESC_A + STATUS_DESC_A + CYCLE_DESC_A
-                + ROLE_DESC_A + STATUS_DESC_A + CYCLE_DESC_A
-                + ROLE_DESC_B + STATUS_DESC_B + CYCLE_DESC_B;
+        userInput = targetIndex.getOneBased() + ROLE_DESC_FULL_STACK + STATUS_DESC_ACCEPTED + CYCLE_DESC_SUMMER
+                + ROLE_DESC_FULL_STACK + STATUS_DESC_ACCEPTED + CYCLE_DESC_SUMMER
+                + ROLE_DESC_BACK_END + STATUS_DESC_REJECTED + CYCLE_DESC_WINTER;
 
         assertParseFailure(parser, userInput,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_ROLE, PREFIX_CYCLE, PREFIX_STATUS));

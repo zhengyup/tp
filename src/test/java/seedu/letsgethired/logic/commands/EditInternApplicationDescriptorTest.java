@@ -3,12 +3,12 @@ package seedu.letsgethired.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.DESC_A;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.DESC_B;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_COMPANY_B;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_CYCLE_B;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_ROLE_B;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_STATUS_B;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.DESC_BYTEDANCE;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.DESC_JANE_STREET;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_COMPANY_BYTEDANCE;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_CYCLE_WINTER;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_ROLE_BACK_END;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_STATUS_REJECTED;
 
 import org.junit.jupiter.api.Test;
 
@@ -20,37 +20,46 @@ public class EditInternApplicationDescriptorTest {
     @Test
     public void equals() {
         // same values -> returns true
-        EditInternApplicationDescriptor descriptorWithSameValues = new EditInternApplicationDescriptor(DESC_A);
-        assertTrue(DESC_A.equals(descriptorWithSameValues));
+        EditInternApplicationDescriptor descriptorWithSameValues =
+                new EditInternApplicationDescriptor(DESC_JANE_STREET);
+        assertTrue(DESC_JANE_STREET.equals(descriptorWithSameValues));
 
         // same object -> returns true
-        assertTrue(DESC_A.equals(DESC_A));
+        assertTrue(DESC_JANE_STREET.equals(DESC_JANE_STREET));
 
         // null -> returns false
-        assertFalse(DESC_A.equals(null));
+        assertFalse(DESC_JANE_STREET.equals(null));
 
         // different types -> returns false
-        assertFalse(DESC_A.equals(5));
+        assertFalse(DESC_JANE_STREET.equals(5));
 
         // different values -> returns false
-        assertFalse(DESC_A.equals(DESC_B));
+        assertFalse(DESC_JANE_STREET.equals(DESC_BYTEDANCE));
 
         // different name -> returns false
-        EditInternApplicationDescriptor editedInternApplication = new EditInternApplicationDescriptorBuilder(DESC_A)
-                .withCompany(VALID_COMPANY_B).build();
-        assertFalse(DESC_A.equals(editedInternApplication));
+        EditInternApplicationDescriptor editedInternApplication =
+                new EditInternApplicationDescriptorBuilder(DESC_JANE_STREET)
+                .withCompany(VALID_COMPANY_BYTEDANCE)
+                        .build();
+        assertFalse(DESC_JANE_STREET.equals(editedInternApplication));
 
         // different role -> returns false
-        editedInternApplication = new EditInternApplicationDescriptorBuilder(DESC_A).withRole(VALID_ROLE_B).build();
-        assertFalse(DESC_A.equals(editedInternApplication));
+        editedInternApplication = new EditInternApplicationDescriptorBuilder(DESC_JANE_STREET)
+                .withRole(VALID_ROLE_BACK_END)
+                .build();
+        assertFalse(DESC_JANE_STREET.equals(editedInternApplication));
 
         // different email -> returns false
-        editedInternApplication = new EditInternApplicationDescriptorBuilder(DESC_A).withCycle(VALID_CYCLE_B).build();
-        assertFalse(DESC_A.equals(editedInternApplication));
+        editedInternApplication = new EditInternApplicationDescriptorBuilder(DESC_JANE_STREET)
+                .withCycle(VALID_CYCLE_WINTER)
+                .build();
+        assertFalse(DESC_JANE_STREET.equals(editedInternApplication));
 
         // different status -> returns false
-        editedInternApplication = new EditInternApplicationDescriptorBuilder(DESC_A).withStatus(VALID_STATUS_B).build();
-        assertFalse(DESC_A.equals(editedInternApplication));
+        editedInternApplication = new EditInternApplicationDescriptorBuilder(DESC_JANE_STREET)
+                .withStatus(VALID_STATUS_REJECTED)
+                .build();
+        assertFalse(DESC_JANE_STREET.equals(editedInternApplication));
     }
 
     @Test

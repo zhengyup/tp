@@ -42,10 +42,10 @@ public class InternApplicationBuilder {
     }
 
     /**
-     * Sets the {@code Name} of the {@code InternApplication} that we are building.
+     * Sets the {@code Company} of the {@code InternApplication} that we are building.
      */
-    public InternApplicationBuilder withCompany(String name) {
-        this.company = new Company(name);
+    public InternApplicationBuilder withCompany(String company) {
+        this.company = new Company(company);
         return this;
     }
 
