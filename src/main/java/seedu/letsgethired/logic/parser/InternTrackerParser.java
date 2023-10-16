@@ -7,7 +7,6 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
 import seedu.letsgethired.commons.core.LogsCenter;
 import seedu.letsgethired.logic.commands.AddCommand;
 import seedu.letsgethired.logic.commands.ClearCommand;
