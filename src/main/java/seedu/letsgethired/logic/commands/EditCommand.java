@@ -30,7 +30,8 @@ public class EditCommand extends Command {
 
     public static final String COMMAND_WORD = "edit";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the intern application "
+    public static final String MESSAGE_USAGE = COMMAND_WORD
+            + ": Edits the details of the intern application "
             + "identified by the index number used in the displayed intern application list. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
@@ -40,7 +41,8 @@ public class EditCommand extends Command {
             + "[" + PREFIX_STATUS + "STATUS] "
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_ROLE + "Software Engineering Intern "
-            + PREFIX_CYCLE + "Summer 2024";
+            + PREFIX_CYCLE + "Summer 2024"
+            + PREFIX_STATUS + "Accepted";
 
     public static final String MESSAGE_EDIT_INTERN_APPLICATION_SUCCESS = "Edited Intern Application: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
