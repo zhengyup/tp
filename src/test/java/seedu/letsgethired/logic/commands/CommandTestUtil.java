@@ -9,14 +9,13 @@ import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_STATUS;
 import static seedu.letsgethired.testutil.Assert.assertThrows;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import seedu.letsgethired.commons.core.index.Index;
 import seedu.letsgethired.logic.commands.exceptions.CommandException;
 import seedu.letsgethired.model.InternTracker;
 import seedu.letsgethired.model.Model;
-import seedu.letsgethired.model.application.CompanyContainsKeywordsPredicate;
+import seedu.letsgethired.model.application.CompanyPartialMatchPredicate;
 import seedu.letsgethired.model.application.InternApplication;
 import seedu.letsgethired.testutil.EditInternApplicationDescriptorBuilder;
 
@@ -121,8 +120,8 @@ public class CommandTestUtil {
         assertTrue(targetIndex.getZeroBased() < model.getFilteredInternApplicationList().size());
 
         InternApplication internApplication = model.getFilteredInternApplicationList().get(targetIndex.getZeroBased());
-        final String[] splitName = internApplication.getCompany().value.split("\\s+");
-        model.updateFilteredInternApplicationList(new CompanyContainsKeywordsPredicate(Arrays.asList(splitName[0])));
+        final String searchString = internApplication.getCompany().value;
+        model.updateFilteredInternApplicationList(new CompanyPartialMatchPredicate(searchString));
 
         assertEquals(1, model.getFilteredInternApplicationList().size());
     }
