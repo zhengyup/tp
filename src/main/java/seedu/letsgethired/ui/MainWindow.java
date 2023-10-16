@@ -8,6 +8,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import seedu.letsgethired.commons.core.GuiSettings;
@@ -40,6 +41,12 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private MenuItem helpMenuItem;
+
+    @FXML
+    private HBox panelPlaceholder;
+
+    @FXML
+    private StackPane selectViewPlaceholder;
 
     @FXML
     private StackPane internApplicationListPanelPlaceholder;
@@ -121,6 +128,9 @@ public class MainWindow extends UiPart<Stage> {
 
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
+
+        SelectView selectView = new SelectView();
+        selectViewPlaceholder.getChildren().add(selectView.getRoot());
     }
 
     /**
