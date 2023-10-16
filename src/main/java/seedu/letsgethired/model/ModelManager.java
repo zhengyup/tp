@@ -132,7 +132,7 @@ public class ModelManager implements Model {
      */
     @Override
     public void setCurrentInternApplication(InternApplication target) {
-        internTracker.setCurrentApplication(target);
+        internTracker.setSelectedApplication(target);
     }
 
     /**
@@ -140,7 +140,7 @@ public class ModelManager implements Model {
      */
     @Override
     public InternApplication getCurrentInternApplication() {
-        return internTracker.getCurrentApplication();
+        return internTracker.getSelectedApplication();
     }
 
     @Override

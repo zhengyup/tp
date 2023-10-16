@@ -17,7 +17,7 @@ public class InternTracker implements ReadOnlyInternTracker {
 
     private final UniqueApplicationList internApplications;
 
-    private InternApplication currentApplication;
+    private InternApplication selectedApplication;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -96,8 +96,8 @@ public class InternTracker implements ReadOnlyInternTracker {
      */
     public void removeApplication(InternApplication key) {
         internApplications.remove(key);
-        if (currentApplication != null && !hasApplication(currentApplication)) {
-            currentApplication = null;
+        if (selectedApplication != null && !hasApplication(selectedApplication)) {
+            selectedApplication = null;
         }
     }
 
@@ -115,14 +115,14 @@ public class InternTracker implements ReadOnlyInternTracker {
         return internApplications.asUnmodifiableObservableList();
     }
 
-    public void setCurrentApplication(InternApplication currentApplication) {
-        if (hasApplication(currentApplication)) {
-            this.currentApplication = currentApplication;
+    public void setSelectedApplication(InternApplication selectedApplication) {
+        if (hasApplication(selectedApplication)) {
+            this.selectedApplication = selectedApplication;
         }
     }
 
-    public InternApplication getCurrentApplication() {
-        return this.currentApplication;
+    public InternApplication getSelectedApplication() {
+        return this.selectedApplication;
     }
 
     @Override

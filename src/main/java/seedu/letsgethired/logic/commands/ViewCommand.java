@@ -20,11 +20,11 @@ public class ViewCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Selects and displays the intern application identified by the index number used in the "
             + "displayed "
-            + "person list.\n"
+            + "application list.\n"
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
-    public static final String MESSAGE_VIEW_INTERN_APPLICATION_SUCCESS = "View application: %1$s";
+    public static final String MESSAGE_VIEW_INTERN_APPLICATION_SUCCESS = "Viewed intern application: %1$s";
 
     private final Index targetIndex;
 
@@ -38,7 +38,6 @@ public class ViewCommand extends Command {
         List<InternApplication> lastShownList = model.getFilteredInternApplicationList();
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
-            //to change after pulling from tim
             throw new CommandException(Messages.MESSAGE_INVALID_INTERN_APPLICATION_DISPLAYED_INDEX);
         }
 

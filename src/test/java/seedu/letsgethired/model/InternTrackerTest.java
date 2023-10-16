@@ -99,13 +99,13 @@ public class InternTrackerTest {
     @Test
     public void setCurrentApplication_validInternApplication_success() {
         internTracker.addApplication(JANE_STREET);
-        internTracker.setCurrentApplication(JANE_STREET);
-        assertTrue(internTracker.getCurrentApplication() == JANE_STREET);
+        internTracker.setSelectedApplication(JANE_STREET);
+        assertTrue(internTracker.getSelectedApplication() == JANE_STREET);
     }
 
     @Test
     public void getCurrentApplication_noExistingCurrentApplication_success() {
-        assertTrue(internTracker.getCurrentApplication() == null);
+        assertTrue(internTracker.getSelectedApplication() == null);
     }
 
 
