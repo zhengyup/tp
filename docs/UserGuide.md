@@ -4,9 +4,9 @@
   pageNav: 3
 ---
 
-# LetsGetHired User Guide
+# User Guide
 
-LetsGetHired is a **desktop app** which provides a **fast and organised way to see internships and its progress**, 
+**LetsGetHired** is a **desktop app** which provides a **fast and organised way to see internships and its progress**, 
 optimised for users who prefer a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI).
 
 <!-- * Table of Contents -->
@@ -14,26 +14,24 @@ optimised for users who prefer a Command Line Interface (CLI) while still having
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Quick start
+## **Quick start**
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
 1. Download the latest `letsgethired.jar` from [here](https://github.com/AY2324S1-CS2103T-W17-2/tp/releases).
 
-1. Copy the file to the folder you want to use as the _home folder_ for your LetsGetHired application.
+1. Copy the file to the folder you want to use as the _home folder_ for your **LetsGetHired** application.
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar letsgethired.jar` command to run the application.<br>
-   A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
+1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar letsgethired.jar` command to run the application. A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/Ui.png)
 
-1. Type the command in the command box and press `Enter` to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
-   Some example commands you can try:
+1. Type the command in the command box and press `Enter` to execute it. e.g. typing **`help`** and pressing Enter will open the help window. Some example commands you can try:
 
    * `list` : Lists all internship applications.
 
-   * `add c/Summer r/Full Stack Developer n/John street ` : Adds the following internship application entry to the internship list <br> `Summer Internship - Full Stack Developer at John Street`
+   * `add c/Summer r/Full Stack Developer n/John street` : Adds `Summer Internship - Full Stack Developer at John Street` application entry to the internship list
 
-   * `delete 1` : Deletes the 1st internship application entry shown in the current list.
+   * `delete 1` : Deletes the first internship application entry shown in the current list.
 
    * `tag 1 s/Applied` : Updates the status of the 1st internship application entry shown in the current list as `Applied`.
 
@@ -41,7 +39,7 @@ optimised for users who prefer a Command Line Interface (CLI) while still having
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Features
+## **Features**
 
 <box type="info" seamless>
 
@@ -56,7 +54,7 @@ optimised for users who prefer a Command Line Interface (CLI) while still having
 * Parameters can be in any order.<br>
   e.g. if the command specifies `c/CYCLE r/ROLE`, `r/ROLE c/CYCLE` is also acceptable.
 
-* Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
+* Irrelevant parameters for commands that do not take in parameters (such as `help` and `list`) will be ignored.<br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
@@ -69,6 +67,7 @@ Shows a message explaining how to access the help page.
 ![help message](images/helpMessage.png)
 
 **Format**: `help`
+<br><br>
 
 ### Adding internship entry : `add`
 
@@ -78,14 +77,17 @@ Adds an internship application entry to the internship list.
 
 **Parameters**:
 * `c/CYCLE`: Internship cycle, such as `Summer` or `Winter`
-* `r/ROLE`: Internship role that you applied to
-* `n/COMPANY_NAME`: Name of the company that you applied to 
+* `r/ROLE`: Internship role, such as `Software Engineering Intern`
+* `n/COMPANY_NAME`: Company name, such as `Jane Street` or `Google`
 * `s/STATUS`: (optional) Status of your internship application, such as `Applied`, `Accepted`, `Rejected`, etc.
 
 **Examples**:
-* `add c/Summer r/Full Stack Developer n/John street`
-* `add c/Winter r/Software Engineering Intern n/ACBC s/Applied`
-* `add c/Summer r/Data Analyst n/Pineapple s/Rejected`
+* `add c/Summer r/Full Stack Developer n/John street`<br>
+  Adds `Summer Internship - Full Stack Developer at John Street` application entry to the internship list
+* `add c/Winter r/Software Engineering Intern n/ACBC s/Applied`<br>
+  Adds `Winter Internship - Software Engineering Intern at ACBC` application entry to the internship list
+* `add c/Summer r/Data Analyst n/Pineapple s/Rejected`<br>
+  Adds `Summer Internship - Data Analyst at Pineapple` application entry to the internship list
 
 **Expected Output**:
 * Success
