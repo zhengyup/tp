@@ -51,10 +51,6 @@ public class EditInternApplicationDescriptorTest {
         // different status -> returns false
         editedInternApplication = new EditInternApplicationDescriptorBuilder(DESC_A).withStatus(VALID_STATUS_B).build();
         assertFalse(DESC_A.equals(editedInternApplication));
-
-        // different tags -> returns false
-        editedInternApplication = new EditInternApplicationDescriptorBuilder(DESC_A).build();
-        assertFalse(DESC_A.equals(editedInternApplication));
     }
 
     @Test

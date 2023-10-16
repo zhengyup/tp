@@ -80,10 +80,6 @@ public class InternApplicationTest {
         // different status -> returns false
         editedInternApplication = new InternApplicationBuilder(JANE_STREET).withStatus(VALID_STATUS_B).build();
         assertFalse(JANE_STREET.equals(editedInternApplication));
-
-        // different tags -> returns false
-        editedInternApplication = new InternApplicationBuilder(JANE_STREET).build();
-        assertFalse(JANE_STREET.equals(editedInternApplication));
     }
 
     @Test

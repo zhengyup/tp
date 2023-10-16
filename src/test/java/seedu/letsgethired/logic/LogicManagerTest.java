@@ -170,7 +170,7 @@ public class LogicManagerTest {
 
         // Triggers the saveInternTracker method by executing an add command
         String addCommand = AddCommand.COMMAND_WORD + COMPANY_DESC_A + ROLE_DESC_A + CYCLE_DESC_A + STATUS_DESC_A;
-        InternApplication expectedInternApplication = new InternApplicationBuilder(A).withTags().build();
+        InternApplication expectedInternApplication = new InternApplicationBuilder(A).build();
         ModelManager expectedModel = new ModelManager();
         expectedModel.addInternApplication(expectedInternApplication);
         assertCommandFailure(addCommand, CommandException.class, expectedMessage, expectedModel);
