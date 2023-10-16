@@ -15,17 +15,10 @@ import seedu.letsgethired.model.application.exceptions.InternApplicationNotFound
 /**
  * A list of applications that enforces uniqueness between its elements and does not allow nulls.
  * An application is considered unique by comparing using {@code InternApplication#isSameApplication
- * (InternApplication)}. As such,
- * adding
- * and updating of
- * applications uses InternApplication#isSameApplication
- *  * (InternApplication) for equality so as to ensure that the application being added or
- * updated is
+ * (InternApplication)}. As such, adding and updating of applications uses InternApplication#isSameApplication
+ * (InternApplication) for equality to ensure that the application being added or updated is
  * unique in terms of identity in the UniqueApplicationList. However, the removal of an application uses
- * InternApplication#equals
- * (Object) so
- * as to ensure that the application with exactly the same fields will be removed.
- *
+ * InternApplication#equals(Object) to ensure that the application with exactly the same fields will be removed.
  * Supports a minimal set of list operations.
  *
  * @see InternApplication#isSameApplication(InternApplication)
