@@ -95,6 +95,18 @@ public class ModelManagerTest {
     }
 
     @Test
+    public void updateCurrentApplication_validInternApplication_success() {
+        modelManager.addInternApplication(JANE_STREET);
+        modelManager.setCurrentInternApplication(JANE_STREET);
+        assertTrue(modelManager.getCurrentInternApplication().equals(JANE_STREET));
+    }
+
+    @Test
+    public void getCurrentApplication_noCurrentInternApplication_success() {
+        assertTrue(modelManager.getCurrentInternApplication() == null);
+    }
+
+    @Test
     public void equals() {
         InternTracker internTracker = new InternTrackerBuilder()
                 .withInternApplication(JANE_STREET)

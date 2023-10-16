@@ -22,6 +22,7 @@ import seedu.letsgethired.logic.commands.ExitCommand;
 import seedu.letsgethired.logic.commands.FindCommand;
 import seedu.letsgethired.logic.commands.HelpCommand;
 import seedu.letsgethired.logic.commands.ListCommand;
+import seedu.letsgethired.logic.commands.ViewCommand;
 import seedu.letsgethired.logic.parser.exceptions.ParseException;
 import seedu.letsgethired.model.application.CompanyContainsKeywordsPredicate;
 import seedu.letsgethired.model.application.InternApplication;
@@ -88,6 +89,12 @@ public class InternTrackerParserTest {
     public void parseCommand_list() throws Exception {
         assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD) instanceof ListCommand);
         assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD + " 3") instanceof ListCommand);
+    }
+
+    @Test
+    public void parseCommand_view() throws Exception {
+        assertTrue(parser.parseCommand(ViewCommand.COMMAND_WORD + " "
+                + INDEX_FIRST_APPLICATION.getOneBased()) instanceof ViewCommand);
     }
 
     @Test
