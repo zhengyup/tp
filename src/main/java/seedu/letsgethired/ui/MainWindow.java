@@ -34,6 +34,7 @@ public class MainWindow extends UiPart<Stage> {
     // Independent Ui parts residing in this Ui container
     private InternApplicationListPanel internApplicationListPanel;
     private ResultDisplay resultDisplay;
+    private SelectView selectView;
     private HelpWindow helpWindow;
 
     @FXML
@@ -129,7 +130,7 @@ public class MainWindow extends UiPart<Stage> {
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
 
-        SelectView selectView = new SelectView();
+        selectView = new SelectView();
         selectViewPlaceholder.getChildren().add(selectView.getRoot());
     }
 
@@ -155,6 +156,14 @@ public class MainWindow extends UiPart<Stage> {
         } else {
             helpWindow.focus();
         }
+    }
+
+    /**
+     * Displays the notes of a selected application onto the SelectView widget
+     */
+    @FXML
+    public void handleNotes() {
+        selectView.setNotesOfCard("");
     }
 
     void show() {
@@ -187,6 +196,7 @@ public class MainWindow extends UiPart<Stage> {
             CommandResult commandResult = logic.execute(commandText);
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
+            selectView.setNotesOfCard(commandResult.getNotesToUser());
 
             if (commandResult.isShowHelp()) {
                 handleHelp();

@@ -13,7 +13,6 @@ public class SelectView extends UiPart<Region>{
 
     public SelectView() {
         super(FXML);
-        selectView.setText("This is the select view");
     }
 
     public void setNotesOfCard(String notes) {

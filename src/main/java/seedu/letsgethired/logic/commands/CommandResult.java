@@ -19,13 +19,24 @@ public class CommandResult {
     /** The application should exit. */
     private final boolean exit;
 
+    private final String notesToUser;
+
     /**
      * Constructs a {@code CommandResult} with the specified fields.
      */
-    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit) {
+    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit, String notesToUser) {
         this.feedbackToUser = requireNonNull(feedbackToUser);
         this.showHelp = showHelp;
         this.exit = exit;
+        this.notesToUser = notesToUser;
+    }
+
+    /**
+     * Constructs a {@code CommandResult} with the specified {@code feedbackToUser} and {@code notesToUser},
+     * and other fields set to their default value.
+     */
+    public CommandResult(String feedbackToUser, String notesToUser) {
+        this(feedbackToUser, false, false, notesToUser);
     }
 
     /**
@@ -33,11 +44,15 @@ public class CommandResult {
      * and other fields set to their default value.
      */
     public CommandResult(String feedbackToUser) {
-        this(feedbackToUser, false, false);
+        this(feedbackToUser, false, false, "");
     }
 
     public String getFeedbackToUser() {
         return feedbackToUser;
+    }
+
+    public String getNotesToUser() {
+        return notesToUser;
     }
 
     public boolean isShowHelp() {
@@ -62,7 +77,8 @@ public class CommandResult {
         CommandResult otherCommandResult = (CommandResult) other;
         return feedbackToUser.equals(otherCommandResult.feedbackToUser)
                 && showHelp == otherCommandResult.showHelp
-                && exit == otherCommandResult.exit;
+                && exit == otherCommandResult.exit
+                && notesToUser.equals(otherCommandResult.notesToUser);
     }
 
     @Override
@@ -76,6 +92,7 @@ public class CommandResult {
                 .add("feedbackToUser", feedbackToUser)
                 .add("showHelp", showHelp)
                 .add("exit", exit)
+                .add("notesToUser", notesToUser)
                 .toString();
     }
 }
