@@ -118,7 +118,12 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        internApplicationListPanel = new InternApplicationListPanel(logic.getFilteredInternApplicationList());
+        selectView = new SelectView();
+        selectViewPlaceholder.getChildren().add(selectView.getRoot());
+
+        internApplicationListPanel = new InternApplicationListPanel(
+                logic.getFilteredInternApplicationList(),
+                selectView);
         internApplicationListPanelPlaceholder.getChildren().add(internApplicationListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
@@ -129,9 +134,6 @@ public class MainWindow extends UiPart<Stage> {
 
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
-
-        selectView = new SelectView();
-        selectViewPlaceholder.getChildren().add(selectView.getRoot());
     }
 
     /**

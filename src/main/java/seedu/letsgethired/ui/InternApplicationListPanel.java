@@ -23,10 +23,14 @@ public class InternApplicationListPanel extends UiPart<Region> {
     /**
      * Creates a {@code InternApplicationListPanel} with the given {@code ObservableList}.
      */
-    public InternApplicationListPanel(ObservableList<InternApplication> internApplicationList) {
+    public InternApplicationListPanel(ObservableList<InternApplication> internApplicationList, SelectView selectView) {
         super(FXML);
         internApplicationListView.setItems(internApplicationList);
         internApplicationListView.setCellFactory(listView -> new InternApplicationListViewCell());
+        internApplicationListView.setOnMouseClicked(e -> {
+            //arguments to be replaced with notes inside the model
+            selectView.setNotesOfCard(internApplicationListView.getSelectionModel().getSelectedItem().toString());
+        });
     }
 
     /**
