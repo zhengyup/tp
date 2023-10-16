@@ -2,10 +2,12 @@ package seedu.letsgethired.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.function.Predicate;
+
 import seedu.letsgethired.commons.util.ToStringBuilder;
 import seedu.letsgethired.logic.Messages;
 import seedu.letsgethired.model.Model;
-import seedu.letsgethired.model.application.CompanyContainsKeywordsPredicate;
+import seedu.letsgethired.model.application.InternApplication;
 
 /**
  * Finds and lists all applications in intern tracker whose name contains any of the argument keywords.
@@ -16,14 +18,14 @@ public class FindCommand extends Command {
     public static final String COMMAND_WORD = "find";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Finds all intern applications whose company contain any of "
-            + "the specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
-            + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
+            + ": Finds all intern applications whose company contain"
+            + "the specified search string (case-insensitive) and displays them as a list with index numbers.\n"
+            + "Parameters: SEARCH_STRING\n"
             + "Example: " + COMMAND_WORD + " Jane Street";
 
-    private final CompanyContainsKeywordsPredicate predicate;
+    private final Predicate<InternApplication> predicate;
 
-    public FindCommand(CompanyContainsKeywordsPredicate predicate) {
+    public FindCommand(Predicate<InternApplication> predicate) {
         this.predicate = predicate;
     }
 
@@ -33,7 +35,7 @@ public class FindCommand extends Command {
         model.updateFilteredInternApplicationList(predicate);
         return new CommandResult(
                 String.format(Messages.MESSAGE_INTERN_APPLICATIONS_LISTED_OVERVIEW,
-                              model.getFilteredInternApplicationList().size()));
+                        model.getFilteredInternApplicationList().size()));
     }
 
     @Override
