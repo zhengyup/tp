@@ -8,15 +8,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import seedu.letsgethired.commons.core.LogsCenter;
-import seedu.letsgethired.logic.commands.AddCommand;
-import seedu.letsgethired.logic.commands.ClearCommand;
-import seedu.letsgethired.logic.commands.Command;
-import seedu.letsgethired.logic.commands.DeleteCommand;
-import seedu.letsgethired.logic.commands.EditCommand;
-import seedu.letsgethired.logic.commands.ExitCommand;
-import seedu.letsgethired.logic.commands.FindCommand;
-import seedu.letsgethired.logic.commands.HelpCommand;
-import seedu.letsgethired.logic.commands.ListCommand;
+import seedu.letsgethired.logic.commands.*;
 import seedu.letsgethired.logic.parser.exceptions.ParseException;
 
 /**
@@ -70,6 +62,9 @@ public class InternTrackerParser {
 
         case ListCommand.COMMAND_WORD:
             return new ListCommand();
+
+        case NoteCommand.COMMAND_WORD:
+            return new NoteCommandParser().parse(arguments);
 
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
