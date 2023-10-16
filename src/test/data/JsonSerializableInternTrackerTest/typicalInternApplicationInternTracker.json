@@ -1,46 +1,39 @@
 {
-  "_comment": "InternTracker save file which contains the same Intern Application values as in TypicalPersons#getTypicalInternTracker()",
+  "_comment": "InternTracker save file which contains the same Intern Application values as in TypicalInternApplications#getTypicalInternTracker()",
   "applications" : [ {
     "company" : "Jane Street",
     "cycle" : "Summer 2024",
     "role" : "SWE Intern",
-    "status" : "Pending",
-    "tags" : [  ]
+    "status" : "Pending"
   }, {
     "company" : "Optiver",
     "cycle" : "Summer 2023",
     "role" : "Data Engineering Intern",
-    "status" : "Pending",
-    "tags" : [  ]
+    "status" : "Pending"
   }, {
     "company" : "Google",
     "cycle" : "Summer 2021",
     "role" : "Full Stack Intern",
-    "status" : "Pending",
-    "tags" : [  ]
+    "status" : "Pending"
   }, {
     "company" : "Meta",
     "cycle" : "Off-cycle 2020",
     "role" : "Back End Intern",
-    "status" : "Pending",
-    "tags" : [  ]
+    "status" : "Pending"
   }, {
     "company" : "Bytedance",
     "cycle" : "Summer 2021",
     "role" : "Front End Intern",
-    "status" : "Pending",
-    "tags" : [  ]
+    "status" : "Pending"
   }, {
     "company" : "Grab",
     "cycle" : "Summer 2021",
     "role" : "Web Dev Intern",
-    "status" : "Pending",
-    "tags" : [  ]
+    "status" : "Pending"
   }, {
     "company" : "Stripe",
     "cycle" : "Summer 2021",
     "role" : "DevOps Intern",
-    "status" : "Pending",
-    "tags" : [  ]
+    "status" : "Pending"
   } ]
 }

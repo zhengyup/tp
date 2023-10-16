@@ -1,11 +1,11 @@
 {
   "applications": [ {
-    "company": "Valid Company",
+    "company": "Valid Internship Application",
     "role": "Intern",
     "cycle": "Summer 2024",
     "status": "Pending"
   }, {
-    "company": "Internship Application With Invalid Company Field",
+    "company": "Internship Application With Invalid Role Field",
     "role": " ",
     "cycle": "Summer 2024",
     "status": "Pending"
