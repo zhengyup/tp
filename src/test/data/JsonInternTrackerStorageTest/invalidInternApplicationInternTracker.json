@@ -1,0 +1,8 @@
+{
+  "applications": [ {
+    "company": "Internship Application with invalid company field: J@ne Street",
+    "role": "Intern",
+    "cycle": "Summer 2024",
+    "status" : "Pending"
+  } ]
+}
