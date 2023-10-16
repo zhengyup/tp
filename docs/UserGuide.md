@@ -1,12 +1,12 @@
 ---
   layout: default.md
-  title: "User Guide"
-  pageNav: 3
+    title: "User Guide"
+    pageNav: 3
 ---
 
 # LetsGetHired User Guide
 
-LetsGetHired is a **desktop app** which provides a **fast and organised way to see internships and its progress**, 
+LetsGetHired is a **desktop app** which provides a **fast and organised way to see internships and its progress**,
 optimised for users who prefer a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI).
 
 <!-- * Table of Contents -->
@@ -29,13 +29,13 @@ optimised for users who prefer a Command Line Interface (CLI) while still having
 1. Type the command in the command box and press `Enter` to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
-   * `list` : Lists all internship applications.
+    * `list` : Lists all internship applications.
 
-   * `add c/Summer r/Full Stack Developer n/John street ` : Adds the following internship application entry to the internship list <br> `Summer Internship - Full Stack Developer at John Street`
+    * `add c/Summer r/Full Stack Developer n/John street ` : Adds the following internship application entry to the internship list <br> `Summer Internship - Full Stack Developer at John Street`
 
-   * `delete 1` : Deletes the 1st internship application entry shown in the current list.
+    * `delete 1` : Deletes the 1st internship application entry shown in the current list.
 
-   * `tag 1 s/Applied` : Updates the status of the 1st internship application entry shown in the current list as `Applied`.
+    * `tag 1 s/Applied` : Updates the status of the 1st internship application entry shown in the current list as `Applied`.
 
 1. Refer to the [Features](#features) below for details of each command.
 
@@ -60,7 +60,7 @@ optimised for users who prefer a Command Line Interface (CLI) while still having
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
-</box>
+  </box>
 
 ### Viewing help : `help`
 
@@ -79,7 +79,7 @@ Adds an internship application entry to the internship list.
 **Parameters**:
 * `c/CYCLE`: Internship cycle, such as `Summer` or `Winter`
 * `r/ROLE`: Internship role that you applied to
-* `n/COMPANY_NAME`: Name of the company that you applied to 
+* `n/COMPANY_NAME`: Name of the company that you applied to
 * `s/STATUS`: (optional) Status of your internship application, such as `Applied`, `Accepted`, `Rejected`, etc.
 
 **Examples**:
@@ -89,10 +89,10 @@ Adds an internship application entry to the internship list.
 
 **Expected Output**:
 * Success
-  * The following internship application entry is added into the list: <br> `Summer Internship - Full Stack Developer at John Street`
+    * The following internship application entry is added into the list: <br> `Summer Internship - Full Stack Developer at John Street`
 * Failure
-  * Wrong parameter: <br>`The following parameter <parameter_name> is in the wrong format - please input in the correct format`
-  * Missing parameter: <br>`The following parameter <parameter_name> is missing - please input in the correct format`
+    * Wrong parameter: <br>`The following parameter <parameter_name> is in the wrong format - please input in the correct format`
+    * Missing parameter: <br>`The following parameter <parameter_name> is missing - please input in the correct format`
 
 
 ### Listing all internships : `list`
@@ -103,12 +103,12 @@ Shows a list of all the existing internship application entries.
 
 **Expected Output**:
 * Success
-  * The following internship application entry is displayed in the screen: <br> 
-    * `Summer Internship - Full Stack Developer at John Street `
-    * `Winter Internship - Software Engineering Intern at ACBC`
-    * `Summer Internship - Data Analyst at Pineapple`
+    * The following internship application entry is displayed in the screen: <br>
+        * `Summer Internship - Full Stack Developer at John Street `
+        * `Winter Internship - Software Engineering Intern at ACBC`
+        * `Summer Internship - Data Analyst at Pineapple`
 * Failure
-  * Unknown command: `Unknown Command`
+    * Unknown command: `Unknown Command`
 
 ### Viewing a specific internship : `view`
 
@@ -118,18 +118,18 @@ Shows a specific internship application entry and its details.
 
 **Parameters**:
 * `INDEX`: Index of internship application entry to be displayed
-  * `INDEX` must be a positive integer, such as, `1`, `2`, `3`, etc.
+    * `INDEX` must be a positive integer, such as, `1`, `2`, `3`, etc.
 
 **Examples**:
 * `view 1` shows the first internship application entry (in the list) and its details
 
 **Expected Output**:
 * Success
-![view example](images/viewExample.png)
+  ![view example](images/viewExample.png)
 * Failure
-  * Wrong parameter: <br>`The following parameter INDEX is in the wrong format - please input in the correct format`
-  * Missing parameter: <br>`The following parameter INDEX is missing - please input in the correct format`
-  * Index out of bound: <br> `The following parameter INDEX provided is out of bound`
+    * Wrong parameter: <br>`The following parameter INDEX is in the wrong format - please input in the correct format`
+    * Missing parameter: <br>`The following parameter INDEX is missing - please input in the correct format`
+    * Index out of bound: <br> `The following parameter INDEX provided is out of bound`
 
 ### Updating an internship status : `tag`
 
@@ -139,9 +139,9 @@ Updates an internship application entry with the specified status.
 
 **Parameters**:
 * `INDEX`: Index of internship application entry to be updated
-  * `INDEX` must be a positive integer, such as, `1`, `2`, `3`, etc.
+    * `INDEX` must be a positive integer, such as, `1`, `2`, `3`, etc.
 * `s/STATUS`: (optional) Status of internship application
-  * You can remove existing status by omitting the `STATUS` parameter 
+    * You can remove existing status by omitting the `STATUS` parameter
 
 **Examples**:
 * `tag 1 s/Applied` updates the status of the first internship application entry (in the list) as `Applied`
@@ -150,9 +150,33 @@ Updates an internship application entry with the specified status.
 * Success
   ![tag](images/viewExample.png)
 * Failure
-  * Wrong parameter: <br>`The following parameter INDEX is in the wrong format - please input in the correct format`
-  * Missing parameter: <br>`The following parameter INDEX is missing - please input in the correct format`
-  * Index out of bound: <br> `The following parameter INDEX provided is out of bound`
+    * Wrong parameter: <br>`The following parameter INDEX is in the wrong format - please input in the correct format`
+    * Missing parameter: <br>`The following parameter INDEX is missing - please input in the correct format`
+    * Index out of bound: <br> `The following parameter INDEX provided is out of bound`
+
+### Adding a note to a specific internship : `note`
+
+Adds the specified note to an internship application.
+
+**Format**: `note INDEX [i/NOTE]`
+
+**Parameters**:
+* `INDEX`: Index of internship application entry to be updated
+    * `INDEX` must be a positive integer, such as, `1`, `2`, `3`, etc.
+* `i/NOTE`: Note to be added to the internship application
+
+**Examples**:
+* `note 1 i/John Street is the leading market maker in the APAC region` adds the note 'John Street is the leading market maker in the APAC regio' to first internship application entry (in the list)
+
+**Expected Output**:
+* Success
+    * Added note to the internship application: <br>
+        * `Summer Internship - Full Stack Developer at John Street - John Street is the leading market maker in the APAC region `
+
+* Failure
+    * Wrong parameter: <br>`The following parameter INDEX is in the wrong format - please input in the correct format`
+    * Missing parameter: <br>`The following parameter INDEX is missing - please input in the correct format`
+    * Index out of bound: <br> `The following parameter INDEX provided is out of bound`
 
 ### Deleting an internship application entry : `delete`
 
@@ -162,19 +186,19 @@ Deletes the specified internship application entry from the internship list.
 
 **Parameters**:
 * `INDEX`: Index of internship application entry to be updated
-  * `INDEX` must be a positive integer, such as, `1`, `2`, `3`, etc.
+    * `INDEX` must be a positive integer, such as, `1`, `2`, `3`, etc.
 
 Examples:
 * `delete 1` deletes the first internApplication in the status book.
 
 **Expected Output**:
 * Success
-  * The following internship application entry is deleted: <br>
-    * `Summer Internship - Full Stack Developer at John Street `
+    * The following internship application entry is deleted: <br>
+        * `Summer Internship - Full Stack Developer at John Street `
 * Failure
-  * Wrong parameter: <br>`The following parameter INDEX is in the wrong format - please input in the correct format`
-  * Missing parameter: <br>`The following parameter INDEX is missing - please input in the correct format`
-  * Index out of bound: <br> `The following parameter INDEX provided is out of bound`
+    * Wrong parameter: <br>`The following parameter INDEX is in the wrong format - please input in the correct format`
+    * Missing parameter: <br>`The following parameter INDEX is missing - please input in the correct format`
+    * Index out of bound: <br> `The following parameter INDEX provided is out of bound`
 
 ### Saving the data
 
@@ -207,11 +231,12 @@ If your changes to the data file makes its format invalid, LetsGetHired will dis
 
 ## Command summary
 
-| Action     | Format, Examples                                                                                                        |
-|------------|-------------------------------------------------------------------------------------------------------------------------|
-| **Add**    | `add c/CYCLE r/ROLE n/COMPANY_NAME [s/STATUS]` <br> e.g., `add c/Summer r/Full Stack Developer n/John street s/Applied` |
-| **View**   | `view INDEX`<br> e.g., `view 3`                                                                                         |
-| **Tag**    | `tag INDEX`<br> e.g.,`tag 2 s/Applied`                                                                                  |
-| **Delete** | `delete INDEX`<br> e.g., `delete 1`                                                                                     |
-| **List**   | `list`                                                                                                                  |
-| **Help**   | `help`                                                                                                                  |
+| Action     | Format, Examples                                                                                                       |
+|------------|------------------------------------------------------------------------------------------------------------------------|
+| **Add**    | `add c/CYCLE r/ROLE n/COMPANY_NAME [s/STATUS]` <br> e.g., `add c/Summer r/Full Stack Developer n/John street s/Applied`|
+| **View**   | `view INDEX`<br> e.g., `view 3`                                                                                        |
+| **Tag**    | `tag INDEX`<br> e.g.,`tag 2 s/Applied`
+| **Note**   | `note INDEX`<br> e.g., `note 5 i/John Street is the leading market maker in the APAC region`
+| **Delete** | `delete INDEX`<br> e.g., `delete 1`                                                                                    |
+| **List**   | `list`                                                                                                                 |
+| **Help**   | `help`                                                                                                                 |
