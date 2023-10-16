@@ -20,8 +20,6 @@ import seedu.intern.logic.commands.ListCommand;
 import seedu.intern.logic.commands.ViewCommand;
 import seedu.intern.logic.parser.exceptions.ParseException;
 
-import javax.swing.text.View;
-
 /**
  * Parses user input.
  */
