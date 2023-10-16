@@ -17,6 +17,8 @@ public class InternTracker implements ReadOnlyInternTracker {
 
     private final UniqueApplicationList internApplications;
 
+    private InternApplication selectedApplication;
+
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
      * between constructors. See https://docs.oracle.com/javase/tutorial/java/javaOO/initial.html
@@ -94,6 +96,9 @@ public class InternTracker implements ReadOnlyInternTracker {
      */
     public void removeApplication(InternApplication key) {
         internApplications.remove(key);
+        if (selectedApplication != null && !hasApplication(selectedApplication)) {
+            selectedApplication = null;
+        }
     }
 
     //// util methods
@@ -108,6 +113,16 @@ public class InternTracker implements ReadOnlyInternTracker {
     @Override
     public ObservableList<InternApplication> getApplicationList() {
         return internApplications.asUnmodifiableObservableList();
+    }
+
+    public void setSelectedApplication(InternApplication selectedApplication) {
+        if (hasApplication(selectedApplication)) {
+            this.selectedApplication = selectedApplication;
+        }
+    }
+
+    public InternApplication getSelectedApplication() {
+        return this.selectedApplication;
     }
 
     @Override

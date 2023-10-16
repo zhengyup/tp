@@ -12,22 +12,23 @@ import seedu.letsgethired.model.Model;
 import seedu.letsgethired.model.application.InternApplication;
 
 /**
- * Deletes an intern application identified using it's displayed index from the intern tracker.
+ * Selects and displays an Application identified using it's displayed index from the intern tracker.
  */
-public class DeleteCommand extends Command {
-
-    public static final String COMMAND_WORD = "delete";
+public class ViewCommand extends Command {
+    public static final String COMMAND_WORD = "view";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the intern application identified by the index number used "
-            + "in the displayed intern application list.\n"
+            + ": Selects and displays the intern application identified by the index number used in the "
+            + "displayed "
+            + "application list.\n"
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
-    public static final String MESSAGE_DELETE_INTERN_APPLICATION_SUCCESS = "Deleted Intern Application: %1$s";
+    public static final String MESSAGE_VIEW_INTERN_APPLICATION_SUCCESS = "Viewed intern application: %1$s";
+
     private final Index targetIndex;
 
-    public DeleteCommand(Index targetIndex) {
+    public ViewCommand(Index targetIndex) {
         this.targetIndex = targetIndex;
     }
 
@@ -40,10 +41,10 @@ public class DeleteCommand extends Command {
             throw new CommandException(Messages.MESSAGE_INVALID_INTERN_APPLICATION_DISPLAYED_INDEX);
         }
 
-        InternApplication internApplicationToDelete = lastShownList.get(targetIndex.getZeroBased());
-        model.deleteInternApplication(internApplicationToDelete);
-        return new CommandResult(String.format(MESSAGE_DELETE_INTERN_APPLICATION_SUCCESS,
-                Messages.format(internApplicationToDelete)));
+        InternApplication internApplicationToView = lastShownList.get(targetIndex.getZeroBased());
+        model.setCurrentInternApplication(internApplicationToView);
+        return new CommandResult(String.format(MESSAGE_VIEW_INTERN_APPLICATION_SUCCESS,
+                Messages.format(internApplicationToView)));
     }
 
     @Override
@@ -53,12 +54,12 @@ public class DeleteCommand extends Command {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof DeleteCommand)) {
+        if (!(other instanceof ViewCommand)) {
             return false;
         }
 
-        DeleteCommand otherDeleteCommand = (DeleteCommand) other;
-        return targetIndex.equals(otherDeleteCommand.targetIndex);
+        ViewCommand otherViewCommand = (ViewCommand) other;
+        return targetIndex.equals(otherViewCommand.targetIndex);
     }
 
     @Override

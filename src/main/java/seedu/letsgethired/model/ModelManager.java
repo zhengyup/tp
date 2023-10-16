@@ -127,6 +127,22 @@ public class ModelManager implements Model {
         filteredInternApplications.setPredicate(predicate);
     }
 
+    /**
+     * Updates the internTracker to track the current selected application {@code target}
+     */
+    @Override
+    public void setCurrentInternApplication(InternApplication target) {
+        internTracker.setSelectedApplication(target);
+    }
+
+    /**
+     * Gets the current application the internTracker is tracking
+     */
+    @Override
+    public InternApplication getCurrentInternApplication() {
+        return internTracker.getSelectedApplication();
+    }
+
     @Override
     public boolean equals(Object other) {
         if (other == this) {
