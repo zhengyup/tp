@@ -5,10 +5,6 @@ import static seedu.letsgethired.storage.JsonAdaptedInternApplication.MISSING_FI
 import static seedu.letsgethired.testutil.Assert.assertThrows;
 import static seedu.letsgethired.testutil.TypicalInternApplications.OPTIVER;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import org.junit.jupiter.api.Test;
 
 import seedu.letsgethired.commons.exceptions.IllegalValueException;
