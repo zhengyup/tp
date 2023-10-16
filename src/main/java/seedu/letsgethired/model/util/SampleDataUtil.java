@@ -14,17 +14,35 @@ import seedu.letsgethired.model.application.Status;
 public class SampleDataUtil {
     public static InternApplication[] getSampleInternApplications() {
         return new InternApplication[] {
-            new InternApplication(new Company("Apple"), new Role("DevOps"), new Cycle("Summer 2024"),
+            new InternApplication(
+                    new Company("Apple"),
+                    new Role("DevOps"),
+                    new Cycle("Summer 2024"),
                     new Status("Pending")),
-            new InternApplication(new Company("Bytedance"), new Role("Systems Integrator"), new Cycle("Summer 2023"),
+            new InternApplication(
+                    new Company("Bytedance"),
+                    new Role("Systems Integrator"),
+                    new Cycle("Summer 2023"),
                     new Status("Rejected")),
-            new InternApplication(new Company("Grab"), new Role("Data intern"),
-                    new Cycle("Summer 2103"), new Status("Pending")),
-            new InternApplication(new Company("Shoppee"), new Role("SWE"), new Cycle("Off-cycle 2024"),
-                    new Status("Rejected")),
-            new InternApplication(new Company("Stripe"), new Role("SWE"), new Cycle("Winter 2021"),
+            new InternApplication(
+                    new Company("Grab"),
+                    new Role("Data intern"),
+                    new Cycle("Summer 2023"),
                     new Status("Pending")),
-            new InternApplication(new Company("Jane Street"), new Role("Economist"), new Cycle("Summer 2022"),
+            new InternApplication(
+                    new Company("Shoppee"),
+                    new Role("Full Stack Developer"),
+                    new Cycle("Off-cycle 2024"),
+                    new Status("Rejected")),
+            new InternApplication(
+                    new Company("Stripe"),
+                    new Role("Cybersecurity Intern"),
+                    new Cycle("Winter 2024"),
+                    new Status("Pending")),
+            new InternApplication(
+                    new Company("Jane Street"),
+                    new Role("Economist"),
+                    new Cycle("Summer 2022"),
                     new Status("Pending"))};
     }
 
