@@ -16,7 +16,6 @@ import seedu.letsgethired.model.application.Status;
 class JsonAdaptedInternApplication {
 
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Intern Application's %s field is missing!";
-
     private final String company;
     private final String role;
     private final String cycle;
