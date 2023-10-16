@@ -5,15 +5,11 @@ import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_COMPANY;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_CYCLE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_STATUS;
-import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.letsgethired.model.Model.PREDICATE_SHOW_ALL_APPLICATIONS;
 
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.Set;
 
 import seedu.letsgethired.commons.core.index.Index;
 import seedu.letsgethired.commons.util.CollectionUtil;
@@ -26,7 +22,6 @@ import seedu.letsgethired.model.application.Cycle;
 import seedu.letsgethired.model.application.InternApplication;
 import seedu.letsgethired.model.application.Role;
 import seedu.letsgethired.model.application.Status;
-import seedu.letsgethired.model.tag.Tag;
 
 /**
  * Edits the details of an existing intern application in the interntracker.
@@ -43,7 +38,6 @@ public class EditCommand extends Command {
             + "[" + PREFIX_ROLE + "ROLE] "
             + "[" + PREFIX_CYCLE + "CYCLE] "
             + "[" + PREFIX_STATUS + "STATUS] "
-            + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_ROLE + "Software Engineering Intern "
             + PREFIX_CYCLE + "Summer 2024";
@@ -109,10 +103,8 @@ public class EditCommand extends Command {
                 .orElse(internApplicationToEdit.getCycle());
         Status updatedStatus = editInternApplicationDescriptor.getStatus()
                 .orElse(internApplicationToEdit.getStatus());
-        Set<Tag> updatedTags = editInternApplicationDescriptor.getTags()
-                .orElse(internApplicationToEdit.getTags());
 
-        return new InternApplication(updatedCompany, updatedRole, updatedCycle, updatedStatus, updatedTags);
+        return new InternApplication(updatedCompany, updatedRole, updatedCycle, updatedStatus);
     }
 
     @Override
@@ -148,7 +140,6 @@ public class EditCommand extends Command {
         private Role role;
         private Cycle cycle;
         private Status status;
-        private Set<Tag> tags;
 
         public EditInternApplicationDescriptor() {}
 
@@ -161,14 +152,13 @@ public class EditCommand extends Command {
             setRole(toCopy.role);
             setCycle(toCopy.cycle);
             setStatus(toCopy.status);
-            setTags(toCopy.tags);
         }
 
         /**
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(company, role, cycle, status, tags);
+            return CollectionUtil.isAnyNonNull(company, role, cycle, status);
         }
 
         public void setCompany(Company company) {
@@ -203,23 +193,6 @@ public class EditCommand extends Command {
             return Optional.ofNullable(status);
         }
 
-        /**
-         * Sets {@code tags} to this object's {@code tags}.
-         * A defensive copy of {@code tags} is used internally.
-         */
-        public void setTags(Set<Tag> tags) {
-            this.tags = (tags != null) ? new HashSet<>(tags) : null;
-        }
-
-        /**
-         * Returns an unmodifiable tag set, which throws {@code UnsupportedOperationException}
-         * if modification is attempted.
-         * Returns {@code Optional#empty()} if {@code tags} is null.
-         */
-        public Optional<Set<Tag>> getTags() {
-            return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
-        }
-
         @Override
         public boolean equals(Object other) {
             if (other == this) {
@@ -236,8 +209,7 @@ public class EditCommand extends Command {
             return Objects.equals(company, otherEditInternApplicationDescriptor.company)
                     && Objects.equals(role, otherEditInternApplicationDescriptor.role)
                     && Objects.equals(cycle, otherEditInternApplicationDescriptor.cycle)
-                    && Objects.equals(status, otherEditInternApplicationDescriptor.status)
-                    && Objects.equals(tags, otherEditInternApplicationDescriptor.tags);
+                    && Objects.equals(status, otherEditInternApplicationDescriptor.status);
         }
 
         @Override
@@ -247,7 +219,6 @@ public class EditCommand extends Command {
                     .add("role", role)
                     .add("cycle", cycle)
                     .add("status", status)
-                    .add("tags", tags)
                     .toString();
         }
     }

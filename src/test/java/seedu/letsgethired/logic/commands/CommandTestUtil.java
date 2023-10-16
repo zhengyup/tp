@@ -6,7 +6,6 @@ import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_COMPANY;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_CYCLE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_STATUS;
-import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.letsgethired.testutil.Assert.assertThrows;
 
 import java.util.ArrayList;
@@ -34,8 +33,6 @@ public class CommandTestUtil {
     public static final String VALID_CYCLE_B = "Winter 2023";
     public static final String VALID_STATUS_A = "Pending";
     public static final String VALID_STATUS_B = "Rejected";
-    public static final String VALID_TAG_HUSBAND = "husband";
-    public static final String VALID_TAG_FRIEND = "friend";
     public static final String COMPANY_DESC_A = " " + PREFIX_COMPANY + VALID_COMPANY_A;
     public static final String COMPANY_DESC_B = " " + PREFIX_COMPANY + VALID_COMPANY_B;
     public static final String ROLE_DESC_A = " " + PREFIX_ROLE + VALID_ROLE_A;
@@ -44,15 +41,12 @@ public class CommandTestUtil {
     public static final String CYCLE_DESC_B = " " + PREFIX_CYCLE + VALID_CYCLE_B;
     public static final String STATUS_DESC_A = " " + PREFIX_STATUS + VALID_STATUS_A;
     public static final String STATUS_DESC_B = " " + PREFIX_STATUS + VALID_STATUS_B;
-    public static final String TAG_DESC_FRIEND = " " + PREFIX_TAG + VALID_TAG_FRIEND;
-    public static final String TAG_DESC_HUSBAND = " " + PREFIX_TAG + VALID_TAG_HUSBAND;
 
     public static final String INVALID_COMPANY_DESC =
             " " + PREFIX_COMPANY + "Jane Street&"; // '&' not allowed in company names
     public static final String INVALID_ROLE_DESC = " " + PREFIX_ROLE + " "; // empty string is not allowed in roles
     public static final String INVALID_CYCLE_DESC = " " + PREFIX_CYCLE + "summer!2023"; // '!' not allowed in cycles
     public static final String INVALID_STATUS_DESC = " " + PREFIX_STATUS; // empty string not allowed in status
-    public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "hubby*"; // '*' not allowed in tags
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
@@ -62,10 +56,9 @@ public class CommandTestUtil {
 
     static {
         DESC_A = new EditInternApplicationDescriptorBuilder().withCompany(VALID_COMPANY_A).withRole(VALID_ROLE_A)
-                .withCycle(VALID_CYCLE_A).withStatus(VALID_STATUS_A).withTags(VALID_TAG_FRIEND).build();
+                .withCycle(VALID_CYCLE_A).withStatus(VALID_STATUS_A).build();
         DESC_B = new EditInternApplicationDescriptorBuilder().withCompany(VALID_COMPANY_B).withRole(VALID_ROLE_B)
-                .withCycle(VALID_CYCLE_B).withStatus(VALID_STATUS_B).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
-                .build();
+                .withCycle(VALID_CYCLE_B).withStatus(VALID_STATUS_B).build();
     }
 
     /**

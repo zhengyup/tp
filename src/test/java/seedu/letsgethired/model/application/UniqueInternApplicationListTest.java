@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_STATUS_B;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.letsgethired.testutil.Assert.assertThrows;
 import static seedu.letsgethired.testutil.TypicalInternApplications.B;
 import static seedu.letsgethired.testutil.TypicalInternApplications.JANE_STREET;
@@ -43,7 +42,7 @@ public class UniqueInternApplicationListTest {
     public void contains_internApplicationWithSameIdentityFieldsInList_returnsTrue() {
         uniqueApplicationList.add(JANE_STREET);
         InternApplication editedAlice = new InternApplicationBuilder(JANE_STREET)
-                .withStatus(VALID_STATUS_B).withTags(VALID_TAG_HUSBAND)
+                .withStatus(VALID_STATUS_B)
                 .build();
         assertTrue(uniqueApplicationList.contains(editedAlice));
     }
@@ -88,8 +87,8 @@ public class UniqueInternApplicationListTest {
     @Test
     public void setInternApplication_editedInternApplicationHasSameIdentity_success() {
         uniqueApplicationList.add(JANE_STREET);
-        InternApplication editedAlice = new InternApplicationBuilder(JANE_STREET).withStatus(VALID_STATUS_B)
-                .withTags(VALID_TAG_HUSBAND)
+        InternApplication editedAlice = new InternApplicationBuilder(JANE_STREET)
+                .withStatus(VALID_STATUS_B)
                 .build();
         uniqueApplicationList.setApplication(JANE_STREET, editedAlice);
         UniqueApplicationList expectedUniqueApplicationList = new UniqueApplicationList();
@@ -110,7 +109,8 @@ public class UniqueInternApplicationListTest {
     public void setInternApplication_editedApplicationHasNonUniqueIdentity_throwsDuplicateInternApplicationException() {
         uniqueApplicationList.add(JANE_STREET);
         uniqueApplicationList.add(B);
-        assertThrows(DuplicateInternApplicationException.class, () -> uniqueApplicationList.setApplication(JANE_STREET, B));
+        assertThrows(
+                DuplicateInternApplicationException.class, () -> uniqueApplicationList.setApplication(JANE_STREET, B));
     }
 
     @Test

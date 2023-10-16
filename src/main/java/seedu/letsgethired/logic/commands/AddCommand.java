@@ -5,7 +5,6 @@ import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_COMPANY;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_CYCLE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_STATUS;
-import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_TAG;
 
 import seedu.letsgethired.commons.util.ToStringBuilder;
 import seedu.letsgethired.logic.Messages;
@@ -26,14 +25,11 @@ public class AddCommand extends Command {
             + PREFIX_ROLE + "ROLE "
             + PREFIX_CYCLE + "CYCLE "
             + PREFIX_STATUS + "ADDRESS "
-            + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_COMPANY + "Jane Street "
             + PREFIX_ROLE + "Software Engineering Intern "
             + PREFIX_CYCLE + "Summer 2024"
-            + PREFIX_STATUS + "Accepted"
-            + PREFIX_TAG + "friends "
-            + PREFIX_TAG + "owesMoney";
+            + PREFIX_STATUS + "Accepted";
 
     public static final String MESSAGE_SUCCESS = "New intern application added: %1$s";
     public static final String MESSAGE_DUPLICATE_INTERN_APPLICATION =

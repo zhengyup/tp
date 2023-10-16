@@ -8,8 +8,6 @@ import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_ROLE_A;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_ROLE_B;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_STATUS_A;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_STATUS_B;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -56,10 +54,12 @@ public class TypicalInternApplications {
     // Manually added - Intern Application's details found in {@code CommandTestUtil}
     public static final InternApplication A = new InternApplicationBuilder().withCompany(VALID_COMPANY_A)
             .withRole(VALID_ROLE_A)
-            .withCycle(VALID_CYCLE_A).withStatus(VALID_STATUS_A).withTags(VALID_TAG_FRIEND).build();
+            .withCycle(VALID_CYCLE_A)
+            .withStatus(VALID_STATUS_A)
+            .build();
     public static final InternApplication B = new InternApplicationBuilder().withCompany(VALID_COMPANY_B)
             .withRole(VALID_ROLE_B)
-            .withCycle(VALID_CYCLE_B).withStatus(VALID_STATUS_B).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
+            .withCycle(VALID_CYCLE_B).withStatus(VALID_STATUS_B)
             .build();
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER

@@ -1,15 +1,10 @@
 package seedu.letsgethired.testutil;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import seedu.letsgethired.model.application.Company;
 import seedu.letsgethired.model.application.Cycle;
 import seedu.letsgethired.model.application.InternApplication;
 import seedu.letsgethired.model.application.Role;
 import seedu.letsgethired.model.application.Status;
-import seedu.letsgethired.model.tag.Tag;
-import seedu.letsgethired.model.util.SampleDataUtil;
 
 /**
  * A utility class to help with building InternApplication objects.
@@ -25,7 +20,6 @@ public class InternApplicationBuilder {
     private Role role;
     private Cycle cycle;
     private Status status;
-    private Set<Tag> tags;
 
     /**
      * Creates a {@code InternApplicationBuilder} with the default details.
@@ -35,7 +29,6 @@ public class InternApplicationBuilder {
         role = new Role(DEFAULT_ROLE);
         cycle = new Cycle(DEFAULT_CYCLE);
         status = new Status(DEFAULT_STATUS);
-        tags = new HashSet<>();
     }
 
     /**
@@ -46,7 +39,6 @@ public class InternApplicationBuilder {
         role = internApplicationToCopy.getRole();
         cycle = internApplicationToCopy.getCycle();
         status = internApplicationToCopy.getStatus();
-        tags = new HashSet<>(internApplicationToCopy.getTags());
     }
 
     /**
@@ -54,14 +46,6 @@ public class InternApplicationBuilder {
      */
     public InternApplicationBuilder withCompany(String name) {
         this.company = new Company(name);
-        return this;
-    }
-
-    /**
-     * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code InternApplication} that we are building.
-     */
-    public InternApplicationBuilder withTags(String ... tags) {
-        this.tags = SampleDataUtil.getTagSet(tags);
         return this;
     }
 
@@ -90,7 +74,7 @@ public class InternApplicationBuilder {
     }
 
     public InternApplication build() {
-        return new InternApplication(company, role, cycle, status, tags);
+        return new InternApplication(company, role, cycle, status);
     }
 
 }

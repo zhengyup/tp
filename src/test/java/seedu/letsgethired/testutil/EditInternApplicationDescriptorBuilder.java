@@ -1,16 +1,11 @@
 package seedu.letsgethired.testutil;
 
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
 import seedu.letsgethired.logic.commands.EditCommand.EditInternApplicationDescriptor;
 import seedu.letsgethired.model.application.Company;
 import seedu.letsgethired.model.application.Cycle;
 import seedu.letsgethired.model.application.InternApplication;
 import seedu.letsgethired.model.application.Role;
 import seedu.letsgethired.model.application.Status;
-import seedu.letsgethired.model.tag.Tag;
 
 /**
  * A utility class to help with building EditInternApplicationDescriptorBuilder objects.
@@ -36,7 +31,6 @@ public class EditInternApplicationDescriptorBuilder {
         descriptor.setRole(internApplication.getRole());
         descriptor.setCycle(internApplication.getCycle());
         descriptor.setStatus(internApplication.getStatus());
-        descriptor.setTags(internApplication.getTags());
     }
 
     /**
@@ -68,16 +62,6 @@ public class EditInternApplicationDescriptorBuilder {
      */
     public EditInternApplicationDescriptorBuilder withStatus(String status) {
         descriptor.setStatus(new Status(status));
-        return this;
-    }
-
-    /**
-     * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code EditInternApplicationDescriptor}
-     * that we are building.
-     */
-    public EditInternApplicationDescriptorBuilder withTags(String... tags) {
-        Set<Tag> tagSet = Stream.of(tags).map(Tag::new).collect(Collectors.toSet());
-        descriptor.setTags(tagSet);
         return this;
     }
 

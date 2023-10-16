@@ -4,14 +4,10 @@ import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_COMPANY;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_CYCLE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_STATUS;
-import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_TAG;
-
-import java.util.Set;
 
 import seedu.letsgethired.logic.commands.AddCommand;
 import seedu.letsgethired.logic.commands.EditCommand.EditInternApplicationDescriptor;
 import seedu.letsgethired.model.application.InternApplication;
-import seedu.letsgethired.model.tag.Tag;
 
 /**
  * A utility class for Intern Application.
@@ -34,9 +30,6 @@ public class InternApplicationUtil {
         sb.append(PREFIX_ROLE + internApplication.getRole().value + " ");
         sb.append(PREFIX_CYCLE + internApplication.getCycle().value + " ");
         sb.append(PREFIX_STATUS + internApplication.getStatus().value + " ");
-        internApplication.getTags().stream().forEach(
-                s -> sb.append(PREFIX_TAG + s.tagName + " ")
-        );
         return sb.toString();
     }
 
@@ -49,14 +42,6 @@ public class InternApplicationUtil {
         descriptor.getRole().ifPresent(role -> sb.append(PREFIX_ROLE).append(role.value).append(" "));
         descriptor.getCycle().ifPresent(cycle -> sb.append(PREFIX_CYCLE).append(cycle.value).append(" "));
         descriptor.getStatus().ifPresent(status -> sb.append(PREFIX_STATUS).append(status.value).append(" "));
-        if (descriptor.getTags().isPresent()) {
-            Set<Tag> tags = descriptor.getTags().get();
-            if (tags.isEmpty()) {
-                sb.append(PREFIX_TAG);
-            } else {
-                tags.forEach(s -> sb.append(PREFIX_TAG).append(s.tagName).append(" "));
-            }
-        }
         return sb.toString();
     }
 }

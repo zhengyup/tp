@@ -7,7 +7,6 @@ import static seedu.letsgethired.logic.commands.CommandTestUtil.DESC_A;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.DESC_B;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_COMPANY_B;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_ROLE_B;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.showInternApplicationAtIndex;
@@ -58,13 +57,14 @@ public class EditCommandTest {
                 .get(indexLastInternApplication.getZeroBased());
 
         InternApplicationBuilder internApplicationInList = new InternApplicationBuilder(lastInternApplication);
-        InternApplication editedInternApplication = internApplicationInList.withCompany(VALID_COMPANY_B)
-                .withRole(VALID_ROLE_B)
-                .withTags(VALID_TAG_HUSBAND).build();
+        InternApplication editedInternApplication = internApplicationInList
+                .withCompany(VALID_COMPANY_B)
+                .withRole(VALID_ROLE_B).build();
 
         EditInternApplicationDescriptor descriptor = new EditInternApplicationDescriptorBuilder()
                 .withCompany(VALID_COMPANY_B)
-                .withRole(VALID_ROLE_B).withTags(VALID_TAG_HUSBAND).build();
+                .withRole(VALID_ROLE_B)
+                .build();
         EditCommand editCommand = new EditCommand(indexLastInternApplication, descriptor);
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_INTERN_APPLICATION_SUCCESS,

@@ -1,10 +1,7 @@
 package seedu.letsgethired.storage;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -15,7 +12,6 @@ import seedu.letsgethired.model.application.Cycle;
 import seedu.letsgethired.model.application.InternApplication;
 import seedu.letsgethired.model.application.Role;
 import seedu.letsgethired.model.application.Status;
-import seedu.letsgethired.model.tag.Tag;
 
 /**
  * Jackson-friendly version of {@link InternApplication}.
@@ -28,7 +24,6 @@ class JsonAdaptedInternApplication {
     private final String role;
     private final String cycle;
     private final String status;
-    private final List<JsonAdaptedTag> tags = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonAdaptedInternApplication} with the given intern application details.
@@ -37,15 +32,11 @@ class JsonAdaptedInternApplication {
     public JsonAdaptedInternApplication(@JsonProperty("company") String company,
                                         @JsonProperty("role") String role,
                                         @JsonProperty("cycle") String cycle,
-                                        @JsonProperty("status") String status,
-                                        @JsonProperty("tags") List<JsonAdaptedTag> tags) {
+                                        @JsonProperty("status") String status) {
         this.company = company;
         this.role = role;
         this.cycle = cycle;
         this.status = status;
-        if (tags != null) {
-            this.tags.addAll(tags);
-        }
     }
 
     /**
@@ -56,7 +47,6 @@ class JsonAdaptedInternApplication {
         role = source.getRole().value;
         cycle = source.getCycle().value;
         status = source.getStatus().value;
-        tags.addAll(source.getTags().stream().map(JsonAdaptedTag::new).collect(Collectors.toList()));
     }
 
     /**
@@ -66,11 +56,6 @@ class JsonAdaptedInternApplication {
      * @throws IllegalValueException if there were any data constraints violated in the adapted intern application.
      */
     public InternApplication toModelType() throws IllegalValueException {
-        final List<Tag> applicationTags = new ArrayList<>();
-        for (JsonAdaptedTag tag : tags) {
-            applicationTags.add(tag.toModelType());
-        }
-
         if (company == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Company.class.getSimpleName()));
         }
@@ -103,7 +88,6 @@ class JsonAdaptedInternApplication {
         }
         final Status modelStatus = new Status(status);
 
-        final Set<Tag> modelTags = new HashSet<>(applicationTags);
-        return new InternApplication(modelCompany, modelRole, modelCycle, modelStatus, modelTags);
+        return new InternApplication(modelCompany, modelRole, modelCycle, modelStatus);
     }
 }

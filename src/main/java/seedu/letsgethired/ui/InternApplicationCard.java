@@ -1,10 +1,7 @@
 package seedu.letsgethired.ui;
 
-import java.util.Comparator;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.letsgethired.model.application.InternApplication;
@@ -38,8 +35,6 @@ public class InternApplicationCard extends UiPart<Region> {
     private Label status;
     @FXML
     private Label cycle;
-    @FXML
-    private FlowPane tags;
 
     /**
      * Creates a {@code InternApplicationCard} with the given {@code internApplication} and index to display.
@@ -52,8 +47,5 @@ public class InternApplicationCard extends UiPart<Region> {
         role.setText(internApplication.getRole().value);
         status.setText(internApplication.getStatus().value);
         cycle.setText(internApplication.getCycle().value);
-        internApplication.getTags().stream()
-                .sorted(Comparator.comparing(tag -> tag.tagName))
-                .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
     }
 }

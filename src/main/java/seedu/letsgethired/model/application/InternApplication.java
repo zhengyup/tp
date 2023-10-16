@@ -2,13 +2,9 @@ package seedu.letsgethired.model.application;
 
 import static seedu.letsgethired.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
 import seedu.letsgethired.commons.util.ToStringBuilder;
-import seedu.letsgethired.model.tag.Tag;
 
 /**
  * Represents an Intern Application in the intern tracker.
@@ -23,18 +19,16 @@ public class InternApplication {
 
     // Data fields
     private final Status status;
-    private final Set<Tag> tags = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
-    public InternApplication(Company company, Role role, Cycle cycle, Status status, Set<Tag> tags) {
-        requireAllNonNull(company, role, cycle, status, tags);
+    public InternApplication(Company company, Role role, Cycle cycle, Status status) {
+        requireAllNonNull(company, role, cycle, status);
         this.company = company;
         this.role = role;
         this.cycle = cycle;
         this.status = status;
-        this.tags.addAll(tags);
     }
 
     public Company getCompany() {
@@ -51,14 +45,6 @@ public class InternApplication {
 
     public Status getStatus() {
         return status;
-    }
-
-    /**
-     * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
-     * if modification is attempted.
-     */
-    public Set<Tag> getTags() {
-        return Collections.unmodifiableSet(tags);
     }
 
     /**
@@ -93,14 +79,13 @@ public class InternApplication {
         return company.equals(otherInternApplication.company)
                 && role.equals(otherInternApplication.role)
                 && cycle.equals(otherInternApplication.cycle)
-                && status.equals(otherInternApplication.status)
-                && tags.equals(otherInternApplication.tags);
+                && status.equals(otherInternApplication.status);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(company, role, cycle, status, tags);
+        return Objects.hash(company, role, cycle, status);
     }
 
     @Override
@@ -110,7 +95,6 @@ public class InternApplication {
                 .add("role", role)
                 .add("cycle", cycle)
                 .add("status", status)
-                .add("tags", tags)
                 .toString();
     }
 

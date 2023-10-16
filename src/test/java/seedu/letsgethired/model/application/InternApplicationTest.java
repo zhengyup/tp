@@ -7,8 +7,6 @@ import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_COMPANY_B;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_CYCLE_B;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_ROLE_B;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_STATUS_B;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
-import static seedu.letsgethired.testutil.Assert.assertThrows;
 import static seedu.letsgethired.testutil.TypicalInternApplications.B;
 import static seedu.letsgethired.testutil.TypicalInternApplications.JANE_STREET;
 
@@ -17,13 +15,6 @@ import org.junit.jupiter.api.Test;
 import seedu.letsgethired.testutil.InternApplicationBuilder;
 
 public class InternApplicationTest {
-
-    @Test
-    public void asObservableList_modifyList_throwsUnsupportedOperationException() {
-        InternApplication internApplication = new InternApplicationBuilder().build();
-        assertThrows(UnsupportedOperationException.class, () -> internApplication.getTags().remove(0));
-    }
-
     @Test
     public void isSameInternApplication() {
         // same object -> returns true
@@ -35,7 +26,8 @@ public class InternApplicationTest {
         // same name, all other attributes different -> returns true
         InternApplication editedInternApplication = new InternApplicationBuilder(JANE_STREET).withRole(VALID_ROLE_B)
                 .withCycle(VALID_CYCLE_B)
-                .withStatus(VALID_STATUS_B).withTags(VALID_TAG_HUSBAND).build();
+                .withStatus(VALID_STATUS_B)
+                .build();
         assertTrue(JANE_STREET.isSameApplication(editedInternApplication));
 
         // different name, all other attributes same -> returns false
@@ -72,7 +64,8 @@ public class InternApplicationTest {
         assertFalse(JANE_STREET.equals(B));
 
         // different name -> returns false
-        InternApplication editedInternApplication = new InternApplicationBuilder(JANE_STREET).withCompany(VALID_COMPANY_B)
+        InternApplication editedInternApplication = new InternApplicationBuilder(JANE_STREET)
+                .withCompany(VALID_COMPANY_B)
                 .build();
         assertFalse(JANE_STREET.equals(editedInternApplication));
 
@@ -89,16 +82,17 @@ public class InternApplicationTest {
         assertFalse(JANE_STREET.equals(editedInternApplication));
 
         // different tags -> returns false
-        editedInternApplication = new InternApplicationBuilder(JANE_STREET).withTags(VALID_TAG_HUSBAND).build();
+        editedInternApplication = new InternApplicationBuilder(JANE_STREET).build();
         assertFalse(JANE_STREET.equals(editedInternApplication));
     }
 
     @Test
     public void toStringMethod() {
-        String expected = InternApplication.class.getCanonicalName() + "{company=" + JANE_STREET.getCompany()
+        String expected = InternApplication.class.getCanonicalName()
+                + "{company=" + JANE_STREET.getCompany()
                 + ", role=" + JANE_STREET.getRole()
-                + ", cycle=" + JANE_STREET.getCycle() + ", status=" + JANE_STREET.getStatus() + ", tags="
-                + JANE_STREET.getTags() + "}";
+                + ", cycle=" + JANE_STREET.getCycle()
+                + ", status=" + JANE_STREET.getStatus() + "}";
         assertEquals(expected, JANE_STREET.toString());
     }
 }

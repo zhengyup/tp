@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_STATUS_B;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.letsgethired.testutil.Assert.assertThrows;
 import static seedu.letsgethired.testutil.TypicalInternApplications.JANE_STREET;
 import static seedu.letsgethired.testutil.TypicalInternApplications.getTypicalInternTracker;
@@ -46,8 +45,8 @@ public class InternTrackerTest {
     @Test
     public void resetData_withDuplicateInternApplication_throwsDuplicateApplicationException() {
         // Two applications with the same identity fields
-        InternApplication editedAlice = new InternApplicationBuilder(JANE_STREET).withStatus(VALID_STATUS_B)
-                .withTags(VALID_TAG_HUSBAND)
+        InternApplication editedAlice = new InternApplicationBuilder(JANE_STREET)
+                .withStatus(VALID_STATUS_B)
                 .build();
         List<InternApplication> newInternApplications = Arrays.asList(JANE_STREET, editedAlice);
         InternTrackerStub newData = new InternTrackerStub(newInternApplications);
@@ -74,8 +73,8 @@ public class InternTrackerTest {
     @Test
     public void hasInternApplication_internApplicationWithSameIdentityFieldsInInternTracker_returnsTrue() {
         internTracker.addApplication(JANE_STREET);
-        InternApplication editedAlice = new InternApplicationBuilder(JANE_STREET).withStatus(VALID_STATUS_B)
-                .withTags(VALID_TAG_HUSBAND)
+        InternApplication editedAlice = new InternApplicationBuilder(JANE_STREET)
+                .withStatus(VALID_STATUS_B)
                 .build();
         assertTrue(internTracker.hasApplication(editedAlice));
     }

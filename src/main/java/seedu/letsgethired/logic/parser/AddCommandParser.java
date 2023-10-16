@@ -5,9 +5,7 @@ import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_COMPANY;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_CYCLE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_STATUS;
-import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_TAG;
 
-import java.util.Set;
 import java.util.stream.Stream;
 
 import seedu.letsgethired.logic.commands.AddCommand;
@@ -17,7 +15,6 @@ import seedu.letsgethired.model.application.Cycle;
 import seedu.letsgethired.model.application.InternApplication;
 import seedu.letsgethired.model.application.Role;
 import seedu.letsgethired.model.application.Status;
-import seedu.letsgethired.model.tag.Tag;
 
 /**
  * Parses input arguments and creates a new AddCommand object
@@ -31,7 +28,7 @@ public class AddCommandParser implements Parser<AddCommand> {
      */
     public AddCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_COMPANY, PREFIX_ROLE, PREFIX_CYCLE, PREFIX_STATUS, PREFIX_TAG);
+                ArgumentTokenizer.tokenize(args, PREFIX_COMPANY, PREFIX_ROLE, PREFIX_CYCLE, PREFIX_STATUS);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_COMPANY, PREFIX_STATUS, PREFIX_ROLE, PREFIX_CYCLE)
                 || !argMultimap.getPreamble().isEmpty()) {
@@ -43,9 +40,8 @@ public class AddCommandParser implements Parser<AddCommand> {
         Role role = ParserUtil.parseRole(argMultimap.getValue(PREFIX_ROLE).get());
         Cycle cycle = ParserUtil.parseCycle(argMultimap.getValue(PREFIX_CYCLE).get());
         Status status = ParserUtil.parseStatus(argMultimap.getValue(PREFIX_STATUS).get());
-        Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
-        InternApplication internApplication = new InternApplication(company, role, cycle, status, tagList);
+        InternApplication internApplication = new InternApplication(company, role, cycle, status);
 
         return new AddCommand(internApplication);
     }
