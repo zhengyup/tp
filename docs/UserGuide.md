@@ -168,7 +168,7 @@ Adds the specified note to an internship application.
 * `i/NOTE`: Note to be added to the internship application
 
 **Examples**:
-* `note 1 i/John Street is the leading market maker in the APAC region` adds the note 'John Street is the leading market maker in the APAC regio' to first internship application entry (in the list)
+* `note 1 i/John Street is the leading market maker in the APAC region` adds the note 'John Street is the leading market maker in the APAC region' to first internship application entry (in the list)
 
 **Expected Output**:
 * Success
@@ -233,12 +233,12 @@ If your changes to the data file makes its format invalid, LetsGetHired will dis
 
 ## Command summary
 
-| Action     | Format, Examples                                                                                                       |
-|------------|------------------------------------------------------------------------------------------------------------------------|
-| **Add**    | `add c/CYCLE r/ROLE n/COMPANY_NAME [s/STATUS]` <br> e.g., `add c/Summer r/Full Stack Developer n/John street s/Applied`|
-| **View**   | `view INDEX`<br> e.g., `view 3`                                                                                        |
-| **Tag**    | `tag INDEX`<br> e.g.,`tag 2 s/Applied`
-| **Note**   | `note INDEX`<br> e.g., `note 5 i/John Street is the leading market maker in the APAC region`
-| **Delete** | `delete INDEX`<br> e.g., `delete 1`                                                                                    |
-| **List**   | `list`                                                                                                                 |
-| **Help**   | `help`                                                                                                                 |
+| Action     | Format, Examples                                                                                                        |
+|------------|-------------------------------------------------------------------------------------------------------------------------|
+| **Add**    | `add c/CYCLE r/ROLE n/COMPANY_NAME [s/STATUS]` <br> e.g., `add c/Summer r/Full Stack Developer n/John street s/Applied` |
+| **View**   | `view INDEX`<br> e.g., `view 3`                                                                                         |
+| **Tag**    | `tag INDEX`<br> e.g.,`tag 2 s/Applied`                                                                                  |
+| **Note**   | `note INDEX`<br> e.g., `note 5 i/John Street is the leading market maker in the APAC region`                            |
+| **Delete** | `delete INDEX`<br> e.g., `delete 1`                                                                                     |
+| **List**   | `list`                                                                                                                  |
+| **Help**   | `help`                                                                                                                  |

@@ -23,24 +23,31 @@ public class TypicalInternApplications {
 
     public static final InternApplication JANE_STREET = new InternApplicationBuilder().withCompany("Jane Street")
             .withStatus("Pending").withCycle("Summer 2024")
+            .withNote("Jane Street is the leading market maker in the APAC region")
             .withRole("SWE Intern").build();
     public static final InternApplication OPTIVER = new InternApplicationBuilder().withCompany("Optiver")
             .withStatus("Pending")
+            .withNote("Optiver needs very good mental math skills")
             .withCycle("Summer 2023").withRole("Data Engineering Intern").build();
     public static final InternApplication GOOGLE = new InternApplicationBuilder().withCompany("Google")
             .withRole("Full Stack Intern")
+            .withNote("Need to revise Rust before the Google interview")
             .withCycle("Summer 2021").withStatus("Pending").build();
     public static final InternApplication META = new InternApplicationBuilder().withCompany("Meta")
             .withRole("Back End Intern")
+            .withNote("Need to revise Rust before the Meta interview")
             .withCycle("Off-cycle 2020").withStatus("Pending").build();
     public static final InternApplication BYTEDANCE = new InternApplicationBuilder().withCompany("Bytedance")
             .withRole("Front End Intern")
+            .withNote("Bytedance requires back end developers to know the MERN stack")
             .withCycle("Summer 2021").withStatus("Pending").build();
     public static final InternApplication GRAB = new InternApplicationBuilder().withCompany("Grab")
             .withRole("Web Dev Intern")
+            .withNote("Grab online assessment has a difficult mental math section")
             .withCycle("Summer 2021").withStatus("Pending").build();
     public static final InternApplication STRIPE = new InternApplicationBuilder().withCompany("Stripe")
             .withRole("DevOps Intern")
+            .withNote("Stripe requires previous experience with SQL")
             .withCycle("Summer 2021").withStatus("Pending").build();
 
     // Manually added

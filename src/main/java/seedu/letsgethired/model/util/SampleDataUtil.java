@@ -9,45 +9,43 @@ import seedu.letsgethired.model.application.*;
  */
 public class SampleDataUtil {
 
-    public static final Note EMPTY_NOTE = new Note("");
-
     public static InternApplication[] getSampleInternApplications() {
         return new InternApplication[] {
             new InternApplication(
                     new Company("Apple"),
                     new Role("DevOps"),
                     new Cycle("Summer 2024"),
-                    EMPTY_NOTE,
+                    new Note("Need to revise Rust before the Apple interview"),
                     new Status("Pending")),
             new InternApplication(
                     new Company("Bytedance"),
                     new Role("Systems Integrator"),
                     new Cycle("Summer 2023"),
-                    EMPTY_NOTE,
+                    new Note("Bytedance requires back end developers to know the MERN stack"),
                     new Status("Rejected")),
             new InternApplication(
                     new Company("Grab"),
                     new Role("Data intern"),
                     new Cycle("Summer 2023"),
-                    EMPTY_NOTE,
+                    new Note("Grab pays their data interns 2000 SGD per month"),
                     new Status("Pending")),
             new InternApplication(
                     new Company("Shoppee"),
                     new Role("Full Stack Developer"),
                     new Cycle("Off-cycle 2024"),
-                    EMPTY_NOTE,
+                    new Note("Shoppee online assessment has a difficult mental math section"),
                     new Status("Rejected")),
             new InternApplication(
                     new Company("Stripe"),
                     new Role("Cybersecurity Intern"),
                     new Cycle("Winter 2024"),
-                    EMPTY_NOTE,
+                    new Note("Stripe requires previous experience with SQL"),
                     new Status("Pending")),
             new InternApplication(
                     new Company("Jane Street"),
                     new Role("Economist"),
                     new Cycle("Summer 2022"),
-                    EMPTY_NOTE,
+                    new Note("Jane Street is the leading market maker in the APAC region"),
                     new Status("Pending"))};
     }
 

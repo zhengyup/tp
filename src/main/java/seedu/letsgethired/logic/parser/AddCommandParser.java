@@ -1,10 +1,7 @@
 package seedu.letsgethired.logic.parser;
 
 import static seedu.letsgethired.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_COMPANY;
-import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_CYCLE;
-import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_ROLE;
-import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_STATUS;
+import static seedu.letsgethired.logic.parser.CliSyntax.*;
 
 import java.util.stream.Stream;
 
@@ -36,7 +33,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         Role role = ParserUtil.parseRole(argMultimap.getValue(PREFIX_ROLE).get());
         Cycle cycle = ParserUtil.parseCycle(argMultimap.getValue(PREFIX_CYCLE).get());
         Status status = ParserUtil.parseStatus(argMultimap.getValue(PREFIX_STATUS).get());
-        Note note = new Note("");
+        Note note = ParserUtil.parseNote(argMultimap.getValue(PREFIX_NOTE).get());
 
         InternApplication internApplication = new InternApplication(company, role, cycle, note, status);
 
