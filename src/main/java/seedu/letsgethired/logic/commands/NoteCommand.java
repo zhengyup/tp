@@ -2,16 +2,21 @@ package seedu.letsgethired.logic.commands;
 
 import static seedu.letsgethired.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE;
+import static seedu.letsgethired.model.Model.PREDICATE_SHOW_ALL_APPLICATIONS;
+
+import java.util.List;
 
 import seedu.letsgethired.commons.core.index.Index;
+import seedu.letsgethired.logic.Messages;
 import seedu.letsgethired.logic.commands.exceptions.CommandException;
 import seedu.letsgethired.model.Model;
+import seedu.letsgethired.model.application.InternApplication;
 import seedu.letsgethired.model.application.Note;
 
+/**
+ * Adds a note to an existing intern application in the interntracker.
+ */
 public class NoteCommand extends Command {
-
-    private final Index index;
-    private final Note note;
 
     public static final String COMMAND_WORD = "note";
 
@@ -24,7 +29,16 @@ public class NoteCommand extends Command {
             + PREFIX_NOTE + "John Street is the leading market maker in the APAC region";
 
     public static final String MESSAGE_ARGUMENTS = "Index: %1$d, Note: %2$s";
+    public static final String MESSAGE_ADD_REMARK_SUCCESS = "Added remark to InternApplication: %1$s";
+    public static final String MESSAGE_DELETE_REMARK_SUCCESS = "Removed remark from InternApplication: %1$s";
 
+    private final Index index;
+    private final Note note;
+
+    /**
+     * @param index of the intern application in the filtered intern application list to edit
+     * @param note note to add to the intern application
+     */
     public NoteCommand(Index index, Note note) {
         requireAllNonNull(index, note);
 
@@ -34,8 +48,27 @@ public class NoteCommand extends Command {
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
-        throw new CommandException(
-                String.format(MESSAGE_ARGUMENTS, index.getOneBased(), note));
+        List<InternApplication> lastShownList = model.getFilteredInternApplicationList();
+
+        if (index.getZeroBased() >= lastShownList.size()) {
+            throw new CommandException(Messages.MESSAGE_INVALID_INTERN_APPLICATION_DISPLAYED_INDEX);
+        }
+
+        InternApplication internApplicationToEdit = lastShownList.get(index.getZeroBased());
+        InternApplication editedInternApplication = new InternApplication(
+                internApplicationToEdit.getCompany(), internApplicationToEdit.getRole(),
+                internApplicationToEdit.getCycle(),
+                internApplicationToEdit.getNote(), internApplicationToEdit.getStatus());
+
+        model.setInternApplication(internApplicationToEdit, editedInternApplication);
+        model.updateFilteredInternApplicationList(PREDICATE_SHOW_ALL_APPLICATIONS);
+
+        return new CommandResult(generateSuccessMessage(editedInternApplication));
+    }
+
+    private String generateSuccessMessage(InternApplication personToEdit) {
+        String message = !note.value.isEmpty() ? MESSAGE_ADD_REMARK_SUCCESS : MESSAGE_DELETE_REMARK_SUCCESS;
+        return String.format(message, personToEdit);
     }
 
     @Override

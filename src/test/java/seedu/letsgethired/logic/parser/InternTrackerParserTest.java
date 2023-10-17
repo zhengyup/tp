@@ -14,12 +14,16 @@ import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.letsgethired.logic.commands.*;
+import seedu.letsgethired.logic.commands.AddCommand;
+import seedu.letsgethired.logic.commands.ClearCommand;
+import seedu.letsgethired.logic.commands.DeleteCommand;
+import seedu.letsgethired.logic.commands.EditCommand;
 import seedu.letsgethired.logic.commands.EditCommand.EditInternApplicationDescriptor;
 import seedu.letsgethired.logic.commands.ExitCommand;
 import seedu.letsgethired.logic.commands.FindCommand;
 import seedu.letsgethired.logic.commands.HelpCommand;
 import seedu.letsgethired.logic.commands.ListCommand;
+import seedu.letsgethired.logic.commands.NoteCommand;
 import seedu.letsgethired.logic.commands.ViewCommand;
 import seedu.letsgethired.logic.parser.exceptions.ParseException;
 import seedu.letsgethired.model.application.CompanyContainsKeywordsPredicate;

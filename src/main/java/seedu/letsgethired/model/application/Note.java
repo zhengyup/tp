@@ -7,7 +7,6 @@ import static java.util.Objects.requireNonNull;
  * Guarantees: immutable; is always valid
  */
 public class Note {
-    public final String value;
 
     public static final String MESSAGE_CONSTRAINTS =
             "Note should only contain characters and spaces, and it should not be blank";
@@ -18,6 +17,13 @@ public class Note {
      */
     public static final String VALIDATION_REGEX = "[^\\s].*";
 
+    public final String value;
+
+    /**
+     * Constructs an {@code Note}.
+     *
+     * @param note A valid note.
+     */
     public Note(String note) {
         requireNonNull(note);
         value = note;

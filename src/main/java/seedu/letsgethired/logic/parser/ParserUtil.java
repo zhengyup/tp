@@ -5,7 +5,11 @@ import static java.util.Objects.requireNonNull;
 import seedu.letsgethired.commons.core.index.Index;
 import seedu.letsgethired.commons.util.StringUtil;
 import seedu.letsgethired.logic.parser.exceptions.ParseException;
-import seedu.letsgethired.model.application.*;
+import seedu.letsgethired.model.application.Company;
+import seedu.letsgethired.model.application.Cycle;
+import seedu.letsgethired.model.application.Note;
+import seedu.letsgethired.model.application.Role;
+import seedu.letsgethired.model.application.Status;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.

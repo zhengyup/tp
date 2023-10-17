@@ -4,8 +4,12 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.letsgethired.commons.exceptions.IllegalValueException;
-import seedu.letsgethired.model.Model;
-import seedu.letsgethired.model.application.*;
+import seedu.letsgethired.model.application.Company;
+import seedu.letsgethired.model.application.Cycle;
+import seedu.letsgethired.model.application.InternApplication;
+import seedu.letsgethired.model.application.Note;
+import seedu.letsgethired.model.application.Role;
+import seedu.letsgethired.model.application.Status;
 
 /**
  * Jackson-friendly version of {@link InternApplication}.

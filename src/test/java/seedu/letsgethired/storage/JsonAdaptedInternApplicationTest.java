@@ -8,7 +8,11 @@ import static seedu.letsgethired.testutil.TypicalInternApplications.OPTIVER;
 import org.junit.jupiter.api.Test;
 
 import seedu.letsgethired.commons.exceptions.IllegalValueException;
-import seedu.letsgethired.model.application.*;
+import seedu.letsgethired.model.application.Company;
+import seedu.letsgethired.model.application.Cycle;
+import seedu.letsgethired.model.application.Note;
+import seedu.letsgethired.model.application.Role;
+import seedu.letsgethired.model.application.Status;
 
 public class JsonAdaptedInternApplicationTest {
     private static final String INVALID_NAME = "J@ne";

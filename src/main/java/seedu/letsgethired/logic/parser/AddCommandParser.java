@@ -1,13 +1,22 @@
 package seedu.letsgethired.logic.parser;
 
 import static seedu.letsgethired.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.letsgethired.logic.parser.CliSyntax.*;
+import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_COMPANY;
+import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_CYCLE;
+import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE;
+import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_ROLE;
+import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_STATUS;
 
 import java.util.stream.Stream;
 
 import seedu.letsgethired.logic.commands.AddCommand;
 import seedu.letsgethired.logic.parser.exceptions.ParseException;
-import seedu.letsgethired.model.application.*;
+import seedu.letsgethired.model.application.Company;
+import seedu.letsgethired.model.application.Cycle;
+import seedu.letsgethired.model.application.InternApplication;
+import seedu.letsgethired.model.application.Note;
+import seedu.letsgethired.model.application.Role;
+import seedu.letsgethired.model.application.Status;
 
 /**
  * Parses input arguments and creates a new AddCommand object
