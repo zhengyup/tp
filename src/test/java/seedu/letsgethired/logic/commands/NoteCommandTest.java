@@ -4,8 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_NOTE_BYTEDANCE;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_NOTE_JANE_STREET;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.assertCommandFailure;
-import static seedu.letsgethired.logic.commands.NoteCommand.MESSAGE_ARGUMENTS;
 import static seedu.letsgethired.testutil.TypicalIndexes.INDEX_FIRST_APPLICATION;
 import static seedu.letsgethired.testutil.TypicalIndexes.INDEX_SECOND_APPLICATION;
 import static seedu.letsgethired.testutil.TypicalInternApplications.getTypicalInternTracker;
@@ -23,14 +21,6 @@ import seedu.letsgethired.model.application.Note;
 public class NoteCommandTest {
 
     private Model model = new ModelManager(getTypicalInternTracker(), new UserPrefs());
-
-    @Test
-    public void execute() {
-        final Note note = new Note("Some note");
-
-        assertCommandFailure(new NoteCommand(INDEX_FIRST_APPLICATION, note), model,
-                String.format(MESSAGE_ARGUMENTS, INDEX_FIRST_APPLICATION.getOneBased(), note));
-    }
 
     @Test
     public void equals() {

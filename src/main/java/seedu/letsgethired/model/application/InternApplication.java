@@ -25,7 +25,7 @@ public class InternApplication {
      * Every field must be present and not null.
      */
     public InternApplication(Company company, Role role, Cycle cycle, Note note, Status status) {
-        requireAllNonNull(company, role, cycle, status);
+        requireAllNonNull(company, role, cycle, note, status);
         this.company = company;
         this.role = role;
         this.cycle = cycle;

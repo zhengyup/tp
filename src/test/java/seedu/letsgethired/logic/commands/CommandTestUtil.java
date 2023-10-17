@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_COMPANY;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_CYCLE;
+import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_STATUS;
 import static seedu.letsgethired.testutil.Assert.assertThrows;
@@ -41,6 +42,8 @@ public class CommandTestUtil {
     public static final String CYCLE_DESC_SUMMER = " " + PREFIX_CYCLE + VALID_CYCLE_SUMMER;
     public static final String CYCLE_DESC_WINTER = " " + PREFIX_CYCLE + VALID_CYCLE_WINTER;
     public static final String STATUS_DESC_ACCEPTED = " " + PREFIX_STATUS + VALID_STATUS_ACCEPTED;
+    public static final String NOTE_DESC_JANE_STREET = " " + PREFIX_NOTE + VALID_NOTE_JANE_STREET;
+    public static final String NOTE_DESC_BYTEDANCE = " " + PREFIX_NOTE + VALID_NOTE_BYTEDANCE;
     public static final String STATUS_DESC_REJECTED = " " + PREFIX_STATUS + VALID_STATUS_REJECTED;
 
     public static final String INVALID_COMPANY_DESC =
