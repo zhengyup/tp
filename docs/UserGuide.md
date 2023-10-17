@@ -133,6 +133,28 @@ Shows a specific internship application entry and its details.
     * Missing parameter: <br>`The following parameter INDEX is missing - please input in the correct format`
     * Index out of bound: <br> `The following parameter INDEX provided is out of bound`
 
+### Locating an internship by company: `find`
+
+Finds persons whose names contain any of the given keywords.
+
+**Format**: `find SEARCH_STRING`
+
+**Parameters**:
+* `SEARCH_STRING`: Search string to be used to find internship application entry.
+  * The search is case-insensitive. e.g `google` will match `Google`
+  * Only the company name is searched
+  * Partial words will be matched e.g. `Goo` will match `Google`, `JST` will match `Jane Street`
+
+**Examples**:
+* `find Google` returns `Google`
+* `find apple meta` returns `Apple`, `Meta`
+
+**Expected Output**:
+* Success
+  * The following internship application entry is displayed in the screen: <br> 
+    * `Summer Internship - Full Stack Developer at John Street `
+    * `Summer Internship - Data Analyst at Pineapple`
+
 ### Updating an internship status : `tag`
 
 Updates an internship application entry with the specified status.

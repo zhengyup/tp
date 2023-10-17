@@ -8,10 +8,6 @@ import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE;
 import static seedu.letsgethired.testutil.Assert.assertThrows;
 import static seedu.letsgethired.testutil.TypicalIndexes.INDEX_FIRST_APPLICATION;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import org.junit.jupiter.api.Test;
 
 import seedu.letsgethired.logic.commands.AddCommand;
@@ -26,7 +22,7 @@ import seedu.letsgethired.logic.commands.ListCommand;
 import seedu.letsgethired.logic.commands.NoteCommand;
 import seedu.letsgethired.logic.commands.ViewCommand;
 import seedu.letsgethired.logic.parser.exceptions.ParseException;
-import seedu.letsgethired.model.application.CompanyContainsKeywordsPredicate;
+import seedu.letsgethired.model.application.CompanyPartialMatchPredicate;
 import seedu.letsgethired.model.application.InternApplication;
 import seedu.letsgethired.model.application.Note;
 import seedu.letsgethired.testutil.EditInternApplicationDescriptorBuilder;
@@ -76,10 +72,10 @@ public class InternTrackerParserTest {
 
     @Test
     public void parseCommand_find() throws Exception {
-        List<String> keywords = Arrays.asList("foo", "bar", "baz");
+        String searchString = "Jane Street";
         FindCommand command = (FindCommand) parser.parseCommand(
-                FindCommand.COMMAND_WORD + " " + keywords.stream().collect(Collectors.joining(" ")));
-        assertEquals(new FindCommand(new CompanyContainsKeywordsPredicate(keywords)), command);
+                FindCommand.COMMAND_WORD + " " + searchString);
+        assertEquals(new FindCommand(new CompanyPartialMatchPredicate(searchString)), command);
     }
 
     @Test
@@ -111,7 +107,7 @@ public class InternTrackerParserTest {
     @Test
     public void parseCommand_unrecognisedInput_throwsParseException() {
         assertThrows(ParseException.class, String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE), ()
-            -> parser.parseCommand(""));
+                -> parser.parseCommand(""));
     }
 
     @Test

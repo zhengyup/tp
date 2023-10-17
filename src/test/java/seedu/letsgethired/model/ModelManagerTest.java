@@ -2,6 +2,7 @@ package seedu.letsgethired.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.letsgethired.model.Model.PREDICATE_SHOW_ALL_APPLICATIONS;
 import static seedu.letsgethired.testutil.Assert.assertThrows;
@@ -10,12 +11,11 @@ import static seedu.letsgethired.testutil.TypicalInternApplications.OPTIVER;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 
 import seedu.letsgethired.commons.core.GuiSettings;
-import seedu.letsgethired.model.application.CompanyContainsKeywordsPredicate;
+import seedu.letsgethired.model.application.CompanyPartialMatchPredicate;
 import seedu.letsgethired.testutil.InternTrackerBuilder;
 
 public class ModelManagerTest {
@@ -133,9 +133,9 @@ public class ModelManagerTest {
         assertFalse(modelManager.equals(new ModelManager(differentInternTracker, userPrefs)));
 
         // different filteredList -> returns false
-        String[] keywords = JANE_STREET.getCompany().value.split("\\s+");
-        modelManager.updateFilteredInternApplicationList(new CompanyContainsKeywordsPredicate(Arrays.asList(keywords)));
-        assertFalse(modelManager.equals(new ModelManager(internTracker, userPrefs)));
+        String searchString = JANE_STREET.getCompany().value;
+        modelManager.updateFilteredInternApplicationList(new CompanyPartialMatchPredicate(searchString));
+        assertNotEquals(modelManager, new ModelManager(internTracker, userPrefs));
 
         // resets modelManager to initial state for upcoming tests
         modelManager.updateFilteredInternApplicationList(PREDICATE_SHOW_ALL_APPLICATIONS);
@@ -143,6 +143,6 @@ public class ModelManagerTest {
         // different userPrefs -> returns false
         UserPrefs differentUserPrefs = new UserPrefs();
         differentUserPrefs.setInternTrackerFilePath(Paths.get("differentFilePath"));
-        assertFalse(modelManager.equals(new ModelManager(internTracker, differentUserPrefs)));
+        assertNotEquals(modelManager, new ModelManager(internTracker, differentUserPrefs));
     }
 }

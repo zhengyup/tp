@@ -1,11 +1,9 @@
 package seedu.letsgethired.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static seedu.letsgethired.logic.Messages.MESSAGE_INTERN_APPLICATIONS_LISTED_OVERVIEW;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.letsgethired.testutil.TypicalInternApplications.BYTEDANCE;
 import static seedu.letsgethired.testutil.TypicalInternApplications.GOOGLE;
 import static seedu.letsgethired.testutil.TypicalInternApplications.GRAB;
 import static seedu.letsgethired.testutil.TypicalInternApplications.getTypicalInternTracker;
@@ -18,7 +16,7 @@ import org.junit.jupiter.api.Test;
 import seedu.letsgethired.model.Model;
 import seedu.letsgethired.model.ModelManager;
 import seedu.letsgethired.model.UserPrefs;
-import seedu.letsgethired.model.application.CompanyContainsKeywordsPredicate;
+import seedu.letsgethired.model.application.CompanyPartialMatchPredicate;
 
 /**
  * Contains integration tests (interaction with the Model) for {@code FindCommand}.
@@ -29,35 +27,35 @@ public class FindCommandTest {
 
     @Test
     public void equals() {
-        CompanyContainsKeywordsPredicate firstPredicate =
-                new CompanyContainsKeywordsPredicate(Collections.singletonList("first"));
-        CompanyContainsKeywordsPredicate secondPredicate =
-                new CompanyContainsKeywordsPredicate(Collections.singletonList("second"));
+        CompanyPartialMatchPredicate firstPredicate =
+                new CompanyPartialMatchPredicate("first");
+        CompanyPartialMatchPredicate secondPredicate =
+                new CompanyPartialMatchPredicate("second");
 
         FindCommand findFirstCommand = new FindCommand(firstPredicate);
         FindCommand findSecondCommand = new FindCommand(secondPredicate);
 
         // same object -> returns true
-        assertTrue(findFirstCommand.equals(findFirstCommand));
+        assertEquals(findFirstCommand, findFirstCommand);
 
         // same values -> returns true
         FindCommand findFirstCommandCopy = new FindCommand(firstPredicate);
-        assertTrue(findFirstCommand.equals(findFirstCommandCopy));
+        assertEquals(findFirstCommand, findFirstCommandCopy);
 
         // different types -> returns false
-        assertFalse(findFirstCommand.equals(1));
+        assertNotEquals(1, findFirstCommand);
 
         // null -> returns false
-        assertFalse(findFirstCommand.equals(null));
+        assertNotEquals(null, findFirstCommand);
 
         // different intern application -> returns false
-        assertFalse(findFirstCommand.equals(findSecondCommand));
+        assertNotEquals(findFirstCommand, findSecondCommand);
     }
 
     @Test
-    public void execute_zeroKeywords_noInternApplicationFound() {
+    public void execute_longString_noInternApplicationFound() {
         String expectedMessage = String.format(MESSAGE_INTERN_APPLICATIONS_LISTED_OVERVIEW, 0);
-        CompanyContainsKeywordsPredicate predicate = preparePredicate(" ");
+        CompanyPartialMatchPredicate predicate = new CompanyPartialMatchPredicate("Lorem ipsum 1234");
         FindCommand command = new FindCommand(predicate);
         expectedModel.updateFilteredInternApplicationList(predicate);
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
@@ -66,26 +64,19 @@ public class FindCommandTest {
 
     @Test
     public void execute_multipleKeywords_multipleInternApplicationsFound() {
-        String expectedMessage = String.format(MESSAGE_INTERN_APPLICATIONS_LISTED_OVERVIEW, 3);
-        CompanyContainsKeywordsPredicate predicate = preparePredicate("Bytedance Google Grab");
+        String expectedMessage = String.format(MESSAGE_INTERN_APPLICATIONS_LISTED_OVERVIEW, 2);
+        CompanyPartialMatchPredicate predicate = new CompanyPartialMatchPredicate("G");
         FindCommand command = new FindCommand(predicate);
         expectedModel.updateFilteredInternApplicationList(predicate);
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
-        assertEquals(Arrays.asList(GOOGLE, BYTEDANCE, GRAB), model.getFilteredInternApplicationList());
+        assertEquals(Arrays.asList(GOOGLE, GRAB), model.getFilteredInternApplicationList());
     }
 
     @Test
     public void toStringMethod() {
-        CompanyContainsKeywordsPredicate predicate = new CompanyContainsKeywordsPredicate(Arrays.asList("keyword"));
+        CompanyPartialMatchPredicate predicate = new CompanyPartialMatchPredicate("Bytedance");
         FindCommand findCommand = new FindCommand(predicate);
         String expected = FindCommand.class.getCanonicalName() + "{predicate=" + predicate + "}";
         assertEquals(expected, findCommand.toString());
-    }
-
-    /**
-     * Parses {@code userInput} into a {@code CompanyContainsKeywordsPredicate}.
-     */
-    private CompanyContainsKeywordsPredicate preparePredicate(String userInput) {
-        return new CompanyContainsKeywordsPredicate(Arrays.asList(userInput.split("\\s+")));
     }
 }
