@@ -7,6 +7,7 @@ import seedu.letsgethired.commons.exceptions.IllegalValueException;
 import seedu.letsgethired.model.application.Company;
 import seedu.letsgethired.model.application.Cycle;
 import seedu.letsgethired.model.application.InternApplication;
+import seedu.letsgethired.model.application.Note;
 import seedu.letsgethired.model.application.Role;
 import seedu.letsgethired.model.application.Status;
 
@@ -20,6 +21,7 @@ class JsonAdaptedInternApplication {
     private final String role;
     private final String cycle;
     private final String status;
+    private final String note;
 
     /**
      * Constructs a {@code JsonAdaptedInternApplication} with the given intern application details.
@@ -28,10 +30,12 @@ class JsonAdaptedInternApplication {
     public JsonAdaptedInternApplication(@JsonProperty("company") String company,
                                         @JsonProperty("role") String role,
                                         @JsonProperty("cycle") String cycle,
+                                        @JsonProperty("note") String note,
                                         @JsonProperty("status") String status) {
         this.company = company;
         this.role = role;
         this.cycle = cycle;
+        this.note = note;
         this.status = status;
     }
 
@@ -42,6 +46,7 @@ class JsonAdaptedInternApplication {
         company = source.getCompany().value;
         role = source.getRole().value;
         cycle = source.getCycle().value;
+        note = source.getNote().value;
         status = source.getStatus().value;
     }
 
@@ -84,6 +89,14 @@ class JsonAdaptedInternApplication {
         }
         final Status modelStatus = new Status(status);
 
-        return new InternApplication(modelCompany, modelRole, modelCycle, modelStatus);
+        if (note == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Note.class.getSimpleName()));
+        }
+        if (!Note.isValidNote(note)) {
+            throw new IllegalValueException(Note.MESSAGE_CONSTRAINTS);
+        }
+        final Note modelNote = new Note(note);
+
+        return new InternApplication(modelCompany, modelRole, modelCycle, modelNote, modelStatus);
     }
 }

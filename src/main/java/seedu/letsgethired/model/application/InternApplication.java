@@ -18,16 +18,18 @@ public class InternApplication {
     private final Cycle cycle;
 
     // Data fields
+    private final Note note;
     private final Status status;
 
     /**
      * Every field must be present and not null.
      */
-    public InternApplication(Company company, Role role, Cycle cycle, Status status) {
-        requireAllNonNull(company, role, cycle, status);
+    public InternApplication(Company company, Role role, Cycle cycle, Note note, Status status) {
+        requireAllNonNull(company, role, cycle, note, status);
         this.company = company;
         this.role = role;
         this.cycle = cycle;
+        this.note = note;
         this.status = status;
     }
 
@@ -41,6 +43,10 @@ public class InternApplication {
 
     public Cycle getCycle() {
         return cycle;
+    }
+
+    public Note getNote() {
+        return note;
     }
 
     public Status getStatus() {
@@ -94,6 +100,7 @@ public class InternApplication {
                 .add("company", company)
                 .add("role", role)
                 .add("cycle", cycle)
+                .add("note", note)
                 .add("status", status)
                 .toString();
     }

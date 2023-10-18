@@ -91,6 +91,7 @@ public class InternApplicationTest {
                 + "{company=" + JANE_STREET.getCompany()
                 + ", role=" + JANE_STREET.getRole()
                 + ", cycle=" + JANE_STREET.getCycle()
+                + ", note=" + JANE_STREET.getNote()
                 + ", status=" + JANE_STREET.getStatus() + "}";
         assertEquals(expected, JANE_STREET.toString());
     }

@@ -3,6 +3,7 @@ package seedu.letsgethired.testutil;
 import seedu.letsgethired.model.application.Company;
 import seedu.letsgethired.model.application.Cycle;
 import seedu.letsgethired.model.application.InternApplication;
+import seedu.letsgethired.model.application.Note;
 import seedu.letsgethired.model.application.Role;
 import seedu.letsgethired.model.application.Status;
 
@@ -15,11 +16,13 @@ public class InternApplicationBuilder {
     public static final String DEFAULT_ROLE = "Intern";
     public static final String DEFAULT_CYCLE = "Summer 2021";
     public static final String DEFAULT_STATUS = "Pending";
+    public static final String DEFAULT_NOTE = "Jane Street is the leading market maker in the APAC region";
 
     private Company company;
     private Role role;
     private Cycle cycle;
     private Status status;
+    private Note note;
 
     /**
      * Creates a {@code InternApplicationBuilder} with the default details.
@@ -29,6 +32,7 @@ public class InternApplicationBuilder {
         role = new Role(DEFAULT_ROLE);
         cycle = new Cycle(DEFAULT_CYCLE);
         status = new Status(DEFAULT_STATUS);
+        note = new Note(DEFAULT_NOTE);
     }
 
     /**
@@ -39,6 +43,7 @@ public class InternApplicationBuilder {
         role = internApplicationToCopy.getRole();
         cycle = internApplicationToCopy.getCycle();
         status = internApplicationToCopy.getStatus();
+        note = internApplicationToCopy.getNote();
     }
 
     /**
@@ -54,6 +59,14 @@ public class InternApplicationBuilder {
      */
     public InternApplicationBuilder withStatus(String status) {
         this.status = new Status(status);
+        return this;
+    }
+
+    /**
+     * Sets the {@code Note} of the {@code InternApplication} that we are building.
+     */
+    public InternApplicationBuilder withNote(String note) {
+        this.note = new Note(note);
         return this;
     }
 
@@ -74,7 +87,7 @@ public class InternApplicationBuilder {
     }
 
     public InternApplication build() {
-        return new InternApplication(company, role, cycle, status);
+        return new InternApplication(company, role, cycle, note, status);
     }
 
 }
