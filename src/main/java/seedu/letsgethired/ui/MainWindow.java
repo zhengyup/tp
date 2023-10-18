@@ -166,14 +166,6 @@ public class MainWindow extends UiPart<Stage> {
         }
     }
 
-    /**
-     * Displays the notes of a selected application onto the SelectView widget
-     */
-    @FXML
-    public void handleNotes() {
-        selectView.displayNotes("");
-    }
-
     void show() {
         primaryStage.show();
     }
@@ -204,7 +196,6 @@ public class MainWindow extends UiPart<Stage> {
             CommandResult commandResult = logic.execute(commandText);
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
-            selectView.displayNotes(commandResult.getNotesToUser());
 
             if (commandResult.isShowHelp()) {
                 handleHelp();

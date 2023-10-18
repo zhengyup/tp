@@ -1,37 +1,26 @@
 package seedu.letsgethired.ui;
 
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
+
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Region;
-import seedu.letsgethired.commons.core.LogsCenter;
 import seedu.letsgethired.logic.commands.CommandResult;
 import seedu.letsgethired.logic.commands.exceptions.CommandException;
 import seedu.letsgethired.logic.parser.exceptions.ParseException;
-import seedu.letsgethired.model.application.InternApplication;
 
-import java.util.Optional;
-import java.util.logging.Logger;
-
+/**
+ * A ui for utility buttons below the select view
+ */
 public class UtilityButtonBar extends UiPart<Region> {
     private static final String FXML = "UtilityButtonBar.fxml";
     private final CommandExecutor commandExecutor;
     private final InternApplicationListPanel listPanel;
     @FXML
-    Button deleteNotesButton;
+    private Button deleteNotesButton;
 
-    public UtilityButtonBar(InternApplicationListPanel listPanel, CommandExecutor commandExecutor) {
-        super(FXML);
-        this.commandExecutor = commandExecutor;
-        this.listPanel = listPanel;
-        deleteNotesButton.setOnMouseClicked(onDeleteClick);
-    }
-
-    EventHandler<MouseEvent> onDeleteClick = new EventHandler<>() {
+    private EventHandler<MouseEvent> onDeleteClick = new EventHandler<>() {
         @Override
         public void handle(MouseEvent event) {
             int itemIndex = listPanel.getSelectedItemIndex();
@@ -43,6 +32,16 @@ public class UtilityButtonBar extends UiPart<Region> {
             }
         }
     };
+
+    /**
+     * Creates a {@code UtilityButtonBar}.
+     */
+    public UtilityButtonBar(InternApplicationListPanel listPanel, CommandExecutor commandExecutor) {
+        super(FXML);
+        this.commandExecutor = commandExecutor;
+        this.listPanel = listPanel;
+        deleteNotesButton.setOnMouseClicked(onDeleteClick);
+    }
 
     /**
      * Represents a function that can execute commands.

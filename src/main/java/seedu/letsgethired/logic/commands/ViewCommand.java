@@ -44,8 +44,7 @@ public class ViewCommand extends Command {
         InternApplication internApplicationToView = lastShownList.get(targetIndex.getZeroBased());
         model.setCurrentInternApplication(internApplicationToView);
         return new CommandResult(String.format(MESSAGE_VIEW_INTERN_APPLICATION_SUCCESS,
-                Messages.format(internApplicationToView)),
-                "this is a placeholder for the returned string from notes command");
+                Messages.format(internApplicationToView)));
     }
 
     @Override
