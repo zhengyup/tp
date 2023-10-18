@@ -1,6 +1,7 @@
 package seedu.letsgethired.logic.parser;
 
 import static seedu.letsgethired.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_NOTE_JANE_STREET;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE;
 import static seedu.letsgethired.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.letsgethired.logic.parser.CommandParserTestUtil.assertParseSuccess;
@@ -13,20 +14,16 @@ import seedu.letsgethired.logic.commands.NoteCommand;
 import seedu.letsgethired.model.application.Note;
 
 public class NoteCommandParserTest {
+    private static final String MESSAGE_INVALID_FORMAT =
+            String.format(MESSAGE_INVALID_COMMAND_FORMAT, NoteCommand.MESSAGE_USAGE);
     private NoteCommandParser parser = new NoteCommandParser();
-    private final Note nonEmptyNote = new Note("Some note.");
 
     @Test
     public void parse_indexSpecified_success() {
         // have note
         Index targetIndex = INDEX_FIRST_APPLICATION;
-        String userInput = targetIndex.getOneBased() + " " + PREFIX_NOTE + nonEmptyNote;
-        NoteCommand expectedCommand = new NoteCommand(INDEX_FIRST_APPLICATION, nonEmptyNote);
-        assertParseSuccess(parser, userInput, expectedCommand);
-
-        // no note
-        userInput = targetIndex.getOneBased() + " " + PREFIX_NOTE;
-        expectedCommand = new NoteCommand(INDEX_FIRST_APPLICATION, new Note(""));
+        String userInput = targetIndex.getOneBased() + " " + PREFIX_NOTE + VALID_NOTE_JANE_STREET;
+        NoteCommand expectedCommand = new NoteCommand(INDEX_FIRST_APPLICATION, new Note(VALID_NOTE_JANE_STREET));
         assertParseSuccess(parser, userInput, expectedCommand);
     }
 
@@ -38,6 +35,6 @@ public class NoteCommandParserTest {
         assertParseFailure(parser, NoteCommand.COMMAND_WORD, expectedMessage);
 
         // no index
-        assertParseFailure(parser, NoteCommand.COMMAND_WORD + " " + nonEmptyNote, expectedMessage);
+        assertParseFailure(parser, NoteCommand.COMMAND_WORD + " " + VALID_NOTE_JANE_STREET, expectedMessage);
     }
 }

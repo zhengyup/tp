@@ -1,6 +1,7 @@
 package seedu.letsgethired.model.application;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.letsgethired.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents an InternApplication's note in the InternTracker
@@ -26,6 +27,7 @@ public class Note {
      */
     public Note(String note) {
         requireNonNull(note);
+        checkArgument(isValidNote(note), MESSAGE_CONSTRAINTS);
         value = note;
     }
 

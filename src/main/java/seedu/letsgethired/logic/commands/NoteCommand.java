@@ -27,10 +27,8 @@ public class NoteCommand extends Command {
             + PREFIX_NOTE + "[NOTE]\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_NOTE + "John Street is the leading market maker in the APAC region";
-
-    public static final String MESSAGE_ARGUMENTS = "Index: %1$d, Note: %2$s";
-    public static final String MESSAGE_ADD_REMARK_SUCCESS = "Added remark to InternApplication: %1$s";
-    public static final String MESSAGE_DELETE_REMARK_SUCCESS = "Removed remark from InternApplication: %1$s";
+    public static final String MESSAGE_ADD_NOTE_SUCCESS = "Added note to InternApplication: %1$s";
+    public static final String MESSAGE_DELETE_NOTE_SUCCESS = "Removed note from InternApplication: %1$s";
 
     private final Index index;
     private final Note note;
@@ -67,7 +65,7 @@ public class NoteCommand extends Command {
     }
 
     private String generateSuccessMessage(InternApplication personToEdit) {
-        String message = !note.value.isEmpty() ? MESSAGE_ADD_REMARK_SUCCESS : MESSAGE_DELETE_REMARK_SUCCESS;
+        String message = !note.value.isEmpty() ? MESSAGE_ADD_NOTE_SUCCESS : MESSAGE_DELETE_NOTE_SUCCESS;
         return String.format(message, personToEdit);
     }
 

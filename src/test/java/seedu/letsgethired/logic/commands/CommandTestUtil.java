@@ -51,7 +51,7 @@ public class CommandTestUtil {
     public static final String INVALID_ROLE_DESC = " " + PREFIX_ROLE + " "; // empty string is not allowed in roles
     public static final String INVALID_CYCLE_DESC = " " + PREFIX_CYCLE + "Summer!2023"; // '!' not allowed in cycles
     public static final String INVALID_STATUS_DESC = " " + PREFIX_STATUS; // empty string not allowed in status
-
+    public static final String INVALID_NOTE_DESC = " " + PREFIX_NOTE;
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
 
