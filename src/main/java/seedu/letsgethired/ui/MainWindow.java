@@ -165,7 +165,7 @@ public class MainWindow extends UiPart<Stage> {
      */
     @FXML
     public void handleNotes() {
-        selectView.setNotesOfCard("");
+        selectView.displayNotes("");
     }
 
     void show() {
@@ -198,7 +198,7 @@ public class MainWindow extends UiPart<Stage> {
             CommandResult commandResult = logic.execute(commandText);
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
-            selectView.setNotesOfCard(commandResult.getNotesToUser());
+            selectView.displayNotes(commandResult.getNotesToUser());
 
             if (commandResult.isShowHelp()) {
                 handleHelp();

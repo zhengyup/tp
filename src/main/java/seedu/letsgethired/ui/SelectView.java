@@ -21,7 +21,7 @@ public class SelectView extends UiPart<Region> {
         super(FXML);
     }
 
-    public void setNotesOfCard(String notes) {
+    public void displayNotes(String notes) {
         requireNonNull(notes);
         selectView.setText(notes);
     }

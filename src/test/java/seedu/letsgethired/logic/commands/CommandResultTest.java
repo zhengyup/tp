@@ -11,10 +11,13 @@ public class CommandResultTest {
     @Test
     public void equals() {
         CommandResult commandResult = new CommandResult("feedback");
+        CommandResult commandResultWithNotes = new CommandResult("feedback",
+                false, false, "notes");
 
         // same values -> returns true
         assertTrue(commandResult.equals(new CommandResult("feedback")));
-        assertTrue(commandResult.equals(new CommandResult("feedback", false, false, "")));
+        assertTrue(commandResult.equals(new CommandResult("feedback",
+                false, false, "")));
 
         // same object -> returns true
         assertTrue(commandResult.equals(commandResult));
@@ -27,6 +30,12 @@ public class CommandResultTest {
 
         // different feedbackToUser value -> returns false
         assertFalse(commandResult.equals(new CommandResult("different")));
+
+        // different notesToUser value -> returns false
+        assertFalse(commandResultWithNotes.equals(new CommandResult("feedback",
+                false, false, "different")));
+        assertFalse(commandResult.equals(new CommandResult("feedback",
+                false, false, "different")));
 
         // different showHelp value -> returns false
         assertFalse(commandResult.equals(

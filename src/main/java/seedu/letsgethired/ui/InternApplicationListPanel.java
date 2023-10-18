@@ -29,7 +29,7 @@ public class InternApplicationListPanel extends UiPart<Region> {
         internApplicationListView.setCellFactory(listView -> new InternApplicationListViewCell());
         internApplicationListView.setOnMouseClicked(e -> {
             //arguments to be replaced with notes inside the model
-            selectView.setNotesOfCard(internApplicationListView.getSelectionModel().getSelectedItem().toString());
+            selectView.displayNotes(internApplicationListView.getSelectionModel().getSelectedItem().toString());
         });
     }
 
