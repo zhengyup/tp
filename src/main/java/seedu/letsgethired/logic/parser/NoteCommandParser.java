@@ -5,7 +5,6 @@ import static seedu.letsgethired.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE;
 
 import seedu.letsgethired.commons.core.index.Index;
-import seedu.letsgethired.commons.exceptions.IllegalValueException;
 import seedu.letsgethired.logic.commands.NoteCommand;
 import seedu.letsgethired.logic.parser.exceptions.ParseException;
 import seedu.letsgethired.model.application.Note;
@@ -24,10 +23,15 @@ public class NoteCommandParser implements Parser<NoteCommand> {
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NOTE);
 
         Index index;
+
         try {
             index = ParserUtil.parseIndex(argMultimap.getPreamble());
-        } catch (IllegalValueException ive) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, NoteCommand.MESSAGE_USAGE), ive);
+        } catch (ParseException pe) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, NoteCommand.MESSAGE_USAGE), pe);
+        }
+
+        if (!argMultimap.getValue(PREFIX_NOTE).isPresent()) {
+            throw new ParseException(NoteCommand.NO_NOTE_PARAMETER_MESSAGE);
         }
 
         String note = argMultimap.getValue(PREFIX_NOTE).orElse("");
