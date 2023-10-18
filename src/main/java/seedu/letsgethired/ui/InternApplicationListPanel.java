@@ -40,7 +40,8 @@ public class InternApplicationListPanel extends UiPart<Region> {
     /**
      * Creates a {@code InternApplicationListPanel} with the given {@code ObservableList}.
      */
-    public InternApplicationListPanel(ObservableList<InternApplication> internApplicationList, CommandExecutor commandExecutor) {
+    public InternApplicationListPanel(ObservableList<InternApplication> internApplicationList,
+                                      CommandExecutor commandExecutor) {
         super(FXML);
         internApplicationListView.setItems(internApplicationList);
         internApplicationListView.setCellFactory(listView -> new InternApplicationListViewCell());

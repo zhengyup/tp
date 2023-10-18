@@ -5,7 +5,6 @@ import static java.util.Objects.requireNonNull;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.Region;
-import seedu.letsgethired.model.application.InternApplication;
 
 /**
  * A ui for the select view that displays the notes of a selected application.
