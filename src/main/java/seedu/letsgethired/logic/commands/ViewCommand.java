@@ -42,9 +42,14 @@ public class ViewCommand extends Command {
         }
 
         InternApplication internApplicationToView = lastShownList.get(targetIndex.getZeroBased());
+        String details = "Company: " + internApplicationToView.getCompany().toString() + "\n"
+                + "Role:" + internApplicationToView.getRole().toString() + "\n"
+                + "Cycle:" + internApplicationToView.getCycle().toString() + "\n"
+                + "Status:" + internApplicationToView.getStatus().toString() + "\n"
+                + "Additional Notes:\n" + internApplicationToView.getNote().toString();
         model.setCurrentInternApplication(internApplicationToView);
         return new CommandResult(String.format(MESSAGE_VIEW_INTERN_APPLICATION_SUCCESS,
-                Messages.format(internApplicationToView)));
+                Messages.format(internApplicationToView)), details);
     }
 
     @Override

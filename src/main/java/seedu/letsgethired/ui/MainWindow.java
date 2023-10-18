@@ -126,7 +126,7 @@ public class MainWindow extends UiPart<Stage> {
 
         internApplicationListPanel = new InternApplicationListPanel(
                 logic.getFilteredInternApplicationList(),
-                selectView);
+                this::executeCommand);
         internApplicationListPanelPlaceholder.getChildren().add(internApplicationListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
@@ -196,6 +196,7 @@ public class MainWindow extends UiPart<Stage> {
             CommandResult commandResult = logic.execute(commandText);
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
+            selectView.displayDetails(commandResult.getDetailsToUser());
 
             if (commandResult.isShowHelp()) {
                 handleHelp();

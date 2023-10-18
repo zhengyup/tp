@@ -24,15 +24,10 @@ public class SelectView extends UiPart<Region> {
 
     /**
      * Sets detail text onto the select view text area
-     * @param entry the intern application to be viewed
+     * @param details the intern application to be viewed
      */
-    public void displayDetails(InternApplication entry) {
-        requireNonNull(entry);
-        String details = "Company: " + entry.getCompany().toString() + "\n"
-                + "Role:" + entry.getRole().toString() + "\n"
-                + "Cycle:" + entry.getCycle().toString() + "\n"
-                + "Status:" + entry.getStatus().toString() + "\n"
-                + "Additional Notes:\n" + entry.getNote().toString();
+    public void displayDetails(String details) {
+        requireNonNull(details);
         selectView.setText(details);
     }
 }
