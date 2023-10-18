@@ -7,6 +7,7 @@ import seedu.letsgethired.commons.util.StringUtil;
 import seedu.letsgethired.logic.parser.exceptions.ParseException;
 import seedu.letsgethired.model.application.Company;
 import seedu.letsgethired.model.application.Cycle;
+import seedu.letsgethired.model.application.Note;
 import seedu.letsgethired.model.application.Role;
 import seedu.letsgethired.model.application.Status;
 
@@ -90,4 +91,18 @@ public class ParserUtil {
         return new Cycle(trimmedCycle);
     }
 
+    /**
+     * Parses a {@code String note} into an {@code Note}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code note} is invalid.
+     */
+    public static Note parseNote(String note) throws ParseException {
+        requireNonNull(note);
+        String trimmedNote = note.trim();
+        if (!Note.isValidNote(trimmedNote)) {
+            throw new ParseException(Note.MESSAGE_CONSTRAINTS);
+        }
+        return new Note(trimmedNote);
+    }
 }

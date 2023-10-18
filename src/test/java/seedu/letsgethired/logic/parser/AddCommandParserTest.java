@@ -9,6 +9,8 @@ import static seedu.letsgethired.logic.commands.CommandTestUtil.INVALID_COMPANY_
 import static seedu.letsgethired.logic.commands.CommandTestUtil.INVALID_CYCLE_DESC;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.INVALID_ROLE_DESC;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.INVALID_STATUS_DESC;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.NOTE_DESC_BYTEDANCE;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.NOTE_DESC_JANE_STREET;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.PREAMBLE_NON_EMPTY;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.ROLE_DESC_BACK_END;
@@ -43,10 +45,11 @@ public class AddCommandParserTest {
 
         // whitespace only preamble
         assertParseSuccess(parser, PREAMBLE_WHITESPACE
-                + COMPANY_DESC_BYTEDANCE
-                + ROLE_DESC_BACK_END
-                + CYCLE_DESC_WINTER
-                + STATUS_DESC_REJECTED,
+                        + COMPANY_DESC_BYTEDANCE
+                        + ROLE_DESC_BACK_END
+                        + CYCLE_DESC_WINTER
+                        + NOTE_DESC_BYTEDANCE
+                        + STATUS_DESC_REJECTED,
                 new AddCommand(expectedInternApplication));
     }
 
@@ -55,6 +58,7 @@ public class AddCommandParserTest {
         InternApplication expectedInternApplication = new InternApplicationBuilder(A).build();
         assertParseSuccess(parser, COMPANY_DESC_JANE_STREET
                         + ROLE_DESC_FULL_STACK + CYCLE_DESC_SUMMER
+                        + NOTE_DESC_JANE_STREET
                         + STATUS_DESC_ACCEPTED,
                 new AddCommand(expectedInternApplication));
     }
@@ -105,6 +109,7 @@ public class AddCommandParserTest {
         assertParseFailure(parser, INVALID_COMPANY_DESC
                         + ROLE_DESC_BACK_END
                         + CYCLE_DESC_WINTER
+                        + NOTE_DESC_BYTEDANCE
                         + STATUS_DESC_REJECTED,
                 Company.MESSAGE_CONSTRAINTS);
 
@@ -112,6 +117,7 @@ public class AddCommandParserTest {
         assertParseFailure(parser, COMPANY_DESC_BYTEDANCE
                         + INVALID_ROLE_DESC
                         + CYCLE_DESC_WINTER
+                        + NOTE_DESC_BYTEDANCE
                         + STATUS_DESC_REJECTED,
                 Role.MESSAGE_CONSTRAINTS);
 
@@ -119,6 +125,7 @@ public class AddCommandParserTest {
         assertParseFailure(parser, COMPANY_DESC_BYTEDANCE
                         + ROLE_DESC_BACK_END
                         + INVALID_CYCLE_DESC
+                        + NOTE_DESC_BYTEDANCE
                         + STATUS_DESC_REJECTED,
                 Cycle.MESSAGE_CONSTRAINTS);
 
@@ -126,6 +133,7 @@ public class AddCommandParserTest {
         assertParseFailure(parser, COMPANY_DESC_BYTEDANCE
                         + ROLE_DESC_BACK_END
                         + CYCLE_DESC_WINTER
+                        + NOTE_DESC_BYTEDANCE
                         + INVALID_STATUS_DESC,
                 Status.MESSAGE_CONSTRAINTS);
 
@@ -133,6 +141,7 @@ public class AddCommandParserTest {
         assertParseFailure(parser, INVALID_COMPANY_DESC
                         + ROLE_DESC_BACK_END
                         + CYCLE_DESC_WINTER
+                        + NOTE_DESC_BYTEDANCE
                         + INVALID_STATUS_DESC,
                 Company.MESSAGE_CONSTRAINTS);
 
@@ -141,6 +150,7 @@ public class AddCommandParserTest {
                         + COMPANY_DESC_BYTEDANCE
                         + ROLE_DESC_BACK_END
                         + CYCLE_DESC_WINTER
+                        + NOTE_DESC_BYTEDANCE
                         + STATUS_DESC_REJECTED,
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
     }

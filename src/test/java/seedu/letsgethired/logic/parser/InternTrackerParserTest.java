@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.letsgethired.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.letsgethired.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
+import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE;
 import static seedu.letsgethired.testutil.Assert.assertThrows;
 import static seedu.letsgethired.testutil.TypicalIndexes.INDEX_FIRST_APPLICATION;
 
@@ -18,10 +19,12 @@ import seedu.letsgethired.logic.commands.ExitCommand;
 import seedu.letsgethired.logic.commands.FindCommand;
 import seedu.letsgethired.logic.commands.HelpCommand;
 import seedu.letsgethired.logic.commands.ListCommand;
+import seedu.letsgethired.logic.commands.NoteCommand;
 import seedu.letsgethired.logic.commands.ViewCommand;
 import seedu.letsgethired.logic.parser.exceptions.ParseException;
 import seedu.letsgethired.model.application.CompanyPartialMatchPredicate;
 import seedu.letsgethired.model.application.InternApplication;
+import seedu.letsgethired.model.application.Note;
 import seedu.letsgethired.testutil.EditInternApplicationDescriptorBuilder;
 import seedu.letsgethired.testutil.InternApplicationBuilder;
 import seedu.letsgethired.testutil.InternApplicationUtil;
@@ -85,6 +88,14 @@ public class InternTrackerParserTest {
     public void parseCommand_list() throws Exception {
         assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD) instanceof ListCommand);
         assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD + " 3") instanceof ListCommand);
+    }
+
+    @Test
+    public void parseCommand_note() throws Exception {
+        final Note note = new Note("Some note.");
+        NoteCommand command = (NoteCommand) parser.parseCommand(NoteCommand.COMMAND_WORD + " "
+                + INDEX_FIRST_APPLICATION.getOneBased() + " " + PREFIX_NOTE + note);
+        assertEquals(new NoteCommand(INDEX_FIRST_APPLICATION, note), command);
     }
 
     @Test

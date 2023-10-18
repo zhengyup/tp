@@ -34,6 +34,8 @@ public class InternApplicationCard extends UiPart<Region> {
     @FXML
     private Label status;
     @FXML
+    private Label note;
+    @FXML
     private Label cycle;
 
     /**
@@ -46,6 +48,7 @@ public class InternApplicationCard extends UiPart<Region> {
         company.setText(internApplication.getCompany().value);
         role.setText(internApplication.getRole().value);
         status.setText(internApplication.getStatus().value);
+        note.setText(internApplication.getNote().value);
         cycle.setText(internApplication.getCycle().value);
     }
 }

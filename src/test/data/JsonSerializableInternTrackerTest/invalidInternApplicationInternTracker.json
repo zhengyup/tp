@@ -3,6 +3,7 @@
     "company": "Jane Street",
     "cycle": "Summer!2021",
     "role": "Intern",
+    "note" : "Valid note",
     "status" : "Pending"
   } ]
 }
