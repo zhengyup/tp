@@ -3,6 +3,8 @@ package seedu.letsgethired.ui;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -29,7 +31,7 @@ public class InternApplicationListPanel extends UiPart<Region> {
         internApplicationListView.setCellFactory(listView -> new InternApplicationListViewCell());
         internApplicationListView.setOnMouseClicked(e -> {
             //arguments to be replaced with notes inside the model
-            selectView.displayNotes(internApplicationListView.getSelectionModel().getSelectedItem().toString());
+            selectView.displayNotes(this.getSelectedItem().toString());
         });
     }
 
@@ -51,4 +53,19 @@ public class InternApplicationListPanel extends UiPart<Region> {
         }
     }
 
+    /**
+     * Gets selected Intern Application from the list panel
+     * @return Selected InternApplication from the list
+     */
+    public InternApplication getSelectedItem() {
+        return internApplicationListView.getSelectionModel().getSelectedItem();
+    }
+
+    /**
+     * Gets index of selected Intern Application from the list panel
+     * @return Index of selected InternApplication from the list
+     */
+    public int getSelectedItemIndex() {
+        return internApplicationListView.getSelectionModel().getSelectedIndex();
+    }
 }

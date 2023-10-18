@@ -54,12 +54,19 @@
             <StackPane fx:id="internApplicationListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
           </VBox>
 
-          <StackPane VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS" fx:id="selectViewPlaceholder" styleClass="pane-with-border">
-            <padding>
-              <Insets top="5" right="10" bottom="5" left="10" />
-            </padding>
-          </StackPane>
+          <VBox VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS" styleClass="pane-with-border">
+            <StackPane VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS" fx:id="selectViewPlaceholder" styleClass="pane-with-border">
+              <padding>
+                <Insets top="5" right="10" bottom="5" left="10" />
+              </padding>
+            </StackPane>
 
+            <StackPane VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS" fx:id="buttonbarPlaceholder" styleClass="pane-with-border">
+              <padding>
+                <Insets top="5" right="10" bottom="5" left="10" />
+              </padding>
+            </StackPane>
+          </VBox>
         </HBox>
 
         <StackPane fx:id="statusbarPlaceholder" VBox.vgrow="NEVER" />

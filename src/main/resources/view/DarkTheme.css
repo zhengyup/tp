@@ -160,6 +160,10 @@
     -fx-text-fill: white;
 }
 
+.button-bar {
+    -fx-background-color: transparent;
+}
+
 .result-display .label {
     -fx-text-fill: black !important;
 }
@@ -345,6 +349,11 @@
 }
 
 #selectView .content {
+    -fx-background-color: transparent, #383838, transparent, #383838;
+    -fx-border-width: 0;
+}
+
+#buttonBar .content {
     -fx-background-color: transparent, #383838, transparent, #383838;
     -fx-background-radius: 0;
 }

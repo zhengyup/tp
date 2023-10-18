@@ -58,6 +58,9 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private StackPane statusbarPlaceholder;
 
+    @FXML
+    private StackPane buttonbarPlaceholder;
+
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
      */
@@ -134,6 +137,9 @@ public class MainWindow extends UiPart<Stage> {
 
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
+
+        UtilityButtonBar buttonBar = new UtilityButtonBar(internApplicationListPanel, this:: executeCommand);
+        buttonbarPlaceholder.getChildren().add(buttonBar.getRoot());
     }
 
     /**
