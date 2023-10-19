@@ -45,8 +45,7 @@ public class NoteCommandTest {
         NoteCommand noteCommand = new NoteCommand(INDEX_FIRST_APPLICATION,
                 new InternApplicationBuilder().build().getNote());
 
-        String expectedMessage = String.format(NoteCommand.MESSAGE_ADD_NOTE_SUCCESS,
-                Messages.format(editedInternApplication));
+        String expectedMessage = NoteCommand.MESSAGE_ADD_NOTE_SUCCESS;
 
         Model expectedModel = new ModelManager(new InternTracker(model.getInternTracker()), new UserPrefs());
         expectedModel.setInternApplication(model.getFilteredInternApplicationList().get(0), editedInternApplication);
@@ -62,8 +61,7 @@ public class NoteCommandTest {
                 .withNote("").build();
         NoteCommand noteCommand = new NoteCommand(INDEX_FIRST_APPLICATION, emptyNote);
 
-        String expectedMessage = String.format(NoteCommand.MESSAGE_DELETE_NOTE_SUCCESS,
-                Messages.format(editedInternApplication));
+        String expectedMessage = NoteCommand.MESSAGE_DELETE_NOTE_SUCCESS;
 
         Model expectedModel = new ModelManager(new InternTracker(model.getInternTracker()), new UserPrefs());
         expectedModel.setInternApplication(model.getFilteredInternApplicationList().get(0), editedInternApplication);
