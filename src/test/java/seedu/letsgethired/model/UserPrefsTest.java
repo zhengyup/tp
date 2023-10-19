@@ -1,5 +1,7 @@
 package seedu.letsgethired.model;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static seedu.letsgethired.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
@@ -18,4 +20,16 @@ public class UserPrefsTest {
         assertThrows(NullPointerException.class, () -> userPrefs.setInternTrackerFilePath(null));
     }
 
+    @Test
+    public void same_InternTracker_is_equal() {
+        UserPrefs userPrefs = new UserPrefs();
+        assertEquals(userPrefs, userPrefs);
+    }
+
+    @Test
+    public void differentObjectIsNotEqual() {
+        UserPrefs userPrefs = new UserPrefs();
+        Object obj = new Object();
+        assertFalse(userPrefs.equals(obj));
+    }
 }
