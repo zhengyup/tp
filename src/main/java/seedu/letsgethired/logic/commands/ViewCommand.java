@@ -24,7 +24,7 @@ public class ViewCommand extends Command {
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
-    public static final String MESSAGE_VIEW_INTERN_APPLICATION_SUCCESS = "Viewed intern application: %1$s";
+    public static final String MESSAGE_VIEW_INTERN_APPLICATION_SUCCESS = "Viewed intern application";
 
     private final Index targetIndex;
 
@@ -42,14 +42,9 @@ public class ViewCommand extends Command {
         }
 
         InternApplication internApplicationToView = lastShownList.get(targetIndex.getZeroBased());
-        String details = "Company: " + internApplicationToView.getCompany().toString() + "\n"
-                + "Role:" + internApplicationToView.getRole().toString() + "\n"
-                + "Cycle:" + internApplicationToView.getCycle().toString() + "\n"
-                + "Status:" + internApplicationToView.getStatus().toString() + "\n"
-                + "Additional Notes:\n" + internApplicationToView.getNote().toString();
         model.setCurrentInternApplication(internApplicationToView);
-        return new CommandResult(String.format(MESSAGE_VIEW_INTERN_APPLICATION_SUCCESS,
-                Messages.format(internApplicationToView)), details);
+        return new CommandResult(MESSAGE_VIEW_INTERN_APPLICATION_SUCCESS,
+                Messages.formatDisplay(internApplicationToView));
     }
 
     @Override

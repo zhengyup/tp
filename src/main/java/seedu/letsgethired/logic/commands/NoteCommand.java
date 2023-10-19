@@ -54,9 +54,11 @@ public class NoteCommand extends Command {
 
         InternApplication internApplicationToEdit = lastShownList.get(index.getZeroBased());
         InternApplication editedInternApplication = new InternApplication(
-                internApplicationToEdit.getCompany(), internApplicationToEdit.getRole(),
+                internApplicationToEdit.getCompany(),
+                internApplicationToEdit.getRole(),
                 internApplicationToEdit.getCycle(),
-                internApplicationToEdit.getNote(), internApplicationToEdit.getStatus());
+                internApplicationToEdit.getNote(),
+                internApplicationToEdit.getStatus());
 
         model.setInternApplication(internApplicationToEdit, editedInternApplication);
         model.updateFilteredInternApplicationList(PREDICATE_SHOW_ALL_APPLICATIONS);

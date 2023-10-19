@@ -31,7 +31,7 @@ public class ViewCommandTest {
         ViewCommand viewCommand = new ViewCommand(INDEX_FIRST_APPLICATION);
 
         String expectedMessage = String.format(ViewCommand.MESSAGE_VIEW_INTERN_APPLICATION_SUCCESS,
-                Messages.format(internApplicationToView));
+                Messages.formatDisplay(internApplicationToView));
 
         ModelManager expectedModel = new ModelManager(model.getInternTracker(), new UserPrefs());
         expectedModel.setCurrentInternApplication(internApplicationToView);
@@ -56,7 +56,7 @@ public class ViewCommandTest {
         ViewCommand viewCommand = new ViewCommand(INDEX_FIRST_APPLICATION);
 
         String expectedMessage = String.format(ViewCommand.MESSAGE_VIEW_INTERN_APPLICATION_SUCCESS,
-                Messages.format(internApplicationToView));
+                Messages.formatDisplay(internApplicationToView));
 
         Model expectedModel = new ModelManager(model.getInternTracker(), new UserPrefs());
         showInternApplicationAtIndex(expectedModel, INDEX_FIRST_APPLICATION);

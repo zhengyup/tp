@@ -39,7 +39,7 @@ public class AddCommandTest {
 
         CommandResult commandResult = new AddCommand(validInternApplication).execute(modelStub);
 
-        assertEquals(String.format(AddCommand.MESSAGE_SUCCESS, Messages.format(validInternApplication)),
+        assertEquals(String.format(AddCommand.MESSAGE_SUCCESS, Messages.formatDisplay(validInternApplication)),
                 commandResult.getFeedbackToUser());
         assertEquals(Arrays.asList(validInternApplication), modelStub.internApplicationAdded);
     }

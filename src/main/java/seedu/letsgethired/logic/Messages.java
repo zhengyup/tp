@@ -35,16 +35,18 @@ public class Messages {
     /**
      * Formats the {@code internApplication} for display to the user.
      */
-    public static String format(InternApplication internApplication) {
+    public static String formatDisplay(InternApplication internApplication) {
         final StringBuilder builder = new StringBuilder();
-        builder.append(internApplication.getCompany())
-                .append("; Role: ")
+        builder.append("Company: ")
+                .append(internApplication.getCompany())
+                .append("\nRole: ")
                 .append(internApplication.getRole())
-                .append("; Cycle: ")
+                .append("\nCycle: ")
                 .append(internApplication.getCycle())
-                .append("; Status: ")
-                .append(internApplication.getStatus());
+                .append("\nStatus: ")
+                .append(internApplication.getStatus())
+                .append("\nNotes: ")
+                .append(internApplication.getNote());
         return builder.toString();
     }
-
 }
