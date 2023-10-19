@@ -25,6 +25,9 @@ public class UtilityButtonBar extends UiPart<Region> {
         this.listPanel = listPanel;
     }
 
+    /**
+     * Deletes the selected card in UI
+     */
     @FXML
     public void handleDeleteClick() {
         int itemIndex = listPanel.getSelectedItemIndex();

@@ -41,13 +41,13 @@ public class EditCommandTest {
                 new EditInternApplicationDescriptorBuilder(editedInternApplication).build();
         EditCommand editCommand = new EditCommand(INDEX_FIRST_APPLICATION, descriptor);
 
-        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_INTERN_APPLICATION_SUCCESS, Messages
-                .formatDisplay(editedInternApplication));
+        String expectedMessage = EditCommand.MESSAGE_EDIT_INTERN_APPLICATION_SUCCESS;
+        String expectedDetails = Messages.formatDisplay(editedInternApplication);
 
         Model expectedModel = new ModelManager(new InternTracker(model.getInternTracker()), new UserPrefs());
         expectedModel.setInternApplication(model.getFilteredInternApplicationList().get(0), editedInternApplication);
 
-        assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(editCommand, model, expectedMessage, expectedDetails, expectedModel);
     }
 
     @Test
@@ -67,13 +67,13 @@ public class EditCommandTest {
                 .build();
         EditCommand editCommand = new EditCommand(indexLastInternApplication, descriptor);
 
-        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_INTERN_APPLICATION_SUCCESS,
-                Messages.formatDisplay(editedInternApplication));
+        String expectedMessage = EditCommand.MESSAGE_EDIT_INTERN_APPLICATION_SUCCESS;
+        String expectedDetails = Messages.formatDisplay(editedInternApplication);
 
         Model expectedModel = new ModelManager(new InternTracker(model.getInternTracker()), new UserPrefs());
         expectedModel.setInternApplication(lastInternApplication, editedInternApplication);
 
-        assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(editCommand, model, expectedMessage, expectedDetails, expectedModel);
     }
 
     @Test
@@ -82,12 +82,12 @@ public class EditCommandTest {
         InternApplication editedInternApplication = model.getFilteredInternApplicationList()
                 .get(INDEX_FIRST_APPLICATION.getZeroBased());
 
-        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_INTERN_APPLICATION_SUCCESS, Messages
-                .formatDisplay(editedInternApplication));
+        String expectedMessage = EditCommand.MESSAGE_EDIT_INTERN_APPLICATION_SUCCESS;
+        String expectedDetails = Messages.formatDisplay(editedInternApplication);
 
         Model expectedModel = new ModelManager(new InternTracker(model.getInternTracker()), new UserPrefs());
 
-        assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(editCommand, model, expectedMessage, expectedDetails, expectedModel);
     }
 
     @Test
@@ -101,13 +101,13 @@ public class EditCommandTest {
         EditCommand editCommand = new EditCommand(INDEX_FIRST_APPLICATION,
                 new EditInternApplicationDescriptorBuilder().withCompany(VALID_COMPANY_BYTEDANCE).build());
 
-        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_INTERN_APPLICATION_SUCCESS,
-                Messages.formatDisplay(editedInternApplication));
+        String expectedMessage = EditCommand.MESSAGE_EDIT_INTERN_APPLICATION_SUCCESS;
+        String expectedDetails = Messages.formatDisplay(editedInternApplication);
 
         Model expectedModel = new ModelManager(new InternTracker(model.getInternTracker()), new UserPrefs());
         expectedModel.setInternApplication(model.getFilteredInternApplicationList().get(0), editedInternApplication);
 
-        assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(editCommand, model, expectedMessage, expectedDetails, expectedModel);
     }
 
     @Test
