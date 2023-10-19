@@ -134,7 +134,7 @@ Shows a specific internship application entry and its details.
 
 ### Locating an internship by company: `find`
 
-Finds persons whose names contain any of the given keywords.
+Finds internship applications whose company name contain any of the given keywords.
 
 **Format**: `find SEARCH_STRING`
 
