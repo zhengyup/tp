@@ -1,7 +1,7 @@
 ---
   layout: default.md
-    title: "User Guide"
-    pageNav: 3
+  title: "User Guide"
+  pageNav: 3
 ---
 
 # User Guide
@@ -67,7 +67,6 @@ Shows a message explaining how to access the help page.
 ![help message](images/helpMessage.png)
 
 **Format**: `help`
-<br><br>
 
 ### Adding internship entry : `add`
 
@@ -126,7 +125,7 @@ Shows a specific internship application entry and its details.
 * `view 1` shows the first internship application entry (in the list) and its details
 
 **Expected Output**:
-* Success
+* Success<br>
   ![view example](images/viewExample.png)
 * Failure
     * Wrong parameter: <br>`The following parameter INDEX is in the wrong format - please input in the correct format`
@@ -135,7 +134,7 @@ Shows a specific internship application entry and its details.
 
 ### Locating an internship by company: `find`
 
-Finds persons whose names contain any of the given keywords.
+Finds internship applications whose company name contain any of the given keywords.
 
 **Format**: `find SEARCH_STRING`
 
@@ -155,24 +154,24 @@ Finds persons whose names contain any of the given keywords.
     * `Summer Internship - Full Stack Developer at John Street `
     * `Summer Internship - Data Analyst at Pineapple`
 
-### Updating an internship status : `tag`
+### Editing an internship application : `edit`
 
-Updates an internship application entry with the specified status.
+Edits an internship application in the internship application list.
 
-**Format**: `tag INDEX [s/STATUS]`
+**Format**: `edit INDEX [n/COMPANY_NAME] [r/ROLE] [c/CYCLE] [s/STATUS]`
 
 **Parameters**:
-* `INDEX`: Index of internship application entry to be updated
+* `INDEX`: Index of internship application entry to be edited
     * `INDEX` must be a positive integer, such as, `1`, `2`, `3`, etc.
-* `s/STATUS`: (optional) Status of internship application
-    * You can remove existing status by omitting the `STATUS` parameter
+* At least one of the optional fields must be provided.
+  * Existing values will be updated to the input values.
 
 **Examples**:
-* `tag 1 s/Applied` updates the status of the first internship application entry (in the list) as `Applied`
+* `edit 1 s/Applied` edits the status of the first internship application entry (in the list) as `Applied`
 
 **Expected Output**:
 * Success
-  ![tag](images/viewExample.png)
+  ![edit](images/viewExample.png)
 * Failure
     * Wrong parameter: <br>`The following parameter INDEX is in the wrong format - please input in the correct format`
     * Missing parameter: <br>`The following parameter INDEX is missing - please input in the correct format`
@@ -190,7 +189,7 @@ Adds the specified note to an internship application.
 * `i/NOTE`: Note to be added to the internship application
 
 **Examples**:
-* `note 1 i/John Street is the leading market maker in the APAC region` adds the note 'John Street is the leading market maker in the APAC region' to first internship application entry (in the list)
+* `note 1 i/John Street is the leading market maker in the APAC region` adds the note, 'John Street is the leading market maker in the APAC region' to first internship application entry (in the list)
 
 **Expected Output**:
 * Success
@@ -224,6 +223,18 @@ Examples:
     * Missing parameter: <br>`The following parameter INDEX is missing - please input in the correct format`
     * Index out of bound: <br> `The following parameter INDEX provided is out of bound`
 
+### Clearing all entries : `clear`
+
+Clears all entries from the internship application list.
+
+Format: `clear`
+
+### Exiting the program : `exit`
+
+Exits the program.
+
+Format: `exit`
+
 ### Saving the data
 
 LetsGetHired data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
@@ -236,31 +247,34 @@ LetsGetHired data are saved automatically as a JSON file `[JAR file location]/da
 
 **Caution:**
 If your changes to the data file makes its format invalid, LetsGetHired will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.
+
 </box>
 
 --------------------------------------------------------------------------------------------------------------------
 
-## FAQ
+## **FAQ**
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous LetsGetHired home folder.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Known issues
+## **Known issues**
 
-1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
+* **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Command summary
+## **Command summary**
 
-| Action     | Format, Examples                                                                                                        |
-|------------|-------------------------------------------------------------------------------------------------------------------------|
-| **Add**    | `add c/CYCLE r/ROLE n/COMPANY_NAME [s/STATUS]` <br> e.g., `add c/Summer r/Full Stack Developer n/John street s/Applied` |
-| **View**   | `view INDEX`<br> e.g., `view 3`                                                                                         |
-| **Tag**    | `tag INDEX`<br> e.g.,`tag 2 s/Applied`                                                                                  |
-| **Note**   | `note INDEX`<br> e.g., `note 5 i/John Street is the leading market maker in the APAC region`                            |
-| **Delete** | `delete INDEX`<br> e.g., `delete 1`                                                                                     |
-| **List**   | `list`                                                                                                                  |
-| **Help**   | `help`                                                                                                                  |
+| Action     | Format, Examples                                            | Examples                                                              |
+|------------|-------------------------------------------------------------|:----------------------------------------------------------------------|
+| **Add**    | `add c/CYCLE r/ROLE n/COMPANY_NAME [s/STATUS]`              | `add c/Summer r/Full Stack Developer n/John street s/Applied`         |
+| **View**   | `view INDEX`                                                | `view 3`                                                              |
+| **Edit**   | `edit INDEX [n/COMPANY_NAME] [r/ROLE] [c/CYCLE] [s/STATUS]` | `edit 2 s/Applied`                                                    |
+| **Note**   | `note INDEX`                                                | `note 5 i/John Street is the leading market maker in the APAC region` |
+| **Delete** | `delete INDEX`                                              | `delete 1`                                                            |
+| **List**   | `list`                                                      | `list`                                                                |
+| **Help**   | `help`                                                      | `help`                                                                |
+| **Clear**  | `clear`                                                     | `clear`                                                               |
+| **Exit**   | `exit`                                                      | `exit`                                                                |
