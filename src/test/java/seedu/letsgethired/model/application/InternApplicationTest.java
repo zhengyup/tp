@@ -83,6 +83,10 @@ public class InternApplicationTest {
         // different status -> returns false
         editedInternApplication = new InternApplicationBuilder(JANE_STREET).withStatus(VALID_STATUS_REJECTED).build();
         assertFalse(JANE_STREET.equals(editedInternApplication));
+
+        // different note -> returns true
+        editedInternApplication = new InternApplicationBuilder(JANE_STREET).withNote("").build();
+        assertTrue(JANE_STREET.equals(editedInternApplication));
     }
 
     @Test

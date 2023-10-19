@@ -34,7 +34,7 @@ public class AddCommandIntegrationTest {
         expectedModel.addInternApplication(validInternApplication);
 
         assertCommandSuccess(new AddCommand(validInternApplication), model,
-                String.format(AddCommand.MESSAGE_SUCCESS, Messages.format(validInternApplication)),
+                AddCommand.MESSAGE_SUCCESS, Messages.formatDisplay(validInternApplication),
                 expectedModel);
     }
 

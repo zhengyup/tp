@@ -8,6 +8,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import seedu.letsgethired.commons.core.GuiSettings;
@@ -33,6 +34,7 @@ public class MainWindow extends UiPart<Stage> {
     // Independent Ui parts residing in this Ui container
     private InternApplicationListPanel internApplicationListPanel;
     private ResultDisplay resultDisplay;
+    private SelectView selectView;
     private HelpWindow helpWindow;
 
     @FXML
@@ -42,6 +44,12 @@ public class MainWindow extends UiPart<Stage> {
     private MenuItem helpMenuItem;
 
     @FXML
+    private HBox panelPlaceholder;
+
+    @FXML
+    private StackPane selectViewPlaceholder;
+
+    @FXML
     private StackPane internApplicationListPanelPlaceholder;
 
     @FXML
@@ -49,6 +57,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane statusbarPlaceholder;
+
+    @FXML
+    private StackPane buttonbarPlaceholder;
 
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
@@ -110,7 +121,12 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        internApplicationListPanel = new InternApplicationListPanel(logic.getFilteredInternApplicationList());
+        selectView = new SelectView();
+        selectViewPlaceholder.getChildren().add(selectView.getRoot());
+
+        internApplicationListPanel = new InternApplicationListPanel(
+                logic.getFilteredInternApplicationList(),
+                this::executeCommand);
         internApplicationListPanelPlaceholder.getChildren().add(internApplicationListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
@@ -121,6 +137,11 @@ public class MainWindow extends UiPart<Stage> {
 
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
+
+        InternApplicationUtilityButton buttonBar = new InternApplicationUtilityButton(
+                internApplicationListPanel,
+                this:: executeCommand);
+        buttonbarPlaceholder.getChildren().add(buttonBar.getRoot());
     }
 
     /**
@@ -177,6 +198,8 @@ public class MainWindow extends UiPart<Stage> {
             CommandResult commandResult = logic.execute(commandText);
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
+
+            selectView.displayDetails(commandResult.getDetailsToUser());
 
             if (commandResult.isShowHelp()) {
                 handleHelp();

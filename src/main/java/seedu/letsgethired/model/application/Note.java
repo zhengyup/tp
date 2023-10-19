@@ -45,9 +45,17 @@ public class Note {
 
     @Override
     public boolean equals(Object other) {
-        return other == this // short circuit if same object
-                || (other instanceof Note // instanceof handles nulls
-                && value.equals(((Note) other).value)); // state check
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof Note)) {
+            return false;
+        }
+
+        Note otherNote = (Note) other;
+        return value.equals(otherNote.value);
     }
 
     @Override

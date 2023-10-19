@@ -81,6 +81,7 @@ public class InternApplication {
             return false;
         }
 
+        // No comparing notes because notes is not a strict differentiating factor
         InternApplication otherInternApplication = (InternApplication) other;
         return company.equals(otherInternApplication.company)
                 && role.equals(otherInternApplication.role)
@@ -90,7 +91,7 @@ public class InternApplication {
 
     @Override
     public int hashCode() {
-        // use this method for custom fields hashing instead of implementing your own
+        // No comparing notes because notes is not a strict differentiating factor
         return Objects.hash(company, role, cycle, status);
     }
 

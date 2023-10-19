@@ -85,8 +85,8 @@ public class EditCommand extends Command {
 
         model.setInternApplication(internApplicationToEdit, editedInternApplication);
         model.updateFilteredInternApplicationList(PREDICATE_SHOW_ALL_APPLICATIONS);
-        return new CommandResult(String.format(MESSAGE_EDIT_INTERN_APPLICATION_SUCCESS,
-                                               Messages.format(editedInternApplication)));
+        return new CommandResult(MESSAGE_EDIT_INTERN_APPLICATION_SUCCESS,
+                Messages.formatDisplay(editedInternApplication));
     }
 
     /**

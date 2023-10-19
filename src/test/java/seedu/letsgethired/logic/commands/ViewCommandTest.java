@@ -30,12 +30,12 @@ public class ViewCommandTest {
                         .getZeroBased());
         ViewCommand viewCommand = new ViewCommand(INDEX_FIRST_APPLICATION);
 
-        String expectedMessage = String.format(ViewCommand.MESSAGE_VIEW_INTERN_APPLICATION_SUCCESS,
-                Messages.format(internApplicationToView));
+        String expectedMessage = ViewCommand.MESSAGE_VIEW_INTERN_APPLICATION_SUCCESS;
+        String expectedDetails = Messages.formatDisplay(internApplicationToView);
 
         ModelManager expectedModel = new ModelManager(model.getInternTracker(), new UserPrefs());
         expectedModel.setCurrentInternApplication(internApplicationToView);
-        assertCommandSuccess(viewCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(viewCommand, model, expectedMessage, expectedDetails, expectedModel);
     }
 
     @Test
@@ -55,14 +55,14 @@ public class ViewCommandTest {
                         .getZeroBased());
         ViewCommand viewCommand = new ViewCommand(INDEX_FIRST_APPLICATION);
 
-        String expectedMessage = String.format(ViewCommand.MESSAGE_VIEW_INTERN_APPLICATION_SUCCESS,
-                Messages.format(internApplicationToView));
+        String expectedMessage = ViewCommand.MESSAGE_VIEW_INTERN_APPLICATION_SUCCESS;
+        String expectedDetails = Messages.formatDisplay(internApplicationToView);
 
         Model expectedModel = new ModelManager(model.getInternTracker(), new UserPrefs());
         showInternApplicationAtIndex(expectedModel, INDEX_FIRST_APPLICATION);
         expectedModel.setCurrentInternApplication(internApplicationToView);
 
-        assertCommandSuccess(viewCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(viewCommand, model, expectedMessage, expectedDetails, expectedModel);
     }
 
     @Test

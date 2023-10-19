@@ -32,7 +32,7 @@ public class AddCommand extends Command {
             + PREFIX_CYCLE + "Summer 2024"
             + PREFIX_STATUS + "Accepted";
 
-    public static final String MESSAGE_SUCCESS = "New intern application added: %1$s";
+    public static final String MESSAGE_SUCCESS = "New intern application added";
     public static final String MESSAGE_DUPLICATE_INTERN_APPLICATION =
             "This application already exists in the intern tracker";
 
@@ -55,7 +55,7 @@ public class AddCommand extends Command {
         }
 
         model.addInternApplication(toAdd);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toAdd)));
+        return new CommandResult(MESSAGE_SUCCESS, Messages.formatDisplay(toAdd));
     }
 
     @Override

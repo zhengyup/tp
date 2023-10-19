@@ -125,4 +125,19 @@ public class InternTrackerTest {
         }
     }
 
+    @Test
+    public void differentObjectIsNotEqual() {
+        Object obj = new Object();
+        assertFalse(internTracker.equals(obj));
+    }
+
+    @Test
+    public void equals() {
+        // same instance -> returns true
+        assertEquals(internTracker, internTracker);
+
+        // non-subclass -> returns true
+        Object obj = new Object();
+        assertFalse(internTracker.equals(obj));
+    }
 }

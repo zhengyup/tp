@@ -15,18 +15,20 @@ import seedu.letsgethired.model.application.InternApplication;
  */
 public class InternApplicationListPanel extends UiPart<Region> {
     private static final String FXML = "InternApplicationListPanel.fxml";
+    private final CommandExecutor commandExecutor;
     private final Logger logger = LogsCenter.getLogger(InternApplicationListPanel.class);
-
     @FXML
     private ListView<InternApplication> internApplicationListView;
 
     /**
      * Creates a {@code InternApplicationListPanel} with the given {@code ObservableList}.
      */
-    public InternApplicationListPanel(ObservableList<InternApplication> internApplicationList) {
+    public InternApplicationListPanel(ObservableList<InternApplication> internApplicationList,
+                                      CommandExecutor commandExecutor) {
         super(FXML);
         internApplicationListView.setItems(internApplicationList);
         internApplicationListView.setCellFactory(listView -> new InternApplicationListViewCell());
+        this.commandExecutor = commandExecutor;
     }
 
     /**
@@ -42,9 +44,24 @@ public class InternApplicationListPanel extends UiPart<Region> {
                 setGraphic(null);
                 setText(null);
             } else {
-                setGraphic(new InternApplicationCard(internApplication, getIndex() + 1).getRoot());
+                setGraphic(new InternApplicationCard(internApplication, getIndex() + 1, commandExecutor).getRoot());
             }
         }
     }
 
+    /**
+     * Gets selected Intern Application from the list panel
+     * @return Selected InternApplication from the list
+     */
+    public InternApplication getSelectedItem() {
+        return internApplicationListView.getSelectionModel().getSelectedItem();
+    }
+
+    /**
+     * Gets index of selected Intern Application from the list panel
+     * @return Index of selected InternApplication from the list
+     */
+    public int getSelectedItemIndex() {
+        return internApplicationListView.getSelectionModel().getSelectedIndex() + 1;
+    }
 }

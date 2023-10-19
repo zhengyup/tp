@@ -11,6 +11,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.layout.HBox?>
 <fx:root type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
          title="LetsGetHired" minWidth="450" minHeight="600" onCloseRequest="#handleExit">
   <icons>
@@ -45,13 +46,28 @@
             <Insets top="5" right="10" bottom="5" left="10" />
           </padding>
         </StackPane>
+        <HBox VBox.vgrow="ALWAYS" alignment="CENTER" styleClass="pane-with-border">
+          <VBox VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS" fx:id="internApplicationList" styleClass="pane-with-border">
+            <padding>
+              <Insets top="10" right="10" bottom="10" left="10" />
+            </padding>
+            <StackPane fx:id="internApplicationListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
+          </VBox>
 
-        <VBox fx:id="internApplicationList" styleClass="pane-with-border" minWidth="340" prefWidth="340" VBox.vgrow="ALWAYS">
-          <padding>
-            <Insets top="10" right="10" bottom="10" left="10" />
-          </padding>
-          <StackPane fx:id="internApplicationListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
-        </VBox>
+          <VBox VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS" styleClass="pane-with-border">
+            <StackPane VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS" fx:id="selectViewPlaceholder" styleClass="pane-with-border">
+              <padding>
+                <Insets top="5" right="10" bottom="5" left="10" />
+              </padding>
+            </StackPane>
+
+            <StackPane VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS" fx:id="buttonbarPlaceholder" styleClass="pane-with-border">
+              <padding>
+                <Insets top="5" right="10" bottom="5" left="10" />
+              </padding>
+            </StackPane>
+          </VBox>
+        </HBox>
 
         <StackPane fx:id="statusbarPlaceholder" VBox.vgrow="NEVER" />
       </VBox>
