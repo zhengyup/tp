@@ -17,7 +17,6 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.letsgethired.logic.commands.DeleteCommand;
 import seedu.letsgethired.model.application.InternApplication;
 import seedu.letsgethired.model.application.exceptions.DuplicateInternApplicationException;
 import seedu.letsgethired.testutil.InternApplicationBuilder;
@@ -127,7 +126,7 @@ public class InternTrackerTest {
     }
 
     @Test
-    public void same_InternTracker_is_equal() {
+    public void sameInternTrackerIsEqual() {
         assertEquals(internTracker, internTracker);
     }
 

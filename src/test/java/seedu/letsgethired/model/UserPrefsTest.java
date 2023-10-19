@@ -21,7 +21,7 @@ public class UserPrefsTest {
     }
 
     @Test
-    public void same_InternTracker_is_equal() {
+    public void sameUserPrefsIsEqual() {
         UserPrefs userPrefs = new UserPrefs();
         assertEquals(userPrefs, userPrefs);
     }
