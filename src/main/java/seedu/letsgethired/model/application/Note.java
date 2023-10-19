@@ -16,7 +16,7 @@ public class Note {
      * The first character of the status must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
-    public static final String VALIDATION_REGEX = "[^\\s].*";
+    public static final String VALIDATION_REGEX = "[\\s\\S]*";
 
     public final String value;
 
