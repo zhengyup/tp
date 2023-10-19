@@ -6,7 +6,7 @@
 <?import java.lang.Double?>
 <GridPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
     <HBox styleClass="button-bar" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
-        <Button HBox.hgrow="ALWAYS" fx:id="deleteNotesButton" text="Delete Entry">
+        <Button HBox.hgrow="ALWAYS" fx:id="deleteNotesButton" text="Delete Entry" onAction="#handleDeleteClick">
             <maxHeight><Double fx:constant="MAX_VALUE" /></maxHeight>
             <maxWidth><Double fx:constant="MAX_VALUE" /></maxWidth>
         </Button>
