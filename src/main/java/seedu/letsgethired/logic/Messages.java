@@ -49,4 +49,22 @@ public class Messages {
                 .append(internApplication.getNote());
         return builder.toString();
     }
+
+    /**
+     * Formats the {@code internApplication} for feedback to the user.
+     */
+    public static String formatFeedback(InternApplication internApplication) {
+        final StringBuilder builder = new StringBuilder();
+        builder.append("Company: ")
+                .append(internApplication.getCompany())
+                .append("; Role: ")
+                .append(internApplication.getRole())
+                .append("; Cycle: ")
+                .append(internApplication.getCycle())
+                .append("; Status: ")
+                .append(internApplication.getStatus())
+                .append("; Note: ")
+                .append(internApplication.getNote());
+        return builder.toString();
+    }
 }

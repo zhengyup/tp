@@ -42,7 +42,8 @@ public class DeleteCommand extends Command {
 
         InternApplication internApplicationToDelete = lastShownList.get(targetIndex.getZeroBased());
         model.deleteInternApplication(internApplicationToDelete);
-        return new CommandResult(MESSAGE_DELETE_INTERN_APPLICATION_SUCCESS);
+        return new CommandResult(String.format(MESSAGE_DELETE_INTERN_APPLICATION_SUCCESS,
+                Messages.formatFeedback(internApplicationToDelete)));
     }
 
     @Override
