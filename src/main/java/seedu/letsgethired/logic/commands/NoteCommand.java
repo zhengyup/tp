@@ -66,9 +66,9 @@ public class NoteCommand extends Command {
         return new CommandResult(generateSuccessMessage(editedInternApplication));
     }
 
-    private String generateSuccessMessage(InternApplication personToEdit) {
+    private String generateSuccessMessage(InternApplication internApplicationToEdit) {
         String message = !note.value.isEmpty() ? MESSAGE_ADD_NOTE_SUCCESS : MESSAGE_DELETE_NOTE_SUCCESS;
-        return String.format(message, personToEdit);
+        return String.format(message, Messages.format(internApplicationToEdit));
     }
 
     @Override
