@@ -82,14 +82,6 @@ public class JsonAdaptedInternApplicationTest {
     }
 
     @Test
-    public void toModelType_invalidNote_throwsIllegalValueException() {
-        JsonAdaptedInternApplication application =
-                new JsonAdaptedInternApplication(VALID_NAME, VALID_ROLE, VALID_CYCLE, INVALID_NOTE, VALID_STATUS);
-        String expectedMessage = Note.MESSAGE_CONSTRAINTS;
-        assertThrows(IllegalValueException.class, expectedMessage, application::toModelType);
-    }
-
-    @Test
     public void toModelType_nullNote_throwsIllegalValueException() {
         JsonAdaptedInternApplication application =
                 new JsonAdaptedInternApplication(VALID_NAME, VALID_ROLE, VALID_CYCLE, null, VALID_STATUS);
