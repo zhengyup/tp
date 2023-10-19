@@ -138,7 +138,9 @@ public class MainWindow extends UiPart<Stage> {
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
 
-        UtilityButtonBar buttonBar = new UtilityButtonBar(internApplicationListPanel, this:: executeCommand);
+        InternApplicationUtilityButton buttonBar = new InternApplicationUtilityButton(
+                internApplicationListPanel,
+                this:: executeCommand);
         buttonbarPlaceholder.getChildren().add(buttonBar.getRoot());
     }
 

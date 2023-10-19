@@ -21,14 +21,13 @@ public class UserPrefsTest {
     }
 
     @Test
-    public void sameUserPrefsIsEqual() {
+    public void equals() {
         UserPrefs userPrefs = new UserPrefs();
-        assertEquals(userPrefs, userPrefs);
-    }
 
-    @Test
-    public void differentObjectIsNotEqual() {
-        UserPrefs userPrefs = new UserPrefs();
+        // same instance -> returns true
+        assertEquals(userPrefs, userPrefs);
+
+        // non-subclass -> returns true
         Object obj = new Object();
         assertFalse(userPrefs.equals(obj));
     }

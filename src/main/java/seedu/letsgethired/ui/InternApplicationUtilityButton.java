@@ -9,17 +9,17 @@ import seedu.letsgethired.logic.parser.exceptions.ParseException;
 /**
  * A ui for utility buttons below the select view
  */
-public class UtilityButtonBar extends UiPart<Region> {
-    private static final String FXML = "UtilityButtonBar.fxml";
+public class InternApplicationUtilityButton extends UiPart<Region> {
+    private static final String FXML = "InternApplicationUtilityButton.fxml";
     private final CommandExecutor commandExecutor;
     private final InternApplicationListPanel listPanel;
     @FXML
     private Button deleteNotesButton;
 
     /**
-     * Creates a {@code UtilityButtonBar}.
+     * Creates a {@code InternApplicationUtilityButton}.
      */
-    public UtilityButtonBar(InternApplicationListPanel listPanel, CommandExecutor commandExecutor) {
+    public InternApplicationUtilityButton(InternApplicationListPanel listPanel, CommandExecutor commandExecutor) {
         super(FXML);
         this.commandExecutor = commandExecutor;
         this.listPanel = listPanel;
