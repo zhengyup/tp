@@ -29,7 +29,8 @@ public class NoteCommand extends Command {
             + PREFIX_NOTE + "John Street is the leading market maker in the APAC region";
     public static final String MESSAGE_ADD_NOTE_SUCCESS = "Added note to InternApplication: %1$s";
     public static final String MESSAGE_DELETE_NOTE_SUCCESS = "Removed note from InternApplication: %1$s";
-    public static final String NO_NOTE_PARAMETER_MESSAGE = "There must be a note parameter.";
+    public static final String NO_NOTE_PARAMETER_MESSAGE = "A note field must be provided. "
+            + "If you intended to delete a note, you can type i/ instead.";
 
     private final Index index;
     private final Note note;

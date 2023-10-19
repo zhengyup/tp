@@ -14,22 +14,14 @@ public class NoteTest {
     }
 
     @Test
-    public void constructor_invalidStatus_throwsIllegalArgumentException() {
-        String invalidStatus = "";
-        assertThrows(IllegalArgumentException.class, () -> new Note(invalidStatus));
-    }
-
-    @Test
-    public void isValidStatus() {
+    public void isValidNote() {
         // null status
         assertThrows(NullPointerException.class, () -> Note.isValidNote(null));
 
-        // invalid statuses
-        assertFalse(Status.isValidStatus("")); // empty string
-        assertFalse(Status.isValidStatus(" ")); // spaces only
-
         // valid statuses
-        assertTrue(Status.isValidStatus("Jane Street is the leading market maker in the APAC region"));
+        assertTrue(Note.isValidNote("")); // empty string
+        assertTrue(Note.isValidNote(" ")); // spaces only
+        assertTrue(Note.isValidNote("Jane Street is the leading market maker in the APAC region"));
     }
 
     @Test
