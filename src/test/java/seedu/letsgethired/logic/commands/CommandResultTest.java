@@ -27,6 +27,9 @@ public class CommandResultTest {
         // different feedbackToUser value -> returns false
         assertFalse(commandResult.equals(new CommandResult("different")));
 
+        // different feedbackToUser value -> returns false
+        assertFalse(commandResult.equals(new CommandResult("feedback", "different")));
+
         // different showHelp value -> returns false
         assertFalse(commandResult.equals(
                 new CommandResult("feedback", "", true, false)));
