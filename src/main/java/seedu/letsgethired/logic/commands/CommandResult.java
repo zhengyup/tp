@@ -44,7 +44,7 @@ public class CommandResult {
      * and other fields set to their default value.
      */
     public CommandResult(String feedbackToUser, boolean showHelp, boolean exit) {
-        this(feedbackToUser, "", false, false);
+        this(feedbackToUser, "", showHelp, exit);
     }
 
     /**
