@@ -143,6 +143,16 @@ public class ModelManager implements Model {
         return internTracker.getSelectedApplication();
     }
 
+    /**
+     * Undoes the previous CRUD (Create, Read, Update, Delete) operation if available.
+     * @return {@code true} if an action was undone successfully; {@code false} if there are no actions to undo.
+     */
+
+    @Override
+    public boolean undoAction() {
+        return internTracker.restorePreviousState();
+    }
+
     @Override
     public boolean equals(Object other) {
         if (other == this) {

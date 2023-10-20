@@ -150,4 +150,24 @@ public class UniqueApplicationList implements Iterable<InternApplication> {
         }
         return true;
     }
+
+    /**
+     * Creates a deep copy of this UniqueApplicationList.
+     *
+     * @return A new UniqueApplicationList that is a deep copy of this list.
+     */
+    public UniqueApplicationList clone() {
+        UniqueApplicationList clonedList = new UniqueApplicationList();
+        for (InternApplication originalApplication : internalList) {
+            InternApplication copiedApplication = new InternApplication(
+                    originalApplication.getCompany(),
+                    originalApplication.getRole(),
+                    originalApplication.getCycle(),
+                    originalApplication.getNote(),
+                    originalApplication.getStatus()
+            );
+            clonedList.add(copiedApplication);
+        }
+        return clonedList;
+    }
 }

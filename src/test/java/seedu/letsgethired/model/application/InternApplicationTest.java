@@ -1,8 +1,6 @@
 package seedu.letsgethired.model.application;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_COMPANY_BYTEDANCE;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_CYCLE_WINTER;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_ROLE_BACK_END;
@@ -46,6 +44,25 @@ public class InternApplicationTest {
         String nameWithTrailingSpaces = VALID_COMPANY_BYTEDANCE + " ";
         editedOtherInternApplication = new InternApplicationBuilder(B).withCompany(nameWithTrailingSpaces).build();
         assertFalse(B.isSameApplication(editedOtherInternApplication));
+    }
+
+    @Test
+    public void testClone() {
+        // Create an instance of InternApplication for testing
+        InternApplication originalApplication = JANE_STREET;
+
+        // Call the clone method
+        InternApplication clonedApplication = originalApplication.clone();
+
+        // Verify that the cloned object is not the same reference
+        assertNotSame(originalApplication, clonedApplication);
+
+        // Verify that the cloned object has the same values
+        assertEquals(originalApplication.getCompany(), clonedApplication.getCompany());
+        assertEquals(originalApplication.getRole(), clonedApplication.getRole());
+        assertEquals(originalApplication.getCycle(), clonedApplication.getCycle());
+        assertEquals(originalApplication.getNote(), clonedApplication.getNote());
+        assertEquals(originalApplication.getStatus(), clonedApplication.getStatus());
     }
 
     @Test

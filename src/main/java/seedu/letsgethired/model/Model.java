@@ -97,4 +97,10 @@ public interface Model {
      * Retrieves the current internApplication being tracked
      */
     InternApplication getCurrentInternApplication();
+
+    /**
+     * Undoes the previous CRUD (Create, Read, Update, Delete) operation if available.
+     * @return {@code true} if an action was undone successfully; {@code false} if there are no actions to undo.
+     */
+    boolean undoAction();
 }
