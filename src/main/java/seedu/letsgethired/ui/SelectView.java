@@ -27,6 +27,7 @@ public class SelectView extends UiPart<Region> {
      */
     public void displayDetails(String details) {
         requireNonNull(details);
+        selectView.setWrapText(true);
         selectView.setText(details);
     }
 }
