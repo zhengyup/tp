@@ -103,4 +103,9 @@ public interface Model {
      * @return {@code true} if an action was undone successfully; {@code false} if there are no actions to undo.
      */
     boolean undoAction();
+
+    /**
+     * Deletes all existing internship applications
+     */
+    void clearInternshipApplications();
 }

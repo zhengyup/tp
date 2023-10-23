@@ -21,7 +21,7 @@ public class ModelManager implements Model {
 
     private final InternTracker internTracker;
     private final UserPrefs userPrefs;
-    private final FilteredList<InternApplication> filteredInternApplications;
+    private FilteredList<InternApplication> filteredInternApplications;
 
     /**
      * Initializes a ModelManager with the given internTracker and userPrefs.
@@ -110,6 +110,12 @@ public class ModelManager implements Model {
         internTracker.setApplication(target, editedInternApplication);
     }
 
+    @Override
+    public void clearInternshipApplications() {
+        internTracker.clear();
+        filteredInternApplications = new FilteredList<>(this.internTracker.getApplicationList());
+    }
+
     //=========== Filtered Intern Application List Accessors =========================================================
 
     /**
@@ -144,13 +150,15 @@ public class ModelManager implements Model {
     }
 
     /**
-     * Undoes the previous CRUD (Create, Read, Update, Delete) operation if available.
+     * Undoes the previous add, edit or delete operation if available.
      * @return {@code true} if an action was undone successfully; {@code false} if there are no actions to undo.
      */
 
     @Override
     public boolean undoAction() {
-        return internTracker.restorePreviousState();
+        boolean isRestored = internTracker.restorePreviousState();
+        filteredInternApplications = new FilteredList<>(this.internTracker.getApplicationList());
+        return isRestored;
     }
 
     @Override

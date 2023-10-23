@@ -5,7 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_STATUS_REJECTED;
 import static seedu.letsgethired.testutil.Assert.assertThrows;
+import static seedu.letsgethired.testutil.TypicalInternApplications.GOOGLE;
 import static seedu.letsgethired.testutil.TypicalInternApplications.JANE_STREET;
+import static seedu.letsgethired.testutil.TypicalInternApplications.OPTIVER;
 import static seedu.letsgethired.testutil.TypicalInternApplications.getTypicalInternTracker;
 
 import java.util.Arrays;
@@ -108,6 +110,41 @@ public class InternTrackerTest {
         assertTrue(internTracker.getSelectedApplication() == null);
     }
 
+    @Test
+    public void restorePreviousState_withSavedStates_returnsTrueAndRestoresState() {
+        internTracker.addApplication(JANE_STREET);
+        boolean isActionUndone = internTracker.restorePreviousState();
+        assertTrue(isActionUndone);
+        assertTrue(internTracker.getApplicationList().size() == 0);
+    }
+
+    @Test
+    public void restorePreviousState_withoutSavedStates_returnsFalse() {
+        boolean isActionUndone = internTracker.restorePreviousState();
+        assertFalse(isActionUndone);
+        assertTrue(internTracker.getApplicationList().size() == 0);
+    }
+
+    @Test
+    public void restorePreviousState_multipleCalls_returnsTrueAndRestoresDifferentStates() {
+        internTracker.addApplication(JANE_STREET);
+        internTracker.addApplication(OPTIVER);
+        internTracker.addApplication(GOOGLE);
+        boolean undoAddingJaneStreet = internTracker.restorePreviousState();
+        assertTrue(internTracker.getApplicationList().size() == 2);
+        boolean undoAddingOptiver = internTracker.restorePreviousState();
+        assertTrue(internTracker.getApplicationList().size() == 1);
+        boolean undoAddingGoogle = internTracker.restorePreviousState();
+        assertTrue(internTracker.getApplicationList().size() == 0);
+    }
+    @Test
+    public void clear_existingInternApplications_success() {
+        internTracker.addApplication(JANE_STREET);
+        internTracker.addApplication(OPTIVER);
+        internTracker.addApplication(GOOGLE);
+        internTracker.clear();
+        assertTrue(internTracker.getApplicationList().size() == 0);
+    }
 
     /**
      * A stub ReadOnlyInternTracker whose intern applications list can violate interface constraints.

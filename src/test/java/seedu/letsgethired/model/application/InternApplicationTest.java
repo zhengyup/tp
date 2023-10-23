@@ -1,6 +1,9 @@
 package seedu.letsgethired.model.application;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotSame;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_COMPANY_BYTEDANCE;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_CYCLE_WINTER;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_ROLE_BACK_END;
