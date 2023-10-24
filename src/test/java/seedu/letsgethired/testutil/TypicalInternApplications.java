@@ -4,6 +4,7 @@ import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_COMPANY_BY
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_COMPANY_JANE_STREET;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_CYCLE_SUMMER;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_CYCLE_WINTER;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_DEADLINE;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_ROLE_BACK_END;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_ROLE_FULL_STACK;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_STATUS_ACCEPTED;
@@ -100,12 +101,14 @@ public class TypicalInternApplications {
             .withRole(VALID_ROLE_FULL_STACK)
             .withCycle(VALID_CYCLE_SUMMER)
             .withStatus(VALID_STATUS_ACCEPTED)
+            .withDeadline(VALID_DEADLINE)
             .build();
     public static final InternApplication B = new InternApplicationBuilder()
             .withCompany(VALID_COMPANY_BYTEDANCE)
             .withRole(VALID_ROLE_BACK_END)
             .withCycle(VALID_CYCLE_WINTER)
             .withStatus(VALID_STATUS_REJECTED)
+            .withDeadline(VALID_DEADLINE)
             .build();
 
     public static final String KEYWORD_MATCHING_OCBC = "OCBC"; // A keyword that matches OCBC
