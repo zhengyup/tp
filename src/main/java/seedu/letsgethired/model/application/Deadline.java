@@ -18,7 +18,7 @@ public class Deadline {
 
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd MMM yyyy");
 
-    public final LocalDate value;
+    public final String value;
 
     /**
      * Constructs a {@code Deadline} object.
@@ -28,7 +28,7 @@ public class Deadline {
     public Deadline(String date) {
         requireNonNull(date);
         checkArgument(isValidDeadline(date), MESSAGE_CONSTRAINTS);
-        value = LocalDate.parse(date, DATE_FORMATTER);
+        value = date;
     }
 
     /**
@@ -45,7 +45,7 @@ public class Deadline {
 
     @Override
     public String toString() {
-        return value.format(DATE_FORMATTER);
+        return value;
     }
 
     @Override
