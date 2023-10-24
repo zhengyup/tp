@@ -27,8 +27,8 @@ public class NoteCommand extends Command {
             + PREFIX_NOTE + "[NOTE]\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_NOTE + "John Street is the leading market maker in the APAC region";
-    public static final String MESSAGE_ADD_NOTE_SUCCESS = "Added note to InternApplication: %1$s";
-    public static final String MESSAGE_DELETE_NOTE_SUCCESS = "Removed note from InternApplication";
+    public static final String MESSAGE_ADD_NOTE_SUCCESS = "Added note to Intern Application";
+    public static final String MESSAGE_DELETE_NOTE_SUCCESS = "Removed note from Intern Application";
     public static final String NO_NOTE_PARAMETER_MESSAGE = "A note field must be provided. "
             + "If you intended to delete a note, you can type i/ instead.";
 
@@ -65,10 +65,10 @@ public class NoteCommand extends Command {
         model.setInternApplication(internApplicationToEdit, editedInternApplication);
         model.updateFilteredInternApplicationList(PREDICATE_SHOW_ALL_APPLICATIONS);
 
-        return new CommandResult(generateSuccessMessage(editedInternApplication));
+        return new CommandResult(generateSuccessMessage(), Messages.formatDisplay(editedInternApplication));
     }
 
-    private String generateSuccessMessage(InternApplication internApplicationToEdit) {
+    private String generateSuccessMessage() {
         String message = !note.value.isEmpty() ? MESSAGE_ADD_NOTE_SUCCESS : MESSAGE_DELETE_NOTE_SUCCESS;
         return message;
     }
