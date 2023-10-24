@@ -45,7 +45,7 @@ public class EditCommand extends Command {
             + PREFIX_CYCLE + "Summer 2024"
             + PREFIX_STATUS + "Accepted";
 
-    public static final String MESSAGE_EDIT_INTERN_APPLICATION_SUCCESS = "Edited Intern Application: %1$s";
+    public static final String MESSAGE_EDIT_INTERN_APPLICATION_SUCCESS = "Edited Intern Application";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_INTERN_APPLICATION =
             "This intern application already exists in the intern tracker.";
