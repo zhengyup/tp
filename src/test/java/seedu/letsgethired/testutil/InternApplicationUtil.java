@@ -2,6 +2,7 @@ package seedu.letsgethired.testutil;
 
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_COMPANY;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_CYCLE;
+import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_DEADLINE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_STATUS;
@@ -32,6 +33,7 @@ public class InternApplicationUtil {
         sb.append(PREFIX_CYCLE + internApplication.getCycle().value + " ");
         sb.append(PREFIX_NOTE + internApplication.getNote().value + " ");
         sb.append(PREFIX_STATUS + internApplication.getStatus().value + " ");
+        sb.append(PREFIX_DEADLINE + internApplication.getDeadline().value + " ");
         return sb.toString();
     }
 
@@ -44,6 +46,7 @@ public class InternApplicationUtil {
         descriptor.getRole().ifPresent(role -> sb.append(PREFIX_ROLE).append(role.value).append(" "));
         descriptor.getCycle().ifPresent(cycle -> sb.append(PREFIX_CYCLE).append(cycle.value).append(" "));
         descriptor.getStatus().ifPresent(status -> sb.append(PREFIX_STATUS).append(status.value).append(" "));
+        descriptor.getStatus().ifPresent(deadline -> sb.append(PREFIX_DEADLINE).append(deadline.value).append(" "));
         return sb.toString();
     }
 }

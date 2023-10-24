@@ -54,7 +54,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         Status status = ParserUtil.parseStatus(argMultimap.getValue(PREFIX_STATUS).get());
         Note note = ParserUtil.parseNote(argMultimap.getValue(PREFIX_NOTE).orElse("No note added"));
         Deadline deadline = ParserUtil.parseDeadline(argMultimap.getValue(PREFIX_DEADLINE)
-                .orElse(LocalDate.now().format(DateTimeFormatter.ofPattern("dd MMM yyyy"))));
+                .orElse("25 Oct 2023"));
 
         InternApplication internApplication = new InternApplication(company, role, cycle, note, status, deadline);
 

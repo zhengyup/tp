@@ -91,7 +91,8 @@ public class InternApplication {
         InternApplication otherInternApplication = (InternApplication) other;
         return company.equals(otherInternApplication.company)
                 && role.equals(otherInternApplication.role)
-                && cycle.equals(otherInternApplication.cycle);
+                && cycle.equals(otherInternApplication.cycle)
+                && status.equals(otherInternApplication.status);
     }
 
     @Override
