@@ -20,6 +20,7 @@ import seedu.letsgethired.logic.commands.exceptions.CommandException;
 import seedu.letsgethired.model.Model;
 import seedu.letsgethired.model.application.Company;
 import seedu.letsgethired.model.application.Cycle;
+import seedu.letsgethired.model.application.Deadline;
 import seedu.letsgethired.model.application.InternApplication;
 import seedu.letsgethired.model.application.Note;
 import seedu.letsgethired.model.application.Role;
@@ -110,8 +111,16 @@ public class EditCommand extends Command {
                 .orElse(internApplicationToEdit.getNote());
         Status updatedStatus = editInternApplicationDescriptor.getStatus()
                 .orElse(internApplicationToEdit.getStatus());
+        Deadline updatedDeadline = editInternApplicationDescriptor.getDeadline()
+                .orElse(internApplicationToEdit.getDeadline());
 
-        return new InternApplication(updatedCompany, updatedRole, updatedCycle, updatedNote, updatedStatus);
+        return new InternApplication(
+                updatedCompany,
+                updatedRole,
+                updatedCycle,
+                updatedNote,
+                updatedStatus,
+                updatedDeadline);
     }
 
     @Override
@@ -148,6 +157,7 @@ public class EditCommand extends Command {
         private Cycle cycle;
         private Note note;
         private Status status;
+        private Deadline deadline;
 
         public EditInternApplicationDescriptor() {}
 
@@ -160,13 +170,14 @@ public class EditCommand extends Command {
             setCycle(toCopy.cycle);
             setNote(toCopy.note);
             setStatus(toCopy.status);
+            setDeadline(toCopy.deadline);
         }
 
         /**
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(company, role, cycle, status);
+            return CollectionUtil.isAnyNonNull(company, role, cycle, status, deadline);
         }
 
         public void setCompany(Company company) {
@@ -209,6 +220,14 @@ public class EditCommand extends Command {
             return Optional.ofNullable(status);
         }
 
+        public void setDeadline(Deadline deadline) {
+            this.deadline = deadline;
+        }
+
+        public Optional<Deadline> getDeadline() {
+            return Optional.ofNullable(deadline);
+        }
+
         @Override
         public boolean equals(Object other) {
             if (other == this) {
@@ -235,6 +254,7 @@ public class EditCommand extends Command {
                     .add("role", role)
                     .add("cycle", cycle)
                     .add("status", status)
+                    .add("deadline", deadline)
                     .toString();
         }
     }
