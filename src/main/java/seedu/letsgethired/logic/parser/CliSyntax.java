@@ -11,5 +11,5 @@ public class CliSyntax {
     public static final Prefix PREFIX_CYCLE = new Prefix("c/");
     public static final Prefix PREFIX_STATUS = new Prefix("s/");
     public static final Prefix PREFIX_NOTE = new Prefix("i/");
-
+    public static final Prefix PREFIX_DEADLINE = new Prefix("d/");
 }

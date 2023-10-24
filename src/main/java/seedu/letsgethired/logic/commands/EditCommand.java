@@ -3,6 +3,7 @@ package seedu.letsgethired.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_COMPANY;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_CYCLE;
+import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_DEADLINE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_STATUS;
 import static seedu.letsgethired.model.Model.PREDICATE_SHOW_ALL_APPLICATIONS;
@@ -39,6 +40,7 @@ public class EditCommand extends Command {
             + "[" + PREFIX_COMPANY + "COMPANY] "
             + "[" + PREFIX_ROLE + "ROLE] "
             + "[" + PREFIX_CYCLE + "CYCLE] "
+            + "[" + PREFIX_DEADLINE + "DEADLINE] "
             + "[" + PREFIX_STATUS + "STATUS] "
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_ROLE + "Software Engineering Intern "
