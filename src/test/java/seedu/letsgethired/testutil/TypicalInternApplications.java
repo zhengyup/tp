@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import seedu.letsgethired.model.InternTracker;
 import seedu.letsgethired.model.VersionedInternTracker;
 import seedu.letsgethired.model.application.InternApplication;
 
