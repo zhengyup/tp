@@ -164,7 +164,8 @@ public class UniqueApplicationList implements Iterable<InternApplication> {
                     originalApplication.getRole(),
                     originalApplication.getCycle(),
                     originalApplication.getNote(),
-                    originalApplication.getStatus()
+                    originalApplication.getStatus(),
+                    originalApplication.getDeadline()
             );
             clonedList.add(copiedApplication);
         }

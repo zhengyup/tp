@@ -119,6 +119,6 @@ public class InternApplication {
      * @return A new InternApplication object with the same company, role, cycle, note, and status.
      */
     public InternApplication clone() {
-        return new InternApplication(this.company, this.role, this.cycle, this.note, this.status);
+        return new InternApplication(this.company, this.role, this.cycle, this.note, this.status, this.deadline);
     }
 }
