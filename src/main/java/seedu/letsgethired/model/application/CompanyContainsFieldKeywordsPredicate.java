@@ -7,8 +7,6 @@ import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_STATUS;
 
-
-
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -24,6 +22,11 @@ public class CompanyContainsFieldKeywordsPredicate implements Predicate<InternAp
 
     private final List<Pair<Prefix, String>> fieldKeywords;
 
+    /**
+     * Creates a Predicate for {@code InternAppplication}
+     *
+     * @param fieldKeywords List of pairs of field and keywords to be checked for
+     */
     public CompanyContainsFieldKeywordsPredicate(List<Pair<Prefix, String>> fieldKeywords) {
         requireNonNull(fieldKeywords);
         this.fieldKeywords = fieldKeywords;
