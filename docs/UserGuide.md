@@ -132,27 +132,20 @@ Shows a specific internship application entry and its details.
     * Missing parameter: <br>`The following parameter INDEX is missing - please input in the correct format`
     * Index out of bound: <br> `The following parameter INDEX provided is out of bound`
 
-### Locating an internship by company: `find`
+### Searching an internship application : `find`
 
-Finds internship applications whose company name contain any of the given keywords.
+Finds internship applications whose fields contain the corresponding given keywords (any match with any of the field and keyword pairs is displayed).
 
-**Format**: `find SEARCH_STRING`
+**Format**: `find [n/SEARCH_STRING_COMPANY] [r/SEARCH_STRING_ROLE] [c/SEARCH_STRING_CYCLE] [s/SEARCH_STRING_STATUS] [i/SEARCH_STRING_NOTE]`
 
 **Parameters**:
-* `SEARCH_STRING`: Search string to be used to find internship application entry.
-  * The search is case-insensitive. e.g `google` will match `Google`
-  * Only the company name is searched
-  * Partial words will be matched e.g. `Goo` will match `Google`, `JST` will match `Jane Street`
+* At least one keyword to find and field to be searched must be provided.
 
 **Examples**:
-* `find Google` returns `Google`
-* `find apple meta` returns `Apple`, `Meta`
-
-**Expected Output**:
-* Success
-  * The following internship application entry is displayed in the screen: <br> 
-    * `Summer Internship - Full Stack Developer at John Street `
-    * `Summer Internship - Data Analyst at Pineapple`
+* `find n/Google` displays all applications with the company name containing Google as value
+* `find n/Apl` displays all applications with the company name containing Apl as a substring of value
+* `find c/Summer` displays all applications with the cycle containing Summer as value
+* `find n/Google c/Summer s/Pending` displays all applications with either the company name containing Google as value, OR the cycle containing Summer as value, OR the status with Pending as value
 
 ### Editing an internship application : `edit`
 
@@ -267,14 +260,15 @@ If your changes to the data file makes its format invalid, LetsGetHired will dis
 
 ## **Command summary**
 
-| Action     | Format, Examples                                            | Examples                                                              |
-|------------|-------------------------------------------------------------|:----------------------------------------------------------------------|
-| **Add**    | `add c/CYCLE r/ROLE n/COMPANY_NAME [s/STATUS]`              | `add c/Summer r/Full Stack Developer n/John street s/Applied`         |
-| **View**   | `view INDEX`                                                | `view 3`                                                              |
-| **Edit**   | `edit INDEX [n/COMPANY_NAME] [r/ROLE] [c/CYCLE] [s/STATUS]` | `edit 2 s/Applied`                                                    |
-| **Note**   | `note INDEX`                                                | `note 5 i/John Street is the leading market maker in the APAC region` |
-| **Delete** | `delete INDEX`                                              | `delete 1`                                                            |
-| **List**   | `list`                                                      | `list`                                                                |
-| **Help**   | `help`                                                      | `help`                                                                |
-| **Clear**  | `clear`                                                     | `clear`                                                               |
-| **Exit**   | `exit`                                                      | `exit`                                                                |
+| Action     | Format, Examples                                                                                                                  | Examples                                                                                                |
+|------------|-----------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------|
+| **Add**    | `add c/CYCLE r/ROLE n/COMPANY_NAME [s/STATUS]`                                                                                    | `add c/Summer r/Full Stack Developer n/John street s/Applied`                                           |
+| **View**   | `view INDEX`                                                                                                                      | `view 3`                                                                                                |
+| **Edit**   | `edit INDEX [n/COMPANY_NAME] [r/ROLE] [c/CYCLE] [s/STATUS]`                                                                       | `edit 2 s/Applied`                                                                                      |
+| **Note**   | `note INDEX`                                                                                                                      | `note 5 i/John Street is the leading market maker in the APAC region`                                   |
+| **Delete** | `delete INDEX`                                                                                                                    | `delete 1`                                                                                              |
+| **List**   | `list`                                                                                                                            | `list`                                                                                                  |
+| **Find**   | `find [n/SEARCH_STRING_COMPANY] [r/SEARCH_STRING_ROLE] [c/SEARCH_STRING_CYCLE] [s/SEARCH_STRING_STATUS] [i/SEARCH_STRING_NOTE]`   | `find n/Google c/Summer s/Pending`                                                                      |
+| **Help**   | `help`                                                                                                                            | `help`                                                                                                  |
+| **Clear**  | `clear`                                                                                                                           | `clear`                                                                                                 |
+| **Exit**   | `exit`                                                                                                                            | `exit`                                                                                                  |

@@ -22,7 +22,7 @@ public class FindCommandParserTest {
 
     @Test
     public void parse_emptyArg_throwsParseException() {
-        assertParseFailure(parser, "     ", FindCommand.NO_FIND_SPECIFIED);
+        assertParseFailure(parser, "     ", FindCommand.NO_FIND_SPECIFIED + "\n" + FindCommand.MESSAGE_USAGE);
     }
 
     @Test

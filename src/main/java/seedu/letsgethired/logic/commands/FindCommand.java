@@ -31,7 +31,7 @@ public class FindCommand extends Command {
             + "[" + PREFIX_CYCLE + "SEARCH_STRING_CYCLE] "
             + "[" + PREFIX_STATUS + "SEARCH_STRING_STATUS] "
             + "[" + PREFIX_NOTE + "SEARCH_STRING_NOTE] "
-            + "Example: " + COMMAND_WORD + " "
+            + "\nExample: " + COMMAND_WORD + " "
             + PREFIX_ROLE + "Software Engineering "
             + PREFIX_CYCLE + "Summer "
             + PREFIX_STATUS + "Pending ";;

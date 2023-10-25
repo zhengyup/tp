@@ -51,7 +51,7 @@ public class FindCommandParser implements Parser<FindCommand> {
         }
 
         if (fieldKeywords.isEmpty()) {
-            throw new ParseException(FindCommand.NO_FIND_SPECIFIED);
+            throw new ParseException(FindCommand.NO_FIND_SPECIFIED + "\n" + FindCommand.MESSAGE_USAGE);
         }
 
         return new FindCommand(new CompanyContainsFieldKeywordsPredicate(fieldKeywords));
