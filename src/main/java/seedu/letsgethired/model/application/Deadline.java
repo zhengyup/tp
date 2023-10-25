@@ -18,6 +18,8 @@ public class Deadline {
 
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd MMM yyyy");
 
+    private static final String DEFAULT_DATE = "No deadline";
+
     public final String value;
 
     /**
@@ -35,6 +37,9 @@ public class Deadline {
      * Returns if a given string is a valid deadline.
      */
     public static boolean isValidDeadline(String date) {
+        if (date.equals(DEFAULT_DATE)) {
+            return true;
+        }
         try {
             LocalDate localDate = LocalDate.parse(date, DATE_FORMATTER);
             return true;

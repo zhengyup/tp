@@ -28,7 +28,7 @@ public class AddCommand extends Command {
             + PREFIX_CYCLE + "CYCLE "
             + PREFIX_DEADLINE + "DEADLINE "
             + PREFIX_STATUS + "STATUS "
-            + "Example: " + COMMAND_WORD + " "
+            + "\nExample: " + COMMAND_WORD + " "
             + PREFIX_COMPANY + "Jane Street "
             + PREFIX_ROLE + "Software Engineering Intern "
             + PREFIX_CYCLE + "Summer 2024 "
