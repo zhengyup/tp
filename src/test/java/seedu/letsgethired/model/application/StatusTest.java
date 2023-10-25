@@ -27,19 +27,20 @@ public class StatusTest {
         // invalid statuses
         assertFalse(Status.isValidStatus("")); // empty string
         assertFalse(Status.isValidStatus(" ")); // spaces only
+        assertFalse(Status.isValidStatus("asdfjkwyfhb")); // irrelevant strings
 
         // valid statuses
-        assertTrue(Status.isValidStatus("Blk 456, Den Road, #01-355"));
-        assertTrue(Status.isValidStatus("-")); // one character
-        assertTrue(Status.isValidStatus("Leng Inc; 1234 Market St; San Francisco CA 2349879; USA")); // long status
+        assertTrue(Status.isValidStatus("Pending"));
+        assertTrue(Status.isValidStatus("Accepted"));
+        assertTrue(Status.isValidStatus("Rejected"));
     }
 
     @Test
     public void equals() {
-        Status status = new Status("Valid Status");
+        Status status = new Status("Pending");
 
         // same values -> returns true
-        assertTrue(status.equals(new Status("Valid Status")));
+        assertTrue(status.equals(new Status("Pending")));
 
         // same object -> returns true
         assertTrue(status.equals(status));
@@ -51,6 +52,6 @@ public class StatusTest {
         assertFalse(status.equals(5.0f));
 
         // different values -> returns false
-        assertFalse(status.equals(new Status("Other Valid Status")));
+        assertFalse(status.equals(new Status("Accepted")));
     }
 }
