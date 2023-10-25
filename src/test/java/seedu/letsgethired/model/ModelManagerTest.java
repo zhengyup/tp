@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.letsgethired.model.Model.COMPARATOR_SHOW_ALL_APPLICATIONS;
 import static seedu.letsgethired.model.Model.PREDICATE_SHOW_ALL_APPLICATIONS;
 import static seedu.letsgethired.testutil.Assert.assertThrows;
 import static seedu.letsgethired.testutil.TypicalInternApplications.JANE_STREET;
@@ -11,6 +12,7 @@ import static seedu.letsgethired.testutil.TypicalInternApplications.OPTIVER;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Comparator;
 
 import org.junit.jupiter.api.Test;
 
@@ -138,7 +140,14 @@ public class ModelManagerTest {
         assertNotEquals(modelManager, new ModelManager(internTracker, userPrefs));
 
         // resets modelManager to initial state for upcoming tests
-        modelManager.updateFilteredInternApplicationList(PREDICATE_SHOW_ALL_APPLICATIONS);
+        modelManager.showAllInternApplications();
+
+        // different filteredSortedList -> returns false
+        modelManager.updateFilteredSortedInternApplicationList(Comparator.comparing(x -> x.getCycle().value));
+        assertNotEquals(modelManager, new ModelManager(internTracker, userPrefs));
+
+        // resets modelManager to initial state for upcoming tests
+        modelManager.showAllInternApplications();
 
         // different userPrefs -> returns false
         UserPrefs differentUserPrefs = new UserPrefs();

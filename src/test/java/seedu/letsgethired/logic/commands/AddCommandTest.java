@@ -10,6 +10,7 @@ import static seedu.letsgethired.testutil.TypicalInternApplications.JANE_STREET;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
@@ -156,6 +157,16 @@ public class AddCommandTest {
 
         @Override
         public void updateFilteredInternApplicationList(Predicate<InternApplication> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredSortedInternApplicationList(Comparator<InternApplication> comparator) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void showAllInternApplications() {
             throw new AssertionError("This method should not be called.");
         }
 
