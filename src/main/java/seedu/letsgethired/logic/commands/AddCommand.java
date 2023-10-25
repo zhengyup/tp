@@ -31,9 +31,9 @@ public class AddCommand extends Command {
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_COMPANY + "Jane Street "
             + PREFIX_ROLE + "Software Engineering Intern "
-            + PREFIX_CYCLE + "Summer 2024"
-            + PREFIX_DEADLINE + "25 Sep 2023"
-            + PREFIX_STATUS + "Accepted";
+            + PREFIX_CYCLE + "Summer 2024 "
+            + PREFIX_DEADLINE + "25 Sep 2023 "
+            + PREFIX_STATUS + "Accepted ";
 
     public static final String MESSAGE_SUCCESS = "New intern application added";
     public static final String MESSAGE_DUPLICATE_INTERN_APPLICATION =
