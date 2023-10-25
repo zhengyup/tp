@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.function.Predicate;
 
 import javafx.util.Pair;
-import seedu.letsgethired.commons.util.StringUtil;
 import seedu.letsgethired.commons.util.ToStringBuilder;
 import seedu.letsgethired.logic.parser.Prefix;
 
@@ -69,9 +68,7 @@ public class CompanyContainsFieldKeywordsPredicate implements Predicate<InternAp
     @Override
     public boolean test(InternApplication internApplication) {
         return fieldKeywords.stream()
-                .anyMatch(keyword -> keyword.getKey().equals(PREFIX_COMPANY)
-                            ? partialMatch(getFieldValue(keyword.getKey(), internApplication), keyword.getValue())
-                            : StringUtil.containsWordIgnoreCase(getFieldValue(keyword.getKey(), internApplication),
+                .anyMatch(keyword -> partialMatch(getFieldValue(keyword.getKey(), internApplication),
                         keyword.getValue()));
     }
 

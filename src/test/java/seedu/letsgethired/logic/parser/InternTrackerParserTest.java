@@ -78,7 +78,7 @@ public class InternTrackerParserTest {
     public void parseCommand_find() throws Exception {
         String searchString = "Jane Street";
         FindCommand command = (FindCommand) parser.parseCommand(
-                FindCommand.COMMAND_WORD + " " + searchString);
+                FindCommand.COMMAND_WORD + " " + PREFIX_COMPANY + searchString);
         assertEquals(new FindCommand(new CompanyContainsFieldKeywordsPredicate(
                 Arrays.asList(new Pair<>(PREFIX_COMPANY, searchString)))), command);
     }

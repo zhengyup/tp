@@ -1,6 +1,5 @@
 package seedu.letsgethired.logic.parser;
 
-import static seedu.letsgethired.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_COMPANY;
 import static seedu.letsgethired.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.letsgethired.logic.parser.CommandParserTestUtil.assertParseSuccess;
@@ -19,7 +18,7 @@ public class FindCommandParserTest {
 
     @Test
     public void parse_emptyArg_throwsParseException() {
-        assertParseFailure(parser, "     ", String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
+        assertParseFailure(parser, "     ", FindCommand.NO_FIND_SPECIFIED);
     }
 
     @Test
@@ -28,10 +27,12 @@ public class FindCommandParserTest {
         FindCommand expectedFindCommand =
                 new FindCommand(new CompanyContainsFieldKeywordsPredicate(Arrays.asList(
                         new Pair<>(PREFIX_COMPANY, "Jane Street"))));
-        assertParseSuccess(parser, "Jane Street", expectedFindCommand);
+        assertParseSuccess(parser, FindCommand.COMMAND_WORD + " " + PREFIX_COMPANY + "Jane Street",
+                expectedFindCommand);
 
         // multiple whitespaces
-        assertParseSuccess(parser, "  Jane Street    ", expectedFindCommand);
+        assertParseSuccess(parser, FindCommand.COMMAND_WORD + " " + PREFIX_COMPANY + "  Jane Street    ",
+                expectedFindCommand);
     }
 
 }

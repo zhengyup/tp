@@ -42,8 +42,8 @@ public class EditCommand extends Command {
             + "[" + PREFIX_STATUS + "STATUS] "
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_ROLE + "Software Engineering Intern "
-            + PREFIX_CYCLE + "Summer 2024"
-            + PREFIX_STATUS + "Accepted";
+            + PREFIX_CYCLE + "Summer 2024 "
+            + PREFIX_STATUS + "Accepted ";
 
     public static final String MESSAGE_EDIT_INTERN_APPLICATION_SUCCESS = "Edited Intern Application";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";

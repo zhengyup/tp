@@ -1,9 +1,13 @@
 package seedu.letsgethired.logic.parser;
 
-import static seedu.letsgethired.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static java.util.Objects.requireNonNull;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_COMPANY;
+import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_CYCLE;
+import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE;
+import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_ROLE;
+import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_STATUS;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 
 import javafx.util.Pair;
 import seedu.letsgethired.logic.commands.FindCommand;
@@ -22,13 +26,34 @@ public class FindCommandParser implements Parser<FindCommand> {
      * @throws ParseException if the user input does not conform the expected format
      */
     public FindCommand parse(String args) throws ParseException {
-        String trimmedArgs = args.trim();
-        if (trimmedArgs.isEmpty()) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
+        requireNonNull(args);
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args,
+                PREFIX_COMPANY, PREFIX_ROLE, PREFIX_CYCLE, PREFIX_STATUS, PREFIX_NOTE);
+
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_COMPANY, PREFIX_ROLE, PREFIX_CYCLE, PREFIX_STATUS, PREFIX_NOTE);
+
+        ArrayList<Pair<Prefix, String>> fieldKeywords = new ArrayList<>();
+
+        if (argMultimap.getValue(PREFIX_COMPANY).isPresent()) {
+            fieldKeywords.add(new Pair<>(PREFIX_COMPANY, argMultimap.getValue(PREFIX_COMPANY).get()));
+        }
+        if (argMultimap.getValue(PREFIX_NOTE).isPresent()) {
+            fieldKeywords.add(new Pair<>(PREFIX_NOTE, argMultimap.getValue(PREFIX_NOTE).get()));
+        }
+        if (argMultimap.getValue(PREFIX_CYCLE).isPresent()) {
+            fieldKeywords.add(new Pair<>(PREFIX_CYCLE, argMultimap.getValue(PREFIX_CYCLE).get()));
+        }
+        if (argMultimap.getValue(PREFIX_ROLE).isPresent()) {
+            fieldKeywords.add(new Pair<>(PREFIX_ROLE, argMultimap.getValue(PREFIX_ROLE).get()));
+        }
+        if (argMultimap.getValue(PREFIX_STATUS).isPresent()) {
+            fieldKeywords.add(new Pair<>(PREFIX_STATUS, argMultimap.getValue(PREFIX_STATUS).get()));
         }
 
-        return new FindCommand(new CompanyContainsFieldKeywordsPredicate(
-                Arrays.asList(new Pair<>(PREFIX_COMPANY, trimmedArgs))));
+        if (fieldKeywords.isEmpty()) {
+            throw new ParseException(FindCommand.NO_FIND_SPECIFIED);
+        }
+
+        return new FindCommand(new CompanyContainsFieldKeywordsPredicate(fieldKeywords));
     }
 }
