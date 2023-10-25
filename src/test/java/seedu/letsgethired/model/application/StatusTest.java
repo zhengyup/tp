@@ -27,12 +27,13 @@ public class StatusTest {
         // invalid statuses
         assertFalse(Status.isValidStatus("")); // empty string
         assertFalse(Status.isValidStatus(" ")); // spaces only
-        assertFalse(Status.isValidStatus("asdfjkwyfhb")); // irrelevant strings
+        assertFalse(Status.isValidStatus("Ghosted")); // irrelevant strings
 
         // valid statuses
         assertTrue(Status.isValidStatus("Pending"));
         assertTrue(Status.isValidStatus("Accepted"));
         assertTrue(Status.isValidStatus("Rejected"));
+        assertTrue(Status.isValidStatus("REJECTED")); // capitalised
     }
 
     @Test
