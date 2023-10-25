@@ -113,14 +113,14 @@ public class InternTrackerTest {
     @Test
     public void restorePreviousState_withSavedStates_returnsTrueAndRestoresState() {
         internTracker.addApplication(JANE_STREET);
-        boolean isActionUndone = internTracker.restorePreviousState();
+        boolean isActionUndone = internTracker.undo();
         assertTrue(isActionUndone);
         assertTrue(internTracker.getApplicationList().size() == 0);
     }
 
     @Test
     public void restorePreviousState_withoutSavedStates_returnsFalse() {
-        boolean isActionUndone = internTracker.restorePreviousState();
+        boolean isActionUndone = internTracker.undo();
         assertFalse(isActionUndone);
         assertTrue(internTracker.getApplicationList().size() == 0);
     }
@@ -130,11 +130,11 @@ public class InternTrackerTest {
         internTracker.addApplication(JANE_STREET);
         internTracker.addApplication(OPTIVER);
         internTracker.addApplication(GOOGLE);
-        boolean undoAddingJaneStreet = internTracker.restorePreviousState();
+        boolean undoAddingJaneStreet = internTracker.undo();
         assertTrue(internTracker.getApplicationList().size() == 2);
-        boolean undoAddingOptiver = internTracker.restorePreviousState();
+        boolean undoAddingOptiver = internTracker.undo();
         assertTrue(internTracker.getApplicationList().size() == 1);
-        boolean undoAddingGoogle = internTracker.restorePreviousState();
+        boolean undoAddingGoogle = internTracker.undo();
         assertTrue(internTracker.getApplicationList().size() == 0);
     }
     @Test

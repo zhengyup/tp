@@ -48,11 +48,24 @@ public class InternTracker implements ReadOnlyInternTracker {
     //// list overwrite operations
 
     /**
-     * Replaces the contents of the application list with {@code internApplications}.
+     * Replaces the contents of the application list with a list of InternApplications{@code
+     * internApplications}.
      * {@code internApplications} must not contain duplicate applications.
      */
     public void setInternApplications(List<InternApplication> internApplications) {
         this.internApplications.setApplications(internApplications);
+    }
+
+    /**
+     * Replaces the contents of the application list with a UniqueApplicationList{@code internApplications}.
+     * {@code internApplications} must not contain duplicate applications.
+     */
+    public void setInternApplications(UniqueApplicationList internApplications) {
+        this.internApplications.setApplications(internApplications);
+    }
+
+    public UniqueApplicationList getInternApplications() {
+        return internApplications;
     }
 
     /**
@@ -143,7 +156,7 @@ public class InternTracker implements ReadOnlyInternTracker {
      *
      * @return {@code true} if a previous state was restored successfully. {@code false} if at latest change.
      */
-    public boolean restorePreviousState() {
+    public boolean undo() {
         if (savedStates.size() > 0) {
             internApplications = savedStates.pop();
             return true;

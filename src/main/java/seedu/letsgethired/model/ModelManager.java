@@ -19,7 +19,7 @@ import seedu.letsgethired.model.application.InternApplication;
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
-    private final InternTracker internTracker;
+    private final VersionedInternTracker internTracker;
     private final UserPrefs userPrefs;
     private FilteredList<InternApplication> filteredInternApplications;
 
@@ -31,7 +31,7 @@ public class ModelManager implements Model {
 
         logger.fine("Initializing with intern tracker: " + internTracker + " and user prefs " + userPrefs);
 
-        this.internTracker = new InternTracker(internTracker);
+        this.internTracker = new VersionedInternTracker(internTracker);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredInternApplications = new FilteredList<>(this.internTracker.getApplicationList());
     }
@@ -94,11 +94,13 @@ public class ModelManager implements Model {
 
     @Override
     public void deleteInternApplication(InternApplication target) {
+        internTracker.commit();
         internTracker.removeApplication(target);
     }
 
     @Override
     public void addInternApplication(InternApplication internApplication) {
+        internTracker.commit();
         internTracker.addApplication(internApplication);
         updateFilteredInternApplicationList(PREDICATE_SHOW_ALL_APPLICATIONS);
     }
@@ -112,6 +114,7 @@ public class ModelManager implements Model {
 
     @Override
     public void clearInternshipApplications() {
+        internTracker.commit();
         internTracker.clear();
         filteredInternApplications = new FilteredList<>(this.internTracker.getApplicationList());
     }
@@ -138,6 +141,7 @@ public class ModelManager implements Model {
      */
     @Override
     public void setCurrentInternApplication(InternApplication target) {
+        internTracker.commit();
         internTracker.setSelectedApplication(target);
     }
 
@@ -156,7 +160,7 @@ public class ModelManager implements Model {
 
     @Override
     public boolean undoAction() {
-        boolean isRestored = internTracker.restorePreviousState();
+        boolean isRestored = internTracker.undo();
         filteredInternApplications = new FilteredList<>(this.internTracker.getApplicationList());
         return isRestored;
     }

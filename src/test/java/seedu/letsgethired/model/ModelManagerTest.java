@@ -145,4 +145,30 @@ public class ModelManagerTest {
         differentUserPrefs.setInternTrackerFilePath(Paths.get("differentFilePath"));
         assertNotEquals(modelManager, new ModelManager(internTracker, differentUserPrefs));
     }
+
+    @Test
+    public void restorePreviousState_withSavedStates_returnsTrueAndRestoresState() {
+        modelManager.addInternApplication(JANE_STREET);
+        boolean isActionUndone = modelManager.undoAction();
+        assertTrue(isActionUndone);
+        assertTrue(modelManager.getInternTracker().getApplicationList().size() == 0);
+    }
+
+    @Test
+    public void restorePreviousState_withoutSavedStates_returnsFalse() {
+        boolean isActionUndone = modelManager.undoAction();
+        assertFalse(isActionUndone);
+    }
+
+    @Test
+    public void restorePreviousState_multipleCalls_returnsTrueAndRestoresDifferentStates() {
+        modelManager.addInternApplication(JANE_STREET);
+        modelManager.addInternApplication(OPTIVER);
+        boolean canUndoAddingJaneStreet = modelManager.undoAction();
+        assertTrue(modelManager.getInternTracker().getApplicationList().size() == 1);
+        assertTrue(canUndoAddingJaneStreet);
+        boolean canUndoAddingOptiver = modelManager.undoAction();
+        assertTrue(canUndoAddingOptiver);
+        assertTrue(modelManager.getInternTracker().getApplicationList().size() == 0);
+    }
 }

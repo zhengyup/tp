@@ -2,14 +2,17 @@ package seedu.letsgethired.model.application;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_STATUS_REJECTED;
 import static seedu.letsgethired.testutil.Assert.assertThrows;
 import static seedu.letsgethired.testutil.TypicalInternApplications.B;
 import static seedu.letsgethired.testutil.TypicalInternApplications.JANE_STREET;
+import static seedu.letsgethired.testutil.TypicalInternApplications.OPTIVER;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -179,5 +182,47 @@ public class UniqueInternApplicationListTest {
     public void toStringMethod() {
         assertEquals(uniqueApplicationList.asUnmodifiableObservableList().toString(),
                 uniqueApplicationList.toString());
+    }
+    @Test
+    public void clone_emptyList_success() {
+        UniqueApplicationList originalList = new UniqueApplicationList();
+        UniqueApplicationList clonedList = originalList.clone();
+
+        // Check that the cloned list is not the same instance as the original
+        assertNotSame(originalList, clonedList);
+    }
+
+    @Test
+    public void clone_nonEmptyList_success() {
+        UniqueApplicationList originalList = new UniqueApplicationList();
+        originalList.add(JANE_STREET);
+        originalList.add(OPTIVER);
+
+        // Clone the list
+        UniqueApplicationList clonedList = originalList.clone();
+
+        // Check that the cloned list is not the same instance as the original
+        assertNotSame(originalList, clonedList);
+
+        // Use iterators to go through each list
+        Iterator<InternApplication> originalIterator = originalList.iterator();
+        Iterator<InternApplication> clonedIterator = clonedList.iterator();
+
+        // Check that the applications in the cloned list have the same attributes as the original
+        while (originalIterator.hasNext() && clonedIterator.hasNext()) {
+            InternApplication originalApp = originalIterator.next();
+            InternApplication clonedApp = clonedIterator.next();
+
+            // Check each attribute of the application
+            assertEquals(originalApp.getCompany(), clonedApp.getCompany());
+            assertEquals(originalApp.getRole(), clonedApp.getRole());
+            assertEquals(originalApp.getCycle(), clonedApp.getCycle());
+            assertEquals(originalApp.getNote(), clonedApp.getNote());
+            assertEquals(originalApp.getStatus(), clonedApp.getStatus());
+        }
+
+        // Ensure that both iterators have reached the end of the lists
+        assertFalse(originalIterator.hasNext());
+        assertFalse(clonedIterator.hasNext());
     }
 }
