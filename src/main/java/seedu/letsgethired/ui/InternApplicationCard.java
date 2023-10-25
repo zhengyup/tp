@@ -58,10 +58,10 @@ public class InternApplicationCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         company.setText(internApplication.getCompany().value);
         role.setText(internApplication.getRole().value);
-        status.setText(internApplication.getStatus().value);
-        note.setText(internApplication.getNote().value);
         cycle.setText(internApplication.getCycle().value);
+        status.setText(internApplication.getStatus().value);
         deadline.setText(internApplication.getDeadline().value);
+        note.setText(internApplication.getNote().value);
     }
 
     /**
