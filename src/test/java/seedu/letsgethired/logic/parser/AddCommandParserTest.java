@@ -20,7 +20,6 @@ import static seedu.letsgethired.logic.commands.CommandTestUtil.STATUS_DESC_REJE
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_COMPANY_BYTEDANCE;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_CYCLE_WINTER;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_ROLE_BACK_END;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_STATUS_REJECTED;
 import static seedu.letsgethired.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.letsgethired.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.letsgethired.testutil.TypicalInternApplications.A;
@@ -67,39 +66,28 @@ public class AddCommandParserTest {
     public void parse_compulsoryFieldMissing_failure() {
         String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE);
 
-        // missing role prefix
+        // missing company prefix
         assertParseFailure(parser, VALID_COMPANY_BYTEDANCE
                         + ROLE_DESC_BACK_END
-                        + CYCLE_DESC_WINTER
-                        + STATUS_DESC_REJECTED,
+                        + CYCLE_DESC_WINTER,
                 expectedMessage);
 
         // missing role prefix
         assertParseFailure(parser, COMPANY_DESC_BYTEDANCE
                         + VALID_ROLE_BACK_END
-                        + CYCLE_DESC_WINTER
-                        + STATUS_DESC_REJECTED,
+                        + CYCLE_DESC_WINTER,
                 expectedMessage);
 
         // missing cycle prefix
         assertParseFailure(parser, COMPANY_DESC_BYTEDANCE
                         + ROLE_DESC_BACK_END
-                        + VALID_CYCLE_WINTER
-                        + STATUS_DESC_REJECTED,
-                expectedMessage);
-
-        // missing status prefix
-        assertParseFailure(parser, COMPANY_DESC_BYTEDANCE
-                        + ROLE_DESC_BACK_END
-                        + CYCLE_DESC_WINTER
-                        + VALID_STATUS_REJECTED,
+                        + VALID_CYCLE_WINTER,
                 expectedMessage);
 
         // all prefixes missing
         assertParseFailure(parser, VALID_COMPANY_BYTEDANCE
                         + VALID_ROLE_BACK_END
-                        + VALID_CYCLE_WINTER
-                        + VALID_STATUS_REJECTED,
+                        + VALID_CYCLE_WINTER,
                 expectedMessage);
     }
 

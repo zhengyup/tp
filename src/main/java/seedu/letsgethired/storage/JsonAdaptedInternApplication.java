@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import seedu.letsgethired.commons.exceptions.IllegalValueException;
 import seedu.letsgethired.model.application.Company;
 import seedu.letsgethired.model.application.Cycle;
+import seedu.letsgethired.model.application.Deadline;
 import seedu.letsgethired.model.application.InternApplication;
 import seedu.letsgethired.model.application.Note;
 import seedu.letsgethired.model.application.Role;
@@ -22,6 +23,7 @@ class JsonAdaptedInternApplication {
     private final String cycle;
     private final String status;
     private final String note;
+    private final String deadline;
 
     /**
      * Constructs a {@code JsonAdaptedInternApplication} with the given intern application details.
@@ -31,12 +33,14 @@ class JsonAdaptedInternApplication {
                                         @JsonProperty("role") String role,
                                         @JsonProperty("cycle") String cycle,
                                         @JsonProperty("note") String note,
-                                        @JsonProperty("status") String status) {
+                                        @JsonProperty("status") String status,
+                                        @JsonProperty("deadline") String deadline) {
         this.company = company;
         this.role = role;
         this.cycle = cycle;
         this.note = note;
         this.status = status;
+        this.deadline = deadline;
     }
 
     /**
@@ -48,6 +52,7 @@ class JsonAdaptedInternApplication {
         cycle = source.getCycle().value;
         note = source.getNote().value;
         status = source.getStatus().value;
+        deadline = source.getDeadline().value;
     }
 
     /**
@@ -97,6 +102,15 @@ class JsonAdaptedInternApplication {
         }
         final Note modelNote = new Note(note);
 
-        return new InternApplication(modelCompany, modelRole, modelCycle, modelNote, modelStatus);
+        if (deadline == null) {
+            throw new IllegalValueException(
+                    String.format(MISSING_FIELD_MESSAGE_FORMAT, Deadline.class.getSimpleName()));
+        }
+        if (!Deadline.isValidDeadline(deadline)) {
+            throw new IllegalValueException(Deadline.MESSAGE_CONSTRAINTS);
+        }
+        final Deadline modelDeadline = new Deadline(deadline);
+
+        return new InternApplication(modelCompany, modelRole, modelCycle, modelNote, modelStatus, modelDeadline);
     }
 }

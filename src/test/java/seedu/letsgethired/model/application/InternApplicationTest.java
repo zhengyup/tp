@@ -5,8 +5,11 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_COMPANY_BYTEDANCE;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_CYCLE_SUMMER;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_CYCLE_WINTER;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_DEADLINE;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_ROLE_BACK_END;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_ROLE_FULL_STACK;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_STATUS_REJECTED;
 import static seedu.letsgethired.testutil.TypicalInternApplications.B;
 import static seedu.letsgethired.testutil.TypicalInternApplications.JANE_STREET;
@@ -24,11 +27,13 @@ public class InternApplicationTest {
         // null -> returns false
         assertFalse(JANE_STREET.isSameApplication(null));
 
-        // same name, all other attributes different -> returns true
+        // same company, role, cycle -> returns true
         InternApplication editedInternApplication = new InternApplicationBuilder(JANE_STREET)
-                .withRole(VALID_ROLE_BACK_END)
-                .withCycle(VALID_CYCLE_WINTER)
+                .withRole(VALID_ROLE_FULL_STACK)
+                .withCycle(VALID_CYCLE_SUMMER)
                 .withStatus(VALID_STATUS_REJECTED)
+                .withDeadline(VALID_DEADLINE)
+                .withNote("")
                 .build();
         assertTrue(JANE_STREET.isSameApplication(editedInternApplication));
 
@@ -96,13 +101,17 @@ public class InternApplicationTest {
         editedInternApplication = new InternApplicationBuilder(JANE_STREET).withRole(VALID_ROLE_BACK_END).build();
         assertFalse(JANE_STREET.equals(editedInternApplication));
 
-        // different email -> returns false
+        // different cycle -> returns false
         editedInternApplication = new InternApplicationBuilder(JANE_STREET).withCycle(VALID_CYCLE_WINTER).build();
         assertFalse(JANE_STREET.equals(editedInternApplication));
 
-        // different status -> returns false
+        // different status -> returns true
         editedInternApplication = new InternApplicationBuilder(JANE_STREET).withStatus(VALID_STATUS_REJECTED).build();
-        assertFalse(JANE_STREET.equals(editedInternApplication));
+        assertTrue(JANE_STREET.equals(editedInternApplication));
+
+        // different deadline -> returns true
+        editedInternApplication = new InternApplicationBuilder(JANE_STREET).withDeadline(VALID_DEADLINE).build();
+        assertTrue(JANE_STREET.equals(editedInternApplication));
 
         // different note -> returns true
         editedInternApplication = new InternApplicationBuilder(JANE_STREET).withNote("").build();
@@ -116,7 +125,9 @@ public class InternApplicationTest {
                 + ", role=" + JANE_STREET.getRole()
                 + ", cycle=" + JANE_STREET.getCycle()
                 + ", note=" + JANE_STREET.getNote()
-                + ", status=" + JANE_STREET.getStatus() + "}";
+                + ", status=" + JANE_STREET.getStatus()
+                + ", deadline=" + JANE_STREET.getDeadline()
+                + "}";
         assertEquals(expected, JANE_STREET.toString());
     }
 }

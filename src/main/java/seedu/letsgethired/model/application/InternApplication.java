@@ -19,17 +19,19 @@ public class InternApplication {
     // Data fields
     private final Note note;
     private final Status status;
+    private final Deadline deadline;
 
     /**
      * Every field must be present and not null.
      */
-    public InternApplication(Company company, Role role, Cycle cycle, Note note, Status status) {
-        requireAllNonNull(company, role, cycle, note, status);
+    public InternApplication(Company company, Role role, Cycle cycle, Note note, Status status, Deadline deadline) {
+        requireAllNonNull(company, role, cycle, note, status, deadline);
         this.company = company;
         this.role = role;
         this.cycle = cycle;
         this.note = note;
         this.status = status;
+        this.deadline = deadline;
     }
 
     public Company getCompany() {
@@ -52,6 +54,10 @@ public class InternApplication {
         return status;
     }
 
+    public Deadline getDeadline() {
+        return deadline;
+    }
+
     /**
      * Returns true if both applications have the same name.
      * This defines a weaker notion of equality between two applications.
@@ -62,7 +68,9 @@ public class InternApplication {
         }
 
         return otherInternApplication != null
-                && otherInternApplication.getCompany().equals(getCompany());
+                && otherInternApplication.getCompany().equals(getCompany())
+                && otherInternApplication.getRole().equals(getRole())
+                && otherInternApplication.getCycle().equals(getCycle());
     }
 
     /**
@@ -84,14 +92,13 @@ public class InternApplication {
         InternApplication otherInternApplication = (InternApplication) other;
         return company.equals(otherInternApplication.company)
                 && role.equals(otherInternApplication.role)
-                && cycle.equals(otherInternApplication.cycle)
-                && status.equals(otherInternApplication.status);
+                && cycle.equals(otherInternApplication.cycle);
     }
 
     @Override
     public int hashCode() {
         // No comparing notes because notes is not a strict differentiating factor
-        return Objects.hash(company, role, cycle, status);
+        return Objects.hash(company, role, cycle);
     }
 
     @Override
@@ -102,6 +109,7 @@ public class InternApplication {
                 .add("cycle", cycle)
                 .add("note", note)
                 .add("status", status)
+                .add("deadline", deadline)
                 .toString();
     }
 

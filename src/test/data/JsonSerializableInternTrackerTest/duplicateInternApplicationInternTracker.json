@@ -4,12 +4,14 @@
     "cycle": "Summer 2024",
     "role": "Intern",
     "note" : "Valid note",
-    "status" : "Pending"
+    "status" : "Pending",
+    "deadline":  "24 Oct 2023"
   }, {
     "company": "Jane Street",
     "cycle": "Summer 2024",
     "role": "Intern",
     "note" : "Valid note",
-    "status" : "Pending"
+    "status" : "Pending",
+    "deadline":  "24 Oct 2023"
   } ]
 }
