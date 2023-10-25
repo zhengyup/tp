@@ -12,6 +12,7 @@ public class VersionedInternTrackerTest {
     private final VersionedInternTracker internTracker = new VersionedInternTracker();
     @Test
     public void restorePreviousState_withSavedStates_returnsTrueAndRestoresState() {
+        internTracker.commit();
         internTracker.addApplication(JANE_STREET);
         boolean isActionUndone = internTracker.undo();
         assertTrue(isActionUndone);
@@ -26,7 +27,9 @@ public class VersionedInternTrackerTest {
 
     @Test
     public void restorePreviousState_multipleCalls_returnsTrueAndRestoresDifferentStates() {
+        internTracker.commit();
         internTracker.addApplication(JANE_STREET);
+        internTracker.commit();
         internTracker.addApplication(OPTIVER);
         boolean canUndoAddingJaneStreet = internTracker.undo();
         assertTrue(internTracker.getApplicationList().size() == 1);

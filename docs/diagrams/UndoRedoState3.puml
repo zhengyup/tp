@@ -3,19 +3,18 @@
 skinparam ClassFontColor #000000
 skinparam ClassBorderColor #000000
 skinparam ClassBackgroundColor #FFFFAA
+skinparam Padding 10
 
 title After command "undo"
 
-package States <<rectangle>> {
-    class State1 as "<u>ab0:AddressBook</u>"
-    class State2 as "<u>ab1:AddressBook</u>"
-    class State3 as "<u>ab2:AddressBook</u>"
+package savedStates <<rectangle>> {
+    class State3 as "<u>ic2:InternApplications</u>"
 }
 
-State1 -[hidden]right-> State2
-State2 -[hidden]right-> State3
+class State2 as "<u>ic1:InternApplications</u>"
 
-class Pointer as "Current State" #FFFFFF
+class Pointer as "<u>:InternTracker</u>" #FFFFFF
 
-Pointer -up-> State2
+Pointer -right-> State2
 @end
+

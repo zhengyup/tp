@@ -25,7 +25,7 @@ import seedu.letsgethired.testutil.InternApplicationBuilder;
 
 public class InternTrackerTest {
 
-    private final InternTracker internTracker = new InternTracker();
+    private final VersionedInternTracker internTracker = new VersionedInternTracker();
 
     @Test
     public void constructor() {
@@ -93,7 +93,7 @@ public class InternTrackerTest {
 
     @Test
     public void toStringMethod() {
-        String expected = InternTracker.class.getCanonicalName() + "{applications=" + internTracker
+        String expected = VersionedInternTracker.class.getCanonicalName() + "{applications=" + internTracker
                 .getApplicationList() + "}";
         assertEquals(expected, internTracker.toString());
     }
@@ -110,33 +110,6 @@ public class InternTrackerTest {
         assertTrue(internTracker.getSelectedApplication() == null);
     }
 
-    @Test
-    public void restorePreviousState_withSavedStates_returnsTrueAndRestoresState() {
-        internTracker.addApplication(JANE_STREET);
-        boolean isActionUndone = internTracker.undo();
-        assertTrue(isActionUndone);
-        assertTrue(internTracker.getApplicationList().size() == 0);
-    }
-
-    @Test
-    public void restorePreviousState_withoutSavedStates_returnsFalse() {
-        boolean isActionUndone = internTracker.undo();
-        assertFalse(isActionUndone);
-        assertTrue(internTracker.getApplicationList().size() == 0);
-    }
-
-    @Test
-    public void restorePreviousState_multipleCalls_returnsTrueAndRestoresDifferentStates() {
-        internTracker.addApplication(JANE_STREET);
-        internTracker.addApplication(OPTIVER);
-        internTracker.addApplication(GOOGLE);
-        boolean undoAddingJaneStreet = internTracker.undo();
-        assertTrue(internTracker.getApplicationList().size() == 2);
-        boolean undoAddingOptiver = internTracker.undo();
-        assertTrue(internTracker.getApplicationList().size() == 1);
-        boolean undoAddingGoogle = internTracker.undo();
-        assertTrue(internTracker.getApplicationList().size() == 0);
-    }
     @Test
     public void clear_existingInternApplications_success() {
         internTracker.addApplication(JANE_STREET);

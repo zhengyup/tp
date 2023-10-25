@@ -108,7 +108,7 @@ public class ModelManager implements Model {
     @Override
     public void setInternApplication(InternApplication target, InternApplication editedInternApplication) {
         requireAllNonNull(target, editedInternApplication);
-
+        internTracker.commit();
         internTracker.setApplication(target, editedInternApplication);
     }
 
@@ -141,7 +141,6 @@ public class ModelManager implements Model {
      */
     @Override
     public void setCurrentInternApplication(InternApplication target) {
-        internTracker.commit();
         internTracker.setSelectedApplication(target);
     }
 
@@ -181,5 +180,4 @@ public class ModelManager implements Model {
                 && userPrefs.equals(otherModelManager.userPrefs)
                 && filteredInternApplications.equals(otherModelManager.filteredInternApplications);
     }
-
 }

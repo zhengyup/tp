@@ -41,8 +41,20 @@ public class VersionedInternTracker extends InternTracker {
      * Deletes all existing intern applications being tracked
      */
     public void clear() {
-        saveTasks();
         super.setInternApplications(new UniqueApplicationList());
+    }
+
+    /**
+     * Restores the previous state of the internApplications by popping the last saved state from the stack.
+     *
+     * @return {@code true} if a previous state was restored successfully. {@code false} if at latest change.
+     */
+    public boolean undo() {
+        if (savedStates.size() > 0) {
+            super.setInternApplications(savedStates.pop());
+            return true;
+        }
+        return false;
     }
 }
 

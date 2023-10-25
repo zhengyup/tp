@@ -12,7 +12,7 @@ import seedu.letsgethired.model.application.UniqueApplicationList;
 
 /**
  * Wraps all data at the intern-tracker level
- * Duplicates are not allowed (by .isSameApplication comparison)
+ * Duplicates are not allowed (by .isSameApplication comparison)\
  */
 public class InternTracker implements ReadOnlyInternTracker {
 
@@ -92,7 +92,6 @@ public class InternTracker implements ReadOnlyInternTracker {
      * The application must not already exist in the intern tracker.
      */
     public void addApplication(InternApplication a) {
-        saveTasks();
         internApplications.add(a);
     }
     /**
@@ -103,7 +102,6 @@ public class InternTracker implements ReadOnlyInternTracker {
      */
     public void setApplication(InternApplication target, InternApplication editedInternApplication) {
         requireNonNull(editedInternApplication);
-        saveTasks();
         internApplications.setApplication(target, editedInternApplication);
     }
 
@@ -112,7 +110,6 @@ public class InternTracker implements ReadOnlyInternTracker {
      * {@code key} must exist in the intern tracker.
      */
     public void removeApplication(InternApplication key) {
-        saveTasks();
         internApplications.remove(key);
         if (selectedApplication != null && !hasApplication(selectedApplication)) {
             selectedApplication = null;
@@ -144,31 +141,9 @@ public class InternTracker implements ReadOnlyInternTracker {
     }
 
     /**
-     * Saves the current internApplications state
-     */
-    public void saveTasks() {
-        UniqueApplicationList currentTasks = internApplications.clone();
-        savedStates.add(currentTasks);
-    }
-
-    /**
-     * Restores the previous state of the internApplications by popping the last saved state from the stack.
-     *
-     * @return {@code true} if a previous state was restored successfully. {@code false} if at latest change.
-     */
-    public boolean undo() {
-        if (savedStates.size() > 0) {
-            internApplications = savedStates.pop();
-            return true;
-        }
-        return false;
-    }
-
-    /**
      * Deletes all existing intern applications being tracked
      */
     public void clear() {
-        saveTasks();
         internApplications = new UniqueApplicationList();
     }
 

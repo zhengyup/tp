@@ -170,48 +170,58 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
-### \[Proposed\] Undo/redo feature
+###Undo feature
 
 #### Proposed Implementation
 
-The proposed undo/redo mechanism is facilitated by `VersionedAddressBook`. It extends `AddressBook` with an undo/redo history, stored internally as an `addressBookStateList` and `currentStatePointer`. Additionally, it implements the following operations:
+The proposed undo mechanism is facilitated by `VersionedInternTracker`. It extends `InternTracker` with an 
+undo history, stored internally as a stack `savedStates`. Additionally, it implements the 
+following operations:
 
 * `VersionedInternTracker#commit()` — Saves the current intern tracker state in its history.
 * `VersionedInternTracker#undo()` — Restores the previous intern tracker state from its history.
-* `VersionedInternTracker#redo()` — Restores a previously undone intern tracker state from its history.
 
-These operations are exposed in the `Model` interface as `Model#commitAddressBook()`, `Model#undoAddressBook()` and `Model#redoAddressBook()` respectively.
+VersionedInternTracker#undo() is exposed in the `Model` interface as `Model#undoAction()` 
 
-Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.
+Given below is an example usage scenario and how the undo mechanism behaves at each step.
 
-Step 1. The user launches the application for the first time. The `VersionedInternTracker` will be initialized with the initial intern tracker state, and the `currentStatePointer` pointing to that single intern tracker state.
+Step 1. The user launches the application for the first time. The `VersionedInternTracker` will be 
+initialized with an empty `savedStates`.
 
 <puml src="diagrams/UndoRedoState0.puml" alt="UndoRedoState0" />
 
 Step 2. The user executes `delete 5` command to delete the 5th internApplication in the intern tracker. 
-The `delete` command calls `Model#commitAddressBook()`, causing the modified state of the intern tracker after the `delete 5` command executes to be saved in the `addressBookStateList`, and the `currentStatePointer` is shifted to the newly inserted intern tracker state.
+The `delete` command calls `Model#deleteInternApplication()`, which calls `VersionedInternTracker#commit()
+`, adding a copy of the current `internApplications` to `savedStates` before carrying out the delete action.
 
 <puml src="diagrams/UndoRedoState1.puml" alt="UndoRedoState1" />
 
-Step 3. The user executes `add n/David …​` to add a new internApplication. The `add` command also calls `Model#commitInternTracker()`, causing another modified intern tracker state to be saved into the `addressBookStateList`.
+Step 3. The user executes `add n/Google …​` to add a new internApplication. The `add` command calls 
+`Model#add()` which also calls `VersionedInternTracker#commit()`, adding a copy of the current `internApplications`
+to `savedStates` before carrying out the add action.
 
 <puml src="diagrams/UndoRedoState2.puml" alt="UndoRedoState2" />
 
 <box type="info" seamless>
 
-**Note:** If a command fails its execution, it will not call `Model#commitInternTracker()`, so the intern tracker state will not be saved into the `InternTrackerStateList`.
+**Note:** If a command fails its execution, it will not call `VersionedInternTracker#commit()`, so the
+`internApplications` state will not be added to `savedStates`.
 
 </box>
 
-Step 4. The user now decides that adding the internApplication was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoAddressBook()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous intern tracker state, and restores the intern tracker to that state.
+Step 4. The user now decides that adding the internApplication was a mistake, and decides to undo that action
+by executing the `undo` command. The `undo` command will call `Model#undoAddressBook()`, which pops the latest
+`internApplications` state from `savedStates` and assigns it to the current internApplications.
 
 <puml src="diagrams/UndoRedoState3.puml" alt="UndoRedoState3" />
 
 
 <box type="info" seamless>
 
-**Note:** If the `currentStatePointer` is at index 0, pointing to the initial AddressBook state, then there are no previous AddressBook states to restore. The `undo` command uses `Model#canUndoAddressBook()` to check if this is the case. If so, it will return an error to the user rather
-than attempting to perform the undo.
+**Note:** If the size of `savedStates` is 0, meaning the stack is empty, then there are no previous 
+internApplications states to restore. The `undo` command calls `VersionedInternTracker#undo()`, which returns 
+False if there are no states to restore, and displays a message to the user that the latest change has already
+been reached.
 
 </box>
 
