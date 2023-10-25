@@ -95,9 +95,9 @@ To edit the company name, use the `edit` command, followed by the entry number (
 
 **Context:** You've submitted your application, and you want to update the application status.
 
-To update the status of your internship application, use the `tag` command. For example, to mark your application as "Applied," enter:
+To update the status of your internship application, use the `edit` command. For example, to mark your application as "Accepted," enter:
    ```shell
-   tag 1 s/Applied
+   edit 1 s/Accepted
    ```
    This command changes the status of the first internship application to "Applied."
 
@@ -316,6 +316,7 @@ If your changes to the data file makes its format invalid, LetsGetHired will dis
 | **Note**   | `note INDEX`                                                | `note 5 i/John Street is the leading market maker in the APAC region` |
 | **Delete** | `delete INDEX`                                              | `delete 1`                                                            |
 | **List**   | `list`                                                      | `list`                                                                |
+| **Find**   | `find`                                                      | `find Google`                                                         |
 | **Help**   | `help`                                                      | `help`                                                                |
 | **Clear**  | `clear`                                                     | `clear`                                                               |
 | **Exit**   | `exit`                                                      | `exit`                                                                |
