@@ -37,12 +37,17 @@ public class FindCommandTest {
         FindCommand findFirstCommand = new FindCommand(firstPredicate);
         FindCommand findSecondCommand = new FindCommand(secondPredicate);
 
+        Object notFindCommand = new Object();
+
         // same object -> returns true
         assertEquals(findFirstCommand, findFirstCommand);
 
         // same values -> returns true
         FindCommand findFirstCommandCopy = new FindCommand(firstPredicate);
         assertEquals(findFirstCommand, findFirstCommandCopy);
+
+        // different command or other object type
+        assertNotEquals(findFirstCommand, notFindCommand);
 
         // different types -> returns false
         assertNotEquals(1, findFirstCommand);

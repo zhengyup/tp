@@ -1,6 +1,10 @@
 package seedu.letsgethired.logic.parser;
 
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_COMPANY;
+import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_CYCLE;
+import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE;
+import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_ROLE;
+import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_STATUS;
 import static seedu.letsgethired.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.letsgethired.logic.parser.CommandParserTestUtil.assertParseSuccess;
 
@@ -22,17 +26,72 @@ public class FindCommandParserTest {
     }
 
     @Test
-    public void parse_validArgs_returnsFindCommand() {
+    public void parse_validArgCompany_returnsFindCommand() {
         // no leading and trailing whitespaces
         FindCommand expectedFindCommand =
                 new FindCommand(new CompanyContainsFieldKeywordsPredicate(Arrays.asList(
                         new Pair<>(PREFIX_COMPANY, "Jane Street"))));
         assertParseSuccess(parser, FindCommand.COMMAND_WORD + " " + PREFIX_COMPANY + "Jane Street",
                 expectedFindCommand);
+    }
 
+    @Test
+    public void parse_validArgStatus_returnsFindCommand() {
+        // no leading and trailing whitespaces
+        FindCommand expectedFindCommand =
+                new FindCommand(new CompanyContainsFieldKeywordsPredicate(Arrays.asList(
+                        new Pair<>(PREFIX_STATUS, "Pending"))));
+        assertParseSuccess(parser, FindCommand.COMMAND_WORD + " " + PREFIX_STATUS + "Pending",
+                expectedFindCommand);
+    }
+
+    @Test
+    public void parse_validArgRole_returnsFindCommand() {
+        // no leading and trailing whitespaces
+        FindCommand expectedFindCommand =
+                new FindCommand(new CompanyContainsFieldKeywordsPredicate(Arrays.asList(
+                        new Pair<>(PREFIX_ROLE, "Software Engineer"))));
+        assertParseSuccess(parser, FindCommand.COMMAND_WORD + " " + PREFIX_ROLE + "Software Engineer",
+                expectedFindCommand);
+    }
+
+    @Test
+    public void parse_validArgCycle_returnsFindCommand() {
+        // no leading and trailing whitespaces
+        FindCommand expectedFindCommand =
+                new FindCommand(new CompanyContainsFieldKeywordsPredicate(Arrays.asList(
+                        new Pair<>(PREFIX_CYCLE, "Summer 2023"))));
+        assertParseSuccess(parser, FindCommand.COMMAND_WORD + " " + PREFIX_CYCLE + "Summer 2023",
+                expectedFindCommand);
+    }
+
+    @Test
+    public void parse_validArgNote_returnsFindCommand() {
+        // no leading and trailing whitespaces
+        FindCommand expectedFindCommand =
+                new FindCommand(new CompanyContainsFieldKeywordsPredicate(Arrays.asList(
+                        new Pair<>(PREFIX_NOTE, "require MERN"))));
+        assertParseSuccess(parser, FindCommand.COMMAND_WORD + " " + PREFIX_NOTE + "require MERN",
+                expectedFindCommand);
+    }
+
+    @Test
+    public void parse_validArgMultipleWhitespaces_returnsFindCommand() {
         // multiple whitespaces
+        FindCommand expectedFindCommand =
+                new FindCommand(new CompanyContainsFieldKeywordsPredicate(Arrays.asList(
+                        new Pair<>(PREFIX_COMPANY, "Jane Street"))));
         assertParseSuccess(parser, FindCommand.COMMAND_WORD + " " + PREFIX_COMPANY + "  Jane Street    ",
                 expectedFindCommand);
     }
 
+    @Test
+    public void parse_multipleValidArgs_returnsFindCommand() {
+        // no leading and trailing whitespaces
+        FindCommand expectedFindCommand =
+                new FindCommand(new CompanyContainsFieldKeywordsPredicate(Arrays.asList(
+                        new Pair<>(PREFIX_COMPANY, "Jane Street"))));
+        assertParseSuccess(parser, FindCommand.COMMAND_WORD + " " + PREFIX_COMPANY + "Jane Street",
+                expectedFindCommand);
+    }
 }
