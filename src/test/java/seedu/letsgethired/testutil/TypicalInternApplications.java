@@ -80,20 +80,12 @@ public class TypicalInternApplications {
             .build();
 
     // Manually added
-    public static final InternApplication OCBC = new InternApplicationBuilder()
-            .withCompany("OCBC")
-            .withRole("Software Engineering Intern")
-            .withCycle("Summer 2021")
-            .withStatus("Pending")
-            .withDeadline("24 Oct 2023")
-            .build();
-    public static final InternApplication IMDA = new InternApplicationBuilder()
-            .withCompany("IMDA")
-            .withRole("SWE Intern")
-            .withCycle("Summer 2021")
-            .withStatus("Pending")
-            .withDeadline("24 Oct 2023")
-            .build();
+    public static final InternApplication BOSCH = new InternApplicationBuilder().withCompany("Bosch")
+            .withRole("AI Research")
+            .withCycle("Summer 2021").withStatus("pending").build();
+    public static final InternApplication SCHNEIDER = new InternApplicationBuilder().withCompany("Schneider")
+            .withRole("IoT Engineer")
+            .withCycle("Summer 2021").withStatus("accepted").build();
 
     // Manually added - Intern Application's details found in {@code CommandTestUtil}
     public static final InternApplication A = new InternApplicationBuilder()

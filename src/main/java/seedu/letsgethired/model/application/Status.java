@@ -9,14 +9,30 @@ import static seedu.letsgethired.commons.util.AppUtil.checkArgument;
  */
 public class Status {
 
-    public static final String MESSAGE_CONSTRAINTS =
-            "Status should only contain characters and spaces, and it should not be blank";
+    enum StatusEnum {
+        REJECTED,
+        ACCEPTED,
+        PENDING,
+        ERROR;
 
-    /*
-     * The first character of the status must not be a whitespace,
-     * otherwise " " (a blank string) becomes a valid input.
-     */
-    public static final String VALIDATION_REGEX = "[^\\s].*";
+        public static StatusEnum getEnum(String status) {
+            String lowerKeyStatus = status.toLowerCase();
+            switch (lowerKeyStatus) {
+            case "rejected":
+                return REJECTED;
+            case "accepted":
+                return ACCEPTED;
+            case "pending":
+                return PENDING;
+            default:
+                //Return an error enum to indicate that none of the Status matches the string
+                return ERROR;
+            }
+        }
+    }
+
+    public static final String MESSAGE_CONSTRAINTS =
+            "Status can only be 'pending', 'accepted' or 'rejected'";
 
     public final String value;
 
@@ -35,7 +51,8 @@ public class Status {
      * Returns true if a given string is a valid email.
      */
     public static boolean isValidStatus(String test) {
-        return test.matches(VALIDATION_REGEX);
+        StatusEnum status = StatusEnum.getEnum(test);
+        return status != StatusEnum.ERROR;
     }
 
     @Override
