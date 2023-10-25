@@ -1,10 +1,14 @@
 package seedu.letsgethired.logic.parser;
 
 import static seedu.letsgethired.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_COMPANY;
 
+import java.util.Arrays;
+
+import javafx.util.Pair;
 import seedu.letsgethired.logic.commands.FindCommand;
 import seedu.letsgethired.logic.parser.exceptions.ParseException;
-import seedu.letsgethired.model.application.CompanyPartialMatchPredicate;
+import seedu.letsgethired.model.application.CompanyContainsFieldKeywordsPredicate;
 
 /**
  * Parses input arguments and creates a new FindCommand object
@@ -24,7 +28,7 @@ public class FindCommandParser implements Parser<FindCommand> {
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
         }
 
-        return new FindCommand(new CompanyPartialMatchPredicate(trimmedArgs));
+        return new FindCommand(new CompanyContainsFieldKeywordsPredicate(
+                Arrays.asList(new Pair<>(PREFIX_COMPANY, trimmedArgs))));
     }
-
 }

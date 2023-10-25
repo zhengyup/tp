@@ -10,13 +10,15 @@ import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_STATUS;
 import static seedu.letsgethired.testutil.Assert.assertThrows;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import javafx.util.Pair;
 import seedu.letsgethired.commons.core.index.Index;
 import seedu.letsgethired.logic.commands.exceptions.CommandException;
 import seedu.letsgethired.model.InternTracker;
 import seedu.letsgethired.model.Model;
-import seedu.letsgethired.model.application.CompanyPartialMatchPredicate;
+import seedu.letsgethired.model.application.CompanyContainsFieldKeywordsPredicate;
 import seedu.letsgethired.model.application.InternApplication;
 import seedu.letsgethired.testutil.EditInternApplicationDescriptorBuilder;
 
@@ -136,7 +138,8 @@ public class CommandTestUtil {
 
         InternApplication internApplication = model.getFilteredInternApplicationList().get(targetIndex.getZeroBased());
         final String searchString = internApplication.getCompany().value;
-        model.updateFilteredInternApplicationList(new CompanyPartialMatchPredicate(searchString));
+        model.updateFilteredInternApplicationList(new CompanyContainsFieldKeywordsPredicate(Arrays.asList(
+                new Pair<>(PREFIX_COMPANY, searchString))));
 
         assertEquals(1, model.getFilteredInternApplicationList().size());
     }
