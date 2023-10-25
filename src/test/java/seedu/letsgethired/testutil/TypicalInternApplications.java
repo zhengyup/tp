@@ -51,10 +51,10 @@ public class TypicalInternApplications {
             .withCycle("Summer 2021").withStatus("Pending").build();
 
     // Manually added
-    public static final InternApplication HOON = new InternApplicationBuilder().withCompany("Bosch")
+    public static final InternApplication BOSCH = new InternApplicationBuilder().withCompany("Bosch")
             .withRole("AI Research")
             .withCycle("Summer 2021").withStatus("pending").build();
-    public static final InternApplication IDA = new InternApplicationBuilder().withCompany("Schneider")
+    public static final InternApplication SCHNEIDER = new InternApplicationBuilder().withCompany("Schneider")
             .withRole("IoT Engineer")
             .withCycle("Summer 2021").withStatus("accepted").build();
 

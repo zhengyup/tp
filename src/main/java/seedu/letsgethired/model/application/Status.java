@@ -31,12 +31,6 @@ public class Status {
         }
     }
 
-    /*
-     * The first character of the status must not be a whitespace,
-     * otherwise " " (a blank string) becomes a valid input.
-     */
-    public static final String VALIDATION_REGEX = "[^\\s].*";
-
     public static final String MESSAGE_CONSTRAINTS =
             "Status can only be 'pending', 'accepted' or 'rejected'";
 
@@ -57,7 +51,6 @@ public class Status {
      * Returns true if a given string is a valid email.
      */
     public static boolean isValidStatus(String test) {
-        //return test.matches(VALIDATION_REGEX);
         StatusEnum status = StatusEnum.getEnum(test);
         return status != StatusEnum.ERROR;
     }
