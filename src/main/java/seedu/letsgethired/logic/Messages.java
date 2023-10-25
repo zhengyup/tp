@@ -67,7 +67,7 @@ public class Messages {
                 .append(internApplication.getStatus())
                 .append("; Deadline: ")
                 .append(internApplication.getDeadline())
-                .append("; Note: ")
+                .append("; Notes: ")
                 .append(internApplication.getNote());
         return builder.toString();
     }
