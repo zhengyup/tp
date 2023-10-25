@@ -27,7 +27,7 @@ public class TypicalInternApplications {
             .withStatus("Pending")
             .withCycle("Summer 2024")
             .withNote("Jane Street is the leading market maker in the APAC region")
-            .withRole("SWE Intern")
+            .withRole("Full Stack Developer")
             .withDeadline("24 Oct 2023")
             .build();
     public static final InternApplication OPTIVER = new InternApplicationBuilder()

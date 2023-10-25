@@ -35,7 +35,7 @@ public class CommandTestUtil {
     public static final String VALID_STATUS_REJECTED = "Rejected";
     public static final String VALID_NOTE_JANE_STREET = "Jane Street is the leading market maker in the APAC region";
     public static final String VALID_NOTE_BYTEDANCE = "Bytedance requires back end developers to know the MERN stack";
-    public static final String VALID_DEADLINE = "24 Oct 2023";
+    public static final String VALID_DEADLINE = "25 Oct 2023";
     public static final String COMPANY_DESC_JANE_STREET = " " + PREFIX_COMPANY + VALID_COMPANY_JANE_STREET;
     public static final String COMPANY_DESC_BYTEDANCE = " " + PREFIX_COMPANY + VALID_COMPANY_BYTEDANCE;
     public static final String ROLE_DESC_FULL_STACK = " " + PREFIX_ROLE + VALID_ROLE_FULL_STACK;
