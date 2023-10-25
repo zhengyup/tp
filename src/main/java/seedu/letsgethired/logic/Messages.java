@@ -45,6 +45,8 @@ public class Messages {
                 .append(internApplication.getCycle())
                 .append("\nStatus: ")
                 .append(internApplication.getStatus())
+                .append("\nDeadline: ")
+                .append(internApplication.getDeadline())
                 .append("\nNotes: ")
                 .append(internApplication.getNote());
         return builder.toString();
@@ -63,6 +65,8 @@ public class Messages {
                 .append(internApplication.getCycle())
                 .append("; Status: ")
                 .append(internApplication.getStatus())
+                .append("; Deadline: ")
+                .append(internApplication.getDeadline())
                 .append("; Note: ")
                 .append(internApplication.getNote());
         return builder.toString();
