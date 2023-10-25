@@ -6,8 +6,27 @@
 
 # User Guide
 
+## **Introduction**
+
 **LetsGetHired** is a **desktop app** which provides a **fast and organised way to see internships and its progress**,
 optimised for users who prefer a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI).
+
+### Purpose of the guide
+This user guide is designed to help you get started with the LetsGetHired Intern Tracker, a powerful tool for managing your internship applications. Whether you're a tech-savvy student or a professional looking to land that dream internship, this guide is here to assist you every step of the way.
+
+This app is perfect for you if you are a **Computer Science undergraduate student**
+
+This user guide is primarily designed for Computer Science undergraduates currently engaged in the internship finding process. Whether you are seeking you first internship or have prior experience, this guide is tailored to cater to your specific needs.
+
+### Prerequisite knowledge
+
+While this guide is accessible to a broad audience, we assume that you have a basic understanding of the internship-finding process. If you're new to this journey, don't worry! We've got you covered. Feel free to check out these [helpful resources](https://www.techinterviewhandbook.org/software-engineering-interview-guide/) or refer to our [glossary](#glossary) page for additional information to get you up to speed.
+
+Our goal is to make your internship application experience as smooth and successful as possible, regardless of your level of experience. Let's embark on this journey together and make your internship goals a reality.
+
+### Main features
+
+LetsGetHired allows you to add and organise your internship applications. View all applications at a glance, or narrow down your search with filter and search features. LetsGetHired also allows you to attach customized tags and notes, to track any additional information.
 
 <!-- * Table of Contents -->
 <page-nav-print />
@@ -16,14 +35,19 @@ optimised for users who prefer a Command Line Interface (CLI) while still having
 
 ## **Quick start**
 
-1. Ensure you have Java `11` or above installed in your Computer.
+1. Ensure you have Java `11` or above installed in your Computer (from [here](https://www.oracle.com/sg/java/technologies/javase/jdk11-archive-downloads.html) if you do not have it already).
 
 1. Download the latest `letsgethired.jar` from [here](https://github.com/AY2324S1-CS2103T-W17-2/tp/releases).
+
+    ![Zip file download](images/downloadJar.jpg)
 
 1. Copy the file to the folder you want to use as the _home folder_ for your **LetsGetHired** application.
 
 1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar letsgethired.jar` command to run the application. A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](images/Ui.png)
+   
+    ![Ui](images/Ui.jpg)
+
+1. Here's what you'll see when you start the app for the first time ! We've added some intern applications already. Enter your commands in the **Command Bar**. On the left you'll see a **List View** of all your applications ordered by the date you added them. On the right, the **Select View** shows you a more in depth view of your selected application
 
 1. Type the command in the command box and press `Enter` to execute it. e.g. typing **`help`** and pressing Enter will open the help window. Some example commands you can try:
 
@@ -140,9 +164,9 @@ Finds internship applications whose company name contain any of the given keywor
 
 **Parameters**:
 * `SEARCH_STRING`: Search string to be used to find internship application entry.
-  * The search is case-insensitive. e.g `google` will match `Google`
-  * Only the company name is searched
-  * Partial words will be matched e.g. `Goo` will match `Google`, `JST` will match `Jane Street`
+    * The search is case-insensitive. e.g `google` will match `Google`
+    * Only the company name is searched
+    * Partial words will be matched e.g. `Goo` will match `Google`, `JST` will match `Jane Street`
 
 **Examples**:
 * `find Google` returns `Google`
@@ -150,9 +174,9 @@ Finds internship applications whose company name contain any of the given keywor
 
 **Expected Output**:
 * Success
-  * The following internship application entry is displayed in the screen: <br> 
-    * `Summer Internship - Full Stack Developer at John Street `
-    * `Summer Internship - Data Analyst at Pineapple`
+    * The following internship application entry is displayed in the screen: <br>
+        * `Summer Internship - Full Stack Developer at John Street `
+        * `Summer Internship - Data Analyst at Pineapple`
 
 ### Editing an internship application : `edit`
 
@@ -164,7 +188,7 @@ Edits an internship application in the internship application list.
 * `INDEX`: Index of internship application entry to be edited
     * `INDEX` must be a positive integer, such as, `1`, `2`, `3`, etc.
 * At least one of the optional fields must be provided.
-  * Existing values will be updated to the input values.
+    * Existing values will be updated to the input values.
 
 **Examples**:
 * `edit 1 s/Applied` edits the status of the first internship application entry (in the list) as `Applied`
@@ -278,3 +302,10 @@ If your changes to the data file makes its format invalid, LetsGetHired will dis
 | **Help**   | `help`                                                      | `help`                                                                |
 | **Clear**  | `clear`                                                     | `clear`                                                               |
 | **Exit**   | `exit`                                                      | `exit`                                                                |
+
+## **Glossary**
+
+* **Mainstream OS**: Windows, Linux, Unix, OS-X
+* **Internship Entry:** A record or entry in the system that represents information about an internship opportunity. It includes details such as company name, application status, deadlines, and notes.
+* **Application Status:** The current stage or status of an internship application.
+* **Sample Data:** Pre-populated data used for demonstration purposes, enabling new users to see how the application functions with realistic examples.
