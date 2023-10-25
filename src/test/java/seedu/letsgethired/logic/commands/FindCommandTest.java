@@ -63,7 +63,7 @@ public class FindCommandTest {
     public void execute_longString_noInternApplicationFound() {
         String expectedMessage = String.format(MESSAGE_INTERN_APPLICATIONS_LISTED_OVERVIEW, 0);
         CompanyContainsFieldKeywordsPredicate predicate = new CompanyContainsFieldKeywordsPredicate(
-                Arrays.asList(new Pair<>(PREFIX_COMPANY, "Lorem ipsum 1234")));
+                Arrays.asList(new Pair<>(PREFIX_COMPANY, "This is a very long company name")));
         FindCommand command = new FindCommand(predicate);
         expectedModel.updateFilteredInternApplicationList(predicate);
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
@@ -71,7 +71,7 @@ public class FindCommandTest {
     }
 
     @Test
-    public void execute_multipleKeywords_multipleInternApplicationsFound() {
+    public void execute_multipleApplicationsMatch_multipleInternApplicationsFound() {
         String expectedMessage = String.format(MESSAGE_INTERN_APPLICATIONS_LISTED_OVERVIEW, 2);
         CompanyContainsFieldKeywordsPredicate predicate = new CompanyContainsFieldKeywordsPredicate(
                 Arrays.asList(new Pair<>(PREFIX_COMPANY, "G")));
