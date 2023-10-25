@@ -1,10 +1,13 @@
 package seedu.letsgethired.model.application;
 
+import static java.util.Objects.requireNonNull;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_COMPANY;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_CYCLE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_STATUS;
+
+
 
 import java.util.List;
 import java.util.function.Predicate;
@@ -22,6 +25,7 @@ public class CompanyContainsFieldKeywordsPredicate implements Predicate<InternAp
     private final List<Pair<Prefix, String>> fieldKeywords;
 
     public CompanyContainsFieldKeywordsPredicate(List<Pair<Prefix, String>> fieldKeywords) {
+        requireNonNull(fieldKeywords);
         this.fieldKeywords = fieldKeywords;
     }
 
@@ -33,6 +37,9 @@ public class CompanyContainsFieldKeywordsPredicate implements Predicate<InternAp
      * @return whether the keyword has a partial match in the search string
      */
     public boolean partialMatch(String searchString, String keyword) {
+        assert searchString != null;
+        assert keyword != null;
+
         int keywordIndex = 0;
         int searchIndex = 0;
         while (keywordIndex < keyword.length() && searchIndex < searchString.length()) {
@@ -46,6 +53,9 @@ public class CompanyContainsFieldKeywordsPredicate implements Predicate<InternAp
     }
 
     public String getFieldValue(Prefix fieldPrefix, InternApplication internApplication) {
+        assert fieldPrefix != null;
+        assert internApplication != null;
+
         if (fieldPrefix.equals(PREFIX_COMPANY)) {
             return internApplication.getCompany().value;
         }

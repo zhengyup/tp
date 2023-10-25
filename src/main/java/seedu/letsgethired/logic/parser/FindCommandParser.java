@@ -8,8 +8,10 @@ import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_STATUS;
 
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 import javafx.util.Pair;
+import seedu.letsgethired.commons.core.LogsCenter;
 import seedu.letsgethired.logic.commands.FindCommand;
 import seedu.letsgethired.logic.parser.exceptions.ParseException;
 import seedu.letsgethired.model.application.CompanyContainsFieldKeywordsPredicate;
@@ -18,6 +20,8 @@ import seedu.letsgethired.model.application.CompanyContainsFieldKeywordsPredicat
  * Parses input arguments and creates a new FindCommand object
  */
 public class FindCommandParser implements Parser<FindCommand> {
+
+    private static final Logger logger = LogsCenter.getLogger(FindCommandParser.class);
 
     /**
      * Parses the given {@code String} of arguments in the context of the FindCommand
@@ -51,6 +55,7 @@ public class FindCommandParser implements Parser<FindCommand> {
         }
 
         if (fieldKeywords.isEmpty()) {
+            logger.finer("This argument to the find command caused a Parse Exception " + args);
             throw new ParseException(FindCommand.NO_FIND_SPECIFIED + "\n" + FindCommand.MESSAGE_USAGE);
         }
 
