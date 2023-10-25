@@ -3,6 +3,7 @@ package seedu.letsgethired.testutil;
 import seedu.letsgethired.logic.commands.EditCommand.EditInternApplicationDescriptor;
 import seedu.letsgethired.model.application.Company;
 import seedu.letsgethired.model.application.Cycle;
+import seedu.letsgethired.model.application.Deadline;
 import seedu.letsgethired.model.application.InternApplication;
 import seedu.letsgethired.model.application.Role;
 import seedu.letsgethired.model.application.Status;
@@ -31,6 +32,7 @@ public class EditInternApplicationDescriptorBuilder {
         descriptor.setRole(internApplication.getRole());
         descriptor.setCycle(internApplication.getCycle());
         descriptor.setStatus(internApplication.getStatus());
+        descriptor.setDeadline(internApplication.getDeadline());
     }
 
     /**
@@ -62,6 +64,14 @@ public class EditInternApplicationDescriptorBuilder {
      */
     public EditInternApplicationDescriptorBuilder withStatus(String status) {
         descriptor.setStatus(new Status(status));
+        return this;
+    }
+
+    /**
+     * Sets the {@code Deadline} of the {@code EditInternApplicationDescriptor} that we are building.
+     */
+    public EditInternApplicationDescriptorBuilder withDeadline(String deadline) {
+        descriptor.setDeadline(new Deadline(deadline));
         return this;
     }
 

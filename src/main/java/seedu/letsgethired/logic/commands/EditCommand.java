@@ -3,6 +3,7 @@ package seedu.letsgethired.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_COMPANY;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_CYCLE;
+import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_DEADLINE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_STATUS;
 import static seedu.letsgethired.model.Model.PREDICATE_SHOW_ALL_APPLICATIONS;
@@ -19,6 +20,7 @@ import seedu.letsgethired.logic.commands.exceptions.CommandException;
 import seedu.letsgethired.model.Model;
 import seedu.letsgethired.model.application.Company;
 import seedu.letsgethired.model.application.Cycle;
+import seedu.letsgethired.model.application.Deadline;
 import seedu.letsgethired.model.application.InternApplication;
 import seedu.letsgethired.model.application.Note;
 import seedu.letsgethired.model.application.Role;
@@ -39,13 +41,14 @@ public class EditCommand extends Command {
             + "[" + PREFIX_COMPANY + "COMPANY] "
             + "[" + PREFIX_ROLE + "ROLE] "
             + "[" + PREFIX_CYCLE + "CYCLE] "
+            + "[" + PREFIX_DEADLINE + "DEADLINE] "
             + "[" + PREFIX_STATUS + "STATUS] "
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_ROLE + "Software Engineering Intern "
             + PREFIX_CYCLE + "Summer 2024"
             + PREFIX_STATUS + "Accepted";
 
-    public static final String MESSAGE_EDIT_INTERN_APPLICATION_SUCCESS = "Edited Intern Application: %1$s";
+    public static final String MESSAGE_EDIT_INTERN_APPLICATION_SUCCESS = "Edited Intern Application";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_INTERN_APPLICATION =
             "This intern application already exists in the intern tracker.";
@@ -108,8 +111,16 @@ public class EditCommand extends Command {
                 .orElse(internApplicationToEdit.getNote());
         Status updatedStatus = editInternApplicationDescriptor.getStatus()
                 .orElse(internApplicationToEdit.getStatus());
+        Deadline updatedDeadline = editInternApplicationDescriptor.getDeadline()
+                .orElse(internApplicationToEdit.getDeadline());
 
-        return new InternApplication(updatedCompany, updatedRole, updatedCycle, updatedNote, updatedStatus);
+        return new InternApplication(
+                updatedCompany,
+                updatedRole,
+                updatedCycle,
+                updatedNote,
+                updatedStatus,
+                updatedDeadline);
     }
 
     @Override
@@ -146,6 +157,7 @@ public class EditCommand extends Command {
         private Cycle cycle;
         private Note note;
         private Status status;
+        private Deadline deadline;
 
         public EditInternApplicationDescriptor() {}
 
@@ -158,13 +170,14 @@ public class EditCommand extends Command {
             setCycle(toCopy.cycle);
             setNote(toCopy.note);
             setStatus(toCopy.status);
+            setDeadline(toCopy.deadline);
         }
 
         /**
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(company, role, cycle, status);
+            return CollectionUtil.isAnyNonNull(company, role, cycle, status, deadline);
         }
 
         public void setCompany(Company company) {
@@ -207,6 +220,14 @@ public class EditCommand extends Command {
             return Optional.ofNullable(status);
         }
 
+        public void setDeadline(Deadline deadline) {
+            this.deadline = deadline;
+        }
+
+        public Optional<Deadline> getDeadline() {
+            return Optional.ofNullable(deadline);
+        }
+
         @Override
         public boolean equals(Object other) {
             if (other == this) {
@@ -233,6 +254,7 @@ public class EditCommand extends Command {
                     .add("role", role)
                     .add("cycle", cycle)
                     .add("status", status)
+                    .add("deadline", deadline)
                     .toString();
         }
     }

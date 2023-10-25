@@ -2,6 +2,7 @@ package seedu.letsgethired.testutil;
 
 import seedu.letsgethired.model.application.Company;
 import seedu.letsgethired.model.application.Cycle;
+import seedu.letsgethired.model.application.Deadline;
 import seedu.letsgethired.model.application.InternApplication;
 import seedu.letsgethired.model.application.Note;
 import seedu.letsgethired.model.application.Role;
@@ -17,12 +18,14 @@ public class InternApplicationBuilder {
     public static final String DEFAULT_CYCLE = "Summer 2021";
     public static final String DEFAULT_STATUS = "Pending";
     public static final String DEFAULT_NOTE = "Jane Street is the leading market maker in the APAC region";
+    public static final String DEFAULT_DEADLINE = "24 Oct 2023";
 
     private Company company;
     private Role role;
     private Cycle cycle;
     private Status status;
     private Note note;
+    private Deadline deadline;
 
     /**
      * Creates a {@code InternApplicationBuilder} with the default details.
@@ -33,6 +36,7 @@ public class InternApplicationBuilder {
         cycle = new Cycle(DEFAULT_CYCLE);
         status = new Status(DEFAULT_STATUS);
         note = new Note(DEFAULT_NOTE);
+        deadline = new Deadline(DEFAULT_DEADLINE);
     }
 
     /**
@@ -44,6 +48,7 @@ public class InternApplicationBuilder {
         cycle = internApplicationToCopy.getCycle();
         status = internApplicationToCopy.getStatus();
         note = internApplicationToCopy.getNote();
+        deadline = internApplicationToCopy.getDeadline();
     }
 
     /**
@@ -79,15 +84,22 @@ public class InternApplicationBuilder {
     }
 
     /**
-     * Sets the {@code Email} of the {@code InternApplication} that we are building.
+     * Sets the {@code Cycle} of the {@code InternApplication} that we are building.
      */
-    public InternApplicationBuilder withCycle(String email) {
-        this.cycle = new Cycle(email);
+    public InternApplicationBuilder withCycle(String cycle) {
+        this.cycle = new Cycle(cycle);
+        return this;
+    }
+
+    /**
+     * Sets the {@code Deadline} of the {@code InternApplication} that we are building.
+     */
+    public InternApplicationBuilder withDeadline(String deadline) {
+        this.deadline = new Deadline(deadline);
         return this;
     }
 
     public InternApplication build() {
-        return new InternApplication(company, role, cycle, note, status);
+        return new InternApplication(company, role, cycle, note, status, deadline);
     }
-
 }

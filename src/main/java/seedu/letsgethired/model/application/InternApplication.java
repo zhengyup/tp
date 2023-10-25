@@ -20,17 +20,19 @@ public class InternApplication {
     // Data fields
     private final Note note;
     private final Status status;
+    private final Deadline deadline;
 
     /**
      * Every field must be present and not null.
      */
-    public InternApplication(Company company, Role role, Cycle cycle, Note note, Status status) {
-        requireAllNonNull(company, role, cycle, note, status);
+    public InternApplication(Company company, Role role, Cycle cycle, Note note, Status status, Deadline deadline) {
+        requireAllNonNull(company, role, cycle, note, status, deadline);
         this.company = company;
         this.role = role;
         this.cycle = cycle;
         this.note = note;
         this.status = status;
+        this.deadline = deadline;
     }
 
     public Company getCompany() {
@@ -51,6 +53,10 @@ public class InternApplication {
 
     public Status getStatus() {
         return status;
+    }
+
+    public Deadline getDeadline() {
+        return deadline;
     }
 
     /**
@@ -92,7 +98,7 @@ public class InternApplication {
     @Override
     public int hashCode() {
         // No comparing notes because notes is not a strict differentiating factor
-        return Objects.hash(company, role, cycle, status);
+        return Objects.hash(company, role, cycle);
     }
 
     @Override
@@ -103,6 +109,7 @@ public class InternApplication {
                 .add("cycle", cycle)
                 .add("note", note)
                 .add("status", status)
+                .add("deadline", deadline)
                 .toString();
     }
 

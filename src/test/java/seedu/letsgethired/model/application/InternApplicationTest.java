@@ -96,7 +96,9 @@ public class InternApplicationTest {
                 + ", role=" + JANE_STREET.getRole()
                 + ", cycle=" + JANE_STREET.getCycle()
                 + ", note=" + JANE_STREET.getNote()
-                + ", status=" + JANE_STREET.getStatus() + "}";
+                + ", status=" + JANE_STREET.getStatus()
+                + ", deadline=" + JANE_STREET.getDeadline()
+                + "}";
         assertEquals(expected, JANE_STREET.toString());
     }
 }

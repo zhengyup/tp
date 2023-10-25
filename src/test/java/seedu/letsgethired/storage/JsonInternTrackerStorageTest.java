@@ -3,6 +3,7 @@ package seedu.letsgethired.storage;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static seedu.letsgethired.testutil.Assert.assertThrows;
+
 import static seedu.letsgethired.testutil.TypicalInternApplications.BOSCH;
 import static seedu.letsgethired.testutil.TypicalInternApplications.JANE_STREET;
 import static seedu.letsgethired.testutil.TypicalInternApplications.SCHNEIDER;
@@ -75,6 +76,7 @@ public class JsonInternTrackerStorageTest {
         assertEquals(original, new InternTracker(readBack));
 
         // Modify data, overwrite exiting file, and read back
+
         original.addApplication(BOSCH);
         original.removeApplication(JANE_STREET);
         jsonInternTrackerStorage.saveInternTracker(original, filePath);
@@ -82,6 +84,7 @@ public class JsonInternTrackerStorageTest {
         assertEquals(original, new InternTracker(readBack));
 
         // Save and read without specifying file path
+
         original.addApplication(SCHNEIDER);
         jsonInternTrackerStorage.saveInternTracker(original); // file path not specified
         readBack = jsonInternTrackerStorage.readInternTracker().get(); // file path not specified
