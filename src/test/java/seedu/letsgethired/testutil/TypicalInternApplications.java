@@ -51,12 +51,12 @@ public class TypicalInternApplications {
             .withCycle("Summer 2021").withStatus("Pending").build();
 
     // Manually added
-    public static final InternApplication HOON = new InternApplicationBuilder().withCompany("Hoon Meier")
-            .withRole("8482424")
-            .withCycle("Summer 2021").withStatus("little india").build();
-    public static final InternApplication IDA = new InternApplicationBuilder().withCompany("Ida Mueller")
-            .withRole("8482131")
-            .withCycle("Summer 2021").withStatus("chicago ave").build();
+    public static final InternApplication HOON = new InternApplicationBuilder().withCompany("Bosch")
+            .withRole("AI Research")
+            .withCycle("Summer 2021").withStatus("pending").build();
+    public static final InternApplication IDA = new InternApplicationBuilder().withCompany("Schneider")
+            .withRole("IoT Engineer")
+            .withCycle("Summer 2021").withStatus("accepted").build();
 
     // Manually added - Intern Application's details found in {@code CommandTestUtil}
     public static final InternApplication A = new InternApplicationBuilder().withCompany(VALID_COMPANY_JANE_STREET)

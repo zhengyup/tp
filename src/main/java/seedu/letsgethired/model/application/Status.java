@@ -25,7 +25,7 @@ public class Status {
             case "pending":
                 return PENDING;
             default:
-                //Return an error enum to indicate that none of the Period matches the status
+                //Return an error enum to indicate that none of the Status matches the string
                 return ERROR;
             }
         }
