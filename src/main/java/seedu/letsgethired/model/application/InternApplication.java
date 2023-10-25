@@ -16,7 +16,6 @@ public class InternApplication {
     private final Company company;
     private final Role role;
     private final Cycle cycle;
-
     // Data fields
     private final Note note;
     private final Status status;
