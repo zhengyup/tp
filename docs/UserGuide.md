@@ -63,7 +63,61 @@ LetsGetHired allows you to add and organise your internship applications. View a
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Features**
+## Tutorial - Managing Your Internship Applications
+
+In this tutorial, we'll walk you through a typical workflow for using LetsGetHired to manage your internship applications. Imagine you want to add an entry for a software engineering internship at Google for the summer of 2024.
+
+### Step 1: Adding Your Internship
+
+**Context:** You're starting your internship application journey, and you want to add a new entry.
+
+To add your internship, go to the input box and type the following command:
+   ```shell
+   add n/Google r/Full Stack Developer c/Summer 2024
+   ```
+This command specifies the company (Google), the role (Full Stack Developer), and the internship details (Summer 2024).
+
+After hitting Enter, your new internship entry will appear in the left panel of the application, allowing you to keep track of your application details effortlessly.
+
+### Step 2: Editing Company Name
+
+**Context:** You realize that you made a mistake in the company name and need to correct it.
+
+To edit the company name, use the `edit` command, followed by the entry number (in this case, it's 1) and the corrected company name:
+   ```shell
+   edit 1 n/Google Inc
+   ```
+   This command updates the company name to "Google Inc."
+
+   Always ensure your application details are accurate to avoid confusion in the future.
+
+### Step 3: Updating Application Status
+
+**Context:** You've submitted your application, and you want to update the application status.
+
+To update the status of your internship application, use the `tag` command. For example, to mark your application as "Applied," enter:
+   ```shell
+   tag 1 s/Applied
+   ```
+   This command changes the status of the first internship application to "Applied."
+
+   Keeping your application status up to date helps you stay organized and informed.
+
+### Step 4: Adding Notes
+
+**Context:** You want to keep track of additional information about the internship, such as job requirements.
+
+To add notes to your internship entry, use the `note` command, specifying the entry number (1) and providing the relevant details:
+   ```shell
+   note i/1 Additional information about job requirements and expectations...
+   ```
+   This command allows you to include any supplementary information you need to remember about the internship, making it a valuable resource when preparing for interviews or follow-ups.
+
+Congratulations! You've successfully managed your internship application using LetsGetHired. These steps demonstrate the core functions of the application, helping you stay organized and informed throughout your internship search journey.
+
+--------------------------------------------------------------------------------------------------------------------
+
+## **Commands**
 
 <box type="info" seamless>
 
@@ -90,6 +144,8 @@ Shows a message explaining how to access the help page.
 
 ![help message](images/helpMessage.png)
 
+![help command example](images/helpExample.jpg)
+
 **Format**: `help`
 
 ### Adding internship entry : `add`
@@ -106,19 +162,13 @@ Adds an internship application entry to the internship list.
 
 **Examples**:
 * `add c/Summer r/Full Stack Developer n/John street`<br>
-  Adds `Summer Internship - Full Stack Developer at John Street` application entry to the internship list
 * `add c/Winter r/Software Engineering Intern n/ACBC s/Applied`<br>
-  Adds `Winter Internship - Software Engineering Intern at ACBC` application entry to the internship list
 * `add c/Summer r/Data Analyst n/Pineapple s/Rejected`<br>
-  Adds `Summer Internship - Data Analyst at Pineapple` application entry to the internship list
 
 **Expected Output**:
-* Success
-    * The following internship application entry is added into the list: <br> `Summer Internship - Full Stack Developer at John Street`
-* Failure
-    * Wrong parameter: <br>`The following parameter <parameter_name> is in the wrong format - please input in the correct format`
-    * Missing parameter: <br>`The following parameter <parameter_name> is missing - please input in the correct format`
+![add command example 1](images/addExample1.jpg)
 
+![add command example 2](images/addExample2.jpg)
 
 ### Listing all internships : `list`
 
@@ -127,13 +177,7 @@ Shows a list of all the existing internship application entries.
 **Format**: `list`
 
 **Expected Output**:
-* Success
-    * The following internship application entry is displayed in the screen: <br>
-        * `Summer Internship - Full Stack Developer at John Street `
-        * `Winter Internship - Software Engineering Intern at ACBC`
-        * `Summer Internship - Data Analyst at Pineapple`
-* Failure
-    * Unknown command: `Unknown Command`
+![list command example](images/listExample.jpg)
 
 ### Viewing a specific internship : `view`
 
@@ -149,12 +193,7 @@ Shows a specific internship application entry and its details.
 * `view 1` shows the first internship application entry (in the list) and its details
 
 **Expected Output**:
-* Success<br>
-  ![view example](images/viewExample.png)
-* Failure
-    * Wrong parameter: <br>`The following parameter INDEX is in the wrong format - please input in the correct format`
-    * Missing parameter: <br>`The following parameter INDEX is missing - please input in the correct format`
-    * Index out of bound: <br> `The following parameter INDEX provided is out of bound`
+![note command example](images/viewExample.jpg)
 
 ### Locating an internship by company: `find`
 
@@ -170,13 +209,9 @@ Finds internship applications whose company name contain any of the given keywor
 
 **Examples**:
 * `find Google` returns `Google`
-* `find apple meta` returns `Apple`, `Meta`
 
 **Expected Output**:
-* Success
-    * The following internship application entry is displayed in the screen: <br>
-        * `Summer Internship - Full Stack Developer at John Street `
-        * `Summer Internship - Data Analyst at Pineapple`
+![find command example](images/findExample.jpg)
 
 ### Editing an internship application : `edit`
 
@@ -194,12 +229,7 @@ Edits an internship application in the internship application list.
 * `edit 1 s/Applied` edits the status of the first internship application entry (in the list) as `Applied`
 
 **Expected Output**:
-* Success
-  ![edit](images/viewExample.png)
-* Failure
-    * Wrong parameter: <br>`The following parameter INDEX is in the wrong format - please input in the correct format`
-    * Missing parameter: <br>`The following parameter INDEX is missing - please input in the correct format`
-    * Index out of bound: <br> `The following parameter INDEX provided is out of bound`
+![edit command example](images/editExample.jpg)
 
 ### Adding a note to a specific internship : `note`
 
@@ -216,14 +246,7 @@ Adds the specified note to an internship application.
 * `note 1 i/John Street is the leading market maker in the APAC region` adds the note, 'John Street is the leading market maker in the APAC region' to first internship application entry (in the list)
 
 **Expected Output**:
-* Success
-    * Added note to the internship application: <br>
-        * `Summer Internship - Full Stack Developer at John Street - John Street is the leading market maker in the APAC region `
-
-* Failure
-    * Wrong parameter: <br>`The following parameter INDEX is in the wrong format - please input in the correct format`
-    * Missing parameter: <br>`The following parameter INDEX is missing - please input in the correct format`
-    * Index out of bound: <br> `The following parameter INDEX provided is out of bound`
+![note command example](images/noteExample.jpg)
 
 ### Deleting an internship application entry : `delete`
 
@@ -238,14 +261,8 @@ Deletes the specified internship application entry from the internship list.
 Examples:
 * `delete 1` deletes the first internApplication in the status book.
 
-**Expected Output**:
-* Success
-    * The following internship application entry is deleted: <br>
-        * `Summer Internship - Full Stack Developer at John Street `
-* Failure
-    * Wrong parameter: <br>`The following parameter INDEX is in the wrong format - please input in the correct format`
-    * Missing parameter: <br>`The following parameter INDEX is missing - please input in the correct format`
-    * Index out of bound: <br> `The following parameter INDEX provided is out of bound`
+**Expected Output**: 
+![delete command example](images/deleteExample.jpg)
 
 ### Clearing all entries : `clear`
 
