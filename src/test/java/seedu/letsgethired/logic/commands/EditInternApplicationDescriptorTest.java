@@ -69,7 +69,8 @@ public class EditInternApplicationDescriptorTest {
                 + editInternApplicationDescriptor.getCompany().orElse(null) + ", role="
                 + editInternApplicationDescriptor.getRole().orElse(null) + ", cycle="
                 + editInternApplicationDescriptor.getCycle().orElse(null) + ", status="
-                + editInternApplicationDescriptor.getStatus().orElse(null) + "}";
+                + editInternApplicationDescriptor.getStatus().orElse(null) + ", deadline="
+                + editInternApplicationDescriptor.getCycle().orElse(null) + "}";
         assertEquals(expected, editInternApplicationDescriptor.toString());
     }
 }
