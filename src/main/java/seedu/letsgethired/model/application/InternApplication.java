@@ -69,7 +69,9 @@ public class InternApplication {
         }
 
         return otherInternApplication != null
-                && otherInternApplication.getCompany().equals(getCompany());
+                && otherInternApplication.getCompany().equals(getCompany())
+                && otherInternApplication.getRole().equals(getRole())
+                && otherInternApplication.getCycle().equals(getCycle());
     }
 
     /**
@@ -91,8 +93,7 @@ public class InternApplication {
         InternApplication otherInternApplication = (InternApplication) other;
         return company.equals(otherInternApplication.company)
                 && role.equals(otherInternApplication.role)
-                && cycle.equals(otherInternApplication.cycle)
-                && status.equals(otherInternApplication.status);
+                && cycle.equals(otherInternApplication.cycle);
     }
 
     @Override
