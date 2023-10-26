@@ -1,6 +1,11 @@
 package seedu.letsgethired.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_COMPANY;
+import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_CYCLE;
+import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE;
+import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_ROLE;
+import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_STATUS;
 
 import java.util.function.Predicate;
 
@@ -18,10 +23,21 @@ public class FindCommand extends Command {
     public static final String COMMAND_WORD = "find";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Finds all intern applications whose company contain"
-            + "the specified search string (case-insensitive) and displays them as a list with index numbers.\n"
-            + "Parameters: SEARCH_STRING\n"
-            + "Example: " + COMMAND_WORD + " Jane Street";
+            + ": Finds all intern applications for which the specified field contains"
+            + " the specified search string (case-insensitive) and displays them as a list with index numbers.\n"
+            + "Parameters: "
+            + "[" + PREFIX_COMPANY + "SEARCH_STRING_COMPANY] "
+            + "[" + PREFIX_ROLE + "SEARCH_STRING_ROLE] "
+            + "[" + PREFIX_CYCLE + "SEARCH_STRING_CYCLE] "
+            + "[" + PREFIX_STATUS + "SEARCH_STRING_STATUS] "
+            + "[" + PREFIX_NOTE + "SEARCH_STRING_NOTE] "
+            + "\nExample: " + COMMAND_WORD + " "
+            + PREFIX_ROLE + "Software Engineering "
+            + PREFIX_CYCLE + "Summer "
+            + PREFIX_STATUS + "Pending ";;
+
+    public static final String NO_FIND_SPECIFIED = "At least one keyword to find and field to be searched "
+            + "must be provided";
 
     private final Predicate<InternApplication> predicate;
 

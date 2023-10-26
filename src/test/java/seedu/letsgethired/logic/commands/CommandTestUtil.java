@@ -10,13 +10,15 @@ import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_STATUS;
 import static seedu.letsgethired.testutil.Assert.assertThrows;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import javafx.util.Pair;
 import seedu.letsgethired.commons.core.index.Index;
 import seedu.letsgethired.logic.commands.exceptions.CommandException;
 import seedu.letsgethired.model.InternTracker;
 import seedu.letsgethired.model.Model;
-import seedu.letsgethired.model.application.CompanyPartialMatchPredicate;
+import seedu.letsgethired.model.application.CompanyContainsFieldKeywordsPredicate;
 import seedu.letsgethired.model.application.InternApplication;
 import seedu.letsgethired.testutil.EditInternApplicationDescriptorBuilder;
 
@@ -35,6 +37,7 @@ public class CommandTestUtil {
     public static final String VALID_STATUS_REJECTED = "Rejected";
     public static final String VALID_NOTE_JANE_STREET = "Jane Street is the leading market maker in the APAC region";
     public static final String VALID_NOTE_BYTEDANCE = "Bytedance requires back end developers to know the MERN stack";
+    public static final String VALID_DEADLINE = "25 Oct 2023";
     public static final String COMPANY_DESC_JANE_STREET = " " + PREFIX_COMPANY + VALID_COMPANY_JANE_STREET;
     public static final String COMPANY_DESC_BYTEDANCE = " " + PREFIX_COMPANY + VALID_COMPANY_BYTEDANCE;
     public static final String ROLE_DESC_FULL_STACK = " " + PREFIX_ROLE + VALID_ROLE_FULL_STACK;
@@ -64,12 +67,14 @@ public class CommandTestUtil {
                 .withRole(VALID_ROLE_FULL_STACK)
                 .withCycle(VALID_CYCLE_SUMMER)
                 .withStatus(VALID_STATUS_ACCEPTED)
+                .withDeadline(VALID_DEADLINE)
                 .build();
         DESC_BYTEDANCE = new EditInternApplicationDescriptorBuilder()
                 .withCompany(VALID_COMPANY_BYTEDANCE)
                 .withRole(VALID_ROLE_BACK_END)
                 .withCycle(VALID_CYCLE_WINTER)
                 .withStatus(VALID_STATUS_REJECTED)
+                .withDeadline(VALID_DEADLINE)
                 .build();
     }
 
@@ -136,7 +141,8 @@ public class CommandTestUtil {
 
         InternApplication internApplication = model.getFilteredInternApplicationList().get(targetIndex.getZeroBased());
         final String searchString = internApplication.getCompany().value;
-        model.updateFilteredInternApplicationList(new CompanyPartialMatchPredicate(searchString));
+        model.updateFilteredInternApplicationList(new CompanyContainsFieldKeywordsPredicate(Arrays.asList(
+                new Pair<>(PREFIX_COMPANY, searchString))));
 
         assertEquals(1, model.getFilteredInternApplicationList().size());
     }

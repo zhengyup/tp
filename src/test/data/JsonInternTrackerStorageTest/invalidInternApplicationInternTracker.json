@@ -4,6 +4,7 @@
     "role": "Intern",
     "cycle": "Summer 2024",
     "note": "Valid note",
-    "status" : "Pending"
+    "status" : "Pending",
+    "deadline":  "24 Oct 2023"
   } ]
 }
