@@ -190,19 +190,19 @@ Given below is an example usage scenario and how the undo mechanism behaves at e
 Step 1. The user launches the application for the first time. The `VersionedInternTracker` will be
 initialized with an empty `savedStates`.
 
-<puml src="diagrams/UndoRedoState0.puml" alt="UndoRedoState0" />
+<puml src="diagrams/UndoState0.puml" alt="UndoState0" />
 
 Step 2. The user executes `delete 5` command to delete the 5th internApplication in the intern tracker.
 The `delete` command calls `Model#deleteInternApplication()`, which calls `VersionedInternTracker#commit()
 `, adding a copy of the current `internApplications` to `savedStates` before carrying out the delete action.
 
-<puml src="diagrams/UndoRedoState1.puml" alt="UndoRedoState1" />
+<puml src="diagrams/UndoState1.puml" alt="UndoState1" />
 
 Step 3. The user executes `add n/Google …​` to add a new internApplication. The `add` command calls
 `Model#add()` which also calls `VersionedInternTracker#commit()`, adding a copy of the current `internApplications`
 to `savedStates` before carrying out the add action.
 
-<puml src="diagrams/UndoRedoState2.puml" alt="UndoRedoState2" />
+<puml src="diagrams/UndoState2.puml" alt="UndoState2" />
 
 <box type="info" seamless>
 
@@ -215,7 +215,7 @@ Step 4. The user now decides that adding the internApplication was a mistake, an
 by executing the `undo` command. The `undo` command will call `Model#undoAddressBook()`, which pops the latest
 `internApplications` state from `savedStates` and assigns it to the current internApplications.
 
-<puml src="diagrams/UndoRedoState3.puml" alt="UndoRedoState3" />
+<puml src="diagrams/UndoState3.puml" alt="UndoState3" />
 
 
 <box type="info" seamless>
@@ -241,7 +241,7 @@ Step 5. The user then decides to execute the command `list`. Commands that do no
 such as `list`, will usually not call `VersionedInternTracker.commit()`, `Model#undoAction()`
 Thus, the `savedStates` remains unchanged.
 
-<puml src="diagrams/UndoRedoState4.puml" alt="UndoRedoState4" />
+<puml src="diagrams/UndoState4.puml" alt="UndoState4" />
 
 The following activity diagram summarizes what happens when a user executes a new command:
 
@@ -255,7 +255,7 @@ The following activity diagram summarizes what happens when a user executes a ne
   * Pros: Easy to implement.
   * Cons: May have performance issues in terms of memory usage.
 
-* **Alternative 2:** Individual command knows how to undo/redo by
+* **Alternative 2:** Individual command knows how to undo by
   itself.
   * Pros: Will use less memory (e.g. for `delete`, just save the internApplication being deleted).
   * Cons: We must ensure that the implementation of each individual command are correct.
@@ -263,7 +263,7 @@ The following activity diagram summarizes what happens when a user executes a ne
 **Aspect: How history is implemented:**
 
 * **Alternative 1:** Using a list and pointer to implement version control
-    * Pros: Will allow for more features redo command
+    * Pros: Will allow for more features command
     * Cons: Uses more memory than a stack, as saved states are still stored after undo.
 
 * **Alternative 2:** Store the complementary command for each action in the stack
