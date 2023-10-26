@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import seedu.letsgethired.model.InternTracker;
+import seedu.letsgethired.model.VersionedInternTracker;
 import seedu.letsgethired.model.application.InternApplication;
 
 /**
@@ -111,8 +111,8 @@ public class TypicalInternApplications {
     /**
      * Returns an {@code InternTracker} with all the typical intern applications.
      */
-    public static InternTracker getTypicalInternTracker() {
-        InternTracker ab = new InternTracker();
+    public static VersionedInternTracker getTypicalInternTracker() {
+        VersionedInternTracker ab = new VersionedInternTracker();
         for (InternApplication internApplication : getTypicalInternApplications()) {
             ab.addApplication(internApplication);
         }

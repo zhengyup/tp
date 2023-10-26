@@ -24,6 +24,7 @@ import seedu.letsgethired.logic.commands.FindCommand;
 import seedu.letsgethired.logic.commands.HelpCommand;
 import seedu.letsgethired.logic.commands.ListCommand;
 import seedu.letsgethired.logic.commands.NoteCommand;
+import seedu.letsgethired.logic.commands.UndoCommand;
 import seedu.letsgethired.logic.commands.ViewCommand;
 import seedu.letsgethired.logic.parser.exceptions.ParseException;
 import seedu.letsgethired.model.application.CompanyContainsFieldKeywordsPredicate;
@@ -107,6 +108,11 @@ public class InternTrackerParserTest {
     public void parseCommand_view() throws Exception {
         assertTrue(parser.parseCommand(ViewCommand.COMMAND_WORD + " "
                 + INDEX_FIRST_APPLICATION.getOneBased()) instanceof ViewCommand);
+    }
+
+    @Test
+    public void parseCommand_undo() throws Exception {
+        assertTrue(parser.parseCommand(UndoCommand.COMMAND_WORD) instanceof UndoCommand);
     }
 
     @Test

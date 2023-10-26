@@ -16,7 +16,6 @@ public class InternApplication {
     private final Company company;
     private final Role role;
     private final Cycle cycle;
-
     // Data fields
     private final Note note;
     private final Status status;
@@ -114,4 +113,12 @@ public class InternApplication {
                 .toString();
     }
 
+    /**
+     * Creates a copy of the current InternApplication object.
+     *
+     * @return A new InternApplication object with the same company, role, cycle, note, and status.
+     */
+    public InternApplication clone() {
+        return new InternApplication(this.company, this.role, this.cycle, this.note, this.status, this.deadline);
+    }
 }

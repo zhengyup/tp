@@ -2,6 +2,7 @@ package seedu.letsgethired.model.application;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_COMPANY_BYTEDANCE;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_CYCLE_SUMMER;
@@ -18,6 +19,15 @@ import org.junit.jupiter.api.Test;
 import seedu.letsgethired.testutil.InternApplicationBuilder;
 
 public class InternApplicationTest {
+
+    private void assertSameAttributes(InternApplication originalApplication,
+                                      InternApplication clonedApplication) {
+        assertEquals(originalApplication.getCompany(), clonedApplication.getCompany());
+        assertEquals(originalApplication.getRole(), clonedApplication.getRole());
+        assertEquals(originalApplication.getCycle(), clonedApplication.getCycle());
+        assertEquals(originalApplication.getNote(), clonedApplication.getNote());
+        assertEquals(originalApplication.getStatus(), clonedApplication.getStatus());
+    }
     @Test
     public void isSameInternApplication() {
         // same object -> returns true
@@ -51,6 +61,21 @@ public class InternApplicationTest {
         String nameWithTrailingSpaces = VALID_COMPANY_BYTEDANCE + " ";
         editedOtherInternApplication = new InternApplicationBuilder(B).withCompany(nameWithTrailingSpaces).build();
         assertFalse(B.isSameApplication(editedOtherInternApplication));
+    }
+
+    @Test
+    public void testClone() {
+        // Create an instance of InternApplication for testing
+        InternApplication originalApplication = JANE_STREET;
+
+        // Call the clone method
+        InternApplication clonedApplication = originalApplication.clone();
+
+        // Verify that the cloned object is not the same reference
+        assertNotSame(originalApplication, clonedApplication);
+
+        // Verify that the cloned object has the same values
+        assertSameAttributes(originalApplication, clonedApplication);
     }
 
     @Test
