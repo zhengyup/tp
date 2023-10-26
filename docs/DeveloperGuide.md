@@ -208,7 +208,7 @@ The following sequence diagram shows how Card Click feature:
       * Pros: Easier to implement.
       * Cons: Requires future developers working on the code to be mindful of how the String input should be structured for successful parsing
 
-### \[Proposed\] House-keep feature
+###  House-keep feature
 
 #### Proposed Implementation
 
