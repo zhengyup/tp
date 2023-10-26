@@ -269,6 +269,49 @@ _{more aspects and alternatives to be added}_
 
 _{Explain here how the data archiving feature will be implemented}_
 
+### Note command
+
+The note command enables the users to add or delete notes to the internship application.
+
+#### Implementation
+
+To add a `Note`, the `NoteCommand` must be executed.
+
+The `NoteCommand` is parsed by the `NoteCommandParser`.
+`NoteCommandParser#parse()` parses the user input to return a `NoteCommand` object that will be executed.
+
+Given below is an example usage scenario and how the mechanism behaves at each step.
+
+Step 1. The user keys in the command word to add a note, `note`, followed by the compulsory parameters needed to
+add a note, namely the `INDEX` and the `note` component prefixed by `i/`. In this scenario, the user keys in
+`note 1 i/Need to revise Rust` into the command box which will execute the `NoteCommandParser` to check 
+through the arguments and ensure that the compulsory fields are present. The
+parser returns a `NoteCommand` object with the `Note` object ready to be added into `Model`
+
+Step 2. The `NoteCommand#execute()` method is called by the `LogicManager`. The `NoteCommand#execute()` method
+creates a new InternshipApplication with the note to replace the original one.
+
+Step 3. The `NoteCommand` calls the `Model#setInternApplication()` and `Model#updateFilteredInternApplicationList()` 
+methods to add the new internship application with the note to the model, and replace the old internship application.
+
+Step 4. The `NoteCommand` creates a `CommandResult` object that contains feedback and display to the user, which
+is returned to the `LogicManager`.
+
+The sequence diagram below shows the add listing process.
+
+<puml src="diagrams/NoteCommandSequenceDiagram.puml" alt="Note Command Sequence Diagram" />
+
+### Find command
+
+The find command enables the users to search internship applications by looking up a keyword in any of the fields for an internship application.
+
+#### Implementation
+
+
+
+#### Design considerations:
+
+
 
 --------------------------------------------------------------------------------------------------------------------
 
