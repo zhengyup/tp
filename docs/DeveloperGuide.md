@@ -206,6 +206,33 @@ The following sequence diagram shows how Card Click feature:
       * Pros: Easier to implement.
       * Cons: Requires future developers working on the code to be mindful of how the String input should be structured for successful parsing
 
+### \[Proposed\] House-keep feature
+
+#### Proposed Implementation
+
+The proposed mechanism is facilitated by the delete button widget below SelectView and Deadlines feature. 
+Additionally, it modifies the following operations:
+
+* `InternApplicationUtiltyButton#handleDeleteClick()` — Deletes all entries in the list that is older than 1 year compared to present time.
+
+The following sequence diagram shows how the sort operation works:
+
+<puml src="diagrams/HousekeepDiagram.puml" alt="HousekeepDiagram" />
+
+
+#### Design Considerations
+
+**Aspect: How house-keep is done**
+
+* **Alternative 1 (current choice):** Create a handler function that iterates through each InternApplication in the list and invokes a `DeleteCommand#execute()` if the predicate is satisfied.
+    * Pros: Lesser coupling
+    * Cons: There is a need to figure out how to make it so the feedback of the DeleteCommand is not shown in ResultDisplay widget.
+* **Alternative 2:** Create a handler function that directly calls onto the `Model#deleteInternApplication()` if the predicate passes.
+    * Pros: Easier to implement
+    * Cons: Increase in coupling and dependencies from the Model class
+
+
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
