@@ -80,7 +80,7 @@ The `UI` component,
 * executes user commands using the `Logic` component.
 * listens for changes to `Model` data so that the UI can be updated with the modified data.
 * keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
-* depends on some classes in the `Model` component, as it displays `InternApplication` object residing in the 
+* depends on some classes in the `Model` component, as it displays `InternApplication` object residing in the
   `Model`.
 
 ### Logic component
@@ -102,7 +102,7 @@ The sequence diagram below illustrates the interactions within the `Logic` compo
 
 How the `Logic` component works:
 
-1. When `Logic` is called upon to execute a command, it is passed to an `InternTrackerParser` object which in 
+1. When `Logic` is called upon to execute a command, it is passed to an `InternTrackerParser` object which in
    turn creates a parser that matches the command (e.g., `DeleteCommandParser`) and uses it to parse the command.
 1. This results in a `Command` object (more precisely, an object of one of its subclasses e.g., `DeleteCommand`) which is executed by the `LogicManager`.
 1. The command can communicate with the `Model` when it is executed (e.g. to delete a internApplication).
@@ -113,9 +113,9 @@ Here are the other classes in `Logic` (omitted from the class diagram above) tha
 <puml src="diagrams/ParserClasses.puml" width="600"/>
 
 How the parsing works:
-* When called upon to parse a user command, the `InternTrackerParser` class creates an `XYZCommandParser` 
-  (`XYZ` is a placeholder for the specific command name e.g., `AddCommandParser`) which uses the other 
-  classes shown above to parse the user command and create a `XYZCommand` object (e.g., `AddCommand`) 
+* When called upon to parse a user command, the `InternTrackerParser` class creates an `XYZCommandParser`
+  (`XYZ` is a placeholder for the specific command name e.g., `AddCommandParser`) which uses the other
+  classes shown above to parse the user command and create a `XYZCommand` object (e.g., `AddCommand`)
   which the `InternTrackerParser` returns back as a `Command` object.
 * All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
@@ -127,13 +127,15 @@ How the parsing works:
 
 The `Model` component,
 
-* stores the intern tracker data i.e., all `InternApplication` objects (which are contained in a 
-  `UniqueApplicationList` 
+* stores the intern tracker data i.e., all `InternApplication` objects (which are contained in a
+  `UniqueApplicationList`
   object).
-* stores the currently 'selected' `InternApplication` objects (e.g., results of a search query) as a separate 
-  _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<InternApplication>` that 
-  can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
-* stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
+* stores the currently 'selected' `InternApplication` objects (e.g., results of a search query) as a separate
+  _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<InternApplication>` that
+  can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the 
+  data in the list change.
+* stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a
+* `ReadOnlyUserPref` objects.
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
 
 <box type="info" seamless>
@@ -155,7 +157,7 @@ unique tag, instead of each `InternApplication` needing their own `Tag` objects.
 <puml src="diagrams/StorageClassDiagram.puml" width="550" />
 
 The `Storage` component,
-* can save both intern tracker data and user preference data in JSON format, and read them back into 
+* can save both intern tracker data and user preference data in JSON format, and read them back into
   corresponding objects.
 * inherits from both `AddressBookStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
 * depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`)
@@ -239,46 +241,59 @@ The sequence diagram below shows the process of finding internship applications.
 
 ### \[Proposed\] Undo/redo feature
 
+### Undo feature
+
+
 #### Proposed Implementation
 
-The proposed undo/redo mechanism is facilitated by `VersionedAddressBook`. It extends `AddressBook` with an undo/redo history, stored internally as an `addressBookStateList` and `currentStatePointer`. Additionally, it implements the following operations:
+The proposed undo mechanism is facilitated by `VersionedInternTracker`. It extends `InternTracker` with an
+undo history, stored internally as a stack `savedStates`. Additionally, it implements the
+following operations:
 
 * `VersionedInternTracker#commit()` — Saves the current intern tracker state in its history.
 * `VersionedInternTracker#undo()` — Restores the previous intern tracker state from its history.
-* `VersionedInternTracker#redo()` — Restores a previously undone intern tracker state from its history.
 
-These operations are exposed in the `Model` interface as `Model#commitAddressBook()`, `Model#undoAddressBook()` and `Model#redoAddressBook()` respectively.
+VersionedInternTracker#undo() is exposed in the `Model` interface as `Model#undoAction()`
 
-Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.
+Given below is an example usage scenario and how the undo mechanism behaves at each step.
 
-Step 1. The user launches the application for the first time. The `VersionedInternTracker` will be initialized with the initial intern tracker state, and the `currentStatePointer` pointing to that single intern tracker state.
+Step 1. The user launches the application for the first time. The `VersionedInternTracker` will be
+initialized with an empty `savedStates`.
 
-<puml src="diagrams/UndoRedoState0.puml" alt="UndoRedoState0" />
+<puml src="diagrams/UndoState0.puml" alt="UndoState0" />
 
-Step 2. The user executes `delete 5` command to delete the 5th internApplication in the intern tracker. 
-The `delete` command calls `Model#commitAddressBook()`, causing the modified state of the intern tracker after the `delete 5` command executes to be saved in the `addressBookStateList`, and the `currentStatePointer` is shifted to the newly inserted intern tracker state.
+Step 2. The user executes `delete 5` command to delete the 5th internApplication in the intern tracker.
+The `delete` command calls `Model#deleteInternApplication()`, which calls `VersionedInternTracker#commit()
+`, adding a copy of the current `internApplications` to `savedStates` before carrying out the delete action.
 
-<puml src="diagrams/UndoRedoState1.puml" alt="UndoRedoState1" />
+<puml src="diagrams/UndoState1.puml" alt="UndoState1" />
 
-Step 3. The user executes `add n/David …​` to add a new internApplication. The `add` command also calls `Model#commitInternTracker()`, causing another modified intern tracker state to be saved into the `addressBookStateList`.
+Step 3. The user executes `add n/Google …​` to add a new internApplication. The `add` command calls
+`Model#add()` which also calls `VersionedInternTracker#commit()`, adding a copy of the current `internApplications`
+to `savedStates` before carrying out the add action.
 
-<puml src="diagrams/UndoRedoState2.puml" alt="UndoRedoState2" />
+<puml src="diagrams/UndoState2.puml" alt="UndoState2" />
 
 <box type="info" seamless>
 
-**Note:** If a command fails its execution, it will not call `Model#commitInternTracker()`, so the intern tracker state will not be saved into the `InternTrackerStateList`.
+**Note:** If a command fails its execution, it will not call `VersionedInternTracker#commit()`, so the
+`internApplications` state will not be added to `savedStates`.
 
 </box>
 
-Step 4. The user now decides that adding the internApplication was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoAddressBook()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous intern tracker state, and restores the intern tracker to that state.
+Step 4. The user now decides that adding the internApplication was a mistake, and decides to undo that action
+by executing the `undo` command. The `undo` command will call `Model#undoAddressBook()`, which pops the latest
+`internApplications` state from `savedStates` and assigns it to the current internApplications.
 
-<puml src="diagrams/UndoRedoState3.puml" alt="UndoRedoState3" />
+<puml src="diagrams/UndoState3.puml" alt="UndoState3" />
 
 
 <box type="info" seamless>
 
-**Note:** If the `currentStatePointer` is at index 0, pointing to the initial AddressBook state, then there are no previous AddressBook states to restore. The `undo` command uses `Model#canUndoAddressBook()` to check if this is the case. If so, it will return an error to the user rather
-than attempting to perform the undo.
+**Note:** If the size of `savedStates` is 0, meaning the stack is empty, then there are no previous
+internApplications states to restore. The `undo` command calls `VersionedInternTracker#undo()`, which returns
+False if there are no states to restore, and displays a message to the user that the latest change has already
+been reached.
 
 </box>
 
@@ -292,26 +307,11 @@ The following sequence diagram shows how the undo operation works:
 
 </box>
 
-The `redo` command does the opposite — it calls `Model#redoInternTracker()`, which shifts the `currentStatePointer` once to the right, pointing to the previously undone state, and restores the intern tracker to that state.
+Step 5. The user then decides to execute the command `list`. Commands that do not modify the intern tracker,
+such as `list`, will usually not call `VersionedInternTracker.commit()`, `Model#undoAction()`
+Thus, the `savedStates` remains unchanged.
 
-<box type="info" seamless>
-
-**Note:** If the `currentStatePointer` is at index `InternTrackerStateList.size() - 1`, pointing to the 
-latest intern tracker  state, then there are no undone InternTracker states to restore. The `redo` command 
-uses 
-`Model#canRedoInternTracker()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-
-</box>
-
-Step 5. The user then decides to execute the command `list`. Commands that do not modify the intern tracker, 
-such as 
-`list`, will usually not call `Model#commitInternTracker()`, `Model#undoInternTracker()` or `Model#redoInternTracker()`. Thus, the `InternTrackerStateList` remains unchanged.
-
-<puml src="diagrams/UndoRedoState4.puml" alt="UndoRedoState4" />
-
-Step 6. The user executes `clear`, which calls `Model#commitInternTracker()`. Since the `currentStatePointer` is not pointing at the end of the `InternTrackerStateList`, all intern tracker states after the `currentStatePointer` will be purged. Reason: It no longer makes sense to redo the `add n/David …​` command. This is the behavior that most modern desktop applications follow.
-
-<puml src="diagrams/UndoRedoState5.puml" alt="UndoRedoState5" />
+<puml src="diagrams/UndoState4.puml" alt="UndoState4" />
 
 The following activity diagram summarizes what happens when a user executes a new command:
 
@@ -319,18 +319,26 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 #### Design considerations:
 
-**Aspect: How undo & redo executes:**
+**Aspect: How undo executes:**
 
 * **Alternative 1 (current choice):** Saves the entire intern tracker.
   * Pros: Easy to implement.
   * Cons: May have performance issues in terms of memory usage.
 
-* **Alternative 2:** Individual command knows how to undo/redo by
+* **Alternative 2:** Individual command knows how to undo by
   itself.
   * Pros: Will use less memory (e.g. for `delete`, just save the internApplication being deleted).
   * Cons: We must ensure that the implementation of each individual command are correct.
 
-_{more aspects and alternatives to be added}_
+**Aspect: How history is implemented:**
+
+* **Alternative 1:** Using a list and pointer to implement version control
+    * Pros: Will allow for more features command
+    * Cons: Uses more memory than a stack, as saved states are still stored after undo.
+
+* **Alternative 2:** Store the complementary command for each action in the stack
+    * Pros: Will use less memory (e.g. for `add`, just save the corresponding `delete`).
+    * Cons: We must ensure that the implementation of complementing each individual command are correct.
 
 ### \[Proposed\] Data archiving
 
@@ -380,7 +388,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `*`      | user with many applications    | include contact details in the internship details            | find who to contact for further updates/information                             |
 | `* *`    | user with many applications    | quickly search for a application                             | efficiently find the entry I am looking for                                     |
 | `* *`    | user with diverse applications | categorize companies by industry                             | organise my applications better                                                 |
-| `* *`    | user with many options         | sort by priority level for my applications                   | allocate my time and resources efficiently                                      |                        
+| `* *`    | user with many options         | sort by priority level for my applications                   | allocate my time and resources efficiently                                      |              
 | `* *`    | conscientious user             | attach notes to each application                             | I can jot down important information about the company or application process   |
 | `* *`    | organised user                 | sort my applications                                         | I can easily get an organised view of my applications                           |
 

@@ -19,9 +19,9 @@ import seedu.letsgethired.model.application.InternApplication;
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
-    private final InternTracker internTracker;
+    private final VersionedInternTracker internTracker;
     private final UserPrefs userPrefs;
-    private final FilteredList<InternApplication> filteredInternApplications;
+    private FilteredList<InternApplication> filteredInternApplications;
 
     /**
      * Initializes a ModelManager with the given internTracker and userPrefs.
@@ -31,7 +31,7 @@ public class ModelManager implements Model {
 
         logger.fine("Initializing with intern tracker: " + internTracker + " and user prefs " + userPrefs);
 
-        this.internTracker = new InternTracker(internTracker);
+        this.internTracker = new VersionedInternTracker(internTracker);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredInternApplications = new FilteredList<>(this.internTracker.getApplicationList());
     }
@@ -94,11 +94,13 @@ public class ModelManager implements Model {
 
     @Override
     public void deleteInternApplication(InternApplication target) {
+        internTracker.commit();
         internTracker.removeApplication(target);
     }
 
     @Override
     public void addInternApplication(InternApplication internApplication) {
+        internTracker.commit();
         internTracker.addApplication(internApplication);
         updateFilteredInternApplicationList(PREDICATE_SHOW_ALL_APPLICATIONS);
     }
@@ -106,8 +108,15 @@ public class ModelManager implements Model {
     @Override
     public void setInternApplication(InternApplication target, InternApplication editedInternApplication) {
         requireAllNonNull(target, editedInternApplication);
-
+        internTracker.commit();
         internTracker.setApplication(target, editedInternApplication);
+    }
+
+    @Override
+    public void clearInternshipApplications() {
+        internTracker.commit();
+        internTracker.clear();
+        filteredInternApplications = new FilteredList<>(this.internTracker.getApplicationList());
     }
 
     //=========== Filtered Intern Application List Accessors =========================================================
@@ -143,6 +152,18 @@ public class ModelManager implements Model {
         return internTracker.getSelectedApplication();
     }
 
+    /**
+     * Undoes the previous add, edit or delete operation if available.
+     * @return {@code true} if an action was undone successfully; {@code false} if there are no actions to undo.
+     */
+
+    @Override
+    public boolean undoAction() {
+        boolean isRestored = internTracker.undo();
+        filteredInternApplications = new FilteredList<>(this.internTracker.getApplicationList());
+        return isRestored;
+    }
+
     @Override
     public boolean equals(Object other) {
         if (other == this) {
@@ -159,5 +180,4 @@ public class ModelManager implements Model {
                 && userPrefs.equals(otherModelManager.userPrefs)
                 && filteredInternApplications.equals(otherModelManager.filteredInternApplications);
     }
-
 }

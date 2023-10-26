@@ -146,5 +146,4 @@ public class CommandTestUtil {
 
         assertEquals(1, model.getFilteredInternApplicationList().size());
     }
-
 }
