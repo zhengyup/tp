@@ -235,26 +235,11 @@ The following sequence diagram shows how the undo operation works:
 
 </box>
 
-The `redo` command does the opposite — it calls `Model#redoInternTracker()`, which shifts the `currentStatePointer` once to the right, pointing to the previously undone state, and restores the intern tracker to that state.
-
-<box type="info" seamless>
-
-**Note:** If the `currentStatePointer` is at index `InternTrackerStateList.size() - 1`, pointing to the 
-latest intern tracker  state, then there are no undone InternTracker states to restore. The `redo` command 
-uses 
-`Model#canRedoInternTracker()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-
-</box>
-
 Step 5. The user then decides to execute the command `list`. Commands that do not modify the intern tracker, 
-such as 
-`list`, will usually not call `Model#commitInternTracker()`, `Model#undoInternTracker()` or `Model#redoInternTracker()`. Thus, the `InternTrackerStateList` remains unchanged.
+such as `list`, will usually not call `VersionedInternTracker.commit()`, `Model#undoAction()`
+Thus, the `savedStates` remains unchanged.
 
 <puml src="diagrams/UndoRedoState4.puml" alt="UndoRedoState4" />
-
-Step 6. The user executes `clear`, which calls `Model#commitInternTracker()`. Since the `currentStatePointer` is not pointing at the end of the `InternTrackerStateList`, all intern tracker states after the `currentStatePointer` will be purged. Reason: It no longer makes sense to redo the `add n/David …​` command. This is the behavior that most modern desktop applications follow.
-
-<puml src="diagrams/UndoRedoState5.puml" alt="UndoRedoState5" />
 
 The following activity diagram summarizes what happens when a user executes a new command:
 
@@ -262,7 +247,7 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 #### Design considerations:
 
-**Aspect: How undo & redo executes:**
+**Aspect: How undo executes:**
 
 * **Alternative 1 (current choice):** Saves the entire intern tracker.
   * Pros: Easy to implement.
@@ -273,7 +258,15 @@ The following activity diagram summarizes what happens when a user executes a ne
   * Pros: Will use less memory (e.g. for `delete`, just save the internApplication being deleted).
   * Cons: We must ensure that the implementation of each individual command are correct.
 
-_{more aspects and alternatives to be added}_
+**Aspect: How history is implemented:**
+
+* **Alternative 1:** Using a list and pointer to implement version control
+    * Pros: Will allow for more features redo command
+    * Cons: Uses more memory than a stack, as saved states are still stored after undo.
+
+* **Alternative 2:** Store the complementary command for each action in the stack
+    * Pros: Will use less memory (e.g. for `add`, just save the corresponding `delete`).
+    * Cons: We must ensure that the implementation of complementing each individual command are correct.
 
 ### \[Proposed\] Data archiving
 

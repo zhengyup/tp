@@ -37,7 +37,6 @@ activate Model
 Model -> VersionedInternTracker : undo()
 activate VersionedInternTracker
 
-VersionedInternTracker -> VersionedInternTracker :setInternApplications()
 VersionedInternTracker --> Model :
 deactivate VersionedInternTracker
 
@@ -48,7 +47,7 @@ UndoCommand --> LogicManager : result
 deactivate UndoCommand
 UndoCommand -[hidden]-> LogicManager : result
 destroy UndoCommand
-\
+
 [<--LogicManager
 deactivate LogicManager
 @enduml
