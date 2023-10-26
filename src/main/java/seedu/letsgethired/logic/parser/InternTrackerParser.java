@@ -19,6 +19,7 @@ import seedu.letsgethired.logic.commands.HelpCommand;
 import seedu.letsgethired.logic.commands.ListCommand;
 import seedu.letsgethired.logic.commands.NoteCommand;
 import seedu.letsgethired.logic.commands.SortCommand;
+import seedu.letsgethired.logic.commands.UndoCommand;
 import seedu.letsgethired.logic.commands.ViewCommand;
 import seedu.letsgethired.logic.parser.exceptions.ParseException;
 
@@ -89,6 +90,9 @@ public class InternTrackerParser {
 
         case HelpCommand.COMMAND_WORD:
             return new HelpCommand();
+
+        case UndoCommand.COMMAND_WORD:
+            return new UndoCommand();
 
         default:
             logger.finer("This user input caused a ParseException: " + userInput);

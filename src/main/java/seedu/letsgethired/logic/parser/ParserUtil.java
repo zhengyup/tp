@@ -7,6 +7,7 @@ import seedu.letsgethired.commons.util.StringUtil;
 import seedu.letsgethired.logic.parser.exceptions.ParseException;
 import seedu.letsgethired.model.application.Company;
 import seedu.letsgethired.model.application.Cycle;
+import seedu.letsgethired.model.application.Deadline;
 import seedu.letsgethired.model.application.Note;
 import seedu.letsgethired.model.application.Role;
 import seedu.letsgethired.model.application.Status;
@@ -126,5 +127,20 @@ public class ParserUtil {
         }
 
         throw new ParseException(SortOrder.MESSAGE_CONSTRAINTS);
+    }
+
+    /**
+     * Parses a {@code String deadline} into an {@code Deadline}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code date} is invalid.
+     */
+    public static Deadline parseDeadline(String date) throws ParseException {
+        requireNonNull(date);
+        String trimmedDate = date.trim();
+        if (!Deadline.isValidDeadline(trimmedDate)) {
+            throw new ParseException(Deadline.MESSAGE_CONSTRAINTS);
+        }
+        return new Deadline(trimmedDate);
     }
 }

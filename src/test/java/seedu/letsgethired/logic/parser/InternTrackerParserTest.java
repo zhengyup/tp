@@ -4,12 +4,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.letsgethired.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.letsgethired.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
+import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_COMPANY;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE;
 import static seedu.letsgethired.testutil.Assert.assertThrows;
 import static seedu.letsgethired.testutil.TypicalIndexes.INDEX_FIRST_APPLICATION;
 
+import java.util.Arrays;
+
 import org.junit.jupiter.api.Test;
 
+import javafx.util.Pair;
 import seedu.letsgethired.logic.commands.AddCommand;
 import seedu.letsgethired.logic.commands.ClearCommand;
 import seedu.letsgethired.logic.commands.DeleteCommand;
@@ -20,9 +24,10 @@ import seedu.letsgethired.logic.commands.FindCommand;
 import seedu.letsgethired.logic.commands.HelpCommand;
 import seedu.letsgethired.logic.commands.ListCommand;
 import seedu.letsgethired.logic.commands.NoteCommand;
+import seedu.letsgethired.logic.commands.UndoCommand;
 import seedu.letsgethired.logic.commands.ViewCommand;
 import seedu.letsgethired.logic.parser.exceptions.ParseException;
-import seedu.letsgethired.model.application.CompanyPartialMatchPredicate;
+import seedu.letsgethired.model.application.CompanyContainsFieldKeywordsPredicate;
 import seedu.letsgethired.model.application.InternApplication;
 import seedu.letsgethired.model.application.Note;
 import seedu.letsgethired.testutil.EditInternApplicationDescriptorBuilder;
@@ -74,8 +79,9 @@ public class InternTrackerParserTest {
     public void parseCommand_find() throws Exception {
         String searchString = "Jane Street";
         FindCommand command = (FindCommand) parser.parseCommand(
-                FindCommand.COMMAND_WORD + " " + searchString);
-        assertEquals(new FindCommand(new CompanyPartialMatchPredicate(searchString)), command);
+                FindCommand.COMMAND_WORD + " " + PREFIX_COMPANY + searchString);
+        assertEquals(new FindCommand(new CompanyContainsFieldKeywordsPredicate(
+                Arrays.asList(new Pair<>(PREFIX_COMPANY, searchString)))), command);
     }
 
     @Test
@@ -102,6 +108,11 @@ public class InternTrackerParserTest {
     public void parseCommand_view() throws Exception {
         assertTrue(parser.parseCommand(ViewCommand.COMMAND_WORD + " "
                 + INDEX_FIRST_APPLICATION.getOneBased()) instanceof ViewCommand);
+    }
+
+    @Test
+    public void parseCommand_undo() throws Exception {
+        assertTrue(parser.parseCommand(UndoCommand.COMMAND_WORD) instanceof UndoCommand);
     }
 
     @Test

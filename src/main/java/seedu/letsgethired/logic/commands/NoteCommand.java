@@ -60,7 +60,8 @@ public class NoteCommand extends Command {
                 internApplicationToEdit.getRole(),
                 internApplicationToEdit.getCycle(),
                 note,
-                internApplicationToEdit.getStatus());
+                internApplicationToEdit.getStatus(),
+                internApplicationToEdit.getDeadline());
 
         model.setInternApplication(internApplicationToEdit, editedInternApplication);
         model.updateFilteredInternApplicationList(PREDICATE_SHOW_ALL_APPLICATIONS);

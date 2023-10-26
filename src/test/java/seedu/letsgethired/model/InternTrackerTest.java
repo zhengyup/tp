@@ -5,7 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_STATUS_REJECTED;
 import static seedu.letsgethired.testutil.Assert.assertThrows;
+import static seedu.letsgethired.testutil.TypicalInternApplications.GOOGLE;
 import static seedu.letsgethired.testutil.TypicalInternApplications.JANE_STREET;
+import static seedu.letsgethired.testutil.TypicalInternApplications.OPTIVER;
 import static seedu.letsgethired.testutil.TypicalInternApplications.getTypicalInternTracker;
 
 import java.util.Arrays;
@@ -23,7 +25,7 @@ import seedu.letsgethired.testutil.InternApplicationBuilder;
 
 public class InternTrackerTest {
 
-    private final InternTracker internTracker = new InternTracker();
+    private final VersionedInternTracker internTracker = new VersionedInternTracker();
 
     @Test
     public void constructor() {
@@ -91,7 +93,7 @@ public class InternTrackerTest {
 
     @Test
     public void toStringMethod() {
-        String expected = InternTracker.class.getCanonicalName() + "{applications=" + internTracker
+        String expected = VersionedInternTracker.class.getCanonicalName() + "{applications=" + internTracker
                 .getApplicationList() + "}";
         assertEquals(expected, internTracker.toString());
     }
@@ -108,6 +110,14 @@ public class InternTrackerTest {
         assertTrue(internTracker.getSelectedApplication() == null);
     }
 
+    @Test
+    public void clear_existingInternApplications_success() {
+        internTracker.addApplication(JANE_STREET);
+        internTracker.addApplication(OPTIVER);
+        internTracker.addApplication(GOOGLE);
+        internTracker.clear();
+        assertTrue(internTracker.getApplicationList().size() == 0);
+    }
 
     /**
      * A stub ReadOnlyInternTracker whose intern applications list can violate interface constraints.

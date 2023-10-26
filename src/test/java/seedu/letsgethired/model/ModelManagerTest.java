@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_COMPANY;
 import static seedu.letsgethired.model.application.InternApplicationComparator.COMPANY_COMPARATOR_DESCENDING;
 import static seedu.letsgethired.testutil.Assert.assertThrows;
 import static seedu.letsgethired.testutil.TypicalInternApplications.JANE_STREET;
@@ -11,11 +12,13 @@ import static seedu.letsgethired.testutil.TypicalInternApplications.OPTIVER;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 
+import javafx.util.Pair;
 import seedu.letsgethired.commons.core.GuiSettings;
-import seedu.letsgethired.model.application.CompanyPartialMatchPredicate;
+import seedu.letsgethired.model.application.CompanyContainsFieldKeywordsPredicate;
 import seedu.letsgethired.testutil.InternTrackerBuilder;
 
 public class ModelManagerTest {
@@ -134,7 +137,8 @@ public class ModelManagerTest {
 
         // different filteredList -> returns false
         String searchString = JANE_STREET.getCompany().value;
-        modelManager.updateFilteredInternApplicationList(new CompanyPartialMatchPredicate(searchString));
+        modelManager.updateFilteredInternApplicationList(new CompanyContainsFieldKeywordsPredicate(
+                Arrays.asList(new Pair<>(PREFIX_COMPANY, searchString))));
         assertNotEquals(modelManager, new ModelManager(internTracker, userPrefs));
 
         // resets modelManager to initial state for upcoming tests
