@@ -36,7 +36,7 @@ LetsGetHired allows you to **add** and **organise** your internship applications
 ## **Getting Started**
 
 1. Ensure that you have Java `11` or above installed in your Computer
-   1. You can download it from the [Java SE 11 Downloads](https://www.oracle.com/sg/java/technologies/javase/jdk11-archive-downloads.html) page if you do not have it already.
+   * You can download it from the [Java SE 11 Downloads](https://www.oracle.com/sg/java/technologies/javase/jdk11-archive-downloads.html) page if you do not have it already.
 
 1. Download the **latest** `letsgethired.jar` from [our Github Releases](https://github.com/AY2324S1-CS2103T-W17-2/tp/releases).
 
@@ -77,7 +77,7 @@ To add your internship, go to the input box and type the following command:
    ```
    add n/Google r/Full Stack Developer c/Summer 2024
    ```
-This command specifies the company (Google), the role (Full Stack Developer), and the cycle (Summer 2024) for the internship that you have applied for.
+This command specifies the company (_Google_), the role (_Full Stack Developer_), and the cycle (_Summer 2024_) for the internship that you have applied for.
 
 After hitting `Enter`, your new internship entry will appear in the bottom left panel (List View) of the application, allowing you to keep track of your application details effortlessly.
 
@@ -122,6 +122,8 @@ To add notes to your internship entry, use the `note` command, specifying the en
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Commands**
+
+This section explains the detailed list of the commands (and its usages) which are available for you to use.
 
 <box type="info" seamless>
 
@@ -214,6 +216,7 @@ Finds internship applications whose fields contain the corresponding given keywo
 **Examples**:
 * `find n/Google` displays all internship applications whose company name contains `Google`
 * `find n/Apl` displays all internship applications whose company name contains `Apl`
+  * These include `Apple`, `apple` and `Alphabet Limited`.
 * `find c/Summer` displays all internship applications whose cycle contains `Summer`
 * `find n/Google c/Summer s/Pending` displays all internship applications which meets at least one of the following conditions:
   * Company name contains `Google`
