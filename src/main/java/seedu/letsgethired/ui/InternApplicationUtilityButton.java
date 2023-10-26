@@ -36,6 +36,7 @@ public class InternApplicationUtilityButton extends UiPart<Region> {
             commandExecutor.execute(commandText);
         } catch (CommandException | ParseException e) {
             //should never reach here unless the hard-coded input is wrong
+            assert false : "The program should never reach this block";
         }
     }
 }

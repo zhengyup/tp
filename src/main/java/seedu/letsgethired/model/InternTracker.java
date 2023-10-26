@@ -3,6 +3,7 @@ package seedu.letsgethired.model;
 import static java.util.Objects.requireNonNull;
 
 import java.util.List;
+import java.util.Stack;
 
 import javafx.collections.ObservableList;
 import seedu.letsgethired.commons.util.ToStringBuilder;
@@ -11,13 +12,15 @@ import seedu.letsgethired.model.application.UniqueApplicationList;
 
 /**
  * Wraps all data at the intern-tracker level
- * Duplicates are not allowed (by .isSameApplication comparison)
+ * Duplicates are not allowed (by .isSameApplication comparison)\
  */
 public class InternTracker implements ReadOnlyInternTracker {
 
-    private final UniqueApplicationList internApplications;
+    private UniqueApplicationList internApplications;
 
     private InternApplication selectedApplication;
+
+    private Stack<UniqueApplicationList> savedStates;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -30,7 +33,9 @@ public class InternTracker implements ReadOnlyInternTracker {
         internApplications = new UniqueApplicationList();
     }
 
-    public InternTracker() {}
+    public InternTracker() {
+        this.savedStates = new Stack<>();
+    }
 
     /**
      * Creates an InternTracker using the InternApplications in the {@code toBeCopied}
@@ -43,7 +48,8 @@ public class InternTracker implements ReadOnlyInternTracker {
     //// list overwrite operations
 
     /**
-     * Replaces the contents of the application list with {@code internApplications}.
+     * Replaces the contents of the application list with a list of InternApplications{@code
+     * internApplications}.
      * {@code internApplications} must not contain duplicate applications.
      */
     public void setInternApplications(List<InternApplication> internApplications) {
@@ -51,11 +57,22 @@ public class InternTracker implements ReadOnlyInternTracker {
     }
 
     /**
+     * Replaces the contents of the application list with a UniqueApplicationList{@code internApplications}.
+     * {@code internApplications} must not contain duplicate applications.
+     */
+    public void setInternApplications(UniqueApplicationList internApplications) {
+        this.internApplications.setApplications(internApplications);
+    }
+
+    public UniqueApplicationList getInternApplications() {
+        return internApplications;
+    }
+
+    /**
      * Resets the existing data of this {@code InternTracker} with {@code newData}.
      */
     public void resetData(ReadOnlyInternTracker newData) {
         requireNonNull(newData);
-
         setInternApplications(newData.getApplicationList());
     }
 
@@ -77,7 +94,6 @@ public class InternTracker implements ReadOnlyInternTracker {
     public void addApplication(InternApplication a) {
         internApplications.add(a);
     }
-
     /**
      * Replaces the given application {@code target} in the list with {@code editedInternApplication}.
      * {@code target} must exist in the intern tracker.
@@ -86,7 +102,6 @@ public class InternTracker implements ReadOnlyInternTracker {
      */
     public void setApplication(InternApplication target, InternApplication editedInternApplication) {
         requireNonNull(editedInternApplication);
-
         internApplications.setApplication(target, editedInternApplication);
     }
 
@@ -123,6 +138,13 @@ public class InternTracker implements ReadOnlyInternTracker {
 
     public InternApplication getSelectedApplication() {
         return this.selectedApplication;
+    }
+
+    /**
+     * Deletes all existing intern applications being tracked
+     */
+    public void clear() {
+        internApplications = new UniqueApplicationList();
     }
 
     @Override

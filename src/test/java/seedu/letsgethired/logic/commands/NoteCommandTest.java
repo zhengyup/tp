@@ -45,12 +45,13 @@ public class NoteCommandTest {
         NoteCommand noteCommand = new NoteCommand(INDEX_FIRST_APPLICATION,
                 new InternApplicationBuilder().build().getNote());
 
-        String expectedMessage = NoteCommand.MESSAGE_ADD_NOTE_SUCCESS;
+        CommandResult expectedResult = new CommandResult(NoteCommand.MESSAGE_ADD_NOTE_SUCCESS,
+                Messages.formatDisplay(editedInternApplication));
 
         Model expectedModel = new ModelManager(new InternTracker(model.getInternTracker()), new UserPrefs());
         expectedModel.setInternApplication(model.getFilteredInternApplicationList().get(0), editedInternApplication);
 
-        assertCommandSuccess(noteCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(noteCommand, model, expectedResult, expectedModel);
     }
 
     @Test
@@ -61,12 +62,13 @@ public class NoteCommandTest {
                 .withNote("").build();
         NoteCommand noteCommand = new NoteCommand(INDEX_FIRST_APPLICATION, emptyNote);
 
-        String expectedMessage = NoteCommand.MESSAGE_DELETE_NOTE_SUCCESS;
+        CommandResult expectedResult = new CommandResult(NoteCommand.MESSAGE_DELETE_NOTE_SUCCESS,
+                Messages.formatDisplay(editedInternApplication));
 
         Model expectedModel = new ModelManager(new InternTracker(model.getInternTracker()), new UserPrefs());
         expectedModel.setInternApplication(model.getFilteredInternApplicationList().get(0), editedInternApplication);
 
-        assertCommandSuccess(noteCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(noteCommand, model, expectedResult, expectedModel);
     }
 
     @Test

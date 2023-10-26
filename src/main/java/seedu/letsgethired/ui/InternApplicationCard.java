@@ -41,6 +41,8 @@ public class InternApplicationCard extends UiPart<Region> {
     private Label note;
     @FXML
     private Label cycle;
+    @FXML
+    private Label deadline;
 
     /**
      * Creates a {@code InternApplicationCard} with the given {@code internApplication} and index to display.
@@ -56,9 +58,10 @@ public class InternApplicationCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         company.setText(internApplication.getCompany().value);
         role.setText(internApplication.getRole().value);
-        status.setText(internApplication.getStatus().value);
-        note.setText(internApplication.getNote().value);
         cycle.setText(internApplication.getCycle().value);
+        status.setText(internApplication.getStatus().value);
+        deadline.setText(internApplication.getDeadline().value);
+        note.setText(internApplication.getNote().value);
     }
 
     /**
@@ -71,6 +74,7 @@ public class InternApplicationCard extends UiPart<Region> {
             commandExecutor.execute(commandText);
         } catch (CommandException | ParseException e) {
             //should never reach here unless the hard-coded input is wrong
+            assert false : "The program should never reach this block";
         }
     }
 }
