@@ -217,7 +217,7 @@ Additionally, it modifies the following operations:
 
 The following sequence diagram shows how the sort operation works:
 
-<puml src="diagrams/HousekeepDiagram.puml" alt="HousekeepDiagram" />
+<puml src="diagrams/HousekeepSequenceDiagram.puml" alt="HousekeepSequenceDiagram" />
 
 
 #### Design Considerations
