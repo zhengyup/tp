@@ -8,10 +8,10 @@ skinparam Padding 10
 title After command "delete 5"
 
 package savedStates <<rectangle>> {
-    class State2 as "<u>ic1:InternApplications</u>"
+    class State2 as "<u>ic0:InternApplications</u>"
 }
 
-class State1 as "<u>ic0:InternApplications</u>"
+class State1 as "<u>ic1:InternApplications</u>"
 class Pointer as "<u>:InternTracker</u>" #FFFFFF
 
 Pointer -right-> State1

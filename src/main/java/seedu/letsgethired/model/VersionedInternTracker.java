@@ -46,7 +46,7 @@ public class VersionedInternTracker extends InternTracker {
 
     /**
      * Restores the previous state of the internApplications by popping the last saved state from the stack.
-     *
+     * If there is no previous state, does nothing
      * @return {@code true} if a previous state was restored successfully. {@code false} if at latest change.
      */
     public boolean undo() {

@@ -159,14 +159,7 @@ public class UniqueApplicationList implements Iterable<InternApplication> {
     public UniqueApplicationList clone() {
         UniqueApplicationList clonedList = new UniqueApplicationList();
         for (InternApplication originalApplication : internalList) {
-            InternApplication copiedApplication = new InternApplication(
-                    originalApplication.getCompany(),
-                    originalApplication.getRole(),
-                    originalApplication.getCycle(),
-                    originalApplication.getNote(),
-                    originalApplication.getStatus(),
-                    originalApplication.getDeadline()
-            );
+            InternApplication copiedApplication = originalApplication.clone();
             clonedList.add(copiedApplication);
         }
         return clonedList;

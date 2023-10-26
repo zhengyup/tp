@@ -32,7 +32,7 @@ public class InternApplicationListPanel extends UiPart<Region> {
     }
 
     /**
-     * configurees the internApplicationListView to show the given {@code internApplicationList}
+     * configures the internApplicationListView to show the given {@code internApplicationList}
      * @param internApplicationList the list of intern applications to show
      */
     public void assignInternApplicationListView(ObservableList<InternApplication> internApplicationList) {

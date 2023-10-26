@@ -19,6 +19,15 @@ import org.junit.jupiter.api.Test;
 import seedu.letsgethired.testutil.InternApplicationBuilder;
 
 public class InternApplicationTest {
+
+    private void assertSameAttributes(InternApplication originalApplication,
+                                      InternApplication clonedApplication) {
+        assertEquals(originalApplication.getCompany(), clonedApplication.getCompany());
+        assertEquals(originalApplication.getRole(), clonedApplication.getRole());
+        assertEquals(originalApplication.getCycle(), clonedApplication.getCycle());
+        assertEquals(originalApplication.getNote(), clonedApplication.getNote());
+        assertEquals(originalApplication.getStatus(), clonedApplication.getStatus());
+    }
     @Test
     public void isSameInternApplication() {
         // same object -> returns true
@@ -66,11 +75,7 @@ public class InternApplicationTest {
         assertNotSame(originalApplication, clonedApplication);
 
         // Verify that the cloned object has the same values
-        assertEquals(originalApplication.getCompany(), clonedApplication.getCompany());
-        assertEquals(originalApplication.getRole(), clonedApplication.getRole());
-        assertEquals(originalApplication.getCycle(), clonedApplication.getCycle());
-        assertEquals(originalApplication.getNote(), clonedApplication.getNote());
-        assertEquals(originalApplication.getStatus(), clonedApplication.getStatus());
+        assertSameAttributes(originalApplication,clonedApplication);
     }
 
     @Test

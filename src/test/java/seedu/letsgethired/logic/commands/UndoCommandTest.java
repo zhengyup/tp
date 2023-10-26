@@ -1,8 +1,6 @@
 package seedu.letsgethired.logic.commands;
 
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_COMPANY_BYTEDANCE;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_ROLE_BACK_END;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.assertCommandSuccess;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.*;
 import static seedu.letsgethired.testutil.TypicalInternApplications.getTypicalInternTracker;
 
 import org.junit.jupiter.api.Test;
@@ -66,7 +64,6 @@ public class UndoCommandTest {
         String expectedMessage = UndoCommand.MESSAGE_SUCCESS_UNDONE;
         ModelManager expectedModel = new ModelManager(model.getInternTracker(), new UserPrefs());
         expectedModel.addInternApplication(validInternApplication);
-
         model.addInternApplication(validInternApplication);
         model.setInternApplication(validInternApplication, editedInternApplication);
         assertCommandSuccess(undoCommand, model, expectedMessage, expectedModel);
@@ -80,7 +77,6 @@ public class UndoCommandTest {
         String expectedMessage = UndoCommand.MESSAGE_SUCCESS_UNDONE;
         ModelManager expectedModel = new ModelManager(model.getInternTracker(), new UserPrefs());
         expectedModel.addInternApplication(validInternApplication);
-
         model.addInternApplication(validInternApplication);
         model.clearInternshipApplications();
         assertCommandSuccess(undoCommand, model, expectedMessage, expectedModel);
