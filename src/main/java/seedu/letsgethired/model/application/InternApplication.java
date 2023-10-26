@@ -16,7 +16,6 @@ public class InternApplication {
     private final Company company;
     private final Role role;
     private final Cycle cycle;
-
     // Data fields
     private final Note note;
     private final Status status;
@@ -69,7 +68,9 @@ public class InternApplication {
         }
 
         return otherInternApplication != null
-                && otherInternApplication.getCompany().equals(getCompany());
+                && otherInternApplication.getCompany().equals(getCompany())
+                && otherInternApplication.getRole().equals(getRole())
+                && otherInternApplication.getCycle().equals(getCycle());
     }
 
     /**
@@ -91,8 +92,7 @@ public class InternApplication {
         InternApplication otherInternApplication = (InternApplication) other;
         return company.equals(otherInternApplication.company)
                 && role.equals(otherInternApplication.role)
-                && cycle.equals(otherInternApplication.cycle)
-                && status.equals(otherInternApplication.status);
+                && cycle.equals(otherInternApplication.cycle);
     }
 
     @Override
@@ -113,4 +113,12 @@ public class InternApplication {
                 .toString();
     }
 
+    /**
+     * Creates a copy of the current InternApplication object.
+     *
+     * @return A new InternApplication object with the same company, role, cycle, note, and status.
+     */
+    public InternApplication clone() {
+        return new InternApplication(this.company, this.role, this.cycle, this.note, this.status, this.deadline);
+    }
 }

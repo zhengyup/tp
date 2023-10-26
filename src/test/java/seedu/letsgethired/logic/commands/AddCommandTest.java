@@ -167,6 +167,16 @@ public class AddCommandTest {
         public InternApplication getCurrentInternApplication() {
             throw new AssertionError("This method should not be called.");
         }
+
+        @Override
+        public boolean undoAction() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void clearInternshipApplications() {
+            throw new AssertionError("This method should not be called.");
+        }
     }
 
     /**

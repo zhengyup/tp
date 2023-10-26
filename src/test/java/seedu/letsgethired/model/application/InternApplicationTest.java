@@ -2,10 +2,14 @@ package seedu.letsgethired.model.application;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_COMPANY_BYTEDANCE;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_CYCLE_SUMMER;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_CYCLE_WINTER;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_DEADLINE;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_ROLE_BACK_END;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_ROLE_FULL_STACK;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_STATUS_REJECTED;
 import static seedu.letsgethired.testutil.TypicalInternApplications.B;
 import static seedu.letsgethired.testutil.TypicalInternApplications.JANE_STREET;
@@ -15,6 +19,15 @@ import org.junit.jupiter.api.Test;
 import seedu.letsgethired.testutil.InternApplicationBuilder;
 
 public class InternApplicationTest {
+
+    private void assertSameAttributes(InternApplication originalApplication,
+                                      InternApplication clonedApplication) {
+        assertEquals(originalApplication.getCompany(), clonedApplication.getCompany());
+        assertEquals(originalApplication.getRole(), clonedApplication.getRole());
+        assertEquals(originalApplication.getCycle(), clonedApplication.getCycle());
+        assertEquals(originalApplication.getNote(), clonedApplication.getNote());
+        assertEquals(originalApplication.getStatus(), clonedApplication.getStatus());
+    }
     @Test
     public void isSameInternApplication() {
         // same object -> returns true
@@ -23,11 +36,13 @@ public class InternApplicationTest {
         // null -> returns false
         assertFalse(JANE_STREET.isSameApplication(null));
 
-        // same name, all other attributes different -> returns true
+        // same company, role, cycle -> returns true
         InternApplication editedInternApplication = new InternApplicationBuilder(JANE_STREET)
-                .withRole(VALID_ROLE_BACK_END)
-                .withCycle(VALID_CYCLE_WINTER)
+                .withRole(VALID_ROLE_FULL_STACK)
+                .withCycle(VALID_CYCLE_SUMMER)
                 .withStatus(VALID_STATUS_REJECTED)
+                .withDeadline(VALID_DEADLINE)
+                .withNote("")
                 .build();
         assertTrue(JANE_STREET.isSameApplication(editedInternApplication));
 
@@ -46,6 +61,21 @@ public class InternApplicationTest {
         String nameWithTrailingSpaces = VALID_COMPANY_BYTEDANCE + " ";
         editedOtherInternApplication = new InternApplicationBuilder(B).withCompany(nameWithTrailingSpaces).build();
         assertFalse(B.isSameApplication(editedOtherInternApplication));
+    }
+
+    @Test
+    public void testClone() {
+        // Create an instance of InternApplication for testing
+        InternApplication originalApplication = JANE_STREET;
+
+        // Call the clone method
+        InternApplication clonedApplication = originalApplication.clone();
+
+        // Verify that the cloned object is not the same reference
+        assertNotSame(originalApplication, clonedApplication);
+
+        // Verify that the cloned object has the same values
+        assertSameAttributes(originalApplication, clonedApplication);
     }
 
     @Test
@@ -76,13 +106,17 @@ public class InternApplicationTest {
         editedInternApplication = new InternApplicationBuilder(JANE_STREET).withRole(VALID_ROLE_BACK_END).build();
         assertFalse(JANE_STREET.equals(editedInternApplication));
 
-        // different email -> returns false
+        // different cycle -> returns false
         editedInternApplication = new InternApplicationBuilder(JANE_STREET).withCycle(VALID_CYCLE_WINTER).build();
         assertFalse(JANE_STREET.equals(editedInternApplication));
 
-        // different status -> returns false
+        // different status -> returns true
         editedInternApplication = new InternApplicationBuilder(JANE_STREET).withStatus(VALID_STATUS_REJECTED).build();
-        assertFalse(JANE_STREET.equals(editedInternApplication));
+        assertTrue(JANE_STREET.equals(editedInternApplication));
+
+        // different deadline -> returns true
+        editedInternApplication = new InternApplicationBuilder(JANE_STREET).withDeadline(VALID_DEADLINE).build();
+        assertTrue(JANE_STREET.equals(editedInternApplication));
 
         // different note -> returns true
         editedInternApplication = new InternApplicationBuilder(JANE_STREET).withNote("").build();
