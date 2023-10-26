@@ -18,6 +18,7 @@ import seedu.letsgethired.logic.commands.FindCommand;
 import seedu.letsgethired.logic.commands.HelpCommand;
 import seedu.letsgethired.logic.commands.ListCommand;
 import seedu.letsgethired.logic.commands.NoteCommand;
+import seedu.letsgethired.logic.commands.SortCommand;
 import seedu.letsgethired.logic.commands.ViewCommand;
 import seedu.letsgethired.logic.parser.exceptions.ParseException;
 
@@ -76,6 +77,9 @@ public class InternTrackerParser {
 
         case ListCommand.COMMAND_WORD:
             return new ListCommand();
+
+        case SortCommand.COMMAND_WORD:
+            return new SortCommandParser().parse(arguments);
 
         case NoteCommand.COMMAND_WORD:
             return new NoteCommandParser().parse(arguments);

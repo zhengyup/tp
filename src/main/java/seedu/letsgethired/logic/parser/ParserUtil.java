@@ -21,6 +21,7 @@ public class ParserUtil {
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
      * trimmed.
+     *
      * @throws ParseException if the specified index is invalid (not non-zero unsigned integer).
      */
     public static Index parseIndex(String oneBasedIndex) throws ParseException {
@@ -104,5 +105,26 @@ public class ParserUtil {
             throw new ParseException(Note.MESSAGE_CONSTRAINTS);
         }
         return new Note(trimmedNote);
+    }
+
+    /**
+     * Parses a {@code String sortOrder} into an {@code SortOrder}.
+     *
+     * @param sortOrder the string to be parsed
+     * @return the SortOrder object
+     * @throws ParseException if the given {@code sortOrder} is invalid.
+     */
+    public static SortOrder parseSortOrder(String sortOrder) throws ParseException {
+        requireNonNull(sortOrder);
+        String trimmedSortOrder = sortOrder.trim();
+        if (SortOrder.isValidAscendingSortOrder(trimmedSortOrder)) {
+            return SortOrder.ASCENDING;
+        }
+
+        if (SortOrder.isValidDescendingSortOrder(trimmedSortOrder)) {
+            return SortOrder.DESCENDING;
+        }
+
+        throw new ParseException(SortOrder.MESSAGE_CONSTRAINTS);
     }
 }
