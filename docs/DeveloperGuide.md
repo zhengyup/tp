@@ -176,28 +176,29 @@ This section describes some noteworthy details on how certain features are imple
 
 #### Proposed Implementation
 
-The mechanism for sorting is facilitated by adding new methods to the `Model` interface, 
-which are implemented by the `ModelManager` class. 
+In order to implement the sorting feature for the LetsGetHired Intern application tracking app, 
+we introduce the following changes to the codebase:
 
-The new method is:
-* `Model#updateFilteredSortedInternApplicationList(Comparator<InternApplication> comparator))` - sorts the intern application list by the given comparator
-
-The following method is renamed:
-* `Model#getFilteredInternApplicationList()` is renamed to `Model#getFilteredSortedInternApplicationList()` - returns the filtered and/or sorted intern application list
-
-The `ModelManager` class wraps the existing `filteredInternApplications` in a 
+1. **Extending the Model Interface**: We enhance the `Model` interface to include a new method.
+   * `Model#updateFilteredSortedInternApplicationList(Comparator<InternApplication> comparator))`
+   - sorts the intern application list by the given comparator
+2. **Method Renaming**: We rename the existing method.
+   * `Model#getFilteredInternApplicationList()` is renamed to `Model#getFilteredSortedInternApplicationList()`
+   - returns the filtered and/or sorted intern application list
+3. **ModelManager Enhancements**: In the `ModelManager` class, we wrap the existing `filteredInternApplications` in a 
 JavaFX `SortedList` to create a new `filteredSortedInternApplications` field. 
-This new `filteredSortedInternApplications` field allows us to sort the intern applications to be displayed by a given comparator.
+This new field, named `filteredSortedInternApplications`
+allows us to sort the intern applications to be displayed based on the specified comparator.
 
 <box type="info" seamless>
 
-**Note:** `SortedList` extends the `ObservableList` class, which means any changes to either
-the `FilteredList` or the original `UniqueApplicationList` will continue to be propagated to the UI.
+**Note:** JavaFX's `SortedList` class extends the `ObservableList` class, which ensures that any changes
+made to either the `FilteredList` or the original `UniqueApplicationList` will automatically propagate to the UI.
 
 </box>
 
 
-The following sequence diagram shows how the sort operation works:
+To understand how these changes are integrated into the application, refer to the sequence diagram below:
 
 <puml src="diagrams/SortSequenceDiagram.puml" alt="SortSequenceDiagram" />
 
@@ -207,10 +208,20 @@ The following sequence diagram shows how the sort operation works:
 **Aspect: How sorting is done**
 
 * **Alternative 1 (current choice):** Wrap the existing `FilteredList` in a `SortedList`.
-  * Pros: More flexible, as we can sort the intern applications by different comparators.
+  * Pros: More flexible, as we can both sort and filter without modifying the original `UniqueApplicationList`.
 * **Alternative 2:** Sort the applications in the `UniqueApplicationList` in the `InternTracker`.
-  * Cons: Requires us to revert the sorting done by the `UniqueApplicationList` before saving the data to preserve the initial order.
+  * Cons: Requires us to revert the sorting done by the `UniqueApplicationList` before saving the data to
+  preserve the initial order in which the intern applications are added.
 
+**Aspect: Comparator**
+
+* **Alternative 1:** Use a `Comparator<InternApplication>` object.
+  * Pros: More flexible, as we can sort the intern applications by different comparators.
+  * Cons: Requires us to create a new `Comparator<InternApplication>` object for each sorting operation.
+  * Difficult to test for functional equality, as `equals()` method for `Comparator` only tests for referential equality.
+* **Alternative 2 (current choice):** Wrap the comparator in an `InternApplicationComparator` class
+  * Pros: Allows us to reuse the same comparator for different sorting operations, which makes it easier to test for equality.
+  * Allows us to strictly define which comparators are allowed.
 
 ### Undo feature
 
