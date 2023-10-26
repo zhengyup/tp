@@ -75,7 +75,7 @@ public class InternApplicationTest {
         assertNotSame(originalApplication, clonedApplication);
 
         // Verify that the cloned object has the same values
-        assertSameAttributes(originalApplication,clonedApplication);
+        assertSameAttributes(originalApplication, clonedApplication);
     }
 
     @Test

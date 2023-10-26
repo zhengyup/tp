@@ -1,6 +1,8 @@
 package seedu.letsgethired.logic.commands;
 
-import static seedu.letsgethired.logic.commands.CommandTestUtil.*;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_COMPANY_BYTEDANCE;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_ROLE_BACK_END;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.letsgethired.testutil.TypicalInternApplications.getTypicalInternTracker;
 
 import org.junit.jupiter.api.Test;
