@@ -6,10 +6,26 @@
 
 # User Guide
 
+<!-- * Table of Contents -->
+<page-nav-print />
+<div style="page-break-after: always;"></div>
+
 ## **Introduction**
 
-**LetsGetHired** is a **desktop app** which provides a **fast and organised way to see internships and its progress**,
-optimised for users who prefer a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI).
+**LetsGetHired** is a desktop application designed to assist you in efficiently **tracking and managing** your 
+internship applications and their progress.
+
+With LetsGetHired, you can benefit from:
+- **Swift Viewing**: Swiftly view your internship applications and monitor their status.
+- **Status Updates**: Stay updated on the progress of each application, from application sent to interview stages.
+- **Organization**: Organize your internship applications according to your needs for better clarity.
+- **Notes**: Add personalized notes to each internship application, ensuring you never forget key details.
+- **Deadlines**: Set and track deadlines for your internship applications, so you never miss an opportunity.
+
+In addition to these capabilities, we recognize the importance of **speed and efficiency**. Thus, **LetsGetHired** is
+optimized for use via a Command Line Interface (CLI), but you still enjoy the advantages of a Graphical User Interface
+(GUI). If you're a swift typist, **LetsGetHired** can streamline your internship tracking faster than many standard
+GUI-based tools available.
 
 ### Purpose of this guide
 This user guide is designed to help you get started with the LetsGetHired Intern Tracker, a powerful tool for managing your internship applications. Whether you're a tech-savvy student or a professional looking to land that dream internship, this guide is here to assist you every step of the way.
@@ -28,25 +44,81 @@ Our goal is to make your internship application experience as smooth and success
 
 LetsGetHired allows you to **add** and **organise** your internship applications. **View** all applications at a glance, or narrow down your search with **filter** and **search** features. LetsGetHired also allows you to attach customized **notes**, to track any additional information.
 
-<!-- * Table of Contents -->
-<page-nav-print />
+___________________________________________
+
+## **Navigating the User Guide**
+
+TO BE ADDED
+
+Follow [this link](https://nus-cs2103-ay2324s1.github.io/website/admin/usingThisWebsite.html#using-this-website)
 
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
 
 ## **Getting Started**
 
-1. Ensure that you have Java `11` or above installed in your Computer
-   * You can download it from the [Java SE 11 Downloads](https://www.oracle.com/sg/java/technologies/javase/jdk11-archive-downloads.html) page if you do not have it already.
+Welcome to the **LetsGetHired User Guide**! This guide will walk you through the basics of [**setting up**](#installation) and **[using the 
+application](#tutorial-managing-your-internship-applications)** to manage your internship applications.
 
-1. Download the **latest** `letsgethired.jar` from [our Github Releases](https://github.com/AY2324S1-CS2103T-W17-2/tp/releases).
+<box light header="#### **By the end of this section, you will learn:**">
+<md>
+1. How to install **LetsGetHired**<br> 
+2. How to **add** your internship applications<br> 
+3. How to **edit** your internship applications<br> 
+4. How to **add notes** to your internship applications<br> 
+</md>
+</box>
+
+<box type="tip">
+<md>If you are already an advanced user, feel free to jump to the [_Commands_ section of the **User Guide**](#commands)</md>
+</box>
+
+### Installation
+1. Ensure that you have **Java 11 or above** installed in your Computer
+   <box type="info">
+    You can download it from <md>[Java SE 11 Downloads](https://www.oracle.com/sg/java/technologies/javase/jdk11-archive-downloads.html)</md> if you do not have it already.
+   </box>
+
+1. Download the **latest** `letsgethired.jar` from [**our GitHub Releases**](https://github.com/AY2324S1-CS2103T-W17-2/tp/releases).
 
     ![Zip file download](images/downloadJar.jpg)
 
-1. Copy the file to the folder you want to use as the _home folder_ for your **LetsGetHired** application.
+1. Locate the `letsgethired.jar` file
+   * After downloading, find the `letsgethired.jar` file on your computer. It might be in your 'Downloads' folder or wherever you chose to save it.
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar letsgethired.jar` command to run the application. A GUI similar to the below should appear in a few seconds. Note that the app contains some sample data.<br>
+1. Choose Your **Home Folder**
+   * Decide on a folder where you want all your **LetsGetHired** data to reside. This can be an existing folder or you can create a new one specifically for **LetsGetHired**.
+
+1. Copying the File: 
+   * Right-click on the `letsgethired.jar` file and select 'Copy'.
+   * Navigate to your chosen home folder.
+   * Right-click on an empty space inside the folder and select 'Paste'.
+
+1. Verify the File Location:
+   * Ensure that the `letsgethired.jar` file is now present in your chosen home folder.
+
+<box type="tip">
+<md>**Bookmark** or **create a shortcut** to this folder for easy access in the future!</md>
+</box>
+
+___
+
+### Launching LetsGetHired for the First Time
+1. Open your command terminal, `cd` into your chosen home folder, and type in the following command:
+```shell
+java -jar letsgethired.jar
+```  
+You should see a graphical user interface (GUI) pop up on your screen (as shown in the picture below).
+
+<box type="info">
+<md>
+Please note that the app comes preloaded with some **sample internship data**. <br>
+This is to help you get a feel for how the app works and how your entries will appear.
+</md>
+</box>
+<br>
    
-    ![Ui](images/Ui.jpg)
+![Ui](images/Ui.jpg)
 
 1. Here's what you'll see when you start the app for the first time! We've added some intern applications already. Enter your commands in the **Command Box** on the top of the app. On the bottom left you'll see a **List View** of all your applications ordered by the date you added them. On the right, the **Select View** shows you a more in depth view of your selected application.
 
