@@ -1,6 +1,7 @@
 package seedu.letsgethired.model;
 
 import java.nio.file.Path;
+import java.util.Comparator;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
@@ -13,6 +14,11 @@ import seedu.letsgethired.model.application.InternApplication;
 public interface Model {
     /** {@code Predicate} that always evaluate to true */
     Predicate<InternApplication> PREDICATE_SHOW_ALL_APPLICATIONS = unused -> true;
+
+    /**
+     * {@code Comparator} to reflect the original order of the list
+     */
+    Comparator<InternApplication> COMPARATOR_SHOW_ALL_APPLICATIONS = null;
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
@@ -83,9 +89,22 @@ public interface Model {
 
     /**
      * Updates the filter of the filtered intern application list to filter by the given {@code predicate}.
+     *
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredInternApplicationList(Predicate<InternApplication> predicate);
+
+    /**
+     * Updates the comparator of the filtered sorted intern application list to sort by the given {@code comparator}.
+     *
+     * @throws NullPointerException if {@code comparator} is null.
+     */
+    void updateFilteredSortedInternApplicationList(Comparator<InternApplication> comparator);
+
+    /**
+     * Shows all the applications in their original order.
+     */
+    void showAllInternApplications();
 
     /**
      * Sets the selected application to {@code target}.

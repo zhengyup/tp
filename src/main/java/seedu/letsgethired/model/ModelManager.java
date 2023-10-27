@@ -4,11 +4,13 @@ import static java.util.Objects.requireNonNull;
 import static seedu.letsgethired.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
+import java.util.Comparator;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import seedu.letsgethired.commons.core.GuiSettings;
 import seedu.letsgethired.commons.core.LogsCenter;
 import seedu.letsgethired.model.application.InternApplication;
@@ -23,6 +25,9 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
     private FilteredList<InternApplication> filteredInternApplications;
 
+    private final SortedList<InternApplication> filteredSortedInternApplications;
+
+
     /**
      * Initializes a ModelManager with the given internTracker and userPrefs.
      */
@@ -34,6 +39,7 @@ public class ModelManager implements Model {
         this.internTracker = new VersionedInternTracker(internTracker);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredInternApplications = new FilteredList<>(this.internTracker.getApplicationList());
+        filteredSortedInternApplications = new SortedList<>(filteredInternApplications);
     }
 
     public ModelManager() {
@@ -102,7 +108,7 @@ public class ModelManager implements Model {
     public void addInternApplication(InternApplication internApplication) {
         internTracker.commit();
         internTracker.addApplication(internApplication);
-        updateFilteredInternApplicationList(PREDICATE_SHOW_ALL_APPLICATIONS);
+        showAllInternApplications();
     }
 
     @Override
@@ -127,13 +133,19 @@ public class ModelManager implements Model {
      */
     @Override
     public ObservableList<InternApplication> getFilteredInternApplicationList() {
-        return filteredInternApplications;
+        return filteredSortedInternApplications;
     }
 
     @Override
     public void updateFilteredInternApplicationList(Predicate<InternApplication> predicate) {
         requireNonNull(predicate);
         filteredInternApplications.setPredicate(predicate);
+    }
+
+    @Override
+    public void updateFilteredSortedInternApplicationList(Comparator<InternApplication> comparator) {
+        requireNonNull(comparator);
+        filteredSortedInternApplications.setComparator(comparator);
     }
 
     /**
@@ -165,6 +177,12 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void showAllInternApplications() {
+        filteredInternApplications.setPredicate(PREDICATE_SHOW_ALL_APPLICATIONS);
+        filteredSortedInternApplications.setComparator(COMPARATOR_SHOW_ALL_APPLICATIONS);
+    }
+
+    @Override
     public boolean equals(Object other) {
         if (other == this) {
             return true;
@@ -178,6 +196,7 @@ public class ModelManager implements Model {
         ModelManager otherModelManager = (ModelManager) other;
         return internTracker.equals(otherModelManager.internTracker)
                 && userPrefs.equals(otherModelManager.userPrefs)
-                && filteredInternApplications.equals(otherModelManager.filteredInternApplications);
+                && filteredInternApplications.equals(otherModelManager.filteredInternApplications)
+                && filteredSortedInternApplications.equals(otherModelManager.filteredSortedInternApplications);
     }
 }
