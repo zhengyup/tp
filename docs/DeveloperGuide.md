@@ -172,6 +172,65 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
+### Sort feature
+
+#### Proposed Implementation
+
+In order to implement the sorting feature for the LetsGetHired Intern application tracking app, 
+we introduce the following changes to the codebase:
+
+1. **Extending the Model Interface**: We enhance the `Model` interface to include a new method.
+   * `Model#updateFilteredSortedInternApplicationList(Comparator<InternApplication> comparator))`
+   - sorts the intern application list by the given comparator
+2. **Method Renaming**: We rename the existing method.
+   * `Model#getFilteredInternApplicationList()` is renamed to `Model#getFilteredSortedInternApplicationList()`
+   - returns the filtered and/or sorted intern application list
+3. **ModelManager Enhancements**: In the `ModelManager` class, we wrap the existing `filteredInternApplications` in a 
+JavaFX `SortedList` to create a new `filteredSortedInternApplications` field. 
+This new field, named `filteredSortedInternApplications`
+allows us to sort the intern applications to be displayed based on the specified comparator.
+
+<box type="info" seamless>
+
+**Note:** JavaFX's `SortedList` class extends the `ObservableList` class, which ensures that any changes
+made to either the `FilteredList` or the original `UniqueApplicationList` will automatically propagate to the UI.
+
+</box>
+
+
+To understand how these changes are integrated into the application, refer to the sequence diagram below:
+
+<puml src="diagrams/SortSequenceDiagram.puml" alt="SortSequenceDiagram" />
+
+#### Design Considerations
+
+**Aspect: How sorting is done**
+
+* **Alternative 1 (current choice):** Wrap the existing `FilteredList` in a `SortedList`.
+  * Pros: More flexible, as we can both sort and filter without modifying the original `UniqueApplicationList`.
+* **Alternative 2:** Sort the applications in the `UniqueApplicationList` in the `InternTracker`.
+  * Cons: Requires us to revert the sorting done by the `UniqueApplicationList` before saving the data to
+  preserve the initial order in which the intern applications are added.
+
+**Aspect: Comparator**
+
+* **Alternative 1:** Use a `Comparator<InternApplication>` object.
+  * Pros: More flexible, as we can sort the intern applications by different comparators.
+  * Cons: Requires us to create a new `Comparator<InternApplication>` object for each sorting operation.
+  * Difficult to test for functional equality, as `equals()` method for `Comparator` only tests for referential equality.
+* **Alternative 2 (current choice):** Wrap the comparator in an `InternApplicationComparator` class
+  * Pros: Allows us to reuse the same comparator for different sorting operations, which makes it easier to test for equality.
+  * Allows us to strictly define which comparators are allowed.
+
+**Aspect: How feedback and details are returned from CommandResult**
+
+* **Alternative 1 (current choice):** Separate feedback and details into 2 separate strings `feedbackToUser` and `detailsToUser`.
+    * Pros: Clearer and intuitive for future developers to know the content which each string parameter should contain.
+    * Cons: Additional parameters in the arguments might make code look complicated.
+* **Alternative 2:** Have the feedback String contain the content for both feedbackToUser and detailsToUser through parsing.
+      * Pros: Easier to implement.
+      * Cons: Requires future developers working on the code to be mindful of how the String input should be structured for successful parsing
+
 ### Click InternApplication Card
 
 #### Implementation
@@ -196,18 +255,6 @@ The following sequence diagram shows how Card Click feature:
 
 <puml src="diagrams/SelectViewSequenceDiagram.puml" alt="SelectViewSequenceDiagram" />
 
-
-#### Design Considerations
-
-**Aspect: How feedback and details are returned from CommandResult**
-
-* **Alternative 1 (current choice):** Separate feedback and details into 2 separate strings `feedbackToUser` and `detailsToUser`.
-    * Pros: Clearer and intuitive for future developers to know the content which each string parameter should contain.
-    * Cons: Additional parameters in the arguments might make code look complicated.
-* **Alternative 2:** Have the feedback String contain the content for both feedbackToUser and detailsToUser through parsing.
-      * Pros: Easier to implement.
-      * Cons: Requires future developers working on the code to be mindful of how the String input should be structured for successful parsing
-
 ###  House-keep feature
 
 #### Proposed Implementation
@@ -221,7 +268,6 @@ The following sequence diagram shows how the sort operation works:
 
 <puml src="diagrams/HousekeepSequenceDiagram.puml" alt="HousekeepSequenceDiagram" />
 
-
 #### Design Considerations
 
 **Aspect: How house-keep is done**
@@ -233,7 +279,6 @@ The following sequence diagram shows how the sort operation works:
     * Pros: Easier to implement
     * Cons: Increase in coupling and dependencies from the Model class
 
-    
 ### Undo feature
 
 #### Proposed Implementation
