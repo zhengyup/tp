@@ -13,6 +13,9 @@ public class Status {
         REJECTED,
         ACCEPTED,
         PENDING,
+        INTERVIEW,
+        ASSESSMENT,
+        OFFERED,
         ERROR;
 
         public static StatusEnum getEnum(String status) {
@@ -24,6 +27,12 @@ public class Status {
                 return ACCEPTED;
             case "pending":
                 return PENDING;
+            case "interview":
+                return INTERVIEW;
+            case "assessment":
+                return ASSESSMENT;
+            case "offered":
+                return OFFERED;
             default:
                 //Return an error enum to indicate that none of the Status matches the string
                 return ERROR;
