@@ -41,7 +41,7 @@ public class Status {
     }
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Status can only be 'pending', 'accepted' or 'rejected'";
+            "Status can only be 'assessment', pending', 'accepted', 'interview', offered' or 'rejected'";
 
     public final String value;
 
@@ -90,3 +90,4 @@ public class Status {
     }
 
 }
+

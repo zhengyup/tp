@@ -32,6 +32,9 @@ public class StatusTest {
         // valid statuses
         assertTrue(Status.isValidStatus("Pending"));
         assertTrue(Status.isValidStatus("Accepted"));
+        assertTrue(Status.isValidStatus("Interview"));
+        assertTrue(Status.isValidStatus("Assessment"));
+        assertTrue(Status.isValidStatus("Offered"));
         assertTrue(Status.isValidStatus("Rejected"));
         assertTrue(Status.isValidStatus("REJECTED")); // capitalised
     }
