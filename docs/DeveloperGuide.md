@@ -71,7 +71,7 @@ The **API** of this component is specified in [`Ui.java`](https://github.com/se-
 
 <puml src="diagrams/UiClassDiagram.puml" alt="Structure of the UI Component"/>
 
-The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
+The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `InternApplicationListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
 
 The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/status/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
 
@@ -172,6 +172,68 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
+### Click InternApplication Card
+
+#### Implementation
+
+The mechanism for the Card click is implemented by creating a new TextArea widget beside the InternApplicationListPanel
+and a handler function to handle the event of a card click.
+
+The following classes are created:
+* `SelectView` - A class representation of the SelectView Text Area that is to display the details of the card
+
+The new method is:
+* `SelectView#displayDetails(String details))` - sets the String details as text in the TextArea
+* `Messages#formatDisplay(InternApplication internApplication)` - returns a customised string summarising the details of the InternApplication
+* `SelectView#handleCardClick()` - extracts out the details from the InternApplication object and sets it to the SelectView widget
+
+
+The following method is renamed:
+* `Messages#format(InternApplication internApplication)` is renamed to `Messages#formatDisplay(InternApplication internApplication)` - returns the feedback from an executed command
+
+
+The following sequence diagram shows how Card Click feature:
+
+<puml src="diagrams/SelectViewSequenceDiagram.puml" alt="SelectViewSequenceDiagram" />
+
+
+#### Design Considerations
+
+**Aspect: How feedback and details are returned from CommandResult**
+
+* **Alternative 1 (current choice):** Separate feedback and details into 2 separate strings `feedbackToUser` and `detailsToUser`.
+    * Pros: Clearer and intuitive for future developers to know the content which each string parameter should contain.
+    * Cons: Additional parameters in the arguments might make code look complicated.
+* **Alternative 2:** Have the feedback String contain the content for both feedbackToUser and detailsToUser through parsing.
+      * Pros: Easier to implement.
+      * Cons: Requires future developers working on the code to be mindful of how the String input should be structured for successful parsing
+
+###  House-keep feature
+
+#### Proposed Implementation
+
+The proposed mechanism is facilitated by the delete button widget below SelectView and Deadlines feature. 
+Additionally, it modifies the following operations:
+
+* `InternApplicationUtiltyButton#handleDeleteClick()` — Deletes all entries in the list that is older than 1 year compared to present time.
+
+The following sequence diagram shows how the sort operation works:
+
+<puml src="diagrams/HousekeepSequenceDiagram.puml" alt="HousekeepSequenceDiagram" />
+
+
+#### Design Considerations
+
+**Aspect: How house-keep is done**
+
+* **Alternative 1 (current choice):** Create a handler function that iterates through each InternApplication in the list and invokes a `DeleteCommand#execute()` if the predicate is satisfied.
+    * Pros: Lesser coupling
+    * Cons: There is a need to figure out how to make it so the feedback of the DeleteCommand is not shown in ResultDisplay widget.
+* **Alternative 2:** Create a handler function that directly calls onto the `Model#deleteInternApplication()` if the predicate passes.
+    * Pros: Easier to implement
+    * Cons: Increase in coupling and dependencies from the Model class
+
+    
 ### Undo feature
 
 #### Proposed Implementation
