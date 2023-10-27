@@ -8,7 +8,7 @@
 [![CI Status](https://github.com/se-edu/addressbook-level3/workflows/Java%20CI/badge.svg)](https://github.com/se-edu/addressbook-level3/actions)
 [![codecov](https://codecov.io/gh/se-edu/addressbook-level3/branch/master/graph/badge.svg)](https://codecov.io/gh/se-edu/addressbook-level3)
 
-![Ui](images/Ui.png)
+![Ui](images/Ui.jpg)
 
 **LetsGetHired** is a **desktop app** which provides a **fast and organised way to see internships and its progress**,
 optimised for users who prefer a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI).

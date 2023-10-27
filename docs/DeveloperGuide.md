@@ -172,6 +172,132 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
+### Note command
+
+The note command enables the users to add or delete notes to the internship application.
+
+#### Implementation
+
+To add a `Note`, the `NoteCommand` must be executed.
+
+The `NoteCommand` is parsed by the `NoteCommandParser`.
+`NoteCommandParser#parse()` parses the user input to return a `NoteCommand` object that will be executed.
+
+Given below is an example usage scenario and how the mechanism behaves at each step.
+
+Step 1. The user keys in the command word to add a note, `note`, followed by the compulsory parameters needed to
+add a note, namely the `INDEX` and the `note` component prefixed by `i/`. In this scenario, the user keys in
+`note 1 i/Need to revise Rust` into the command box which will execute the `NoteCommandParser` to check
+through the arguments and ensure that the compulsory fields are present. The
+parser returns a `NoteCommand` object with the `Note` object ready to be added into `Model`
+
+Step 2. The `NoteCommand#execute()` method is called by the `LogicManager`. The `NoteCommand#execute()` method
+creates a new InternshipApplication with the note to replace the original one.
+
+Step 3. The `NoteCommand` calls the `Model#setInternApplication()` and `Model#updateFilteredInternApplicationList()`
+methods to add the new internship application with the note to the model, and replace the old internship application.
+
+Step 4. The `NoteCommand` creates a `CommandResult` object that contains feedback and display to the user, which
+is returned to the `LogicManager`.
+
+The sequence diagram below shows the process of adding a note.
+
+<puml src="diagrams/NoteCommandSequenceDiagram.puml" alt="Note Command Sequence Diagram" />
+
+### Find command
+
+The find command enables the users to search internship applications by looking up a keyword in any of the fields for an internship application.
+
+#### Implementation
+
+To add a `Find`, the `FindCommand` must be executed.
+
+The `FindCommand` is parsed by the `FindCommandParser`.
+`FindCommandParser#parse()` parses the user input to return a `FindCommand` object that will be executed.
+
+Given below is an example usage scenario and how the mechanism behaves at each step.
+
+Step 1. The user keys in the command word to find an internship application, `find`,
+followed by the parameters needed to find an internship application (at least one field to be searched and
+respective keyword should be provided). In this scenario, the user keys in `find n/Jane c/Summer` into the command box
+which will execute the `FindCommandParser` to get the field and keyword pairs using the `ArgumentTokenizer`.
+
+Step 2. The parser creates a new `CompanyContainsFieldKeywordsPredicate` object, which is a predicate that
+will be used to obtain a filtered list of internship applications that have the specified keywords in respective fields.
+The parser returns a `FindCommand` object with the `Predicate<InternApplication>`, more specifically the
+`CompanyContainsFieldKeywordsPredicate`.
+
+Step 3. The `FindCommand#execute()` method is called by the `LogicManager`. The `FindCommand` calls the
+`Model#updateFilteredInternApplicationList()` to update the filtered internship application list using the
+`Predicate<InternApplication>`, and then the `Model#getFilteredInternApplicationList()` to obtain the filtered
+internship application list.
+
+Step 4. The `FindCommand` creates a `CommandResult` object that contains feedback and display to the user - the filtered
+internship application list - which is returned to the `LogicManager`.
+
+The sequence diagram below shows the process of finding internship applications.
+
+<puml src="diagrams/FindCommandSequenceDiagram.puml" alt="Find Command Sequence Diagram" />
+
+### Sort feature
+
+#### Proposed Implementation
+
+In order to implement the sorting feature for the LetsGetHired Intern application tracking app, 
+we introduce the following changes to the codebase:
+
+1. **Extending the Model Interface**: We enhance the `Model` interface to include a new method.
+   * `Model#updateFilteredSortedInternApplicationList(Comparator<InternApplication> comparator))`
+   - sorts the intern application list by the given comparator
+2. **Method Renaming**: We rename the existing method.
+   * `Model#getFilteredInternApplicationList()` is renamed to `Model#getFilteredSortedInternApplicationList()`
+   - returns the filtered and/or sorted intern application list
+3. **ModelManager Enhancements**: In the `ModelManager` class, we wrap the existing `filteredInternApplications` in a 
+JavaFX `SortedList` to create a new `filteredSortedInternApplications` field. 
+This new field, named `filteredSortedInternApplications`
+allows us to sort the intern applications to be displayed based on the specified comparator.
+
+<box type="info" seamless>
+
+**Note:** JavaFX's `SortedList` class extends the `ObservableList` class, which ensures that any changes
+made to either the `FilteredList` or the original `UniqueApplicationList` will automatically propagate to the UI.
+
+</box>
+
+
+To understand how these changes are integrated into the application, refer to the sequence diagram below:
+
+<puml src="diagrams/SortSequenceDiagram.puml" alt="SortSequenceDiagram" />
+
+#### Design Considerations
+
+**Aspect: How sorting is done**
+
+* **Alternative 1 (current choice):** Wrap the existing `FilteredList` in a `SortedList`.
+  * Pros: More flexible, as we can both sort and filter without modifying the original `UniqueApplicationList`.
+* **Alternative 2:** Sort the applications in the `UniqueApplicationList` in the `InternTracker`.
+  * Cons: Requires us to revert the sorting done by the `UniqueApplicationList` before saving the data to
+  preserve the initial order in which the intern applications are added.
+
+**Aspect: Comparator**
+
+* **Alternative 1:** Use a `Comparator<InternApplication>` object.
+  * Pros: More flexible, as we can sort the intern applications by different comparators.
+  * Cons: Requires us to create a new `Comparator<InternApplication>` object for each sorting operation.
+  * Difficult to test for functional equality, as `equals()` method for `Comparator` only tests for referential equality.
+* **Alternative 2 (current choice):** Wrap the comparator in an `InternApplicationComparator` class
+  * Pros: Allows us to reuse the same comparator for different sorting operations, which makes it easier to test for equality.
+  * Allows us to strictly define which comparators are allowed.
+
+**Aspect: How feedback and details are returned from CommandResult**
+
+* **Alternative 1 (current choice):** Separate feedback and details into 2 separate strings `feedbackToUser` and `detailsToUser`.
+    * Pros: Clearer and intuitive for future developers to know the content which each string parameter should contain.
+    * Cons: Additional parameters in the arguments might make code look complicated.
+* **Alternative 2:** Have the feedback String contain the content for both feedbackToUser and detailsToUser through parsing.
+      * Pros: Easier to implement.
+      * Cons: Requires future developers working on the code to be mindful of how the String input should be structured for successful parsing
+
 ### Click InternApplication Card
 
 #### Implementation
@@ -196,18 +322,6 @@ The following sequence diagram shows how Card Click feature:
 
 <puml src="diagrams/SelectViewSequenceDiagram.puml" alt="SelectViewSequenceDiagram" />
 
-
-#### Design Considerations
-
-**Aspect: How feedback and details are returned from CommandResult**
-
-* **Alternative 1 (current choice):** Separate feedback and details into 2 separate strings `feedbackToUser` and `detailsToUser`.
-    * Pros: Clearer and intuitive for future developers to know the content which each string parameter should contain.
-    * Cons: Additional parameters in the arguments might make code look complicated.
-* **Alternative 2:** Have the feedback String contain the content for both feedbackToUser and detailsToUser through parsing.
-      * Pros: Easier to implement.
-      * Cons: Requires future developers working on the code to be mindful of how the String input should be structured for successful parsing
-
 ###  House-keep feature
 
 #### Proposed Implementation
@@ -221,7 +335,6 @@ The following sequence diagram shows how the sort operation works:
 
 <puml src="diagrams/HousekeepSequenceDiagram.puml" alt="HousekeepSequenceDiagram" />
 
-
 #### Design Considerations
 
 **Aspect: How house-keep is done**
@@ -233,8 +346,7 @@ The following sequence diagram shows how the sort operation works:
     * Pros: Easier to implement
     * Cons: Increase in coupling and dependencies from the Model class
 
-    
-### Undo feature
+### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
 
@@ -335,7 +447,6 @@ The following activity diagram summarizes what happens when a user executes a ne
 ### \[Proposed\] Data archiving
 
 _{Explain here how the data archiving feature will be implemented}_
-
 
 --------------------------------------------------------------------------------------------------------------------
 
