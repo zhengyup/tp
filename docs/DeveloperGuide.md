@@ -204,6 +204,15 @@ The sequence diagram below shows the process of adding a new internship applicat
 
 #### Design Considerations
 
+Aspect: Criteria for a duplicate internship application entry:
+
+* Alternative 1 (current choice): `COMPANY_NAME`, `ROLE` and `CYCLE` must all be identical.
+  * Pros: Allow users to add an internship application to the same company for different roles or on different cycle
+  * Cons: Additional compulsory fields need to be typed.
+* Alternative 2: Only `COMPANY_NAME`
+  * Pros: Allow users to add a new internship application quickly.
+  * Cons: Only ONE internship application to a certain company is allowed.
+
 ### Note command
 
 The note command enables the users to add or delete notes to the internship application.
