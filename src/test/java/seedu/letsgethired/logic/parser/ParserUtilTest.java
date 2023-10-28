@@ -27,22 +27,22 @@ public class ParserUtilTest {
 
     @Test
     public void parseIndex_invalidInput_throwsParseException() {
-        assertThrows(ParseException.class, () -> ParserUtil.parseIndex("10 a"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseApplicationIndex("10 a"));
     }
 
     @Test
     public void parseIndex_outOfRangeInput_throwsParseException() {
         assertThrows(ParseException.class, MESSAGE_INVALID_INDEX, ()
-            -> ParserUtil.parseIndex(Long.toString(Integer.MAX_VALUE + 1)));
+            -> ParserUtil.parseApplicationIndex(Long.toString(Integer.MAX_VALUE + 1)));
     }
 
     @Test
     public void parseIndex_validInput_success() throws Exception {
         // No whitespaces
-        assertEquals(INDEX_FIRST_APPLICATION, ParserUtil.parseIndex("1"));
+        assertEquals(INDEX_FIRST_APPLICATION, ParserUtil.parseApplicationIndex("1"));
 
         // Leading and trailing whitespaces
-        assertEquals(INDEX_FIRST_APPLICATION, ParserUtil.parseIndex("  1  "));
+        assertEquals(INDEX_FIRST_APPLICATION, ParserUtil.parseApplicationIndex("  1  "));
     }
 
     @Test

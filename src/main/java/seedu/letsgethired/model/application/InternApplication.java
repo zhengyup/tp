@@ -115,7 +115,7 @@ public class InternApplication {
      */
     public InternApplication deleteNote(int index) {
         List<Note> mutableList = new ArrayList<>(this.note);
-        mutableList.remove(index + 1);
+        mutableList.remove(index - 1);
         return new InternApplication(company, role, cycle, mutableList, status, deadline);
     }
 

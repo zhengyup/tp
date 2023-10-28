@@ -2,7 +2,7 @@ package seedu.letsgethired.logic.parser;
 
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_COMPANY;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_CYCLE;
-import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE;
+import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE_INSERT;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_STATUS;
 import static seedu.letsgethired.logic.parser.CommandParserTestUtil.assertParseFailure;
@@ -70,8 +70,8 @@ public class FindCommandParserTest {
         // no leading and trailing whitespaces
         FindCommand expectedFindCommand =
                 new FindCommand(new CompanyContainsFieldKeywordsPredicate(Arrays.asList(
-                        new Pair<>(PREFIX_NOTE, "require MERN"))));
-        assertParseSuccess(parser, FindCommand.COMMAND_WORD + " " + PREFIX_NOTE + "require MERN",
+                        new Pair<>(PREFIX_NOTE_INSERT, "require MERN"))));
+        assertParseSuccess(parser, FindCommand.COMMAND_WORD + " " + PREFIX_NOTE_INSERT + "require MERN",
                 expectedFindCommand);
     }
 

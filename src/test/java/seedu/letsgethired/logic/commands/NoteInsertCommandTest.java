@@ -24,30 +24,31 @@ import seedu.letsgethired.model.application.Note;
 import seedu.letsgethired.testutil.InternApplicationBuilder;
 
 /**
- * Contains integration tests (interaction with the Model) and unit tests for NoteCommand.
+ * Contains integration tests (interaction with the Model) and unit tests for NoteInsertCommand.
  */
-public class NoteCommandTest {
+public class NoteInsertCommandTest {
 
     private Model model = new ModelManager(getTypicalInternTracker(), new UserPrefs());
 
     @Test
     public void execute_invalidInternApplicationIndexUnfilteredList_failure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredInternApplicationList().size() + 1);
-        NoteCommand noteCommand = new NoteCommand(outOfBoundIndex,
+        NoteInsertCommand noteCommand = new NoteInsertCommand(outOfBoundIndex,
                 new InternApplicationBuilder().build().getNote().get(0));
 
         assertCommandFailure(noteCommand, model, Messages.MESSAGE_INVALID_INTERN_APPLICATION_DISPLAYED_INDEX);
     }
 
     @Test
+
     public void execute_validNoteCommandAdd_success() {
         InternApplication internApplication = getTypicalInternApplications().get(0);
         InternApplication editedInternApplication = internApplication
                 .addNote(new Note(InternApplicationBuilder.DEFAULT_NOTE)); // list in this object should be different
-        NoteCommand noteCommand = new NoteCommand(INDEX_FIRST_APPLICATION,
+        NoteInsertCommand noteCommand = new NoteInsertCommand(INDEX_FIRST_APPLICATION,
                 new InternApplicationBuilder().build().getNote().get(0));
 
-        CommandResult expectedResult = new CommandResult(NoteCommand.MESSAGE_ADD_NOTE_SUCCESS,
+        CommandResult expectedResult = new CommandResult(NoteInsertCommand.MESSAGE_ADD_NOTE_SUCCESS,
                 Messages.formatDisplay(editedInternApplication));
 
         Model expectedModel = new ModelManager(new InternTracker(model.getInternTracker()), new UserPrefs());
@@ -58,11 +59,11 @@ public class NoteCommandTest {
 
     @Test
     public void equals() {
-        final NoteCommand standardCommand = new NoteCommand(INDEX_FIRST_APPLICATION,
+        final NoteInsertCommand standardCommand = new NoteInsertCommand(INDEX_FIRST_APPLICATION,
                 new Note(VALID_NOTE_JANE_STREET));
 
         // same values -> returns true
-        NoteCommand commandWithSameValues = new NoteCommand(INDEX_FIRST_APPLICATION,
+        NoteInsertCommand commandWithSameValues = new NoteInsertCommand(INDEX_FIRST_APPLICATION,
                 new Note(VALID_NOTE_JANE_STREET));
         assertTrue(standardCommand.equals(commandWithSameValues));
 
@@ -76,11 +77,11 @@ public class NoteCommandTest {
         assertFalse(standardCommand.equals(new ClearCommand()));
 
         // different index -> returns false
-        assertFalse(standardCommand.equals(new NoteCommand(INDEX_SECOND_APPLICATION,
+        assertFalse(standardCommand.equals(new NoteInsertCommand(INDEX_SECOND_APPLICATION,
                 new Note(VALID_NOTE_JANE_STREET))));
 
         // different note -> returns false
-        assertFalse(standardCommand.equals(new NoteCommand(INDEX_FIRST_APPLICATION,
+        assertFalse(standardCommand.equals(new NoteInsertCommand(INDEX_FIRST_APPLICATION,
                 new Note(VALID_NOTE_BYTEDANCE))));
     }
 }
