@@ -172,6 +172,47 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
+### Add command
+
+The `add` command enables users to add new internship application into the Intern Tracker.
+
+#### Implementation
+
+To add a new internship application, the `AddCommand` must be executed.
+
+The `AddCommand` is parsed by the `AddCommandParser`.
+`AddCommandParser#parse()` parses the user input and returns an `AddCommand` object that will be executed.
+
+Given below is an example usage scenario and how the add mechanism behaves at each step.
+
+**Step 1.** The user executes `add n/Jane Street r/Full Stack Developer c/Summer 2024` command
+to add a new internship application into the Intern Tracker.
+
+Step 2. The `AddCommandParser` will parse the arguments to ensure that all the compulsory fields are present and valid,
+create a new `internApplication` object with all the provided fields and return an `AddCommand` object with the 
+`internApplication` object ready to be added into the `Model`.
+
+Step 3. The `AddCommand#execute()` method is then called by the `LogicManager`. The `AddCommand#execute()` calls the 
+`Model#addInternApplication` method to add the newly created `internApplication` object to the `Model`.
+
+Step 4. The `AddCommand#execute()` method returns a new `CommandResult` object that contains feedback and display 
+messages for the user, which is returned to the `LogicManager`.
+
+The sequence diagram below shows the process of adding a new internship application.
+
+<puml src=diagrams/AddSequenceDiagram.puml />
+
+#### Design Considerations
+
+Aspect: Criteria for a duplicate internship application entry:
+
+* Alternative 1 (current choice): `COMPANY_NAME`, `ROLE` and `CYCLE` must all be identical.
+  * Pros: Allow users to add an internship application to the same company for different roles or on different cycle
+  * Cons: Additional compulsory fields need to be typed.
+* Alternative 2: Only `COMPANY_NAME`
+  * Pros: Allow users to add a new internship application quickly.
+  * Cons: Only ONE internship application to a certain company is allowed.
+
 ### Note command
 
 The note command enables the users to add or delete notes to the internship application.
