@@ -10,6 +10,7 @@ import seedu.letsgethired.model.application.Status;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 
 /**
@@ -28,7 +29,7 @@ public class InternApplicationBuilder {
     private Role role;
     private Cycle cycle;
     private Status status;
-    private ArrayList<Note> note;
+    private List<Note> note;
     private Deadline deadline;
 
     /**

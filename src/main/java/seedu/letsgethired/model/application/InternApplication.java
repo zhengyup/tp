@@ -3,6 +3,8 @@ package seedu.letsgethired.model.application;
 import static seedu.letsgethired.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Objects;
 
 import seedu.letsgethired.commons.util.ToStringBuilder;
@@ -18,7 +20,7 @@ public class InternApplication {
     private final Role role;
     private final Cycle cycle;
     // Data fields
-    private final ArrayList<Note> note;
+    private final List<Note> note;
     private final Status status;
     private final Deadline deadline;
 
@@ -30,18 +32,18 @@ public class InternApplication {
         this.company = company;
         this.role = role;
         this.cycle = cycle;
-        this.note = new ArrayList<>();
+        this.note = Collections.unmodifiableList(new ArrayList<>());
         this.status = status;
         this.deadline = deadline;
     }
 
     public InternApplication(Company company, Role role, Cycle cycle,
-                             ArrayList<Note> note, Status status, Deadline deadline) {
+                             List<Note> note, Status status, Deadline deadline) {
         requireAllNonNull(company, role, cycle, note, status, deadline);
         this.company = company;
         this.role = role;
         this.cycle = cycle;
-        this.note = note;
+        this.note = Collections.unmodifiableList(note);
         this.status = status;
         this.deadline = deadline;
     }
@@ -66,7 +68,7 @@ public class InternApplication {
         return deadline;
     }
 
-    public ArrayList<Note> getNote() {
+    public List<Note> getNote() {
         return note;
     }
 
@@ -83,8 +85,9 @@ public class InternApplication {
     }
 
     public InternApplication addNote(Note note) {
-        this.note.add(note);
-        return new InternApplication(company, role, cycle, this.note, status, deadline);
+        List<Note> mutableList = new ArrayList<>(this.note);
+        mutableList.add(note);
+        return new InternApplication(company, role, cycle, mutableList, status, deadline);
     }
 
     /**
