@@ -1,18 +1,19 @@
 package seedu.letsgethired.logic.commands;
 
+import static seedu.letsgethired.commons.util.CollectionUtil.requireAllNonNull;
+import static seedu.letsgethired.model.Model.PREDICATE_SHOW_ALL_APPLICATIONS;
+
+import java.util.List;
+
 import seedu.letsgethired.commons.core.index.Index;
 import seedu.letsgethired.logic.Messages;
 import seedu.letsgethired.logic.commands.exceptions.CommandException;
 import seedu.letsgethired.model.Model;
 import seedu.letsgethired.model.application.InternApplication;
-import seedu.letsgethired.model.application.Note;
 
-import java.util.List;
-import java.util.Objects;
-
-import static seedu.letsgethired.commons.util.CollectionUtil.requireAllNonNull;
-import static seedu.letsgethired.model.Model.PREDICATE_SHOW_ALL_APPLICATIONS;
-
+/**
+ * Deletes a note to an existing intern application in the interntracker.
+ */
 public class NoteDeleteCommand extends NoteCommand {
     public static final String MESSAGE_ADD_NOTE_SUCCESS = "Deleted note from Intern Application";
     private final Index index;
@@ -20,7 +21,7 @@ public class NoteDeleteCommand extends NoteCommand {
 
     /**
      * @param index of the intern application in the filtered intern application list to edit
-     * @param targetIndex  index number of the application in the list
+     * @param targetIndex  index number of the application in the list to delete
      */
     public NoteDeleteCommand(Index index, Integer targetIndex) {
         requireAllNonNull(index, targetIndex);
@@ -39,7 +40,7 @@ public class NoteDeleteCommand extends NoteCommand {
 
         InternApplication internApplicationToEdit = lastShownList.get(index.getZeroBased());
 
-        if (targetIndex >= internApplicationToEdit.getNote().size()) {
+        if (targetIndex > internApplicationToEdit.getNote().size()) { //targetIndex is oneBased
             throw new CommandException(NoteCommand.INVALID_NOTE_DISPLAYED_INDEX);
         }
 

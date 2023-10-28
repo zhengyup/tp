@@ -1,5 +1,10 @@
 package seedu.letsgethired.logic.commands;
 
+import static seedu.letsgethired.commons.util.CollectionUtil.requireAllNonNull;
+import static seedu.letsgethired.model.Model.PREDICATE_SHOW_ALL_APPLICATIONS;
+
+import java.util.List;
+
 import seedu.letsgethired.commons.core.index.Index;
 import seedu.letsgethired.logic.Messages;
 import seedu.letsgethired.logic.commands.exceptions.CommandException;
@@ -7,11 +12,9 @@ import seedu.letsgethired.model.Model;
 import seedu.letsgethired.model.application.InternApplication;
 import seedu.letsgethired.model.application.Note;
 
-import java.util.List;
-
-import static seedu.letsgethired.commons.util.CollectionUtil.requireAllNonNull;
-import static seedu.letsgethired.model.Model.PREDICATE_SHOW_ALL_APPLICATIONS;
-
+/**
+ * Adds a note to an existing intern application in the interntracker.
+ */
 public class NoteInsertCommand extends NoteCommand {
 
     public static final String MESSAGE_ADD_NOTE_SUCCESS = "Added note to Intern Application";

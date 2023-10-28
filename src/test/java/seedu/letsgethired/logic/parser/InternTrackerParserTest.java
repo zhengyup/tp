@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.letsgethired.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.letsgethired.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_COMPANY;
+import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE_DELETE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE_INSERT;
 import static seedu.letsgethired.testutil.Assert.assertThrows;
 import static seedu.letsgethired.testutil.TypicalIndexes.INDEX_FIRST_APPLICATION;
@@ -14,8 +15,20 @@ import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 import javafx.util.Pair;
-import seedu.letsgethired.logic.commands.*;
+import seedu.letsgethired.logic.commands.AddCommand;
+import seedu.letsgethired.logic.commands.ClearCommand;
+import seedu.letsgethired.logic.commands.DeleteCommand;
+import seedu.letsgethired.logic.commands.EditCommand;
 import seedu.letsgethired.logic.commands.EditCommand.EditInternApplicationDescriptor;
+import seedu.letsgethired.logic.commands.ExitCommand;
+import seedu.letsgethired.logic.commands.FindCommand;
+import seedu.letsgethired.logic.commands.HelpCommand;
+import seedu.letsgethired.logic.commands.ListCommand;
+import seedu.letsgethired.logic.commands.NoteCommand;
+import seedu.letsgethired.logic.commands.NoteDeleteCommand;
+import seedu.letsgethired.logic.commands.NoteInsertCommand;
+import seedu.letsgethired.logic.commands.UndoCommand;
+import seedu.letsgethired.logic.commands.ViewCommand;
 import seedu.letsgethired.logic.parser.exceptions.ParseException;
 import seedu.letsgethired.model.application.CompanyContainsFieldKeywordsPredicate;
 import seedu.letsgethired.model.application.InternApplication;
@@ -92,6 +105,13 @@ public class InternTrackerParserTest {
         NoteCommand command = (NoteCommand) parser.parseCommand(NoteCommand.COMMAND_WORD + " "
                 + INDEX_FIRST_APPLICATION.getOneBased() + " " + PREFIX_NOTE_INSERT + note);
         assertEquals(new NoteInsertCommand(INDEX_FIRST_APPLICATION, note), command);
+    }
+
+    @Test
+    public void parseCommand_deleteNote() throws Exception {
+        NoteCommand command = (NoteCommand) parser.parseCommand(NoteCommand.COMMAND_WORD + " "
+                + INDEX_FIRST_APPLICATION.getOneBased() + " " + PREFIX_NOTE_DELETE + 1);
+        assertEquals(new NoteDeleteCommand(INDEX_FIRST_APPLICATION, 1), command);
     }
 
     @Test
