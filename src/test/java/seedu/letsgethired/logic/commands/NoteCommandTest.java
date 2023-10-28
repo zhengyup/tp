@@ -41,7 +41,9 @@ public class NoteCommandTest {
 
     @Test
     public void execute_validNoteCommandAdd_success() {
-        InternApplication editedInternApplication = getTypicalInternApplications().get(0);
+        InternApplication internApplication = getTypicalInternApplications().get(0);
+        InternApplication editedInternApplication = internApplication
+                .addNote(new Note(InternApplicationBuilder.DEFAULT_NOTE)); // list in this object should be different
         NoteCommand noteCommand = new NoteCommand(INDEX_FIRST_APPLICATION,
                 new InternApplicationBuilder().build().getNote().get(0));
 
