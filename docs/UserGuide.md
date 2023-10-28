@@ -879,8 +879,7 @@ sort [n/COMPANY_NAME] [r/ROLE] [c/CYCLE] [s/STATUS] [d/DEADLINE]
 
 <box type="tip" light>
 
-* You can combine multiple parameters to sort by multiple criteria. For instance, `sort n/a d/d` would first sort by company name in ascending order and then by deadline in descending order within each company.
-* Regularly sorting and reviewing your applications can help you manage your applications better and not miss any important deadlines.
+Regularly sorting and reviewing your applications can help you manage your applications better and not miss any important deadlines.
 
 </box>
 
