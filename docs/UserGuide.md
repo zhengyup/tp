@@ -4,10 +4,10 @@
   pageNav: 3
 ---
 
-# User Guide
+# **User Guide**
 
-<!-- * Table of Contents -->
 <page-nav-print />
+
 <div style="page-break-after: always;"></div>
 
 ## **Introduction**
@@ -27,8 +27,8 @@ optimized for use via a Command Line Interface (CLI), but you still enjoy the ad
 (GUI). If you are a swift typist, **LetsGetHired** can streamline your internship tracking faster than many standard
 GUI-based tools available.
 
-### Purpose of this guide
-This user guide is designed to help you get started with the LetsGetHired Intern Tracker, a powerful tool for managing 
+### Purpose
+This User Guide is designed to help you get started with the LetsGetHired Intern Tracker, a powerful tool for managing 
 your internship applications. Whether you are a tech-savvy student or a professional looking to land that dream internship, 
 this guide is here to assist you every step of the way.
 
@@ -47,17 +47,114 @@ Let's embark on this journey together and make your internship goals a reality.
 
 ### Overview of Main Features
 
-LetsGetHired allows you to **add** and **organise** your internship applications. **View** all applications at a glance, or narrow down your search with **filter** and **search** features. LetsGetHired also allows you to attach customized **notes**, to track any additional information.
+LetsGetHired allows you to **add** and **organise** your internship applications. **View** all applications at a glance, 
+or narrow down your search with **filter** and **search** features. LetsGetHired also allows you to attach customized **notes**, 
+to track any additional information.
 
-___________________________________________
+__________________________________________________________________________________________________________________
 
 ## **Navigating the User Guide**
 
-TO BE ADDED
+This section will explain the different elements used in this User Guide and what they mean.
 
-Follow [this link](https://nus-cs2103-ay2324s1.github.io/website/admin/usingThisWebsite.html#using-this-website)
+### Code
 
---------------------------------------------------------------------------------------------------------------------
+`A code in the User Guide will be displayed in this format.`
+
+### Code Blocks
+```
+Sometimes, larger blocks of
+code can be displayed in this
+way too!
+```
+
+### Links
+
+[Hyperlinks will be displayed in this format.](#links)
+
+[**Sometimes it can also be bolded.**](#links)
+
+[_Or italicized._](#links)
+
+[**Or** a _mix_ of _**both!**_](#links)
+
+### Boxes
+
+<box>
+
+This is a box. Some information may be put here.
+
+There are three types of boxes used in this User Guide:
+* [Additional Information](#additional-information)
+* [Warning](#warning)
+* [Tips](#tips)
+
+</box>
+
+### Additional Information
+
+<box type="info">
+
+This is additional information.
+
+</box>
+
+<box type="info" light>
+
+This is also additional information.
+
+</box>
+
+<box type="info" seamless>
+
+This is also additional information.
+
+</box>
+
+### Warning
+
+<box type="warning">
+
+This is a warning. Watch out for these!
+
+</box>
+
+<box type="warning" light>
+
+This is also a warning. Watch out for these too!
+
+</box>
+
+<box type="warning" seamless>
+
+This is also a warning. Watch out for these too!
+
+</box>
+
+### Tips
+
+<box type="tip">
+
+This is some helpful tips. Skip these if you are in a hurry!
+
+</box>
+
+<box type="info" light>
+
+This is also some helpful tips. Skip these if you are in a hurry!
+
+</box>
+
+<box type="info" seamless>
+
+This is also some helpful tips. Skip these if you are in a hurry!
+
+</box>
+
+Now that you are familiar with the User Guide, let's get right into it!
+
+__________________________________________________________________________________________________________________
+
 <div style="page-break-after: always;"></div>
 
 ## **Getting Started**
@@ -65,7 +162,7 @@ Follow [this link](https://nus-cs2103-ay2324s1.github.io/website/admin/usingThis
 Welcome to the **LetsGetHired User Guide**! This guide will walk you through the basics of [**setting up**](#installation) and **[using the 
 application](#tutorial-managing-your-internship-applications)** to manage your internship applications.
 
-<box light header="#### **By the end of this section, you will learn:**">
+<box light header="By the end of this section, **you will learn:**">
 
 * How to install **LetsGetHired**
 * How to **add** your internship applications
@@ -112,15 +209,17 @@ If you are already an advanced user, feel free to jump to the [_Commands_ sectio
 
 </box>
 
-___
+__________________________________________________________________________________________________________________
 
 ### Launching LetsGetHired
+
 1. Open your **Command Terminal**.
     * On _Windows_: Press `Windows + R` keys simultaneously, type `cmd` and press `Enter`. 
       * Alternatively, press `Windows` key, type `Terminal` and press `Enter`.
     * On _macOS_: Press `Command + Space` to open Spotlight search, type `Terminal`, and press `Enter`.
+
 1. `cd` into your chosen home folder, and type in the following command:
-    ```shell
+    ```
     java -jar letsgethired.jar
     ```
     <box type="tip" seamless>
@@ -152,9 +251,11 @@ This is to help you get a feel for how the app works and how your entries will a
 Now that you are familiar with the user interface of LetsGetHired, let's jump right into managing your 
 internship applications in this [**Tutorial**](#tutorial-managing-your-first-internship-application).
 
---------------------------------------------------------------------------------------------------------------------
+__________________________________________________________________________________________________________________
 
-## Tutorial - Managing Your First Internship Application
+<div style="page-break-after: always;"></div>
+
+## **Tutorial - Managing Your First Internship Application**
 
 In this tutorial, we will walk you through a typical workflow for using LetsGetHired to manage your internship applications. <br>
 
@@ -165,7 +266,7 @@ In this tutorial, we will walk you through a typical workflow for using LetsGetH
 Imagine that you have applied for a **Software Engineering Internship** at **Google** for the **Summer of 2024**.
 
 To **add your internship application**, go to the _Command Box_ and type the following command:
-```shell
+```
 add n/Google r/Software Engineering c/Summer 2024
 ```
 This command specifies the company (_Google_), the role (_Software Engineering_), and the cycle (_Summer 2024_) for the internship that you have applied for.
@@ -240,11 +341,20 @@ For other commands, please refer to the [_Commands_ section of the **User Guide*
 
 </box>
 
---------------------------------------------------------------------------------------------------------------------
+__________________________________________________________________________________________________________________
+
+<div style="page-break-after: always;"></div>
 
 ## **Commands**
 
 This section explains the detailed list of the commands (and its usages) which are available for you to use.
+
+<box type="tip" seamless>
+
+If you have been using **LetsGetHired** and just need a **quick refresher** on the commands available, you can jump to 
+the [_Command Summary_ section of the **User Guide**](#command-summary) below.
+
+</box>
 
 <box type="info" light>
 
@@ -299,282 +409,550 @@ ________________________________________________________________________________
 
 ### Viewing Help: `help`
 
-The `help` command allows you to get quick access to this **User Guide**.
+The `help` command is designed to offer you **instant guidance**. 
 
-**Format**: 
+If you ever find yourself unsure about how to use the system or need a quick reminder of the available commands, 
+the `help` command will provide **direct access** to this **User Guide**, ensuring you have all the information you need at your fingertips.
+
+#### Command Usage
+
+**Command**:
 ```
 help
 ```
 
-**Parameters**: None
+#### Parameters:
 
-**Sample Execution**:
+<box type="important" seamless>
+
+The `help` command does **not** require any parameters.
+
+</box>
+
+#### Example:
+
+If you wish to access the **User Guide**, simply type:
 ```
 help
 ```
-**_UPDATE PICTURE HERE_**
-![help command example](images/helpExample.jpg)
 
 ![help message](images/helpMessage.png)
-Some explanation here on what the command does.
+
+Upon execution, the system will display the link to this **User Guide**, offering details and examples for all available commands.
+
+<box type="tip" light>
+
+* Utilize the `help` command whenever you're uncertain about the functionalities or need a refresher on how to use certain commands.
+* As you become more accustomed to the system, you might find that you use the `help` command less frequently. Nevertheless, it's always there as a reliable resource should you need it.
+
+</box>
 
 __________________________________________________________________________________________________________________
 
 ### Listing Your Internship Applications: `list`
 
-The `list` command displays all of your existing internship applications.
+The `list` command is your quick snapshot tool, providing a **comprehensive view** of all your internship applications. 
 
-**Format**:
+It conveniently presents every application you've added, helping you gain a holistic perspective of your internship search and manage your applications effectively.
+
+#### Command Usage
+
+**Command**:
 ```
 list
 ```
 
-**Parameters**: None
+#### Parameters:
 
-**Sample Execution**:
+<box type="important" seamless>
+
+The `list` command does **not** require any parameters.
+
+</box>
+
+#### Example:
+
+To view all your internship applications, simply type:
 ```
 list
 ```
+
 **_UPDATE PICTURE HERE_**
 ![list command example](images/listExample.jpg)
-Some explanation here on what the command does.
+
+Upon execution, the system will display a **complete list** of all your recorded internship applications.
+
+This display provides a comprehensive overview of your applications, detailing the company name, role, cycle, status, and deadline for each. 
+By glancing through the list, you can quickly assess your application status, the diversity of roles you've applied for, and any impending deadlines.
+
+<box type="tip" light>
+
+* Use the `list` command frequently to keep track of your applications and ensure you're on top of any required follow-ups or upcoming interviews.
+* Combined with the [**`sort`**](#sorting-your-internship-applications-sort) command, the `list` function becomes an even more powerful tool, enabling you to customize the view of your applications based on specific criteria.
+
+</box>
 
 __________________________________________________________________________________________________________________
 
 ### Adding a New Internship Application: `add`
 
-The `add` command allows you to add a new internship application.
+The `add` command is an integral part of managing your internship applications. 
 
-**Format**:
+It enables you to seamlessly **input new applications** into your record. By keeping all your applications up-to-date, 
+you can efficiently keep track of your progress, upcoming interviews, and crucial deadlines.
+
+#### Command Usage
+
+**Command**:
 ```
 add n/COMPANY_NAME r/ROLE c/CYCLE [s/STATUS] [d/DEADLINE]
 ```
 
-**Parameters**:
-* `n/COMPANY_NAME`: Company name, such as `Jane Street` or `Google`.
-* `r/ROLE`: Internship role, such as `Software Engineering Intern`.
-* `c/CYCLE`: Internship cycle, such as `Summer` or `Winter`.
-* `s/STATUS`: Status of your internship application.
-  <box type="info" seamless>
+#### Parameters:
 
-  You can only select `STATUS` from these options:
-    * `Pending`
-    * `Interview`
-    * `Assessment`
-    * `Offered`
-    * `Rejected`
+1. **n/COMPANY_NAME**: The company's name where you've applied.
+   * Example: `Jane Street`, `Google`
+
+2. **r/ROLE**: The role you've applied for.
+    - Example: `Software Engineering Intern`
+
+3. **c/CYCLE**: The internship cycle, which typically corresponds to the season or term.
+    - Example: `Summer`, `Winter`
+
+4. **s/STATUS** (Optional): The current status of your application.
+   <box type="info" seamless>
+
+   Choose your application `STATUS` from the following:
+    - `Pending`
+    - `Interview`
+    - `Assessment`
+    - `Offered`
+    - `Rejected`
 
     </box>
-* `d/DEADLINE`: Deadline for your internship application.
-  <box type="info" seamless>
 
-  `DEADLINE` must be a valid date in the `dd MMM yyyy` format, for example, `25 Oct 2023`.
-  </box>
+5. **d/DEADLINE** (Optional): The application deadline or any other crucial dates.
+   <box type="info" seamless>
 
-**Sample Execution**:
+   The `DEADLINE` should adhere to the `dd MMM yyyy` format. For instance: `25 Oct 2023`.
+   </box>
+
+#### Example:
+
+To add an internship application for a **Software Engineering** role at **Google** for the **Summer 2024** cycle with an **Offered** 
+status and a deadline on **25th October 2023**, you can type:
 ```
 add n/Google r/Software Engineering c/Summer 2024 s/Offered d/25 Oct 2023
 ```
+
 **_UPDATE PICTURE HERE_**
 
 ![add command example 1](images/addExample1.jpg)
 
-![add command example 2](images/addExample2.jpg)
+By executing the `add` command, your application details are recorded and presented in the list. 
+This ensures that as you apply to more roles and receive updates on your applications, every piece of information is 
+systematically stored, making tracking and follow-ups more manageable.
 
-Some explanation here on what the command does.
+<box type="tip" light>
+
+* Regularly adding applications immediately after submission ensures you don't miss out on tracking any application.
+* Remember to update the `STATUS` of your applications as they progress. This way, you'll always be aware of which stage each application is at.
+
+</box>
 
 __________________________________________________________________________________________________________________
 
 ### Editing an internship application : `edit`
 
-The `edit` command allows you to edit your internship application.
+The `edit` command offers flexibility in managing your internship applications. 
 
-**Format**: 
+As the status of your applications change, or if you notice inaccuracies in the details you've entered, 
+the `edit` command ensures you can **update any part of your application** without any hassle.
+
+#### Command Usage
+
+**Command**:
 ```
 edit INDEX [n/COMPANY_NAME] [r/ROLE] [c/CYCLE] [s/STATUS] [d/DEADLINE]
 ```
 
-**Parameters**:
+#### Parameters:
+
 <box type="important" seamless>
 
 At least **one** of the optional parameters must be provided.
 </box>
 
-* `INDEX`: Index of the internship application you want to view.
-  <box type="info" seamless>
+1. **INDEX**: Represents the position of the internship application in your list that you wish to update.
+   <box type="info" seamless>
 
-  `INDEX` must be a positive integer, such as, `1`, `2`, `3`, etc.
-  </box>
+   The `INDEX` should be a positive integer. For example: `1`, `2`, `3`, etc. This corresponds to the application's position in your list.
+   </box>
 
-* `n/COMPANY_NAME`: The updated company name.
-* `r/ROLE`: The updated internship role.
-* `c/CYCLE`: The updated internship cycle.
-* `s/STATUS`: The updated status of the internship application.
-* `d/DEALINE`: The updated deadline of the internship application.
+2. **n/COMPANY_NAME** (Optional): The updated company name.
+3. **r/ROLE** (Optional): The updated internship role.
+4. **c/CYCLE** (Optional): The updated internship cycle.
+5. **s/STATUS** (Optional): The updated status of your application.
+6. **d/DEADLINE** (Optional): The updated deadline or any related dates.
 
-**Sample Execution**:
+#### Example:
+
+Let's say you want to edit the second internship application in your list to change the company name to **Amazon**, 
+update the role to **Data Analyst Intern**, and modify the status to **Interview**. The command would look like this:
+
+```
+edit 2 n/Amazon r/Data Analyst Intern s/Interview
+```
 
 **_UPDATE PICTURE HERE_**
 
 ![edit command example](images/editExample.jpg)
 
-Some explanation here.
+You can see how the original details of the application are updated after executing the `edit` command. 
+This ensures your application list remains current and accurate, reflecting the latest changes or corrections you've made.
+
+<box type="tip" light>
+
+* Always confirm the `INDEX` of the application you want to edit by using the `list` command before executing the `edit` command. This helps avoid unintended modifications.
+* While it's crucial to keep your applications updated, make sure to double-check the changes you're making to ensure accuracy.
+
+</box>
 
 __________________________________________________________________________________________________________________
 
-### Adding a note to a specific internship : `note`
+### Adding a Note : `note`
 
-The `note` command allows you to add a note to your internship application.
+The `note` command is a beneficial tool designed to enrich your internship applications with **additional details**. 
 
-**Format**: 
+As you progress through your application process, there might be specific information, feedback, or reminders 
+you'd like to attach to an application for future reference. The `note` command allows you to effortlessly do just that.
+
+#### Command Usage
+
+**Command**:
 ```
 note INDEX [i/NOTE]
 ```
 
-**Parameters**:
-* `INDEX`: Index of the internship application you want to view.
-  <box type="info" seamless>
+#### Parameters:
 
-  `INDEX` must be a positive integer, such as, `1`, `2`, `3`, etc.
-  </box>
-* `i/NOTE`: Note to be added to the internship application
+1. **INDEX**: Represents the position of the internship application in your list to which you wish to attach a note.
+   <box type="info" seamless>
 
-**Sample Execution**:
+   The `INDEX` should be a positive integer. For example: `1`, `2`, `3`, etc. This corresponds to the application's position in your list.
+   </box>
+
+2. **i/NOTE**: The note or information you'd like to add. This could be feedback from an interview, reminders for follow-up, or any other relevant details.
+
+#### Example:
+
+Suppose you just had an interview for the third internship application on your list, and you'd like to add a note 
+mentioning that the **interviewer emphasized a follow-up in two weeks**. The command would look like this:
+
+```
+note 3 i/Interviewer emphasized follow-up in two weeks.
+```
 
 **_UPDATE PICTURE HERE_**
 
 ![note command example](images/noteExample.jpg)
-Some Explanation here
+
+You can see how the note gets attached to the specified internship application. 
+This ensures you have a comprehensive view of each application, complete with any supplementary details or reminders you've deemed important.
+
+<box type="tip" light>
+
+* Making a habit of attaching notes, especially after interviews or significant interactions, will ensure you don't forget crucial details.
+* Reviewing notes can be particularly helpful when preparing for subsequent rounds of interviews or follow-ups.
+
+</box>
 
 __________________________________________________________________________________________________________________
 
 ### Deleting an internship application : `delete`
 
-The `delete` command allows you to delete an internship application.
+The `delete` command is an essential tool in your internship application management toolkit, designed to help you **maintain a clean and relevant list** of applications. 
 
-**Format**: 
+As situations change, such as when you decide not to pursue a particular opportunity or when an application is no longer relevant, 
+the `delete` command ensures you can easily remove it from your records.
+
+#### Command Usage
+
+**Command**:
 ```
 delete INDEX
 ```
 
-**Parameters**:
-* `INDEX`: Index of the internship application you want to view.
-  <box type="info" seamless>
+#### Parameters:
 
-  `INDEX` must be a positive integer, such as, `1`, `2`, `3`, etc.
-  </box>
+1. **INDEX**: Represents the position of the internship application in your list that you wish to delete.
+   <box type="info" seamless>
 
-**Sample Execution**:
+   The `INDEX` should be a positive integer. For example: `1`, `2`, `3`, etc. This corresponds to the application's position in your list.
+   </box>
+
+#### Example:
+
+If you decide that the fourth internship application on your list is no longer relevant, and you want to remove it, the command would look like this:
+
+```
+delete 4
+```
 
 **_UPDATE PICTURE HERE_**
 
 ![delete command example](images/deleteExample.jpg)
-Some explanation here
+
+You can see how the specified internship application is removed from the list. 
+The remaining applications adjust their index numbers accordingly, ensuring a continuous sequence.
+
+<box type="warning" light>
+
+* Before executing the `delete` command, always double-check the `INDEX` to ensure you are removing the correct application.
+*  Consider confirming your decision to delete an application, as **this action is irreversible**. You'd have to manually re-add the application if you mistakenly delete it.
+
+</box>
 
 __________________________________________________________________________________________________________________
 
 ### Viewing Your Internship Application: `view`
 
-The `view` command allows you to view a specific internship application and its details on the _Select View_.
+The `view` command is designed to offer a **detailed insight** into your individual internship applications. 
 
-**Format**: 
+While a summarized list gives you an overview of all your applications, the `view` command provides an in-depth look 
+at each application, showcasing the specifics and any attached notes. This ensures you have comprehensive access to the 
+data when preparing for interviews, follow-ups, or making decisions.
+
+#### Command Usage
+
+**Command**:
 ```
 view INDEX
 ```
 
-**Parameters**:
-* `INDEX`: Index of the internship application you want to view.
-  <box type="info" seamless>
+#### Parameters:
 
-  `INDEX` must be a positive integer, such as, `1`, `2`, `3`, etc.
-  </box>
+1. **INDEX**: Represents the position of the internship application in your list that you wish to view in detail.
+   <box type="info" seamless>
 
-**Sample Execution**:
+   The `INDEX` should be a positive integer. For example: `1`, `2`, `3`, etc. This corresponds to the application's position in your list.
+   </box>
+
+#### Example:
+
+If you wish to view the details of the first internship application on your list, the command would be:
+
 ```
 view 1
 ```
+
 ![note command example](images/viewExample.jpg)
-Some explanation here on what the command does.
+
+The provided image showcases a _Select View_ of the specific internship application. Here, you can observe all the particulars of the application, including the company's name, role, cycle, status, deadline, and any attached notes. This meticulous breakdown ensures you're fully informed and prepared for any next steps associated with that particular application.
+
+<box type="tip" light>
+
+* Utilize the `view` command prior to interviews or follow-ups to refresh your memory about the specifics of the application.
+* Regularly reviewing applications in detail can help you stay on top of any action items or next steps.
+
+</box>
 
 __________________________________________________________________________________________________________________
 
 ### Searching Your Internship Application: `find`
 
-This command finds internship applications whose fields contain the corresponding given keywords (any match with any of the field and keyword pairs is displayed).
+The `find` command is a powerful tool designed to help you **quickly search and locate specific internship applications** 
+based on various criteria. 
 
-**Format**: 
+Whether you're trying to find all applications for a specific company or filter applications by their status, the `find` 
+command ensures you can effortlessly pinpoint the relevant records.
+
+#### Command Usage
+
+**Command**:
 ```
 find [n/COMPANY_NAME] [r/ROLE] [c/CYCLE] [s/STATUS] [d/DEADLINE] [i/NOTE]
 ```
 
-**Parameters**:
+#### Parameters:
+
+1. **n/COMPANY_NAME**: Represents the company's name you're trying to search for.
+2. **r/ROLE**: Refers to the specific internship role you wish to locate.
+3. **c/CYCLE**: Identifies the internship cycle (e.g., `Summer`, `Winter`) you want to search for.
+4. **s/STATUS**: Helps filter applications based on their current status.
+5. **d/DEADLINE**: Locates applications by their deadline.
+6. **i/NOTE**: Searches applications based on specific notes attached to them.
+
 <box type="important" seamless>
 
-At least **one** of the optional parameters must be provided.
+Remember, at least **one** of the optional parameters must be provided to execute the `find` command.
 </box>
 
-* `n/COMPANY_NAME`: The company name you want to search for.
-* `r/ROLE`: The internship role you want to search for.
-* `c/CYCLE`: The internship cycle you want to search for.
-* `s/STATUS`: The status of the internship application you want to search for.
-* `d/DEALINE`: The deadline of the internship application you want to search for.
-* `i/NOTE`: The note of the internship application you want to search for.
+#### Example:
+
+Suppose you want to quickly locate all your applications for the company **Google**. Your command would be:
+
+```
+find n/Google
+```
+
+**_UPDATE PICTURE HERE_**
+
+![find command example](images/findExample.jpg)
+You can see that all the applications where the company name matches or contains the keyword `Google`.
 
 <box type="info" light>
 
-**Note about the `find` command**
-* The `find` command will display any internship applications that contains the parameter which you have provided.
-  * Examples:
-    * `find n/Google` displays your internship applications whose company name contains `Google`
-    * `find n/Apl` displays your internship applications whose company name contains `Apl`
-        * These include `Apple`, `apple` and `Alphabet Limited`.
-    * `find c/Summer` displays all internship applications whose cycle contains `Summer`
-* If you provide multiple parameters, the `find` command will display all internship applications which contain at least one of the parameters provided.
-  * For example:
-  * `find n/Google c/Summer s/Pending` displays all internship applications which meets at least one of the following conditions:
-      * Company name contains `Google`
-      * Cycle contains `Summer`
-      * Status is `Pending`
+**Note about `find` command:**
+
+1. **Partial Matches**: The `find` command is robust and recognizes partial matches. So, if you search for `Apl`, it'll show applications for `Apple`, `apple`, and even `Alphabet Limited`.
+
+2. **Multiple Criteria**: By adding multiple parameters, you can refine your search further. For instance, `find n/Google c/Summer s/Pending` would display applications that meet at least one of the following criteria:
+    - Company name contains `Google`
+    - Cycle contains `Summer`
+    - Status is `Pending`
 
 </box>
 
-**Sample Execution**:
+<box type="tip" light>
 
-**_UPDATE PICTURE HERE**_
+This feature is particularly useful when you need a more refined list or when you're unsure about the exact details but remember a few keywords.
 
-![find command example](images/findExample.jpg)
-Some explanation here.
+</box>
+
+__________________________________________________________________________________________________________________
+
+### Sorting Your Internship Applications: `sort`
+
+The `sort` command is designed to help you **quickly and conveniently organize** your internship applications. 
+
+With this command, you can prioritize and manage your applications according to a variety of criteria.
+
+#### Command Usage
+
+**Command**:
+```
+sort [n/COMPANY_NAME] [r/ROLE] [c/CYCLE] [s/STATUS] [d/DEADLINE]
+```
+
+#### Parameters:
+
+<box type="important" seamless>
+
+* At least **one** of the optional parameters must be provided.
+* Each parameter can only be replaced by either `a` (for ascending order) or `d` (for descending order). 
+  * If no order is specified, the default is ascending.
+
+</box>
+
+* **n/COMPANY_NAME**: Sorts applications by the company name.
+* **r/ROLE**: Sorts applications by the role.
+* **c/CYCLE**: Sorts applications by the cycle.
+* **s/STATUS**: Sorts applications by their status.
+* **d/DEADLINE**: Sorts applications by their deadline.
+
+#### Examples:
+
+1. **Sort by Company Name (Ascending)**
+   ```
+   sort n/a
+   ```
+   This command will sort your internship application list in alphabetical order based on company names.
+
+2. **Sort by Cycle (Descending)**
+   ```
+   sort c/d
+   ```
+   This command will sort your internship application list in reverse alphabetical order based on cycle.
+
+3. **Sort by Deadline (Ascending)**
+   ```
+   sort d/a
+   ```
+   This command will sort your internship application list in chronological order based on deadlines.
+
+4. **Sort by Status (Ascending)**
+   ```
+   sort s/a
+   ```
+   This command will sort your internship application list in alphabetical order based on their status.
+
+<box type="tip" light>
+
+* You can combine multiple parameters to sort by multiple criteria. For instance, `sort n/a d/d` would first sort by company name in ascending order and then by deadline in descending order within each company.
+* Regularly sorting and reviewing your applications can help you manage your applications better and not miss any important deadlines.
+
+</box>
 
 __________________________________________________________________________________________________________________
 
 ### Clearing all entries : `clear`
 
-The `clear` command allows you to clear all your internship applications.
+The `clear` command provides an efficient way to **erase all internship application** records in your database. 
 
-<box type="tip" seamless>
+It's a complete reset, ensuring you have a clean slate to work with. This command can be particularly useful if you've 
+been experimenting with sample data or if you want to start fresh for a new application cycle.
 
-Use the `clear` command to clear the sample data in **LetsGetHired** once you are familiar with its usages.
+#### Command Usage
 
-</box>
-
-**Format**: 
+**Command**:
 ```
 clear
 ```
 
-**Parameters**: None
+#### Parameters:
+<box type="important" seamless>
+
+The `clear` command does **not** require any parameters.
+
+</box>
+
+<box type="tip" light>
+
+**Recommended Use**: If you've been familiarizing yourself with **LetsGetHired** using sample data, consider using the `clear` command to wipe the slate clean and input your genuine applications.
+
+</box>
+
+<box type="warning" light>
+
+While the `clear` command is potent and efficient, it's also **irreversible**. Once you clear your data, there's no getting it back. 
+Always **ensure you have backups** or have reviewed your data thoroughly before deciding to use this command.
+
+</box>
 
 __________________________________________________________________________________________________________________
 
 ### Exiting the program : `exit`
 
-The `exit` command allows you to quickly exit **LetsGetHired**.
+The `exit` command is designed to offer you a smooth and swift way to **close the **LetsGetHired** program**. 
 
-**Format**: `exit`
+With just a simple command, you can ensure that the application terminates gracefully, safeguarding all the data and changes you've made during your session.
 
-**Parameters**: None
+#### Command Usage
+
+**Command**:
+```
+exit
+```
+
+#### Parameters:
+<box type="important" seamless>
+
+The `exit` command does **not** require any parameters.
+
+</box>
+
+#### How it Works:
+
+Upon executing the `exit` command, **LetsGetHired** will initiate its shutdown sequence. 
+This involves saving any changes you've made during your session and closing the application window. 
+It ensures that all your data remains intact the next time you launch the program.
 
 __________________________________________________________________________________________________________________
+
+## **Storage**
+
+This section will help you understand how your data is being stored in your computer.
 
 ### Saving the data
 
@@ -593,35 +971,48 @@ data file at the next run. Hence, it is recommended to take a backup of the file
 
 </box>
 
---------------------------------------------------------------------------------------------------------------------
+__________________________________________________________________________________________________________________
+
+<div style="page-break-after: always;"></div>
 
 ## **FAQ**
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous LetsGetHired home folder.
 
---------------------------------------------------------------------------------------------------------------------
+__________________________________________________________________________________________________________________
 
 ## **Known issues**
 
 * **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
 
---------------------------------------------------------------------------------------------------------------------
+__________________________________________________________________________________________________________________
 
-## **Command summary**
+<div style="page-break-after: always;"></div>
 
-| Action     | Format, Examples                                                                                                                                           | Examples                                                                    |
-|------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------|
-| **Add**    | `add n/COMPANY_NAME r/ROLE c/CYCLE [s/STATUS] [d/DEADLINE]`                                                                                                | `add n/Jane street r/Full Stack Developer c/Summer s/Pending d/25 Oct 2023` |
-| **View**   | `view INDEX`                                                                                                                                               | `view 3`                                                                    |
-| **Edit**   | `edit INDEX [n/COMPANY_NAME] [r/ROLE] [c/CYCLE] [s/STATUS] [d/DEADLINE]`                                                                                   | `edit 2 s/Applied`                                                          |
-| **Note**   | `note INDEX`                                                                                                                                               | `note 5 i/Jane Street is the leading market maker in the APAC region`       |
-| **Delete** | `delete INDEX`                                                                                                                                             | `delete 1`                                                                  |
-| **List**   | `list`                                                                                                                                                     | `list`                                                                      |
-| **Find**   | `find [n/SEARCH_STRING_COMPANY] [r/SEARCH_STRING_ROLE] [c/SEARCH_STRING_CYCLE] [s/SEARCH_STRING_STATUS] [d/SEARCH_STRING_DEADLINE] [i/SEARCH_STRING_NOTE]` | `find n/Google c/Summer s/Pending`                                          |
-| **Help**   | `help`                                                                                                                                                     | `help`                                                                      |
-| **Clear**  | `clear`                                                                                                                                                    | `clear`                                                                     |
-| **Exit**   | `exit`                                                                                                                                                     | `exit`                                                                      |
+## **Command Summary**
+
+| **Command** | **Usage**                                                                   | **Example**                                                                 |
+|-------------|-----------------------------------------------------------------------------|-----------------------------------------------------------------------------|
+| **Help**    | `help`                                                                      | `help`                                                                      |
+| **List**    | `list`                                                                      | `list`                                                                      |
+| **Add**     | `add n/COMPANY_NAME r/ROLE c/CYCLE [s/STATUS] [d/DEADLINE]`                 | `add n/Google r/Software Engineering c/Summer 2024 s/Offered d/25 Oct 2023` |
+| **Edit**    | `edit INDEX [n/COMPANY_NAME] [r/ROLE] [c/CYCLE] [s/STATUS] [d/DEADLINE]`    | `edit 1 n/Apple`                                                            |
+| **Note**    | `note INDEX [i/NOTE]`                                                       | `note 1 i/Interview on 26 Oct`                                              |
+| **Delete**  | `delete INDEX`                                                              | `delete 1`                                                                  |
+| **View**    | `view INDEX`                                                                | `view 1`                                                                    |
+| **Find**    | `find [n/COMPANY_NAME] [r/ROLE] [c/CYCLE] [s/STATUS] [d/DEADLINE] [i/NOTE]` | `find n/Google`                                                             |
+| **Sort**    | `sort [n/COMPANY_NAME] [r/ROLE] [c/CYCLE] [s/STATUS] [d/DEADLINE]`          | `sort n/a`                                                                  |
+| **Clear**   | `clear`                                                                     | `clear`                                                                     |
+| **Exit**    | `exit`                                                                      | `exit`                                                                      |
+
+
+This table provides a quick and clear reference to the commands available in **LetsGetHired**. 
+You can use it to efficiently navigate through the program and manage your internship applications.
+
+__________________________________________________________________________________________________________________
+
+<div style="page-break-after: always;"></div>
 
 ## **Glossary**
 
