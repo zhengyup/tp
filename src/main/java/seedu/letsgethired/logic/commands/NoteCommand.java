@@ -1,7 +1,7 @@
 package seedu.letsgethired.logic.commands;
 
 import static seedu.letsgethired.commons.util.CollectionUtil.requireAllNonNull;
-import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE;
+import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE_INSERT;
 import static seedu.letsgethired.model.Model.PREDICATE_SHOW_ALL_APPLICATIONS;
 
 import java.util.List;
@@ -24,9 +24,9 @@ public class NoteCommand extends Command {
             + "identified by the index number used in the last intern application listing. "
             + "Existing notes will be overwritten by the input.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + PREFIX_NOTE + "[NOTE]\n"
+            + PREFIX_NOTE_INSERT + "[NOTE]\n"
             + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_NOTE + "John Street is the leading market maker in the APAC region";
+            + PREFIX_NOTE_INSERT + "John Street is the leading market maker in the APAC region";
     public static final String MESSAGE_ADD_NOTE_SUCCESS = "Added note to Intern Application";
 
     private final Index index;

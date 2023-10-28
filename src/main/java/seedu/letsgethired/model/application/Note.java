@@ -10,15 +10,11 @@ import static seedu.letsgethired.commons.util.AppUtil.checkArgument;
 public class Note {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Note must be followed by the prefix 'i/' "
+            "Note insertion must be followed by the prefix 'i/' "
                     + "and should only contain characters and spaces, and it should not be blank\n"
-                    + "Example: note 1 i/Need to brush up on database querying";
-
-    /*
-     * The first character of the status must not be a whitespace,
-     * otherwise " " (a blank string) becomes a valid input.
-     */
-    public static final String VALIDATION_REGEX = "[\\s\\S]*";
+                    + "Example: note 1 i/Need to brush up on database querying\n"
+                    + "Note deletion must be followed by the prefix 'o/' and must only contain the index of the note.\n"
+                    + "Example: 'note 1 o/3' will delete the 3rd note of the first InternApplication";
 
     public final String value;
 

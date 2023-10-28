@@ -109,6 +109,17 @@ public class InternApplication {
     }
 
     /**
+     * Removes a Note object from the list of Notes in the InternApplication
+     * @param index The index of the Note object to be deleted
+     * @return An InternApplication object with the deleted Note in its list
+     */
+    public InternApplication deleteNote(int index) {
+        List<Note> mutableList = new ArrayList<>(this.note);
+        mutableList.remove(index + 1);
+        return new InternApplication(company, role, cycle, mutableList, status, deadline);
+    }
+
+    /**
      * Returns true if both applications have the same name.
      * This defines a weaker notion of equality between two applications.
      */

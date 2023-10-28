@@ -1,11 +1,7 @@
 package seedu.letsgethired.model.application;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_COMPANY;
-import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_CYCLE;
-import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE;
-import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_ROLE;
-import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_STATUS;
+import static seedu.letsgethired.logic.parser.CliSyntax.*;
 
 import java.util.List;
 import java.util.function.Predicate;
@@ -65,7 +61,7 @@ public class CompanyContainsFieldKeywordsPredicate implements Predicate<InternAp
         if (fieldPrefix.equals(PREFIX_CYCLE)) {
             return internApplication.getCycle().value;
         }
-        if (fieldPrefix.equals(PREFIX_NOTE)) {
+        if (fieldPrefix.equals(PREFIX_NOTE_INSERT)) {
             return internApplication.getNote()
                     .stream()
                     .map(x -> x.value)

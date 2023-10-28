@@ -2,7 +2,7 @@ package seedu.letsgethired.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.letsgethired.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE;
+import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE_INSERT;
 
 import seedu.letsgethired.commons.core.index.Index;
 import seedu.letsgethired.logic.commands.NoteCommand;
@@ -20,7 +20,7 @@ public class NoteCommandParser implements Parser<NoteCommand> {
      */
     public NoteCommand parse(String args) throws ParseException {
         requireNonNull(args);
-        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NOTE);
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NOTE_INSERT);
 
         Index index;
 
@@ -30,7 +30,7 @@ public class NoteCommandParser implements Parser<NoteCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, NoteCommand.MESSAGE_USAGE), pe);
         }
 
-        Note note = ParserUtil.parseNote(argMultimap.getValue(PREFIX_NOTE).orElse(""));
+        Note note = ParserUtil.parseNote(argMultimap.getValue(PREFIX_NOTE_INSERT).orElse(""));
 
         return new NoteCommand(index, note);
     }
