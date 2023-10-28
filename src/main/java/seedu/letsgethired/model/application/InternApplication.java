@@ -2,6 +2,7 @@ package seedu.letsgethired.model.application;
 
 import static seedu.letsgethired.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 import seedu.letsgethired.commons.util.ToStringBuilder;
@@ -17,14 +18,28 @@ public class InternApplication {
     private final Role role;
     private final Cycle cycle;
     // Data fields
-    private final Note note;
+    private final ArrayList<Note> note;
     private final Status status;
     private final Deadline deadline;
 
     /**
      * Every field must be present and not null.
      */
-    public InternApplication(Company company, Role role, Cycle cycle, Note note, Status status, Deadline deadline) {
+    public InternApplication(Company company, Role role, Cycle cycle,
+                             Note note, Status status, Deadline deadline) {
+        requireAllNonNull(company, role, cycle, note, status, deadline);
+        this.company = company;
+        this.role = role;
+        this.cycle = cycle;
+        ArrayList<Note> initList = new ArrayList<>();
+        initList.add(note);
+        this.note = initList;
+        this.status = status;
+        this.deadline = deadline;
+    }
+
+    public InternApplication(Company company, Role role, Cycle cycle,
+                             ArrayList<Note> note, Status status, Deadline deadline) {
         requireAllNonNull(company, role, cycle, note, status, deadline);
         this.company = company;
         this.role = role;
@@ -46,16 +61,32 @@ public class InternApplication {
         return cycle;
     }
 
-    public Note getNote() {
-        return note;
-    }
-
     public Status getStatus() {
         return status;
     }
 
     public Deadline getDeadline() {
         return deadline;
+    }
+
+    public ArrayList<Note> getNote() {
+        return note;
+    }
+
+    public String getNumberedListOfNotes() {
+        Note[] noteArray = note.toArray(new Note[0]);
+        StringBuilder compiledNotes = new StringBuilder();
+        for (int i = 0; i < noteArray.length; i++) {
+            compiledNotes.append(i + 1)
+                    .append(". ")
+                    .append(noteArray[i].value)
+                    .append("\n");
+        }
+        return compiledNotes.toString();
+    }
+
+    public void addNote(Note note) {
+        this.note.add(note);
     }
 
     /**

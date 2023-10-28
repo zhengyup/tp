@@ -8,6 +8,7 @@ import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_STATUS;
 import static seedu.letsgethired.model.Model.PREDICATE_SHOW_ALL_APPLICATIONS;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -107,7 +108,7 @@ public class EditCommand extends Command {
                 .orElse(internApplicationToEdit.getRole());
         Cycle updatedCycle = editInternApplicationDescriptor.getCycle()
                 .orElse(internApplicationToEdit.getCycle());
-        Note updatedNote = editInternApplicationDescriptor.getNote()
+        ArrayList<Note> updatedNote = editInternApplicationDescriptor.getNote()
                 .orElse(internApplicationToEdit.getNote());
         Status updatedStatus = editInternApplicationDescriptor.getStatus()
                 .orElse(internApplicationToEdit.getStatus());
@@ -155,7 +156,7 @@ public class EditCommand extends Command {
         private Company company;
         private Role role;
         private Cycle cycle;
-        private Note note;
+        private ArrayList<Note> note;
         private Status status;
         private Deadline deadline;
 
@@ -204,11 +205,11 @@ public class EditCommand extends Command {
             return Optional.ofNullable(cycle);
         }
 
-        public void setNote(Note note) {
+        public void setNote(ArrayList<Note> note) {
             this.note = note;
         }
 
-        public Optional<Note> getNote() {
+        public Optional<ArrayList<Note>> getNote() {
             return Optional.ofNullable(note);
         }
 

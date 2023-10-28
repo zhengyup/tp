@@ -37,18 +37,19 @@ public class Messages {
      */
     public static String formatDisplay(InternApplication internApplication) {
         final StringBuilder builder = new StringBuilder();
+        //TODO: Add a Label box beside each fieldname to align the words
         builder.append("Company: ")
                 .append(internApplication.getCompany())
-                .append("\nRole:            ")
+                .append("\nRole: ") //revert to this unaligned form first, I have a better way to fix it
                 .append(internApplication.getRole())
-                .append("\nCycle:         ")
+                .append("\nCycle: ")
                 .append(internApplication.getCycle())
-                .append("\nStatus:        ")
+                .append("\nStatus: ")
                 .append(internApplication.getStatus())
-                .append("\nDeadline:   ")
+                .append("\nDeadline: ")
                 .append(internApplication.getDeadline())
-                .append("\nNotes:         ")
-                .append(internApplication.getNote());
+                .append("\nNotes:\n")
+                .append(internApplication.getNumberedListOfNotes());
         return builder.toString();
     }
 

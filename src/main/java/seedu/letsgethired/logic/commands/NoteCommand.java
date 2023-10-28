@@ -55,11 +55,12 @@ public class NoteCommand extends Command {
         }
 
         InternApplication internApplicationToEdit = lastShownList.get(index.getZeroBased());
+        internApplicationToEdit.addNote(note);
         InternApplication editedInternApplication = new InternApplication(
                 internApplicationToEdit.getCompany(),
                 internApplicationToEdit.getRole(),
                 internApplicationToEdit.getCycle(),
-                note,
+                internApplicationToEdit.getNote(),
                 internApplicationToEdit.getStatus(),
                 internApplicationToEdit.getDeadline());
 

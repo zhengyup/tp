@@ -12,6 +12,9 @@ import seedu.letsgethired.model.application.Note;
 import seedu.letsgethired.model.application.Role;
 import seedu.letsgethired.model.application.Status;
 
+import java.util.ArrayList;
+import java.util.stream.Collectors;
+
 /**
  * Jackson-friendly version of {@link InternApplication}.
  */
@@ -22,7 +25,7 @@ class JsonAdaptedInternApplication {
     private final String role;
     private final String cycle;
     private final String status;
-    private final String note;
+    private final ArrayList<String> note;
     private final String deadline;
 
     /**
@@ -32,7 +35,7 @@ class JsonAdaptedInternApplication {
     public JsonAdaptedInternApplication(@JsonProperty("company") String company,
                                         @JsonProperty("role") String role,
                                         @JsonProperty("cycle") String cycle,
-                                        @JsonProperty("note") String note,
+                                        @JsonProperty("note") ArrayList<String> note,
                                         @JsonProperty("status") String status,
                                         @JsonProperty("deadline") String deadline) {
         this.company = company;
@@ -50,7 +53,7 @@ class JsonAdaptedInternApplication {
         company = source.getCompany().value;
         role = source.getRole().value;
         cycle = source.getCycle().value;
-        note = source.getNote().value;
+        note = source.getNote().stream().map(x -> x.value).collect(Collectors.toCollection(ArrayList<String>::new));
         status = source.getStatus().value;
         deadline = source.getDeadline().value;
     }
@@ -97,10 +100,13 @@ class JsonAdaptedInternApplication {
         if (note == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Note.class.getSimpleName()));
         }
-        if (!Note.isValidNote(note)) {
+
+        if (note.stream().anyMatch(x -> !Note.isValidNote(x))) {
             throw new IllegalValueException(Note.MESSAGE_CONSTRAINTS);
         }
-        final Note modelNote = new Note(note);
+        final ArrayList<Note> modelNote = note
+                .stream()
+                .map(Note::new).collect(Collectors.toCollection(ArrayList<Note>::new));
 
         if (deadline == null) {
             throw new IllegalValueException(
