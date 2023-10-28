@@ -2,6 +2,7 @@ package seedu.letsgethired.ui;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.letsgethired.logic.commands.exceptions.CommandException;
@@ -14,6 +15,13 @@ import seedu.letsgethired.model.application.InternApplication;
 public class InternApplicationCard extends UiPart<Region> {
 
     private static final String FXML = "InternApplicationListCard.fxml";
+    private static final String ACCEPTED_COLOR = "-fx-text-fill: black; -fx-background-color: #7e38b7;";
+    private static final String ASSESSMENT_COLOR = "-fx-text-fill: black; -fx-background-color: #ffd100;";
+    private static final String INTERVIEW_COLOR = "-fx-text-fill: black; -fx-background-color: #fd5602;";
+    private static final String OFFERED_COLOR = "-fx-background-color: #03C04A;";
+    private static final String PANEL_COLOR = "-fx-background-color: #E9E9E9;";
+    private static final String PENDING_COLOR = "-fx-background-color: #209cee;";
+    private static final String REJECTED_COLOR = "-fx-background-color: #d30000;";
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -32,13 +40,9 @@ public class InternApplicationCard extends UiPart<Region> {
     @FXML
     private Label company;
     @FXML
-    private Label id;
-    @FXML
     private Label role;
     @FXML
-    private Label status;
-    @FXML
-    private Label note;
+    private FlowPane status;
     @FXML
     private Label cycle;
     @FXML
@@ -52,16 +56,50 @@ public class InternApplicationCard extends UiPart<Region> {
                                  CommandExecutor commandExecutor) {
         super(FXML);
         this.internApplication = internApplication;
-        this.indexNum = displayedIndex;
         this.commandExecutor = commandExecutor;
-
-        id.setText(displayedIndex + ". ");
-        company.setText(internApplication.getCompany().value);
+        this.indexNum = displayedIndex;
+        company.setText(displayedIndex + ". " + internApplication.getCompany().value);
+        if (this.indexNum % 2 == 0) {
+            cardPane.setStyle(PANEL_COLOR);
+        }
         role.setText(internApplication.getRole().value);
         cycle.setText(internApplication.getCycle().value);
-        status.setText(internApplication.getStatus().value);
         deadline.setText(internApplication.getDeadline().value);
-        note.setText(internApplication.getNote().value);
+        Label statusLabel = getStatusLabel();
+        status.getChildren().add(statusLabel);
+    }
+
+    /**
+     * Gets the status label color coded by the internship application status.
+     *
+     * @return the status label color coded by the internship application status.
+     */
+    private Label getStatusLabel() {
+        String statusString = internApplication.getStatus().value;
+        Label statusLabel = new Label(statusString);
+        switch (statusString) {
+        case "Interview":
+            statusLabel.setStyle(INTERVIEW_COLOR);
+            break;
+        case "Accepted":
+            statusLabel.setStyle(ACCEPTED_COLOR);
+            break;
+        case "Offered":
+            statusLabel.setStyle(OFFERED_COLOR);
+            break;
+        case "Rejected":
+            statusLabel.setStyle(REJECTED_COLOR);
+            break;
+        case "Assessment":
+            statusLabel.setStyle(ASSESSMENT_COLOR);
+            break;
+        case "Pending":
+            statusLabel.setStyle(PENDING_COLOR);
+            break;
+        default:
+            break;
+        }
+        return statusLabel;
     }
 
     /**
