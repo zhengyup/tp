@@ -3,13 +3,11 @@ package seedu.letsgethired.logic.parser;
 import static java.util.Objects.requireNonNull;
 import static seedu.letsgethired.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE;
-import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_STATUS;
 
 import seedu.letsgethired.commons.core.index.Index;
 import seedu.letsgethired.logic.commands.NoteCommand;
 import seedu.letsgethired.logic.parser.exceptions.ParseException;
 import seedu.letsgethired.model.application.Note;
-import seedu.letsgethired.model.application.Status;
 
 /**
  * Parses input arguments and creates a new {@code NoteCommand} object

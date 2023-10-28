@@ -1,5 +1,10 @@
 package seedu.letsgethired.testutil;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import seedu.letsgethired.model.application.Company;
 import seedu.letsgethired.model.application.Cycle;
 import seedu.letsgethired.model.application.Deadline;
@@ -7,11 +12,6 @@ import seedu.letsgethired.model.application.InternApplication;
 import seedu.letsgethired.model.application.Note;
 import seedu.letsgethired.model.application.Role;
 import seedu.letsgethired.model.application.Status;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * A utility class to help with building InternApplication objects.

@@ -60,11 +60,6 @@ public class NoteCommand extends Command {
         return new CommandResult(MESSAGE_ADD_NOTE_SUCCESS, Messages.formatDisplay(editedInternApplication));
     }
 
-//    private String generateSuccessMessage() {
-//        String message = !note.value.isEmpty() ? MESSAGE_ADD_NOTE_SUCCESS : MESSAGE_ADD_NOTE_FAILURE;
-//        return message;
-//    }
-
     @Override
     public boolean equals(Object other) {
         if (other == this) {

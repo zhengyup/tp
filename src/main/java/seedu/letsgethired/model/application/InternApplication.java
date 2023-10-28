@@ -37,6 +37,15 @@ public class InternApplication {
         this.deadline = deadline;
     }
 
+    /**
+     * A second constructor to instantiate another InternApplication with an existing list of Notes
+     * @param company Company object representing the company
+     * @param role Role object representing the role of the job
+     * @param cycle Cycle object representing the cycle of the internship period
+     * @param note List of notes
+     * @param status Status object representing the status of the application
+     * @param deadline Deadline object representing deadline of the application
+     */
     public InternApplication(Company company, Role role, Cycle cycle,
                              List<Note> note, Status status, Deadline deadline) {
         requireAllNonNull(company, role, cycle, note, status, deadline);
@@ -72,6 +81,10 @@ public class InternApplication {
         return note;
     }
 
+    /**
+     * Formats the List of Notes to a readable string
+     * @return String that is formatted into a numbered list
+     */
     public String getNumberedListOfNotes() {
         Note[] noteArray = note.toArray(new Note[0]);
         StringBuilder compiledNotes = new StringBuilder();
@@ -84,6 +97,11 @@ public class InternApplication {
         return compiledNotes.toString();
     }
 
+    /**
+     * Adds a Note object to the list of Notes in the InternApplication
+     * @param note The Note object to be added
+     * @return An InternApplication object with the added Note in its list
+     */
     public InternApplication addNote(Note note) {
         List<Note> mutableList = new ArrayList<>(this.note);
         mutableList.add(note);

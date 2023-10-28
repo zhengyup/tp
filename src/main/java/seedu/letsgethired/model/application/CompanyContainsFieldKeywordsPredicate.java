@@ -7,7 +7,6 @@ import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_STATUS;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -70,7 +69,7 @@ public class CompanyContainsFieldKeywordsPredicate implements Predicate<InternAp
             return internApplication.getNote()
                     .stream()
                     .map(x -> x.value)
-                    .reduce("", (x,y) -> x + y); // We can just concatenate since we are just finding a substring
+                    .reduce("", (x, y) -> x + "/" + y); // We can just append since we are finding a substring
         }
         if (fieldPrefix.equals(PREFIX_STATUS)) {
             return internApplication.getStatus().value;

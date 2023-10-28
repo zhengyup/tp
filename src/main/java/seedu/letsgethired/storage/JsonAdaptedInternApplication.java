@@ -1,5 +1,8 @@
 package seedu.letsgethired.storage;
 
+import java.util.ArrayList;
+import java.util.stream.Collectors;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -12,8 +15,6 @@ import seedu.letsgethired.model.application.Note;
 import seedu.letsgethired.model.application.Role;
 import seedu.letsgethired.model.application.Status;
 
-import java.util.ArrayList;
-import java.util.stream.Collectors;
 
 /**
  * Jackson-friendly version of {@link InternApplication}.

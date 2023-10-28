@@ -5,6 +5,10 @@ import static seedu.letsgethired.storage.JsonAdaptedInternApplication.MISSING_FI
 import static seedu.letsgethired.testutil.Assert.assertThrows;
 import static seedu.letsgethired.testutil.TypicalInternApplications.OPTIVER;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 import org.junit.jupiter.api.Test;
 
 import seedu.letsgethired.commons.exceptions.IllegalValueException;
@@ -14,10 +18,6 @@ import seedu.letsgethired.model.application.Deadline;
 import seedu.letsgethired.model.application.Note;
 import seedu.letsgethired.model.application.Role;
 import seedu.letsgethired.model.application.Status;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.stream.Collectors;
 
 public class JsonAdaptedInternApplicationTest {
     private static final String INVALID_NAME = "J@ne";
