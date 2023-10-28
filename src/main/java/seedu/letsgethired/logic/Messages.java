@@ -39,15 +39,15 @@ public class Messages {
         final StringBuilder builder = new StringBuilder();
         builder.append("Company: ")
                 .append(internApplication.getCompany())
-                .append("\nRole: ")
+                .append("\nRole:            ")
                 .append(internApplication.getRole())
-                .append("\nCycle: ")
+                .append("\nCycle:         ")
                 .append(internApplication.getCycle())
-                .append("\nStatus: ")
+                .append("\nStatus:        ")
                 .append(internApplication.getStatus())
-                .append("\nDeadline: ")
+                .append("\nDeadline:   ")
                 .append(internApplication.getDeadline())
-                .append("\nNotes: ")
+                .append("\nNotes:         ")
                 .append(internApplication.getNote());
         return builder.toString();
     }
