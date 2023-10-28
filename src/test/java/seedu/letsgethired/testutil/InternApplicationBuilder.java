@@ -8,6 +8,10 @@ import seedu.letsgethired.model.application.Note;
 import seedu.letsgethired.model.application.Role;
 import seedu.letsgethired.model.application.Status;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 /**
  * A utility class to help with building InternApplication objects.
  */
@@ -24,7 +28,7 @@ public class InternApplicationBuilder {
     private Role role;
     private Cycle cycle;
     private Status status;
-    private Note note;
+    private ArrayList<Note> note;
     private Deadline deadline;
 
     /**
@@ -35,7 +39,8 @@ public class InternApplicationBuilder {
         role = new Role(DEFAULT_ROLE);
         cycle = new Cycle(DEFAULT_CYCLE);
         status = new Status(DEFAULT_STATUS);
-        note = new Note(DEFAULT_NOTE);
+        note = Arrays.stream(new Note[]{new Note(DEFAULT_NOTE)})
+                .collect(Collectors.toCollection(ArrayList<Note>::new));
         deadline = new Deadline(DEFAULT_DEADLINE);
     }
 
@@ -71,7 +76,9 @@ public class InternApplicationBuilder {
      * Sets the {@code Note} of the {@code InternApplication} that we are building.
      */
     public InternApplicationBuilder withNote(String note) {
-        this.note = new Note(note);
+        ArrayList<Note> notes = new ArrayList<>();
+        notes.add(new Note(note));
+        this.note = notes;
         return this;
     }
 

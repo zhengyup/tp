@@ -25,15 +25,12 @@ public class InternApplication {
     /**
      * Every field must be present and not null.
      */
-    public InternApplication(Company company, Role role, Cycle cycle,
-                             Note note, Status status, Deadline deadline) {
-        requireAllNonNull(company, role, cycle, note, status, deadline);
+    public InternApplication(Company company, Role role, Cycle cycle, Status status, Deadline deadline) {
+        requireAllNonNull(company, role, cycle, status, deadline);
         this.company = company;
         this.role = role;
         this.cycle = cycle;
-        ArrayList<Note> initList = new ArrayList<>();
-        initList.add(note);
-        this.note = initList;
+        this.note = new ArrayList<>();
         this.status = status;
         this.deadline = deadline;
     }
@@ -85,8 +82,9 @@ public class InternApplication {
         return compiledNotes.toString();
     }
 
-    public void addNote(Note note) {
+    public InternApplication addNote(Note note) {
         this.note.add(note);
+        return new InternApplication(company, role, cycle, this.note, status, deadline);
     }
 
     /**

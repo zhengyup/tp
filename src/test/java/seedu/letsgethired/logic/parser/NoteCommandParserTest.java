@@ -30,7 +30,7 @@ public class NoteCommandParserTest {
     @Test
     public void parse_missingParameter_failure() {
         // no field specified
-        assertParseFailure(parser, "1", NoteCommand.NO_NOTE_PARAMETER_MESSAGE);
+        assertParseFailure(parser, "1", Note.MESSAGE_CONSTRAINTS);
     }
 
     @Test

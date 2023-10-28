@@ -58,12 +58,10 @@ public class AddCommandParser implements Parser<AddCommand> {
         Cycle cycle = ParserUtil.parseCycle(argMultimap.getValue(PREFIX_CYCLE).get());
         Status status = ParserUtil.parseStatus(argMultimap.getValue(PREFIX_STATUS)
                 .orElse("Pending"));
-        Note note = ParserUtil.parseNote(argMultimap.getValue(PREFIX_NOTE)
-                .orElse("No note added"));
         Deadline deadline = ParserUtil.parseDeadline(argMultimap.getValue(PREFIX_DEADLINE)
                 .orElse("No deadline"));
 
-        InternApplication internApplication = new InternApplication(company, role, cycle, note, status, deadline);
+        InternApplication internApplication = new InternApplication(company, role, cycle, status, deadline);
 
         return new AddCommand(internApplication);
     }

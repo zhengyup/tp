@@ -15,19 +15,27 @@ import seedu.letsgethired.model.application.Note;
 import seedu.letsgethired.model.application.Role;
 import seedu.letsgethired.model.application.Status;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 public class JsonAdaptedInternApplicationTest {
     private static final String INVALID_NAME = "J@ne";
     private static final String INVALID_ROLE = " ";
     private static final String INVALID_STATUS = " ";
     private static final String INVALID_CYCLE = "example.com";
-    private static final String INVALID_NOTE = " ";
+    private static final ArrayList<String> INVALID_NOTE = Arrays.stream(new String[]{" "})
+            .collect(Collectors.toCollection(ArrayList<String>::new));
     private static final String INVALID_DEADLINE = "25 Oct";
 
     private static final String VALID_NAME = OPTIVER.getCompany().toString();
     private static final String VALID_ROLE = OPTIVER.getRole().toString();
     private static final String VALID_CYCLE = OPTIVER.getCycle().toString();
     private static final String VALID_STATUS = OPTIVER.getStatus().toString();
-    private static final String VALID_NOTE = OPTIVER.getNote().toString();
+    private static final ArrayList<String> VALID_NOTE = OPTIVER.getNote()
+            .stream()
+            .map(x -> x.value)
+            .collect(Collectors.toCollection(ArrayList<String>::new));
     private static final String VALID_DEADLINE = OPTIVER.getDeadline().toString();
 
     @Test

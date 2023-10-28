@@ -2,11 +2,7 @@ package seedu.letsgethired.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.letsgethired.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_COMPANY;
-import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_CYCLE;
-import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_DEADLINE;
-import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_ROLE;
-import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_STATUS;
+import static seedu.letsgethired.logic.parser.CliSyntax.*;
 
 import seedu.letsgethired.commons.core.index.Index;
 import seedu.letsgethired.logic.commands.EditCommand;

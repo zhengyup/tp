@@ -31,7 +31,7 @@ public class InternApplicationUtil {
         sb.append(PREFIX_COMPANY + internApplication.getCompany().value + " ");
         sb.append(PREFIX_ROLE + internApplication.getRole().value + " ");
         sb.append(PREFIX_CYCLE + internApplication.getCycle().value + " ");
-        sb.append(PREFIX_NOTE + internApplication.getNote().value + " ");
+        //sb.append(PREFIX_NOTE + internApplication.getNote().value + " ");
         sb.append(PREFIX_STATUS + internApplication.getStatus().value + " ");
         sb.append(PREFIX_DEADLINE + internApplication.getDeadline().value + " ");
         return sb.toString();

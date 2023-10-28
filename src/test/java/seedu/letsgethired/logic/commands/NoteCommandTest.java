@@ -34,7 +34,7 @@ public class NoteCommandTest {
     public void execute_invalidInternApplicationIndexUnfilteredList_failure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredInternApplicationList().size() + 1);
         NoteCommand noteCommand = new NoteCommand(outOfBoundIndex,
-                new InternApplicationBuilder().build().getNote());
+                new InternApplicationBuilder().build().getNote().get(0));
 
         assertCommandFailure(noteCommand, model, Messages.MESSAGE_INVALID_INTERN_APPLICATION_DISPLAYED_INDEX);
     }
@@ -43,26 +43,9 @@ public class NoteCommandTest {
     public void execute_validNoteCommandAdd_success() {
         InternApplication editedInternApplication = getTypicalInternApplications().get(0);
         NoteCommand noteCommand = new NoteCommand(INDEX_FIRST_APPLICATION,
-                new InternApplicationBuilder().build().getNote());
+                new InternApplicationBuilder().build().getNote().get(0));
 
         CommandResult expectedResult = new CommandResult(NoteCommand.MESSAGE_ADD_NOTE_SUCCESS,
-                Messages.formatDisplay(editedInternApplication));
-
-        Model expectedModel = new ModelManager(new InternTracker(model.getInternTracker()), new UserPrefs());
-        expectedModel.setInternApplication(model.getFilteredInternApplicationList().get(0), editedInternApplication);
-
-        assertCommandSuccess(noteCommand, model, expectedResult, expectedModel);
-    }
-
-    @Test
-    public void execute_validNoteCommandDelete_success() {
-        Note emptyNote = new Note("");
-
-        InternApplication editedInternApplication = new InternApplicationBuilder(getTypicalInternApplications().get(0))
-                .withNote("").build();
-        NoteCommand noteCommand = new NoteCommand(INDEX_FIRST_APPLICATION, emptyNote);
-
-        CommandResult expectedResult = new CommandResult(NoteCommand.MESSAGE_DELETE_NOTE_SUCCESS,
                 Messages.formatDisplay(editedInternApplication));
 
         Model expectedModel = new ModelManager(new InternTracker(model.getInternTracker()), new UserPrefs());

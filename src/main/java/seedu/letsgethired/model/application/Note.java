@@ -10,7 +10,9 @@ import static seedu.letsgethired.commons.util.AppUtil.checkArgument;
 public class Note {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Note should only contain characters and spaces, and it should not be blank";
+            "Note must be followed by the prefix 'i/' "
+                    + "and should only contain characters and spaces, and it should not be blank\n"
+                    + "Example: note 1 i/Need to brush up on database querying";
 
     /*
      * The first character of the status must not be a whitespace,
@@ -35,7 +37,7 @@ public class Note {
      * Returns true if a given string is a valid note.
      */
     public static boolean isValidNote(String test) {
-        return test.matches(VALIDATION_REGEX);
+        return !test.isBlank();
     }
 
     @Override

@@ -21,42 +21,36 @@ public class SampleDataUtil {
                     new Company("Apple"),
                     new Role("DevOps"),
                     new Cycle("Summer 2024"),
-                    new Note("Need to revise Rust before the Apple interview"),
                     new Status("Pending"),
                     new Deadline("24 Oct 2023")),
             new InternApplication(
                     new Company("Bytedance"),
                     new Role("Systems Integrator"),
                     new Cycle("Summer 2023"),
-                    new Note("Bytedance requires back end developers to know the MERN stack"),
                     new Status("Rejected"),
                     new Deadline("24 Oct 2023")),
             new InternApplication(
                     new Company("Grab"),
                     new Role("Data intern"),
                     new Cycle("Summer 2023"),
-                    new Note("Grab pays their data interns 2000 SGD per month"),
                     new Status("Pending"),
                     new Deadline("24 Oct 2023")),
             new InternApplication(
                     new Company("Shoppee"),
                     new Role("Full Stack Developer"),
                     new Cycle("Off-cycle 2024"),
-                    new Note("Shoppee online assessment has a difficult mental math section"),
                     new Status("Rejected"),
                     new Deadline("24 Oct 2023")),
             new InternApplication(
                     new Company("Stripe"),
                     new Role("Cybersecurity Intern"),
                     new Cycle("Winter 2024"),
-                    new Note("Stripe requires previous experience with SQL"),
                     new Status("Pending"),
                     new Deadline("24 Oct 2023")),
             new InternApplication(
                     new Company("Jane Street"),
                     new Role("Economist"),
                     new Cycle("Summer 2022"),
-                    new Note("Jane Street is the leading market maker in the APAC region"),
                     new Status("Pending"),
                     new Deadline("24 Oct 2023"))};
     }
