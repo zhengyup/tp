@@ -13,7 +13,7 @@
       xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
   <GridPane HBox.hgrow="NEVER">
     <columnConstraints>
-      <ColumnConstraints hgrow="ALWAYS" minWidth="10" prefWidth="160" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="160" />
     </columnConstraints>
     <VBox alignment="CENTER_LEFT" minHeight="105" GridPane.columnIndex="0">
       <padding>

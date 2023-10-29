@@ -15,11 +15,10 @@ import seedu.letsgethired.model.application.InternApplication;
 public class InternApplicationCard extends UiPart<Region> {
 
     private static final String FXML = "InternApplicationListCard.fxml";
-    private static final String ACCEPTED_COLOR = "-fx-text-fill: black; -fx-background-color: #7e38b7;";
-    private static final String ASSESSMENT_COLOR = "-fx-text-fill: black; -fx-background-color: #ffd100;";
-    private static final String INTERVIEW_COLOR = "-fx-text-fill: black; -fx-background-color: #fd5602;";
+    private static final String ACCEPTED_COLOR = "-fx-background-color: #7e38b7;";
+    private static final String ASSESSMENT_COLOR = "-fx-background-color: #ffd100;";
+    private static final String INTERVIEW_COLOR = "-fx-background-color: #fd5602;";
     private static final String OFFERED_COLOR = "-fx-background-color: #03C04A;";
-    private static final String PANEL_COLOR = "-fx-background-color: #E9E9E9;";
     private static final String PENDING_COLOR = "-fx-background-color: #209cee;";
     private static final String REJECTED_COLOR = "-fx-background-color: #d30000;";
 
@@ -59,9 +58,6 @@ public class InternApplicationCard extends UiPart<Region> {
         this.commandExecutor = commandExecutor;
         this.indexNum = displayedIndex;
         company.setText(displayedIndex + ". " + internApplication.getCompany().value);
-        if (this.indexNum % 2 == 0) {
-            cardPane.setStyle(PANEL_COLOR);
-        }
         role.setText(internApplication.getRole().value);
         cycle.setText(internApplication.getCycle().value);
         deadline.setText(internApplication.getDeadline().value);
