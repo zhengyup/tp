@@ -50,7 +50,7 @@ public class NoteDeleteCommandTest {
         NoteDeleteCommand noteCommand = new NoteDeleteCommand(INDEX_FIRST_APPLICATION, Index.fromOneBased(1));
 
         CommandResult expectedResult = new CommandResult(NoteDeleteCommand.MESSAGE_DELETE_NOTE_SUCCESS,
-                Messages.formatDisplay(editedInternApplication));
+                editedInternApplication);
 
         Model expectedModel = new ModelManager(new InternTracker(model.getInternTracker()), new UserPrefs());
         expectedModel.setInternApplication(model.getFilteredInternApplicationList().get(0), editedInternApplication);

@@ -6,7 +6,13 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
-import seedu.letsgethired.model.application.*;
+
+import seedu.letsgethired.model.application.Company;
+import seedu.letsgethired.model.application.Cycle;
+import seedu.letsgethired.model.application.Deadline;
+import seedu.letsgethired.model.application.InternApplication;
+import seedu.letsgethired.model.application.Role;
+import seedu.letsgethired.model.application.Status;
 
 public class CommandResultTest {
     @Test
@@ -33,8 +39,8 @@ public class CommandResultTest {
                 new Company("different"),
                         new Role("different"),
                         new Cycle("different"),
-                        new Status("different"),
-                        new Deadline("different")))));
+                        new Status("Pending"),
+                        new Deadline("01 Jan 2030")))));
 
         // different showHelp value -> returns false
         assertFalse(commandResult.equals(
@@ -69,7 +75,7 @@ public class CommandResultTest {
         CommandResult commandResult = new CommandResult("feedback");
         String expected = CommandResult.class.getCanonicalName() + "{feedbackToUser="
                 + commandResult.getFeedbackToUser()
-                + ", internApplication=" + commandResult.getInternApplicationResult()
+                + ", internApplicationResult=" + commandResult.getInternApplicationResult()
                 + ", showHelp=" + commandResult.isShowHelp()
                 + ", exit=" + commandResult.isExit() + "}";
         assertEquals(expected, commandResult.toString());

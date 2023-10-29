@@ -3,13 +3,10 @@ package seedu.letsgethired.ui;
 import static java.util.Objects.requireNonNull;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
 import seedu.letsgethired.model.application.InternApplication;
-
-import java.util.StringTokenizer;
 
 /**
  * A ui for the select view that displays the notes of a selected application.

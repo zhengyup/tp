@@ -49,7 +49,7 @@ public class NoteInsertCommandTest {
                 new InternApplicationBuilder().build().getNote().get(0));
 
         CommandResult expectedResult = new CommandResult(NoteInsertCommand.MESSAGE_ADD_NOTE_SUCCESS,
-                Messages.formatDisplay(editedInternApplication));
+                editedInternApplication);
 
         Model expectedModel = new ModelManager(new InternTracker(model.getInternTracker()), new UserPrefs());
         expectedModel.setInternApplication(model.getFilteredInternApplicationList().get(0), editedInternApplication);

@@ -3,6 +3,7 @@ package seedu.letsgethired.logic.commands;
 import static java.util.Objects.requireNonNull;
 
 import java.util.Objects;
+import java.util.Optional;
 
 import seedu.letsgethired.commons.util.ToStringBuilder;
 import seedu.letsgethired.model.application.InternApplication;
@@ -20,14 +21,14 @@ public class CommandResult {
     /** The application should exit. */
     private final boolean exit;
 
-    private final InternApplication internApplication;
+    private final Optional<InternApplication> internApplication;
 
     /**
      * Constructs a {@code CommandResult} with the specified fields.
      */
     public CommandResult(String feedbackToUser, InternApplication internApplication, boolean showHelp, boolean exit) {
         this.feedbackToUser = requireNonNull(feedbackToUser);
-        this.internApplication = internApplication;
+        this.internApplication = Optional.ofNullable(internApplication);
         this.showHelp = showHelp;
         this.exit = exit;
     }
@@ -60,7 +61,7 @@ public class CommandResult {
         return feedbackToUser;
     }
 
-    public InternApplication getInternApplicationResult() {
+    public Optional<InternApplication> getInternApplicationResult() {
         return internApplication;
     }
 

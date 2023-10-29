@@ -17,7 +17,6 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.ObservableList;
 import seedu.letsgethired.commons.core.GuiSettings;
-import seedu.letsgethired.logic.Messages;
 import seedu.letsgethired.logic.commands.exceptions.CommandException;
 import seedu.letsgethired.model.InternTracker;
 import seedu.letsgethired.model.Model;
@@ -40,7 +39,7 @@ public class AddCommandTest {
 
         CommandResult commandResult = new AddCommand(validInternApplication).execute(modelStub);
 
-        assertEquals(String.format(AddCommand.MESSAGE_SUCCESS, Messages.formatDisplay(validInternApplication)),
+        assertEquals(String.format(AddCommand.MESSAGE_SUCCESS, validInternApplication),
                 commandResult.getFeedbackToUser());
         assertEquals(Arrays.asList(validInternApplication), modelStub.internApplicationAdded);
     }
