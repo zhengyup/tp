@@ -12,35 +12,34 @@
 
 ## **Introduction**
 
-**LetsGetHired** is a desktop application designed to assist you in efficiently **tracking and managing** your 
-internship applications and their progress.
+_LetsGetHired_ is a **desktop application** designed to assist you in efficiently **tracking and managing your 
+internship applications and their progress**.
 
-With LetsGetHired, you can benefit from:
+With _LetsGetHired_, you can benefit from:
 - **Swift Viewing**: Swiftly view your internship applications and monitor their status.
 - **Status Updates**: Stay updated on the progress of each application, from application sent to interview stages.
 - **Organization**: Organize your internship applications according to your needs for better clarity.
 - **Notes**: Add personalized notes to each internship application, ensuring you never forget key details.
 - **Deadlines**: Set and track deadlines for your internship applications, so you never miss an opportunity.
 
-In addition to these capabilities, we recognize the importance of **speed and efficiency**. Thus, **LetsGetHired** is
-optimized for use via a Command Line Interface (CLI), but you still enjoy the advantages of a Graphical User Interface
-(GUI). If you are a swift typist, **LetsGetHired** can streamline your internship tracking faster than many standard
-GUI-based tools available.
+In addition to these capabilities, we recognize the importance of **speed and efficiency**. Thus, _LetsGetHired_ is
+**optimized for use via a Command Line Interface (CLI)**, but you still enjoy the advantages of a Graphical User Interface
+(GUI). If you are a swift typist, _LetsGetHired_ can streamline your internship tracking **faster than many standard
+GUI-based tools available.**
 
 ### Purpose
-This User Guide is designed to help you get started with the LetsGetHired Intern Tracker, a powerful tool for managing 
-your internship applications. Whether you are a tech-savvy student or a professional looking to land that dream internship, 
-this guide is here to assist you every step of the way.
+This User Guide is designed to help you get started with _LetsGetHired_, a powerful tool for managing your internship applications. 
+Whether you are a tech-savvy student or a professional looking to land that dream internship, this guide is here to assist you every step of the way.
 
-This app is perfect for you if you are a **Computer Science undergraduate student**
+**_LetsGetHired_ is perfect for you if you are a Computer Science undergraduate student**
 
-This user guide is primarily designed for Computer Science undergraduates currently engaged in the internship finding process. Whether you are seeking you first internship or have prior experience, this guide is tailored to cater to your specific needs.
+This user guide is primarily designed for Computer Science undergraduates currently engaged in the internship finding process. 
+Whether you are seeking you first internship or have prior experience, this guide is tailored to cater to your specific needs.
 
 ### Prerequisite Knowledge
 
 While this guide is accessible to a broad audience, we assume that you have a basic understanding of the internship-finding process. 
-If you are new to this journey, don't worry! We've got you covered. Feel free to check out these [helpful resources](https://www.techinterviewhandbook.org/software-engineering-interview-guide/) 
-or refer to our [glossary](#glossary) page for additional information to get you up to speed.
+If you are new to this journey, don't worry! We've got you covered. Feel free to check out these [helpful resources](https://www.techinterviewhandbook.org/software-engineering-interview-guide/) or refer to the [_Glossary_ section of the **User Guide**](#glossary) for additional information to get you up to speed.
 
 Our goal is to make your internship application experience as smooth and successful as possible, regardless of your level of experience. 
 Let's embark on this journey together and make your internship goals a reality.
