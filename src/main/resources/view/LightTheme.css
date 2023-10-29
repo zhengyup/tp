@@ -138,6 +138,14 @@
      -fx-background-color: derive(#FFFFFF, 20%);
 }
 
+.vbox {
+      -fx-background-color: derive(#FFFFFF, 20%);
+}
+
+.hbox {
+      -fx-background-color: derive(#FFFFFF, 20%);
+}
+
 .pane-with-border {
      -fx-background-color: derive(#eeeeee, 10%);
 }

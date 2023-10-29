@@ -37,6 +37,8 @@ public class InternApplicationCard extends UiPart<Region> {
     @FXML
     private HBox cardPane;
     @FXML
+    private Label id;
+    @FXML
     private Label company;
     @FXML
     private Label role;
@@ -57,7 +59,8 @@ public class InternApplicationCard extends UiPart<Region> {
         this.internApplication = internApplication;
         this.commandExecutor = commandExecutor;
         this.indexNum = displayedIndex;
-        company.setText(displayedIndex + ". " + internApplication.getCompany().value);
+        id.setText(displayedIndex + ". ");
+        company.setText(internApplication.getCompany().value);
         role.setText(internApplication.getRole().value);
         cycle.setText(internApplication.getCycle().value);
         deadline.setText(internApplication.getDeadline().value);
