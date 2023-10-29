@@ -3,8 +3,13 @@ package seedu.letsgethired.ui;
 import static java.util.Objects.requireNonNull;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
+import seedu.letsgethired.model.application.InternApplication;
+
+import java.util.StringTokenizer;
 
 /**
  * A ui for the select view that displays the notes of a selected application.
@@ -12,7 +17,17 @@ import javafx.scene.layout.Region;
 public class SelectView extends UiPart<Region> {
     private static final String FXML = "SelectView.fxml";
     @FXML
-    private TextArea selectView;
+    private TextField company;
+    @FXML
+    private TextField role;
+    @FXML
+    private TextField cycle;
+    @FXML
+    private TextField status;
+    @FXML
+    private TextField deadline;
+    @FXML
+    private TextArea note;
 
     /**
      * Creates a {@code SelectView}.
@@ -23,10 +38,15 @@ public class SelectView extends UiPart<Region> {
 
     /**
      * Sets detail text onto the select view text area
-     * @param details the intern application to be viewed
+     * @param internApplication the application to be viewed
      */
-    public void displayDetails(String details) {
-        requireNonNull(details);
-        selectView.setText(details);
+    public void displayDetails(InternApplication internApplication) {
+        requireNonNull(internApplication);
+        company.setText(internApplication.getCompany().value);
+        role.setText(internApplication.getRole().value);
+        cycle.setText(internApplication.getCycle().value);
+        status.setText(internApplication.getStatus().value);
+        deadline.setText(internApplication.getDeadline().value);
+        note.setText(internApplication.getNumberedListOfNotes());
     }
 }

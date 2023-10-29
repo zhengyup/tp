@@ -46,7 +46,7 @@ public class NoteInsertCommand extends NoteCommand {
         model.setInternApplication(internApplicationToEdit, editedInternApplication);
         model.updateFilteredInternApplicationList(PREDICATE_SHOW_ALL_APPLICATIONS);
 
-        return new CommandResult(MESSAGE_ADD_NOTE_SUCCESS, Messages.formatDisplay(editedInternApplication));
+        return new CommandResult(MESSAGE_ADD_NOTE_SUCCESS, editedInternApplication);
     }
 
     @Override

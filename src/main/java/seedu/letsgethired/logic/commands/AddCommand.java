@@ -58,7 +58,7 @@ public class AddCommand extends Command {
         }
 
         model.addInternApplication(toAdd);
-        return new CommandResult(MESSAGE_SUCCESS, Messages.formatDisplay(toAdd));
+        return new CommandResult(MESSAGE_SUCCESS);
     }
 
     @Override

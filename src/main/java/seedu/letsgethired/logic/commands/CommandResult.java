@@ -5,6 +5,7 @@ import static java.util.Objects.requireNonNull;
 import java.util.Objects;
 
 import seedu.letsgethired.commons.util.ToStringBuilder;
+import seedu.letsgethired.model.application.InternApplication;
 
 /**
  * Represents the result of a command execution.
@@ -19,14 +20,14 @@ public class CommandResult {
     /** The application should exit. */
     private final boolean exit;
 
-    private final String detailsToUser;
+    private final InternApplication internApplication;
 
     /**
      * Constructs a {@code CommandResult} with the specified fields.
      */
-    public CommandResult(String feedbackToUser, String detailsToUser, boolean showHelp, boolean exit) {
+    public CommandResult(String feedbackToUser, InternApplication internApplication, boolean showHelp, boolean exit) {
         this.feedbackToUser = requireNonNull(feedbackToUser);
-        this.detailsToUser = detailsToUser;
+        this.internApplication = internApplication;
         this.showHelp = showHelp;
         this.exit = exit;
     }
@@ -35,8 +36,8 @@ public class CommandResult {
      * Constructs a {@code CommandResult} with the specified fields {@code feedbackToUser} and {@code detailsToUser},
      * and other fields set to their default value.
      */
-    public CommandResult(String feedbackToUser, String detailsToUser) {
-        this(feedbackToUser, detailsToUser, false, false);
+    public CommandResult(String feedbackToUser, InternApplication internApplication) {
+        this(feedbackToUser, internApplication, false, false);
     }
 
     /**
@@ -44,7 +45,7 @@ public class CommandResult {
      * and other fields set to their default value.
      */
     public CommandResult(String feedbackToUser, boolean showHelp, boolean exit) {
-        this(feedbackToUser, "", showHelp, exit);
+        this(feedbackToUser, null, showHelp, exit);
     }
 
     /**
@@ -52,15 +53,15 @@ public class CommandResult {
      * and other fields set to their default value.
      */
     public CommandResult(String feedbackToUser) {
-        this(feedbackToUser, "", false, false);
+        this(feedbackToUser, null, false, false);
     }
 
     public String getFeedbackToUser() {
         return feedbackToUser;
     }
 
-    public String getDetailsToUser() {
-        return detailsToUser;
+    public InternApplication getInternApplicationResult() {
+        return internApplication;
     }
 
     public boolean isShowHelp() {
@@ -86,19 +87,19 @@ public class CommandResult {
         return feedbackToUser.equals(otherCommandResult.feedbackToUser)
                 && showHelp == otherCommandResult.showHelp
                 && exit == otherCommandResult.exit
-                && detailsToUser.equals(otherCommandResult.detailsToUser);
+                && internApplication.equals(otherCommandResult.internApplication);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(feedbackToUser, detailsToUser, showHelp, exit);
+        return Objects.hash(feedbackToUser, internApplication, showHelp, exit);
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
                 .add("feedbackToUser", feedbackToUser)
-                .add("detailsToUser", detailsToUser)
+                .add("internApplicationResult", internApplication)
                 .add("showHelp", showHelp)
                 .add("exit", exit)
                 .toString();
