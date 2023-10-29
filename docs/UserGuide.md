@@ -364,6 +364,18 @@ the [_Command Summary_ section of the **User Guide**](#command-summary) below.
     add n/Google r/Software Engineering c/Summer 2024
     ```
 
+* All parameters should be preceded by its respective **prefix**.<br>
+    ```
+    add n/COMPANY_NAME r/ROLE c/CYCLE
+    ``` 
+    For example, `n/` is the prefix for the `COMPANY_NAME` parameter. `r/` is the prefix for `ROLE` and `c/` is the prefix for `CYCLE`.
+
+    <box type="warning" light>
+  <md>
+  **Exception**: The `INDEX` parameter does not require any prefix.
+  </md>
+    </box>
+
 * Words in `[square brackets]` are **optional parameters**.<br>
     ```
     add n/COMPANY_NAME r/ROLE c/CYCLE [s/STATUS] [d/DEADLINE]
