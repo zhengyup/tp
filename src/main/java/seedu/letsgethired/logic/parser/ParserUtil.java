@@ -39,12 +39,12 @@ public class ParserUtil {
      *
      * @throws ParseException if the specified index is invalid (not non-zero unsigned integer).
      */
-    public static Integer parseNoteIndex(String index) throws ParseException {
-        String trimmedIndex = index.trim();
+    public static Index parseNoteIndex(String oneBasedIndex) throws ParseException {
+        String trimmedIndex = oneBasedIndex.trim();
         if (!StringUtil.isNonZeroUnsignedInteger(trimmedIndex)) {
             throw new ParseException(MESSAGE_INVALID_INDEX);
         }
-        return Integer.parseInt(trimmedIndex);
+        return Index.fromOneBased(Integer.parseInt(trimmedIndex));
     }
 
     /**

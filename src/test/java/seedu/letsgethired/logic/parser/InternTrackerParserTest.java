@@ -15,6 +15,7 @@ import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 import javafx.util.Pair;
+import seedu.letsgethired.commons.core.index.Index;
 import seedu.letsgethired.logic.commands.AddCommand;
 import seedu.letsgethired.logic.commands.ClearCommand;
 import seedu.letsgethired.logic.commands.DeleteCommand;
@@ -111,7 +112,7 @@ public class InternTrackerParserTest {
     public void parseCommand_deleteNote() throws Exception {
         NoteCommand command = (NoteCommand) parser.parseCommand(NoteCommand.COMMAND_WORD + " "
                 + INDEX_FIRST_APPLICATION.getOneBased() + " " + PREFIX_NOTE_DELETE + 1);
-        assertEquals(new NoteDeleteCommand(INDEX_FIRST_APPLICATION, 1), command);
+        assertEquals(new NoteDeleteCommand(INDEX_FIRST_APPLICATION, Index.fromOneBased(1)), command);
     }
 
     @Test

@@ -1,5 +1,6 @@
 package seedu.letsgethired.logic.commands;
 
+import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE_DELETE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE_INSERT;
 
 import seedu.letsgethired.logic.commands.exceptions.CommandException;
@@ -15,13 +16,16 @@ public abstract class NoteCommand extends Command {
     public static final String INVALID_NOTE_DISPLAYED_INDEX =
             "The note index provided is invalid";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Add a note to the internship application "
-            + "identified by the index number used in the last intern application listing. "
-            + "Existing notes will be overwritten by the input.\n"
-            + "Parameters: INDEX (must be a positive integer) "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Add or Delete a note to the internship application "
+            + "identified by the index number used in the last intern application listing.\n"
+            + "Parameters: INDEX_OF_APPLICATION (must be a positive integer) "
             + PREFIX_NOTE_INSERT + "[NOTE]\n"
-            + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_NOTE_INSERT + "John Street is the leading market maker in the APAC region";
+            + "Add Example: " + COMMAND_WORD + " 1 "
+            + PREFIX_NOTE_INSERT + "John Street is the leading market maker in the APAC region\n"
+            + "Parameters: INDEX_OF_APPLICATION (must be a positive integer) "
+            + PREFIX_NOTE_DELETE + "[INDEX_OF_NOTE] (must be a positive integer)\n"
+            + "Delete Example: " + COMMAND_WORD + " 1 "
+            + PREFIX_NOTE_DELETE + "1";;
 
     public static final String DUAL_NOTE_ERROR = "You cannot perform the action of deleting and adding a note at once";
 

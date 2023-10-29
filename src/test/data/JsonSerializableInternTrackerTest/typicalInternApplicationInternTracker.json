@@ -4,14 +4,14 @@
     "company" : "Jane Street",
     "cycle" : "Summer 2024",
     "role" : "Full Stack Developer",
-    "note" : ["Jane Street is the leading market maker in the APAC region"],
+    "note" : ["Jane Street is the leading market maker in the APAC region", "Gotta work on Leetcode"],
     "status" : "Pending",
     "deadline":  "24 Oct 2023"
   }, {
     "company" : "Optiver",
     "cycle" : "Summer 2023",
     "role" : "Data Engineering Intern",
-    "note" : ["Optiver needs very good mental math skills"],
+    "note" : ["Optiver needs very good mental math skills", "HackerRank assessment pending"],
     "status" : "Pending",
     "deadline":  "24 Oct 2023"
   }, {

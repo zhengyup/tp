@@ -26,7 +26,7 @@ class JsonAdaptedInternApplication {
     private final String role;
     private final String cycle;
     private final String status;
-    private final ArrayList<String> note;
+    private final ArrayList<String> notes;
     private final String deadline;
 
     /**
@@ -36,13 +36,13 @@ class JsonAdaptedInternApplication {
     public JsonAdaptedInternApplication(@JsonProperty("company") String company,
                                         @JsonProperty("role") String role,
                                         @JsonProperty("cycle") String cycle,
-                                        @JsonProperty("note") ArrayList<String> note,
+                                        @JsonProperty("note") ArrayList<String> notes,
                                         @JsonProperty("status") String status,
                                         @JsonProperty("deadline") String deadline) {
         this.company = company;
         this.role = role;
         this.cycle = cycle;
-        this.note = note;
+        this.notes = notes;
         this.status = status;
         this.deadline = deadline;
     }
@@ -54,7 +54,7 @@ class JsonAdaptedInternApplication {
         company = source.getCompany().value;
         role = source.getRole().value;
         cycle = source.getCycle().value;
-        note = source.getNote().stream().map(x -> x.value).collect(Collectors.toCollection(ArrayList<String>::new));
+        notes = source.getNote().stream().map(x -> x.value).collect(Collectors.toCollection(ArrayList<String>::new));
         status = source.getStatus().value;
         deadline = source.getDeadline().value;
     }
@@ -98,14 +98,14 @@ class JsonAdaptedInternApplication {
         }
         final Status modelStatus = new Status(status);
 
-        if (note == null) {
+        if (notes == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Note.class.getSimpleName()));
         }
 
-        if (note.stream().anyMatch(x -> !Note.isValidNote(x))) {
+        if (notes.stream().anyMatch(x -> !Note.isValidNote(x))) {
             throw new IllegalValueException(Note.MESSAGE_CONSTRAINTS);
         }
-        final ArrayList<Note> modelNote = note
+        final ArrayList<Note> modelNote = notes
                 .stream()
                 .map(Note::new).collect(Collectors.toCollection(ArrayList<Note>::new));
 

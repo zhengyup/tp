@@ -15,41 +15,41 @@ import seedu.letsgethired.model.application.InternApplication;
  * Deletes a note to an existing intern application in the interntracker.
  */
 public class NoteDeleteCommand extends NoteCommand {
-    public static final String MESSAGE_ADD_NOTE_SUCCESS = "Deleted note from Intern Application";
-    private final Index index;
-    private final Integer targetIndex;
+    public static final String MESSAGE_DELETE_NOTE_SUCCESS = "Deleted note from Intern Application";
+    private final Index applicationIndex;
+    private final Index noteIndex;
 
     /**
-     * @param index of the intern application in the filtered intern application list to edit
-     * @param targetIndex  index number of the application in the list to delete
+     * @param applicationIndex of the intern application in the filtered intern application list to edit
+     * @param noteIndex  index number of the note in the list to delete
      */
-    public NoteDeleteCommand(Index index, Integer targetIndex) {
-        requireAllNonNull(index, targetIndex);
+    public NoteDeleteCommand(Index applicationIndex, Index noteIndex) {
+        requireAllNonNull(applicationIndex, noteIndex);
 
-        this.index = index;
-        this.targetIndex = targetIndex;
+        this.applicationIndex = applicationIndex;
+        this.noteIndex = noteIndex;
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
         List<InternApplication> lastShownList = model.getFilteredInternApplicationList();
 
-        if (index.getZeroBased() >= lastShownList.size()) {
+        if (applicationIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_INTERN_APPLICATION_DISPLAYED_INDEX);
         }
 
-        InternApplication internApplicationToEdit = lastShownList.get(index.getZeroBased());
+        InternApplication internApplicationToEdit = lastShownList.get(applicationIndex.getZeroBased());
 
-        if (targetIndex > internApplicationToEdit.getNote().size()) { //targetIndex is oneBased
+        if (noteIndex.getZeroBased() >= internApplicationToEdit.getNote().size()) {
             throw new CommandException(NoteCommand.INVALID_NOTE_DISPLAYED_INDEX);
         }
 
-        InternApplication editedInternApplication = internApplicationToEdit.deleteNote(targetIndex);
+        InternApplication editedInternApplication = internApplicationToEdit.deleteNote(noteIndex.getOneBased());
 
         model.setInternApplication(internApplicationToEdit, editedInternApplication);
         model.updateFilteredInternApplicationList(PREDICATE_SHOW_ALL_APPLICATIONS);
 
-        return new CommandResult(MESSAGE_ADD_NOTE_SUCCESS, Messages.formatDisplay(editedInternApplication));
+        return new CommandResult(MESSAGE_DELETE_NOTE_SUCCESS, Messages.formatDisplay(editedInternApplication));
     }
 
     @Override
@@ -64,7 +64,7 @@ public class NoteDeleteCommand extends NoteCommand {
         }
 
         NoteDeleteCommand e = (NoteDeleteCommand) other;
-        return index.equals(e.index)
-                && targetIndex.equals(e.targetIndex);
+        return applicationIndex.equals(e.applicationIndex)
+                && noteIndex.equals(e.noteIndex);
     }
 }

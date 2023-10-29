@@ -5,6 +5,8 @@ import static seedu.letsgethired.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE_DELETE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE_INSERT;
 
+import java.util.Optional;
+
 import seedu.letsgethired.commons.core.index.Index;
 import seedu.letsgethired.logic.commands.NoteCommand;
 import seedu.letsgethired.logic.commands.NoteDeleteCommand;
@@ -33,19 +35,19 @@ public class NoteCommandParser implements Parser<NoteCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, NoteCommand.MESSAGE_USAGE), pe);
         }
 
-        String maybeInsert = argMultimap.getValue(PREFIX_NOTE_INSERT).orElse(null);
-        String maybeDelete = argMultimap.getValue(PREFIX_NOTE_DELETE).orElse(null);
+        Optional<String> maybeInsert = argMultimap.getValue(PREFIX_NOTE_INSERT);
+        Optional<String> maybeDelete = argMultimap.getValue(PREFIX_NOTE_DELETE);
 
-        if (maybeInsert != null && maybeDelete != null) {
+        if (maybeInsert.isPresent() && maybeDelete.isPresent()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, NoteCommand.DUAL_NOTE_ERROR));
-        } else if (maybeInsert == null && maybeDelete == null) {
+        } else if (maybeInsert.isEmpty() && maybeDelete.isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, Note.MESSAGE_CONSTRAINTS));
-        } else if (maybeInsert != null) {
-            Note note = ParserUtil.parseNote(maybeInsert);
+        } else if (maybeInsert.isPresent()) {
+            Note note = ParserUtil.parseNote(maybeInsert.get());
             return new NoteInsertCommand(index, note);
         } else {
-            Integer pos = ParserUtil.parseNoteIndex(maybeDelete);
-            return new NoteDeleteCommand(index, pos);
+            Index noteIndex = ParserUtil.parseNoteIndex(maybeDelete.get());
+            return new NoteDeleteCommand(index, noteIndex);
         }
 
 
