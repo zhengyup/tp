@@ -227,7 +227,7 @@ ________________________________________________________________________________
 
 <box type="info" light>
 
-Please note that the app comes preloaded with some **sample internship data**. <br>
+Please note that the app comes preloaded with some **sample data**. <br>
 This is to help you get a feel for how the app works and how your entries will appear.
 
 </box>
@@ -930,7 +930,7 @@ ________________________________________________________________________________
 
 ### Exiting the program : `exit`
 
-The `exit` command is designed to offer you a smooth and swift way to **close the **LetsGetHired** program**. 
+The `exit` command is designed to offer you a smooth and swift way to **close the _LetsGetHired_ program**. 
 
 With just a simple command, you can ensure that the application terminates gracefully, safeguarding all the data and changes you've made during your session.
 
@@ -981,24 +981,6 @@ ________________________________________________________________________________
 
 <div style="page-break-after: always;"></div>
 
-## **FAQ**
-
-**Q**: How do I transfer my data to another Computer?<br>
-**A**: Install _LetsGetHired_ in the other computer and overwrite the empty data file it creates with the file that 
-contains the data from your previous _LetsGetHired_ home folder.
-
-__________________________________________________________________________________________________________________
-
-## **Known issues**
-
-* **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the 
-primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application 
-before running the application again.
-
-__________________________________________________________________________________________________________________
-
-<div style="page-break-after: always;"></div>
-
 ## **Command Summary**
 
 | **Command** | **Usage**                                                                   | **Example**                                                                 |
@@ -1023,9 +1005,43 @@ ________________________________________________________________________________
 
 <div style="page-break-after: always;"></div>
 
+## **FAQ**
+
+**Q**: How do I know my Java version?<br>
+**A**: Open your command terminal and enter the following command:<br>
+    
+```
+java -version
+```
+
+**Q**: How do I transfer my data to another Computer?<br>
+**A**: Install _LetsGetHired_ in the other computer and overwrite the empty data file it creates with the file that
+contains the data from your previous _LetsGetHired_ home folder.
+
+__________________________________________________________________________________________________________________
+
+## **Known issues**
+
+* **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the
+  primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application
+  before running the application again.
+
+__________________________________________________________________________________________________________________
+
+<div style="page-break-after: always;"></div>
+
 ## **Glossary**
 
-* **Mainstream OS**: Windows, Linux, Unix, OS-X
-* **Internship Entry:** A record or entry in the system that represents information about an internship opportunity. It includes details such as company name, application status, deadlines, and notes.
-* **Application Status:** The current stage or status of an internship application.
-* **Sample Data:** Pre-populated data used for demonstration purposes, enabling new users to see how the application functions with realistic examples.
+Here are the definitions of some terms which is used throughout the User Guide.
+
+| Term                                  | Definition                                                                                                                                                                               |
+|---------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Command Line Interface (CLI)**      | A type of user interface in which the user interacts with a system by typing commands into a terminal or console.                                                                        |
+| **Graphical User Interface (GUI)**    | A type of user interface that allows users to interact with a system  through graphical icons and visual indicators.                                                                     |
+| **Hyperlink (link)**                  | A reference in the webpage that allows users to directly access another location or file within the same or a different webpage.                                                         |
+| **Command Terminal**                  | A software-based interface that provides an environment for users to interact with a computer's operating system or software by typing textual commands and receiving text-based output. |
+| **Sample Data**                       | Pre-populated data used for demonstration purposes, enabling new users to see how the application functions with realistic examples.                                                     |
+| **Workflow**                          | A systematic and repeatable pattern of activity that a user follows to accomplish a specific task.                                                                                       |
+| **Command**                           | An input from the user that tells LetsGetHired which action to perform.                                                                                                                  |
+| **Parameter**                         | A placeholder used in a command to represent a piece of information that needs to be provided when that command is executed.                                                             |
+| **JSON (JavaScript Object Notation)** | A lightweight data-interchange format that is easy for humans to read and write and easy for machines to parse and generate.                                                             |
