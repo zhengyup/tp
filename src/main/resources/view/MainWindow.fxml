@@ -50,7 +50,7 @@
             <padding>
               <Insets top="0" right="10" bottom="0" left="10" />
             </padding>
-            <StackPane fx:id="internApplicationListPanelPlaceholder"  />
+            <StackPane fx:id="internApplicationListPanelPlaceholder" VBox.vgrow="ALWAYS" />
           </VBox>
 
           <VBox VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS" styleClass="pane-with-border">
