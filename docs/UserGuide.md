@@ -972,13 +972,16 @@ ________________________________________________________________________________
 ## **FAQ**
 
 **Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous LetsGetHired home folder.
+**A**: Install _LetsGetHired_ in the other computer and overwrite the empty data file it creates with the file that 
+contains the data from your previous _LetsGetHired_ home folder.
 
 __________________________________________________________________________________________________________________
 
 ## **Known issues**
 
-* **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
+* **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the 
+primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application 
+before running the application again.
 
 __________________________________________________________________________________________________________________
 
