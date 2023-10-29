@@ -45,13 +45,9 @@ or refer to our [glossary](#glossary) page for additional information to get you
 Our goal is to make your internship application experience as smooth and successful as possible, regardless of your level of experience. 
 Let's embark on this journey together and make your internship goals a reality.
 
-### Overview of Main Features
-
-LetsGetHired allows you to **add** and **organise** your internship applications. **View** all applications at a glance, 
-or narrow down your search with **filter** and **search** features. LetsGetHired also allows you to attach customized **notes**, 
-to track any additional information.
-
 __________________________________________________________________________________________________________________
+
+<div style="page-break-after: always;"></div>
 
 ## **Navigating the User Guide**
 
