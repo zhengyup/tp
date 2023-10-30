@@ -46,4 +46,16 @@ public class SelectView extends UiPart<Region> {
         deadline.setText(internApplication.getDeadline().value);
         note.setText(internApplication.getNumberedListOfNotes());
     }
+
+    /**
+     * Clears detail text on the select view text area
+     */
+    public void clearDetails() {
+        company.clear();
+        role.clear();
+        cycle.clear();
+        status.clear();
+        deadline.clear();
+        note.clear();
+    }
 }
