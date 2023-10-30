@@ -88,16 +88,21 @@
 }
 
 .list-view {
+    -fx-background-color: transparent;
     -fx-background-insets: 0;
     -fx-border-radius: 2;
     -fx-padding: 0;
-    -fx-background-color: derive(#FFFFFF, 20%);
 }
 
 .list-cell {
+    -fx-background-color: transparent;
     -fx-label-padding: 0 0 0 0;
     -fx-graphic-text-gap : 0;
     -fx-padding: 0 0 0 0;
+}
+
+.list-view .virtual-flow {
+    -fx-background-color: transparent;
 }
 
 .list-cell:filled:even {
@@ -318,7 +323,7 @@
 }
 
 #filterField, #InternApplicationListPanel{
-    -fx-effect: innershadow(gaussian, black, 10, 0, 0, 0);
+    -fx-effect: innershadow(gaussian, white, 10, 0, 0, 0);
 }
 
 #resultDisplay #resultDisplayPlaceHolder .content {
