@@ -10,6 +10,7 @@ import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_ROLE_BACK_
 import static seedu.letsgethired.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.showInternApplicationAtIndex;
+import static seedu.letsgethired.model.Model.PREDICATE_SHOW_ALL_APPLICATIONS;
 import static seedu.letsgethired.testutil.TypicalIndexes.INDEX_FIRST_APPLICATION;
 import static seedu.letsgethired.testutil.TypicalIndexes.INDEX_SECOND_APPLICATION;
 import static seedu.letsgethired.testutil.TypicalInternApplications.getTypicalInternTracker;
@@ -94,6 +95,8 @@ public class EditCommandTest {
     public void execute_filteredList_success() {
         showInternApplicationAtIndex(model, INDEX_FIRST_APPLICATION);
 
+        model.updateFilteredInternApplicationList(PREDICATE_SHOW_ALL_APPLICATIONS);
+
         InternApplication internApplicationInFilteredList = model.getFilteredInternApplicationList()
                 .get(INDEX_FIRST_APPLICATION.getZeroBased());
         InternApplication editedInternApplication = new InternApplicationBuilder(internApplicationInFilteredList)
@@ -106,6 +109,7 @@ public class EditCommandTest {
 
         Model expectedModel = new ModelManager(new InternTracker(model.getInternTracker()), new UserPrefs());
         expectedModel.setInternApplication(model.getFilteredInternApplicationList().get(0), editedInternApplication);
+        expectedModel.updateFilteredInternApplicationList(PREDICATE_SHOW_ALL_APPLICATIONS);
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedDetails, expectedModel);
     }
