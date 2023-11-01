@@ -27,14 +27,11 @@ In addition to these capabilities, we recognize the importance of **speed and ef
 (GUI). If you are a swift typist, _LetsGetHired_ can streamline your internship tracking **faster than many standard
 GUI-based tools available.**
 
+**_LetsGetHired_ is perfect for you if you are a Computer Science undergraduate student.**
+
 ### Purpose
-This User Guide is designed to help you get started with _LetsGetHired_, a powerful tool for managing your internship applications. 
-Whether you are a tech-savvy student or a professional looking to land that dream internship, this guide is here to assist you every step of the way.
-
-**_LetsGetHired_ is perfect for you if you are a Computer Science undergraduate student**
-
-This user guide is primarily designed for Computer Science undergraduates currently engaged in the internship finding process. 
-Whether you are seeking you first internship or have prior experience, this guide is tailored to cater to your specific needs.
+This User Guide is designed to help you **get started with _LetsGetHired_**, a powerful tool for managing your internship applications.
+Whether you are seeking you first internship or have prior experience, this guide will be your trusty companion in using LetsGetHired to manage your internship applications.
 
 ### Prerequisite Knowledge
 
@@ -130,19 +127,19 @@ This is also a warning. Watch out for these too!
 
 <box type="tip">
 
-This is some helpful tips. Skip these if you are in a hurry!
+These are some helpful tips. Skip these if you are in a hurry!
 
 </box>
 
 <box type="info" light>
 
-This is also some helpful tips. Skip these if you are in a hurry!
+These are also some helpful tips. Skip these if you are in a hurry!
 
 </box>
 
 <box type="info" seamless>
 
-This is also some helpful tips. Skip these if you are in a hurry!
+These are also some helpful tips. Skip these if you are in a hurry!
 
 </box>
 
@@ -154,12 +151,12 @@ ________________________________________________________________________________
 
 ## **Getting Started**
 
-Welcome to the **LetsGetHired User Guide**! This guide will walk you through the basics of [**setting up**](#installation) and **[using the 
-application](#tutorial-managing-your-internship-applications)** to manage your internship applications.
+Welcome to the **_LetsGetHired_ User Guide**! This guide will walk you through the basics of [**setting up**](#installation) and **[using the 
+application](#tutorial-managing-your-first-internship-application)** to manage your internship applications.
 
 <box light header="By the end of this section, **you will learn:**">
 
-* How to install **LetsGetHired**
+* How to install **_LetsGetHired_**
 * How to **add** your internship applications
 * How to **edit** your internship applications
 * How to **add notes** to your internship applications
@@ -175,9 +172,8 @@ If you are already an advanced user, feel free to jump to the [_Commands_ sectio
 ### Installation
 1. Ensure that you have **Java 11 or above** installed in your Computer
    <box type="info" light>
-    <md>
+    
     You can download it from [Java SE 11 Downloads](https://www.oracle.com/sg/java/technologies/javase/jdk11-archive-downloads.html) if you do not have it already.
-    </md>
    </box>
 
 1. Download the **latest** `letsgethired.jar` from [**our GitHub Releases**](https://github.com/AY2324S1-CS2103T-W17-2/tp/releases).
@@ -188,7 +184,7 @@ If you are already an advanced user, feel free to jump to the [_Commands_ sectio
    * After downloading, find the `letsgethired.jar` file on your computer. It might be in your `Downloads` folder or wherever you chose to save it.
 
 1. Choose Your **Home Folder**
-   * Decide on a folder where you want all your **LetsGetHired** data to reside. This can be an existing folder or you can create a new one specifically for **LetsGetHired**.
+   * Decide on a folder where you want all your **_LetsGetHired_** data to reside. This can be an existing folder or you can create a new one specifically for **_LetsGetHired_**.
 
 1. Copying the File: 
    * Right-click on the `letsgethired.jar` file and select `Copy`.
@@ -206,7 +202,7 @@ If you are already an advanced user, feel free to jump to the [_Commands_ sectio
 
 __________________________________________________________________________________________________________________
 
-### Launching LetsGetHired
+### Launching _LetsGetHired_
 
 1. Open your **Command Terminal**.
     * On _Windows_: Press `Windows + R` keys simultaneously, type `cmd` and press `Enter`. 
@@ -243,7 +239,7 @@ This is to help you get a feel for how the app works and how your entries will a
 | Intern Application Card | Displays the fields related to your internship application.   |
 | Select View             | Displays more details related to your internship application. |
 
-Now that you are familiar with the user interface of LetsGetHired, let's jump right into managing your 
+Now that you are familiar with the user interface of _LetsGetHired_, let's jump right into managing your 
 internship applications in this [**Tutorial**](#tutorial-managing-your-first-internship-application).
 
 __________________________________________________________________________________________________________________
@@ -252,7 +248,7 @@ ________________________________________________________________________________
 
 ## **Tutorial - Managing Your First Internship Application**
 
-In this tutorial, we will walk you through a typical workflow for using LetsGetHired to manage your internship applications. <br>
+In this tutorial, we will walk you through a typical workflow for using _LetsGetHired_ to manage your internship applications. <br>
 
 ### Step 1: Adding Your Internship Application
 
@@ -266,8 +262,9 @@ add n/Google r/Software Engineering c/Summer 2024
 ```
 This command specifies the company (_Google_), the role (_Software Engineering_), and the cycle (_Summer 2024_) for the internship that you have applied for.
 
-After hitting `Enter`, your new internship application will appear in the _List View_ of **LetsGetHired**,
-allowing you to keep track of your application details effortlessly.
+After hitting `Enter`, your new internship application will appear in the _List View_ of **_LetsGetHired_**,
+allowing you to keep track of your application details effortlessly. Details of your internship application will appear 
+in the _Select View_ of **_LetsGetHired_**.
 
 **_PUT PICTURE HERE_**
 
@@ -325,9 +322,9 @@ note i/1 Additional information about job requirements and expectations...
 After hitting `Enter`, you have successfully included supplementary information which you need to remember about the 
 internship, making it a valuable resource when preparing for interviews or follow-ups.
 
-### Step 5: Start Using LetsGetHired
+### Step 5: Start Using _LetsGetHired_
 
-**Congratulations**! You have successfully managed your first internship application using **LetsGetHired**. 
+**Congratulations**! You have successfully managed your first internship application using **_LetsGetHired_**. 
 These steps demonstrate the core functions of the application, helping you stay organized and informed throughout your internship application journey.
 
 <box type="info" seamless>
@@ -346,7 +343,7 @@ This section explains the detailed list of the commands (and its usages) which a
 
 <box type="tip" seamless>
 
-If you have been using **LetsGetHired** and just need a **quick refresher** on the commands available, you can jump to 
+If you have been using **_LetsGetHired_** and just need a **quick refresher** on the commands available, you can jump to 
 the [_Command Summary_ section of the **User Guide**](#command-summary) below.
 
 </box>
@@ -371,9 +368,8 @@ the [_Command Summary_ section of the **User Guide**](#command-summary) below.
     For example, `n/` is the prefix for the `COMPANY_NAME` parameter. `r/` is the prefix for `ROLE` and `c/` is the prefix for `CYCLE`.
 
     <box type="warning" light>
-  <md>
+  
   **Exception**: The `INDEX` parameter does not require any prefix.
-  </md>
     </box>
 
 * Words in `[square brackets]` are **optional parameters**.<br>
@@ -521,27 +517,27 @@ add n/COMPANY_NAME r/ROLE c/CYCLE [s/STATUS] [d/DEADLINE]
    * Example: `Jane Street`, `Google`
 
 2. **r/ROLE**: The role you've applied for.
-    - Example: `Software Engineering Intern`
+   * Example: `Software Engineering Intern`
 
 3. **c/CYCLE**: The internship cycle, which typically corresponds to the season or term.
-    - Example: `Summer`, `Winter`
+   * Example: `Summer`, `Winter`
 
 4. **s/STATUS** (Optional): The current status of your application.
    <box type="info" seamless>
 
    Choose your application `STATUS` from the following:
-    - `Pending`
-    - `Interview`
-    - `Assessment`
-    - `Offered`
-    - `Rejected`
-
+   * `Pending` (default value, if not provided)
+   * `Interview`
+   * `Assessment`
+   * `Offered`
+   * `Rejected`
     </box>
 
 5. **d/DEADLINE** (Optional): The application deadline or any other crucial dates.
    <box type="info" seamless>
 
-   The `DEADLINE` should adhere to the `dd MMM yyyy` format. For instance: `25 Oct 2023`.
+   * The `DEADLINE` should adhere to the `dd MMM yyyy` format. For instance: `25 Oct 2023`. 
+   * If the `DEADLINE` parameter is not provided, `No Deadline` will be the default value.
    </box>
 
 #### Example:
@@ -713,11 +709,10 @@ delete 4
 You can see how the specified internship application is removed from the list. 
 The remaining applications adjust their index numbers accordingly, ensuring a continuous sequence.
 
-<box type="warning" light>
+<box type="tip" light>
 
-* Before executing the `delete` command, always double-check the `INDEX` to ensure you are removing the correct application.
-*  Consider confirming your decision to delete an application, as **this action is irreversible**. You'd have to manually re-add the application if you mistakenly delete it.
-
+* Before executing the `delete` command, always double-check the `INDEX` to ensure you are removing the correct application. 
+* If you accidentally deleted the wrong internship application, you can use the `undo` command to reverse this command.
 </box>
 
 __________________________________________________________________________________________________________________
@@ -915,15 +910,8 @@ The `clear` command does **not** require any parameters.
 
 <box type="tip" light>
 
-**Recommended Use**: If you've been familiarizing yourself with **LetsGetHired** using sample data, consider using the `clear` command to wipe the slate clean and input your genuine applications.
-
-</box>
-
-<box type="warning" light>
-
-While the `clear` command is potent and efficient, it's also **irreversible**. Once you clear your data, there's no getting it back. 
-Always **ensure you have backups** or have reviewed your data thoroughly before deciding to use this command.
-
+* **Recommended Use**: If you've been familiarizing yourself with **_LetsGetHired_** using sample data, consider using the `clear` command to wipe the slate clean and input your genuine applications.
+* If you accidentally cleared your internship applications list, you can use the `undo` command to reverse this command.
 </box>
 
 __________________________________________________________________________________________________________________
@@ -945,12 +933,11 @@ exit
 <box type="important" seamless>
 
 The `exit` command does **not** require any parameters.
-
 </box>
 
 #### How it Works:
 
-Upon executing the `exit` command, **LetsGetHired** will initiate its shutdown sequence. 
+Upon executing the `exit` command, **_LetsGetHired_** will initiate its shutdown sequence. 
 This involves saving any changes you've made during your session and closing the application window. 
 It ensures that all your data remains intact the next time you launch the program.
 
@@ -962,17 +949,17 @@ This section will help you understand how your data is being stored in your comp
 
 ### Saving the data
 
-LetsGetHired data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+_LetsGetHired_ data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
 ### Editing the data file
 
-LetsGetHired data are saved automatically as a JSON file `[JAR file location]/data/letsgethired.json`. 
+_LetsGetHired_ data are saved automatically as a JSON file `[JAR file location]/data/letsgethired.json`. 
 If you are an advanced user, you are welcome to update data directly by editing that data file.
 
 <box type="warning" seamless>
 
 **Caution:**
-If your changes to the data file makes its format invalid, LetsGetHired will discard all data and start with an empty 
+If your changes to the data file makes its format invalid, _LetsGetHired_ will discard all data and start with an empty 
 data file at the next run. Hence, it is recommended to take a backup of the file before editing it.
 
 </box>
@@ -998,7 +985,7 @@ ________________________________________________________________________________
 | **Exit**    | `exit`                                                                      | `exit`                                                                      |
 
 
-This table provides a quick and clear reference to the commands available in **LetsGetHired**. 
+This table provides a quick and clear reference to the commands available in **_LetsGetHired_**. 
 You can use it to efficiently navigate through the program and manage your internship applications.
 
 __________________________________________________________________________________________________________________
@@ -1042,6 +1029,6 @@ Here are the definitions of some terms which is used throughout the User Guide.
 | **Command Terminal**                  | A software-based interface that provides an environment for users to interact with a computer's operating system or software by typing textual commands and receiving text-based output. |
 | **Sample Data**                       | Pre-populated data used for demonstration purposes, enabling new users to see how the application functions with realistic examples.                                                     |
 | **Workflow**                          | A systematic and repeatable pattern of activity that a user follows to accomplish a specific task.                                                                                       |
-| **Command**                           | An input from the user that tells LetsGetHired which action to perform.                                                                                                                  |
+| **Command**                           | An input from the user that tells _LetsGetHired_ which action to perform.                                                                                                                  |
 | **Parameter**                         | A placeholder used in a command to represent a piece of information that needs to be provided when that command is executed.                                                             |
 | **JSON (JavaScript Object Notation)** | A lightweight data-interchange format that is easy for humans to read and write and easy for machines to parse and generate.                                                             |
