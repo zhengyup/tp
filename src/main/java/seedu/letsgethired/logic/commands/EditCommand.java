@@ -6,7 +6,6 @@ import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_CYCLE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_DEADLINE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_STATUS;
-import static seedu.letsgethired.model.Model.PREDICATE_SHOW_ALL_APPLICATIONS;
 
 import java.util.List;
 import java.util.Objects;
@@ -87,7 +86,6 @@ public class EditCommand extends Command {
         }
 
         model.setInternApplication(internApplicationToEdit, editedInternApplication);
-        model.updateFilteredInternApplicationList(PREDICATE_SHOW_ALL_APPLICATIONS);
         return new CommandResult(MESSAGE_EDIT_INTERN_APPLICATION_SUCCESS, editedInternApplication);
     }
 
