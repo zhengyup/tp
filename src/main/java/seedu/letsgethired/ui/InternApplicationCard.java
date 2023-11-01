@@ -15,12 +15,12 @@ import seedu.letsgethired.model.application.InternApplication;
 public class InternApplicationCard extends UiPart<Region> {
 
     private static final String FXML = "InternApplicationListCard.fxml";
-    private static final String ACCEPTED_COLOR = "-fx-background-color: #7e38b7;";
-    private static final String ASSESSMENT_COLOR = "-fx-background-color: #ffd100;";
-    private static final String INTERVIEW_COLOR = "-fx-background-color: #fd5602;";
-    private static final String OFFERED_COLOR = "-fx-background-color: #03C04A;";
-    private static final String PENDING_COLOR = "-fx-background-color: #209cee;";
-    private static final String REJECTED_COLOR = "-fx-background-color: #d30000;";
+    private static final String ACCEPTED_COLOR = "acceptStatus";
+    private static final String ASSESSMENT_COLOR = "assessStatus";
+    private static final String INTERVIEW_COLOR = "interviewStatus";
+    private static final String OFFERED_COLOR = "offerStatus";
+    private static final String PENDING_COLOR = "pendingStatus";
+    private static final String REJECTED_COLOR = "rejectStatus";
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -84,22 +84,22 @@ public class InternApplicationCard extends UiPart<Region> {
                 + statusString.substring(1).toLowerCase();
         switch (standardFormatStatus) {
         case "Interview":
-            status.setStyle(INTERVIEW_COLOR);
+            status.setId(INTERVIEW_COLOR);
             break;
         case "Accepted":
-            status.setStyle(ACCEPTED_COLOR);
+            status.setId(ACCEPTED_COLOR);
             break;
         case "Offered":
-            status.setStyle(OFFERED_COLOR);
+            status.setId(OFFERED_COLOR);
             break;
         case "Rejected":
-            status.setStyle(REJECTED_COLOR);
+            status.setId(REJECTED_COLOR);
             break;
         case "Assessment":
-            status.setStyle(ASSESSMENT_COLOR);
+            status.setId(ASSESSMENT_COLOR);
             break;
         case "Pending":
-            status.setStyle(PENDING_COLOR);
+            status.setId(PENDING_COLOR);
             break;
         default:
             break;
