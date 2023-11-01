@@ -118,14 +118,14 @@ public class CompanyContainsFieldKeywordsPredicateTest {
     public void test_noteDoesNotContainKeywords_returnFalse() {
         CompanyContainsFieldKeywordsPredicate predicate = new CompanyContainsFieldKeywordsPredicate(
                 Arrays.asList(new Pair<>(PREFIX_NOTE_INSERT, "mental math")));
-        assertFalse(predicate.test(new InternApplicationBuilder().withNote("require MERN").build()));
+        assertFalse(predicate.test(new InternApplicationBuilder().withNotes("require MERN").build()));
     }
 
     @Test
     public void test_noteContainsKeywords_returnsTrue() {
         CompanyContainsFieldKeywordsPredicate predicate = new CompanyContainsFieldKeywordsPredicate(
                 Arrays.asList(new Pair<>(PREFIX_NOTE_INSERT, "require MERN")));
-        assertTrue(predicate.test(new InternApplicationBuilder().withNote("require MERN").build()));
+        assertTrue(predicate.test(new InternApplicationBuilder().withNotes("require MERN").build()));
     }
 
     @Test

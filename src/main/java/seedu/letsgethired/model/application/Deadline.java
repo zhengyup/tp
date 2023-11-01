@@ -41,7 +41,7 @@ public class Deadline {
             return true;
         }
         try {
-            LocalDate localDate = LocalDate.parse(date, DATE_FORMATTER);
+            LocalDate.parse(date, DATE_FORMATTER);
             return true;
         } catch (DateTimeParseException e) {
             return false;

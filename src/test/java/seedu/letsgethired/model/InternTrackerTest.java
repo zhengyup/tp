@@ -25,7 +25,7 @@ import seedu.letsgethired.testutil.InternApplicationBuilder;
 
 public class InternTrackerTest {
 
-    private final VersionedInternTracker internTracker = new VersionedInternTracker();
+    private final InternTracker internTracker = new VersionedInternTracker();
 
     @Test
     public void constructor() {
@@ -103,6 +103,25 @@ public class InternTrackerTest {
         internTracker.addApplication(JANE_STREET);
         internTracker.setSelectedApplication(JANE_STREET);
         assertTrue(internTracker.getSelectedApplication() == JANE_STREET);
+    }
+
+    @Test
+    public void removeApplication_validKeySelectedApplication_success() {
+        InternTracker internTracker = new InternTracker();
+        internTracker.addApplication(JANE_STREET);
+        internTracker.setSelectedApplication(JANE_STREET);
+        internTracker.removeApplication(JANE_STREET);
+        assertFalse(internTracker.hasApplication(JANE_STREET));
+    }
+
+    @Test
+    public void removeApplication_validKeyNotSelectedApplication_success() {
+        InternTracker internTracker = new InternTracker();
+        internTracker.addApplication(JANE_STREET);
+        internTracker.addApplication(OPTIVER);
+        internTracker.setSelectedApplication(OPTIVER);
+        internTracker.removeApplication(JANE_STREET);
+        assertFalse(internTracker.hasApplication(JANE_STREET));
     }
 
     @Test
