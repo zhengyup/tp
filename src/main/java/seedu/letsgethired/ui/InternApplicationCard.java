@@ -31,10 +31,7 @@ public class InternApplicationCard extends UiPart<Region> {
 
     public final InternApplication internApplication;
 
-    private final CommandExecutor commandExecutor;
     private int indexNum;
-    @FXML
-    private HBox cardPane;
     @FXML
     private Label id;
     @FXML
@@ -56,7 +53,6 @@ public class InternApplicationCard extends UiPart<Region> {
                                  CommandExecutor commandExecutor) {
         super(FXML);
         this.internApplication = internApplication;
-        this.commandExecutor = commandExecutor;
         this.indexNum = displayedIndex;
         id.setText(displayedIndex + ". ");
         company.setText(internApplication.getCompany().value);
@@ -68,9 +64,7 @@ public class InternApplicationCard extends UiPart<Region> {
     }
 
     /**
-     * Gets the status label color coded by the internship application status.
-     *
-     * @return the status label color coded by the internship application status.
+     * Sets the status label color coded by the internship application status.
      */
     private void setStatusColor(String statusString) {
         switch (statusString) {
@@ -94,20 +88,6 @@ public class InternApplicationCard extends UiPart<Region> {
             break;
         default:
             break;
-        }
-    }
-
-    /**
-     * Displays card details on the SelectView
-     */
-    @FXML
-    public void handleCardClick() {
-        String commandText = "view " + this.indexNum;
-        try {
-            commandExecutor.execute(commandText);
-        } catch (CommandException | ParseException e) {
-            //should never reach here unless the hard-coded input is wrong
-            assert false : "The program should never reach this block";
         }
     }
 }

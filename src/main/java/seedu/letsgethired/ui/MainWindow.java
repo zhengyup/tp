@@ -176,10 +176,6 @@ public class MainWindow extends UiPart<Stage> {
         primaryStage.hide();
     }
 
-    public InternApplicationListPanel getInternApplicationListPanel() {
-        return internApplicationListPanel;
-    }
-
     /**
      * Executes the command and returns the result.
      *
