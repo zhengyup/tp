@@ -172,7 +172,7 @@ public class ModelManager implements Model {
     @Override
     public boolean undoAction() {
         boolean isRestored = internTracker.undo();
-        filteredInternApplications = new FilteredList<>(this.internTracker.getApplicationList());
+        filteredInternApplications.setPredicate(PREDICATE_SHOW_ALL_APPLICATIONS);
         return isRestored;
     }
 
