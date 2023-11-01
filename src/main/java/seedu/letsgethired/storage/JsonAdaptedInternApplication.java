@@ -1,5 +1,8 @@
 package seedu.letsgethired.storage;
 
+import java.util.ArrayList;
+import java.util.stream.Collectors;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -12,6 +15,7 @@ import seedu.letsgethired.model.application.Note;
 import seedu.letsgethired.model.application.Role;
 import seedu.letsgethired.model.application.Status;
 
+
 /**
  * Jackson-friendly version of {@link InternApplication}.
  */
@@ -22,7 +26,7 @@ class JsonAdaptedInternApplication {
     private final String role;
     private final String cycle;
     private final String status;
-    private final String note;
+    private final ArrayList<String> notes;
     private final String deadline;
 
     /**
@@ -32,13 +36,13 @@ class JsonAdaptedInternApplication {
     public JsonAdaptedInternApplication(@JsonProperty("company") String company,
                                         @JsonProperty("role") String role,
                                         @JsonProperty("cycle") String cycle,
-                                        @JsonProperty("note") String note,
+                                        @JsonProperty("note") ArrayList<String> notes,
                                         @JsonProperty("status") String status,
                                         @JsonProperty("deadline") String deadline) {
         this.company = company;
         this.role = role;
         this.cycle = cycle;
-        this.note = note;
+        this.notes = notes;
         this.status = status;
         this.deadline = deadline;
     }
@@ -50,7 +54,7 @@ class JsonAdaptedInternApplication {
         company = source.getCompany().value;
         role = source.getRole().value;
         cycle = source.getCycle().value;
-        note = source.getNote().value;
+        notes = source.getNote().stream().map(x -> x.value).collect(Collectors.toCollection(ArrayList<String>::new));
         status = source.getStatus().value;
         deadline = source.getDeadline().value;
     }
@@ -94,13 +98,16 @@ class JsonAdaptedInternApplication {
         }
         final Status modelStatus = new Status(status);
 
-        if (note == null) {
+        if (notes == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Note.class.getSimpleName()));
         }
-        if (!Note.isValidNote(note)) {
+
+        if (notes.stream().anyMatch(x -> !Note.isValidNote(x))) {
             throw new IllegalValueException(Note.MESSAGE_CONSTRAINTS);
         }
-        final Note modelNote = new Note(note);
+        final ArrayList<Note> modelNote = notes
+                .stream()
+                .map(Note::new).collect(Collectors.toCollection(ArrayList<Note>::new));
 
         if (deadline == null) {
             throw new IllegalValueException(

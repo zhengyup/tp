@@ -1,5 +1,10 @@
 package seedu.letsgethired.testutil;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import seedu.letsgethired.model.application.Company;
 import seedu.letsgethired.model.application.Cycle;
 import seedu.letsgethired.model.application.Deadline;
@@ -24,7 +29,7 @@ public class InternApplicationBuilder {
     private Role role;
     private Cycle cycle;
     private Status status;
-    private Note note;
+    private List<Note> note;
     private Deadline deadline;
 
     /**
@@ -35,7 +40,8 @@ public class InternApplicationBuilder {
         role = new Role(DEFAULT_ROLE);
         cycle = new Cycle(DEFAULT_CYCLE);
         status = new Status(DEFAULT_STATUS);
-        note = new Note(DEFAULT_NOTE);
+        note = Arrays.stream(new Note[]{new Note(DEFAULT_NOTE)})
+                .collect(Collectors.toCollection(ArrayList<Note>::new));
         deadline = new Deadline(DEFAULT_DEADLINE);
     }
 
@@ -71,7 +77,9 @@ public class InternApplicationBuilder {
      * Sets the {@code Note} of the {@code InternApplication} that we are building.
      */
     public InternApplicationBuilder withNote(String note) {
-        this.note = new Note(note);
+        ArrayList<Note> notes = new ArrayList<>();
+        notes.add(new Note(note));
+        this.note = notes;
         return this;
     }
 

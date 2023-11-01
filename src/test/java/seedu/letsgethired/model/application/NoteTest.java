@@ -18,9 +18,11 @@ public class NoteTest {
         // null status
         assertThrows(NullPointerException.class, () -> Note.isValidNote(null));
 
+        // empty notes
+        assertFalse(Note.isValidNote("")); // empty string
+        assertFalse(Note.isValidNote(" ")); // spaces only
+
         // valid statuses
-        assertTrue(Note.isValidNote("")); // empty string
-        assertTrue(Note.isValidNote(" ")); // spaces only
         assertTrue(Note.isValidNote("Jane Street is the leading market maker in the APAC region"));
     }
 

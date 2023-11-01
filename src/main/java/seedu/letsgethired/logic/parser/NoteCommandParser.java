@@ -2,10 +2,15 @@ package seedu.letsgethired.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.letsgethired.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE;
+import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE_DELETE;
+import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE_INSERT;
+
+import java.util.Optional;
 
 import seedu.letsgethired.commons.core.index.Index;
 import seedu.letsgethired.logic.commands.NoteCommand;
+import seedu.letsgethired.logic.commands.NoteDeleteCommand;
+import seedu.letsgethired.logic.commands.NoteInsertCommand;
 import seedu.letsgethired.logic.parser.exceptions.ParseException;
 import seedu.letsgethired.model.application.Note;
 
@@ -20,22 +25,31 @@ public class NoteCommandParser implements Parser<NoteCommand> {
      */
     public NoteCommand parse(String args) throws ParseException {
         requireNonNull(args);
-        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NOTE);
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NOTE_INSERT, PREFIX_NOTE_DELETE);
 
         Index index;
 
         try {
-            index = ParserUtil.parseIndex(argMultimap.getPreamble());
+            index = ParserUtil.parseApplicationIndex(argMultimap.getPreamble());
         } catch (ParseException pe) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, NoteCommand.MESSAGE_USAGE), pe);
         }
 
-        if (!argMultimap.getValue(PREFIX_NOTE).isPresent()) {
-            throw new ParseException(NoteCommand.NO_NOTE_PARAMETER_MESSAGE);
+        Optional<String> maybeInsert = argMultimap.getValue(PREFIX_NOTE_INSERT);
+        Optional<String> maybeDelete = argMultimap.getValue(PREFIX_NOTE_DELETE);
+
+        if (maybeInsert.isPresent() && maybeDelete.isPresent()) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, NoteCommand.DUAL_NOTE_ERROR));
+        } else if (maybeInsert.isEmpty() && maybeDelete.isEmpty()) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, Note.MESSAGE_CONSTRAINTS));
+        } else if (maybeInsert.isPresent()) {
+            Note note = ParserUtil.parseNote(maybeInsert.get());
+            return new NoteInsertCommand(index, note);
+        } else {
+            Index noteIndex = ParserUtil.parseNoteIndex(maybeDelete.get());
+            return new NoteDeleteCommand(index, noteIndex);
         }
 
-        String note = argMultimap.getValue(PREFIX_NOTE).orElse("");
 
-        return new NoteCommand(index, new Note(note));
     }
 }

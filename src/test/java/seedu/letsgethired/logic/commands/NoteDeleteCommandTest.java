@@ -2,8 +2,6 @@ package seedu.letsgethired.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_NOTE_BYTEDANCE;
-import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_NOTE_JANE_STREET;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.letsgethired.testutil.TypicalIndexes.INDEX_FIRST_APPLICATION;
@@ -20,49 +18,38 @@ import seedu.letsgethired.model.Model;
 import seedu.letsgethired.model.ModelManager;
 import seedu.letsgethired.model.UserPrefs;
 import seedu.letsgethired.model.application.InternApplication;
-import seedu.letsgethired.model.application.Note;
-import seedu.letsgethired.testutil.InternApplicationBuilder;
 
 /**
- * Contains integration tests (interaction with the Model) and unit tests for NoteCommand.
+ * Contains integration tests (interaction with the Model) and unit tests for NoteInsertCommand.
  */
-public class NoteCommandTest {
+public class NoteDeleteCommandTest {
 
     private Model model = new ModelManager(getTypicalInternTracker(), new UserPrefs());
 
     @Test
     public void execute_invalidInternApplicationIndexUnfilteredList_failure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredInternApplicationList().size() + 1);
-        NoteCommand noteCommand = new NoteCommand(outOfBoundIndex,
-                new InternApplicationBuilder().build().getNote());
+        NoteDeleteCommand noteCommand = new NoteDeleteCommand(outOfBoundIndex, Index.fromOneBased(1));
 
         assertCommandFailure(noteCommand, model, Messages.MESSAGE_INVALID_INTERN_APPLICATION_DISPLAYED_INDEX);
     }
 
     @Test
-    public void execute_validNoteCommandAdd_success() {
-        InternApplication editedInternApplication = getTypicalInternApplications().get(0);
-        NoteCommand noteCommand = new NoteCommand(INDEX_FIRST_APPLICATION,
-                new InternApplicationBuilder().build().getNote());
-
-        CommandResult expectedResult = new CommandResult(NoteCommand.MESSAGE_ADD_NOTE_SUCCESS,
-                Messages.formatDisplay(editedInternApplication));
-
-        Model expectedModel = new ModelManager(new InternTracker(model.getInternTracker()), new UserPrefs());
-        expectedModel.setInternApplication(model.getFilteredInternApplicationList().get(0), editedInternApplication);
-
-        assertCommandSuccess(noteCommand, model, expectedResult, expectedModel);
+    public void execute_invalidNoteIndexList_failure() {
+        InternApplication randomApplication = model.getFilteredInternApplicationList().get(0);
+        Index outOfBoundIndex = Index.fromOneBased(randomApplication.getNote().size() + 1);
+        NoteDeleteCommand noteCommand = new NoteDeleteCommand(
+                Index.fromZeroBased(0), outOfBoundIndex);
+        assertCommandFailure(noteCommand, model, NoteCommand.INVALID_NOTE_DISPLAYED_INDEX);
     }
 
     @Test
     public void execute_validNoteCommandDelete_success() {
-        Note emptyNote = new Note("");
+        InternApplication internApplication = getTypicalInternApplications().get(0);
+        InternApplication editedInternApplication = internApplication.deleteNote(1);
+        NoteDeleteCommand noteCommand = new NoteDeleteCommand(INDEX_FIRST_APPLICATION, Index.fromOneBased(1));
 
-        InternApplication editedInternApplication = new InternApplicationBuilder(getTypicalInternApplications().get(0))
-                .withNote("").build();
-        NoteCommand noteCommand = new NoteCommand(INDEX_FIRST_APPLICATION, emptyNote);
-
-        CommandResult expectedResult = new CommandResult(NoteCommand.MESSAGE_DELETE_NOTE_SUCCESS,
+        CommandResult expectedResult = new CommandResult(NoteDeleteCommand.MESSAGE_DELETE_NOTE_SUCCESS,
                 Messages.formatDisplay(editedInternApplication));
 
         Model expectedModel = new ModelManager(new InternTracker(model.getInternTracker()), new UserPrefs());
@@ -73,12 +60,10 @@ public class NoteCommandTest {
 
     @Test
     public void equals() {
-        final NoteCommand standardCommand = new NoteCommand(INDEX_FIRST_APPLICATION,
-                new Note(VALID_NOTE_JANE_STREET));
+        final NoteDeleteCommand standardCommand = new NoteDeleteCommand(INDEX_FIRST_APPLICATION, Index.fromOneBased(1));
 
         // same values -> returns true
-        NoteCommand commandWithSameValues = new NoteCommand(INDEX_FIRST_APPLICATION,
-                new Note(VALID_NOTE_JANE_STREET));
+        NoteDeleteCommand commandWithSameValues = new NoteDeleteCommand(INDEX_FIRST_APPLICATION, Index.fromOneBased(1));
         assertTrue(standardCommand.equals(commandWithSameValues));
 
         // same object -> returns true
@@ -91,11 +76,9 @@ public class NoteCommandTest {
         assertFalse(standardCommand.equals(new ClearCommand()));
 
         // different index -> returns false
-        assertFalse(standardCommand.equals(new NoteCommand(INDEX_SECOND_APPLICATION,
-                new Note(VALID_NOTE_JANE_STREET))));
+        assertFalse(standardCommand.equals(new NoteDeleteCommand(INDEX_SECOND_APPLICATION, Index.fromOneBased(1))));
 
-        // different note -> returns false
-        assertFalse(standardCommand.equals(new NoteCommand(INDEX_FIRST_APPLICATION,
-                new Note(VALID_NOTE_BYTEDANCE))));
+        // different targetIndexes -> returns false
+        assertFalse(standardCommand.equals(new NoteDeleteCommand(INDEX_FIRST_APPLICATION, Index.fromOneBased(2))));
     }
 }

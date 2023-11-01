@@ -4,7 +4,7 @@ import static seedu.letsgethired.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_COMPANY;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_CYCLE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_DEADLINE;
-import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE;
+import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE_INSERT;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_STATUS;
 
@@ -16,7 +16,6 @@ import seedu.letsgethired.model.application.Company;
 import seedu.letsgethired.model.application.Cycle;
 import seedu.letsgethired.model.application.Deadline;
 import seedu.letsgethired.model.application.InternApplication;
-import seedu.letsgethired.model.application.Note;
 import seedu.letsgethired.model.application.Role;
 import seedu.letsgethired.model.application.Status;
 
@@ -38,7 +37,7 @@ public class AddCommandParser implements Parser<AddCommand> {
                         PREFIX_CYCLE,
                         PREFIX_STATUS,
                         PREFIX_DEADLINE,
-                        PREFIX_NOTE);
+                        PREFIX_NOTE_INSERT);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_COMPANY, PREFIX_ROLE, PREFIX_CYCLE)
                 || !argMultimap.getPreamble().isEmpty()) {
@@ -51,19 +50,17 @@ public class AddCommandParser implements Parser<AddCommand> {
                 PREFIX_CYCLE,
                 PREFIX_STATUS,
                 PREFIX_DEADLINE,
-                PREFIX_NOTE);
+                PREFIX_NOTE_INSERT);
 
         Company company = ParserUtil.parseCompany(argMultimap.getValue(PREFIX_COMPANY).get());
         Role role = ParserUtil.parseRole(argMultimap.getValue(PREFIX_ROLE).get());
         Cycle cycle = ParserUtil.parseCycle(argMultimap.getValue(PREFIX_CYCLE).get());
         Status status = ParserUtil.parseStatus(argMultimap.getValue(PREFIX_STATUS)
                 .orElse("Pending"));
-        Note note = ParserUtil.parseNote(argMultimap.getValue(PREFIX_NOTE)
-                .orElse("No note added"));
         Deadline deadline = ParserUtil.parseDeadline(argMultimap.getValue(PREFIX_DEADLINE)
                 .orElse("No deadline"));
 
-        InternApplication internApplication = new InternApplication(company, role, cycle, note, status, deadline);
+        InternApplication internApplication = new InternApplication(company, role, cycle, status, deadline);
 
         return new AddCommand(internApplication);
     }

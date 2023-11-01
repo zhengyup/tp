@@ -42,7 +42,7 @@ public class InternApplicationTest {
                 .withCycle(VALID_CYCLE_SUMMER)
                 .withStatus(VALID_STATUS_REJECTED)
                 .withDeadline(VALID_DEADLINE)
-                .withNote("")
+                .withNote("Different")
                 .build();
         assertTrue(JANE_STREET.isSameApplication(editedInternApplication));
 
@@ -119,7 +119,7 @@ public class InternApplicationTest {
         assertTrue(JANE_STREET.equals(editedInternApplication));
 
         // different note -> returns true
-        editedInternApplication = new InternApplicationBuilder(JANE_STREET).withNote("").build();
+        editedInternApplication = new InternApplicationBuilder(JANE_STREET).withNote("different").build();
         assertTrue(JANE_STREET.equals(editedInternApplication));
     }
 

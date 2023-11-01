@@ -3,7 +3,7 @@ package seedu.letsgethired.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_COMPANY;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_CYCLE;
-import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE;
+import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE_INSERT;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_STATUS;
 
@@ -30,7 +30,7 @@ public class FindCommand extends Command {
             + "[" + PREFIX_ROLE + "SEARCH_STRING_ROLE] "
             + "[" + PREFIX_CYCLE + "SEARCH_STRING_CYCLE] "
             + "[" + PREFIX_STATUS + "SEARCH_STRING_STATUS] "
-            + "[" + PREFIX_NOTE + "SEARCH_STRING_NOTE] "
+            + "[" + PREFIX_NOTE_INSERT + "SEARCH_STRING_NOTE] "
             + "\nExample: " + COMMAND_WORD + " "
             + PREFIX_ROLE + "Software Engineering "
             + PREFIX_CYCLE + "Summer "

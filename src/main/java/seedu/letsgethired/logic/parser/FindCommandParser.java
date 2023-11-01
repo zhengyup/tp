@@ -3,7 +3,7 @@ package seedu.letsgethired.logic.parser;
 import static java.util.Objects.requireNonNull;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_COMPANY;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_CYCLE;
-import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE;
+import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE_INSERT;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_STATUS;
 
@@ -32,17 +32,18 @@ public class FindCommandParser implements Parser<FindCommand> {
     public FindCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args,
-                PREFIX_COMPANY, PREFIX_ROLE, PREFIX_CYCLE, PREFIX_STATUS, PREFIX_NOTE);
+                PREFIX_COMPANY, PREFIX_ROLE, PREFIX_CYCLE, PREFIX_STATUS, PREFIX_NOTE_INSERT);
 
-        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_COMPANY, PREFIX_ROLE, PREFIX_CYCLE, PREFIX_STATUS, PREFIX_NOTE);
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_COMPANY,
+                PREFIX_ROLE, PREFIX_CYCLE, PREFIX_STATUS, PREFIX_NOTE_INSERT);
 
         ArrayList<Pair<Prefix, String>> fieldKeywords = new ArrayList<>();
 
         if (argMultimap.getValue(PREFIX_COMPANY).isPresent()) {
             fieldKeywords.add(new Pair<>(PREFIX_COMPANY, argMultimap.getValue(PREFIX_COMPANY).get()));
         }
-        if (argMultimap.getValue(PREFIX_NOTE).isPresent()) {
-            fieldKeywords.add(new Pair<>(PREFIX_NOTE, argMultimap.getValue(PREFIX_NOTE).get()));
+        if (argMultimap.getValue(PREFIX_NOTE_INSERT).isPresent()) {
+            fieldKeywords.add(new Pair<>(PREFIX_NOTE_INSERT, argMultimap.getValue(PREFIX_NOTE_INSERT).get()));
         }
         if (argMultimap.getValue(PREFIX_CYCLE).isPresent()) {
             fieldKeywords.add(new Pair<>(PREFIX_CYCLE, argMultimap.getValue(PREFIX_CYCLE).get()));

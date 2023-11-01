@@ -3,7 +3,6 @@ package seedu.letsgethired.testutil;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_COMPANY;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_CYCLE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_DEADLINE;
-import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_STATUS;
 
@@ -31,7 +30,6 @@ public class InternApplicationUtil {
         sb.append(PREFIX_COMPANY + internApplication.getCompany().value + " ");
         sb.append(PREFIX_ROLE + internApplication.getRole().value + " ");
         sb.append(PREFIX_CYCLE + internApplication.getCycle().value + " ");
-        sb.append(PREFIX_NOTE + internApplication.getNote().value + " ");
         sb.append(PREFIX_STATUS + internApplication.getStatus().value + " ");
         sb.append(PREFIX_DEADLINE + internApplication.getDeadline().value + " ");
         return sb.toString();
