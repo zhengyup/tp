@@ -53,7 +53,7 @@ public class InternApplicationBuilder {
         role = internApplicationToCopy.getRole();
         cycle = internApplicationToCopy.getCycle();
         status = internApplicationToCopy.getStatus();
-        note = internApplicationToCopy.getNote();
+        note = internApplicationToCopy.getNotes();
         deadline = internApplicationToCopy.getDeadline();
     }
 

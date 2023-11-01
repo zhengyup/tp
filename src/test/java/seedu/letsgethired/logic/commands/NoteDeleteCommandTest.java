@@ -37,7 +37,7 @@ public class NoteDeleteCommandTest {
     @Test
     public void execute_invalidNoteIndexList_failure() {
         InternApplication randomApplication = model.getFilteredInternApplicationList().get(0);
-        Index outOfBoundIndex = Index.fromOneBased(randomApplication.getNote().size() + 1);
+        Index outOfBoundIndex = Index.fromOneBased(randomApplication.getNotes().size() + 1);
         NoteDeleteCommand noteCommand = new NoteDeleteCommand(
                 Index.fromZeroBased(0), outOfBoundIndex);
         assertCommandFailure(noteCommand, model, NoteCommand.INVALID_NOTE_DISPLAYED_INDEX);

@@ -2,10 +2,7 @@ package seedu.letsgethired.ui;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
-import seedu.letsgethired.logic.commands.exceptions.CommandException;
-import seedu.letsgethired.logic.parser.exceptions.ParseException;
 import seedu.letsgethired.model.application.InternApplication;
 
 /**

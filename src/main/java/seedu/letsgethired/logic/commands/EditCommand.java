@@ -105,7 +105,7 @@ public class EditCommand extends Command {
         Cycle updatedCycle = editInternApplicationDescriptor.getCycle()
                 .orElse(internApplicationToEdit.getCycle());
         List<Note> updatedNote = editInternApplicationDescriptor.getNote()
-                .orElse(internApplicationToEdit.getNote());
+                .orElse(internApplicationToEdit.getNotes());
         Status updatedStatus = editInternApplicationDescriptor.getStatus()
                 .orElse(internApplicationToEdit.getStatus());
         Deadline updatedDeadline = editInternApplicationDescriptor.getDeadline()
@@ -165,7 +165,7 @@ public class EditCommand extends Command {
             setCompany(toCopy.company);
             setRole(toCopy.role);
             setCycle(toCopy.cycle);
-            setNote(toCopy.notes);
+            setNotes(toCopy.notes);
             setStatus(toCopy.status);
             setDeadline(toCopy.deadline);
         }
@@ -201,7 +201,7 @@ public class EditCommand extends Command {
             return Optional.ofNullable(cycle);
         }
 
-        public void setNote(List<Note> notes) {
+        public void setNotes(List<Note> notes) {
             this.notes = notes;
         }
 

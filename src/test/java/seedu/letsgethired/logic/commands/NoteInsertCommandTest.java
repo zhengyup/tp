@@ -34,7 +34,7 @@ public class NoteInsertCommandTest {
     public void execute_invalidInternApplicationIndexUnfilteredList_failure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredInternApplicationList().size() + 1);
         NoteInsertCommand noteCommand = new NoteInsertCommand(outOfBoundIndex,
-                new InternApplicationBuilder().build().getNote().get(0));
+                new InternApplicationBuilder().build().getNotes().get(0));
 
         assertCommandFailure(noteCommand, model, Messages.MESSAGE_INVALID_INTERN_APPLICATION_DISPLAYED_INDEX);
     }
@@ -46,7 +46,7 @@ public class NoteInsertCommandTest {
         InternApplication editedInternApplication = internApplication
                 .addNote(new Note(InternApplicationBuilder.DEFAULT_NOTE)); // list in this object should be different
         NoteInsertCommand noteCommand = new NoteInsertCommand(INDEX_FIRST_APPLICATION,
-                new InternApplicationBuilder().build().getNote().get(0));
+                new InternApplicationBuilder().build().getNotes().get(0));
 
         CommandResult expectedResult = new CommandResult(NoteInsertCommand.MESSAGE_ADD_NOTE_SUCCESS,
                 editedInternApplication);
