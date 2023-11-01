@@ -64,7 +64,7 @@ public class InternApplicationCard extends UiPart<Region> {
         role.setText(internApplication.getRole().value);
         cycle.setText(internApplication.getCycle().value);
         deadline.setText(internApplication.getDeadline().value);
-        setStatusText(internApplication.getStatus().value);
+        status.setText(internApplication.getStatus().value);
         setStatusColor(internApplication.getStatus().value);
     }
 
@@ -73,16 +73,8 @@ public class InternApplicationCard extends UiPart<Region> {
      *
      * @return the status label color coded by the internship application status.
      */
-    private void setStatusText(String statusString) {
-        String standardFormatStatus = statusString.substring(0, 1).toUpperCase()
-                + statusString.substring(1).toLowerCase();
-        status.setText(standardFormatStatus);
-    }
-
     private void setStatusColor(String statusString) {
-        String standardFormatStatus = statusString.substring(0, 1).toUpperCase()
-                + statusString.substring(1).toLowerCase();
-        switch (standardFormatStatus) {
+        switch (statusString) {
         case "Interview":
             status.setId(INTERVIEW_COLOR);
             break;

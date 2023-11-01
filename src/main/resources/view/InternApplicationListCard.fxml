@@ -34,7 +34,7 @@
     <Label fx:id="cycle" styleClass="cell_small_label" text="\$cycle" />
     <Label fx:id="deadline" styleClass="cell_small_label" text="\$deadline" />
     <FlowPane alignment="CENTER_LEFT">
-        <Label id="offerStatus" fx:id="status" />
+        <Label fx:id="status" />
     </FlowPane>
   </VBox>
 </GridPane>
