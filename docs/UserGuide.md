@@ -497,7 +497,7 @@ By glancing through the list, you can quickly assess your application status, th
 
 __________________________________________________________________________________________________________________
 
-### Adding a New Internship Application: `add`
+### Adding Your New Internship Application: `add`
 
 The `add` command is an integral part of managing your internship applications. 
 
@@ -565,7 +565,7 @@ systematically stored, making tracking and follow-ups more manageable.
 
 __________________________________________________________________________________________________________________
 
-### Editing an internship application : `edit`
+### Editing Your Internship Application : `edit`
 
 The `edit` command offers flexibility in managing your internship applications. 
 
@@ -623,7 +623,7 @@ This ensures your application list remains current and accurate, reflecting the 
 
 __________________________________________________________________________________________________________________
 
-### Adding a Note : `note`
+### Adding Notes To Your Internship Application : `note`
 
 The `note` command is a beneficial tool designed to enrich your internship applications with **additional details**. 
 
@@ -672,7 +672,7 @@ This ensures you have a comprehensive view of each application, complete with an
 
 __________________________________________________________________________________________________________________
 
-### Deleting an internship application : `delete`
+### Deleting Your Internship Application : `delete`
 
 The `delete` command is an essential tool in your internship application management toolkit, designed to help you **maintain a clean and relevant list** of applications. 
 
@@ -887,7 +887,46 @@ Regularly sorting and reviewing your applications can help you manage your appli
 
 __________________________________________________________________________________________________________________
 
-### Clearing all entries : `clear`
+### Reverting Your Mistake: `undo`
+
+The `undo` command allows you to **revert any modification made since the start of the application**, so you don't
+have to be worried about making a mistake.
+
+#### Command Usage
+
+**Command**:
+```
+undo
+```
+
+#### Parameters:
+
+<box type="important" seamless>
+
+The `undo` command does **not** require any parameters.
+
+</box>
+
+#### Example:
+
+To undo your previous change, simply type:
+```
+undo
+```
+
+_UPDATE PICTURE HERE_
+![list command example](images/listExample.jpg)
+
+Upon execution, the system will undo the previous `add`, `edit`, `delete`, `clear`, and `note` commands.
+
+<box type="tip" light>
+
+Once you are at the latest state, _LetsGetHired_ lets you know that there are no changes to be undone.
+</box>
+
+__________________________________________________________________________________________________________________
+
+### Clearing Your Internship Applications : `clear`
 
 The `clear` command provides an efficient way to **erase all internship application** records in your database. 
 
@@ -916,7 +955,7 @@ The `clear` command does **not** require any parameters.
 
 __________________________________________________________________________________________________________________
 
-### Exiting the program : `exit`
+### Exiting _LetsGetHired_ : `exit`
 
 The `exit` command is designed to offer you a smooth and swift way to **close the _LetsGetHired_ program**. 
 
