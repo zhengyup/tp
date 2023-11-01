@@ -33,7 +33,9 @@
     <Label fx:id="role" styleClass="cell_small_label" text="\$role" />
     <Label fx:id="cycle" styleClass="cell_small_label" text="\$cycle" />
     <Label fx:id="deadline" styleClass="cell_small_label" text="\$deadline" />
-    <FlowPane fx:id="status" alignment="CENTER_LEFT" />
+    <FlowPane alignment="CENTER_LEFT">
+        <Label fx:id="status" />
+    </FlowPane>
   </VBox>
 </GridPane>
 </HBox>

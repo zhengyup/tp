@@ -43,7 +43,7 @@ public class InternApplicationCard extends UiPart<Region> {
     @FXML
     private Label role;
     @FXML
-    private FlowPane status;
+    private Label status;
     @FXML
     private Label cycle;
     @FXML
@@ -64,8 +64,8 @@ public class InternApplicationCard extends UiPart<Region> {
         role.setText(internApplication.getRole().value);
         cycle.setText(internApplication.getCycle().value);
         deadline.setText(internApplication.getDeadline().value);
-        Label statusLabel = getStatusLabel();
-        status.getChildren().add(statusLabel);
+        setStatusText(internApplication.getStatus().value);
+        setStatusColor(internApplication.getStatus().value);
     }
 
     /**
@@ -73,32 +73,37 @@ public class InternApplicationCard extends UiPart<Region> {
      *
      * @return the status label color coded by the internship application status.
      */
-    private Label getStatusLabel() {
-        String statusString = internApplication.getStatus().value;
-        Label statusLabel = new Label(statusString);
-        switch (statusString) {
+    private void setStatusText(String statusString) {
+        String standardFormatStatus = statusString.substring(0, 1).toUpperCase()
+                + statusString.substring(1).toLowerCase();
+        status.setText(standardFormatStatus);
+    }
+
+    private void setStatusColor(String statusString) {
+        String standardFormatStatus = statusString.substring(0, 1).toUpperCase()
+                + statusString.substring(1).toLowerCase();
+        switch (standardFormatStatus) {
         case "Interview":
-            statusLabel.setStyle(INTERVIEW_COLOR);
+            status.setStyle(INTERVIEW_COLOR);
             break;
         case "Accepted":
-            statusLabel.setStyle(ACCEPTED_COLOR);
+            status.setStyle(ACCEPTED_COLOR);
             break;
         case "Offered":
-            statusLabel.setStyle(OFFERED_COLOR);
+            status.setStyle(OFFERED_COLOR);
             break;
         case "Rejected":
-            statusLabel.setStyle(REJECTED_COLOR);
+            status.setStyle(REJECTED_COLOR);
             break;
         case "Assessment":
-            statusLabel.setStyle(ASSESSMENT_COLOR);
+            status.setStyle(ASSESSMENT_COLOR);
             break;
         case "Pending":
-            statusLabel.setStyle(PENDING_COLOR);
+            status.setStyle(PENDING_COLOR);
             break;
         default:
             break;
         }
-        return statusLabel;
     }
 
     /**
