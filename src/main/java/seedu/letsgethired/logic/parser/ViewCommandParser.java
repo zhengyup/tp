@@ -17,7 +17,7 @@ public class ViewCommandParser implements Parser<ViewCommand> {
      */
     public ViewCommand parse(String args) throws ParseException {
         try {
-            Index index = ParserUtil.parseIndex(args);
+            Index index = ParserUtil.parseApplicationIndex(args);
             return new ViewCommand(index);
         } catch (ParseException pe) {
             throw new ParseException(

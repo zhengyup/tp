@@ -217,7 +217,7 @@ public class UniqueInternApplicationListTest {
             assertEquals(originalApp.getCompany(), clonedApp.getCompany());
             assertEquals(originalApp.getRole(), clonedApp.getRole());
             assertEquals(originalApp.getCycle(), clonedApp.getCycle());
-            assertEquals(originalApp.getNote(), clonedApp.getNote());
+            assertEquals(originalApp.getNotes(), clonedApp.getNotes());
             assertEquals(originalApp.getStatus(), clonedApp.getStatus());
         }
 

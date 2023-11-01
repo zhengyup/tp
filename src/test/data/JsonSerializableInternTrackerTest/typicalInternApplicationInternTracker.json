@@ -4,49 +4,49 @@
     "company" : "Jane Street",
     "cycle" : "Summer 2024",
     "role" : "Full Stack Developer",
-    "note" : "Jane Street is the leading market maker in the APAC region",
+    "note" : ["Jane Street is the leading market maker in the APAC region", "Gotta work on Leetcode"],
     "status" : "Pending",
     "deadline":  "24 Oct 2023"
   }, {
     "company" : "Optiver",
     "cycle" : "Summer 2023",
     "role" : "Data Engineering Intern",
-    "note" : "Optiver needs very good mental math skills",
+    "note" : ["Optiver needs very good mental math skills", "HackerRank assessment pending"],
     "status" : "Pending",
     "deadline":  "24 Oct 2023"
   }, {
     "company" : "Google",
     "cycle" : "Summer 2021",
     "role" : "Full Stack Intern",
-    "note" : "Need to revise Rust before the Google interview",
+    "note" : ["Need to revise Rust before the Google interview"],
     "status" : "Pending",
     "deadline":  "24 Oct 2023"
   }, {
     "company" : "Meta",
     "cycle" : "Off-cycle 2020",
     "role" : "Back End Intern",
-    "note" : "Need to revise Rust before the Meta interview",
+    "note" : ["Need to revise Rust before the Meta interview"],
     "status" : "Pending",
     "deadline":  "24 Oct 2023"
   }, {
     "company" : "Bytedance",
     "cycle" : "Summer 2021",
     "role" : "Front End Intern",
-    "note" : "Bytedance requires back end developers to know the MERN stack",
+    "note" : ["Bytedance requires back end developers to know the MERN stack"],
     "status" : "Pending",
     "deadline":  "24 Oct 2023"
   }, {
     "company" : "Grab",
     "cycle" : "Summer 2021",
     "role" : "Web Dev Intern",
-    "note" : "Grab online assessment has a difficult mental math section",
+    "note" : ["Grab online assessment has a difficult mental math section"],
     "status" : "Pending",
     "deadline":  "24 Oct 2023"
   }, {
     "company" : "Stripe",
     "cycle" : "Summer 2021",
     "role" : "DevOps Intern",
-    "note" : "Stripe requires previous experience with SQL",
+    "note" : ["Stripe requires previous experience with SQL"],
     "status" : "Pending",
     "deadline":  "24 Oct 2023"
   } ]

@@ -44,7 +44,7 @@ public class ViewCommand extends Command {
         InternApplication internApplicationToView = lastShownList.get(targetIndex.getZeroBased());
         model.setCurrentInternApplication(internApplicationToView);
         return new CommandResult(MESSAGE_VIEW_INTERN_APPLICATION_SUCCESS,
-                Messages.formatDisplay(internApplicationToView));
+                internApplicationToView);
     }
 
     @Override

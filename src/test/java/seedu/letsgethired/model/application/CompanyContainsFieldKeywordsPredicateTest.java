@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_COMPANY;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_CYCLE;
-import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE;
+import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE_INSERT;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_STATUS;
 
@@ -117,14 +117,14 @@ public class CompanyContainsFieldKeywordsPredicateTest {
     @Test
     public void test_noteDoesNotContainKeywords_returnFalse() {
         CompanyContainsFieldKeywordsPredicate predicate = new CompanyContainsFieldKeywordsPredicate(
-                Arrays.asList(new Pair<>(PREFIX_NOTE, "mental math")));
+                Arrays.asList(new Pair<>(PREFIX_NOTE_INSERT, "mental math")));
         assertFalse(predicate.test(new InternApplicationBuilder().withNote("require MERN").build()));
     }
 
     @Test
     public void test_noteContainsKeywords_returnsTrue() {
         CompanyContainsFieldKeywordsPredicate predicate = new CompanyContainsFieldKeywordsPredicate(
-                Arrays.asList(new Pair<>(PREFIX_NOTE, "require MERN")));
+                Arrays.asList(new Pair<>(PREFIX_NOTE_INSERT, "require MERN")));
         assertTrue(predicate.test(new InternApplicationBuilder().withNote("require MERN").build()));
     }
 

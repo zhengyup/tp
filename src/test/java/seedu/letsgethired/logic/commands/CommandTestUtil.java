@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_COMPANY;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_CYCLE;
-import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE;
+import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE_INSERT;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_STATUS;
 import static seedu.letsgethired.testutil.Assert.assertThrows;
@@ -47,8 +47,8 @@ public class CommandTestUtil {
     public static final String CYCLE_DESC_SUMMER = " " + PREFIX_CYCLE + VALID_CYCLE_SUMMER;
     public static final String CYCLE_DESC_WINTER = " " + PREFIX_CYCLE + VALID_CYCLE_WINTER;
     public static final String STATUS_DESC_ACCEPTED = " " + PREFIX_STATUS + VALID_STATUS_ACCEPTED;
-    public static final String NOTE_DESC_JANE_STREET = " " + PREFIX_NOTE + VALID_NOTE_JANE_STREET;
-    public static final String NOTE_DESC_BYTEDANCE = " " + PREFIX_NOTE + VALID_NOTE_BYTEDANCE;
+    public static final String NOTE_DESC_JANE_STREET = " " + PREFIX_NOTE_INSERT + VALID_NOTE_JANE_STREET;
+    public static final String NOTE_DESC_BYTEDANCE = " " + PREFIX_NOTE_INSERT + VALID_NOTE_BYTEDANCE;
     public static final String STATUS_DESC_REJECTED = " " + PREFIX_STATUS + VALID_STATUS_REJECTED;
     public static final String COMPANY_SORT_ORDER_ASCENDING = " " + PREFIX_COMPANY + VALID_SORT_ORDER_ASCENDING;
     public static final String CYCLE_SORT_ORDER_DESCENDING = " " + PREFIX_CYCLE + VALID_SORT_ORDER_DESCENDING;
@@ -58,7 +58,7 @@ public class CommandTestUtil {
     public static final String INVALID_ROLE_DESC = " " + PREFIX_ROLE + " "; // empty string is not allowed in roles
     public static final String INVALID_CYCLE_DESC = " " + PREFIX_CYCLE + "Summer!2023"; // '!' not allowed in cycles
     public static final String INVALID_STATUS_DESC = " " + PREFIX_STATUS; // empty string not allowed in status
-    public static final String INVALID_NOTE_DESC = " " + PREFIX_NOTE;
+    public static final String INVALID_NOTE_DESC = " " + PREFIX_NOTE_INSERT;
     public static final String INVALID_COMPANY_SORT_ORDER = " " + PREFIX_COMPANY + "z";
     public static final String INVALID_ROLE_SORT_ORDER = " " + PREFIX_ROLE + "!";
     public static final String INVALID_CYCLE_SORT_ORDER = " " + PREFIX_CYCLE + "b";
@@ -116,8 +116,8 @@ public class CommandTestUtil {
      * that takes a string {@code expectedMessage}.
      */
     public static void assertCommandSuccess(Command command, Model actualModel, String expectedMessage,
-                                            String expectedDetails, Model expectedModel) {
-        CommandResult expectedCommandResult = new CommandResult(expectedMessage, expectedDetails);
+                                            InternApplication expectedApplication, Model expectedModel) {
+        CommandResult expectedCommandResult = new CommandResult(expectedMessage, expectedApplication);
         assertCommandSuccess(command, actualModel, expectedCommandResult, expectedModel);
     }
 

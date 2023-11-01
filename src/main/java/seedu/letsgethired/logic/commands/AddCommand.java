@@ -8,7 +8,6 @@ import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_STATUS;
 
 import seedu.letsgethired.commons.util.ToStringBuilder;
-import seedu.letsgethired.logic.Messages;
 import seedu.letsgethired.logic.commands.exceptions.CommandException;
 import seedu.letsgethired.model.Model;
 import seedu.letsgethired.model.application.InternApplication;
@@ -58,7 +57,7 @@ public class AddCommand extends Command {
         }
 
         model.addInternApplication(toAdd);
-        return new CommandResult(MESSAGE_SUCCESS, Messages.formatDisplay(toAdd));
+        return new CommandResult(MESSAGE_SUCCESS, toAdd);
     }
 
     @Override

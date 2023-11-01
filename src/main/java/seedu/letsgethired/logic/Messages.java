@@ -33,26 +33,6 @@ public class Messages {
     }
 
     /**
-     * Formats the {@code internApplication} for display to the user.
-     */
-    public static String formatDisplay(InternApplication internApplication) {
-        final StringBuilder builder = new StringBuilder();
-        builder.append("Company: ")
-                .append(internApplication.getCompany())
-                .append("\nRole:            ")
-                .append(internApplication.getRole())
-                .append("\nCycle:         ")
-                .append(internApplication.getCycle())
-                .append("\nStatus:        ")
-                .append(internApplication.getStatus())
-                .append("\nDeadline:   ")
-                .append(internApplication.getDeadline())
-                .append("\nNotes:         ")
-                .append(internApplication.getNote());
-        return builder.toString();
-    }
-
-    /**
      * Formats the {@code internApplication} for feedback to the user.
      */
     public static String formatFeedback(InternApplication internApplication) {
@@ -68,7 +48,7 @@ public class Messages {
                 .append("; Deadline: ")
                 .append(internApplication.getDeadline())
                 .append("; Notes: ")
-                .append(internApplication.getNote());
+                .append(internApplication.getNotes());
         return builder.toString();
     }
 }

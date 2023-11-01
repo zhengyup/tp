@@ -1,5 +1,7 @@
 package seedu.letsgethired.logic.commands.exceptions;
 
+import seedu.letsgethired.logic.commands.Command;
+
 /**
  * Represents an error which occurs during execution of a {@link Command}.
  */

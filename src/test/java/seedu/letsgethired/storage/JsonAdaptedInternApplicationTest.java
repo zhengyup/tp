@@ -5,6 +5,10 @@ import static seedu.letsgethired.storage.JsonAdaptedInternApplication.MISSING_FI
 import static seedu.letsgethired.testutil.Assert.assertThrows;
 import static seedu.letsgethired.testutil.TypicalInternApplications.OPTIVER;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 import org.junit.jupiter.api.Test;
 
 import seedu.letsgethired.commons.exceptions.IllegalValueException;
@@ -20,14 +24,18 @@ public class JsonAdaptedInternApplicationTest {
     private static final String INVALID_ROLE = " ";
     private static final String INVALID_STATUS = " ";
     private static final String INVALID_CYCLE = "example.com";
-    private static final String INVALID_NOTE = " ";
+    private static final ArrayList<String> INVALID_NOTE = Arrays.stream(new String[]{" "})
+            .collect(Collectors.toCollection(ArrayList<String>::new));
     private static final String INVALID_DEADLINE = "25 Oct";
 
     private static final String VALID_NAME = OPTIVER.getCompany().toString();
     private static final String VALID_ROLE = OPTIVER.getRole().toString();
     private static final String VALID_CYCLE = OPTIVER.getCycle().toString();
     private static final String VALID_STATUS = OPTIVER.getStatus().toString();
-    private static final String VALID_NOTE = OPTIVER.getNote().toString();
+    private static final ArrayList<String> VALID_NOTE = OPTIVER.getNotes()
+            .stream()
+            .map(x -> x.value)
+            .collect(Collectors.toCollection(ArrayList<String>::new));
     private static final String VALID_DEADLINE = OPTIVER.getDeadline().toString();
 
     @Test

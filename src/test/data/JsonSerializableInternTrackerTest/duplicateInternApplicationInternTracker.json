@@ -3,14 +3,14 @@
     "company": "Jane Street",
     "cycle": "Summer 2024",
     "role": "Intern",
-    "note" : "Valid note",
+    "note" : ["Valid note"],
     "status" : "Pending",
     "deadline":  "24 Oct 2023"
   }, {
     "company": "Jane Street",
     "cycle": "Summer 2024",
     "role": "Intern",
-    "note" : "Valid note",
+    "note" : ["Valid note"],
     "status" : "Pending",
     "deadline":  "24 Oct 2023"
   } ]
