@@ -70,7 +70,7 @@ public class InternApplicationListPanel extends UiPart<Region> {
                 setGraphic(null);
                 setText(null);
             } else {
-                setGraphic(new InternApplicationCard(internApplication, getIndex() + 1, commandExecutor).getRoot());
+                setGraphic(new InternApplicationCard(internApplication, getIndex() + 1).getRoot());
             }
         }
     }

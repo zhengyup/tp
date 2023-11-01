@@ -49,8 +49,7 @@ public class InternApplicationCard extends UiPart<Region> {
      * Creates a {@code InternApplicationCard} with the given {@code internApplication} and index to display.
      */
     public InternApplicationCard(InternApplication internApplication,
-                                 int displayedIndex,
-                                 CommandExecutor commandExecutor) {
+                                 int displayedIndex) {
         super(FXML);
         this.internApplication = internApplication;
         this.indexNum = displayedIndex;
