@@ -209,7 +209,6 @@
 
 .status-bar-with-border {
     -fx-background-color: derive(#FFFFFF, 30%);
-    -fx-border-color: derive(#00000, 25%);
     -fx-border-width: 1px;
 }
 
