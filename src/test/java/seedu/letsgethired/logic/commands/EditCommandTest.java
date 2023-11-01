@@ -43,7 +43,7 @@ public class EditCommandTest {
         EditCommand editCommand = new EditCommand(INDEX_FIRST_APPLICATION, descriptor);
 
         String expectedMessage = EditCommand.MESSAGE_EDIT_INTERN_APPLICATION_SUCCESS;
-        String expectedDetails = Messages.formatDisplay(editedInternApplication);
+        InternApplication expectedDetails = editedInternApplication;
 
         Model expectedModel = new ModelManager(new InternTracker(model.getInternTracker()), new UserPrefs());
         expectedModel.setInternApplication(model.getFilteredInternApplicationList().get(0), editedInternApplication);
@@ -69,7 +69,7 @@ public class EditCommandTest {
         EditCommand editCommand = new EditCommand(indexLastInternApplication, descriptor);
 
         String expectedMessage = EditCommand.MESSAGE_EDIT_INTERN_APPLICATION_SUCCESS;
-        String expectedDetails = Messages.formatDisplay(editedInternApplication);
+        InternApplication expectedDetails = editedInternApplication;
 
         Model expectedModel = new ModelManager(new InternTracker(model.getInternTracker()), new UserPrefs());
         expectedModel.setInternApplication(lastInternApplication, editedInternApplication);
@@ -84,7 +84,7 @@ public class EditCommandTest {
                 .get(INDEX_FIRST_APPLICATION.getZeroBased());
 
         String expectedMessage = EditCommand.MESSAGE_EDIT_INTERN_APPLICATION_SUCCESS;
-        String expectedDetails = Messages.formatDisplay(editedInternApplication);
+        InternApplication expectedDetails = editedInternApplication;
 
         Model expectedModel = new ModelManager(new InternTracker(model.getInternTracker()), new UserPrefs());
 
@@ -105,13 +105,12 @@ public class EditCommandTest {
                 new EditInternApplicationDescriptorBuilder().withCompany(VALID_COMPANY_BYTEDANCE).build());
 
         String expectedMessage = EditCommand.MESSAGE_EDIT_INTERN_APPLICATION_SUCCESS;
-        String expectedDetails = Messages.formatDisplay(editedInternApplication);
 
         Model expectedModel = new ModelManager(new InternTracker(model.getInternTracker()), new UserPrefs());
         expectedModel.setInternApplication(model.getFilteredInternApplicationList().get(0), editedInternApplication);
         expectedModel.updateFilteredInternApplicationList(PREDICATE_SHOW_ALL_APPLICATIONS);
 
-        assertCommandSuccess(editCommand, model, expectedMessage, expectedDetails, expectedModel);
+        assertCommandSuccess(editCommand, model, expectedMessage, editedInternApplication, expectedModel);
     }
 
     @Test

@@ -54,7 +54,7 @@ class JsonAdaptedInternApplication {
         company = source.getCompany().value;
         role = source.getRole().value;
         cycle = source.getCycle().value;
-        notes = source.getNote().stream().map(x -> x.value).collect(Collectors.toCollection(ArrayList<String>::new));
+        notes = source.getNotes().stream().map(x -> x.value).collect(Collectors.toCollection(ArrayList<String>::new));
         status = source.getStatus().value;
         deadline = source.getDeadline().value;
     }

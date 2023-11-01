@@ -7,7 +7,6 @@ import static seedu.letsgethired.testutil.TypicalInternApplications.getTypicalIn
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import seedu.letsgethired.logic.Messages;
 import seedu.letsgethired.model.Model;
 import seedu.letsgethired.model.ModelManager;
 import seedu.letsgethired.model.UserPrefs;
@@ -34,7 +33,7 @@ public class AddCommandIntegrationTest {
         expectedModel.addInternApplication(validInternApplication);
 
         assertCommandSuccess(new AddCommand(validInternApplication), model,
-                AddCommand.MESSAGE_SUCCESS, Messages.formatDisplay(validInternApplication),
+                AddCommand.MESSAGE_SUCCESS, validInternApplication,
                 expectedModel);
     }
 

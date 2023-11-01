@@ -40,7 +40,7 @@ public class NoteDeleteCommand extends NoteCommand {
 
         InternApplication internApplicationToEdit = lastShownList.get(applicationIndex.getZeroBased());
 
-        if (noteIndex.getZeroBased() >= internApplicationToEdit.getNote().size()) {
+        if (noteIndex.getZeroBased() >= internApplicationToEdit.getNotes().size()) {
             throw new CommandException(NoteCommand.INVALID_NOTE_DISPLAYED_INDEX);
         }
 
@@ -49,7 +49,7 @@ public class NoteDeleteCommand extends NoteCommand {
         model.setInternApplication(internApplicationToEdit, editedInternApplication);
         model.updateFilteredInternApplicationList(PREDICATE_SHOW_ALL_APPLICATIONS);
 
-        return new CommandResult(MESSAGE_DELETE_NOTE_SUCCESS, Messages.formatDisplay(editedInternApplication));
+        return new CommandResult(MESSAGE_DELETE_NOTE_SUCCESS, editedInternApplication);
     }
 
     @Override

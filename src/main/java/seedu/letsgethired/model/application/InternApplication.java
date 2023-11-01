@@ -77,7 +77,7 @@ public class InternApplication {
         return deadline;
     }
 
-    public List<Note> getNote() {
+    public List<Note> getNotes() {
         return notes;
     }
 

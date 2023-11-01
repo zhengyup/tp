@@ -53,7 +53,7 @@ public class Status {
     public Status(String status) {
         requireNonNull(status);
         checkArgument(isValidStatus(status), MESSAGE_CONSTRAINTS);
-        value = status;
+        value = status.substring(0, 1).toUpperCase() + status.substring(1).toLowerCase();
     }
 
     /**

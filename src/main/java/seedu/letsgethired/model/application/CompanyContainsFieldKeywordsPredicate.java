@@ -66,7 +66,7 @@ public class CompanyContainsFieldKeywordsPredicate implements Predicate<InternAp
             return internApplication.getCycle().value;
         }
         if (fieldPrefix.equals(PREFIX_NOTE_INSERT)) {
-            return internApplication.getNote()
+            return internApplication.getNotes()
                     .stream()
                     .map(x -> x.value)
                     .reduce("", (x, y) -> x + "/" + y); // We can just append since we are finding a substring

@@ -88,20 +88,25 @@
 }
 
 .list-view {
+    -fx-background-color: transparent;
     -fx-background-insets: 0;
     -fx-border-radius: 2;
     -fx-padding: 0;
-    -fx-background-color: derive(#FFFFFF, 20%);
 }
 
 .list-cell {
+    -fx-background-color: transparent;
     -fx-label-padding: 0 0 0 0;
     -fx-graphic-text-gap : 0;
     -fx-padding: 0 0 0 0;
 }
 
+.list-view .virtual-flow {
+    -fx-background-color: transparent;
+}
+
 .list-cell:filled:even {
-    -fx-background-color: #FFFFFF;
+    -fx-background-color: #E9E9E9;
 }
 
 .list-cell:filled:odd {
@@ -109,7 +114,7 @@
 }
 
 .list-cell:filled:selected {
-    -fx-background-color: #FFFFFF;
+    -fx-background-color: #AAAAAA;
 }
 
 .list-cell:filled:selected #cardPane {
@@ -138,6 +143,14 @@
      -fx-background-color: derive(#FFFFFF, 20%);
 }
 
+.vbox {
+      -fx-background-color: derive(#FFFFFF, 20%);
+}
+
+.hbox {
+      -fx-background-color: derive(#FFFFFF, 20%);
+}
+
 .pane-with-border {
      -fx-background-color: derive(#eeeeee, 10%);
 }
@@ -155,12 +168,32 @@
     -fx-border-width : 1px;
 }
 
+.select-view .text-area {
+    -fx-background-color: #FFFFFF;
+    -fx-padding: 5px;
+    -fx-border-radius: 20px
+}
+
+.select-view .text-field {
+    -fx-background-color: #FFFFFF;
+    -fx-padding: 5px;
+    -fx-border-radius: 20px
+}
+
 .select-view {
-    -fx-background-color: transparent;
     -fx-font-family: "Segoe UI Light";
     -fx-font-size: 13pt;
     -fx-text-fill: black;
     -fx-border-radius: 2;
+}
+
+.select-view-label {
+    -fx-background-color: transparent;
+        -fx-font-family: "Segoe UI Light";
+        -fx-font-size: 13pt;
+        -fx-text-fill: black;
+        -fx-border-radius: 2;
+    -fx-alignment: top-right;
 }
 
 .result-display .label {
@@ -290,7 +323,7 @@
 }
 
 #filterField, #InternApplicationListPanel{
-    -fx-effect: innershadow(gaussian, black, 10, 0, 0, 0);
+    -fx-effect: innershadow(gaussian, white, 10, 0, 0, 0);
 }
 
 #resultDisplay #resultDisplayPlaceHolder .content {
@@ -306,19 +339,59 @@
     -fx-background-color: transparent, #FFFFFF, transparent, #FFFFFF;
 }
 
-#buttonBar .content {
-    -fx-background-color: transparent, #FFFFFF, transparent, #FFFFFF;
-    -fx-background-radius: 0;
-}
-
 #status {
     -fx-hgap: 7;
     -fx-vgap: 3;
 }
 
-#status .label {
+#acceptStatus {
     -fx-text-fill: black;
-    -fx-background-color: #3e7b91;
+    -fx-background-color: #7e38b7;
+    -fx-padding: 1 3 1 3;
+    -fx-border-radius: 2;
+    -fx-background-radius: 2;
+    -fx-font-size: 11;
+}
+
+#assessStatus {
+    -fx-text-fill: black;
+    -fx-background-color: #ffd100;
+    -fx-padding: 1 3 1 3;
+    -fx-border-radius: 2;
+    -fx-background-radius: 2;
+    -fx-font-size: 11;
+}
+
+#interviewStatus {
+    -fx-text-fill: black;
+    -fx-background-color: #fd5602;
+    -fx-padding: 1 3 1 3;
+    -fx-border-radius: 2;
+    -fx-background-radius: 2;
+    -fx-font-size: 11;
+}
+
+#offerStatus {
+    -fx-text-fill: black;
+    -fx-background-color: #03C04A;
+    -fx-padding: 1 3 1 3;
+    -fx-border-radius: 2;
+    -fx-background-radius: 2;
+    -fx-font-size: 11;
+}
+
+#pendingStatus {
+    -fx-text-fill: black;
+    -fx-background-color: #209cee;
+    -fx-padding: 1 3 1 3;
+    -fx-border-radius: 2;
+    -fx-background-radius: 2;
+    -fx-font-size: 11;
+}
+
+#rejectStatus {
+    -fx-text-fill: black;
+    -fx-background-color: #d30000;
     -fx-padding: 1 3 1 3;
     -fx-border-radius: 2;
     -fx-background-radius: 2;

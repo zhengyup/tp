@@ -25,7 +25,7 @@ public class InternApplicationTest {
         assertEquals(originalApplication.getCompany(), clonedApplication.getCompany());
         assertEquals(originalApplication.getRole(), clonedApplication.getRole());
         assertEquals(originalApplication.getCycle(), clonedApplication.getCycle());
-        assertEquals(originalApplication.getNote(), clonedApplication.getNote());
+        assertEquals(originalApplication.getNotes(), clonedApplication.getNotes());
         assertEquals(originalApplication.getStatus(), clonedApplication.getStatus());
     }
     @Test
@@ -129,7 +129,7 @@ public class InternApplicationTest {
                 + "{company=" + JANE_STREET.getCompany()
                 + ", role=" + JANE_STREET.getRole()
                 + ", cycle=" + JANE_STREET.getCycle()
-                + ", note=" + JANE_STREET.getNote()
+                + ", note=" + JANE_STREET.getNotes()
                 + ", status=" + JANE_STREET.getStatus()
                 + ", deadline=" + JANE_STREET.getDeadline()
                 + "}";

@@ -8,6 +8,8 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import seedu.letsgethired.commons.core.LogsCenter;
+import seedu.letsgethired.logic.commands.exceptions.CommandException;
+import seedu.letsgethired.logic.parser.exceptions.ParseException;
 import seedu.letsgethired.model.application.InternApplication;
 
 /**
@@ -27,6 +29,7 @@ public class InternApplicationListPanel extends UiPart<Region> {
                                       CommandExecutor commandExecutor) {
         super(FXML);
         internApplicationListView.setItems(internApplicationList);
+        setSelectedItemListener();
         internApplicationListView.setCellFactory(listView -> new InternApplicationListViewCell());
         this.commandExecutor = commandExecutor;
     }
@@ -38,6 +41,20 @@ public class InternApplicationListPanel extends UiPart<Region> {
     public void assignInternApplicationListView(ObservableList<InternApplication> internApplicationList) {
         internApplicationListView.setItems(internApplicationList);
         internApplicationListView.setCellFactory(listView -> new InternApplicationListViewCell());
+    }
+
+    private void setSelectedItemListener() {
+        internApplicationListView.getSelectionModel()
+                .selectedItemProperty()
+                .addListener((observable, oldValue, newValue) -> {
+                    String commandText = "view " + getSelectedItemIndex();
+                    try {
+                        commandExecutor.execute(commandText);
+                    } catch (CommandException | ParseException e) {
+                        //should never reach here unless the hard-coded input is wrong
+                        assert false : "The program should never reach this block";
+                    }
+                });
     }
 
     /**
@@ -53,17 +70,9 @@ public class InternApplicationListPanel extends UiPart<Region> {
                 setGraphic(null);
                 setText(null);
             } else {
-                setGraphic(new InternApplicationCard(internApplication, getIndex() + 1, commandExecutor).getRoot());
+                setGraphic(new InternApplicationCard(internApplication, getIndex() + 1).getRoot());
             }
         }
-    }
-
-    /**
-     * Gets selected Intern Application from the list panel
-     * @return Selected InternApplication from the list
-     */
-    public InternApplication getSelectedItem() {
-        return internApplicationListView.getSelectionModel().getSelectedItem();
     }
 
     /**

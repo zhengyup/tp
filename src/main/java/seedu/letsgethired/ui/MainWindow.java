@@ -176,10 +176,6 @@ public class MainWindow extends UiPart<Stage> {
         primaryStage.hide();
     }
 
-    public InternApplicationListPanel getInternApplicationListPanel() {
-        return internApplicationListPanel;
-    }
-
     /**
      * Executes the command and returns the result.
      *
@@ -187,11 +183,12 @@ public class MainWindow extends UiPart<Stage> {
      */
     private CommandResult executeCommand(String commandText) throws CommandException, ParseException {
         try {
+            selectView.clearDetails();
             CommandResult commandResult = logic.execute(commandText);
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
             internApplicationListPanel.assignInternApplicationListView(logic.getFilteredInternApplicationList());
-            selectView.displayDetails(commandResult.getDetailsToUser());
+            commandResult.getInternApplicationResult().ifPresent(x -> selectView.displayDetails(x));
             if (commandResult.isShowHelp()) {
                 handleHelp();
             }
