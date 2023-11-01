@@ -47,6 +47,9 @@ public class InternApplicationListPanel extends UiPart<Region> {
         internApplicationListView.getSelectionModel()
                 .selectedItemProperty()
                 .addListener((observable, oldValue, newValue) -> {
+                    if (newValue.equals(oldValue)) {
+                        return;
+                    }
                     String commandText = "view " + getSelectedItemIndex();
                     try {
                         commandExecutor.execute(commandText);
