@@ -174,7 +174,7 @@ If you are already an advanced user, feel free to jump to the [_Commands_ sectio
 
 1. Download the **latest** `letsgethired.jar` from [**our GitHub Releases**](https://github.com/AY2324S1-CS2103T-W17-2/tp/releases).
 
-    ![Jar File Download](images/downloadJar.jpg)
+    ![Jar File Download](images/tutorial/downloadJar.png)
 
 1. Locate the `letsgethired.jar` file
    * After downloading, find the `letsgethired.jar` file on your computer. It might be in your `Downloads` folder or wherever you chose to save it.
