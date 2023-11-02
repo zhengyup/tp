@@ -1,7 +1,6 @@
 package seedu.letsgethired.model.util;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import seedu.letsgethired.model.InternTracker;
@@ -32,14 +31,16 @@ public class SampleDataUtil {
                     new Company("Netflix"),
                     new Role("Backend Developer"),
                     new Cycle("Winter 2024"),
-                    getListOfNotes(new String[]{"Research the company's tech stack.", "Team meeting scheduled next month."}),
+                    getListOfNotes(
+                            new String[]{"Research the company's tech stack.", "Team meeting scheduled next month."}),
                     new Status("Accepted"),
                     new Deadline("15 Nov 2023")),
             new InternApplication(
                     new Company("Apple"),
                     new Role("DevOps"),
                     new Cycle("Summer 2024"),
-                    getListOfNotes(new String[]{"Review Data Structure and Algorithm", "Interview upcoming next week."}),
+                    getListOfNotes(
+                            new String[]{"Review Data Structure and Algorithm", "Interview upcoming next week."}),
                     new Status("Pending"),
                     new Deadline("24 Oct 2023")),
             new InternApplication(
@@ -52,7 +53,8 @@ public class SampleDataUtil {
                     new Company("Tesla"),
                     new Role("Embedded Systems Engineer"),
                     new Cycle("Summer 2024"),
-                    getListOfNotes(new String[]{"Received the compensation breakdown.", "Need to discuss joining bonus."}),
+                    getListOfNotes(
+                            new String[]{"Received the compensation breakdown.", "Need to discuss joining bonus."}),
                     new Status("Offered"),
                     new Deadline("01 Dec 2023")),
             new InternApplication(
@@ -92,7 +94,8 @@ public class SampleDataUtil {
                     new Company("Facebook"),
                     new Role("UI UX Designer"),
                     new Cycle("Winter 2024"),
-                    getListOfNotes(new String[]{"Create a design portfolio.", "Look into company's design principles."}),
+                    getListOfNotes(
+                            new String[]{"Create a design portfolio.", "Look into company's design principles."}),
                     new Status("Pending"),
                     new Deadline("15 Jan 2024")),
             new InternApplication(
@@ -134,21 +137,23 @@ public class SampleDataUtil {
                     new Company("Lyft"),
                     new Role("Transport Analyst"),
                     new Cycle("Winter 2024"),
-                    getListOfNotes(new String[]{"Review urban transportation dynamics.", "Prepare for case study round."}),
+                    getListOfNotes(
+                            new String[]{"Review urban transportation dynamics.", "Prepare for case study round."}),
                     new Status("Accepted"),
                     new Deadline("20 Mar 2024")),
             new InternApplication(
                     new Company("NVIDIA"),
                     new Role("Graphics Researcher"),
                     new Cycle("Summer 2023"),
-                    getListOfNotes( new String[]{"Review latest in ray tracing.", "Prepare for coding challenge."}),
+                    getListOfNotes(new String[]{"Review latest in ray tracing.", "Prepare for coding challenge."}),
                     new Status("Pending"),
                     new Deadline("30 Mar 2024")),
             new InternApplication(
                     new Company("IBM"),
                     new Role("Cloud Consultant"),
                     new Cycle("Winter 2024"),
-                    getListOfNotes(new String[]{"Understand the nuances of hybrid cloud.", "Prepare for group discussion."}),
+                    getListOfNotes(
+                            new String[]{"Understand the nuances of hybrid cloud.", "Prepare for group discussion."}),
                     new Status("Interview"),
                     new Deadline("01 Apr 2024")),
             new InternApplication(
