@@ -3,6 +3,7 @@ package seedu.letsgethired.model.application;
 import static java.util.Objects.requireNonNull;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_COMPANY;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_CYCLE;
+import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_DEADLINE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_STATUS;
 
@@ -37,6 +38,10 @@ public class InternApplicationComparator implements Comparator<InternApplication
             new InternApplicationComparator((a, b) -> b.getStatus().value.compareTo(a.getStatus().value));
     public static final InternApplicationComparator STATUS_COMPARATOR_ASCENDING =
             new InternApplicationComparator(Comparator.comparing(a -> a.getStatus().value));
+    public static final InternApplicationComparator DEADLINE_COMPARATOR_DESCENDING =
+            new InternApplicationComparator((a, b) -> b.getDeadline().value.compareTo(a.getDeadline().value));
+    public static final InternApplicationComparator DEADLINE_COMPARATOR_ASCENDING = new InternApplicationComparator(
+            Comparator.comparing(a -> a.getDeadline().value));
 
     private final List<Comparator<InternApplication>> comparators;
 
@@ -87,6 +92,14 @@ public class InternApplicationComparator implements Comparator<InternApplication
             }
         }
 
+        if (prefix.equals(PREFIX_DEADLINE)) {
+            if (order.isAscending()) {
+                return DEADLINE_COMPARATOR_ASCENDING;
+            } else {
+                return DEADLINE_COMPARATOR_DESCENDING;
+            }
+        }
+
         return null;
     }
 
@@ -96,8 +109,6 @@ public class InternApplicationComparator implements Comparator<InternApplication
      * A List is used instead of a varargs parameter to avoid issues with type erasure.
      */
     public static InternApplicationComparator createCompositeComparator(List<InternApplicationComparator> comparators) {
-        // TODO: Handle empty list of comparators
-
         ArrayList<Comparator<InternApplication>> comparatorList = new ArrayList<>();
 
         for (InternApplicationComparator comparator : comparators) {

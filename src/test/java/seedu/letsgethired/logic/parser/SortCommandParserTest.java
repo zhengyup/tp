@@ -3,6 +3,7 @@ package seedu.letsgethired.logic.parser;
 import static seedu.letsgethired.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.COMPANY_SORT_ORDER_ASCENDING;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.CYCLE_SORT_ORDER_DESCENDING;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.DEADLINE_SORT_ORDER_DESCENDING;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.INVALID_COMPANY_SORT_ORDER;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.INVALID_CYCLE_SORT_ORDER;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.INVALID_ROLE_SORT_ORDER;
@@ -10,6 +11,7 @@ import static seedu.letsgethired.logic.parser.CommandParserTestUtil.assertParseF
 import static seedu.letsgethired.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.letsgethired.model.application.InternApplicationComparator.COMPANY_COMPARATOR_ASCENDING;
 import static seedu.letsgethired.model.application.InternApplicationComparator.CYCLE_COMPARATOR_DESCENDING;
+import static seedu.letsgethired.model.application.InternApplicationComparator.DEADLINE_COMPARATOR_DESCENDING;
 
 import org.junit.jupiter.api.Test;
 
@@ -46,6 +48,9 @@ public class SortCommandParserTest {
 
         expectedCommand = new SortCommand(CYCLE_COMPARATOR_DESCENDING);
         assertParseSuccess(parser, CYCLE_SORT_ORDER_DESCENDING, expectedCommand);
+
+        expectedCommand = new SortCommand(DEADLINE_COMPARATOR_DESCENDING);
+        assertParseSuccess(parser, DEADLINE_SORT_ORDER_DESCENDING, expectedCommand);
     }
 
     // TODO: Add test cases for parsing multiple fields at the same time
