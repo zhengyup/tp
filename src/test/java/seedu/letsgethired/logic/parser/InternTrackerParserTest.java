@@ -7,6 +7,7 @@ import static seedu.letsgethired.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_COMPANY;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE_DELETE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE_INSERT;
+import static seedu.letsgethired.logic.parser.SortOrder.DESCENDING;
 import static seedu.letsgethired.testutil.Assert.assertThrows;
 import static seedu.letsgethired.testutil.TypicalIndexes.INDEX_FIRST_APPLICATION;
 
@@ -28,11 +29,13 @@ import seedu.letsgethired.logic.commands.ListCommand;
 import seedu.letsgethired.logic.commands.NoteCommand;
 import seedu.letsgethired.logic.commands.NoteDeleteCommand;
 import seedu.letsgethired.logic.commands.NoteInsertCommand;
+import seedu.letsgethired.logic.commands.SortCommand;
 import seedu.letsgethired.logic.commands.UndoCommand;
 import seedu.letsgethired.logic.commands.ViewCommand;
 import seedu.letsgethired.logic.parser.exceptions.ParseException;
 import seedu.letsgethired.model.application.CompanyContainsFieldKeywordsPredicate;
 import seedu.letsgethired.model.application.InternApplication;
+import seedu.letsgethired.model.application.InternApplicationComparator;
 import seedu.letsgethired.model.application.Note;
 import seedu.letsgethired.testutil.EditInternApplicationDescriptorBuilder;
 import seedu.letsgethired.testutil.InternApplicationBuilder;
@@ -98,6 +101,15 @@ public class InternTrackerParserTest {
     public void parseCommand_list() throws Exception {
         assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD) instanceof ListCommand);
         assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD + " 3") instanceof ListCommand);
+    }
+
+    @Test
+    public void parseCommand_sort() throws Exception {
+        String sortStringDescending = "d";
+        SortCommand command = (SortCommand) parser.parseCommand(
+                SortCommand.COMMAND_WORD + " " + PREFIX_COMPANY + sortStringDescending);
+        assertEquals(new SortCommand(InternApplicationComparator.getComparator(PREFIX_COMPANY, DESCENDING)),
+                command);
     }
 
     @Test

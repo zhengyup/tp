@@ -14,6 +14,9 @@ import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_STATUS_REJ
 import static seedu.letsgethired.testutil.TypicalInternApplications.B;
 import static seedu.letsgethired.testutil.TypicalInternApplications.JANE_STREET;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 
 import seedu.letsgethired.testutil.InternApplicationBuilder;
@@ -42,7 +45,7 @@ public class InternApplicationTest {
                 .withCycle(VALID_CYCLE_SUMMER)
                 .withStatus(VALID_STATUS_REJECTED)
                 .withDeadline(VALID_DEADLINE)
-                .withNote("Different")
+                .withNotes("Different")
                 .build();
         assertTrue(JANE_STREET.isSameApplication(editedInternApplication));
 
@@ -76,6 +79,19 @@ public class InternApplicationTest {
 
         // Verify that the cloned object has the same values
         assertSameAttributes(originalApplication, clonedApplication);
+    }
+
+    @Test
+    public void getNumberedListOfNotes() {
+        List<String> notes = Arrays.asList("requires MERN", "need good mental math");
+
+        InternApplication internApplication = new InternApplicationBuilder()
+                .withNotes(notes.get(0), notes.get(1)).build();
+
+        String expectedList = new StringBuilder().append("1. ").append(notes.get(0)).append("\n")
+                .append("2. ").append(notes.get(1)).append("\n").toString();
+
+        assertEquals(internApplication.getNumberedListOfNotes(), expectedList);
     }
 
     @Test
@@ -119,7 +135,7 @@ public class InternApplicationTest {
         assertTrue(JANE_STREET.equals(editedInternApplication));
 
         // different note -> returns true
-        editedInternApplication = new InternApplicationBuilder(JANE_STREET).withNote("different").build();
+        editedInternApplication = new InternApplicationBuilder(JANE_STREET).withNotes("different").build();
         assertTrue(JANE_STREET.equals(editedInternApplication));
     }
 

@@ -22,8 +22,9 @@ public class ClearCommandTest {
 
     @Test
     public void execute_nonEmptyInternTracker_success() {
-        Model model = new ModelManager(getTypicalInternTracker(), new UserPrefs());
-        Model expectedModel = new ModelManager(getTypicalInternTracker(), new UserPrefs());
+        UserPrefs userPrefs = new UserPrefs();
+        Model model = new ModelManager(getTypicalInternTracker(), userPrefs);
+        Model expectedModel = new ModelManager(getTypicalInternTracker(), userPrefs);
         expectedModel.setInternTracker(new InternTracker());
 
         assertCommandSuccess(new ClearCommand(), model, ClearCommand.MESSAGE_SUCCESS, expectedModel);

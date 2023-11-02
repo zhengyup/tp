@@ -76,9 +76,11 @@ public class InternApplicationBuilder {
     /**
      * Sets the {@code Note} of the {@code InternApplication} that we are building.
      */
-    public InternApplicationBuilder withNote(String note) {
+    public InternApplicationBuilder withNotes(String ... notesString) {
         ArrayList<Note> notes = new ArrayList<>();
-        notes.add(new Note(note));
+        for (String note: notesString) {
+            notes.add(new Note(note));
+        }
         this.note = notes;
         return this;
     }

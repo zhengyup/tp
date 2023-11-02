@@ -53,6 +53,8 @@ public class CommandTestUtil {
     public static final String STATUS_DESC_REJECTED = " " + PREFIX_STATUS + VALID_STATUS_REJECTED;
     public static final String COMPANY_SORT_ORDER_ASCENDING = " " + PREFIX_COMPANY + VALID_SORT_ORDER_ASCENDING;
     public static final String CYCLE_SORT_ORDER_DESCENDING = " " + PREFIX_CYCLE + VALID_SORT_ORDER_DESCENDING;
+    public static final String ROLE_SORT_ORDER_ASCENDING = " " + PREFIX_ROLE + VALID_SORT_ORDER_ASCENDING;
+    public static final String STATUS_SORT_ORDER_DESCENDING = " " + PREFIX_STATUS + VALID_SORT_ORDER_DESCENDING;
     public static final String DEADLINE_SORT_ORDER_DESCENDING = " " + PREFIX_DEADLINE + VALID_SORT_ORDER_DESCENDING;
 
     public static final String INVALID_COMPANY_DESC =
@@ -64,6 +66,7 @@ public class CommandTestUtil {
     public static final String INVALID_COMPANY_SORT_ORDER = " " + PREFIX_COMPANY + "z";
     public static final String INVALID_ROLE_SORT_ORDER = " " + PREFIX_ROLE + "!";
     public static final String INVALID_CYCLE_SORT_ORDER = " " + PREFIX_CYCLE + "b";
+    public static final String INVALID_STATUS_SORT_ORDER = " " + PREFIX_STATUS + "?";
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
 

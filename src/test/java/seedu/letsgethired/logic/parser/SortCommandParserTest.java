@@ -7,11 +7,16 @@ import static seedu.letsgethired.logic.commands.CommandTestUtil.DEADLINE_SORT_OR
 import static seedu.letsgethired.logic.commands.CommandTestUtil.INVALID_COMPANY_SORT_ORDER;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.INVALID_CYCLE_SORT_ORDER;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.INVALID_ROLE_SORT_ORDER;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.INVALID_STATUS_SORT_ORDER;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.ROLE_SORT_ORDER_ASCENDING;
+import static seedu.letsgethired.logic.commands.CommandTestUtil.STATUS_SORT_ORDER_DESCENDING;
 import static seedu.letsgethired.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.letsgethired.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.letsgethired.model.application.InternApplicationComparator.COMPANY_COMPARATOR_ASCENDING;
 import static seedu.letsgethired.model.application.InternApplicationComparator.CYCLE_COMPARATOR_DESCENDING;
 import static seedu.letsgethired.model.application.InternApplicationComparator.DEADLINE_COMPARATOR_DESCENDING;
+import static seedu.letsgethired.model.application.InternApplicationComparator.ROLE_COMPARATOR_ASCENDING;
+import static seedu.letsgethired.model.application.InternApplicationComparator.STATUS_COMPARATOR_DESCENDING;
 
 import org.junit.jupiter.api.Test;
 
@@ -37,21 +42,26 @@ public class SortCommandParserTest {
         assertParseFailure(parser, INVALID_COMPANY_SORT_ORDER, SortOrder.MESSAGE_CONSTRAINTS);
         assertParseFailure(parser, INVALID_ROLE_SORT_ORDER, SortOrder.MESSAGE_CONSTRAINTS);
         assertParseFailure(parser, INVALID_CYCLE_SORT_ORDER, SortOrder.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, INVALID_STATUS_SORT_ORDER, SortOrder.MESSAGE_CONSTRAINTS);
     }
 
     @Test
     public void parse_oneValidField_success() {
         // One valid field specified
         // Check for referential equality in comparators
-        SortCommand expectedCommand = new SortCommand(COMPANY_COMPARATOR_ASCENDING);
-        assertParseSuccess(parser, COMPANY_SORT_ORDER_ASCENDING, expectedCommand);
+        SortCommand expectedCommandCompanySort = new SortCommand(COMPANY_COMPARATOR_ASCENDING);
+        assertParseSuccess(parser, COMPANY_SORT_ORDER_ASCENDING, expectedCommandCompanySort);
 
-        expectedCommand = new SortCommand(CYCLE_COMPARATOR_DESCENDING);
-        assertParseSuccess(parser, CYCLE_SORT_ORDER_DESCENDING, expectedCommand);
+        SortCommand expectedCommandCycleSort = new SortCommand(CYCLE_COMPARATOR_DESCENDING);
+        assertParseSuccess(parser, CYCLE_SORT_ORDER_DESCENDING, expectedCommandCycleSort);
 
-        expectedCommand = new SortCommand(DEADLINE_COMPARATOR_DESCENDING);
-        assertParseSuccess(parser, DEADLINE_SORT_ORDER_DESCENDING, expectedCommand);
+        SortCommand expectedCommandRoleSort = new SortCommand(ROLE_COMPARATOR_ASCENDING);
+        assertParseSuccess(parser, ROLE_SORT_ORDER_ASCENDING, expectedCommandRoleSort);
+
+        SortCommand expectedCommandDeadlineSort = new SortCommand(DEADLINE_COMPARATOR_DESCENDING);
+        assertParseSuccess(parser, DEADLINE_SORT_ORDER_DESCENDING, expectedCommandDeadlineSort);
+
+        SortCommand expectedCommandStatusSort = new SortCommand(STATUS_COMPARATOR_DESCENDING);
+        assertParseSuccess(parser, STATUS_SORT_ORDER_DESCENDING, expectedCommandStatusSort);
     }
-
-    // TODO: Add test cases for parsing multiple fields at the same time
 }
