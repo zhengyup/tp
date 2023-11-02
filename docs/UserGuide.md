@@ -82,7 +82,6 @@ There are three types of boxes used in this User Guide:
 * [Additional Information](#additional-information)
 * [Warning](#warning)
 * [Tips](#tips)
-
 </box>
 
 ### Additional Information
@@ -90,19 +89,16 @@ There are three types of boxes used in this User Guide:
 <box type="info">
 
 This is additional information.
-
 </box>
 
 <box type="info" light>
 
 This is also additional information.
-
 </box>
 
 <box type="info" seamless>
 
 This is also additional information.
-
 </box>
 
 ### Warning
@@ -110,13 +106,11 @@ This is also additional information.
 <box type="warning">
 
 This is a warning. Watch out for these!
-
 </box>
 
 <box type="warning" light>
 
 This is also a warning. Watch out for these too!
-
 </box>
 
 <box type="warning" seamless>
@@ -863,6 +857,7 @@ with that particular application.
 
 <box type="tip" light>
 
+* **Alternative**: You may also click on a _Internship Application Card_ to view the corresponding details.
 * Utilize the `view` command prior to interviews or follow-ups to refresh your memory about the specifics of the application.
 * Regularly reviewing applications in detail can help you stay on top of any action items or next steps.
 
