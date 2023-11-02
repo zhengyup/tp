@@ -102,8 +102,8 @@ public class JsonAdaptedInternApplicationTest {
     public void toModelType_invalidNote_throwsIllegalValueException() {
         JsonAdaptedInternApplication application =
                 new JsonAdaptedInternApplication(
-                        VALID_NAME, VALID_ROLE, INVALID_CYCLE, INVALID_NOTE, VALID_STATUS, VALID_DEADLINE);
-        String expectedMessage = Cycle.MESSAGE_CONSTRAINTS;
+                        VALID_NAME, VALID_ROLE, VALID_CYCLE, INVALID_NOTE, VALID_STATUS, VALID_DEADLINE);
+        String expectedMessage = Note.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, application::toModelType);
     }
 
