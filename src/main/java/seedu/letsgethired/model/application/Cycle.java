@@ -7,7 +7,7 @@ import static seedu.letsgethired.commons.util.AppUtil.checkArgument;
  * Represents an InternApplication's cycle in the intern book.
  * Guarantees: immutable; is valid as declared in {@link #isValidCycle(String)}
  */
-public class Cycle {
+public class Cycle implements Comparable<Cycle> {
 
     public static final String MESSAGE_CONSTRAINTS =
             "Cycle should only contain alphanumeric characters and spaces, and it should not be blank";
@@ -63,4 +63,8 @@ public class Cycle {
         return value.hashCode();
     }
 
+    @Override
+    public int compareTo(Cycle other) {
+        return this.value.compareTo(other.value);
+    }
 }

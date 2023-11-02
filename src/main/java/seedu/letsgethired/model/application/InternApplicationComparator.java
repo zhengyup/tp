@@ -23,25 +23,25 @@ public class InternApplicationComparator implements Comparator<InternApplication
      * Comparators for sorting by specific fields.
      */
     public static final InternApplicationComparator COMPANY_COMPARATOR_DESCENDING =
-            new InternApplicationComparator((a, b) -> b.getCompany().value.compareTo(a.getCompany().value));
+            new InternApplicationComparator((a, b) -> b.getCompany().compareTo(a.getCompany()));
     public static final InternApplicationComparator COMPANY_COMPARATOR_ASCENDING =
-            new InternApplicationComparator(Comparator.comparing(a -> a.getCompany().value));
+            new InternApplicationComparator(Comparator.comparing(InternApplication::getCompany));
     public static final InternApplicationComparator ROLE_COMPARATOR_DESCENDING =
-            new InternApplicationComparator((a, b) -> b.getRole().value.compareTo(a.getRole().value));
+            new InternApplicationComparator((a, b) -> b.getRole().compareTo(a.getRole()));
     public static final InternApplicationComparator ROLE_COMPARATOR_ASCENDING =
-            new InternApplicationComparator(Comparator.comparing(a -> a.getRole().value));
+            new InternApplicationComparator(Comparator.comparing(InternApplication::getRole));
     public static final InternApplicationComparator CYCLE_COMPARATOR_DESCENDING =
-            new InternApplicationComparator((a, b) -> b.getCycle().value.compareTo(a.getCycle().value));
+            new InternApplicationComparator((a, b) -> b.getCycle().compareTo(a.getCycle()));
     public static final InternApplicationComparator CYCLE_COMPARATOR_ASCENDING =
-            new InternApplicationComparator(Comparator.comparing(a -> a.getCycle().value));
+            new InternApplicationComparator(Comparator.comparing(InternApplication::getCycle));
     public static final InternApplicationComparator STATUS_COMPARATOR_DESCENDING =
-            new InternApplicationComparator((a, b) -> b.getStatus().value.compareTo(a.getStatus().value));
+            new InternApplicationComparator((a, b) -> b.getStatus().compareTo(a.getStatus()));
     public static final InternApplicationComparator STATUS_COMPARATOR_ASCENDING =
-            new InternApplicationComparator(Comparator.comparing(a -> a.getStatus().value));
+            new InternApplicationComparator(Comparator.comparing(InternApplication::getStatus));
     public static final InternApplicationComparator DEADLINE_COMPARATOR_DESCENDING =
-            new InternApplicationComparator((a, b) -> b.getDeadline().value.compareTo(a.getDeadline().value));
+            new InternApplicationComparator((a, b) -> b.getDeadline().compareTo(a.getDeadline()));
     public static final InternApplicationComparator DEADLINE_COMPARATOR_ASCENDING = new InternApplicationComparator(
-            Comparator.comparing(a -> a.getDeadline().value));
+            Comparator.comparing(InternApplication::getDeadline));
 
     private final List<Comparator<InternApplication>> comparators;
 
