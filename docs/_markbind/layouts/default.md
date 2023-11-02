@@ -27,11 +27,16 @@
       <site-nav>
 * [Home]({{ baseUrl }}/index.html)
 * [User Guide]({{ baseUrl }}/UserGuide.html) :expanded:
-  * [Quick Start]({{ baseUrl }}/UserGuide.html#quick-start)
-  * [Features]({{ baseUrl }}/UserGuide.html#features)
+  * [Introduction]({{ baseUrl }}/UserGuide.html#introduction)
+  * [Navigating the User Guide]({{ baseUrl }}/UserGuide.html#navigating-the-user-guide)
+  * [Getting Started]({{ baseUrl }}/UserGuide.html#getting-started)
+  * [Tutorial - Managing Your First Internship Application]({{ baseUrl }}/UserGuide.html#tutorial-managing-your-first-internship-application)
+  * [Commands]({{ baseUrl }}/UserGuide.html#commands)
+  * [Storage]({{ baseUrl }}/UserGuide.html#storage)
   * [FAQ]({{ baseUrl }}/UserGuide.html#faq)
   * [Known Issues]({{ baseUrl }}/UserGuide.html#known-issues)
   * [Command Summary]({{ baseUrl }}/UserGuide.html#command-summary)
+  * [Glossary]({{ baseUrl }}/UserGuide.html#glossary)
 * [Developer Guide]({{ baseUrl }}/DeveloperGuide.html) :expanded:
   * [Acknowledgements]({{ baseUrl }}/DeveloperGuide.html#acknowledgements)
   * [Setting Up]({{ baseUrl }}/DeveloperGuide.html#setting-up-getting-started)
