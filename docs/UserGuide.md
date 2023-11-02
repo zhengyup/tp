@@ -989,6 +989,8 @@ sort [n/COMPANY_NAME] [r/ROLE] [c/CYCLE] [s/STATUS] [d/DEADLINE]
    
    This command will sort your internship application list in chronological order based on deadlines.
 
+   ![Sort Command Result Deadline Ascending](images/commands/sortCommandResultDeadlineAscending.png)
+
 4. **Sort by Status (Ascending)**
    ```
    sort s/a
