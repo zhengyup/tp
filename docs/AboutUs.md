@@ -14,7 +14,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Tham You Wei
 
-<img src="images/tyouwei.png" width="200px">
+<img src="images/members/tyouwei.png" width="200px">
 
 [[github](https://github.com/tyouwei)]
 [[portfolio](team/tyouwei.md)]
@@ -24,13 +24,13 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Zheng Yu
 
-<img src="images/zhengyup.png" width="200px">
+<img src="images/members/zhengyup.png" width="200px">
 
 [[github](http://github.com/zhengyup)] [[portfolio](team/zhengyup.md)]
 
 ### Timothy Putra Prasetio
 
-<img src="images/tim-pipi.png" width="200px">
+<img src="images/members/tim-pipi.png" width="200px">
 
 [[github](https://github.com/tim-pipi)]
 [[portfolio](team/tim-pipi.md)]
@@ -40,7 +40,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Aprup Kale
 
-<img src="images/aprupkale.png" width="200px">
+<img src="images/members/aprupkale.png" width="200px">
 
 [[github](http://github.com/aprupkale)]
 [[portfolio](team/aprupkale.md)]
@@ -50,7 +50,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Zhi Sheng
 
-<img src="images/zsh-eng.png" width="200px">
+<img src="images/members/zsh-eng.png" width="200px">
 
 [[github](https://github.com/zsh-eng)]
 [[portfolio](team/zsh-eng.md)]
