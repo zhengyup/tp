@@ -111,7 +111,7 @@ public class InternTracker implements ReadOnlyInternTracker {
      */
     public void removeApplication(InternApplication key) {
         internApplications.remove(key);
-        if (selectedApplication != null && !selectedApplication.equals(key)) {
+        if (selectedApplication != null && selectedApplication.equals(key)) {
             selectedApplication = null;
         }
     }
