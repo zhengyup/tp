@@ -10,12 +10,18 @@ import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_ROLE_FULL_
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_STATUS_ACCEPTED;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_STATUS_REJECTED;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
+import seedu.letsgethired.commons.exceptions.DataLoadingException;
+import seedu.letsgethired.model.ReadOnlyInternTracker;
 import seedu.letsgethired.model.VersionedInternTracker;
 import seedu.letsgethired.model.application.InternApplication;
+import seedu.letsgethired.storage.JsonInternTrackerStorage;
 
 /**
  * A utility class containing a list of {@code InternApplication} objects to be used in tests.
@@ -103,7 +109,9 @@ public class TypicalInternApplications {
             .withDeadline(VALID_DEADLINE)
             .build();
 
-    public static final String KEYWORD_MATCHING_OCBC = "OCBC"; // A keyword that matches OCBC
+    private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonSerializableInternTrackerTest");
+    private static final Path TYPICAL_INTERN_APPLICATIONS_FILE =
+            TEST_DATA_FOLDER.resolve("typicalInternApplicationInternTracker.json");
 
     private TypicalInternApplications() {
     } // prevents instantiation
@@ -120,6 +128,18 @@ public class TypicalInternApplications {
     }
 
     public static List<InternApplication> getTypicalInternApplications() {
+        JsonInternTrackerStorage jsonInternTrackerStorage =
+                new JsonInternTrackerStorage(TYPICAL_INTERN_APPLICATIONS_FILE);
+
+
+
+        try {
+            Optional<ReadOnlyInternTracker> internTracker = jsonInternTrackerStorage.readInternTracker();
+            return internTracker.get().getApplicationList();
+        } catch (DataLoadingException dle) {
+            // do nothing
+        }
+
         return new ArrayList<>(Arrays.asList(JANE_STREET, OPTIVER, GOOGLE, META, BYTEDANCE, GRAB, STRIPE));
     }
 }

@@ -8,13 +8,6 @@
     "status" : "Pending",
     "deadline":  "24 Oct 2023"
   }, {
-    "company" : "Optiver",
-    "cycle" : "Summer 2023",
-    "role" : "Data Engineering Intern",
-    "note" : ["Optiver needs very good mental math skills", "HackerRank assessment pending"],
-    "status" : "Pending",
-    "deadline":  "24 Oct 2023"
-  }, {
     "company" : "Google",
     "cycle" : "Summer 2021",
     "role" : "Full Stack Intern",
@@ -49,5 +42,117 @@
     "note" : ["Stripe requires previous experience with SQL"],
     "status" : "Pending",
     "deadline":  "24 Oct 2023"
+  }, {
+    "company" : "Netflix",
+    "role" : "Backend Developer",
+    "cycle" : "Winter 2024",
+    "status" : "Accepted",
+    "deadline" : "15 Nov 2023",
+    "notes" : [ "Research the company's tech stack.", "Team meeting scheduled next month." ]
+  }, {
+    "company" : "Apple",
+    "role" : "DevOps",
+    "cycle" : "Summer 2024",
+    "status" : "Pending",
+    "deadline" : "24 Oct 2023",
+    "notes" : [ "Review Data Structure and Algorithm", "Interview upcoming next week." ]
+  }, {
+    "company" : "Tesla",
+    "role" : "Embedded Systems Engineer",
+    "cycle" : "Summer 2024",
+    "status" : "Offered",
+    "deadline" : "01 Dec 2023",
+    "notes" : [ "Received the compensation breakdown.", "Need to discuss joining bonus." ]
+  }, {
+    "company" : "Shoppee",
+    "role" : "Full Stack Developer",
+    "cycle" : "Winter 2024",
+    "status" : "Rejected",
+    "deadline" : "24 Oct 2023",
+    "notes" : [ ]
+  }, {
+    "company" : "Spotify",
+    "role" : "Data Scientist",
+    "cycle" : "Winter 2024",
+    "status" : "Pending",
+    "deadline" : "15 Dec 2023",
+    "notes" : [ "Prepare for machine learning questions.", "Review Python libraries." ]
+  }, {
+    "company" : "Amazon",
+    "role" : "Frontend Developer",
+    "cycle" : "Summer 2023",
+    "status" : "Rejected",
+    "deadline" : "10 Jan 2024",
+    "notes" : [ ]
+  }, {
+    "company" : "Facebook",
+    "role" : "UI UX Designer",
+    "cycle" : "Winter 2024",
+    "status" : "Pending",
+    "deadline" : "15 Jan 2024",
+    "notes" : [ "Create a design portfolio.", "Look into company's design principles." ]
+  }, {
+    "company" : "Airbnb",
+    "role" : "Mobile App Developer",
+    "cycle" : "Summer 2024",
+    "status" : "Interview",
+    "deadline" : "24 Jan 2024",
+    "notes" : [ "Prepare for Swift and Kotlin questions." ]
+  }, {
+    "company" : "Oracle",
+    "role" : "Database Administrator",
+    "cycle" : "Winter 2024",
+    "status" : "Pending",
+    "deadline" : "01 Feb 2024",
+    "notes" : [ "Review SQL performance optimization." ]
+  }, {
+    "company" : "Twitter",
+    "role" : "Social Media Manager",
+    "cycle" : "Summer 2023",
+    "status" : "Offered",
+    "deadline" : "15 Feb 2024",
+    "notes" : [ "Negotiate for a better package.", "Consider relocation options." ]
+  }, {
+    "company" : "Slack",
+    "role" : "Product Manager",
+    "cycle" : "Winter 2024",
+    "status" : "Pending",
+    "deadline" : "24 Feb 2024",
+    "notes" : [ "Review agile methodologies.", "Look into company's product lineup." ]
+  }, {
+    "company" : "Zoom",
+    "role" : "Network Engineer",
+    "cycle" : "Summer 2024",
+    "status" : "Interview",
+    "deadline" : "10 Mar 2024",
+    "notes" : [ "Brush up on OSI model.", "Research company's infrastructure." ]
+  }, {
+    "company" : "Lyft",
+    "role" : "Transport Analyst",
+    "cycle" : "Winter 2024",
+    "status" : "Accepted",
+    "deadline" : "20 Mar 2024",
+    "notes" : [ "Review urban transportation dynamics.", "Prepare for case study round." ]
+  }, {
+    "company" : "NVIDIA",
+    "role" : "Graphics Researcher",
+    "cycle" : "Summer 2023",
+    "status" : "Pending",
+    "deadline" : "30 Mar 2024",
+    "notes" : [ "Review latest in ray tracing.", "Prepare for coding challenge." ]
+  }, {
+    "company" : "IBM",
+    "role" : "Cloud Consultant",
+    "cycle" : "Winter 2024",
+    "status" : "Interview",
+    "deadline" : "01 Apr 2024",
+    "notes" : [ "Understand the nuances of hybrid cloud.", "Prepare for group discussion." ]
+  }, {
+    "company" : "SpaceX",
+    "role" : "Aerospace Engineer",
+    "cycle" : "Summer 2023",
+    "status" : "Pending",
+    "deadline" : "10 Apr 2024",
+    "notes" : [ "Revise propulsion systems.", "Look into company's recent missions." ]
   } ]
 }
