@@ -627,6 +627,8 @@ ________________________________________________________________________________
 
 The `note` command is a beneficial tool designed to enrich your internship applications with **additional details**. 
 
+#### **Adding a note:**
+
 As you progress through your application process, there might be specific information, feedback, or reminders 
 you'd like to attach to an application for future reference. The `note` command allows you to effortlessly do just that.
 
@@ -634,7 +636,7 @@ you'd like to attach to an application for future reference. The `note` command 
 
 **Command**:
 ```
-note INDEX [i/NOTE]
+note INDEX i/NOTE
 ```
 
 #### Parameters:
@@ -667,6 +669,51 @@ This ensures you have a comprehensive view of each application, complete with an
 
 * Making a habit of attaching notes, especially after interviews or significant interactions, will ensure you don't forget crucial details.
 * Reviewing notes can be particularly helpful when preparing for subsequent rounds of interviews or follow-ups.
+
+</box>
+
+#### **Deleting a note:**
+
+As you progress through your application process, there might be notes that has become outdated or irrelevant. 
+The `note` command allows you to effortlessly delete these notes as well.
+
+#### Command Usage
+
+Command:
+```
+note INDEX o/NOTE_INDEX
+```
+
+#### Parameters:
+
+1. **INDEX**: Represents the position of the internship application in your list which contains the note you wish to delete.
+   <box type="info" seamless>
+
+   The `INDEX` should be a positive integer. For example: `1`, `2`, `3`, etc. This corresponds to the application's position in your list.
+   </box>
+
+1. **o/NOTE_INDEX**: Represents the position of the note in the note list of the application to which you wish to delete.
+
+   <box type="info" seamless> 
+
+   The `NOTE_INDEX` should be a positive integer. For example: `1`, `2`, `3`, etc. This corresponds to the note’s position in your list.
+   </box>
+
+#### Example:
+
+Suppose you just had an interview for the third internship application on your list, and you'd like to delete the third note in your second internship application in the tracker. The command would look like this:
+
+```
+note 2 o/3
+```
+
+_UPDATE PICTURE HERE_
+
+You can see how the note is immediately deleted from the list display.
+
+<box type="tip" light> 
+
+* Regularly maintain and curate your notes to keep each internship application clear and relevant. This prevents the accumulation of outdated or unnecessary details over time.
 
 </box>
 
@@ -847,11 +894,11 @@ sort [n/COMPANY_NAME] [r/ROLE] [c/CYCLE] [s/STATUS] [d/DEADLINE]
 
 </box>
 
-* **n/COMPANY_NAME**: Sorts applications by the company name.
-* **r/ROLE**: Sorts applications by the role.
-* **c/CYCLE**: Sorts applications by the cycle.
-* **s/STATUS**: Sorts applications by their status.
-* **d/DEADLINE**: Sorts applications by their deadline.
+* **n/COMPANY_NAME** (Optional): Sorts applications by the company name.
+* **r/ROLE** (Optional): Sorts applications by the role.
+* **c/CYCLE** (Optional): Sorts applications by the cycle.
+* **s/STATUS** (Optional): Sorts applications by their status.
+* **d/DEADLINE** (Optional): Sorts applications by their deadline.
 
 #### Examples:
 
