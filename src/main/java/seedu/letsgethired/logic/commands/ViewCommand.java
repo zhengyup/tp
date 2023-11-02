@@ -36,12 +36,14 @@ public class ViewCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         List<InternApplication> lastShownList = model.getFilteredInternApplicationList();
+        assert lastShownList != null;
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_INTERN_APPLICATION_DISPLAYED_INDEX);
         }
 
         InternApplication internApplicationToView = lastShownList.get(targetIndex.getZeroBased());
+        assert internApplicationToView != null;
         model.setCurrentInternApplication(internApplicationToView);
         return new CommandResult(MESSAGE_VIEW_INTERN_APPLICATION_SUCCESS,
                 internApplicationToView);
