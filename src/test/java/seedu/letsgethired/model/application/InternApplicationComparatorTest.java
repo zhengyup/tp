@@ -3,7 +3,6 @@ package seedu.letsgethired.model.application;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_COMPANY;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_CYCLE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_DEADLINE;
@@ -41,6 +40,11 @@ public class InternApplicationComparatorTest {
         InternApplicationComparator statusDescending = InternApplicationComparator
                 .getComparator(PREFIX_STATUS, DESCENDING);
 
+        InternApplicationComparator deadlineDescending = InternApplicationComparator
+                .getComparator(PREFIX_DEADLINE, DESCENDING);
+        InternApplicationComparator deadlineAscending = InternApplicationComparator
+                .getComparator(PREFIX_DEADLINE, ASCENDING);
+
         assertNotNull(companyAscending);
         assertNotNull(companyDescending);
 
@@ -53,10 +57,8 @@ public class InternApplicationComparatorTest {
         assertNotNull(statusAscending);
         assertNotNull(statusDescending);
 
-        InternApplicationComparator deadlineDescending = InternApplicationComparator
-                .getComparator(PREFIX_DEADLINE, DESCENDING);
-
-        assertNull(deadlineDescending);
+        assertNotNull(deadlineDescending);
+        assertNotNull(deadlineAscending);
     }
 
     @Test

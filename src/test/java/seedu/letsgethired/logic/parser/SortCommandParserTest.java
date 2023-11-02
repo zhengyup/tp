@@ -14,9 +14,9 @@ import static seedu.letsgethired.logic.parser.CommandParserTestUtil.assertParseF
 import static seedu.letsgethired.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.letsgethired.model.application.InternApplicationComparator.COMPANY_COMPARATOR_ASCENDING;
 import static seedu.letsgethired.model.application.InternApplicationComparator.CYCLE_COMPARATOR_DESCENDING;
+import static seedu.letsgethired.model.application.InternApplicationComparator.DEADLINE_COMPARATOR_DESCENDING;
 import static seedu.letsgethired.model.application.InternApplicationComparator.ROLE_COMPARATOR_ASCENDING;
 import static seedu.letsgethired.model.application.InternApplicationComparator.STATUS_COMPARATOR_DESCENDING;
-import static seedu.letsgethired.model.application.InternApplicationComparator.DEADLINE_COMPARATOR_DESCENDING;
 
 import org.junit.jupiter.api.Test;
 
