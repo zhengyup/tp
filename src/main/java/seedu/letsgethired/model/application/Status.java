@@ -7,7 +7,7 @@ import static seedu.letsgethired.commons.util.AppUtil.checkArgument;
  * Represents an InternApplication's status in the tracker.
  * Guarantees: immutable; is valid as declared in {@link #isValidStatus(String)}
  */
-public class Status {
+public class Status implements Comparable<Status> {
 
     enum StatusEnum {
         REJECTED,
@@ -87,6 +87,11 @@ public class Status {
     @Override
     public int hashCode() {
         return value.hashCode();
+    }
+
+    @Override
+    public int compareTo(Status other) {
+        return this.value.compareTo(other.value);
     }
 
 }

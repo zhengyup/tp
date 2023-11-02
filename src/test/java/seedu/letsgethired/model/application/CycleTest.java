@@ -1,5 +1,6 @@
 package seedu.letsgethired.model.application;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.letsgethired.testutil.Assert.assertThrows;
@@ -61,4 +62,21 @@ public class CycleTest {
         // different values -> returns false
         assertFalse(cycle.equals(new Cycle("Summer 2023")));
     }
+
+    @Test
+    public void compareTo() {
+        Cycle cycle1 = new Cycle("Summer 2024");
+        Cycle cycle2 = new Cycle("Fall 2023");
+        Cycle cycle3 = new Cycle("Fall 2023");
+
+        // cycle2 < cycle1
+        assertTrue(cycle2.compareTo(cycle1) < 0);
+
+        // cycle2 = cycle3
+        assertEquals(0, cycle2.compareTo(cycle3));
+
+        // cycle1 < cycle2
+        assertTrue(cycle1.compareTo(cycle2) > 0);
+    }
 }
+

@@ -1,5 +1,6 @@
 package seedu.letsgethired.model.application;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.letsgethired.testutil.Assert.assertThrows;
@@ -56,5 +57,19 @@ public class CompanyTest {
 
         // different values -> returns false
         assertFalse(company.equals(new Company("Other Valid Company")));
+    }
+
+    @Test
+    public void compareTo() {
+        Company company = new Company("Valid Company");
+        Company company2 = new Company("Valid Company");
+        Company company3 = new Company("Other Valid Company");
+
+        // same values -> returns 0
+        assertEquals(0, company.compareTo(company2));
+
+        // different values -> returns 1
+        assertTrue(company.compareTo(company3) > 0);
+        assertTrue(company3.compareTo(company) < 0);
     }
 }
