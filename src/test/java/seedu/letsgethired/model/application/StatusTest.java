@@ -1,5 +1,6 @@
 package seedu.letsgethired.model.application;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.letsgethired.testutil.Assert.assertThrows;
@@ -57,5 +58,21 @@ public class StatusTest {
 
         // different values -> returns false
         assertFalse(status.equals(new Status("Accepted")));
+    }
+
+    @Test
+    public void compareTo() {
+        Status status1 = new Status("Pending");
+        Status status2 = new Status("Accepted");
+        Status status3 = new Status("Accepted");
+
+        // status2 < status1
+        assertTrue(status2.compareTo(status1) < 0);
+
+        // status2 = status3
+        assertEquals(0, status2.compareTo(status3));
+
+        // status1 > status2
+        assertTrue(status1.compareTo(status2) > 0);
     }
 }

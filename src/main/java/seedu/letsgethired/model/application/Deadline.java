@@ -11,7 +11,7 @@ import java.time.format.DateTimeParseException;
  * Represents an Intern Application's deadline in the intern tracker.
  * Guarantees: immutable; is always valid
  */
-public class Deadline {
+public class Deadline implements Comparable<Deadline> {
 
     public static final String MESSAGE_CONSTRAINTS =
             "Deadline should be a valid date in this format: dd MMM yyyy, for example, 25 Sep 2023.";
@@ -41,7 +41,7 @@ public class Deadline {
             return true;
         }
         try {
-            LocalDate localDate = LocalDate.parse(date, DATE_FORMATTER);
+            LocalDate.parse(date, DATE_FORMATTER);
             return true;
         } catch (DateTimeParseException e) {
             return false;
@@ -63,5 +63,21 @@ public class Deadline {
     @Override
     public int hashCode() {
         return value.hashCode();
+    }
+
+    @Override
+    public int compareTo(Deadline other) {
+        if (this.equals(other)) {
+            return 0;
+        }
+        if (this.value.equals(DEFAULT_DATE)) {
+            return 1;
+        }
+        if (other.value.equals(DEFAULT_DATE)) {
+            return -1;
+        }
+        LocalDate thisDate = LocalDate.parse(this.value, DATE_FORMATTER);
+        LocalDate otherDate = LocalDate.parse(other.value, DATE_FORMATTER);
+        return thisDate.compareTo(otherDate);
     }
 }

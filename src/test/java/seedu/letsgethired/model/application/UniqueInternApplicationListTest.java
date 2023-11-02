@@ -2,6 +2,7 @@ package seedu.letsgethired.model.application;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.letsgethired.logic.commands.CommandTestUtil.VALID_STATUS_REJECTED;
@@ -9,6 +10,7 @@ import static seedu.letsgethired.testutil.Assert.assertThrows;
 import static seedu.letsgethired.testutil.TypicalInternApplications.B;
 import static seedu.letsgethired.testutil.TypicalInternApplications.JANE_STREET;
 import static seedu.letsgethired.testutil.TypicalInternApplications.OPTIVER;
+import static seedu.letsgethired.testutil.TypicalInternApplications.getTypicalInternApplications;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -224,5 +226,25 @@ public class UniqueInternApplicationListTest {
         // Ensure that both iterators have reached the end of the lists
         assertFalse(originalIterator.hasNext());
         assertFalse(clonedIterator.hasNext());
+    }
+
+    @Test
+    public void equals() {
+        UniqueApplicationList uniqueApplicationList = new UniqueApplicationList();
+
+        uniqueApplicationList.setApplications(getTypicalInternApplications());
+
+        // same object
+        assertEquals(uniqueApplicationList, uniqueApplicationList);
+
+        // not an application list
+        assertNotEquals(uniqueApplicationList, new Object());
+
+        UniqueApplicationList otherUniqueApplicationList = new UniqueApplicationList();
+
+        otherUniqueApplicationList.setApplications(getTypicalInternApplications());
+
+        // other object with same internship applications
+        assertEquals(uniqueApplicationList, otherUniqueApplicationList);
     }
 }

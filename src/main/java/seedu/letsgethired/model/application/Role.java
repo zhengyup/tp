@@ -6,7 +6,7 @@ import static seedu.letsgethired.commons.util.AppUtil.checkArgument;
 /**
  * Represents an InternApplication's role in the InternTracker.
  */
-public class Role {
+public class Role implements Comparable<Role> {
     public static final String MESSAGE_CONSTRAINTS =
             "Role should only contain alphanumeric characters and spaces, and it should not be blank";
 
@@ -60,4 +60,8 @@ public class Role {
         return value.hashCode();
     }
 
+    @Override
+    public int compareTo(Role other) {
+        return this.value.compareTo(other.value);
+    }
 }

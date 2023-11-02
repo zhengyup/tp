@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.letsgethired.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_COMPANY;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_CYCLE;
+import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_DEADLINE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_STATUS;
 
@@ -24,9 +25,11 @@ public class SortCommandParser implements Parser<SortCommand> {
     public SortCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_COMPANY, PREFIX_ROLE, PREFIX_CYCLE, PREFIX_STATUS);
+                ArgumentTokenizer.tokenize(args, PREFIX_COMPANY, PREFIX_ROLE, PREFIX_CYCLE, PREFIX_STATUS,
+                        PREFIX_DEADLINE);
 
-        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_COMPANY, PREFIX_ROLE, PREFIX_CYCLE, PREFIX_STATUS);
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_COMPANY, PREFIX_ROLE, PREFIX_CYCLE, PREFIX_STATUS,
+                PREFIX_DEADLINE);
 
         InternApplicationComparator comparator = null;
 
@@ -48,6 +51,11 @@ public class SortCommandParser implements Parser<SortCommand> {
         if (argMultimap.getValue(PREFIX_STATUS).isPresent()) {
             SortOrder order = ParserUtil.parseSortOrder(argMultimap.getValue(PREFIX_STATUS).get());
             comparator = InternApplicationComparator.getComparator(PREFIX_STATUS, order);
+        }
+
+        if (argMultimap.getValue(PREFIX_DEADLINE).isPresent()) {
+            SortOrder order = ParserUtil.parseSortOrder(argMultimap.getValue(PREFIX_DEADLINE).get());
+            comparator = InternApplicationComparator.getComparator(PREFIX_DEADLINE, order);
         }
 
         if (comparator == null) {

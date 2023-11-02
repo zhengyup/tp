@@ -33,6 +33,10 @@ public class SortCommandTest {
     public void equals() {
         SortCommand sortFirstCommand = new SortCommand(COMPANY_COMPARATOR_ASCENDING);
         SortCommand sortSecondCommand = new SortCommand(COMPANY_COMPARATOR_ASCENDING);
+
+        // Same object -> returns true
+        assertEquals(sortFirstCommand, sortFirstCommand);
+
         // Same comparator -> returns true
         assertEquals(sortFirstCommand, sortSecondCommand);
 

@@ -34,6 +34,8 @@ public class VersionedInternTracker extends InternTracker {
      */
     public void commit() {
         UniqueApplicationList currentTasks = super.getInternApplications().clone();
+        assert currentTasks != super.getInternApplications();
+        assert currentTasks != null;
         savedStates.add(currentTasks);
     }
 
@@ -51,7 +53,10 @@ public class VersionedInternTracker extends InternTracker {
      */
     public boolean undo() {
         if (savedStates.size() > 0) {
-            super.setInternApplications(savedStates.pop());
+            UniqueApplicationList previousState = savedStates.pop();
+            // Defensive check: Ensure the popped state is not null before setting it
+            assert previousState != null;
+            super.setInternApplications(previousState);
             return true;
         }
         return false;

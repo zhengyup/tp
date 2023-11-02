@@ -7,7 +7,7 @@ import static seedu.letsgethired.commons.util.AppUtil.checkArgument;
  * Represents an InternApplication's company in the intern tracker.
  * Guarantees: immutable; is valid as declared in {@link #isValidCompany(String)}
  */
-public class Company {
+public class Company implements Comparable<Company> {
 
     public static final String MESSAGE_CONSTRAINTS =
             "Company should only contain alphanumeric characters and spaces, and it should not be blank";
@@ -64,4 +64,8 @@ public class Company {
         return value.hashCode();
     }
 
+    @Override
+    public int compareTo(Company other) {
+        return this.value.compareTo(other.value);
+    }
 }
