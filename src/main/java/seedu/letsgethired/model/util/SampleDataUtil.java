@@ -162,14 +162,7 @@ public class SampleDataUtil {
                     new Cycle("Summer 2023"),
                     getListOfNotes(new String[]{"Revise propulsion systems.", "Look into company's recent missions."}),
                     new Status("Pending"),
-                    new Deadline("10 Apr 2024")),
-            new InternApplication(
-                    new Company("Google Inc"),
-                    new Role("Software Engineering"),
-                    new Cycle("Summer 2024"),
-                    getListOfNotes(new String[]{"Starting date is 1 June 2024."}),
-                    new Status("Offered"),
-                    new Deadline("No deadline"))
+                    new Deadline("10 Apr 2024"))
         };
     }
 
