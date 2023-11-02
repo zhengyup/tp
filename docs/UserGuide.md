@@ -12,6 +12,8 @@
 
 ## **Introduction**
 
+![Ui](images/ui/Ui.png)
+
 _LetsGetHired_ is a **desktop application** designed to assist you in efficiently **tracking and managing your 
 internship applications and their progress**.
 
@@ -229,7 +231,7 @@ This is to help you get a feel for how the app works and how your entries will a
 </box>
 <br>
    
-![Ui](images/Ui.jpg)
+![Ui](images/ui/Ui.png)
 
 | Components              | Description                                                   |
 |-------------------------|---------------------------------------------------------------|
@@ -260,13 +262,16 @@ To **add your internship application**, go to the _Command Box_ and type the fol
 ```
 add n/Google r/Software Engineering c/Summer 2024
 ```
+
+![Tutorial Add Command](images/tutorial/step1a.png)
+
 This command specifies the company (_Google_), the role (_Software Engineering_), and the cycle (_Summer 2024_) for the internship that you have applied for.
 
 After hitting `Enter`, your new internship application will appear in the _List View_ of **_LetsGetHired_**,
 allowing you to keep track of your application details effortlessly. Details of your internship application will appear 
 in the _Select View_ of **_LetsGetHired_**.
 
-**_PUT PICTURE HERE_**
+![Tutorial Add Command Result](images/tutorial/step1b.png)
 
 ### Step 2: Editing Your Internship Application
 
@@ -275,13 +280,15 @@ in the _Select View_ of **_LetsGetHired_**.
 Imagine that you want to change the company name to "**Google Inc**" instead.
 
 To **edit your internship application**, go to the _Command Box_ and type the `edit` command, 
-followed by the index of the internship application to be edited (in this case, it's 1) and the corrected company name:
+followed by the index of the internship application to be edited (in this case, it's 21) and the corrected company name:
 ```
-edit 1 n/Google Inc
+edit 21 n/Google Inc
 ```
+![Tutorial Edit Command](images/tutorial/step2a.png)
+
 After hitting `Enter`, your internship application will be updated with "_Google Inc_" as the new company name.
 
-**_PUT PICTURE HERE_**
+![Tutorial Edit Command Result](images/tutorial/step2b.png)
 
 <box type="tip" seamless>
 
@@ -296,13 +303,15 @@ After hitting `Enter`, your internship application will be updated with "_Google
 Imagine that your internship application to **Google Inc** was a success, and you received an **offer**.
 
 To **update the status of your internship application**, use the `edit` command,
-followed by the index of the internship application to be edited (in this case, it's 1) and the updated status:
+followed by the index of the internship application to be edited (in this case, it's 21) and the updated status:
 ```
-edit 1 s/Offered
+edit 21 s/Offered
 ```
+![Tutorial Update Status](images/tutorial/step3a.png)
+
 After hitting `Enter`, your internship application status will be updated to "_Offered_".
 
-**_PUT PICTURE HERE_**
+![Tutorial Update Status Result](images/tutorial/step3b.png)
 
 <box type="tip" seamless>
 
@@ -314,13 +323,19 @@ After hitting `Enter`, your internship application status will be updated to "_O
 
 **Context:** You want to keep track of additional information about the internship, such as job requirements.
 
+Imagine that you want to **write a note about the starting date** of your internship at Google Inc.
+
 To **add notes to your internship application**, use the `note` command, followed by the index of the internship application
-(in this case, it's 1) and your additional notes:
+(in this case, it's 21) and your additional notes:
 ```
-note i/1 Additional information about job requirements and expectations...
+note 21 i/Starting date is 1 June 2024.
 ```
+![Tutorial Adding Notes](images/tutorial/step4a.png)
+
 After hitting `Enter`, you have successfully included supplementary information which you need to remember about the 
 internship, making it a valuable resource when preparing for interviews or follow-ups.
+
+![Tutorial Adding Notes Result](images/tutorial/step4b.png)
 
 ### Step 5: Start Using _LetsGetHired_
 
@@ -439,9 +454,9 @@ If you wish to access the **User Guide**, simply type:
 help
 ```
 
-![help message](images/helpMessage.png)
+![Help Command Result](images/commands/helpCommandResult.png)
 
-Upon execution, the system will display the link to this **User Guide**, offering details and examples for all available commands.
+Upon hitting `Enter`, the application will display the link to this **User Guide**, offering details and examples for all available commands.
 
 <box type="tip" light>
 
@@ -480,10 +495,9 @@ To view all your internship applications, simply type:
 list
 ```
 
-**_UPDATE PICTURE HERE_**
-![list command example](images/listExample.jpg)
+![List Command Result](images/commands/listCommandResult.png)
 
-Upon execution, the system will display a **complete list** of all your recorded internship applications.
+Upon hitting `Enter`, the application will display a **complete list** of all your recorded internship applications.
 
 This display provides a comprehensive overview of your applications, detailing the company name, role, cycle, status, and deadline for each. 
 By glancing through the list, you can quickly assess your application status, the diversity of roles you've applied for, and any impending deadlines.
@@ -547,12 +561,11 @@ status and a deadline on **25th October 2023**, you can type:
 ```
 add n/Google r/Software Engineering c/Summer 2024 s/Offered d/25 Oct 2023
 ```
+![Add Command](images/commands/addCommand.png)
 
-**_UPDATE PICTURE HERE_**
+![Add Command Result](images/commands/addCommandResult.png)
 
-![add command example 1](images/addExample1.jpg)
-
-By executing the `add` command, your application details are recorded and presented in the list. 
+Upon hitting `Enter`, your internship application details will be recorded and presented in the list. 
 This ensures that as you apply to more roles and receive updates on your applications, every piece of information is 
 systematically stored, making tracking and follow-ups more manageable.
 
@@ -607,11 +620,11 @@ update the role to **Data Analyst Intern**, and modify the status to **Interview
 edit 2 n/Amazon r/Data Analyst Intern s/Interview
 ```
 
-**_UPDATE PICTURE HERE_**
+![Edit Command](images/commands/editCommand.png)
 
-![edit command example](images/editExample.jpg)
+![Edit Commmand Result](images/commands/editCommandResult.png)
 
-You can see how the original details of the application are updated after executing the `edit` command. 
+After hitting `Enter`, you can see that the original details of the application are updated. 
 This ensures your application list remains current and accurate, reflecting the latest changes or corrections you've made.
 
 <box type="tip" light>
@@ -658,11 +671,11 @@ mentioning that the **interviewer emphasized a follow-up in two weeks**. The com
 note 3 i/Interviewer emphasized follow-up in two weeks.
 ```
 
-**_UPDATE PICTURE HERE_**
+![Add Note Command](images/commands/addNoteCommand.png)
 
-![note command example](images/noteExample.jpg)
+![Add Note Command Result](images/commands/addNoteCommandResult.png)
 
-You can see how the note gets attached to the specified internship application. 
+After hitting `Enter`, you can see that the new note gets attached to the specified internship application. 
 This ensures you have a comprehensive view of each application, complete with any supplementary details or reminders you've deemed important.
 
 <box type="tip" light>
@@ -704,12 +717,14 @@ note INDEX o/NOTE_INDEX
 Suppose you just had an interview for the third internship application on your list, and you'd like to delete the third note in your second internship application in the tracker. The command would look like this:
 
 ```
-note 2 o/3
+note 3 o/3
 ```
 
-_UPDATE PICTURE HERE_
+![Delete Note Command](images/commands/deleteNotecommand.png)
 
-You can see how the note is immediately deleted from the list display.
+![Delete Note Command Result](images/commands/deleteNoteCommandResult.png)
+
+After hitting `Enter`, you can see that the third note is immediately deleted from the list of notes.
 
 <box type="tip" light> 
 
@@ -749,17 +764,57 @@ If you decide that the fourth internship application on your list is no longer r
 delete 4
 ```
 
-**_UPDATE PICTURE HERE_**
+![Delete Command](images/commands/deleteCommand.png)
 
-![delete command example](images/deleteExample.jpg)
+![Delete Command Result](images/commands/deleteCommandResult.png)
 
-You can see how the specified internship application is removed from the list. 
+After hitting `Enter`, you can see that the fourth internship application is removed from the list. 
 The remaining applications adjust their index numbers accordingly, ensuring a continuous sequence.
 
 <box type="tip" light>
 
 * Before executing the `delete` command, always double-check the `INDEX` to ensure you are removing the correct application. 
 * If you accidentally deleted the wrong internship application, you can use the `undo` command to reverse this command.
+</box>
+
+__________________________________________________________________________________________________________________
+
+### Reverting Your Mistake: `undo`
+
+The `undo` command allows you to **revert any modification made since the start of the application**, so you don't
+have to be worried about making a mistake.
+
+#### Command Usage
+
+**Command**:
+```
+undo
+```
+
+#### Parameters:
+
+<box type="important" seamless>
+
+The `undo` command does **not** require any parameters.
+
+</box>
+
+#### Example:
+
+To undo your previous change, simply type:
+```
+undo
+```
+
+![Undo Command](images/commands/undoCommand.png)
+
+![Undo Command Result](images/commands/undoCommandResult.png)
+
+After hitting `Enter`, the application will undo the previous `add`, `edit`, `delete`, `clear`, and `note` commands.
+
+<box type="tip" light>
+
+Once you are at the latest state, _LetsGetHired_ will let you know that there are no changes to be undone.
 </box>
 
 __________________________________________________________________________________________________________________
@@ -795,9 +850,14 @@ If you wish to view the details of the first internship application on your list
 view 1
 ```
 
-![note command example](images/viewExample.jpg)
+![View Command](images/commands/viewCommand.png)
 
-The provided image showcases a _Select View_ of the specific internship application. Here, you can observe all the particulars of the application, including the company's name, role, cycle, status, deadline, and any attached notes. This meticulous breakdown ensures you're fully informed and prepared for any next steps associated with that particular application.
+![View Command Result](images/commands/viewCommandResult.png)
+
+After hitting `Enter`, you can see that the first internship application details is displayed on the _Select View_ of the application.
+Here, you can observe all the details of the application, including the company's name, role, cycle, status, deadline, 
+and any attached notes. This meticulous breakdown ensures you're fully informed and prepared for any next steps associated 
+with that particular application.
 
 <box type="tip" light>
 
@@ -825,17 +885,17 @@ find [n/COMPANY_NAME] [r/ROLE] [c/CYCLE] [s/STATUS] [d/DEADLINE] [i/NOTE]
 
 #### Parameters:
 
-1. **n/COMPANY_NAME**: Represents the company's name you're trying to search for.
-2. **r/ROLE**: Refers to the specific internship role you wish to locate.
-3. **c/CYCLE**: Identifies the internship cycle (e.g., `Summer`, `Winter`) you want to search for.
-4. **s/STATUS**: Helps filter applications based on their current status.
-5. **d/DEADLINE**: Locates applications by their deadline.
-6. **i/NOTE**: Searches applications based on specific notes attached to them.
-
 <box type="important" seamless>
 
-Remember, at least **one** of the optional parameters must be provided to execute the `find` command.
+At least **one** of the optional parameters must be provided.
 </box>
+
+1. **n/COMPANY_NAME** (Optional): Represents the company's name you're trying to search for.
+1. **r/ROLE** (Optional): Refers to the specific internship role you wish to locate.
+1. **c/CYCLE** (Optional): Identifies the internship cycle (e.g., `Summer`, `Winter`) you want to search for.
+1. **s/STATUS** (Optional): Helps filter applications based on their current status.
+1. **d/DEADLINE** (Optional): Locates applications by their deadline.
+1. **i/NOTE** (Optional): Searches applications based on specific notes attached to them.
 
 #### Example:
 
@@ -845,10 +905,11 @@ Suppose you want to quickly locate all your applications for the company **Googl
 find n/Google
 ```
 
-**_UPDATE PICTURE HERE_**
+![Find Command](images/commands/findCommand.png)
 
-![find command example](images/findExample.jpg)
-You can see that all the applications where the company name matches or contains the keyword `Google`.
+![Find Command Result](images/commands/findCommandResult.png)
+
+After hitting `Enter`, you can see that all the applications where the company name matches or contains the keyword `Google`.
 
 <box type="info" light>
 
@@ -856,10 +917,10 @@ You can see that all the applications where the company name matches or contains
 
 1. **Partial Matches**: The `find` command is robust and recognizes partial matches. So, if you search for `Apl`, it'll show applications for `Apple`, `apple`, and even `Alphabet Limited`.
 
-2. **Multiple Criteria**: By adding multiple parameters, you can refine your search further. For instance, `find n/Google c/Summer s/Pending` would display applications that meet at least one of the following criteria:
-    - Company name contains `Google`
-    - Cycle contains `Summer`
-    - Status is `Pending`
+1. **Multiple Criteria**: By adding multiple parameters, you can refine your search further. For instance, `find n/Google c/Summer s/Pending` would display applications that meet at least one of the following criteria:
+    * Company name contains `Google`
+    * Cycle contains `Summer`
+    * Status is `Pending`
 
 </box>
 
@@ -889,8 +950,7 @@ sort [n/COMPANY_NAME] [r/ROLE] [c/CYCLE] [s/STATUS] [d/DEADLINE]
 <box type="important" seamless>
 
 * At least **one** of the optional parameters must be provided.
-* Each parameter can only be replaced by either `a` (for ascending order) or `d` (for descending order). 
-  * If no order is specified, the default is ascending.
+* Each parameter must be replaced by either `a` (for ascending order) or `d` (for descending order). 
 
 </box>
 
@@ -900,75 +960,43 @@ sort [n/COMPANY_NAME] [r/ROLE] [c/CYCLE] [s/STATUS] [d/DEADLINE]
 * **s/STATUS** (Optional): Sorts applications by their status.
 * **d/DEADLINE** (Optional): Sorts applications by their deadline.
 
-#### Examples:
+#### Example:
 
 1. **Sort by Company Name (Ascending)**
    ```
    sort n/a
    ```
+   ![Sort Command Result Company Ascending](images/commands/sortCommandResultCompanyAscending.png)
+
    This command will sort your internship application list in alphabetical order based on company names.
 
 2. **Sort by Cycle (Descending)**
    ```
    sort c/d
    ```
+   ![Sort Command Result Cycle Descending](images/commands/sortCommandResultCycleDescending.png)
+
    This command will sort your internship application list in reverse alphabetical order based on cycle.
 
 3. **Sort by Deadline (Ascending)**
    ```
    sort d/a
    ```
+   
    This command will sort your internship application list in chronological order based on deadlines.
 
 4. **Sort by Status (Ascending)**
    ```
    sort s/a
    ```
+   ![Sort Command Result Status Ascending](images/commands/sortCommandResultStatusAscending.png)
+
    This command will sort your internship application list in alphabetical order based on their status.
 
 <box type="tip" light>
 
 Regularly sorting and reviewing your applications can help you manage your applications better and not miss any important deadlines.
 
-</box>
-
-__________________________________________________________________________________________________________________
-
-### Reverting Your Mistake: `undo`
-
-The `undo` command allows you to **revert any modification made since the start of the application**, so you don't
-have to be worried about making a mistake.
-
-#### Command Usage
-
-**Command**:
-```
-undo
-```
-
-#### Parameters:
-
-<box type="important" seamless>
-
-The `undo` command does **not** require any parameters.
-
-</box>
-
-#### Example:
-
-To undo your previous change, simply type:
-```
-undo
-```
-
-_UPDATE PICTURE HERE_
-![list command example](images/listExample.jpg)
-
-Upon execution, the system will undo the previous `add`, `edit`, `delete`, `clear`, and `note` commands.
-
-<box type="tip" light>
-
-Once you are at the latest state, _LetsGetHired_ lets you know that there are no changes to be undone.
 </box>
 
 __________________________________________________________________________________________________________________
@@ -993,6 +1021,17 @@ clear
 The `clear` command does **not** require any parameters.
 
 </box>
+
+#### Example:
+
+You are starting on a new internship application cycle, and you want to start from a clean state. You can simply type:
+```
+clear
+```
+
+![Clear Command Result](images/commands/ClearCommandResult.png)
+
+After hitting `Enter`, you now have a fresh new empty list for you to fill up with your new internship applications.
 
 <box type="tip" light>
 
@@ -1062,8 +1101,9 @@ ________________________________________________________________________________
 | **List**    | `list`                                                                      | `list`                                                                      |
 | **Add**     | `add n/COMPANY_NAME r/ROLE c/CYCLE [s/STATUS] [d/DEADLINE]`                 | `add n/Google r/Software Engineering c/Summer 2024 s/Offered d/25 Oct 2023` |
 | **Edit**    | `edit INDEX [n/COMPANY_NAME] [r/ROLE] [c/CYCLE] [s/STATUS] [d/DEADLINE]`    | `edit 1 n/Apple`                                                            |
-| **Note**    | `note INDEX [i/NOTE]`                                                       | `note 1 i/Interview on 26 Oct`                                              |
+| **Note**    | `note INDEX [i/NOTE] [o/NOTE_INDEX]`                                        | `note 1 i/Interview on 26 Oct`, `note 1 o/1`                                |
 | **Delete**  | `delete INDEX`                                                              | `delete 1`                                                                  |
+| **Undo**    | `undo`                                                                      | `undo`                                                                      |
 | **View**    | `view INDEX`                                                                | `view 1`                                                                    |
 | **Find**    | `find [n/COMPANY_NAME] [r/ROLE] [c/CYCLE] [s/STATUS] [d/DEADLINE] [i/NOTE]` | `find n/Google`                                                             |
 | **Sort**    | `sort [n/COMPANY_NAME] [r/ROLE] [c/CYCLE] [s/STATUS] [d/DEADLINE]`          | `sort n/a`                                                                  |
@@ -1115,6 +1155,6 @@ Here are the definitions of some terms which is used throughout the User Guide.
 | **Command Terminal**                  | A software-based interface that provides an environment for users to interact with a computer's operating system or software by typing textual commands and receiving text-based output. |
 | **Sample Data**                       | Pre-populated data used for demonstration purposes, enabling new users to see how the application functions with realistic examples.                                                     |
 | **Workflow**                          | A systematic and repeatable pattern of activity that a user follows to accomplish a specific task.                                                                                       |
-| **Command**                           | An input from the user that tells _LetsGetHired_ which action to perform.                                                                                                                  |
+| **Command**                           | An input from the user that tells _LetsGetHired_ which action to perform.                                                                                                                |
 | **Parameter**                         | A placeholder used in a command to represent a piece of information that needs to be provided when that command is executed.                                                             |
 | **JSON (JavaScript Object Notation)** | A lightweight data-interchange format that is easy for humans to read and write and easy for machines to parse and generate.                                                             |
