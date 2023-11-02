@@ -180,7 +180,7 @@ If you are already an advanced user, feel free to jump to the [_Commands_ sectio
 
 1. Download the **latest** `letsgethired.jar` from [**our GitHub Releases**](https://github.com/AY2324S1-CS2103T-W17-2/tp/releases).
 
-    ![Zip file download](images/downloadJar.jpg)
+    ![Jar File Download](images/downloadJar.jpg)
 
 1. Locate the `letsgethired.jar` file
    * After downloading, find the `letsgethired.jar` file on your computer. It might be in your `Downloads` folder or wherever you chose to save it.
@@ -231,15 +231,15 @@ This is to help you get a feel for how the app works and how your entries will a
 </box>
 <br>
    
-![Ui](images/ui/Ui.png)
+![Ui](images/ui/UiAnnotated.png)
 
-| Components              | Description                                                   |
-|-------------------------|---------------------------------------------------------------|
-| Command Box             | You can type commands here and press `Enter` to execute them. |
-| Result Display Box      | Displays the result of executing a command.                   |
-| List View               | Displays a list of your internship applications.              |
-| Intern Application Card | Displays the fields related to your internship application.   |
-| Select View             | Displays more details related to your internship application. |
+| Components                  | Description                                                   |
+|-----------------------------|---------------------------------------------------------------|
+| Command Box                 | You can type commands here and press `Enter` to execute them. |
+| Result Display Box          | Displays the result of executing a command.                   |
+| List View                   | Displays a list of your internship applications.              |
+| Internship Application Card | Displays the fields related to your internship application.   |
+| Select View                 | Displays more details related to your internship application. |
 
 Now that you are familiar with the user interface of _LetsGetHired_, let's jump right into managing your 
 internship applications in this [**Tutorial**](#tutorial-managing-your-first-internship-application).
@@ -454,9 +454,9 @@ If you wish to access the **User Guide**, simply type:
 help
 ```
 
-![Help Command Result](images/commands/helpCommandResult.png)
-
 Upon hitting `Enter`, the application will display the link to this **User Guide**, offering details and examples for all available commands.
+
+![Help Command Result](images/commands/helpCommandResult.png)
 
 <box type="tip" light>
 
@@ -495,9 +495,9 @@ To view all your internship applications, simply type:
 list
 ```
 
-![List Command Result](images/commands/listCommandResult.png)
-
 Upon hitting `Enter`, the application will display a **complete list** of all your recorded internship applications.
+
+![List Command Result](images/commands/listCommandResult.png)
 
 This display provides a comprehensive overview of your applications, detailing the company name, role, cycle, status, and deadline for each. 
 By glancing through the list, you can quickly assess your application status, the diversity of roles you've applied for, and any impending deadlines.
@@ -563,11 +563,11 @@ add n/Google r/Software Engineering c/Summer 2024 s/Offered d/25 Oct 2023
 ```
 ![Add Command](images/commands/addCommand.png)
 
-![Add Command Result](images/commands/addCommandResult.png)
-
 Upon hitting `Enter`, your internship application details will be recorded and presented in the list. 
 This ensures that as you apply to more roles and receive updates on your applications, every piece of information is 
 systematically stored, making tracking and follow-ups more manageable.
+
+![Add Command Result](images/commands/addCommandResult.png)
 
 <box type="tip" light>
 
@@ -622,10 +622,10 @@ edit 2 n/Amazon r/Data Analyst Intern s/Interview
 
 ![Edit Command](images/commands/editCommand.png)
 
-![Edit Commmand Result](images/commands/editCommandResult.png)
-
 After hitting `Enter`, you can see that the original details of the application are updated. 
 This ensures your application list remains current and accurate, reflecting the latest changes or corrections you've made.
+
+![Edit Commmand Result](images/commands/editCommandResult.png)
 
 <box type="tip" light>
 
@@ -673,10 +673,10 @@ note 3 i/Interviewer emphasized follow-up in two weeks.
 
 ![Add Note Command](images/commands/addNoteCommand.png)
 
-![Add Note Command Result](images/commands/addNoteCommandResult.png)
-
 After hitting `Enter`, you can see that the new note gets attached to the specified internship application. 
 This ensures you have a comprehensive view of each application, complete with any supplementary details or reminders you've deemed important.
+
+![Add Note Command Result](images/commands/addNoteCommandResult.png)
 
 <box type="tip" light>
 
@@ -722,9 +722,9 @@ note 3 o/3
 
 ![Delete Note Command](images/commands/deleteNotecommand.png)
 
-![Delete Note Command Result](images/commands/deleteNoteCommandResult.png)
-
 After hitting `Enter`, you can see that the third note is immediately deleted from the list of notes.
+
+![Delete Note Command Result](images/commands/deleteNoteCommandResult.png)
 
 <box type="tip" light> 
 
@@ -766,10 +766,10 @@ delete 4
 
 ![Delete Command](images/commands/deleteCommand.png)
 
-![Delete Command Result](images/commands/deleteCommandResult.png)
-
 After hitting `Enter`, you can see that the fourth internship application is removed from the list. 
 The remaining applications adjust their index numbers accordingly, ensuring a continuous sequence.
+
+![Delete Command Result](images/commands/deleteCommandResult.png)
 
 <box type="tip" light>
 
@@ -808,9 +808,11 @@ undo
 
 ![Undo Command](images/commands/undoCommand.png)
 
-![Undo Command Result](images/commands/undoCommandResult.png)
-
 After hitting `Enter`, the application will undo the previous `add`, `edit`, `delete`, `clear`, and `note` commands.
+
+In the example below, the previous `delete` command is undone.
+
+![Undo Command Result](images/commands/undoCommandResult.png)
 
 <box type="tip" light>
 
@@ -852,12 +854,12 @@ view 1
 
 ![View Command](images/commands/viewCommand.png)
 
-![View Command Result](images/commands/viewCommandResult.png)
-
 After hitting `Enter`, you can see that the first internship application details is displayed on the _Select View_ of the application.
 Here, you can observe all the details of the application, including the company's name, role, cycle, status, deadline, 
 and any attached notes. This meticulous breakdown ensures you're fully informed and prepared for any next steps associated 
 with that particular application.
+
+![View Command Result](images/commands/viewCommandResult.png)
 
 <box type="tip" light>
 
@@ -907,9 +909,9 @@ find n/Google
 
 ![Find Command](images/commands/findCommand.png)
 
-![Find Command Result](images/commands/findCommandResult.png)
-
 After hitting `Enter`, you can see that all the applications where the company name matches or contains the keyword `Google`.
+
+![Find Command Result](images/commands/findCommandResult.png)
 
 <box type="info" light>
 
@@ -966,17 +968,19 @@ sort [n/COMPANY_NAME] [r/ROLE] [c/CYCLE] [s/STATUS] [d/DEADLINE]
    ```
    sort n/a
    ```
-   ![Sort Command Result Company Ascending](images/commands/sortCommandResultCompanyAscending.png)
 
    This command will sort your internship application list in alphabetical order based on company names.
+
+   ![Sort Command Result Company Ascending](images/commands/sortCommandResultCompanyAscending.png)
 
 2. **Sort by Cycle (Descending)**
    ```
    sort c/d
    ```
-   ![Sort Command Result Cycle Descending](images/commands/sortCommandResultCycleDescending.png)
 
    This command will sort your internship application list in reverse alphabetical order based on cycle.
+
+   ![Sort Command Result Cycle Descending](images/commands/sortCommandResultCycleDescending.png)
 
 3. **Sort by Deadline (Ascending)**
    ```
@@ -989,9 +993,10 @@ sort [n/COMPANY_NAME] [r/ROLE] [c/CYCLE] [s/STATUS] [d/DEADLINE]
    ```
    sort s/a
    ```
-   ![Sort Command Result Status Ascending](images/commands/sortCommandResultStatusAscending.png)
 
    This command will sort your internship application list in alphabetical order based on their status.
+
+   ![Sort Command Result Status Ascending](images/commands/sortCommandResultStatusAscending.png)
 
 <box type="tip" light>
 
@@ -1029,9 +1034,9 @@ You are starting on a new internship application cycle, and you want to start fr
 clear
 ```
 
-![Clear Command Result](images/commands/ClearCommandResult.png)
-
 After hitting `Enter`, you now have a fresh new empty list for you to fill up with your new internship applications.
+
+![Clear Command Result](images/commands/ClearCommandResult.png)
 
 <box type="tip" light>
 
