@@ -12,7 +12,7 @@
 
 <?import javafx.scene.layout.HBox?>
 <fx:root type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-         title="LetsGetHired" minWidth="450" minHeight="600" onCloseRequest="#handleExit">
+         title="LetsGetHired" minWidth="1200" minHeight="680" onCloseRequest="#handleExit">
   <icons>
     <Image url="@/images/intern_tracker_32.png" />
   </icons>
