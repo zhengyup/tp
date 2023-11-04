@@ -89,8 +89,8 @@ sections below.
 
 ### UI Component
 
-The **API** for this component is specified
-in [`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/status/ui/Ui.java)
+**API**:
+[`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/status/ui/Ui.java)
 
 <puml src="diagrams/UiClassDiagram.puml" alt="Structure of the UI Component"/>
 
@@ -122,56 +122,60 @@ The `UI` component,
 
 ### Logic component
 
-**API
-** : [`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/status/logic/Logic.java)
+**API**:
+[`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/status/logic/Logic.java)
 
-Here's a (partial) class diagram of the `Logic` component:
+The class diagram below provides a *partial* view of the `Logic` component.
 
 <puml src="diagrams/LogicClassDiagram.puml" width="550"/>
 
-The sequence diagram below illustrates the interactions within the `Logic`
-component, taking `execute("delete 1")` API call as an example.
+To illustrate the interactions within the `Logic` component, we'll use the
+`execute("delete 1")` API call as an example in the sequence diagram below:
 
 <puml src="diagrams/DeleteSequenceDiagram.puml" alt="Interactions Inside the Logic Component for the `delete 1` Command" />
 
 <box type="info" seamless>
 
 **Note:** The lifeline for `DeleteCommandParser` should end at the destroy
-marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of
-diagram.
+marker (X) but due to a limitation in PlantUML, the lifeline extends to
+the end of the diagram.
 </box>
 
 How the `Logic` component works:
 
 1. When `Logic` is called upon to execute a command, it is passed to
-   an `InternTrackerParser` object which in
-   turn creates a parser that matches the command (e.g., `DeleteCommandParser`)
-   and uses it to parse the command.
-1. This results in a `Command` object (more precisely, an object of one of its
-   subclasses e.g., `DeleteCommand`) which is executed by the `LogicManager`.
-1. The command can communicate with the `Model` when it is executed (e.g. to
-   delete a internApplication).
-1. The result of the command execution is encapsulated as a `CommandResult`
-   object which is returned back from `Logic`.
+   an `InternTrackerParser` object.
+   The `InternTrackerParser` then creates a specific parser (
+   e.g., `DeleteCommandParser`)
+   tailored to match and parse the command.
+2. This results in the creation of a `Command` object, specifically an object
+   of one of its subclasses (e.g. `DeleteCommand`).
+   This command is then executed by the `LogicManager`.
+3. The executed command may interact with the `Model` when it is executed,
+   such as to delete an `InternApplication` object from the `Model`.
+4. The result of the command execution is encapsulated as a `CommandResult`
+   object which is returned by `Logic`.
 
-Here are the other classes in `Logic` (omitted from the class diagram above)
-that are used for parsing a user command:
+In addition to the class diagram above,
+there are other classes (omitted from the class diagram above)
+within the Logic component that are used for parsing user commands:
 
-<puml src="diagrams/ParserClasses.puml" width="600"/>
+<puml src="diagrams/ParserClasses.puml" width="600"></puml>
 
-How the parsing works:
+How commands are parsed:
 
 * When called upon to parse a user command, the `InternTrackerParser` class
   creates an `XYZCommandParser`
-  (`XYZ` is a placeholder for the specific command name
-  e.g., `AddCommandParser`) which uses the other
-  classes shown above to parse the user command and create a `XYZCommand`
-  object (e.g., `AddCommand`)
-  which the `InternTrackerParser` returns back as a `Command` object.
+  (where `XYZ` is a placeholder for the specific command name
+  e.g., `AddCommandParser`).
+  The `XYZCommandParser` then uses the other classes shown above to parse
+  the user command and create a `XYZCommand` object (e.g., `AddCommand`).
+  This `XYZCommand` is then returned as a `Command` object by
+  the `InternTrackerParser`.
 * All `XYZCommandParser` classes (
   e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from
-  the `Parser` interface so that they can be treated similarly where possible
-  e.g, during testing.
+  the `Parser` interface, allowing them to be treated similarly where possible,
+  especially during testing.
 
 ### Model component
 
