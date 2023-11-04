@@ -2,7 +2,6 @@ package seedu.letsgethired.model.application;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.letsgethired.commons.util.AppUtil.checkArgument;
-import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE_INSERT;
 
 /**
  * Represents an InternApplication's note in the InternTracker

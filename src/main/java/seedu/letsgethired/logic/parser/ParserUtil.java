@@ -1,7 +1,6 @@
 package seedu.letsgethired.logic.parser;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.letsgethired.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
 import seedu.letsgethired.commons.core.index.Index;
 import seedu.letsgethired.commons.util.StringUtil;
