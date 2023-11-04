@@ -15,12 +15,7 @@ import javafx.util.Pair;
 import seedu.letsgethired.commons.core.LogsCenter;
 import seedu.letsgethired.logic.commands.FindCommand;
 import seedu.letsgethired.logic.parser.exceptions.ParseException;
-import seedu.letsgethired.model.application.Company;
 import seedu.letsgethired.model.application.CompanyContainsFieldKeywordsPredicate;
-import seedu.letsgethired.model.application.Cycle;
-import seedu.letsgethired.model.application.Deadline;
-import seedu.letsgethired.model.application.Note;
-import seedu.letsgethired.model.application.Role;
 import seedu.letsgethired.model.application.Status;
 
 /**
