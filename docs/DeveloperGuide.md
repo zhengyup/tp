@@ -89,34 +89,36 @@ sections below.
 
 ### UI Component
 
-The **API** of this component is specified
+The **API** for this component is specified
 in [`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/status/ui/Ui.java)
 
 <puml src="diagrams/UiClassDiagram.puml" alt="Structure of the UI Component"/>
 
-The UI consists of a `MainWindow` that is made up of parts
-e.g.`CommandBox`, `ResultDisplay`, `InternApplicationListPanel`, `StatusBarFooter`
-etc. All these, including the `MainWindow`, inherit from the abstract `UiPart`
-class which captures the commonalities between classes that represent parts of
-the visible GUI.
+The UI component comprises a `MainWindow` composed of various parts, such as the
+`CommandBox`, `ResultDisplay`, `InternApplicationListPanel`, `StatusBarFooter`,
+and more.
+All of these elements, including the `MainWindow`, inherit from the
+abstract `UiPart`class which encapsulates common characteristics among classes
+representing different parts of the visible GUI.
 
-The `UI` component uses the JavaFx UI framework. The layout of these UI parts
-are defined in matching `.fxml` files that are in the `src/main/resources/view`
-folder. For example, the layout of
+The `UI` component leverages the JavaFx UI framework.
+The layout of these UI parts are defined in matching `.fxml` files located in
+`src/main/resources/view`.
+For example, the layout of
 the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/status/ui/MainWindow.java)
 is specified
 in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
 
 The `UI` component,
 
-* executes user commands using the `Logic` component.
-* listens for changes to `Model` data so that the UI can be updated with the
-  modified data.
-* keeps a reference to the `Logic` component, because the `UI` relies on
-  the `Logic` to execute commands.
-* depends on some classes in the `Model` component, as it
-  displays `InternApplication` object residing in the
-  `Model`.
+* Executes user commands by interacting with
+  the [`Logic` component](#logic-component).
+* Monitors changes in the data within the `Model` to update the UI
+  accordingly.
+* Maintains a reference to the `Logic` component, since the `UI` relies on
+  it for command execution.
+* Depends on certain classes within the `Model` component, as it
+  displays `InternApplication` objects residing in the `Model`.
 
 ### Logic component
 
