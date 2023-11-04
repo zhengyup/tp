@@ -35,6 +35,8 @@ public class NoteCommandParser implements Parser<NoteCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, NoteCommand.MESSAGE_USAGE), pe);
         }
 
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NOTE_INSERT, PREFIX_NOTE_DELETE);
+
         Optional<String> maybeInsert = argMultimap.getValue(PREFIX_NOTE_INSERT);
         Optional<String> maybeDelete = argMultimap.getValue(PREFIX_NOTE_DELETE);
 
