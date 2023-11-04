@@ -19,8 +19,6 @@ public class ParserUtil {
 
     public static final String APPLICATION_MESSAGE_INVALID_INDEX =
             "Application index is not a non-zero unsigned integer.";
-    public static final String NOTE_MESSAGE_INVALID_INDEX = "Note Index is not a non-zero unsigned integer.";
-
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
@@ -45,7 +43,7 @@ public class ParserUtil {
     public static Index parseNoteIndex(String oneBasedIndex) throws ParseException {
         String trimmedIndex = oneBasedIndex.trim();
         if (!StringUtil.isNonZeroUnsignedInteger(trimmedIndex)) {
-            throw new ParseException(NOTE_MESSAGE_INVALID_INDEX);
+            throw new ParseException(Note.MESSAGE_CONSTRAINTS);
         }
         return Index.fromOneBased(Integer.parseInt(trimmedIndex));
     }
