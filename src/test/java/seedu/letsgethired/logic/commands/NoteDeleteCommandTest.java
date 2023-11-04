@@ -40,7 +40,7 @@ public class NoteDeleteCommandTest {
         Index outOfBoundIndex = Index.fromOneBased(randomApplication.getNotes().size() + 1);
         NoteDeleteCommand noteCommand = new NoteDeleteCommand(
                 Index.fromZeroBased(0), outOfBoundIndex);
-        assertCommandFailure(noteCommand, model, NoteCommand.INDEX_TOO_LARGE);
+        assertCommandFailure(noteCommand, model, Messages.MESSAGE_INVALID_NOTE_DISPLAYED_INDEX);
     }
 
     @Test
