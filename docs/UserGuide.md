@@ -948,7 +948,7 @@ sort [n/COMPANY_NAME] [r/ROLE] [c/CYCLE] [s/STATUS] [d/DEADLINE]
 
 <box type="important" seamless>
 
-* At least **one** of the optional parameters must be provided.
+* Exactly **one** of the optional parameters must be provided.
 * Each parameter must be replaced by either `a` (for ascending order) or `d` (for descending order). 
 
 </box>
@@ -961,41 +961,14 @@ sort [n/COMPANY_NAME] [r/ROLE] [c/CYCLE] [s/STATUS] [d/DEADLINE]
 
 ##### Example:
 
-1. **Sort by Company Name (Ascending)**
-   ```
-   sort n/a
-   ```
+Suppose you want to sort your internship applications by the **company name**, in **ascending order**. Your command would be:
+```
+sort n/a
+```
 
-   This command will sort your internship application list in alphabetical order based on company names.
+After hitting `Enter`, you can see that your internship application list is sorted in alphabetical order based on the company name.
 
-   ![Sort Command Result Company Ascending](images/commands/sortCommandResultCompanyAscending.png)
-
-2. **Sort by Cycle (Descending)**
-   ```
-   sort c/d
-   ```
-
-   This command will sort your internship application list in reverse alphabetical order based on cycle.
-
-   ![Sort Command Result Cycle Descending](images/commands/sortCommandResultCycleDescending.png)
-
-3. **Sort by Deadline (Ascending)**
-   ```
-   sort d/a
-   ```
-   
-   This command will sort your internship application list in chronological order based on deadlines.
-
-   ![Sort Command Result Deadline Ascending](images/commands/sortCommandResultDeadlineAscending.png)
-
-4. **Sort by Status (Ascending)**
-   ```
-   sort s/a
-   ```
-
-   This command will sort your internship application list in alphabetical order based on their status.
-
-   ![Sort Command Result Status Ascending](images/commands/sortCommandResultStatusAscending.png)
+![Sort Command Result Company Ascending](images/commands/sortCommandResultCompanyAscending.png)
 
 <box type="tip" light>
 
