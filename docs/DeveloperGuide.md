@@ -1,7 +1,7 @@
 ---
   layout: default.md
-  title: "Developer Guide"
-  pageNav: 3
+    title: "Developer Guide"
+    pageNav: 3
 ---
 
 # Developer Guide
@@ -30,61 +30,64 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 <puml src="diagrams/ArchitectureDiagram.puml" width="280" />
 
-The ***Architecture Diagram*** given above explains the high-level design of the
-App.
+The ***Architecture Diagram*** above provides a high-level overview of the
+application's architecture.
 
-Given below is a quick overview of main components and how they interact with
-each other.
+Below, you'll find a concise summary of the main components and their
+interactions.
 
-**Main components of the architecture**
+#### Main Components of Architecture
 
-**`Main`** (consisting of
-classes [`Main`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/status/Main.java)
+**`Main`** (comprising classes
+[`Main`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/status/Main.java)
 and [`MainApp`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/status/MainApp.java))
-is in charge of the app launch and shut down.
+is responsible for launching and shutting down the application.
 
-* At app launch, it initializes the other components in the correct sequence,
-  and connects them up with each other.
-* At shut down, it shuts down the other components and invokes cleanup methods
-  where necessary.
+* On app launch, it initializes the other components in the correct sequence,
+  and establishes connections between them.
+* During shutdown, it closes other components and triggers cleanup operations
+  when necessary.
 
 The bulk of the app's work is done by the following four components:
 
-* [**`UI`**](#ui-component): The UI of the App.
-* [**`Logic`**](#logic-component): The command executor.
-* [**`Model`**](#model-component): Holds the data of the App in memory.
-* [**`Storage`**](#storage-component): Reads data from, and writes data to, the
-  hard disk.
+* [**`UI`**](#ui-component): Responsible for the UI.
+* [**`Logic`**](#logic-component): Executes user commands.
+* [**`Model`**](#model-component): Manages the in-memory data of the app.
+* [**`Storage`**](#storage-component): Handles reading and writing of data to
+  the hard disk.
 
-[**`Commons`**](#common-classes) represents a collection of classes used by
-multiple other components.
+[**`Commons`**](#common-classes) encompasses a set of classes shared across
+multiple components.
 
-**How the architecture components interact with each other**
+#### How Architecture Components Interact
 
-The *Sequence Diagram* below shows how the components interact with each other
-for the scenario where the user issues the command `delete 1`.
+The **Sequence Diagram** below illustrates the interactions between components
+when the user issues the delete 1 command.
 
 <puml src="diagrams/ArchitectureSequenceDiagram.puml" width="574" />
 
-Each of the four main components (also shown in the diagram above),
+Each of the four primary components (as depicted in the diagram above),
 
-* defines its *API* in an `interface` with the same name as the Component.
-* implements its functionality using a concrete `{Component Name}Manager`
-  class (which follows the corresponding API `interface` mentioned in the
+* Defines its *API* through an `interface` bearing the same name as the
+  component.
+* Implements its functionality using a concrete `{Component Name}Manager`
+  class that follows the corresponding API `interface` mentioned in the
   previous point.
 
 For example, the `Logic` component defines its API in the `Logic.java` interface
 and implements its functionality using the `LogicManager.java` class which
-follows the `Logic` interface. Other components interact with a given component
-through its interface rather than the concrete class (reason: to prevent outside
-component's being coupled to the implementation of a component), as illustrated
-in the (partial) class diagram below.
+adheres to the `Logic` interface. Other components interact with a given
+component through its *interface* rather than the concrete class.
+The reason for this practice is to decouple outside components from the
+internal implementation of the component.
+This decoupling is illustrated in the (partial) class diagram below.
 
 <puml src="diagrams/ComponentManagers.puml" width="300" />
 
-The sections below give more details of each component.
+For more comprehensive details on each component, please refer to the
+sections below.
 
-### UI component
+### UI Component
 
 The **API** of this component is specified
 in [`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/status/ui/Ui.java)
