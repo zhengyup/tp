@@ -13,8 +13,7 @@ public abstract class NoteCommand extends Command {
 
     public static final String COMMAND_WORD = "note";
 
-    public static final String INVALID_NOTE_DISPLAYED_INDEX =
-            "The note index provided is invalid";
+
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Add or Delete a note to the internship application "
             + "identified by the index number used in the last intern application listing.\n"
@@ -25,7 +24,7 @@ public abstract class NoteCommand extends Command {
             + "Parameters: INDEX_OF_APPLICATION (must be a positive integer) "
             + PREFIX_NOTE_DELETE + "[INDEX_OF_NOTE] (must be a positive integer)\n"
             + "Delete Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_NOTE_DELETE + "1";;
+            + PREFIX_NOTE_DELETE + "1";
 
     public static final String DUAL_NOTE_ERROR = "You cannot perform the action of deleting and adding a note at once";
 
