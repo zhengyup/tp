@@ -1,7 +1,7 @@
 ---
   layout: default.md
-    title: "Developer Guide"
-    pageNav: 3
+  title: "Developer Guide"
+  pageNav: 3
 ---
 
 # Developer Guide
@@ -464,73 +464,11 @@ the sequence diagram below:
       complicated.
 * **Alternative 2:** Have the feedback String contain the content for both
   feedbackToUser and detailsToUser through parsing.
-  * Pros: Easier to implement.
-  * Cons: Requires future developers working on the code to be mindful of how
-  the String input should be structured for successful parsing
+    * Pros: Easier to implement.
+    * Cons: Requires future developers working on the code to be mindful of how
+      the String input should be structured for successful parsing
 
-### Click InternApplication Card
-
-#### Implementation
-
-The mechanism for the Card click is implemented by creating a new TextArea
-widget beside the InternApplicationListPanel
-and a handler function to handle the event of a card click.
-
-The following classes are created:
-
-* `SelectView` - A class representation of the SelectView Text Area that is to
-  display the details of the card
-
-The new method is:
-
-* `SelectView#displayDetails(String details))` - sets the String details as text
-  in the TextArea
-* `Messages#formatDisplay(InternApplication internApplication)` - returns a
-  customised string summarising the details of the InternApplication
-* `SelectView#handleCardClick()` - extracts out the details from the
-  InternApplication object and sets it to the SelectView widget
-
-The following method is renamed:
-
-* `Messages#format(InternApplication internApplication)` is renamed
-  to `Messages#formatDisplay(InternApplication internApplication)` - returns the
-  feedback from an executed command
-
-The following sequence diagram shows how Card Click feature:
-
-<puml src="diagrams/SelectViewSequenceDiagram.puml" alt="SelectViewSequenceDiagram" />
-
-### House-keep feature
-
-#### Proposed Implementation
-
-The proposed mechanism is facilitated by the delete button widget below
-SelectView and Deadlines feature.
-Additionally, it modifies the following operations:
-
-* `InternApplicationUtiltyButton#handleDeleteClick()`— Deletes all entries in
-  the list that is older than 1 year compared to present time.
-
-The following sequence diagram shows how the sort operation works:
-
-<puml src="diagrams/HousekeepSequenceDiagram.puml" alt="HousekeepSequenceDiagram" />
-
-#### Design Considerations
-
-**Aspect: How house-keep is done**
-
-* **Alternative 1 (current choice):** Create a handler function that iterates
-  through each InternApplication in the list and invokes
-  a `DeleteCommand#execute()` if the predicate is satisfied.
-    * Pros: Lesser coupling
-    * Cons: There is a need to figure out how to make it so the feedback of the
-      DeleteCommand is not shown in ResultDisplay widget.
-* **Alternative 2:** Create a handler function that directly calls onto
-  the `Model#deleteInternApplication()` if the predicate passes.
-    * Pros: Easier to implement
-    * Cons: Increase in coupling and dependencies from the Model class
-
-### \[Proposed\] Undo/redo feature
+### Undo command
 
 #### Proposed Implementation
 
@@ -656,6 +594,137 @@ new command:
       corresponding `delete`).
     * Cons: We must ensure that the implementation of complementing each
       individual command are correct.
+
+### Note command
+
+The note command enables the users to add or delete notes to the internship
+application.
+
+#### Implementation
+
+To add or delete a `Note`, the `NoteCommand` must be executed.
+It is worth to note that the NoteCommand is implemented differently from the
+other Commands.
+<puml src="diagrams/NoteCommandClassDiagram.puml" alt="Note Insert Command Class Diagram" />
+From the above class diagram, the `NoteCommand` is an abstract class that is
+inherited by the `NoteInsertCommand` classand the `NoteDeleteCommand` class.
+This is done so that the `NoteCommand#execute()` method can behave
+accordingly while still having both `NoteCommand` classes share the command word
+that is 'note'.
+The `NoteCommand` is parsed by
+the `NoteCommandParser`.`NoteCommandParser#parse()` parses the user input to
+return either a `NoteInsertCommand` or a `NoteDeleteCommand`
+object that will be executed.
+Given below is an example usage scenario and how the mechanism behaves at each
+step for note addition.
+Step 1. The user keys in the command word to add a note, `note`, followed by the
+compulsory parameters needed toadd a note, namely the `INDEX` and the `note`
+component prefixed by `i/`. In this scenario, the user keys in
+`note 1 i/Need to revise Rust` into the command box which will execute
+the `NoteCommandParser` to checkthrough the arguments and ensure that the
+compulsory fields are present. In particular, the parser needs to check if
+the `i/` prefix is present AND the `o/` prefix is absent. The parser then
+returns a `NoteInsertCommand` object with the`Note` object ready to be added
+into `Model`
+Step 2. The `NoteCommand#execute()` method is called by the `LogicManager`.
+The `NoteCommand#execute()`
+method creates a new InternshipApplication with the note appended to its
+ArrayList of notes.
+Step 3. The `NoteCommand` calls the `Model#setInternApplication()`
+and `Model#updateFilteredInternApplicationList()`methods to add the new
+internship application with the note to the model, and replace the old
+internship application.
+Step 4. The `NoteCommand` creates a `CommandResult` object that contains
+feedback and InternApplication to the user,
+which is returned to the `LogicManager`.
+The sequence diagram below shows the process of adding a note.
+<puml src="diagrams/NoteInsertCommandSequenceDiagram.puml" alt="Note Insert Command Sequence Diagram" />
+Given below is an example usage scenario and how the mechanism behaves at each
+step for note deletion.
+Step 1. The user keys in the command word to add a note, `note`, followed by the
+compulsory parameters needed toadd a note, namely the `INDEX` and the `note`
+component prefixed by `o/`. In this scenario, the user keys in
+`note 1 o/2` into the command box which will execute the `NoteCommandParser` to
+checkthrough the arguments and ensure that the compulsory fields are present. In
+particular, the parser needs to check if
+the `o/` prefix is present AND the `i/` prefix is absent. The parser then
+returns a `NoteDeleteCommand` object with the `Index` of the object to be
+deleted from the `Model`
+Step 2. The `NoteCommand#execute()` method is called by the `LogicManager`.
+The `NoteCommand#execute()`
+method creates a new InternshipApplication with the corresponding note removed
+from its ArrayList of notes.
+Step 3. The `NoteCommand` calls the `Model#setInternApplication()`
+and `Model#updateFilteredInternApplicationList()`methods to add the new
+internship application with the note to the model, and replace the old
+internship application.
+Step 4. The `NoteCommand` creates a `CommandResult` object that contains
+feedback and InternApplication to the user,
+which is returned to the `LogicManager`.
+The sequence diagram below shows the process of deleting a note.
+<puml src="diagrams/NoteDeleteCommandSequenceDiagram.puml" alt="Note Delete Command Sequence Diagram" />
+
+### Click InternApplication Card
+
+#### Implementation
+
+The mechanism for the Card click is implemented by creating a new TextArea
+widget beside the InternApplicationListPanel
+and a handler function to handle the event of a card click.
+
+The following classes are created:
+
+* `SelectView` - A class representation of the SelectView Text Area that is to
+  display the details of the card
+
+The new method is:
+
+* `SelectView#displayDetails(String details))` - sets the String details as text
+  in the TextArea
+* `Messages#formatDisplay(InternApplication internApplication)` - returns a
+  customised string summarising the details of the InternApplication
+* `SelectView#handleCardClick()` - extracts out the details from the
+  InternApplication object and sets it to the SelectView widget
+
+The following method is renamed:
+
+* `Messages#format(InternApplication internApplication)` is renamed
+  to `Messages#formatDisplay(InternApplication internApplication)` - returns the
+  feedback from an executed command
+
+The following sequence diagram shows how Card Click feature:
+
+<puml src="diagrams/SelectViewSequenceDiagram.puml" alt="SelectViewSequenceDiagram" />
+
+### \[Proposed\] House-keep feature
+
+#### Proposed Implementation
+
+The proposed mechanism is facilitated by the delete button widget below
+SelectView and Deadlines feature.
+Additionally, it modifies the following operations:
+
+* `InternApplicationUtiltyButton#handleDeleteClick()`— Deletes all entries in
+  the list that is older than 1 year compared to present time.
+
+The following sequence diagram shows how the sort operation works:
+
+<puml src="diagrams/HousekeepSequenceDiagram.puml" alt="HousekeepSequenceDiagram" />
+
+#### Design Considerations
+
+**Aspect: How house-keep is done**
+
+* **Alternative 1 (current choice):** Create a handler function that iterates
+  through each InternApplication in the list and invokes
+  a `DeleteCommand#execute()` if the predicate is satisfied.
+    * Pros: Lesser coupling
+    * Cons: There is a need to figure out how to make it so the feedback of the
+      DeleteCommand is not shown in ResultDisplay widget.
+* **Alternative 2:** Create a handler function that directly calls onto
+  the `Model#deleteInternApplication()` if the predicate passes.
+    * Pros: Easier to implement
+    * Cons: Increase in coupling and dependencies from the Model class
 
 ### \[Proposed\] Data archiving
 
