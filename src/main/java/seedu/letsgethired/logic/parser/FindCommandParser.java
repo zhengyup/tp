@@ -1,7 +1,6 @@
 package seedu.letsgethired.logic.parser;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.letsgethired.commons.util.AppUtil.checkArgument;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_COMPANY;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_CYCLE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE_INSERT;
