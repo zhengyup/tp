@@ -3,6 +3,7 @@ package seedu.letsgethired.model.application;
 import static java.util.Objects.requireNonNull;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_COMPANY;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_CYCLE;
+import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_DEADLINE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE_INSERT;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_STATUS;
@@ -76,6 +77,9 @@ public class CompanyContainsFieldKeywordsPredicate implements Predicate<InternAp
         }
         if (fieldPrefix.equals(PREFIX_ROLE)) {
             return internApplication.getRole().value;
+        }
+        if (fieldPrefix.equals(PREFIX_DEADLINE)) {
+            return internApplication.getDeadline().value;
         }
 
         return EMPTY_FIELD_VALUE;

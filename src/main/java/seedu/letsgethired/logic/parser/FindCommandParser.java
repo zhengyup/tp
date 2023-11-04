@@ -3,6 +3,7 @@ package seedu.letsgethired.logic.parser;
 import static java.util.Objects.requireNonNull;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_COMPANY;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_CYCLE;
+import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_DEADLINE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE_INSERT;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_ROLE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_STATUS;
@@ -32,10 +33,10 @@ public class FindCommandParser implements Parser<FindCommand> {
     public FindCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args,
-                PREFIX_COMPANY, PREFIX_ROLE, PREFIX_CYCLE, PREFIX_STATUS, PREFIX_NOTE_INSERT);
+                PREFIX_COMPANY, PREFIX_ROLE, PREFIX_CYCLE, PREFIX_STATUS, PREFIX_NOTE_INSERT, PREFIX_DEADLINE);
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_COMPANY,
-                PREFIX_ROLE, PREFIX_CYCLE, PREFIX_STATUS, PREFIX_NOTE_INSERT);
+                PREFIX_ROLE, PREFIX_CYCLE, PREFIX_STATUS, PREFIX_NOTE_INSERT, PREFIX_DEADLINE);
 
         ArrayList<Pair<Prefix, String>> fieldKeywords = new ArrayList<>();
 
@@ -53,6 +54,9 @@ public class FindCommandParser implements Parser<FindCommand> {
         }
         if (argMultimap.getValue(PREFIX_STATUS).isPresent()) {
             fieldKeywords.add(new Pair<>(PREFIX_STATUS, argMultimap.getValue(PREFIX_STATUS).get()));
+        }
+        if (argMultimap.getValue(PREFIX_DEADLINE).isPresent()) {
+            fieldKeywords.add(new Pair<>(PREFIX_DEADLINE, argMultimap.getValue(PREFIX_DEADLINE).get()));
         }
 
         if (fieldKeywords.isEmpty()) {
