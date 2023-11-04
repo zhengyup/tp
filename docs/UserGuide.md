@@ -914,9 +914,13 @@ After hitting `Enter`, you can see that all the applications where the company n
 
 **Note about `find` command:**
 
-1. **Partial Matches**: The `find` command is robust and recognizes partial matches. So, if you search for `Apl`, it'll show applications for `Apple`, `apple`, and even `Alphabet Limited`.
+1. **Partial Matches**: The `find` command is robust and recognizes partial matches. So, if you search for `Apl`, it'll show applications for `Apple`, `apple`, and even `Alphabet Limited`. 
+    <box type="warning" seamless>
 
-1. **Multiple Criteria**: By adding multiple parameters, you can refine your search further. For instance, `find n/Google c/Summer s/Pending` would display applications that meet at least one of the following criteria:
+    **Exception**: Partial Match does not work on `STATUS` parameter. You need to specify the full `STATUS` to search for them.
+    </box>
+
+1. **Multiple Criteria**: By adding multiple parameters, you can refine your search further. For instance, `find n/Google c/Summer s/Pending` would display applications that meet **ALL** the following criteria:
     * Company name contains `Google`
     * Cycle contains `Summer`
     * Status is `Pending`
