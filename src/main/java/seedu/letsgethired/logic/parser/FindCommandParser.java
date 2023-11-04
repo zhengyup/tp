@@ -1,6 +1,7 @@
 package seedu.letsgethired.logic.parser;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.letsgethired.commons.util.AppUtil.checkArgument;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_COMPANY;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_CYCLE;
 import static seedu.letsgethired.logic.parser.CliSyntax.PREFIX_NOTE_INSERT;
@@ -15,6 +16,7 @@ import seedu.letsgethired.commons.core.LogsCenter;
 import seedu.letsgethired.logic.commands.FindCommand;
 import seedu.letsgethired.logic.parser.exceptions.ParseException;
 import seedu.letsgethired.model.application.CompanyContainsFieldKeywordsPredicate;
+import seedu.letsgethired.model.application.Status;
 
 /**
  * Parses input arguments and creates a new FindCommand object
@@ -52,7 +54,11 @@ public class FindCommandParser implements Parser<FindCommand> {
             fieldKeywords.add(new Pair<>(PREFIX_ROLE, argMultimap.getValue(PREFIX_ROLE).get()));
         }
         if (argMultimap.getValue(PREFIX_STATUS).isPresent()) {
-            fieldKeywords.add(new Pair<>(PREFIX_STATUS, argMultimap.getValue(PREFIX_STATUS).get()));
+            String keyword = argMultimap.getValue(PREFIX_STATUS).get();
+            if (!Status.isValidStatus(keyword)) {
+                throw new ParseException(Status.MESSAGE_CONSTRAINTS);
+            }
+            fieldKeywords.add(new Pair<>(PREFIX_STATUS, keyword));
         }
 
         if (fieldKeywords.isEmpty()) {
