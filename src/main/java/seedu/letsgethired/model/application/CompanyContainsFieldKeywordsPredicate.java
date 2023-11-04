@@ -88,7 +88,7 @@ public class CompanyContainsFieldKeywordsPredicate implements Predicate<InternAp
     @Override
     public boolean test(InternApplication internApplication) {
         return fieldKeywords.stream()
-                .anyMatch(keyword -> partialMatch(getFieldValue(keyword.getKey(), internApplication),
+                .allMatch(keyword -> partialMatch(getFieldValue(keyword.getKey(), internApplication),
                         keyword.getValue()));
     }
 
