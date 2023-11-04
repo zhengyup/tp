@@ -15,7 +15,12 @@ import javafx.util.Pair;
 import seedu.letsgethired.commons.core.LogsCenter;
 import seedu.letsgethired.logic.commands.FindCommand;
 import seedu.letsgethired.logic.parser.exceptions.ParseException;
+import seedu.letsgethired.model.application.Company;
 import seedu.letsgethired.model.application.CompanyContainsFieldKeywordsPredicate;
+import seedu.letsgethired.model.application.Cycle;
+import seedu.letsgethired.model.application.Deadline;
+import seedu.letsgethired.model.application.Note;
+import seedu.letsgethired.model.application.Role;
 import seedu.letsgethired.model.application.Status;
 
 /**
@@ -42,15 +47,31 @@ public class FindCommandParser implements Parser<FindCommand> {
         ArrayList<Pair<Prefix, String>> fieldKeywords = new ArrayList<>();
 
         if (argMultimap.getValue(PREFIX_COMPANY).isPresent()) {
+            String keyword = argMultimap.getValue(PREFIX_COMPANY).get();
+            if (keyword.isBlank()) {
+                throw new ParseException("The company field must not be blank");
+            }
             fieldKeywords.add(new Pair<>(PREFIX_COMPANY, argMultimap.getValue(PREFIX_COMPANY).get()));
         }
         if (argMultimap.getValue(PREFIX_NOTE_INSERT).isPresent()) {
+            String keyword = argMultimap.getValue(PREFIX_NOTE_INSERT).get();
+            if (keyword.isBlank()) {
+                throw new ParseException("The note field must not be blank");
+            }
             fieldKeywords.add(new Pair<>(PREFIX_NOTE_INSERT, argMultimap.getValue(PREFIX_NOTE_INSERT).get()));
         }
         if (argMultimap.getValue(PREFIX_CYCLE).isPresent()) {
+            String keyword = argMultimap.getValue(PREFIX_CYCLE).get();
+            if (keyword.isBlank()) {
+                throw new ParseException("The cycle field must not be blank");
+            }
             fieldKeywords.add(new Pair<>(PREFIX_CYCLE, argMultimap.getValue(PREFIX_CYCLE).get()));
         }
         if (argMultimap.getValue(PREFIX_ROLE).isPresent()) {
+            String keyword = argMultimap.getValue(PREFIX_ROLE).get();
+            if (keyword.isBlank()) {
+                throw new ParseException("The role field must not be blank");
+            }
             fieldKeywords.add(new Pair<>(PREFIX_ROLE, argMultimap.getValue(PREFIX_ROLE).get()));
         }
         if (argMultimap.getValue(PREFIX_STATUS).isPresent()) {
@@ -61,6 +82,10 @@ public class FindCommandParser implements Parser<FindCommand> {
             fieldKeywords.add(new Pair<>(PREFIX_STATUS, keyword));
         }
         if (argMultimap.getValue(PREFIX_DEADLINE).isPresent()) {
+            String keyword = argMultimap.getValue(PREFIX_DEADLINE).get();
+            if (keyword.isBlank()) {
+                throw new ParseException("The deadline field must not be blank");
+            }
             fieldKeywords.add(new Pair<>(PREFIX_DEADLINE, argMultimap.getValue(PREFIX_DEADLINE).get()));
         }
 
