@@ -12,7 +12,7 @@
 
 ## **Introduction**
 
-![Ui](images/ui/Ui.png)
+![Ui](images/Ui.png)
 
 _LetsGetHired_ is a **desktop application** designed to assist you in efficiently **tracking and managing your 
 internship applications and their progress**.
