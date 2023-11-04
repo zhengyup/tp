@@ -941,7 +941,7 @@ With this command, you can prioritize and manage your applications according to 
 
 **Command**:
 ```
-sort [n/COMPANY_NAME] [r/ROLE] [c/CYCLE] [s/STATUS] [d/DEADLINE]
+sort [n/ORDER] [r/ORDER] [c/ORDER] [s/ORDER] [d/ORDER]
 ```
 
 ##### Parameters:
@@ -949,15 +949,15 @@ sort [n/COMPANY_NAME] [r/ROLE] [c/CYCLE] [s/STATUS] [d/DEADLINE]
 <box type="important" seamless>
 
 * Exactly **one** of the optional parameters must be provided.
-* Each parameter must be replaced by either `a` (for ascending order) or `d` (for descending order). 
+* The `ORDER` parameter must only be replaced by either `a` (for ascending order) or `d` (for descending order). 
 
 </box>
 
-* **n/COMPANY_NAME** (Optional): Sorts applications by the company name.
-* **r/ROLE** (Optional): Sorts applications by the role.
-* **c/CYCLE** (Optional): Sorts applications by the cycle.
-* **s/STATUS** (Optional): Sorts applications by their status.
-* **d/DEADLINE** (Optional): Sorts applications by their deadline.
+* **n/ORDER** (Optional): Sorts applications by the company name.
+* **r/ORDER** (Optional): Sorts applications by the role.
+* **c/ORDER** (Optional): Sorts applications by the cycle.
+* **s/ORDER** (Optional): Sorts applications by their status.
+* **d/ORDER** (Optional): Sorts applications by their deadline.
 
 ##### Example:
 
@@ -1072,20 +1072,20 @@ ________________________________________________________________________________
 
 ## **Command Summary**
 
-| **Command** | **Usage**                                                                   | **Example**                                                                 |
-|-------------|-----------------------------------------------------------------------------|-----------------------------------------------------------------------------|
-| **Help**    | `help`                                                                      | `help`                                                                      |
-| **List**    | `list`                                                                      | `list`                                                                      |
-| **Add**     | `add n/COMPANY_NAME r/ROLE c/CYCLE [s/STATUS] [d/DEADLINE]`                 | `add n/Google r/Software Engineering c/Summer 2024 s/Offered d/25 Oct 2023` |
-| **Edit**    | `edit INDEX [n/COMPANY_NAME] [r/ROLE] [c/CYCLE] [s/STATUS] [d/DEADLINE]`    | `edit 1 n/Apple`                                                            |
-| **Note**    | `note INDEX [i/NOTE] [o/NOTE_INDEX]`                                        | `note 1 i/Interview on 26 Oct`, `note 1 o/1`                                |
-| **Delete**  | `delete INDEX`                                                              | `delete 1`                                                                  |
-| **Undo**    | `undo`                                                                      | `undo`                                                                      |
-| **View**    | `view INDEX`                                                                | `view 1`                                                                    |
-| **Find**    | `find [n/COMPANY_NAME] [r/ROLE] [c/CYCLE] [s/STATUS] [d/DEADLINE] [i/NOTE]` | `find n/Google`                                                             |
-| **Sort**    | `sort [n/COMPANY_NAME] [r/ROLE] [c/CYCLE] [s/STATUS] [d/DEADLINE]`          | `sort n/a`                                                                  |
-| **Clear**   | `clear`                                                                     | `clear`                                                                     |
-| **Exit**    | `exit`                                                                      | `exit`                                                                      |
+| **Command** | **Usage**                                                                                | **Example**                                                                 |
+|-------------|------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
+| **Help**    | `help`                                                                                   | `help`                                                                      |
+| **List**    | `list`                                                                                   | `list`                                                                      |
+| **Add**     | `add n/COMPANY_NAME r/ROLE c/CYCLE [s/STATUS] [d/DEADLINE]`                              | `add n/Google r/Software Engineering c/Summer 2024 s/Offered d/25 Oct 2023` |
+| **Edit**    | `edit INDEX [n/COMPANY_NAME] [r/ROLE] [c/CYCLE] [s/STATUS] [d/DEADLINE]`                 | `edit 1 n/Apple`                                                            |
+| **Note**    | `note INDEX [i/NOTE]` (to add a note)<br> `note INDEX [o/NOTE_INDEX]` (to delete a note) | `note 1 i/Interview on 26 Oct`<br> `note 1 o/1`                             |
+| **Delete**  | `delete INDEX`                                                                           | `delete 1`                                                                  |
+| **Undo**    | `undo`                                                                                   | `undo`                                                                      |
+| **View**    | `view INDEX`                                                                             | `view 1`                                                                    |
+| **Find**    | `find [n/COMPANY_NAME] [r/ROLE] [c/CYCLE] [s/STATUS] [d/DEADLINE] [i/NOTE]`              | `find n/Google`                                                             |
+| **Sort**    | `sort [n/ORDER] [r/ORDER] [c/ORDER] [s/ORDER] [d/ORDER]`                                 | `sort n/a`                                                                  |
+| **Clear**   | `clear`                                                                                  | `clear`                                                                     |
+| **Exit**    | `exit`                                                                                   | `exit`                                                                      |
 
 
 This table provides a quick and clear reference to the commands available in **_LetsGetHired_**. 
