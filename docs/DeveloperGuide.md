@@ -179,45 +179,29 @@ How commands are parsed:
 
 ### Model component
 
-**API
-** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/status/model/Model.java)
+**API**:
+[`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/status/model/Model.java)
 
-<puml src="diagrams/ModelClassDiagram.puml" width="450" />
+The class diagram below provides an overview of the `Model` component:
 
+<puml src="diagrams/ModelClassDiagram.puml" width="450"></puml>
 
-The `Model` component,
+The `Model` component has the following responsibilities:
 
-* stores the intern tracker data i.e., all `InternApplication` objects (which
-  are contained in a
-  `UniqueApplicationList`
-  object).
-* stores the currently 'selected' `InternApplication` objects (e.g., results of
-  a search query) as a separate
-  _filtered_ list which is exposed to outsiders as an
-  unmodifiable `ObservableList<InternApplication>` that
-  can be 'observed' e.g. the UI can be bound to this list so that the UI
-  automatically updates when the
-  data in the list change.
-* stores a `UserPref` object that represents the user’s preferences. This is
-  exposed to the outside as a
-* `ReadOnlyUserPref` objects.
-* does not depend on any of the other three components (as the `Model`
-  represents data entities of the domain, they should make sense on their own
-  without depending on other components)
-
-<box type="info" seamless>
-
-**Note:** An alternative (arguably, a more OOP) model is given below. It has
-a `Tag` list in the
-`InternTracker`, which `InternApplication` references. This
-allows `InternTracker` to only require one `Tag`
-object per
-unique tag, instead of each `InternApplication` needing their own `Tag`
-objects.<br>
-
-<puml src="diagrams/BetterModelClassDiagram.puml" width="450" />
-
-</box>
+* Stores the intern tracker data, which includes all `InternApplication`
+  objects.
+  These objects are stored in a `UniqueApplicationList` container.
+* Maintains a separate filtered, sorted list of 'selected'
+  `InternApplication` objects, which is exposed to outsiders as an
+  unmodifiable `ObservableList<InternApplication>`.
+  This list can be observed, allowing the UI to automatically update
+  when its contents change (e.g. after a `find` or `sort` command).
+* Stores a `UserPref` object that represents the user’s preferences. This is
+  exposed as a `ReadOnlyUserPref` object.
+* Importantly , the `Model` does not depend on any of the other 3 components
+  (`UI`, `Logic`, `Storage`).
+  Since the `Model` represents data entities of the domain, it's designed
+  to stand independently of the other components.
 
 ### Storage component
 
