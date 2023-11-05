@@ -205,26 +205,30 @@ The `Model` component has the following responsibilities:
 
 ### Storage component
 
-**API
-** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/status/storage/Storage.java)
+**API**:
+[`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/status/storage/Storage.java)
 
-<puml src="diagrams/StorageClassDiagram.puml" width="550" />
+<puml src="diagrams/StorageClassDiagram.puml" width="550"></puml>
 
 The `Storage` component,
 
-* can save both intern tracker data and user preference data in JSON format, and
-  read them back into
-  corresponding objects.
-* inherits from both `AddressBookStorage` and `UserPrefStorage`, which means it
-  can be treated as either one (if only the functionality of only one is
-  needed).
-* depends on some classes in the `Model` component (because the `Storage`
-  component's job is to save/retrieve objects that belong to the `Model`)
+* Can save both intern tracker data and user preference data in JSON format
+* Read data from JSON files and convert them into corresponding objects within
+  the application.
+* Inherits from both `InternTrackerStorage` and `UserPrefStorage`, which allows
+  it to be used as either one, depending on the functionality needed.
+* Depends on some classes in the `Model` component (because the `Storage`
+  component's job is to save/retrieve objects that belong to the `Model`).
 
 ### Common classes
 
-Classes used by multiple components are in the `seedu.addressbook.commons`
-package.
+Classes that are used across multiple components are located within the
+`seedu.letsgethired.commons` package.
+These common classes served as shared utilities and functionalities that
+contribute to the application's overall functionality.
+
+For example, the `seedu.letsgethired.commons.util.StringUtil` class provides
+commonly used string manipulation methods.
 
 --------------------------------------------------------------------------------------------------------------------
 
