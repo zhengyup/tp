@@ -232,7 +232,7 @@ commonly used string manipulation methods.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Implementation**
+## **Noteworthy Feature Implementations**
 
 This section describes some noteworthy details on how certain features are
 implemented.
@@ -244,51 +244,75 @@ Intern Tracker.
 
 #### Implementation
 
-To add a new internship application, the `AddCommand` must be executed.
+Adding a new internship application involves executing the `AddCommand`.
 
-The `AddCommand` is parsed by the `AddCommandParser`.
-`AddCommandParser#parse()` parses the user input and returns an `AddCommand`
-object that will be executed.
+* The `AddCommand` is parsed by the `AddCommandParser`.
+* `AddCommandParser#parse()` parses the user input and returns an `AddCommand`
+  object for execution.
 
-Given below is an example usage scenario and how the add mechanism behaves at
-each step.
+Given below is an example usage scenario outlining how the `add` command
+behaves at each step.
 
-**Step 1.** The user
-executes `add n/Jane Street r/Full Stack Developer c/Summer 2024` command
-to add a new internship application into the Intern Tracker.
+**Step 1.** The user executes
 
-Step 2. The `AddCommandParser` will parse the arguments to ensure that all the
-compulsory fields are present and valid,
-create a new `internApplication` object with all the provided fields and return
-an `AddCommand` object with the
-`internApplication` object ready to be added into the `Model`.
+```shell
+`add n/Jane Street r/Full Stack Developer c/Summer 2024`
+```
 
-Step 3. The `AddCommand#execute()` method is then called by the `LogicManager`.
-The `AddCommand#execute()` calls the
-`Model#addInternApplication` method to add the newly created `internApplication`
-object to the `Model`.
+This command adds a new `InternshipApplication` into the `InternTracker`.
 
-Step 4. The `AddCommand#execute()` method returns a new `CommandResult` object
-that contains feedback and display
-messages for the user, which is returned to the `LogicManager`.
+<box type="info" seamless>
+
+**Note:** Some fields for the `add` command are optional. For more information
+on the `add` command, refer to
+the [User Guide](UserGuide.md#adding-your-new-internship-application-add).
+</box>
+
+**Step 2.** The `AddCommandParser` parses the arguments, ensuring that
+compulsory fields are present and valid.
+It then creates a new `InternApplication` object with all the provided fields
+and returns an `AddCommand` object containing the
+`InternApplication` object ready to be added to the `Model`.
+
+**Step 3.** The `AddCommand#execute()` method is invoked by the `LogicManager`.
+The `AddCommand#execute()` calls the `Model#addInternApplication` method to add
+the newly created `InternApplication` object to the `Model`.
+
+**Step 4.** The `AddCommand#execute()` method returns a new `CommandResult`
+object that contains feedback and display messages for the user.
+This result is then handed back to the `LogicManager`.
 
 The sequence diagram below shows the process of adding a new internship
-application.
+application:
 
-<puml src=diagrams/AddSequenceDiagram.puml />
+<box type="info" seamless>
+
+**Note:** The input for the `AddCommand` has been truncated for brevity.
+
+</box>
+
+<puml src=diagrams/AddSequenceDiagram.puml></puml>
+
+<box type="info" seamless>
+
+**Note:** The lifeline for `AddCommand` should end at the destroy marker (X)
+but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+
+</box>
 
 #### Design Considerations
 
-Aspect: Criteria for a duplicate internship application entry:
+**Aspect:** Criteria for a identifying duplicate internship application entry:
 
-* Alternative 1 (current choice): `COMPANY_NAME`, `ROLE` and `CYCLE` must all be
-  identical.
+* **Alternative 1 (current choice):** The combination of
+  (`COMPANY_NAME`, `ROLE` and `CYCLE`) must be unique.
     * Pros: Allow users to add an internship application to the same company for
-      different roles or on different cycle
-    * Cons: Additional compulsory fields need to be typed.
-* Alternative 2: Only `COMPANY_NAME`
+      different roles or during different cycles.
+    * Cons: Users are required to input additional compulsory fields.
+* **Alternative 2:** Enforce uniqueness based only on `COMPANY_NAME`
     * Pros: Allow users to add a new internship application quickly.
-    * Cons: Only ONE internship application to a certain company is allowed.
+    * Cons: It restricts users to having only 1 internship application with a
+      given company.
 
 ### Note command
 
