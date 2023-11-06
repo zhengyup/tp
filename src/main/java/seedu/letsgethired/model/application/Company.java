@@ -56,7 +56,7 @@ public class Company implements Comparable<Company> {
         }
 
         Company otherCompany = (Company) other;
-        return value.equals(otherCompany.value);
+        return value.equalsIgnoreCase(otherCompany.value);
     }
 
     @Override
