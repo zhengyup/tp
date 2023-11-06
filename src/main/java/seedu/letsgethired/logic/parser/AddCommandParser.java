@@ -36,8 +36,7 @@ public class AddCommandParser implements Parser<AddCommand> {
                         PREFIX_ROLE,
                         PREFIX_CYCLE,
                         PREFIX_STATUS,
-                        PREFIX_DEADLINE,
-                        PREFIX_NOTE_INSERT);
+                        PREFIX_DEADLINE);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_COMPANY, PREFIX_ROLE, PREFIX_CYCLE)
                 || !argMultimap.getPreamble().isEmpty()) {
@@ -49,8 +48,7 @@ public class AddCommandParser implements Parser<AddCommand> {
                 PREFIX_ROLE,
                 PREFIX_CYCLE,
                 PREFIX_STATUS,
-                PREFIX_DEADLINE,
-                PREFIX_NOTE_INSERT);
+                PREFIX_DEADLINE);
 
         Company company = ParserUtil.parseCompany(argMultimap.getValue(PREFIX_COMPANY).get());
         Role role = ParserUtil.parseRole(argMultimap.getValue(PREFIX_ROLE).get());
