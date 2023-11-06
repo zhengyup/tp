@@ -14,7 +14,7 @@ import seedu.letsgethired.model.application.Role;
 import seedu.letsgethired.model.application.Status;
 
 public class ParserUtilTest {
-    private static final String INVALID_COMPANY = "J@ne Street";
+    private static final String INVALID_COMPANY = "Jane/Street";
     private static final String INVALID_ROLE = " ";
     private static final String INVALID_STATUS = " ";
     private static final String INVALID_CYCLE = "Summer!2024";
