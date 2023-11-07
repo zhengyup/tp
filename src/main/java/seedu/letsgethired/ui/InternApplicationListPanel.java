@@ -61,6 +61,29 @@ public class InternApplicationListPanel extends UiPart<Region> {
     }
 
     /**
+     * Gets index of selected Intern Application from the list panel
+     * @return Index of selected InternApplication from the list
+     */
+    public int getSelectedItemIndex() {
+        return internApplicationListView.getSelectionModel().getSelectedIndex() + 1;
+    }
+
+    /**
+     * Selects the cell of the given InternApplication
+     */
+    public void selectItem(InternApplication internApplication) {
+        internApplicationListView.getSelectionModel().select(internApplication);
+        internApplicationListView.scrollTo(internApplication);
+    }
+
+    /**
+     * Deselects all cells in the list ui
+     */
+    public void deselect() {
+        internApplicationListView.getSelectionModel().select(-1);
+    }
+
+    /**
      * Custom {@code ListCell} that displays the graphics of
      * a {@code InternApplication} using a {@code InternApplicationListCard}.
      */
@@ -76,13 +99,5 @@ public class InternApplicationListPanel extends UiPart<Region> {
                 setGraphic(new InternApplicationListCard(internApplication, getIndex() + 1).getRoot());
             }
         }
-    }
-
-    /**
-     * Gets index of selected Intern Application from the list panel
-     * @return Index of selected InternApplication from the list
-     */
-    public int getSelectedItemIndex() {
-        return internApplicationListView.getSelectionModel().getSelectedIndex() + 1;
     }
 }
