@@ -62,7 +62,7 @@ public class InternApplicationListPanel extends UiPart<Region> {
 
     /**
      * Custom {@code ListCell} that displays the graphics of
-     * a {@code InternApplication} using a {@code InternApplicationCard}.
+     * a {@code InternApplication} using a {@code InternApplicationListCard}.
      */
     class InternApplicationListViewCell extends ListCell<InternApplication> {
         @Override
@@ -73,7 +73,7 @@ public class InternApplicationListPanel extends UiPart<Region> {
                 setGraphic(null);
                 setText(null);
             } else {
-                setGraphic(new InternApplicationCard(internApplication, getIndex() + 1).getRoot());
+                setGraphic(new InternApplicationListCard(internApplication, getIndex() + 1).getRoot());
             }
         }
     }
