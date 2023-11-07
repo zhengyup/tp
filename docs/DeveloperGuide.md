@@ -375,35 +375,39 @@ The sequence diagram below shows the process of finding internship applications.
 
 ### Sort feature
 
-#### Proposed Implementation
+The `sort` command enables the users to sort the internship applications by
+a specific field.
 
-In order to implement the sorting feature for the LetsGetHired Intern
-application tracking app,
-we introduce the following changes to the codebase:
+<box type="info" seamless>
 
-1. **Extending the Model Interface**: We enhance the `Model` interface to
-   include a new method.
+**Note:** This implementation does not allow for sorting by multiple fields.
+
+</box>
+
+#### Implementation
+
+To introduce the `sort` feature, we make the following changes to the codebase:
+
+1. **Extension of the Model Interface**: We enhance the `Model` interface to
+   include a new method:
     * `Model#updateFilteredSortedInternApplicationList(Comparator<InternApplication> comparator))`
+    * This method sorts the intern application list by the given comparator.
 
-    - sorts the intern application list by the given comparator
-2. **Method Renaming**: We rename the existing method.
-    * `Model#getFilteredInternApplicationList()` is renamed
-      to `Model#getFilteredSortedInternApplicationList()`
-
-    - returns the filtered and/or sorted intern application list
-3. **ModelManager Enhancements**: In the `ModelManager` class, we wrap the
+2. **ModelManager Enhancements**: In the `ModelManager` class, we wrap the
    existing `filteredInternApplications` in a
    JavaFX `SortedList` to create a new `filteredSortedInternApplications` field.
-   This new field, named `filteredSortedInternApplications`
-   allows us to sort the intern applications to be displayed based on the
-   specified comparator.
+   This new field, allows us to sort the intern applications to be displayed
+   based on the specified comparator.
+
+3. **Update existing methods:
+    * `Model#getFilteredInternApplicationList()` is updated to return
+      the filtered and/or sorted intern application list.
 
 <box type="info" seamless>
 
 **Note:** JavaFX's `SortedList` class extends the `ObservableList` class, which
-ensures that any changes
-made to either the `FilteredList` or the original `UniqueApplicationList` will
-automatically propagate to the UI.
+ensures that any changes made to either the `FilteredList` or the original
+`UniqueApplicationList` will automatically propagate to the UI.
 
 </box>
 
