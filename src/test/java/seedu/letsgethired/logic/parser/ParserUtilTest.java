@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import seedu.letsgethired.logic.parser.exceptions.ParseException;
 import seedu.letsgethired.model.application.Company;
 import seedu.letsgethired.model.application.Cycle;
+import seedu.letsgethired.model.application.Note;
 import seedu.letsgethired.model.application.Role;
 import seedu.letsgethired.model.application.Status;
 
@@ -22,6 +23,10 @@ public class ParserUtilTest {
     private static final String VALID_ROLE = "Full Stack Developer";
     private static final String VALID_STATUS = "Accepted";
     private static final String VALID_CYCLE = "Summer 2024";
+    private static final String VALID_NOTE = "Need to brush up on leetcode hard";
+    private static final String INVALID_NOTE_EMPTY = "";
+    private static final String INVALID_NOTE_SLASH = "slashes /";
+
 
     private static final String WHITESPACE = " \t\r\n";
 
@@ -135,5 +140,42 @@ public class ParserUtilTest {
         String cycleWithWhitespace = WHITESPACE + VALID_CYCLE + WHITESPACE;
         Cycle expectedCycle = new Cycle(VALID_CYCLE);
         assertEquals(expectedCycle, ParserUtil.parseCycle(cycleWithWhitespace));
+    }
+
+    @Test
+    public void parseNote_validValueWithWhitespace_returnsTrimmedCycle() throws Exception {
+        String noteWithWhitespace = WHITESPACE + VALID_NOTE + WHITESPACE;
+        Note expectedNote = new Note(VALID_NOTE);
+        assertEquals(expectedNote, ParserUtil.parseNote(noteWithWhitespace));
+    }
+
+    @Test
+    public void parseNote_emptyValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseNote(INVALID_NOTE_EMPTY));
+    }
+
+    @Test
+    public void parseNote_slashValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseNote(INVALID_NOTE_SLASH));
+    }
+
+    @Test
+    public void parseNoteIndex_invalidInput_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseNoteIndex("10 a"));
+    }
+
+    @Test
+    public void parseNoteIndex_outOfRangeInput_throwsParseException() {
+        assertThrows(ParseException.class, MESSAGE_INVALID_INDEX, ()
+                -> ParserUtil.parseNoteIndex(Long.toString(Integer.MAX_VALUE + 1)));
+    }
+
+    @Test
+    public void parseNoteIndex_validInput_success() throws Exception {
+        // No whitespaces
+        assertEquals(INDEX_FIRST_APPLICATION, ParserUtil.parseNoteIndex("1"));
+
+        // Leading and trailing whitespaces
+        assertEquals(INDEX_FIRST_APPLICATION, ParserUtil.parseNoteIndex("  1  "));
     }
 }
