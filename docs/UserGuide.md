@@ -361,7 +361,9 @@ the [_Command Summary_ section of the **User Guide**](#command-summary) below.
 
 **Notes about the command format:**<br>
 
-* All commands are case-insensitive. So - SORT, sort or SoRt - have no difference whatsoever in behaviour.<br>
+* All commands are case-sensitive. For example sort is a valid command, but SORT or SoRt are invalid commands.<br>
+
+* All prefixes are case-sensitive. For example s/ (the prefix for status) and S/ (no attached meaning) are considered different
 
 * Words in `UPPER_CASE` are **parameters** which you will type in.<br>
     ```
