@@ -24,7 +24,7 @@ public abstract class NoteCommand extends Command {
             + "Parameters: INDEX_OF_APPLICATION (must be a positive integer) "
             + PREFIX_NOTE_DELETE + "[INDEX_OF_NOTE] (must be a positive integer)\n"
             + "Delete Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_NOTE_DELETE + "1";
+            + PREFIX_NOTE_DELETE + "1";;
 
     public static final String DUAL_NOTE_ERROR = "You cannot perform the action of deleting and adding a note at once";
 
