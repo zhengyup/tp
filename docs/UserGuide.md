@@ -361,6 +361,8 @@ the [_Command Summary_ section of the **User Guide**](#command-summary) below.
 
 **Notes about the command format:**<br>
 
+* All commands are case-insensitive. So - SORT, sort or SoRt - have no difference whatsoever in behaviour.<br>
+
 * Words in `UPPER_CASE` are **parameters** which you will type in.<br>
     ```
     add n/COMPANY_NAME r/ROLE c/CYCLE
