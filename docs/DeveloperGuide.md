@@ -660,64 +660,56 @@ its progress, optimized for users who prefer a CLI
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (
 unlikely to have) - `*`
 
-| Priority | As a ...                       | I want to ...                                                | So that I can...                                                              |
-|----------|--------------------------------|--------------------------------------------------------------|-------------------------------------------------------------------------------|
-| `* * *`  | user                           | add internship applications                                  | keep a record of my internship application                                    |
-| `* * *`  | user                           | see a list of internships that I have applied for            | keep track of all companies/roles I have applied for                          |
-| `* * *`  | user                           | view a specific internship application                       | easily access details about a specific internship application                 |
-| `* * *`  | user                           | delete an internship application                             | remove internship applications I do not want to track anymore                 |
-| `* * *`  | user                           | update the status of the internships that I have applied for | keep track of the progress of the roles I have applied for                    |
-| `* * *`  | user                           | open the app with a click of a button or an exe/batch file   | save time and easily access the internship tracker                            |
-| `* *`    | user with many applications    | quickly search for a application                             | efficiently find the entry I am looking for                                   |
-| `* *`    | conscientious user             | attach notes to each application                             | I can jot down important information about the company or application process |
-| `* *`    | organised user                 | sort my applications                                         | I can easily get an organised view of my applications                         |
+| Priority | As a ...                    | I want to ...                                                | So that I can...                                                              |
+|----------|-----------------------------|--------------------------------------------------------------|-------------------------------------------------------------------------------|
+| `* * *`  | user                        | add internship applications                                  | keep a record of my internship application                                    |
+| `* * *`  | user                        | see a list of internships that I have applied for            | keep track of all companies/roles I have applied for                          |
+| `* * *`  | user                        | view a specific internship application                       | easily access details about a specific internship application                 |
+| `* * *`  | user                        | delete an internship application                             | remove internship applications I do not want to track anymore                 |
+| `* * *`  | user                        | update the status of the internships that I have applied for | keep track of the progress of the roles I have applied for                    |
+| `* * *`  | user                        | open the app with a click of a button or an exe/batch file   | save time and easily access the internship tracker                            |
+| `* *`    | user with many applications | quickly search for a application                             | efficiently find the entry I am looking for                                   |
+| `* *`    | conscientious user          | attach notes to each application                             | I can jot down important information about the company or application process |
+| `* *`    | organised user              | sort my applications                                         | I can easily get an organised view of my applications                         |
 
 *{More to be added}*
 
 ### Use cases
 
-(For all use cases below, the **System** is the `LetsGetHired` and the **Actor**
-is the `User`, unless specified otherwise)
+(For all use cases below, the **System** is the `LetsGetHired` application
+and the **Actor** is the `User`, unless specified otherwise)
 
 **UC1: Add an internship application**
 
 **MSS**
 
-1. User enters the details of the internship to be added
-2. LetsGetHired adds the internship to the list of internships
-3. LetsGetHired displays the current number of internship applications
+1. User inputs the details of the internship application.
+2. LetsGetHired adds the internship application to the list of internship
+   applications and displays it.
 
    Use case ends.
 
 **Extensions**
 
-* 1a. The command format is incorrect
+* 1a. The command format is incorrect.
 
-    * 1a1. AddressBook shows an error message, guiding users on the correct
-      format.
+    * 1a1. LetsGetHired notifies the user of the error.
+    * 1a2. User enters the correct details for the internship application.
+      Use case resumes from Step 2.
 
+* 1b. The internship application already exists in the list of internship
+  applications.
+
+    * 1b1. LetsGetHired notifies the user that the internship application
+      already exists.
       Use case ends.
-
-* 1b. The entered cycle is not acceptable
-
-    * 1e1. AddressBook shows an error message, guiding users on acceptable cycle
-      values.
-
-      Use case ends
-
-* 1c. The entered status is not acceptable
-
-    * 1c1. AddressBook shows an error message, guiding users on acceptable
-      status values.
-
-      Use case ends
 
 **UC2: View the list of internship applications**
 
 **MSS**
 
-1. User requests to list all internship applications
-2. LetsGetHired displays all the internship applications
+1. User requests to list all internship applications.
+2. LetsGetHired displays all the internship applications.
 
    Use case ends.
 
@@ -726,186 +718,160 @@ is the `User`, unless specified otherwise)
 **MSS**
 
 1. User requests to <ins>list all internship applications (UC2)</ins>
-2. LetsGetHired displays all the internship applications
-3. User requests to view a specific internship application
-4. LetsGetHired displays the required internship application
+2. User requests to view a specific internship application.
+3. LetsGetHired displays the required internship application.
 
    Use case ends.
 
 **Extensions**
 
-* 2a. The list is empty
+* 1a. LetsGetHired displays an empty list.
 
   Use case ends.
 
-* 3a. The command format is incorrect
+* 2a. The command format is incorrect.
 
-    * 3a1. AddressBook shows an error message, guiding users on the correct
-      format.
+    * 2a1. LetsGetHired notifies the user of the error.
+      Use case resumes from Step 2.
 
-      Use case ends.
+* 2b. The index of internship application entered does not exist.
 
-* 3b. The index of internship application entered is incorrect
-
-    * 3b1. AddressBook shows an error message.
-
-      Use case ends.
+    * 2b1. LetsGetHired shows an error message.
+      Use case resumes from Step 2.
 
 **UC4: Delete an internship application**
 
 **MSS**
 
-1. User requests to <ins>list all internship applications (UC2)</ins>
-2. LetsGetHired displays all the internship applications
-3. User requests to delete a specific internship application
-4. LetsGetHired deletes the required internship application
-5. LetsGetHired displays the current number of internship applications
+1. User requests to <ins>list all internship applications (UC2)</ins>.
+2. User requests to delete a specific internship application.
+3. LetsGetHired deletes the required internship application.
 
 Use case ends.
 
 **Extensions**
 
-* 2a. The list is empty
+* 1a. The list is empty
 
   Use case ends.
 
-* 3a. The command format is incorrect
+* 2a. The command format is incorrect.
 
-    * 3a1. AddressBook shows an error message, guiding users on the correct
-      format.
+    * 2a1. LetsGetHired notifies the user of the error.
+      Use case resumes from Step 2.
 
-      Use case ends.
+* 2b. The index of internship application entered does not exist
 
-* 3b. The index of internship application entered is incorrect
-
-    * 3b1. AddressBook shows an error message.
-
+    * 2b1. LetsGetHired shows an error message.
       Use case ends.
 
 **UC5: Update the status of an internship applications**
 
 **MSS**
 
-1. User requests to <ins>list all internship applications (UC2)</ins>
-2. LetsGetHired displays all the internship applications
-3. User requests to update the status of a specific internship application
-4. LetsGetHired updates the required internship application
-5. LetsGetHired displays the updated internship application
+1. User requests to <ins>list all internship applications (UC2)</ins>.
+2. User requests to update the status of a specific internship application.
+3. LetsGetHired updates the required internship application.
+4. LetsGetHired displays the updated internship application.
 
 Use case ends.
 
 **Extensions**
 
-* 2a. The list is empty
+* 1a. The list is empty
 
   Use case ends.
 
-* 3a. The command format is incorrect
+* 2a. The command format is incorrect.
 
-    * 3a1. AddressBook shows an error message, guiding users on the correct
-      format.
+    * 2a1. LetsGetHired notifies the user of the error.
+      Use case resumes from Step 2.
 
+* 2b. The index of internship application entered does not exist
+
+    * 2b1. LetsGetHired shows an error message.
       Use case ends.
 
-* 3b. The index of internship application entered is incorrect
+* 2c. The entered status is invalid.
 
-    * 3b1. AddressBook shows an error message.
-
-      Use case ends.
-
-* 3c. The entered status is not acceptable
-
-    * 3c1. AddressBook shows an error message, guiding users on acceptable
+    * 2c1. LetsGetHired shows an error message guiding the user on acceptable
       status values.
 
-      Use case ends
+      Use case ends.
 
 **UC6: Search for an application**
 
 **MSS**
 
-1. User provides the search criteria and requests for a search
+1. User requests for a search by specific criteria.
 2. LetsGetHired shows a list of matching applications
 
 * 1a. The command format is incorrect.
 
-    * 1a1. LetsGetHired shows an error message, guiding users on the correct
-      command format
+    * 1a1. LetsGetHired notifies the user of the error.
 
-      Use case resumes at step 1.
+      Use case resumes from Step 1.
 
 **UC7: Edit the details of an application**
 
 **MSS**
 
-1. User requests to <ins>list all internship applications (UC2)</ins>
-2. LetsGetHired shows a list of applications
-3. User provides new information to update the chosen application
-4. LetsGetHired updates the application
-5. LetsGetHired displays the updated application
+1. User requests to <ins>list all internship applications (UC2)</ins>.
+2. User provides new information to edit the chosen application.
+3. LetsGetHired edits the application and displays it.
 
    Use case ends.
 
 **Extensions**
 
-* 2a. The list is empty.
+* 1a. The list is empty
 
   Use case ends.
 
-* 3a. The given index is invalid
+* 2a. The command format is incorrect.
 
-    * 3a1. LetsGetHired shows an error message and shows number of current
-      applications.
+    * 2a1. LetsGetHired notifies the user of the error.
+      Use case resumes from Step 2.
 
-      Use case resumes at step 2.
+* 2b. The index of internship application entered does not exist
 
-* 3b. The command format is incorrect.
-
-    * 3b1. LetsGetHired shows an error message, guiding users on the correct
-      command format
-
-      Use case resumes at step 2.
+    * 2b1. LetsGetHired shows an error message.
+      Use case ends.
 
 **UC8: Add a note to an application**
 
 **MSS**
 
-1. User requests to <ins>list all internship applications (UC2)</ins>
-2. LetsGetHired shows a list of applications
-3. User provides note to add to specific application
-4. LetsGetHired adds the note to the application
-5. LetsGetHired displays the application with the added note
+1. User requests to <ins>list all internship applications (UC2)</ins>.
+2. User provides note to add to specific application.
+3. LetsGetHired adds the note to the application and displays the application.
 
    Use case ends.
 
 **Extensions**
 
-* 2a. The list is empty.
+* 1a. The list is empty.
 
   Use case ends.
 
-* 3a. The given index is invalid.
+* 2a. The command format is incorrect.
 
-    * 3a1. LetsGetHired shows an error message and shows number of current
-      applications.
+    * 2a1. LetsGetHired notifies the user of the error.
+      Use case resumes from Step 2.
 
-      Use case resumes at step 2.
+* 2b. The index of internship application entered does not exist.
 
-* 3b. The command format is incorrect.
-
-    * 3b1. AddressBook shows an error message, guiding users on the correct
-      command format
-
-      Use case resumes at step 2.
+    * 2b1. LetsGetHired shows an error message.
+      Use case ends.
 
 **UC9: Delete a note on an application**
 
 **MSS**
 
-1. User requests to <ins>view a specific application (UC3)</ins>
-2. User requests to delete a specific note from the application
-3. LetsGetHired deletes the note from the application
-4. LetsGetHired displays the application with the updated list of notes
+1. User requests to <ins>view a specific application (UC3)</ins>.
+2. User requests to delete a specific note from the application.
+3. LetsGetHired deletes the note from the application and displays
+   the updated application.
 
    Use case ends.
 
@@ -915,28 +881,28 @@ Use case ends.
 
   Use case ends.
 
-* 2a. The given note index is invalid.
 
-    * 2a1. LetsGetHired shows an error message and shows number of current notes
-      attached to the application.
+* 2a. The command format is incorrect.
 
-      Use case resumes at step 3.
+    * 2a1. LetsGetHired notifies the user of the error.
+      Use case resumes from Step 2.
 
-* 2b.The command format is incorrect.
+* 2b. The index of internship application entered does not exist.
 
-    * 2b1. LetsGetHired shows an error message, guiding users on the correct
-      command format.
+    * 2b1. LetsGetHired shows an error message.
+      Use case ends.
 
-      Use case resumes at step 1.
+* 2c. The given note index is invalid.
+
+    * 2c1. LetsGetHired shows an error message.
+      Use case resumes from step 2.
 
 **UC10: Sort Applications**
 
 **MSS**
 
-1. User requests to sort the applications by provided category and order
-2. LetsGetHired sorts and displays the sorted applications
-3. LetsGetHired displays category applications are sorted in
-
+1. User requests to sort the applications by provided category and order.
+2. LetsGetHired sorts and displays the sorted applications.
    Use case ends.
 
 **Extensions**
@@ -944,8 +910,7 @@ Use case ends.
 * 1a. Provided category or order is invalid
 
     * 1a1 LetsGetHired shows an error message and shows the valid categories and
-      orders to choose from
-
+      orders to choose from.
       Use case ends.
 
 ### Non-Functional Requirements
@@ -958,7 +923,7 @@ Use case ends.
 
 #### Performance
 
-* Should be able to hold up to 1000 internships without a noticeable
+* Should be able to hold up to 1000 internships without noticeable
   sluggishness in performance for typical usage.
 * The system should respond to user interactions within 1 second for normal
   operations (e.g. adding an internship, searching for an internship) for a
@@ -981,12 +946,14 @@ Use case ends.
 
 ### Glossary
 
-* **Mainstream OS**: Windows, Linux, Unix, OS-X
-* **Internship Entry:** A record or entry in the system that represents
-  information about an internship opportunity. It includes details such as
-  company name, application status, deadlines, and notes.
 * **Application Status:** The current stage or status of an internship
   application.
+* **Internship Cycle:** The period of time during which an internship
+  is set to take place (e.g. Summer 2024, Winter 2023).
+* **Internship Application:** A record or entry in the system that represents
+  information about an internship opportunity. It includes details such as
+  company name, application status, deadline, and notes.
+* **Mainstream OS**: Windows, Linux, Unix, OS-X
 * **Sample Data:** Pre-populated data used for demonstration purposes, enabling
   new users to see how the application functions with realistic examples.
 
@@ -1023,27 +990,28 @@ testers are expected to do more *exploratory* testing.
 
 1. _{ more test cases …​ }_
 
-### Deleting a internApplication
+### Deleting an `internApplication`
 
-1. Deleting a internApplication while all internApplications are being shown
+1. Deleting an `internApplication` while all `internApplication`s are being
+   shown
 
-    1. Prerequisites: List all internApplications using the `list` command.
-       Multiple internApplications in the list.
+    1. Prerequisites: List all `internApplication`s using the `list` command.
+       Multiple `internApplication`s in the list.
 
     1. Test case: `delete 1`<br>
-       Expected: First contact is deleted from the list. Details of the deleted
-       contact shown in the status message. Timestamp in the status bar is
-       updated.
+       Expected: First intern application is deleted from the list.
+       Details of the deleted contact shown in the status message.
+       Timestamp in the status bar is updated.
 
     1. Test case: `delete 0`<br>
-       Expected: No internApplication is deleted. Error details shown in the
+       Expected: No `internApplication` is deleted. Error details shown in the
        status message. Status bar remains the same.
 
     1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (
        where x is larger than the list size)<br>
        Expected: Similar to previous.
 
-1. _{ more test cases …​ }_
+1. _{ more test cases ... }_
 
 ### Saving data
 
@@ -1052,4 +1020,4 @@ testers are expected to do more *exploratory* testing.
     1. _{explain how to simulate a missing/corrupted file, and the expected
        behavior}_
 
-1. _{ more test cases …​ }_
+1. _{ more test cases ... }_
