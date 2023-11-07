@@ -69,6 +69,14 @@ public class InternApplicationListPanel extends UiPart<Region> {
     }
 
     /**
+     * Selects the cell of the given InternApplication
+     */
+    public void selectItem(InternApplication internApplication) {
+        internApplicationListView.getSelectionModel().select(internApplication);
+        internApplicationListView.scrollTo(internApplication);
+    }
+
+    /**
      * Deselects all cells in the list ui
      */
     public void deselect() {
