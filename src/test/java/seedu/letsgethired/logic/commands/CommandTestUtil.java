@@ -58,7 +58,7 @@ public class CommandTestUtil {
     public static final String DEADLINE_SORT_ORDER_DESCENDING = " " + PREFIX_DEADLINE + VALID_SORT_ORDER_DESCENDING;
 
     public static final String INVALID_COMPANY_DESC =
-            " " + PREFIX_COMPANY + "Jane Street&"; // '&' not allowed in company names
+            " " + PREFIX_COMPANY + "Jane Street/"; // '/' not allowed in company names
     public static final String INVALID_ROLE_DESC = " " + PREFIX_ROLE + " "; // empty string is not allowed in roles
     public static final String INVALID_CYCLE_DESC = " " + PREFIX_CYCLE + "Summer!2023"; // '!' not allowed in cycles
     public static final String INVALID_STATUS_DESC = " " + PREFIX_STATUS; // empty string not allowed in status
