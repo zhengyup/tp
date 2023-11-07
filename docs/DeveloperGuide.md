@@ -124,7 +124,6 @@ How the parsing works:
 
 <puml src="diagrams/ModelClassDiagram.puml" width="450" />
 
-
 The `Model` component,
 
 * stores the intern tracker data i.e., all `InternApplication` objects (which are contained in a
