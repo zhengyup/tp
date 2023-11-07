@@ -316,52 +316,62 @@ but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 
 ### Find command
 
-The find command enables the users to search internship applications by looking
-up a keyword in any of the fields for an internship application.
+The `find` command enables the users to search internship applications by
+looking up a keyword in any of the fields associated with
+an internship application.
 
 #### Implementation
 
-To add a `Find`, the `FindCommand` must be executed.
+Performing a `Find` operation involves executing the `FindCommand.
 
-The `FindCommand` is parsed by the `FindCommandParser`.
-`FindCommandParser#parse()` parses the user input to return a `FindCommand`
-object that will be executed.
+* The `FindCommand` is parsed by the `FindCommandParser`.
+* `FindCommandParser#parse()` parses the user input to return a `FindCommand`
+  object that will be executed.
 
 Given below is an example usage scenario and how the mechanism behaves at each
 step.
 
-Step 1. The user keys in the command word to find an internship
-application, `find`,
-followed by the parameters needed to find an internship application (at least
-one field to be searched and
-respective keyword should be provided). In this scenario, the user keys
-in `find n/Jane c/Summer` into the command box
-which will execute the `FindCommandParser` to get the field and keyword pairs
-using the `ArgumentTokenizer`.
+**Step 1.** The user keys in the command word to find an internship
+application, `find`.
 
-Step 2. The parser creates a new `CompanyContainsFieldKeywordsPredicate` object,
-which is a predicate that
-will be used to obtain a filtered list of internship applications that have the
-specified keywords in respective fields.
+```shell
+find n/Jane c/Summer
+```
+
+<box type="info" seamless>
+
+**Note:** At least one field to be searched and the respective keyword
+for searching should be provided.
+
+</box>
+
+
+**Step 2.**
+The `FindCommandParser` will execute to get the field and keyword pairs
+using the `ArgumentTokenizer`.
+The parser creates a new `CompanyContainsFieldKeywordsPredicate` object,
+which acts as a predicate that will be used to obtain a filtered list of
+internship applications that have the specified keywords in respective fields.
 The parser returns a `FindCommand` object with
-the `Predicate<InternApplication>`, more specifically the
+the `Predicate<InternApplication>`, specifically the
 `CompanyContainsFieldKeywordsPredicate`.
 
-Step 3. The `FindCommand#execute()` method is called by the `LogicManager`.
+**Step 3.** The `FindCommand#execute()` method is invoked by the `LogicManager`.
 The `FindCommand` calls the
 `Model#updateFilteredInternApplicationList()` to update the filtered internship
 application list using the
 `Predicate<InternApplication>`, and then
-the `Model#getFilteredInternApplicationList()` to obtain the filtered
+the `Model#getFilteredInternApplicationList()` to obtain the filtered, sorted
 internship application list.
 
-Step 4. The `FindCommand` creates a `CommandResult` object that contains
-feedback and display to the user - the filtered
-internship application list - which is returned to the `LogicManager`.
+**Step 4.** Finally, the `FindCommand` creates a `CommandResult` object that
+contains feedback and displays the filtered internship application list to the
+user.
+The result is then returned to the `LogicManager`.
 
 The sequence diagram below shows the process of finding internship applications.
 
-<puml src="diagrams/FindCommandSequenceDiagram.puml" alt="Find Command Sequence Diagram" />
+<puml src="diagrams/FindCommandSequenceDiagram.puml" alt="Find Command Sequence Diagram"></puml>
 
 ### Sort feature
 
@@ -572,7 +582,6 @@ new command:
       corresponding `delete`).
     * Cons: We must ensure that the implementation of complementing each
       individual command are correct.
-
 
 ### Click InternApplication Card
 
