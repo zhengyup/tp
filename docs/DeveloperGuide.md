@@ -660,19 +660,15 @@ its progress, optimized for users who prefer a CLI
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (
 unlikely to have) - `*`
 
-| Priority | As a …​                        | I want to …​                                                 | So that I can…​                                                               |
+| Priority | As a ...                       | I want to ...                                                | So that I can...                                                              |
 |----------|--------------------------------|--------------------------------------------------------------|-------------------------------------------------------------------------------|
-| `* * *`  | user                           | log the status of my internship applications                 | keep a record of my internship application                                    |
+| `* * *`  | user                           | add internship applications                                  | keep a record of my internship application                                    |
 | `* * *`  | user                           | see a list of internships that I have applied for            | keep track of all companies/roles I have applied for                          |
-| `* * *`  | user                           | view a specific internship application                       | easily access specific internship applications                                |
+| `* * *`  | user                           | view a specific internship application                       | easily access details about a specific internship application                 |
 | `* * *`  | user                           | delete an internship application                             | remove internship applications I do not want to track anymore                 |
 | `* * *`  | user                           | update the status of the internships that I have applied for | keep track of the progress of the roles I have applied for                    |
 | `* * *`  | user                           | open the app with a click of a button or an exe/batch file   | save time and easily access the internship tracker                            |
-| `* *`    | diligent user                  | write notes to include background information on the company | easily refresh myself on what the company does before an interview            |
-| `*`      | user with many applications    | include contact details in the internship details            | find who to contact for further updates/information                           |
 | `* *`    | user with many applications    | quickly search for a application                             | efficiently find the entry I am looking for                                   |
-| `* *`    | user with diverse applications | categorize companies by industry                             | organise my applications better                                               |
-| `* *`    | user with many options         | sort by priority level for my applications                   | allocate my time and resources efficiently                                    |              
 | `* *`    | conscientious user             | attach notes to each application                             | I can jot down important information about the company or application process |
 | `* *`    | organised user                 | sort my applications                                         | I can easily get an organised view of my applications                         |
 
