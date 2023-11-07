@@ -1,7 +1,7 @@
 ---
   layout: default.md
-    title: "Developer Guide"
-    pageNav: 3
+  title: "Developer Guide"
+  pageNav: 3
 ---
 
 # Developer Guide
@@ -39,8 +39,8 @@ interactions.
 #### Main Components of Architecture
 
 **`Main`** (comprising classes
-[`Main`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/status/Main.java)
-and [`MainApp`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/status/MainApp.java))
+[`Main`](https://github.com/AY2324S1-CS2103T-W17-2/tp/blob/master/src/main/java/seedu/letsgethired/Main.java)
+and [`MainApp`](https://github.com/AY2324S1-CS2103T-W17-2/tp/blob/master/src/main/java/seedu/letsgethired/MainApp.java)
 is responsible for launching and shutting down the application.
 
 * On app launch, it initializes the other components in the correct sequence,
@@ -90,7 +90,7 @@ sections below.
 ### UI Component
 
 **API**:
-[`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/status/ui/Ui.java)
+[`Ui.java`](https://github.com/AY2324S1-CS2103T-W17-2/tp/blob/master/src/main/java/seedu/letsgethired/ui/Ui.java)
 
 <puml src="diagrams/UiClassDiagram.puml" alt="Structure of the UI Component"/>
 
@@ -105,9 +105,9 @@ The `UI` component leverages the JavaFx UI framework.
 The layout of these UI parts are defined in matching `.fxml` files located in
 `src/main/resources/view`.
 For example, the layout of
-the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/status/ui/MainWindow.java)
+the [`MainWindow`](https://github.com/AY2324S1-CS2103T-W17-2/tp/blob/master/src/main/java/seedu/letsgethired/ui/MainWindow.java)
 is specified
-in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
+in [`MainWindow.fxml`](https://github.com/AY2324S1-CS2103T-W17-2/tp/blob/master/src/main/resources/view/MainWindow.fxml)
 
 The `UI` component,
 
@@ -123,16 +123,16 @@ The `UI` component,
 ### Logic component
 
 **API**:
-[`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/status/logic/Logic.java)
+[`Logic.java`](https://github.com/AY2324S1-CS2103T-W17-2/tp/blob/master/src/main/java/seedu/letsgethired/logic/Logic.java)
 
 The class diagram below provides a *partial* view of the `Logic` component.
 
-<puml src="diagrams/LogicClassDiagram.puml" width="550"/>
+<puml src="diagrams/LogicClassDiagram.puml" width="550"></puml>
 
 To illustrate the interactions within the `Logic` component, we'll use the
 `execute("delete 1")` API call as an example in the sequence diagram below:
 
-<puml src="diagrams/DeleteSequenceDiagram.puml" alt="Interactions Inside the Logic Component for the `delete 1` Command" />
+<puml src="diagrams/DeleteSequenceDiagram.puml" alt="Interactions Inside the Logic Component for the `delete 1` Command"></puml>
 
 <box type="info" seamless>
 
@@ -180,7 +180,7 @@ How commands are parsed:
 ### Model component
 
 **API**:
-[`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/status/model/Model.java)
+[`Model.java`](https://github.com/AY2324S1-CS2103T-W17-2/tp/blob/master/src/main/java/seedu/letsgethired/model/Model.java)
 
 The class diagram below provides an overview of the `Model` component:
 
@@ -206,7 +206,7 @@ The `Model` component has the following responsibilities:
 ### Storage component
 
 **API**:
-[`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/status/storage/Storage.java)
+[`Storage.java`](https://github.com/AY2324S1-CS2103T-W17-2/tp/blob/master/src/main/java/seedu/letsgethired/storage/Storage.java)
 
 <puml src="diagrams/StorageClassDiagram.puml" width="550"></puml>
 
@@ -521,7 +521,7 @@ before executing the add action.
 mistake,
 and decides to undo that action
 by executing the `undo` command. The `undo` command will
-call `Model#undoAddressBook()`, which pops the latest
+call `Model#undoAction()`, which pops the latest
 `internApplications` state from `savedStates` and assigns it to the current
 internApplications.
 
