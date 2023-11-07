@@ -462,13 +462,13 @@ the sequence diagram below:
 
 ### Undo command
 
-#### Proposed Implementation
+#### Implementation
 
-The proposed undo mechanism is facilitated by `VersionedInternTracker`. It
-extends `InternTracker` with an
-undo history, stored internally as a stack `savedStates`. Additionally, it
-implements the
-following operations:
+The undo mechanism is facilitated by `VersionedInternTracker`. It
+extends `InternTracker` and maintains an undo history internally as a
+stack named `savedStates`.
+
+Additionally, it implements the following operations:
 
 * `VersionedInternTracker#commit()`— Saves the current intern tracker state in
   its history.
@@ -476,50 +476,56 @@ following operations:
   from its history.
 
 VersionedInternTracker#undo() is exposed in the `Model` interface
-as `Model#undoAction()`
+as `Model#undoAction()`.
 
 Given below is an example usage scenario and how the undo mechanism behaves at
 each step.
 
-Step 1. The user launches the application for the first time.
-The `VersionedInternTracker` will be
-initialized with an empty `savedStates`.
+**Step 1.** The user launches the application.
+The `VersionedInternTracker` will be initialized with an empty `savedStates`.
 
-<puml src="diagrams/UndoState0.puml" alt="UndoState0" />
+<puml src="diagrams/UndoState0.puml" alt="UndoState0"></puml>
 
-Step 2. The user executes `delete 5` command to delete the 5th internApplication
-in the intern tracker.
+**Step 2.** The user executes `delete 5` command to delete the 5th
+internApplication
+from the intern tracker.
 The `delete` command calls `Model#deleteInternApplication()`, which
-calls `VersionedInternTracker#commit()
-`, adding a copy of the current `internApplications` to `savedStates` before
-carrying out the delete action.
+calls `VersionedInternTracker#commit()`,
+capturing a copy of the current `internApplications` to `savedStates` before
+executing the delete action.
 
-<puml src="diagrams/UndoState1.puml" alt="UndoState1" />
+<puml src="diagrams/UndoState1.puml" alt="UndoState1"></puml>
 
-Step 3. The user executes `add n/Google …​` to add a new internApplication.
-The `add` command calls
-`Model#add()` which also calls `VersionedInternTracker#commit()`, adding a copy
-of the current `internApplications`
-to `savedStates` before carrying out the add action.
+**Step 3.** The user adds a new internship application.
 
-<puml src="diagrams/UndoState2.puml" alt="UndoState2" />
+```shell
+add n/Google r/Software Engineer c/Summer 2024
+```
+
+The `add` command calls `Model#add()` which also calls
+`VersionedInternTracker#commit()`,
+adding a copy of the current `internApplications` to `savedStates`
+before executing the add action.
+
+<puml src="diagrams/UndoState2.puml" alt="UndoState2"></puml>
 
 <box type="info" seamless>
 
-**Note:** If a command fails its execution, it will not
-call `VersionedInternTracker#commit()`, so the
-`internApplications` state will not be added to `savedStates`.
+**Note:** If a command execution fails, the
+`internApplications` state will not be added to `savedStates`
+(i.e. `VersionedInternTracker#commit()` will not be called).
 
 </box>
 
-Step 4. The user now decides that adding the internApplication was a mistake,
+**Step 4.** The user now decides that adding the internApplication was a
+mistake,
 and decides to undo that action
 by executing the `undo` command. The `undo` command will
 call `Model#undoAddressBook()`, which pops the latest
 `internApplications` state from `savedStates` and assigns it to the current
 internApplications.
 
-<puml src="diagrams/UndoState3.puml" alt="UndoState3" />
+<puml src="diagrams/UndoState3.puml" alt="UndoState3"></puml>
 
 
 <box type="info" seamless>
@@ -529,14 +535,13 @@ there are no previous
 internApplications states to restore. The `undo` command
 calls `VersionedInternTracker#undo()`, which returns
 False if there are no states to restore, and displays a message to the user that
-the latest change has already
-been reached.
+the latest change has already been reached.
 
 </box>
 
 The following sequence diagram shows how the undo operation works:
 
-<puml src="diagrams/UndoSequenceDiagram.puml" alt="UndoSequenceDiagram" />
+<puml src="diagrams/UndoSequenceDiagram.puml" alt="UndoSequenceDiagram"></puml>
 
 <box type="info" seamless>
 
@@ -545,7 +550,8 @@ but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 
 </box>
 
-Step 5. The user then decides to execute the command `list`. Commands that do
+**Step 5.** The user then decides to execute the command `list`. Commands that
+do
 not modify the intern tracker,
 such as `list`, will usually not
 call `VersionedInternTracker.commit()`, `Model#undoAction()`
@@ -556,7 +562,7 @@ Thus, the `savedStates` remains unchanged.
 The following activity diagram summarizes what happens when a user executes a
 new command:
 
-<puml src="diagrams/CommitActivityDiagram.puml" width="250" />
+<puml src="diagrams/CommitActivityDiagram.puml" width="600"></puml>
 
 #### Design considerations:
 
@@ -564,28 +570,26 @@ new command:
 
 * **Alternative 1 (current choice):** Saves the entire intern tracker.
     * Pros: Easy to implement.
-    * Cons: May have performance issues in terms of memory usage.
+    * Cons: May have performance issues in terms of memory usage, especially
+      if many operations are carried out.
 
-* **Alternative 2:** Individual command knows how to undo by
-  itself.
-    * Pros: Will use less memory (e.g. for `delete`, just save the
-      internApplication being deleted).
-    * Cons: We must ensure that the implementation of each individual command
-      are correct.
+* **Alternative 2:** Implement an `undo` operation
+  for each individual command.
+    * Pros: This method conserves memory (e.g. for `delete`, it only saves the
+      `internApplication` being deleted).
+    * Cons: It requires updating the interface for `Command` and an
+      implementation for each individual command.
 
 **Aspect: How history is implemented:**
 
 * **Alternative 1:** Using a list and pointer to implement version control
-    * Pros: Will allow for more features command
+    * Pros: Will allow for more feature-rich commands, such as `redo`.
     * Cons: Uses more memory than a stack, as saved states are still stored
-      after undo.
+      after the undo operation.
 
-* **Alternative 2:** Store the complementary command for each action in the
-  stack
-    * Pros: Will use less memory (e.g. for `add`, just save the
-      corresponding `delete`).
-    * Cons: We must ensure that the implementation of complementing each
-      individual command are correct.
+* **Alternative 2:** Store the saved state in a stack
+    * Pros: Will use less memory, as saved states are popped off the stack
+      after `undo`.
 
 ### Click InternApplication Card
 
