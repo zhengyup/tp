@@ -43,7 +43,7 @@ public class ParserUtil {
     public static Index parseNoteIndex(String oneBasedIndex) throws ParseException {
         String trimmedIndex = oneBasedIndex.trim();
         if (!StringUtil.isNonZeroUnsignedInteger(trimmedIndex)) {
-            throw new ParseException(Note.DELETE_MESSAGE_CONSTRAINTS);
+            throw new ParseException(Note.MESSAGE_CONSTRAINTS);
         }
         return Index.fromOneBased(Integer.parseInt(trimmedIndex));
     }
@@ -118,7 +118,7 @@ public class ParserUtil {
         requireNonNull(note);
         String trimmedNote = note.trim();
         if (!Note.isValidNote(trimmedNote)) {
-            throw new ParseException(Note.INSERT_MESSAGE_CONSTRAINTS);
+            throw new ParseException(Note.MESSAGE_CONSTRAINTS);
         }
         return new Note(trimmedNote);
     }
