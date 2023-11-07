@@ -593,35 +593,38 @@ new command:
 
 ### Click InternApplication Card
 
+This feature allows the user to click on an `InternApplicationCard` in the
+`InternApplicationListPanel`to display the details of the `InternApplication`.
+
 #### Implementation
 
-The mechanism for the Card click is implemented by creating a new TextArea
-widget beside the InternApplicationListPanel
+The Card click mechanism is implemented by creating a new TextArea
+widget beside the `InternApplicationListPanel`
 and a handler function to handle the event of a card click.
 
-The following classes are created:
+The following class is created:
 
-* `SelectView` - A class representation of the SelectView Text Area that is to
-  display the details of the card
+* `SelectView` - This class represents the SelectView Text Area responsible for
+  displaying the details of the card.
 
-The new method is:
+The following methods are added:
 
-* `SelectView#displayDetails(String details))` - sets the String details as text
-  in the TextArea
-* `Messages#formatDisplay(InternApplication internApplication)` - returns a
-  customised string summarising the details of the InternApplication
-* `SelectView#handleCardClick()` - extracts out the details from the
-  InternApplication object and sets it to the SelectView widget
+* `SelectView#displayDetails(String details))` -
+  sets the provided string details as text in the `TextArea`.
+* `Messages#formatDisplay(InternApplication internApplication)` -
+  returns a customised string summarising the details of the `InternApplication`
+* `SelectView#handleCardClick()` - extract the details from the
+  `InternApplication` object and sets them in the `SelectView` widget.
 
-The following method is renamed:
+Additionally, the following method is renamed for clarity:
 
 * `Messages#format(InternApplication internApplication)` is renamed
   to `Messages#formatDisplay(InternApplication internApplication)` - returns the
   feedback from an executed command
 
-The following sequence diagram shows how Card Click feature:
+The following sequence diagram shows how Card Click feature works:
 
-<puml src="diagrams/SelectViewSequenceDiagram.puml" alt="SelectViewSequenceDiagram" />
+<puml src="diagrams/SelectViewSequenceDiagram.puml" alt="SelectViewSequenceDiagram"></puml>
 
 ### \[Proposed\] House-keep feature
 
