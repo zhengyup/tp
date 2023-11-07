@@ -41,7 +41,7 @@ public class NoteDeleteCommand extends NoteCommand {
         InternApplication internApplicationToEdit = lastShownList.get(applicationIndex.getZeroBased());
 
         if (noteIndex.getZeroBased() >= internApplicationToEdit.getNotes().size()) {
-            throw new CommandException(NoteCommand.INDEX_TOO_LARGE);
+            throw new CommandException(NoteCommand.INVALID_NOTE_DISPLAYED_INDEX);
         }
 
         InternApplication editedInternApplication = internApplicationToEdit.deleteNote(noteIndex.getOneBased());
