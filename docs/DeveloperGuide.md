@@ -1,7 +1,7 @@
 ---
   layout: default.md
-  title: "Developer Guide"
-  pageNav: 3
+    title: "Developer Guide"
+    pageNav: 3
 ---
 
 # Developer Guide
@@ -295,7 +295,8 @@ application:
 
 <box type="info" seamless>
 
-**Note:** The lifeline for `AddCommand` should end at the destroy marker (X)
+**Note:** The lifeline for `AddCommandParser` should end at the destroy marker (
+X)
 but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 
 </box>
@@ -373,6 +374,14 @@ The sequence diagram below shows the process of finding internship applications.
 
 <puml src="diagrams/FindCommandSequenceDiagram.puml" alt="Find Command Sequence Diagram"></puml>
 
+<box type="info" seamless>
+
+**Note:** The lifeline for `FindCommandParser` should end at the destroy
+marker (X)
+but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+
+</box>
+
 ### Sort feature
 
 The `sort` command enables the users to sort the internship applications by
@@ -415,7 +424,15 @@ ensures that any changes made to either the `FilteredList` or the original
 To understand how these changes are integrated into the application, refer to
 the sequence diagram below:
 
-<puml src="diagrams/SortSequenceDiagram.puml" alt="SortSequenceDiagram" />
+<puml src="diagrams/SortSequenceDiagram.puml" alt="SortSequenceDiagram"></puml>
+
+<box type="info" seamless>
+
+**Note:** The lifeline for `SortCommandParser` should end at the destroy
+marker (X)
+but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+
+</box>
 
 #### Design Considerations
 
