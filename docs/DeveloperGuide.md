@@ -246,7 +246,7 @@ method creates a new InternshipApplication with the note appended to its ArrayLi
 Step 3. The `NoteCommand` calls the `Model#setInternApplication()` and `Model#updateFilteredInternApplicationList()` 
 methods to add the new internship application with the note to the model, and replace the old internship application.
 
-Step 4. The `NoteCommand` creates a `CommandResult` object that contains feedback and InternApplication to the user,
+Step 4. The `NoteCommand` creates a `CommandResult` object that contains the feedback and InternApplication to the user,
 which is returned to the `LogicManager`.
 
 The sequence diagram below shows the process of adding a note.
@@ -255,9 +255,9 @@ The sequence diagram below shows the process of adding a note.
 
 Given below is an example usage scenario and how the mechanism behaves at each step for note deletion.
 
-Step 1. The user keys in the command word to add a note, `note`, followed by the compulsory parameters needed toadd a 
+Step 1. The user keys in the command word to add a note, `note`, followed by the compulsory parameters needed to add a 
 note, namely the `INDEX` and the `note` component prefixed by `o/`. In this scenario, the user keys in `note 1 o/2` into
-the command box which will execute the `NoteCommandParser` to checkthrough the arguments and ensure that the compulsory 
+the command box which will execute the `NoteCommandParser` to check through the arguments and ensure that the compulsory 
 fields are present. In particular, the parser needs to check if the `o/` prefix is present AND the `i/` prefix is absent.
 The parser then returns a `NoteDeleteCommand` object with the `Index` of the object to be deleted from the `Model`.
 
@@ -266,6 +266,7 @@ method creates a new InternshipApplication with the corresponding note removed f
 
 Step 3. The `NoteCommand` calls the `Model#setInternApplication()` and `Model#updateFilteredInternApplicationList()` 
 methods to add the new internship application with the note to the model, and replace the old internship application.
+
 Step 4. The `NoteCommand` creates a `CommandResult` object that contains feedback and InternApplication to the user,
 which is returned to the `LogicManager`.
 
