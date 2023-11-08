@@ -1,7 +1,7 @@
 ---
   layout: default.md
-    title: "Developer Guide"
-    pageNav: 3
+  title: "Developer Guide"
+  pageNav: 3
 ---
 
 # Developer Guide
@@ -382,7 +382,142 @@ but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 
 </box>
 
-### Sort feature
+### Note command
+
+The note command enables the users to add or delete notes to an internship
+application.
+
+#### Implementation
+
+To add or delete a `Note`, the `NoteCommand` must be executed.
+
+It is worth noting that the NoteCommand is implemented differently from the
+other Commands.
+
+<puml src="diagrams/NoteCommandClassDiagram.puml" alt="Note Insert Command Class Diagram"></puml>
+
+From the above class diagram, the `NoteCommand` is an abstract class that is
+inherited by the `NoteInsertCommand` class
+and the `NoteDeleteCommand` class. This is done so that
+the `NoteCommand#execute()` method can behave accordingly while
+still having both `NoteCommand` classes share the command word that is 'note'.
+
+The `NoteCommand` is parsed by
+the `NoteCommandParser`.`NoteCommandParser#parse()` parses the user input to
+return
+either a `NoteInsertCommand` or a `NoteDeleteCommand` object that will be
+executed.
+
+Given below is an example usage scenario and how the mechanism behaves at each
+step for **note addition**.
+
+**Step 1.** The user keys in the command word to add a note, `note`.
+
+```shell
+note 1 i/Need to revise Rust
+```
+
+This command appends the note to the internship application with the index `1`.
+
+<box type="info" seamless>
+
+**Note:** The `INDEX` for the `note` command is compulsory.
+The `i/` prefix is compulsory for adding a note, and cannot appear at the same
+time as the `o/` prefix for deleting a note.
+For more information on the `note` command, refer to the
+[User Guide](UserGuide.md#adding-notes-to-your-internship-application--note).
+</box>
+
+**Step 2** The `NoteCommandParser` parses the arguments, ensuring that
+the compulsory fields are present.
+In particular, the parser checks that the `i/` prefix is present **and**
+the `o/` prefix is absent.
+The parser then returns a `NoteInsertCommand` object containing the` Note`
+object ready to be added into `Model`
+
+**Step 3.** The `NoteCommand#execute()` method is invoked by the `LogicManager`.
+The `NoteCommand#execute()`
+method creates a new `InternshipApplication` with the note appended to its
+`ArrayList` of notes.
+
+**Step 4.** The `NoteCommand` calls the `Model#setInternApplication()`
+and `Model#updateFilteredInternApplicationList()`
+methods to add the new internship application with the note to the model, and
+replace the old internship application.
+
+**Step 5.** The `NoteCommand` creates a `CommandResult` object that contains the
+feedback and `InternApplication` to the user,
+which is returned to the `LogicManager`.
+
+The sequence diagram below shows the process of adding a note:
+
+<puml src="diagrams/NoteInsertCommandSequenceDiagram.puml" alt="Note Insert Command Sequence Diagram"></puml>
+
+<box type="info" seamless>
+
+**Note:** The lifeline for `NoteCommandParser` should end at the destroy
+marker (X)
+but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+
+</box>
+
+---
+
+Given below is an example usage scenario and how the mechanism behaves at each
+step for **note deletion**.
+
+**Step 1.** The user keys in the command word to add a note, `note`.
+
+```shell
+note 1 o/2
+```
+
+This command deletes the note with index `2` from the internship application
+with index `1`.
+
+<box type="info" seamless>
+
+**Note:** The `INDEX` for the `note` command is compulsory.
+The `o/` prefix is compulsory for deleting a note, and cannot appear at the same
+time as the `i/` prefix for adding a note.
+For more information on the `note` command, refer to the
+[User Guide](UserGuide.md#deleting-a-note).
+</box>
+
+**Step 2.** The `NoteCommandParser` parses the arguments and ensures
+that the compulsory fields are present.
+In particular, the parser needs to check if the `o/` prefix
+is present **and** the `i/` prefix is absent.
+The parser then returns a `NoteDeleteCommand` object with the `Index` of the
+object to be deleted from the `Model`.
+
+**Step 3.** The `NoteCommand#execute()` method is called by the `LogicManager`.
+The `NoteCommand#execute()`
+method creates a new `InternshipApplication` with the corresponding note removed
+from its `ArrayList` of notes.
+
+**Step 4.** The `NoteCommand` calls the `Model#setInternApplication()`
+and `Model#updateFilteredInternApplicationList()`
+methods to add the new internship application with the note to the model, and
+replace the old internship application.
+
+**Step 5.** The `NoteCommand` creates a `CommandResult` object that contains
+feedback and `InternApplication` to the user,
+which is returned to the `LogicManager`.
+
+The sequence diagram below shows the process of deleting a note.
+
+<puml src="diagrams/NoteDeleteCommandSequenceDiagram.puml" alt="Note Delete Command Sequence Diagram"></puml>
+
+<box type="info" seamless>
+
+**Note:** The lifeline for `NoteCommandParser` should end at the destroy
+marker (X)
+but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+
+</box>
+
+### Sort Command
 
 The `sort` command enables the users to sort the internship applications by
 a specific field.

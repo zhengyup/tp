@@ -19,6 +19,8 @@ public class Messages {
     public static final String MESSAGE_INTERN_APPLICATIONS_LISTED_OVERVIEW = "%1$d intern applications listed!";
     public static final String MESSAGE_DUPLICATE_FIELDS =
                 "Multiple values specified for the following single-valued field(s): ";
+    public static final String MESSAGE_MULTIPLE_FIELDS =
+            "Multiple field(s) specified for a single field command";
 
     /**
      * Returns an error message indicating the duplicate prefixes.
