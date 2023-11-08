@@ -25,7 +25,7 @@ public class SortCommand extends Command {
             + "[" + PREFIX_ROLE + "ASC/DESC] "
             + "[" + PREFIX_CYCLE + "ASC/DESC] "
             + "[" + PREFIX_STATUS + "ASC/DESC] "
-            + "Example: " + COMMAND_WORD + " "
+            + "\nExample: " + COMMAND_WORD + " "
             + PREFIX_COMPANY + "a";
 
     public static final String MESSAGE_SUCCESS = "Intern applications sorted";
