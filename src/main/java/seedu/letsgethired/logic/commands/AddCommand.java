@@ -22,17 +22,17 @@ public class AddCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Adds an application to the intern tracker.\n"
             + "Parameters: "
-            + PREFIX_COMPANY + "COMPANY "
+            + PREFIX_COMPANY + "COMPANY_NAME "
             + PREFIX_ROLE + "ROLE "
             + PREFIX_CYCLE + "CYCLE "
-            + "[" + PREFIX_DEADLINE + "DEADLINE] "
             + "[" + PREFIX_STATUS + "STATUS] "
+            + "[" + PREFIX_DEADLINE + "DEADLINE] "
             + "\nExample: " + COMMAND_WORD + " "
             + PREFIX_COMPANY + "Jane Street "
             + PREFIX_ROLE + "Software Engineering Intern "
             + PREFIX_CYCLE + "Summer 2024 "
-            + PREFIX_DEADLINE + "25 Sep 2023 "
-            + PREFIX_STATUS + "Accepted ";
+            + PREFIX_STATUS + "Accepted "
+            + PREFIX_DEADLINE + "25 Sep 2023 ";
 
     public static final String MESSAGE_SUCCESS = "New intern application added";
     public static final String MESSAGE_DUPLICATE_INTERN_APPLICATION =
