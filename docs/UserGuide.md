@@ -543,6 +543,11 @@ add n/COMPANY_NAME r/ROLE c/CYCLE [s/STATUS] [d/DEADLINE]
 
 3. **c/CYCLE**: The internship cycle, which typically corresponds to the season or term.
    * Example: `Summer`, `Winter`
+   <box type="warning" seamless>
+
+   Please ensure the cycles you enter are valid for your use. This design allows for versatility in usage without strict 
+   validation that could hinder your experience.
+   </box>
 
 4. **s/STATUS** (Optional): The current status of your application.
    <box type="info" seamless>
