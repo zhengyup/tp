@@ -75,4 +75,14 @@ public class ArgumentMultimap {
             throw new ParseException(Messages.getErrorMessageForDuplicatePrefixes(duplicatedPrefixes));
         }
     }
+
+    /**
+     * Throws a {@code ParseException} if any of the prefixes given in {@code prefixes} appeared more than
+     * once among the arguments.
+     */
+    public void verifyOnlyOnePrefix() throws ParseException {
+        if (argMultimap.size() > 2) {
+            throw new ParseException(Messages.MESSAGE_MULTIPLE_FIELDS);
+        }
+    }
 }
