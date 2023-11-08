@@ -42,7 +42,7 @@ public class EditCommand extends Command {
             + "[" + PREFIX_CYCLE + "CYCLE] "
             + "[" + PREFIX_DEADLINE + "DEADLINE] "
             + "[" + PREFIX_STATUS + "STATUS] "
-            + "Example: " + COMMAND_WORD + " 1 "
+            + "\n Example: " + COMMAND_WORD + " 1 "
             + PREFIX_ROLE + "Software Engineering Intern "
             + PREFIX_CYCLE + "Summer 2024 "
             + PREFIX_STATUS + "Accepted ";
