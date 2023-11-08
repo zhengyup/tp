@@ -10,13 +10,13 @@ import static seedu.letsgethired.commons.util.AppUtil.checkArgument;
 public class Cycle implements Comparable<Cycle> {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Cycle should only contain alphanumeric characters and spaces, and it should not be blank";
+            "Cycle should only contain alphanumeric characters, hyphens and spaces, and it should not be blank";
 
     /*
      * The first character of the cycle must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
-    public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
+    public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum}- ]*";
 
     public final String value;
 
