@@ -191,7 +191,7 @@ public class MainWindow extends UiPart<Stage> {
             commandResult.getInternApplicationResult().ifPresentOrElse(x -> {
                 selectView.displayDetails(x);
                 internApplicationListPanel.selectItem(x);
-                }, () -> internApplicationListPanel.deselect());
+            }, () -> internApplicationListPanel.deselect());
             if (commandResult.isShowHelp()) {
                 handleHelp();
             }

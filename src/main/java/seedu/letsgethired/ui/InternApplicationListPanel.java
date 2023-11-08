@@ -73,7 +73,6 @@ public class InternApplicationListPanel extends UiPart<Region> {
      */
     public void selectItem(InternApplication internApplication) {
         internApplicationListView.getSelectionModel().select(internApplication);
-        internApplicationListView.scrollTo(internApplication);
     }
 
     /**
