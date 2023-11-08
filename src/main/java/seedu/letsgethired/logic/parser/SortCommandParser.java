@@ -27,8 +27,7 @@ public class SortCommandParser implements Parser<SortCommand> {
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args,
                 PREFIX_COMPANY, PREFIX_ROLE, PREFIX_CYCLE, PREFIX_STATUS, PREFIX_DEADLINE);
 
-        argMultimap.verifyNoDuplicatePrefixesFor(
-                PREFIX_COMPANY, PREFIX_ROLE, PREFIX_CYCLE, PREFIX_STATUS, PREFIX_DEADLINE);
+        argMultimap.verifyOnlyOnePrefix();
 
         InternApplicationComparator comparator = null;
 
