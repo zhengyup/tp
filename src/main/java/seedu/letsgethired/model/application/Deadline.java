@@ -6,6 +6,8 @@ import static seedu.letsgethired.commons.util.AppUtil.checkArgument;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
+import java.util.regex.Pattern;
 
 /**
  * Represents an Intern Application's deadline in the intern tracker.
@@ -16,9 +18,13 @@ public class Deadline implements Comparable<Deadline> {
     public static final String MESSAGE_CONSTRAINTS =
             "Deadline should be a valid date in this format: dd MMM yyyy, for example, 25 Sep 2023.";
 
-    private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd MMM yyyy");
+    private static final DateTimeFormatter DATE_FORMATTER =
+            DateTimeFormatter.ofPattern("dd MMM uuuu").withResolverStyle(
+                    ResolverStyle.STRICT
+            );
 
     private static final String DEFAULT_DATE = "No deadline";
+    private static final Pattern DATE_PATTERN = Pattern.compile("(?<date>\\d{4}-\\d{2}-\\d{2})");
 
     public final String value;
 
