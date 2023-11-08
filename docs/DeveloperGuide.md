@@ -220,7 +220,7 @@ The note command enables the users to add or delete notes to the internship appl
 
 To add or delete a `Note`, the `NoteCommand` must be executed.
 
-It is worth notingr that the NoteCommand is implemented differently from the other Commands.
+It is worth noting that the NoteCommand is implemented differently from the other Commands.
 
 <puml src="diagrams/NoteCommandClassDiagram.puml" alt="Note Insert Command Class Diagram" />
 
