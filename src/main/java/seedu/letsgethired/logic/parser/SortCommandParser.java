@@ -29,9 +29,6 @@ public class SortCommandParser implements Parser<SortCommand> {
 
         argMultimap.verifyOnlyOnePrefix();
 
-        argMultimap.verifyNoDuplicatePrefixesFor(
-                PREFIX_COMPANY, PREFIX_ROLE, PREFIX_CYCLE, PREFIX_STATUS, PREFIX_DEADLINE);
-
         InternApplicationComparator comparator = null;
 
         if (argMultimap.getValue(PREFIX_COMPANY).isPresent()) {
