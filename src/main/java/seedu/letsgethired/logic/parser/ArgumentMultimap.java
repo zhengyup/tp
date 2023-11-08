@@ -77,8 +77,7 @@ public class ArgumentMultimap {
     }
 
     /**
-     * Throws a {@code ParseException} if any of the prefixes given in {@code prefixes} appeared more than
-     * once among the arguments.
+     * Throws a {@code ParseException} if more than one prefix is found in the multimap
      */
     public void verifyOnlyOnePrefix() throws ParseException {
         if (argMultimap.size() > 2) {
