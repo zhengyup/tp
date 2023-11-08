@@ -979,6 +979,15 @@ sort [n/ORDER] [r/ORDER] [c/ORDER] [s/ORDER] [d/ORDER]
 * **c/ORDER** (Optional): Sorts applications by the cycle.
 * **s/ORDER** (Optional): Sorts applications by their status.
 * **d/ORDER** (Optional): Sorts applications by their deadline.
+<box type="info" seamless>
+
+**Note about sorting by `Deadline`**:
+
+* The internship applications will be sorted in **chronological order**. 
+  * In ascending order, applications with no deadline will be sorted to the end.
+  * In descending order, applications with no deadline will be sorted to the start.
+
+</box>
 
 ##### Example:
 
