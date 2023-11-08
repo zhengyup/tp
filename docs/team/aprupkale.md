@@ -5,25 +5,33 @@
 
 ### Project: LetsGetHired
 
-{Put project description here}
+_LetsGetHired_ is a **desktop application** designed to assist you in efficiently **tracking and managing your
+internship applications and their progress**.
+
+In addition to these capabilities, we recognize the importance of **speed and efficiency**. Thus, _LetsGetHired_ is
+**optimized for use via a Command Line Interface (CLI)**, but you still enjoy the advantages of a Graphical User Interface
+(GUI). If you are a swift typist, _LetsGetHired_ can streamline your internship tracking **faster than many standard
+GUI-based tools available.**
 
 Given below are my contributions to the project.
 
-* **New Feature**: Added the ability to undo/redo previous commands.
-    * What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.
-    * Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.
-    * Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.
-    * Credits: *{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}*
+* **New Feature**: 
+    * _What it does_: 
+    * _Justification_: 
+    * _Highlights_: 
 
-* **New Feature**: Added a history command that allows the user to navigate to previous commands using up/down keys.
+* **Enhancements to existing feature**: 
+  * _What it does_: 
+  * _Justification_: 
+  * _Highlights_: 
 
-* **Code contributed**: [RepoSense link]()
+* **Code contributed**: [RepoSense link](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=aprupkale&breakdown=true)
 
 * **Project management**:
     * {Put project management contributions here}
 
-* **Enhancements to existing features**:
-    * {Put enhancements to existing features here}
+* **Testing**:
+    * {Put testing contributions here}  
 
 * **Documentation**:
     * User Guide:
