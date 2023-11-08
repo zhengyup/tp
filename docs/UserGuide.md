@@ -51,6 +51,18 @@ ________________________________________________________________________________
 
 This section will explain the different elements used in this User Guide and what they mean.
 
+#### Page Navigation
+
+For quick navigation to the different sections in the User Guide, you could use the **Page Navigation** on the 
+right side of the page.
+
+![Page Navigation Menu](images/tutorial/pageNavShow.png)
+
+If you are using a smaller screen size, the **Page Navigation** will be hidden by default. To show it, click on the 
+three-dot icon on the top right corner of the page.
+
+![Page Navigation Icon](images/tutorial/pageNavHide.png)
+
 #### Code
 
 `A code in the User Guide will be displayed in this format.`
