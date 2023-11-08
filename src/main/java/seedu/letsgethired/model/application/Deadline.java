@@ -23,7 +23,7 @@ public class Deadline implements Comparable<Deadline> {
                     ResolverStyle.STRICT
             );
 
-    private static final String DEFAULT_DATE = "No deadline";
+    public static final String DEFAULT_DATE = "No deadline";
     private static final Pattern DATE_PATTERN = Pattern.compile("(?<date>\\d{4}-\\d{2}-\\d{2})");
 
     public final String value;
