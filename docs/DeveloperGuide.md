@@ -136,9 +136,9 @@ To illustrate the interactions within the `Logic` component, we'll use the
 
 <box type="info" seamless>
 
-**Note:** The lifeline for `DeleteCommandParser` should end at the destroy
-marker (X) but due to a limitation in PlantUML, the lifeline extends to
-the end of the diagram.
+**Note:** The lifeline for `DeleteCommandParser` and `DeleteCommand` 
+should end at the destroy marker (X) but due to a limitation in PlantUML, 
+the lifeline extends to the end of the diagram.
 </box>
 
 How the `Logic` component works:
@@ -295,8 +295,8 @@ application:
 
 <box type="info" seamless>
 
-**Note:** The lifeline for `AddCommandParser` should end at the destroy marker (
-X)
+**Note:** The lifeline for `AddCommandParser` and `AddCommand` 
+should end at the destroy marker (X)
 but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 
 </box>
@@ -376,8 +376,8 @@ The sequence diagram below shows the process of finding internship applications.
 
 <box type="info" seamless>
 
-**Note:** The lifeline for `FindCommandParser` should end at the destroy
-marker (X)
+**Note:** The lifeline for `FindCommandParser` and `FindCommand` 
+should end at the destroy marker (X)
 but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 
 </box>
@@ -455,8 +455,8 @@ The sequence diagram below shows the process of adding a note:
 
 <box type="info" seamless>
 
-**Note:** The lifeline for `NoteCommandParser` should end at the destroy
-marker (X)
+**Note:** The lifeline for `NoteCommandParser` and `NoteInsertCommand` 
+should end at the destroy marker (X)
 but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 
 </box>
@@ -511,8 +511,8 @@ The sequence diagram below shows the process of deleting a note.
 
 <box type="info" seamless>
 
-**Note:** The lifeline for `NoteCommandParser` should end at the destroy
-marker (X)
+**Note:** The lifeline for `NoteCommandParser` and `NoteDeleteCommand` 
+should end at the destroy marker (X)
 but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 
 </box>
@@ -563,8 +563,8 @@ the sequence diagram below:
 
 <box type="info" seamless>
 
-**Note:** The lifeline for `SortCommandParser` should end at the destroy
-marker (X)
+**Note:** The lifeline for `SortCommandParser` and `SortCommand`
+should end at the destroy marker (X)
 but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 
 </box>

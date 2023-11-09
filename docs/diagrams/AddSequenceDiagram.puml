@@ -62,8 +62,10 @@ activate CommandResult
 CommandResult --> AddCommand
 deactivate CommandResult
 
-AddCommand --> LogicManager : CommandResult
+AddCommand --> LogicManager : result
 deactivate AddCommand
+AddCommand -[hidden]-> LogicManager
+destroy AddCommand
 
 [<--LogicManager
 deactivate LogicManager
