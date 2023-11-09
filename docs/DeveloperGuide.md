@@ -50,7 +50,7 @@ is responsible for launching and shutting down the application.
 
 The bulk of the app's work is done by the following four components:
 
-* [**`UI`**](#ui-component): Responsible for the UI.
+* [**`UI`**](#ui-component): Handles the interaction with User.
 * [**`Logic`**](#logic-component): Executes user commands.
 * [**`Model`**](#model-component): Manages the in-memory data of the app.
 * [**`Storage`**](#storage-component): Handles reading and writing of data to
@@ -1129,18 +1129,30 @@ testers are expected to do more *exploratory* testing.
 
     1. Download the jar file and copy into an empty folder
 
-    1. Double-click the jar file Expected: Shows the GUI with a set of sample
-       contacts. The window size may not be optimum.
+    2. Type the following command in your terminal:
+
+```shell
+java -jar letsgethired.jar
+```
+
+Expected: Shows the GUI with a set of sample
+internship applications. The window size may not be optimum.
 
 1. Saving window preferences
 
     1. Resize the window to an optimum size. Move the window to a different
        location. Close the window.
 
-    1. Re-launch the app by double-clicking the jar file.<br>
-       Expected: The most recent window size and location is retained.
+    1. Re-launch the application by typing the following command in your
+       terminal:
 
-1. _{ more test cases …​ }_
+```shell
+java -jar letsgethired.jar
+```
+
+Expected: The most recent window size and location is retained.
+
+1. _{ more test cases ... }_
 
 ### Deleting an `internApplication`
 
