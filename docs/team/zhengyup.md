@@ -5,30 +5,48 @@ title: "Zheng Yu's Project Portfolio Page"
 
 ### Project: LetsGetHired
 
-LetsGetHired provides a fast and organised way to see internships and its progress, optimised for users who prefer CLI.
+LetsGetHired is a desktop application designed to assist in efficiently tracking and managing internship 
+applications and their progress. The user interacts with it using a CLI, and it has a GUI created with JavaFX.
+This project is a collaborative effort built with Agile methodology and comprehensive testing.
 
 Given below are my contributions to the project.
 
-To be added
+* New Feature: View : Added the ability to select and view a specific internship application.
+  * What it does : Allows the user to select a specific intern application from the application list through 
+    either the CLI or GUI, and view the in-depth details of the application in the select view. 
+  * Justification : This feature improves the product significantly because it allows the user to have a 
+    clear and organised view of an application's details without having to perform any formatting. This is 
+    a significant user experience improvement from viewing details from the list view, and facilitates 
+    other core features like adding notes to an application, which requires more screen space to render. 
+  * Highlights : This enhancement required consideration of the layout of the user interface. 
+* New Feature : Undo : Added the ability to undo previous commands.
+  * What it does : allows the user to undo all previous commands one at a time, up to the time the 
+    app was started. 
+  * Justification : This feature improves the product significantly because a user can make mistakes 
+    in commands and the app should provide a convenient way to rectify them. This makes the app more 
+    user-friendly as it reduces the destructive nature of some commands such as delete and clear.
+  * This enhancement affects existing commands and commands to be added in the future. It required an 
+    in-depth analysis of design alternatives.
+  * Credits : Sampled the proposed implementation of the undo/redo in AB3, which suggested the creation of 
+    a Versioned extension of the InternTracker class which allows committing and undoing changes, but 
+    decided against adopting the proposed data structure to manage version control.
 
 * **Code contributed**: [https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=zhengyup&sort=groupTitle&sortWithin=title&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=true&checkedFileTypes=docs~functional-code~test-code&since=2023-09-22]
 
-* **Project management**:
-    * To be added
-
 * **Enhancements to existing features**:
-    * To be added
+    * Revamped the GUI color scheme from a dark theme to a light theme #101
+    * Updated the coloring of status tags to create better distinction and improve user experience #101
+    * Introduced more possible inputs for the status field that would allow users to better track the 
+      progress of an application #101
 
 * **Documentation**:
     * User Guide:
-        * To be added
+        * Removed all previous references to AB3 and replaced with appropriate fields from LetsGetHired #44
+        * Provided the outlines for the View and Undo commands 
     * Developer Guide:
-        * To be added
+        * Added "useful" user stories and their associated use cases #26
+        * Refined and revised use cases after the tutorial #43
 
 * **Community**:
-    * PRs reviewed (with non-trivial review comments): To be added
-    * Reported bugs and suggestions for other teams in the class (examples: To be added)
-
-* Tools:
-    * To be added
+    * PRs reviewed (with non-trivial review comments): #32, #33, #48, #53, #60, #80, #99, #100, #162
 
