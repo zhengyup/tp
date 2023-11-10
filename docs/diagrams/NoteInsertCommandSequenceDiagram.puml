@@ -55,12 +55,6 @@ activate Model
 Model --> NoteCommand
 deactivate Model
 
-NoteCommand -> Model : updateFilteredInternApplicationList()
-activate Model
-
-Model --> NoteCommand
-deactivate Model
-
 create CommandResult
 NoteCommand -> CommandResult
 activate CommandResult

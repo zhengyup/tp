@@ -359,15 +359,6 @@ To understand how these changes are integrated into the application, refer to th
   * Pros: Allows us to reuse the same comparator for different sorting operations, which makes it easier to test for equality.
   * Allows us to strictly define which comparators are allowed.
 
-**Aspect: How feedback and details are returned from CommandResult**
-
-* **Alternative 1 (current choice):** Separate feedback and details into 2 separate strings `feedbackToUser` and `detailsToUser`.
-    * Pros: Clearer and intuitive for future developers to know the content which each string parameter should contain.
-    * Cons: Additional parameters in the arguments might make code look complicated.
-* **Alternative 2:** Have the feedback String contain the content for both feedbackToUser and detailsToUser through parsing.
-      * Pros: Easier to implement.
-      * Cons: Requires future developers working on the code to be mindful of how the String input should be structured for successful parsing
-
 ### Click InternApplication Card
 
 #### Implementation
