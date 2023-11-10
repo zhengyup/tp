@@ -744,7 +744,7 @@ and 5 `TextFields` for other details of an Intern Application
 
 The following class is created:
 
-* `SelectView` - This class represents the SelectView responsible for displaying the details of the card.
+* `SelectView` - This class represents the panel responsible for displaying the details of the card.
 
 The following methods are added:
 
@@ -775,6 +775,18 @@ displayed in its respective `TextArea` or `TextField`.
 The following sequence diagram high level view of how the Card Click feature works:
 
 <puml src="diagrams/SelectViewSequenceDiagram.puml" alt="SelectViewSequenceDiagram"></puml>
+
+#### Design considerations:
+
+**Aspect: What data type should displayDetails take in:**
+
+* **Alternative 1 (current choice):** InternApplication Object.
+    * Pros: Easy to implement. We can just extract individual values from the object without needing to parse a string
+    * Cons: Added dependency of InternApplication in both `InternApplicationListPanel` and `SelectView`
+
+* **Alternative 2:** String containing all field data in the involved InternApplication Object
+    * Pros: Reduce coupling between `InternApplicationList`, `SelectView`, and `InternApplication`
+    * Cons: Requires an additional step of parsing, which makes code much more complex.
  
 --------------------------------------------------------------------------------------------------------------------
 
