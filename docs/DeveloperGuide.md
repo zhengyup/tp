@@ -600,18 +600,6 @@ but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 
 **Aspect: How feedback and details are returned from CommandResult**
 
-* **Alternative 1 (current choice):** Separate feedback and details into 2
-  separate strings `feedbackToUser` and `detailsToUser`.
-    * Pros: Clearer and intuitive for future developers to know the content
-      which each string parameter should contain.
-    * Cons: Additional parameters in the arguments might make code look
-      complicated.
-* **Alternative 2:** Have the feedback String contain the content for both
-  feedbackToUser and detailsToUser through parsing.
-    * Pros: Easier to implement.
-    * Cons: Requires future developers working on the code to be mindful of how
-      the String input should be structured for successful parsing
-
 ### Undo command
 
 #### Implementation
@@ -750,33 +738,55 @@ This feature allows the user to click on an `InternApplicationCard` in the
 
 #### Implementation
 
-The Card click mechanism is implemented by creating a new TextArea
-widget beside the `InternApplicationListPanel`
-and a handler function to handle the event of a card click.
+The Card click mechanism is implemented by creating a GridPane beside the `InternApplicationListPanel`
+and a listener function to handle the event of a card click. The GridPane notably comprises 1 `TextArea` for notes 
+and 5 `TextFields` for other details of an Intern Application
 
 The following class is created:
 
-* `SelectView` - This class represents the SelectView Text Area responsible for
-  displaying the details of the card.
+* `SelectView` - This class represents the panel responsible for displaying the details of the card.
 
 The following methods are added:
 
-* `SelectView#displayDetails(String details))` -
-  sets the provided string details as text in the `TextArea`.
-* `Messages#formatDisplay(InternApplication internApplication)` -
-  returns a customised string summarising the details of the `InternApplication`
-* `SelectView#handleCardClick()` - extract the details from the
-  `InternApplication` object and sets them in the `SelectView` widget.
+* `SelectView#displayDetails(InternApplication internApplication))` -
+  sets each details in the intern application in each corresponding `TextField` or `TextArea`.
+* `SelectView#clearDetails()` -
+  clears all contents in the SelectView `TextField` or `TextArea`.
+* `InternApplicationListPanel#setSelectedItemListener()` -
+  adds a listener method to the `ListView` model that calls the `SelectView#displayDetails()` whenever a different 
+  item on the list is selected
+* `InternApplicationListPanel#getSelectedItemIndex()` -
+  returns the index of the currently selected item in the ListView
 
-Additionally, the following method is renamed for clarity:
+Given below is an example usage scenario and how the mechanism behaves at each step.
 
-* `Messages#format(InternApplication internApplication)` is renamed
-  to `Messages#formatDisplay(InternApplication internApplication)` - returns the
-  feedback from an executed command
+**Step 1.** The user clicks on the intern application card he wants to view.
 
-The following sequence diagram shows how Card Click feature works:
+**Step 2** The ChangeListener that was set into the ListView triggers from the event and executes
+a method to execute `view INDEX` where INDEX is the corresponds to the item's relative index on the list.
+
+**Step 3.** The `Logic` creates a `CommandResult` object from the `ViewCommand#execute()`. The `CommandResult` contains
+a String feedback and `InternApplication` to the user.
+
+**Step 4.** The `InternApplication` in the `CommandResult` is then passed into the 
+`SelectView#displayDetails(InternApplication internApplication))` where each field in the intern application is 
+displayed in its respective `TextArea` or `TextField`.
+
+The following sequence diagram high level view of how the Card Click feature works:
 
 <puml src="diagrams/SelectViewSequenceDiagram.puml" alt="SelectViewSequenceDiagram"></puml>
+
+#### Design considerations:
+
+**Aspect: What data type should displayDetails take in:**
+
+* **Alternative 1 (current choice):** InternApplication Object.
+    * Pros: Easy to implement. We can just extract individual values from the object without needing to parse a string
+    * Cons: Added dependency of InternApplication in both `InternApplicationListPanel` and `SelectView`
+
+* **Alternative 2:** String containing all field data in the involved InternApplication Object
+    * Pros: Reduce coupling between `InternApplicationList`, `SelectView`, and `InternApplication`
+    * Cons: Requires an additional step of parsing, which makes code much more complex.
  
 --------------------------------------------------------------------------------------------------------------------
 
