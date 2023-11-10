@@ -1185,3 +1185,41 @@ Expected: The most recent window size and location is retained.
        behavior}_
 
 1. _{ more test cases ... }_
+
+--------------------------------------------------------------------------------------------------------------------
+
+## **Appendix: Effort**
+In crafting LetsGetHired, a lot of thought was put into delivering a user-centric application that 
+simplifies internship application tracking. We prioritized user experience with a revamped GUI and enhanced 
+internship application organization through features like sort and find. We also provided users the 
+flexibility to attach helpful information to entries, through the introduction of notes.
+
+### Designing Organisation Features
+Designing organizational features in LetsGetHired, such as the Find and Sort commands, presented a notable 
+advancement beyond the capabilities of AB3. While AB3 exclusively features a basic Find function that 
+searches for entries based on matching keywords to names in the address book, in LetsGetHired, the Find 
+command empowers users to conduct searches across various fields associated with internship applications.
+Additionally, the Find command in LetsGetHired accommodates searches across 
+multiple fields simultaneously, enhancing user flexibility.
+
+The introduction of the Sort command in LetsGetHired stands as another milestone in organizational design. 
+LetsGetHired enables users to sort their internship applications in ascending or descending 
+order based on  any field. This functionality provides users with the ability to customize the 
+organization of their  application.
+
+### Developing a better User Interface
+We undertook a substantial overhaul of the GUI in LetsGetHired, distinguishing it from the interface of 
+AB3. LetsGetHired embraces a visually appealing GUI that facilitates in-depth exploration of application 
+details through a select view. This transition required intricate design decisions to seamlessly integrate 
+additional functionalities for detailed application viewing and adding of notes that demand larger screen 
+real estate. In our commitment to user experience, we also interactivity with the GUI through an ability 
+to view applications from the list view by clicking on the corresponding card.
+
+### Designing Notes Functionality
+Notes play an integral part in LetsGetHired, allowing users to add many pieces of information associated 
+with an internship application. We deliberated on how notes should be created, viewed, deleted and integrated 
+into LetsGetHired's existing and future functionalities, such as searching for an application by notes. 
+This addition allowed us to introduce another dimension to LetsGetHired, adding depth and nuance to the 
+application management experience
+
+
