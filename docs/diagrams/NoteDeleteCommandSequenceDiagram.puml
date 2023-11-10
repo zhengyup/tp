@@ -55,12 +55,6 @@ activate Model
 Model --> NoteDeleteCommand
 deactivate Model
 
-NoteDeleteCommand -> Model : updateFilteredInternApplicationList()
-activate Model
-
-Model --> NoteDeleteCommand
-deactivate Model
-
 create CommandResult
 NoteDeleteCommand -> CommandResult
 activate CommandResult
