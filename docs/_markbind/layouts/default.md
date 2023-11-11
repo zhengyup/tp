@@ -42,7 +42,7 @@
   * [Setting Up]({{ baseUrl }}/DeveloperGuide.html#setting-up-and-getting-started)
   * [Design]({{ baseUrl }}/DeveloperGuide.html#design)
   * [Implementation]({{ baseUrl }}/DeveloperGuide.html#noteworthy-feature-implementations)
-  * [Documentation, Testing, Logging, Configuration, DevOps]({{ baseUrl }}/DeveloperGuide.html#documentation-logging-testing-configuration-dev-ops)
+  * [Documentation, Testing, Logging, Configuration, DevOps]({{ baseUrl }}/DeveloperGuide.html#documentation-testing-logging-configuration-dev-ops)
   * [Appendix: Requirements]({{ baseUrl }}/DeveloperGuide.html#appendix-requirements)
   * [Appendix: Instructions for manual testing]({{ baseUrl }}/DeveloperGuide.html#appendix-instructions-for-manual-testing)
   * [Appendix: Effort]({{ baseUrl }}/DeveloperGuide.html#appendix-effort)
