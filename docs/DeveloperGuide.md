@@ -1232,4 +1232,3 @@ into LetsGetHired's existing and future functionalities, such as searching for a
 This addition allowed us to introduce another dimension to LetsGetHired, adding depth and nuance to the 
 application management experience.
 
-
