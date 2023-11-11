@@ -3,6 +3,8 @@
   title: "Timothy Putra Prasetio's Project Portfolio Page"
 ---
 
+# Timothy Putra Prasetio's Project Portfolio Page
+
 ### Project: LetsGetHired
 
 _LetsGetHired_ is a **desktop application** designed to assist you in efficiently **tracking and managing your
@@ -46,7 +48,7 @@ Given below are my contributions to the project.
   * In terms of testing, I contributed in the following ways
     1. **Updating Test Data**:
     Recognizing the importance of relevant test data, I took the initiative to update all sample data sets. This involved tailoring the data to closely match real-world scenarios applicable to our application, thereby enhancing the accuracy and relevance of our testing processes. (see [#115](https://github.com/AY2324S1-CS2103T-W17-2/tp/pull/115))
-    1. Comprehensive Feature Testing:
+    1. **Comprehensive Feature Testing**:
        With each new feature developed, I ensured that comprehensive testing was conducted. This included reviewing test cases that covered a wide range of scenarios, from typical usage to edge cases. My approach ensured that each feature was robust and performed as intended in diverse situations. (see [#108](https://github.com/AY2324S1-CS2103T-W17-2/tp/pull/108) by Aprup Kale)
 
 * **Documentation**:
@@ -62,10 +64,15 @@ Given below are my contributions to the project.
         5. **Continuous Updates and Improvements**:
            Throughout the project lifecycle, I diligently updated each section of the UG to reflect the latest features and changes in the application. This ensured that the documentation remained accurate and relevant at all times.
         6. Relevant PRs: [#88](https://github.com/AY2324S1-CS2103T-W17-2/tp/pull/88), [#100](https://github.com/AY2324S1-CS2103T-W17-2/tp/pull/100), [#113](https://github.com/AY2324S1-CS2103T-W17-2/tp/pull/113), [#162](https://github.com/AY2324S1-CS2103T-W17-2/tp/pull/162) 
-    * Developer Guide:
-        1. **Comprehensive Explanation of the `add` command**:
-           I provided a detailed explanation of the 'Add Command' feature, covering its purpose, functionality, and implementation. This included a step-by-step guide on how the command processes input, interacts with other components, and produces the desired outcome.
-        2. Relevant PRs: [#99](https://github.com/AY2324S1-CS2103T-W17-2/tp/pull/99)
+    * Developer Guide: (see our [Developer Guide](https://ay2324s1-cs2103t-w17-2.github.io/tp/DeveloperGuide.html))
+      1. **Comprehensive Explanation of the `add` command**:
+         I provided a detailed explanation of the 'Add Command' feature, covering its purpose, functionality, and implementation. This included a step-by-step guide on how the command processes input, interacts with other components, and produces the desired outcome.
+      1. **Planned Enhancements**:
+        I proposed several enhancements to the application, including:
+         * Improved Command Error Feedback
+         * Improved Unknown Command Error Feedback
+         * Improved Visibility of Newly Added Internship Applications 
+      1. Relevant PRs: [#99](https://github.com/AY2324S1-CS2103T-W17-2/tp/pull/99), [#202](https://github.com/AY2324S1-CS2103T-W17-2/tp/pull/202)
 
 * **Community**:
     * [PRs reviewed by me](https://github.com/AY2324S1-CS2103T-W17-2/tp/pulls?q=is%3Apr+author%3Atim-pipi) - over 30+ PRs reviewed.
