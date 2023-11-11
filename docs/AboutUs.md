@@ -26,7 +26,13 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 <img src="images/zhengyup.png" width="200px">
 
-[[github](http://github.com/zhengyup)] [[portfolio](team/zhengyup.md)]
+[[github](http://github.com/zhengyup)] 
+[[portfolio](team/zhengyup.md)]
+
+* **Role**:
+  * Developer
+* **Responsibilities**:
+  * UI and Model
 
 ### Timothy Putra Prasetio
 
