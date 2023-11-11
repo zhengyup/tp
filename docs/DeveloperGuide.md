@@ -1236,4 +1236,18 @@ application management experience.
 
 ## **Appendix: Planned Enhancements**
 
-### Planned Enhancements 
+### Better Error Messages
+**Current Behaviour**:
+
+
+**Planned enhancement**:
+[include how you want to implement it]
+[explain how it addresses the feature flaw]
+
+### Newly Added Internship Applications Displayed at Top of List
+**Current Behaviour**:
+[include explanation of flaw]
+
+**Planned enhancement**:
+[include how you want to implement it]
+[explain how it addresses the feature flaw]
