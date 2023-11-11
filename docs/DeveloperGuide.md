@@ -136,7 +136,7 @@ To illustrate the interactions within the `Logic` component, we'll use the
 
 <box type="info" seamless>
 
-**Note:** The lifeline for `DeleteCommandParser` and `DeleteCommand` 
+**Note:** The lifeline for `DeleteCommandParser` and `DeleteCommand`
 should end at the destroy marker (X) but due to a limitation in PlantUML, 
 the lifeline extends to the end of the diagram.
 </box>
