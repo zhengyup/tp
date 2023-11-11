@@ -1,10 +1,10 @@
 ---
   layout: default.md
-  title: "Testing guide"
+  title: "Testing Guide"
   pageNav: 3
 ---
 
-# Testing guide
+# Testing Guide
 
 <!-- * Table of Contents -->
 <page-nav-print />

@@ -18,9 +18,9 @@ third-party libraries -- include links to the original source as well }_
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Setting up, getting started**
+## **Setting Up and Getting Started**
 
-Refer to the guide [_Setting up and getting started_](SettingUp.md).
+Refer to the [_Setting Up and Getting Started_](SettingUp.md) guide.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -120,7 +120,7 @@ The `UI` component,
 * Depends on certain classes within the `Model` component, as it
   displays `InternApplication` objects residing in the `Model`.
 
-### Logic component
+### Logic Component
 
 **API**:
 [`Logic.java`](https://github.com/AY2324S1-CS2103T-W17-2/tp/blob/master/src/main/java/seedu/letsgethired/logic/Logic.java)
@@ -177,7 +177,7 @@ How commands are parsed:
   the `Parser` interface, allowing them to be treated similarly where possible,
   especially during testing.
 
-### Model component
+### Model Component
 
 **API**:
 [`Model.java`](https://github.com/AY2324S1-CS2103T-W17-2/tp/blob/master/src/main/java/seedu/letsgethired/model/Model.java)
@@ -203,7 +203,7 @@ The `Model` component has the following responsibilities:
   Since the `Model` represents data entities of the domain, it's designed
   to stand independently of the other components.
 
-### Storage component
+### Storage Component
 
 **API**:
 [`Storage.java`](https://github.com/AY2324S1-CS2103T-W17-2/tp/blob/master/src/main/java/seedu/letsgethired/storage/Storage.java)
@@ -220,7 +220,7 @@ The `Storage` component,
 * Depends on some classes in the `Model` component (because the `Storage`
   component's job is to save/retrieve objects that belong to the `Model`).
 
-### Common classes
+### Common Classes
 
 Classes that are used across multiple components are located within the
 `seedu.letsgethired.commons` package.
@@ -237,7 +237,7 @@ commonly used string manipulation methods.
 This section describes some noteworthy details on how certain features are
 implemented.
 
-### Add command
+### Add Command
 
 The `add` command enables users to add new internship application into the
 Intern Tracker.
@@ -315,7 +315,7 @@ but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
     * Cons: It restricts users to having only 1 internship application with a
       given company.
 
-### Find command
+### Find Command
 
 The `find` command enables the users to search internship applications by
 looking up a keyword in any of the fields associated with
@@ -382,7 +382,7 @@ but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 
 </box>
 
-### Note command
+### Note Command
 
 The note command enables the users to add or delete notes to an internship
 application.
@@ -600,7 +600,7 @@ but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 
 **Aspect: How feedback and details are returned from CommandResult**
 
-### Undo command
+### Undo Command
 
 #### Implementation
 
@@ -790,7 +790,7 @@ The following sequence diagram high level view of how the Card Click feature wor
  
 --------------------------------------------------------------------------------------------------------------------
 
-## **Documentation, logging, testing, configuration, dev-ops**
+## **Documentation, Testing, Logging, Configuration, Dev-ops**
 
 * [Documentation guide](Documentation.md)
 * [Testing guide](Testing.md)
@@ -1217,7 +1217,7 @@ LetsGetHired enables users to sort their internship applications in ascending or
 order based on  any field. This functionality provides users with the ability to customize the 
 organization of their application.
 
-### Developing a better User Interface
+### Developing a Better User Interface
 We undertook a substantial overhaul of the GUI in LetsGetHired, distinguishing it from the interface of 
 AB3. LetsGetHired embraces a visually appealing GUI that facilitates in-depth exploration of application 
 details through a select view. This transition required intricate design decisions to seamlessly integrate 
