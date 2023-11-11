@@ -136,7 +136,7 @@ To illustrate the interactions within the `Logic` component, we'll use the
 
 <box type="info" seamless>
 
-**Note:** The lifeline for `DeleteCommandParser` and `DeleteCommand` 
+**Note:** The lifeline for `DeleteCommandParser` and `DeleteCommand`
 should end at the destroy marker (X) but due to a limitation in PlantUML, 
 the lifeline extends to the end of the diagram.
 </box>
@@ -1121,7 +1121,7 @@ Use case ends.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Appendix: Instructions for manual testing**
+## **Appendix: Instructions for Manual Testing**
 
 Given below are instructions to test the app manually.
 
@@ -1232,4 +1232,57 @@ into LetsGetHired's existing and future functionalities, such as searching for a
 This addition allowed us to introduce another dimension to LetsGetHired, adding depth and nuance to the 
 application management experience.
 
+--------------------------------------------------------------------------------------------------------------------
 
+## **Appendix: Planned Enhancements**
+
+### Improved Command Error Feedback
+**Current Implementation**: In the current version of our application, when a user inputs a command with missing compulsory fields, the application responds with a generic error message: `Invalid Command Format!`. This is followed by the correct usage of the command. While this approach informs the user of an error, it lacks specificity in identifying the exact cause of the error, particularly which compulsory field(s) are missing.
+
+**Planned Enhancement**: We aim to improve user experience and error feedback by implementing a more detailed error reporting system. This enhancement will enable the application to not only detect that an invalid command has been entered but also identify and highlight the specific missing compulsory fields.
+
+**Proposed Changes**:
+
+* **Error Detection Algorithm**: Modify the command parsing algorithm to include checks for each compulsory field. This will enable the system to pinpoint which field(s) the user failed to provide.
+
+* **User Feedback Enhancement**: When a command is identified as invalid due to missing fields, the application will generate a tailored error message. This message will specifically list the missing compulsory field(s), guiding the user to correct the specific mistake. For example, if a user forgets to input the `CYCLE` field in a command, the error message would be: `Invalid Command Format! Missing field: CYCLE`. This message will be followed by the correct usage of the command.
+
+**Expected Benefits**:
+
+* **Improved User Experience**: By providing specific feedback on missing fields, users can more easily understand and rectify their mistakes, leading to a smoother interaction with the application.
+* **Increased Efficiency**: This enhancement reduces the time and effort users spend in deciphering generic error messages and figuring out what went wrong.
+* **Enhanced Usability**: Tailored error messages make the application more user-friendly, especially for new users who are still familiarizing themselves with the command syntax.
+
+### Improved Unknown Command Error Feedback
+**Current Implementation**: In the current version of our application, when a user inputs an unrecognized command, the system simply displays a message: `Unknown Command`. This response, while accurate, does not assist the user in understanding why the command was unrecognized or how to correct it.
+
+**Planned Enhancement**: We plan to introduce a more intuitive error handling mechanism for unknown commands, akin to the approach used in Git. This enhancement will involve suggesting commands similar to the user's input, which can be particularly useful in cases where the user has made a typing error.
+
+**Proposed Changes**:
+
+* **Command Suggestion Algorithm**: Implement an algorithm that detects and suggests similar commands when an unknown command is entered. For example, if a user mistakenly types `ad` instead of `add`, the system will suggest the correct command: `Unknown Command: 'ad'. Did you mean 'add'?`.
+
+* **Synonym Recognition**: Enhance the command parsing logic to recognize synonyms or commonly used alternatives for certain commands. For instance, if a user types `search` or `filter` instead of `find`, the application could respond with a suggestion: `Unknown Command: 'search'. Do you mean 'find'?`.
+
+**Expected Benefits**:
+
+* **Enhanced User Assistance**: By providing relevant command suggestions, users can quickly rectify typing errors or understand alternative terminology used within the application.
+* **Increased Efficiency**: This enhancement reduces the time and effort users spend in deciphering generic error messages and figuring out what went wrong.
+* **Improved Usability for New Users**: New users, unfamiliar with specific command syntax, will find the application more approachable with these intuitive prompts and suggestions.
+
+### Improved Visibility of Newly Added Internship Applications
+**Current Implementation**: In the current version of our application,  when a new internship application is added to our list, it is placed at the bottom. This positioning often renders the new entry outside the user's current view, requiring them to manually scroll down to locate the latest addition.
+
+**Planned Enhancement**: We are planning to enhance the user experience by changing how newly added internship applications are displayed. The key improvement will be automatically scrolling the list to bring the newly added application into view immediately. Additionally, we are considering placing new entries at the top of the list rather than at the bottom.
+
+**Proposed Changes**:
+
+* **Automatic Scrolling**: Modify the list view functionality to automatically scroll to the position of the newly added internship application. This ensures that the latest entry is immediately visible to the user without requiring manual navigation.
+
+* **List Ordering Modification**: Change the default order of the list to display new applications at the top. This approach aligns with common user expectations, where the most recent items are readily accessible.
+
+**Expected Benefits**:
+
+* **Improved Visibility of New Applications**: By immediately showcasing new applications, users can immediately see and interact with the most recent entries, improving workflow efficiency.
+* **Adaptation to User Preferences**: Adjusting the list order to display new items at the top aligns with common user behavior and expectations, thereby improving usability.
+* **Enhanced User Experience**: Automatically scrolling to new entries saves time and improves the overall user experience, making the application more intuitive and efficient.

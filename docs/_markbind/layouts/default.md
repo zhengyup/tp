@@ -46,6 +46,7 @@
   * [Appendix: Requirements]({{ baseUrl }}/DeveloperGuide.html#appendix-requirements)
   * [Appendix: Instructions for manual testing]({{ baseUrl }}/DeveloperGuide.html#appendix-instructions-for-manual-testing)
   * [Appendix: Effort]({{ baseUrl }}/DeveloperGuide.html#appendix-effort)
+  * [Appendix: Planned Enhancements]({{ baseUrl }}/DeveloperGuide.html#appendix-planned-enhancements)
 * Tutorials
   * [Tracing code]({{ baseUrl }}/tutorials/TracingCode.html)
   * [Adding a command]({{ baseUrl }}/tutorials/AddRemark.html)
