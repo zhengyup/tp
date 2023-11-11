@@ -31,22 +31,32 @@ Given below are my contributions to the project.
     a Versioned extension of the InternTracker class which allows committing and undoing changes, but 
     decided against adopting the proposed data structure to manage version control.
 
-* **Code contributed**: [https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=zhengyup&sort=groupTitle&sortWithin=title&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=true&checkedFileTypes=docs~functional-code~test-code&since=2023-09-22]
+* **Code contributed**:
+* [RepoSense link](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=zhengyup&sort=groupTitle&sortWithin=title&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=true&checkedFileTypes=docs~functional-code~test-code&since=2023-09-22) summarizes my 
+  contributions to the codebase
+* [PRs authored by me](https://github.com/AY2324S1-CS2103T-W17-2/tp/pulls?q=is%3Apr+author%3Azhengyup) - over 
+  15+ PRs authored and merged
 
 * **Enhancements to existing features**:
-    * Revamped the GUI color scheme from a dark theme to a light theme #101
-    * Updated the coloring of status tags to create better distinction and improve user experience #101
+    * Revamped the GUI color scheme from a dark theme to a light theme [#101](https://github.com/AY2324S1-CS2103T-W17-2/tp/pull/101)
+    * Updated the coloring of status tags to create better distinction and improve user experience [#101](https://github.com/AY2324S1-CS2103T-W17-2/tp/pull/101)
     * Introduced more possible inputs for the status field that would allow users to better track the 
-      progress of an application #101
+      progress of an application [#101](https://github.com/AY2324S1-CS2103T-W17-2/tp/pull/101)
 
 * **Documentation**:
     * User Guide:
-        * Removed all previous references to AB3 and replaced with appropriate fields from LetsGetHired #44
+        * Removed all previous references to AB3 and replaced with appropriate fields from LetsGetHired [#44](https://github.com/AY2324S1-CS2103T-W17-2/tp/pull/44)
         * Provided the outlines for the View and Undo commands 
     * Developer Guide:
-        * Added "useful" user stories and their associated use cases #26
-        * Refined and revised use cases after the tutorial #43
+        * Added "useful" user stories and their associated use cases [#26](https://github.com/AY2324S1-CS2103T-W17-2/tp/pull/26)
+        * Refined and revised use cases after the tutorial [#43](https://github.com/AY2324S1-CS2103T-W17-2/tp/pull/43)
+        * Added Appendix: Effort section which highlights the difficulty, challenges faced and 
+          achievements of our group in the development of LetsGetHired [#197](https://github.com/AY2324S1-CS2103T-W17-2/tp/pull/197)
+        * Added section on "Redo" under planned enhancements [#209](https://github.com/AY2324S1-CS2103T-W17-2/tp/pull/209)
 
 * **Community**:
-    * PRs reviewed (with non-trivial review comments): #32, #33, #48, #53, #60, #80, #99, #100, #162
+  * [PRs reviewed by me](https://github.com/AY2324S1-CS2103T-W17-2/tp/pulls?q=is%3Apr+reviewed-by%3Azhengyup)
+    over 10+ PRs reviewed
+
+
 
