@@ -1238,7 +1238,7 @@ application management experience.
 
 ### Better Error Messages
 **Current Behaviour**:
-
+[include explanation of flaw]
 
 **Planned enhancement**:
 [include how you want to implement it]
